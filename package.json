@@ -4,7 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "generate:ephemeris": "node scripts/generate-ephemeris.cjs",
     "test": "node --test",
     "preview": "npx http-server . -p 4173 -c-1"
+  },
+  "devDependencies": {
+    "swisseph": "^0.5.17"
   }
 }

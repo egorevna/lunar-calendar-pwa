@@ -8,10 +8,16 @@ import {
 import {
   formatDate,
   formatRange,
+  formatRangeWithSeconds,
   formatTime,
+  formatTimeWithSeconds,
   formatWeekday,
 } from './format.js';
 import { getMoonView } from './moonView.js';
+import {
+  getPreciseMoonSignInfo,
+  getPreciseVoidOfCourse,
+} from './preciseEphemeris.js';
 
 const elements = {
   date: document.querySelector('[data-date]'),
@@ -35,9 +41,9 @@ function render() {
   const lunar = getLunarInfo(now);
   const planetaryDay = getPlanetaryDay(now);
   const planetaryHour = getPlanetaryHour(now);
-  const voc = getVoidOfCourse(now);
+  const voc = getPreciseVoidOfCourse(now) ?? getVoidOfCourse(now);
   const moonView = getMoonView(lunar);
-  const moonSign = getMoonSignInfo(now);
+  const moonSign = getPreciseMoonSignInfo(now) ?? getMoonSignInfo(now);
 
   elements.date.textContent = formatDate(now);
   elements.weekday.textContent = formatWeekday(now);
@@ -59,8 +65,11 @@ function render() {
 }
 
 function describeVoc(voc) {
-  const range = formatRange(voc.start, voc.end);
-  if (voc.isActive) return `сейчас, до ${formatTime(voc.end)}`;
+  const range = voc.source === 'swisseph'
+    ? formatRangeWithSeconds(voc.start, voc.end)
+    : formatRange(voc.start, voc.end);
+  const end = voc.source === 'swisseph' ? formatTimeWithSeconds(voc.end) : formatTime(voc.end);
+  if (voc.isActive) return `сейчас, до ${end}`;
   if (voc.status === 'upcoming') return `с ${range}`;
   return `ближайший период: ${range}`;
 }
@@ -69,7 +78,7 @@ function formatMoonIngress(now, entersAt) {
   const current = formatDate(now);
   const next = formatDate(entersAt);
   const dayLabel = current === next ? 'сегодня' : 'завтра';
-  return `${dayLabel} в ${formatTime(entersAt)}`;
+  return `${dayLabel} в ${formatTimeWithSeconds(entersAt)}`;
 }
 
 if ('serviceWorker' in navigator) {

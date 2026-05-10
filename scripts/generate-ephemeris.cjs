@@ -1,0 +1,243 @@
+const fs = require('node:fs');
+const path = require('node:path');
+const swe = require('swisseph');
+
+const MS_PER_DAY = 86400000;
+const START = new Date('2026-01-01T00:00:00.000Z');
+const END = new Date('2031-01-01T00:00:00.000Z');
+const ROOT = path.resolve(__dirname, '..');
+const OUTPUT = path.join(ROOT, 'src', 'ephemeris-data.js');
+const FLAGS = swe.SEFLG_SWIEPH | swe.SEFLG_SPEED;
+
+const SIGNS = [
+  'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo',
+  'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces',
+];
+
+const BODIES = [
+  { key: 'sun', id: swe.SE_SUN },
+  { key: 'mercury', id: swe.SE_MERCURY },
+  { key: 'venus', id: swe.SE_VENUS },
+  { key: 'mars', id: swe.SE_MARS },
+  { key: 'jupiter', id: swe.SE_JUPITER },
+  { key: 'saturn', id: swe.SE_SATURN },
+  { key: 'uranus', id: swe.SE_URANUS },
+  { key: 'neptune', id: swe.SE_NEPTUNE },
+  { key: 'pluto', id: swe.SE_PLUTO },
+];
+
+const ASPECTS = [
+  { angle: 0, label: 0 },
+  { angle: 60, label: 60 },
+  { angle: 90, label: 90 },
+  { angle: 120, label: 120 },
+  { angle: 180, label: 180 },
+  { angle: 240, label: 120 },
+  { angle: 270, label: 90 },
+  { angle: 300, label: 60 },
+];
+
+swe.swe_set_ephe_path(path.join(ROOT, 'node_modules', 'swisseph', 'ephe'));
+
+const signIngresses = generateSignIngresses(START, END);
+const voidOfCourse = generateVoidOfCourse(signIngresses);
+const data = {
+  generatedAt: new Date().toISOString(),
+  source: 'Swiss Ephemeris swisseph npm package, SEFLG_SWIEPH',
+  rangeStart: START.toISOString(),
+  rangeEnd: END.toISOString(),
+  signIngresses,
+  voidOfCourse,
+};
+
+fs.writeFileSync(
+  OUTPUT,
+  `export const PRECISE_EPHEMERIS = ${JSON.stringify(data, null, 2)};\n`,
+);
+
+console.log(`Generated ${signIngresses.length} Moon sign ingresses`);
+console.log(`Generated ${voidOfCourse.length} Moon void-of-course intervals`);
+console.log(`Wrote ${path.relative(ROOT, OUTPUT)}`);
+
+function generateSignIngresses(start, end) {
+  const scanStart = dateToJulian(new Date(start.getTime() - 5 * MS_PER_DAY));
+  const scanEnd = dateToJulian(new Date(end.getTime() + 3 * MS_PER_DAY));
+  const step = 0.05;
+  const events = [];
+  let previousJd = scanStart;
+  let previousAbsolute = moonLongitude(previousJd);
+  let boundary = Math.floor(previousAbsolute / 30) * 30 + 30;
+
+  for (let jd = scanStart + step; jd <= scanEnd; jd += step) {
+    const absolute = unwrapForward(previousAbsolute, moonLongitude(jd));
+    while (absolute >= boundary) {
+      const exactJd = findLongitudeCrossing(previousJd, jd, boundary);
+      const signIndex = positiveModulo(Math.floor(boundary / 30), 12);
+      events.push({
+        at: roundToSecond(julianToDate(exactJd)).toISOString(),
+        sign: SIGNS[signIndex],
+      });
+      boundary += 30;
+    }
+    previousJd = jd;
+    previousAbsolute = absolute;
+  }
+
+  return events.filter((event) => (
+    new Date(event.at) >= new Date(start.getTime() - 5 * MS_PER_DAY)
+    && new Date(event.at) < new Date(end.getTime() + 3 * MS_PER_DAY)
+  ));
+}
+
+function generateVoidOfCourse(ingresses) {
+  const intervals = [];
+
+  for (let index = 0; index < ingresses.length - 1; index += 1) {
+    const entry = new Date(ingresses[index].at);
+    const exit = new Date(ingresses[index + 1].at);
+    if (exit <= START || entry >= END) continue;
+
+    const aspect = findLastAspect(dateToJulian(entry), dateToJulian(exit));
+    const start = aspect ? aspect.at : entry;
+    intervals.push({
+      start: roundToSecond(start).toISOString(),
+      end: roundToSecond(exit).toISOString(),
+      aspect: aspect?.aspect ?? null,
+      planet: aspect?.planet ?? null,
+    });
+  }
+
+  return intervals.filter((interval) => (
+    new Date(interval.end) > START && new Date(interval.start) < END
+  ));
+}
+
+function findLastAspect(startJd, endJd) {
+  const step = 0.02;
+  let previous = aspectSamples(startJd);
+  let last = null;
+
+  for (let jd = startJd + step; jd <= endJd; jd += step) {
+    const current = aspectSamples(jd);
+    for (const sample of current.values()) {
+      const old = previous.get(sample.id);
+      if (!old) continue;
+      const crossed = old.delta * sample.delta <= 0;
+      const realCrossing = Math.abs(old.delta - sample.delta) < 30;
+      if (crossed && realCrossing) {
+        last = {
+          at: julianToDate(refineAspect(old.jd, jd, sample.body, sample.angle)),
+          planet: sample.body.key,
+          aspect: sample.label,
+        };
+      }
+    }
+    previous = current;
+  }
+
+  return last;
+}
+
+function aspectSamples(jd) {
+  const moon = moonLongitude(jd);
+  const samples = new Map();
+
+  for (const body of BODIES) {
+    const longitude = bodyLongitude(jd, body.id);
+    for (const aspect of ASPECTS) {
+      samples.set(`${body.key}-${aspect.angle}`, {
+        id: `${body.key}-${aspect.angle}`,
+        jd,
+        body,
+        angle: aspect.angle,
+        label: aspect.label,
+        delta: signedAngle(moon - longitude - aspect.angle),
+      });
+    }
+  }
+
+  return samples;
+}
+
+function refineAspect(lowJd, highJd, body, angle) {
+  let low = lowJd;
+  let high = highJd;
+  let lowDelta = aspectDelta(low, body.id, angle);
+
+  for (let index = 0; index < 48; index += 1) {
+    const middle = (low + high) / 2;
+    const middleDelta = aspectDelta(middle, body.id, angle);
+    if (lowDelta * middleDelta <= 0) high = middle;
+    else {
+      low = middle;
+      lowDelta = middleDelta;
+    }
+  }
+
+  return (low + high) / 2;
+}
+
+function aspectDelta(jd, bodyId, angle) {
+  return signedAngle(moonLongitude(jd) - bodyLongitude(jd, bodyId) - angle);
+}
+
+function findLongitudeCrossing(lowJd, highJd, target) {
+  let low = lowJd;
+  let high = highJd;
+
+  for (let index = 0; index < 48; index += 1) {
+    const middle = (low + high) / 2;
+    const absolute = unwrapToTarget(moonLongitude(middle), target);
+    if (absolute < target) low = middle;
+    else high = middle;
+  }
+
+  return (low + high) / 2;
+}
+
+function moonLongitude(jd) {
+  return bodyLongitude(jd, swe.SE_MOON);
+}
+
+function bodyLongitude(jd, bodyId) {
+  let result;
+  swe.swe_calc_ut(jd, bodyId, FLAGS, (body) => {
+    if (body.error) throw new Error(body.error);
+    result = body.longitude;
+  });
+  return result;
+}
+
+function dateToJulian(date) {
+  return date.getTime() / MS_PER_DAY + 2440587.5;
+}
+
+function julianToDate(jd) {
+  return new Date((jd - 2440587.5) * MS_PER_DAY);
+}
+
+function roundToSecond(date) {
+  return new Date(Math.round(date.getTime() / 1000) * 1000);
+}
+
+function unwrapForward(previousAbsolute, longitude) {
+  let value = longitude;
+  while (value < previousAbsolute) value += 360;
+  while (value - previousAbsolute > 180) value -= 360;
+  return value;
+}
+
+function unwrapToTarget(longitude, target) {
+  let value = longitude;
+  while (value < target - 180) value += 360;
+  while (value > target + 180) value -= 360;
+  return value;
+}
+
+function positiveModulo(value, divisor) {
+  return ((value % divisor) + divisor) % divisor;
+}
+
+function signedAngle(value) {
+  return positiveModulo(value + 180, 360) - 180;
+}

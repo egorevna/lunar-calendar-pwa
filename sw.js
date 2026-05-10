@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lunar-calendar-v5';
+const CACHE_NAME = 'lunar-calendar-v6';
 const ASSETS = [
   './',
   'index.html',
@@ -7,6 +7,8 @@ const ASSETS = [
   'src/astro.js',
   'src/format.js',
   'src/moonView.js',
+  'src/preciseEphemeris.js',
+  'src/ephemeris-data.js',
   'src/styles.css',
   'icons/icon-192.svg',
   'icons/icon-512.svg',
