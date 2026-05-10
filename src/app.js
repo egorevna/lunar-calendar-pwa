@@ -10,6 +10,7 @@ import {
   formatTime,
   formatWeekday,
 } from './format.js';
+import { getMoonView } from './moonView.js';
 
 const elements = {
   date: document.querySelector('[data-date]'),
@@ -32,6 +33,7 @@ function render() {
   const planetaryDay = getPlanetaryDay(now);
   const planetaryHour = getPlanetaryHour(now);
   const voc = getVoidOfCourse(now);
+  const moonView = getMoonView(lunar);
 
   elements.date.textContent = formatDate(now);
   elements.weekday.textContent = formatWeekday(now);
@@ -45,10 +47,9 @@ function render() {
   elements.hourName.textContent = planetaryHour.name;
   elements.hourRange.textContent = formatRange(planetaryHour.startsAt, planetaryHour.endsAt);
 
-  const light = Math.round(lunar.illumination * 100);
-  const direction = lunar.waxing ? 1 : -1;
-  elements.moon.style.setProperty('--moon-light', `${light}%`);
-  elements.moon.style.setProperty('--moon-direction', direction);
+  elements.moon.className = `moon-visual ${moonView.className}`;
+  elements.moon.style.setProperty('--moon-light', `${moonView.illuminationPercent}%`);
+  elements.moon.style.setProperty('--moon-shadow-shift', moonView.shadowShift);
 }
 
 function describeVoc(voc) {
@@ -60,7 +61,7 @@ function describeVoc(voc) {
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js');
+    navigator.serviceWorker.register('sw.js');
   });
 }
 
