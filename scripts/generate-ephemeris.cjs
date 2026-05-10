@@ -5,6 +5,9 @@ const swe = require('swisseph');
 const MS_PER_DAY = 86400000;
 const START = new Date('2026-01-01T00:00:00.000Z');
 const END = new Date('2031-01-01T00:00:00.000Z');
+const MOSCOW_LON = 37.6173;
+const MOSCOW_LAT = 55.7558;
+const MOSCOW_ALT = 156;
 const ROOT = path.resolve(__dirname, '..');
 const OUTPUT = path.join(ROOT, 'src', 'ephemeris-data.js');
 const FLAGS = swe.SEFLG_SWIEPH | swe.SEFLG_SPEED;
@@ -41,6 +44,8 @@ swe.swe_set_ephe_path(path.join(ROOT, 'node_modules', 'swisseph', 'ephe'));
 
 const signIngresses = generateSignIngresses(START, END);
 const voidOfCourse = generateVoidOfCourse(signIngresses);
+const newMoons = generateNewMoons(START, END);
+const lunarDays = generateLunarDays(newMoons);
 const data = {
   generatedAt: new Date().toISOString(),
   source: 'Swiss Ephemeris swisseph npm package, SEFLG_SWIEPH',
@@ -48,6 +53,7 @@ const data = {
   rangeEnd: END.toISOString(),
   signIngresses,
   voidOfCourse,
+  lunarDays,
 };
 
 fs.writeFileSync(
@@ -57,6 +63,7 @@ fs.writeFileSync(
 
 console.log(`Generated ${signIngresses.length} Moon sign ingresses`);
 console.log(`Generated ${voidOfCourse.length} Moon void-of-course intervals`);
+console.log(`Generated ${lunarDays.length} Moscow lunar day boundaries`);
 console.log(`Wrote ${path.relative(ROOT, OUTPUT)}`);
 
 function generateSignIngresses(start, end) {
@@ -110,6 +117,100 @@ function generateVoidOfCourse(ingresses) {
   return intervals.filter((interval) => (
     new Date(interval.end) > START && new Date(interval.start) < END
   ));
+}
+
+function generateNewMoons(start, end) {
+  const scanStart = dateToJulian(new Date(start.getTime() - 40 * MS_PER_DAY));
+  const scanEnd = dateToJulian(new Date(end.getTime() + 40 * MS_PER_DAY));
+  const step = 0.1;
+  const events = [];
+  let previousJd = scanStart;
+  let previousDelta = moonSunDelta(scanStart);
+
+  for (let jd = scanStart + step; jd <= scanEnd; jd += step) {
+    const delta = moonSunDelta(jd);
+    if (previousDelta * delta <= 0 && Math.abs(previousDelta - delta) < 30) {
+      events.push(refineNewMoon(previousJd, jd));
+    }
+    previousJd = jd;
+    previousDelta = delta;
+  }
+
+  return events;
+}
+
+function generateLunarDays(newMoons) {
+  const boundaries = [];
+
+  for (let index = 0; index < newMoons.length - 1; index += 1) {
+    const newMoon = newMoons[index];
+    const nextNewMoon = newMoons[index + 1];
+    if (julianToDate(nextNewMoon) <= START || julianToDate(newMoon) >= END) continue;
+
+    boundaries.push({
+      at: roundToSecond(julianToDate(newMoon)).toISOString(),
+      day: 1,
+    });
+
+    let day = 2;
+    let cursor = newMoon + 0.001;
+    while (cursor < nextNewMoon && day <= 30) {
+      const rise = moonRiseAfter(cursor);
+      if (!rise || rise >= nextNewMoon) break;
+      boundaries.push({
+        at: roundToSecond(julianToDate(rise)).toISOString(),
+        day,
+      });
+      day += 1;
+      cursor = rise + 0.02;
+    }
+  }
+
+  return boundaries
+    .filter((event) => new Date(event.at) >= new Date(START.getTime() - 40 * MS_PER_DAY) && new Date(event.at) < END)
+    .sort((a, b) => new Date(a.at) - new Date(b.at));
+}
+
+function moonRiseAfter(jd) {
+  let result;
+  swe.swe_rise_trans(
+    jd,
+    swe.SE_MOON,
+    '',
+    swe.SEFLG_SWIEPH,
+    swe.SE_CALC_RISE,
+    MOSCOW_LON,
+    MOSCOW_LAT,
+    MOSCOW_ALT,
+    0,
+    10,
+    (event) => {
+      if (!event.error) result = event.transitTime;
+    },
+  );
+  return result;
+}
+
+function refineNewMoon(lowJd, highJd) {
+  let low = lowJd;
+  let high = highJd;
+  let lowDelta = moonSunDelta(low);
+
+  for (let index = 0; index < 50; index += 1) {
+    const middle = (low + high) / 2;
+    const middleDelta = moonSunDelta(middle);
+    if (lowDelta * middleDelta <= 0) high = middle;
+    else {
+      low = middle;
+      lowDelta = middleDelta;
+    }
+  }
+
+  return (low + high) / 2;
+}
+
+function moonSunDelta(jd) {
+  return signedAngle(moonLongitude(jd) - bodyLongitude(jd, swe.SE_SUN));
 }
 
 function findLastAspect(startJd, endJd) {

@@ -14,6 +14,7 @@ import {
   formatWeekday,
 } from './format.js';
 import {
+  getPreciseLunarDayInfo,
   getPreciseMoonSignInfo,
   getPreciseVoidOfCourse,
 } from './preciseEphemeris.js';
@@ -41,11 +42,12 @@ function render() {
   const planetaryHour = getPlanetaryHour(now);
   const voc = getPreciseVoidOfCourse(now) ?? getVoidOfCourse(now);
   const moonSign = getPreciseMoonSignInfo(now) ?? getMoonSignInfo(now);
+  const lunarDay = getPreciseLunarDayInfo(now)?.lunarDay ?? lunar.lunarDay;
 
   elements.date.textContent = formatDate(now);
   elements.weekday.textContent = formatWeekday(now);
   elements.clock.textContent = formatTime(now);
-  elements.lunarDay.textContent = `${lunar.lunarDay}-й лунный день`;
+  elements.lunarDay.textContent = `${lunarDay}-й лунный день`;
   elements.phase.textContent = lunar.phaseName;
   elements.moonSign.textContent = `Луна в ${moonSign.current.glyph} ${moonSign.current.locative}`;
   elements.nextMoonSign.textContent = `в ${moonSign.next.name} ${formatMoonIngress(now, moonSign.entersAt)}`;

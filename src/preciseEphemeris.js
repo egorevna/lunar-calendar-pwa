@@ -22,6 +22,25 @@ export function getPreciseMoonSignInfo(date = new Date(), data = PRECISE_EPHEMER
   };
 }
 
+export function getPreciseLunarDayInfo(date = new Date(), data = PRECISE_EPHEMERIS) {
+  if (!covers(date, data) || !Array.isArray(data.lunarDays)) return null;
+
+  const lunarDays = data.lunarDays
+    .map((event) => ({ ...event, time: new Date(event.at) }))
+    .sort((a, b) => a.time - b.time);
+  const currentIndex = findLastIndex(lunarDays, (event) => event.time <= date);
+  const next = lunarDays[currentIndex + 1];
+
+  if (currentIndex < 0) return null;
+
+  return {
+    source: 'swisseph',
+    lunarDay: lunarDays[currentIndex].day,
+    startedAt: lunarDays[currentIndex].time,
+    endsAt: next ? next.time : null,
+  };
+}
+
 export function getPreciseVoidOfCourse(date = new Date(), data = PRECISE_EPHEMERIS) {
   if (!covers(date, data)) return null;
 

@@ -166,7 +166,7 @@ function getPhaseName(age) {
   if (age < 12.91963) return 'Растущая Луна';
   if (age < 16.61096) return 'Полнолуние';
   if (age < 20.30228) return 'Убывающая Луна';
-  if (age < 23.99361) return 'Последняя четверть';
+  if (age < 23.99361) return 'Третья четверть';
   if (age < 27.68493) return 'Убывающий серп';
   return 'Новолуние';
 }

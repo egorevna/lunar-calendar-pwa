@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import {
+  getPreciseLunarDayInfo,
   getPreciseMoonSignInfo,
   getPreciseVoidOfCourse,
 } from '../src/preciseEphemeris.js';
@@ -22,6 +23,10 @@ const fixture = {
       aspect: 120,
       planet: 'venus',
     },
+  ],
+  lunarDays: [
+    { at: '2026-05-09T20:31:44.000Z', day: 23 },
+    { at: '2026-05-10T20:39:41.000Z', day: 24 },
   ],
 };
 
@@ -44,18 +49,31 @@ test('returns active precise void-of-course interval', () => {
   assert.equal(voc.end.toISOString(), '2026-05-10T18:00:45.000Z');
 });
 
+test('returns precise Moscow lunar day from moonrise boundaries', () => {
+  const lunarDay = getPreciseLunarDayInfo(new Date('2026-05-10T15:53:00+03:00'), fixture);
+
+  assert.equal(lunarDay.source, 'swisseph');
+  assert.equal(lunarDay.lunarDay, 23);
+  assert.equal(lunarDay.startedAt.toISOString(), '2026-05-09T20:31:44.000Z');
+  assert.equal(lunarDay.endsAt.toISOString(), '2026-05-10T20:39:41.000Z');
+});
+
 test('returns null when precise data does not cover the requested date', () => {
   assert.equal(getPreciseMoonSignInfo(new Date('2032-01-01T00:00:00Z'), fixture), null);
   assert.equal(getPreciseVoidOfCourse(new Date('2032-01-01T00:00:00Z'), fixture), null);
+  assert.equal(getPreciseLunarDayInfo(new Date('2032-01-01T00:00:00Z'), fixture), null);
 });
 
 test('generated Swiss Ephemeris data covers the app release range', () => {
   const sign = getPreciseMoonSignInfo(new Date('2026-05-10T21:42:00+03:00'), PRECISE_EPHEMERIS);
   const voc = getPreciseVoidOfCourse(new Date('2026-05-10T21:42:00+03:00'), PRECISE_EPHEMERIS);
+  const lunarDay = getPreciseLunarDayInfo(new Date('2026-05-10T15:53:00+03:00'), PRECISE_EPHEMERIS);
 
   assert.equal(PRECISE_EPHEMERIS.source.includes('Swiss Ephemeris'), true);
   assert.ok(PRECISE_EPHEMERIS.signIngresses.length > 700);
   assert.ok(PRECISE_EPHEMERIS.voidOfCourse.length > 700);
+  assert.ok(PRECISE_EPHEMERIS.lunarDays.length > 1700);
   assert.equal(sign.source, 'swisseph');
   assert.equal(voc.source, 'swisseph');
+  assert.equal(lunarDay.lunarDay, 23);
 });

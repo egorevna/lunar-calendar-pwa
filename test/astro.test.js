@@ -44,6 +44,12 @@ test('returns bounded lunar information for a known date', () => {
   assert.ok(info.phaseName.length > 0);
 });
 
+test('labels the 2026-05-10 last quarter as the third quarter', () => {
+  const info = getLunarInfo(new Date('2026-05-10T15:53:00+03:00'));
+
+  assert.equal(info.phaseName, 'Третья четверть');
+});
+
 test('returns current and next Moon zodiac signs', () => {
   const sign = getMoonSignInfo(new Date('2026-05-10T21:42:00+03:00'));
 
