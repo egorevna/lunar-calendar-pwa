@@ -118,7 +118,7 @@ button {
   margin-top: clamp(12px, 3svh, 28px);
   font-size: clamp(66px, 19vw, 92px);
   line-height: 0.92;
-  margin-bottom: clamp(28px, 7svh, 76px);
+  margin-bottom: clamp(22px, 5svh, 54px);
 }
 
 .lunar-day {
@@ -168,8 +168,8 @@ button {
 
 .info-stack {
   display: grid;
-  gap: 14px;
-  margin-top: clamp(28px, 7svh, 74px);
+  gap: 12px;
+  margin-top: clamp(22px, 5svh, 54px);
 }
 
 .glass-card {
@@ -229,6 +229,44 @@ button {
 
 .planetary-card {
   padding: 11px 15px;
+}
+
+.indicators-card {
+  padding: 14px 17px 13px;
+}
+
+.indicators-card h2 {
+  margin: 0 0 12px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(22px, 6vw, 28px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.indicator-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: baseline;
+  min-height: 28px;
+  font-size: clamp(14px, 3.8vw, 18px);
+}
+
+.indicator-row + .indicator-row {
+  margin-top: 6px;
+}
+
+.indicator-row span {
+  color: var(--muted);
+}
+
+.indicator-row strong {
+  color: var(--gold);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(17px, 4.5vw, 22px);
+  font-weight: 400;
+  text-align: right;
+  white-space: nowrap;
 }
 
 .planet-row {
@@ -293,7 +331,7 @@ button {
   }
 
   .info-stack {
-    margin-top: 28px;
+    margin-top: 18px;
     gap: 10px;
   }
 }

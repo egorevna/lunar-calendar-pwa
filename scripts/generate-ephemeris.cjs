@@ -17,6 +17,21 @@ const SIGNS = [
   'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces',
 ];
 
+const SOLAR_MONTH_STARTS = [
+  { longitude: 315, branch: 'yin' },
+  { longitude: 345, branch: 'mao' },
+  { longitude: 15, branch: 'chen' },
+  { longitude: 45, branch: 'si' },
+  { longitude: 75, branch: 'wu' },
+  { longitude: 105, branch: 'wei' },
+  { longitude: 135, branch: 'shen' },
+  { longitude: 165, branch: 'you' },
+  { longitude: 195, branch: 'xu' },
+  { longitude: 225, branch: 'hai' },
+  { longitude: 255, branch: 'zi' },
+  { longitude: 285, branch: 'chou' },
+];
+
 const BODIES = [
   { key: 'sun', id: swe.SE_SUN },
   { key: 'mercury', id: swe.SE_MERCURY },
@@ -46,6 +61,7 @@ const signIngresses = generateSignIngresses(START, END);
 const voidOfCourse = generateVoidOfCourse(signIngresses);
 const newMoons = generateNewMoons(START, END);
 const lunarDays = generateLunarDays(newMoons);
+const solarMonths = generateSolarMonths(START, END);
 const data = {
   generatedAt: new Date().toISOString(),
   source: 'Swiss Ephemeris swisseph npm package, SEFLG_SWIEPH',
@@ -54,6 +70,7 @@ const data = {
   signIngresses,
   voidOfCourse,
   lunarDays,
+  solarMonths,
 };
 
 fs.writeFileSync(
@@ -64,6 +81,7 @@ fs.writeFileSync(
 console.log(`Generated ${signIngresses.length} Moon sign ingresses`);
 console.log(`Generated ${voidOfCourse.length} Moon void-of-course intervals`);
 console.log(`Generated ${lunarDays.length} Moscow lunar day boundaries`);
+console.log(`Generated ${solarMonths.length} Chinese solar month boundaries`);
 console.log(`Wrote ${path.relative(ROOT, OUTPUT)}`);
 
 function generateSignIngresses(start, end) {
@@ -139,6 +157,38 @@ function generateNewMoons(start, end) {
   return events;
 }
 
+function generateSolarMonths(start, end) {
+  const scanStart = dateToJulian(new Date(start.getTime() - 40 * MS_PER_DAY));
+  const scanEnd = dateToJulian(new Date(end.getTime() + 40 * MS_PER_DAY));
+  const step = 0.1;
+  const events = [];
+  let previousJd = scanStart;
+  let previousAbsolute = sunLongitude(previousJd);
+  let boundary = Math.floor((previousAbsolute - 315) / 30) * 30 + 345;
+
+  for (let jd = scanStart + step; jd <= scanEnd; jd += step) {
+    const absolute = unwrapForward(previousAbsolute, sunLongitude(jd));
+    while (absolute >= boundary) {
+      const normalized = positiveModulo(boundary, 360);
+      const start = SOLAR_MONTH_STARTS.find((item) => item.longitude === normalized);
+      if (start) {
+        events.push({
+          at: roundToSecond(julianToDate(findSunLongitudeCrossing(previousJd, jd, boundary))).toISOString(),
+          branch: start.branch,
+        });
+      }
+      boundary += 30;
+    }
+    previousJd = jd;
+    previousAbsolute = absolute;
+  }
+
+  return events.filter((event) => (
+    new Date(event.at) >= new Date(start.getTime() - 40 * MS_PER_DAY)
+    && new Date(event.at) < new Date(end.getTime() + 40 * MS_PER_DAY)
+  ));
+}
+
 function generateLunarDays(newMoons) {
   const boundaries = [];
 
@@ -211,6 +261,20 @@ function refineNewMoon(lowJd, highJd) {
 
 function moonSunDelta(jd) {
   return signedAngle(moonLongitude(jd) - bodyLongitude(jd, swe.SE_SUN));
+}
+
+function findSunLongitudeCrossing(lowJd, highJd, target) {
+  let low = lowJd;
+  let high = highJd;
+
+  for (let index = 0; index < 48; index += 1) {
+    const middle = (low + high) / 2;
+    const absolute = unwrapToTarget(sunLongitude(middle), target);
+    if (absolute < target) low = middle;
+    else high = middle;
+  }
+
+  return (low + high) / 2;
 }
 
 function findLastAspect(startJd, endJd) {
@@ -298,6 +362,10 @@ function findLongitudeCrossing(lowJd, highJd, target) {
 
 function moonLongitude(jd) {
   return bodyLongitude(jd, swe.SE_MOON);
+}
+
+function sunLongitude(jd) {
+  return bodyLongitude(jd, swe.SE_SUN);
 }
 
 function bodyLongitude(jd, bodyId) {

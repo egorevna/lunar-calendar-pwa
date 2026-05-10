@@ -16,8 +16,10 @@ import {
 import {
   getPreciseLunarDayInfo,
   getPreciseMoonSignInfo,
+  getPreciseSolarMonthBranch,
   getPreciseVoidOfCourse,
 } from './preciseEphemeris.js';
+import { getDayIndicators } from './dayIndicators.js';
 
 const elements = {
   date: document.querySelector('[data-date]'),
@@ -28,6 +30,9 @@ const elements = {
   moonSign: document.querySelector('[data-moon-sign]'),
   nextMoonSign: document.querySelector('[data-next-moon-sign]'),
   voc: document.querySelector('[data-voc]'),
+  lunarSymbol: document.querySelector('[data-lunar-symbol]'),
+  sexagenaryDay: document.querySelector('[data-sexagenary-day]'),
+  dayOfficer: document.querySelector('[data-day-officer]'),
   dayGlyph: document.querySelector('[data-day-glyph]'),
   dayName: document.querySelector('[data-planetary-day]'),
   hourGlyph: document.querySelector('[data-hour-glyph]'),
@@ -43,6 +48,8 @@ function render() {
   const voc = getPreciseVoidOfCourse(now) ?? getVoidOfCourse(now);
   const moonSign = getPreciseMoonSignInfo(now) ?? getMoonSignInfo(now);
   const lunarDay = getPreciseLunarDayInfo(now)?.lunarDay ?? lunar.lunarDay;
+  const solarMonthBranch = getPreciseSolarMonthBranch(now)?.key;
+  const indicators = getDayIndicators(now, { lunarDay, solarMonthBranch });
 
   elements.date.textContent = formatDate(now);
   elements.weekday.textContent = formatWeekday(now);
@@ -52,6 +59,9 @@ function render() {
   elements.moonSign.textContent = `Луна в ${moonSign.current.glyph} ${moonSign.current.locative}`;
   elements.nextMoonSign.textContent = `в ${moonSign.next.name} ${formatMoonIngress(now, moonSign.entersAt)}`;
   elements.voc.textContent = describeVoc(voc);
+  elements.lunarSymbol.textContent = indicators.lunarSymbol.name;
+  elements.sexagenaryDay.textContent = indicators.sexagenaryDay.name;
+  elements.dayOfficer.textContent = indicators.dayOfficer.name;
   elements.dayGlyph.textContent = planetaryDay.glyph;
   elements.dayName.textContent = planetaryDay.name;
   elements.hourGlyph.textContent = planetaryHour.glyph;

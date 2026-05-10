@@ -2,6 +2,21 @@ import { ZODIAC_SIGNS } from './astro.js';
 import { PRECISE_EPHEMERIS } from './ephemeris-data.js';
 
 const SIGN_BY_KEY = new Map(ZODIAC_SIGNS.map((sign) => [sign.key, sign]));
+const BRANCHES = [
+  { key: 'zi', name: 'Крыса', glyph: '子' },
+  { key: 'chou', name: 'Бык', glyph: '丑' },
+  { key: 'yin', name: 'Тигр', glyph: '寅' },
+  { key: 'mao', name: 'Кролик', glyph: '卯' },
+  { key: 'chen', name: 'Дракон', glyph: '辰' },
+  { key: 'si', name: 'Змея', glyph: '巳' },
+  { key: 'wu', name: 'Лошадь', glyph: '午' },
+  { key: 'wei', name: 'Коза', glyph: '未' },
+  { key: 'shen', name: 'Обезьяна', glyph: '申' },
+  { key: 'you', name: 'Петух', glyph: '酉' },
+  { key: 'xu', name: 'Собака', glyph: '戌' },
+  { key: 'hai', name: 'Свинья', glyph: '亥' },
+];
+const BRANCH_BY_KEY = new Map(BRANCHES.map((branch) => [branch.key, branch]));
 
 export function getPreciseMoonSignInfo(date = new Date(), data = PRECISE_EPHEMERIS) {
   if (!covers(date, data)) return null;
@@ -39,6 +54,18 @@ export function getPreciseLunarDayInfo(date = new Date(), data = PRECISE_EPHEMER
     startedAt: lunarDays[currentIndex].time,
     endsAt: next ? next.time : null,
   };
+}
+
+export function getPreciseSolarMonthBranch(date = new Date(), data = PRECISE_EPHEMERIS) {
+  if (!covers(date, data) || !Array.isArray(data.solarMonths)) return null;
+
+  const solarMonths = data.solarMonths
+    .map((event) => ({ ...event, time: new Date(event.at) }))
+    .sort((a, b) => a.time - b.time);
+  const currentIndex = findLastIndex(solarMonths, (event) => event.time <= date);
+  if (currentIndex < 0) return null;
+
+  return BRANCH_BY_KEY.get(solarMonths[currentIndex].branch);
 }
 
 export function getPreciseVoidOfCourse(date = new Date(), data = PRECISE_EPHEMERIS) {
