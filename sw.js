@@ -1,14 +1,14 @@
-const CACHE_NAME = 'lunar-calendar-v2';
+const CACHE_NAME = 'lunar-calendar-v3';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.webmanifest',
-  '/src/app.js',
-  '/src/astro.js',
-  '/src/format.js',
-  '/src/styles.css',
-  '/icons/icon-192.svg',
-  '/icons/icon-512.svg',
+  './',
+  'index.html',
+  'manifest.webmanifest',
+  'src/app.js',
+  'src/astro.js',
+  'src/format.js',
+  'src/styles.css',
+  'icons/icon-192.svg',
+  'icons/icon-512.svg',
 ];
 
 self.addEventListener('install', (event) => {
