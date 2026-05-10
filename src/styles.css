@@ -235,17 +235,31 @@ button {
   padding: 14px 17px 13px;
 }
 
-.indicators-card h2 {
+.indicator-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: baseline;
   margin: 0 0 12px;
   font-family: Georgia, "Times New Roman", serif;
+}
+
+.indicator-heading span {
   font-size: clamp(22px, 6vw, 28px);
+  line-height: 1.05;
+}
+
+.indicator-heading strong {
+  color: var(--gold);
+  font-size: clamp(21px, 5.6vw, 27px);
   font-weight: 400;
   line-height: 1.05;
+  text-align: right;
 }
 
 .indicator-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) minmax(0, auto);
   gap: 12px;
   align-items: baseline;
   min-height: 28px;
@@ -263,10 +277,10 @@ button {
 .indicator-row strong {
   color: var(--gold);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(17px, 4.5vw, 22px);
+  font-size: clamp(16px, 4.2vw, 21px);
   font-weight: 400;
   text-align: right;
-  white-space: nowrap;
+  line-height: 1.08;
 }
 
 .planet-row {
