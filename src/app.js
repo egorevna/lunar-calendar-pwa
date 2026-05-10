@@ -13,7 +13,6 @@ import {
   formatTimeWithSeconds,
   formatWeekday,
 } from './format.js';
-import { getMoonView } from './moonView.js';
 import {
   getPreciseMoonSignInfo,
   getPreciseVoidOfCourse,
@@ -23,7 +22,6 @@ const elements = {
   date: document.querySelector('[data-date]'),
   weekday: document.querySelector('[data-weekday]'),
   clock: document.querySelector('[data-clock]'),
-  moon: document.querySelector('[data-moon]'),
   lunarDay: document.querySelector('[data-lunar-day]'),
   phase: document.querySelector('[data-phase]'),
   moonSign: document.querySelector('[data-moon-sign]'),
@@ -42,7 +40,6 @@ function render() {
   const planetaryDay = getPlanetaryDay(now);
   const planetaryHour = getPlanetaryHour(now);
   const voc = getPreciseVoidOfCourse(now) ?? getVoidOfCourse(now);
-  const moonView = getMoonView(lunar);
   const moonSign = getPreciseMoonSignInfo(now) ?? getMoonSignInfo(now);
 
   elements.date.textContent = formatDate(now);
@@ -58,10 +55,6 @@ function render() {
   elements.hourGlyph.textContent = planetaryHour.glyph;
   elements.hourName.textContent = planetaryHour.name;
   elements.hourRange.textContent = formatRange(planetaryHour.startsAt, planetaryHour.endsAt);
-
-  elements.moon.className = `moon-visual ${moonView.className}`;
-  elements.moon.style.setProperty('--moon-light', `${moonView.illuminationPercent}%`);
-  elements.moon.style.setProperty('--moon-shadow-shift', moonView.shadowShift);
 }
 
 function describeVoc(voc) {

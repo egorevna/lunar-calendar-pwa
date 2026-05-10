@@ -14,23 +14,11 @@
   <body>
     <main class="app-shell" aria-label="Лунный календарь">
       <section class="home-screen">
-        <header class="top-bar">
-          <button class="icon-button" aria-label="Меню">
-            <span></span><span></span><span></span>
-          </button>
-          <h1>Лунный календарь</h1>
-          <button class="star-button" aria-label="Избранное">☆</button>
-        </header>
-
         <section class="hero" aria-live="polite">
           <p class="date" data-date></p>
           <p class="weekday" data-weekday></p>
           <p class="clock" data-clock></p>
-          <div class="moon-visual" data-moon>
-            <div class="moon-surface"></div>
-            <div class="moon-shadow"></div>
-          </div>
-          <p class="lunar-day"><span data-lunar-day></span> <button class="help-inline" aria-label="Что такое лунный день?">?</button></p>
+          <p class="lunar-day"><span data-lunar-day></span></p>
           <p class="phase" data-phase></p>
           <div class="moon-sign" aria-label="Знак Луны">
             <span data-moon-sign></span>
@@ -71,14 +59,6 @@
             </div>
           </article>
         </section>
-
-        <nav class="tab-bar" aria-label="Разделы">
-          <button class="tab active" aria-current="page"><span>☾</span>Главная</button>
-          <button class="tab"><span>▦</span>Календарь</button>
-          <button class="tab"><span>♄</span>Планеты</button>
-          <button class="tab"><span>ⓘ</span>Знания</button>
-          <button class="tab"><span>⚙</span>Настройки</button>
-        </nav>
       </section>
     </main>
     <script type="module" src="src/app.js"></script>
