@@ -1,5 +1,6 @@
 import {
   getLunarInfo,
+  getMoonSignInfo,
   getPlanetaryDay,
   getPlanetaryHour,
   getVoidOfCourse,
@@ -19,6 +20,8 @@ const elements = {
   moon: document.querySelector('[data-moon]'),
   lunarDay: document.querySelector('[data-lunar-day]'),
   phase: document.querySelector('[data-phase]'),
+  moonSign: document.querySelector('[data-moon-sign]'),
+  nextMoonSign: document.querySelector('[data-next-moon-sign]'),
   voc: document.querySelector('[data-voc]'),
   dayGlyph: document.querySelector('[data-day-glyph]'),
   dayName: document.querySelector('[data-planetary-day]'),
@@ -34,12 +37,15 @@ function render() {
   const planetaryHour = getPlanetaryHour(now);
   const voc = getVoidOfCourse(now);
   const moonView = getMoonView(lunar);
+  const moonSign = getMoonSignInfo(now);
 
   elements.date.textContent = formatDate(now);
   elements.weekday.textContent = formatWeekday(now);
   elements.clock.textContent = formatTime(now);
   elements.lunarDay.textContent = `${lunar.lunarDay}-й лунный день`;
   elements.phase.textContent = lunar.phaseName;
+  elements.moonSign.textContent = `Луна в ${moonSign.current.glyph} ${moonSign.current.locative}`;
+  elements.nextMoonSign.textContent = `в ${moonSign.next.name} ${formatMoonIngress(now, moonSign.entersAt)}`;
   elements.voc.textContent = describeVoc(voc);
   elements.dayGlyph.textContent = planetaryDay.glyph;
   elements.dayName.textContent = planetaryDay.name;
@@ -57,6 +63,13 @@ function describeVoc(voc) {
   if (voc.isActive) return `сейчас, до ${formatTime(voc.end)}`;
   if (voc.status === 'upcoming') return `с ${range}`;
   return `ближайший период: ${range}`;
+}
+
+function formatMoonIngress(now, entersAt) {
+  const current = formatDate(now);
+  const next = formatDate(entersAt);
+  const dayLabel = current === next ? 'сегодня' : 'завтра';
+  return `${dayLabel} в ${formatTime(entersAt)}`;
 }
 
 if ('serviceWorker' in navigator) {

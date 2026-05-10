@@ -27,6 +27,21 @@ const WEEKDAY_RULERS = [
 
 const MAJOR_ASPECTS = [0, 60, 90, 120, 180];
 
+export const ZODIAC_SIGNS = [
+  { key: 'aries', name: 'Овен', locative: 'Овне', glyph: '♈' },
+  { key: 'taurus', name: 'Телец', locative: 'Тельце', glyph: '♉' },
+  { key: 'gemini', name: 'Близнецы', locative: 'Близнецах', glyph: '♊' },
+  { key: 'cancer', name: 'Рак', locative: 'Раке', glyph: '♋' },
+  { key: 'leo', name: 'Лев', locative: 'Льве', glyph: '♌' },
+  { key: 'virgo', name: 'Дева', locative: 'Деве', glyph: '♍' },
+  { key: 'libra', name: 'Весы', locative: 'Весах', glyph: '♎' },
+  { key: 'scorpio', name: 'Скорпион', locative: 'Скорпионе', glyph: '♏' },
+  { key: 'sagittarius', name: 'Стрелец', locative: 'Стрельце', glyph: '♐' },
+  { key: 'capricorn', name: 'Козерог', locative: 'Козероге', glyph: '♑' },
+  { key: 'aquarius', name: 'Водолей', locative: 'Водолее', glyph: '♒' },
+  { key: 'pisces', name: 'Рыбы', locative: 'Рыбах', glyph: '♓' },
+];
+
 export function getPlanetaryDay(date = new Date()) {
   return WEEKDAY_RULERS[getMoscowParts(date).weekday];
 }
@@ -86,6 +101,20 @@ export function getLunarInfo(date = new Date()) {
     waxing,
     phaseName: getPhaseName(age),
     moonLongitude: getMoonLongitude(date),
+  };
+}
+
+export function getMoonSignInfo(date = new Date()) {
+  const longitude = getMoonLongitude(date);
+  const signIndex = Math.floor(longitude / 30);
+  const nextIndex = (signIndex + 1) % ZODIAC_SIGNS.length;
+  const nextBoundary = (signIndex + 1) * 30;
+
+  return {
+    longitude,
+    current: ZODIAC_SIGNS[signIndex],
+    next: ZODIAC_SIGNS[nextIndex],
+    entersAt: findMoonLongitudeTime(date, nextBoundary, 72),
   };
 }
 

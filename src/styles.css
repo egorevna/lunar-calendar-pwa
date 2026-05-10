@@ -243,6 +243,26 @@ button {
   line-height: 1.05;
 }
 
+.moon-sign {
+  margin: 9px auto 0;
+  color: rgba(255, 248, 239, 0.76);
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  line-height: 1.12;
+}
+
+.moon-sign span {
+  color: var(--gold);
+  font-size: clamp(16px, 4.4vw, 21px);
+}
+
+.moon-sign small {
+  color: rgba(255, 248, 239, 0.52);
+  font-size: clamp(13px, 3.6vw, 17px);
+}
+
 .help-inline,
 .help-button {
   width: 32px;
@@ -431,7 +451,7 @@ button {
   }
 
   .info-stack {
-    margin-top: 14px;
+    margin-top: 12px;
     gap: 10px;
   }
 

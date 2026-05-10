@@ -3,6 +3,7 @@ import test from 'node:test';
 
 import {
   getLunarInfo,
+  getMoonSignInfo,
   getPlanetaryDay,
   getPlanetaryHour,
   getVoidOfCourse,
@@ -41,6 +42,18 @@ test('returns bounded lunar information for a known date', () => {
   assert.ok(info.illumination >= 0);
   assert.ok(info.illumination <= 1);
   assert.ok(info.phaseName.length > 0);
+});
+
+test('returns current and next Moon zodiac signs', () => {
+  const sign = getMoonSignInfo(new Date('2026-05-10T21:42:00+03:00'));
+
+  assert.ok(sign.current.name.length > 0);
+  assert.ok(sign.current.glyph.length > 0);
+  assert.ok(sign.next.name.length > 0);
+  assert.ok(sign.next.glyph.length > 0);
+  assert.notEqual(sign.current.key, sign.next.key);
+  assert.ok(sign.entersAt instanceof Date);
+  assert.equal(sign.entersAt > new Date('2026-05-10T21:42:00+03:00'), true);
 });
 
 test('returns a void-of-course status object for Moscow', () => {
