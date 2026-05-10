@@ -1,0 +1,10 @@
+{
+  "name": "lunar-calendar-pwa",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "preview": "npx http-server . -p 4173 -c-1"
+  }
+}

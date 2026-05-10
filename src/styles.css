@@ -1,0 +1,427 @@
+:root {
+  color-scheme: dark;
+  --gold: #f4c77f;
+  --text: #fff8ef;
+  --muted: rgba(255, 248, 239, 0.58);
+  --line: rgba(255, 255, 255, 0.13);
+  --panel: rgba(9, 22, 36, 0.78);
+  --panel-strong: rgba(12, 26, 42, 0.88);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+  background: #04101a;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+button {
+  border: 0;
+  color: inherit;
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100svh;
+  display: flex;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 24% 31%, rgba(73, 143, 188, 0.22), transparent 20rem),
+    radial-gradient(circle at 78% 44%, rgba(55, 118, 166, 0.17), transparent 18rem),
+    linear-gradient(180deg, #061421 0%, #061929 48%, #03101c 100%);
+  position: relative;
+  isolation: isolate;
+}
+
+.app-shell::before,
+.app-shell::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.app-shell::before {
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.88) 0 1px, transparent 1.4px),
+    radial-gradient(circle, rgba(122, 196, 255, 0.58) 0 1px, transparent 1.3px),
+    radial-gradient(circle, rgba(255, 217, 164, 0.55) 0 1px, transparent 1.2px);
+  background-position: 12px 18px, 30px 44px, 72px 12px;
+  background-size: 73px 89px, 113px 127px, 157px 139px;
+  opacity: 0.34;
+}
+
+.app-shell::after {
+  background: radial-gradient(ellipse at center, transparent 35%, rgba(0, 0, 0, 0.35) 100%);
+}
+
+.home-screen {
+  width: min(100%, 440px);
+  min-height: 100svh;
+  padding: max(14px, env(safe-area-inset-top, 0px)) 23px calc(12px + var(--safe-bottom));
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+}
+
+.top-bar {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  min-height: 44px;
+  color: var(--gold);
+}
+
+.top-bar h1 {
+  margin: 0;
+  text-align: center;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(23px, 6.7vw, 30px);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.icon-button,
+.star-button,
+.help-button,
+.help-inline {
+  background: transparent;
+  cursor: pointer;
+}
+
+.icon-button {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-content: center;
+  gap: 6px;
+}
+
+.icon-button span {
+  width: 27px;
+  height: 2px;
+  border-radius: 99px;
+  background: var(--gold);
+  display: block;
+}
+
+.star-button {
+  font-size: 43px;
+  line-height: 1;
+}
+
+.hero {
+  text-align: center;
+  padding-top: 14px;
+}
+
+.date,
+.weekday,
+.clock,
+.lunar-day,
+.phase {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: 0;
+}
+
+.date {
+  font-size: clamp(31px, 9.2vw, 41px);
+  line-height: 1.1;
+  text-transform: lowercase;
+}
+
+.weekday {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: clamp(24px, 6.6vw, 31px);
+  line-height: 1.1;
+}
+
+.clock {
+  margin-top: 12px;
+  font-size: clamp(58px, 18vw, 78px);
+  line-height: 0.92;
+}
+
+.moon-visual {
+  --moon-light: 50%;
+  --moon-direction: -1;
+  width: clamp(208px, 59vw, 260px);
+  height: clamp(208px, 59vw, 260px);
+  margin: 22px auto 18px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  background: #c6b99d;
+  box-shadow:
+    0 0 42px rgba(245, 213, 158, 0.24),
+    -22px 0 35px rgba(245, 220, 174, 0.13),
+    inset -38px 0 54px rgba(0, 0, 0, 0.42);
+}
+
+.moon-surface,
+.moon-shadow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.moon-surface {
+  background:
+    radial-gradient(circle at 32% 35%, rgba(255,255,255,.55) 0 4%, transparent 8%),
+    radial-gradient(circle at 42% 55%, rgba(54,53,52,.36) 0 7%, transparent 12%),
+    radial-gradient(circle at 28% 62%, rgba(42,39,37,.32) 0 5%, transparent 9%),
+    radial-gradient(circle at 55% 32%, rgba(68,65,61,.28) 0 6%, transparent 10%),
+    radial-gradient(circle at 62% 68%, rgba(38,37,35,.28) 0 8%, transparent 13%),
+    radial-gradient(circle at 37% 43%, #f7ecd0 0%, #b7ad98 38%, #726f67 70%, #302f31 100%);
+  filter: contrast(1.12) saturate(0.82);
+}
+
+.moon-shadow {
+  background:
+    radial-gradient(ellipse at calc(50% + (var(--moon-direction) * (50% - var(--moon-light)) * 0.45)) 50%,
+      rgba(2, 9, 16, 0) 0 28%,
+      rgba(2, 9, 16, 0.62) 52%,
+      rgba(2, 9, 16, 0.97) 75%);
+  mix-blend-mode: multiply;
+}
+
+.lunar-day {
+  font-size: clamp(26px, 7.3vw, 34px);
+  line-height: 1.05;
+}
+
+.phase {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: clamp(25px, 7vw, 33px);
+  line-height: 1.05;
+}
+
+.help-inline,
+.help-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: rgba(255, 248, 239, 0.45);
+  display: inline-grid;
+  place-items: center;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  font-size: 22px;
+  vertical-align: middle;
+}
+
+.info-stack {
+  display: grid;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.glass-card {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(14, 27, 42, 0.85), rgba(8, 20, 34, 0.72));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 18px 48px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(18px);
+}
+
+.voc-card {
+  min-height: 92px;
+  padding: 13px 16px;
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr) 34px;
+  gap: 13px;
+  align-items: center;
+}
+
+.planet-badge {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--gold);
+  background: rgba(255, 255, 255, 0.02);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 38px;
+  line-height: 1;
+}
+
+.glass-card h2,
+.planet-copy h2,
+.glass-card p {
+  margin: 0;
+}
+
+.glass-card h2,
+.planet-copy h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(25px, 7vw, 32px);
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+.voc-card p {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: clamp(18px, 5vw, 24px);
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.planetary-card {
+  padding: 13px 16px;
+}
+
+.planet-row {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr) auto;
+  gap: 13px;
+  align-items: center;
+  min-height: 72px;
+}
+
+.label {
+  color: var(--muted);
+  font-size: clamp(18px, 5vw, 24px);
+  line-height: 1.15;
+}
+
+.planet-copy h2 {
+  margin-top: 7px;
+  color: var(--gold);
+}
+
+.divider {
+  height: 1px;
+  margin: 10px 0;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.hour-range {
+  min-width: 116px;
+  text-align: right;
+  align-self: end;
+  padding-bottom: 8px;
+}
+
+.hour-range strong {
+  display: block;
+  color: var(--text);
+  font-size: clamp(16px, 4.2vw, 22px);
+  font-weight: 400;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.hour-range span {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: clamp(14px, 3.8vw, 19px);
+  line-height: 1.1;
+}
+
+.tab-bar {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+  min-height: 88px;
+  padding: 12px 8px 10px;
+  border-radius: 24px;
+  background: var(--panel-strong);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.24);
+}
+
+.tab {
+  min-width: 0;
+  background: transparent;
+  color: rgba(255, 248, 239, 0.36);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 8px;
+  font-size: clamp(12px, 3.2vw, 17px);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.tab span {
+  color: rgba(255, 248, 239, 0.36);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(29px, 8vw, 40px);
+  line-height: 0.9;
+}
+
+.tab.active,
+.tab.active span {
+  color: var(--gold);
+}
+
+@media (max-height: 820px) {
+  .home-screen {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .hero {
+    padding-top: 12px;
+  }
+
+  .clock {
+    margin-top: 10px;
+  }
+
+  .moon-visual {
+    width: 190px;
+    height: 190px;
+    margin-top: 14px;
+    margin-bottom: 14px;
+  }
+
+  .info-stack {
+    margin-top: 18px;
+    gap: 12px;
+  }
+
+  .tab-bar {
+    min-height: 78px;
+    padding-top: 10px;
+  }
+}
+
+@media (max-width: 370px) {
+  .voc-card,
+  .planet-row {
+    grid-template-columns: 62px minmax(0, 1fr) auto;
+    gap: 10px;
+  }
+
+  .planet-badge {
+    width: 54px;
+    height: 54px;
+    font-size: 35px;
+  }
+
+  .hour-range {
+    min-width: 92px;
+  }
+}
