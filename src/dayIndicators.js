@@ -1,6 +1,7 @@
 const MS_PER_DAY = 86400000;
 const BASE_JIA_SHEN_DATE = Date.UTC(2026, 4, 10);
 const BASE_JIA_SHEN_INDEX = 20;
+const TONG_SHU_OFFICER_OFFSET = -2;
 
 const LUNAR_SYMBOLS = [
   'Светильник',
@@ -82,7 +83,10 @@ export function getDayIndicators(date = new Date(), context) {
   const lunarDay = context?.lunarDay ?? 1;
   const sexagenaryDay = getSexagenaryDay(date);
   const monthBranchIndex = BRANCHES.findIndex((branch) => branch.key === context?.solarMonthBranch);
-  const officerIndex = positiveModulo(sexagenaryDay.branchIndex - monthBranchIndex, 12);
+  const officerIndex = positiveModulo(
+    sexagenaryDay.branchIndex - monthBranchIndex + TONG_SHU_OFFICER_OFFSET,
+    12,
+  );
 
   return {
     lunarSymbol: {

@@ -12,5 +12,5 @@ test('returns the requested day indicators for 2026-05-10 in Moscow', () => {
   assert.equal(indicators.lunarSymbol.name, 'Крокодил Маккара');
   assert.equal(indicators.sexagenaryDay.stemBranch, '甲申');
   assert.equal(indicators.sexagenaryDay.name, 'Деревянная Обезьяна');
-  assert.equal(indicators.dayOfficer.name, 'Равновесие');
+  assert.equal(indicators.dayOfficer.name, 'Устранение');
 });
