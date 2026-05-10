@@ -2,6 +2,11 @@ import { ZODIAC_SIGNS } from './astro.js';
 import { PRECISE_EPHEMERIS } from './ephemeris-data.js';
 
 const SIGN_BY_KEY = new Map(ZODIAC_SIGNS.map((sign) => [sign.key, sign]));
+const MOSCOW_OFFSET_MS = 3 * 3600000;
+const MAJOR_PHASE_NAMES = {
+  new: 'Новолуние',
+  full: 'Полнолуние',
+};
 const BRANCHES = [
   { key: 'zi', name: 'Крыса', glyph: '子' },
   { key: 'chou', name: 'Бык', glyph: '丑' },
@@ -68,6 +73,24 @@ export function getPreciseSolarMonthBranch(date = new Date(), data = PRECISE_EPH
   return BRANCH_BY_KEY.get(solarMonths[currentIndex].branch);
 }
 
+export function getPreciseMajorMoonPhase(date = new Date(), data = PRECISE_EPHEMERIS) {
+  if (!covers(date, data) || !Array.isArray(data.moonPhases)) return null;
+
+  const dayKey = getMoscowDateKey(date);
+  const event = data.moonPhases
+    .map((phase) => ({ ...phase, time: new Date(phase.at) }))
+    .find((phase) => getMoscowDateKey(phase.time) === dayKey);
+
+  if (!event || !MAJOR_PHASE_NAMES[event.type]) return null;
+
+  return {
+    source: 'swisseph',
+    type: event.type,
+    name: MAJOR_PHASE_NAMES[event.type],
+    at: event.time,
+  };
+}
+
 export function getPreciseVoidOfCourse(date = new Date(), data = PRECISE_EPHEMERIS) {
   if (!covers(date, data)) return null;
 
@@ -103,6 +126,11 @@ function toVoc(event, status, isActive) {
 function covers(date, data) {
   if (!data.rangeStart || !data.rangeEnd) return false;
   return new Date(data.rangeStart) <= date && date < new Date(data.rangeEnd);
+}
+
+function getMoscowDateKey(date) {
+  const shifted = new Date(date.getTime() + MOSCOW_OFFSET_MS);
+  return shifted.toISOString().slice(0, 10);
 }
 
 function findLastIndex(items, predicate) {

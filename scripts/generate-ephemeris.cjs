@@ -60,6 +60,7 @@ swe.swe_set_ephe_path(path.join(ROOT, 'node_modules', 'swisseph', 'ephe'));
 const signIngresses = generateSignIngresses(START, END);
 const voidOfCourse = generateVoidOfCourse(signIngresses);
 const newMoons = generateNewMoons(START, END);
+const moonPhases = generateMoonPhases(newMoons, START, END);
 const lunarDays = generateLunarDays(newMoons);
 const solarMonths = generateSolarMonths(START, END);
 const data = {
@@ -69,6 +70,7 @@ const data = {
   rangeEnd: END.toISOString(),
   signIngresses,
   voidOfCourse,
+  moonPhases,
   lunarDays,
   solarMonths,
 };
@@ -80,6 +82,7 @@ fs.writeFileSync(
 
 console.log(`Generated ${signIngresses.length} Moon sign ingresses`);
 console.log(`Generated ${voidOfCourse.length} Moon void-of-course intervals`);
+console.log(`Generated ${moonPhases.length} exact new/full Moon events`);
 console.log(`Generated ${lunarDays.length} Moscow lunar day boundaries`);
 console.log(`Generated ${solarMonths.length} Chinese solar month boundaries`);
 console.log(`Wrote ${path.relative(ROOT, OUTPUT)}`);
@@ -149,6 +152,38 @@ function generateNewMoons(start, end) {
     const delta = moonSunDelta(jd);
     if (previousDelta * delta <= 0 && Math.abs(previousDelta - delta) < 30) {
       events.push(refineNewMoon(previousJd, jd));
+    }
+    previousJd = jd;
+    previousDelta = delta;
+  }
+
+  return events;
+}
+
+function generateMoonPhases(newMoons, start, end) {
+  const fullMoons = generateFullMoons(start, end);
+  const events = [
+    ...newMoons.map((jd) => ({ at: roundToSecond(julianToDate(jd)).toISOString(), type: 'new' })),
+    ...fullMoons.map((jd) => ({ at: roundToSecond(julianToDate(jd)).toISOString(), type: 'full' })),
+  ];
+
+  return events
+    .filter((event) => new Date(event.at) >= start && new Date(event.at) < end)
+    .sort((a, b) => new Date(a.at) - new Date(b.at));
+}
+
+function generateFullMoons(start, end) {
+  const scanStart = dateToJulian(new Date(start.getTime() - 40 * MS_PER_DAY));
+  const scanEnd = dateToJulian(new Date(end.getTime() + 40 * MS_PER_DAY));
+  const step = 0.1;
+  const events = [];
+  let previousJd = scanStart;
+  let previousDelta = moonSunPhaseDelta(scanStart, 180);
+
+  for (let jd = scanStart + step; jd <= scanEnd; jd += step) {
+    const delta = moonSunPhaseDelta(jd, 180);
+    if (previousDelta * delta <= 0 && Math.abs(previousDelta - delta) < 30) {
+      events.push(refineMoonPhase(previousJd, jd, 180));
     }
     previousJd = jd;
     previousDelta = delta;
@@ -242,13 +277,17 @@ function moonRiseAfter(jd) {
 }
 
 function refineNewMoon(lowJd, highJd) {
+  return refineMoonPhase(lowJd, highJd, 0);
+}
+
+function refineMoonPhase(lowJd, highJd, targetAngle) {
   let low = lowJd;
   let high = highJd;
-  let lowDelta = moonSunDelta(low);
+  let lowDelta = moonSunPhaseDelta(low, targetAngle);
 
   for (let index = 0; index < 50; index += 1) {
     const middle = (low + high) / 2;
-    const middleDelta = moonSunDelta(middle);
+    const middleDelta = moonSunPhaseDelta(middle, targetAngle);
     if (lowDelta * middleDelta <= 0) high = middle;
     else {
       low = middle;
@@ -260,7 +299,11 @@ function refineNewMoon(lowJd, highJd) {
 }
 
 function moonSunDelta(jd) {
-  return signedAngle(moonLongitude(jd) - bodyLongitude(jd, swe.SE_SUN));
+  return moonSunPhaseDelta(jd, 0);
+}
+
+function moonSunPhaseDelta(jd, targetAngle) {
+  return signedAngle(moonLongitude(jd) - bodyLongitude(jd, swe.SE_SUN) - targetAngle);
 }
 
 function findSunLongitudeCrossing(lowJd, highJd, target) {

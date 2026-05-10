@@ -15,6 +15,7 @@ import {
 } from './format.js';
 import {
   getPreciseLunarDayInfo,
+  getPreciseMajorMoonPhase,
   getPreciseMoonSignInfo,
   getPreciseSolarMonthBranch,
   getPreciseVoidOfCourse,
@@ -47,6 +48,7 @@ function render() {
   const planetaryHour = getPlanetaryHour(now);
   const voc = getPreciseVoidOfCourse(now) ?? getVoidOfCourse(now);
   const moonSign = getPreciseMoonSignInfo(now) ?? getMoonSignInfo(now);
+  const majorPhase = getPreciseMajorMoonPhase(now);
   const lunarDay = getPreciseLunarDayInfo(now)?.lunarDay ?? lunar.lunarDay;
   const solarMonthBranch = getPreciseSolarMonthBranch(now)?.key;
   const indicators = getDayIndicators(now, { lunarDay, solarMonthBranch });
@@ -55,7 +57,9 @@ function render() {
   elements.weekday.textContent = formatWeekday(now);
   elements.clock.textContent = formatTime(now);
   elements.lunarDay.textContent = `${lunarDay}-й лунный день`;
-  elements.phase.textContent = lunar.phaseName;
+  elements.phase.textContent = majorPhase
+    ? `${majorPhase.name} в ${formatTimeWithSeconds(majorPhase.at)}`
+    : lunar.phaseName;
   elements.moonSign.textContent = `Луна в ${moonSign.current.glyph} ${moonSign.current.locative}`;
   elements.nextMoonSign.textContent = `в ${moonSign.next.name} ${formatMoonIngress(now, moonSign.entersAt)}`;
   elements.voc.textContent = describeVoc(voc);

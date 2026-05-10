@@ -3,6 +3,7 @@ import test from 'node:test';
 
 import {
   getPreciseLunarDayInfo,
+  getPreciseMajorMoonPhase,
   getPreciseMoonSignInfo,
   getPreciseSolarMonthBranch,
   getPreciseVoidOfCourse,
@@ -24,6 +25,11 @@ const fixture = {
       aspect: 120,
       planet: 'venus',
     },
+  ],
+  moonPhases: [
+    { at: '2026-05-01T17:23:08.000Z', type: 'full' },
+    { at: '2026-05-16T20:01:00.000Z', type: 'new' },
+    { at: '2026-06-29T23:56:38.000Z', type: 'full' },
   ],
   lunarDays: [
     { at: '2026-05-09T20:31:44.000Z', day: 23 },
@@ -69,11 +75,29 @@ test('returns precise solar month branch for Chinese day officers', () => {
   assert.equal(branch.key, 'si');
 });
 
+test('returns exact major Moon phase for the matching Moscow day', () => {
+  const fullMoon = getPreciseMajorMoonPhase(new Date('2026-05-01T12:00:00+03:00'), fixture);
+  const newMoon = getPreciseMajorMoonPhase(new Date('2026-05-16T12:00:00+03:00'), fixture);
+  const lateUtcFullMoon = getPreciseMajorMoonPhase(new Date('2026-06-30T12:00:00+03:00'), fixture);
+
+  assert.equal(fullMoon.name, 'Полнолуние');
+  assert.equal(fullMoon.at.toISOString(), '2026-05-01T17:23:08.000Z');
+  assert.equal(newMoon.name, 'Новолуние');
+  assert.equal(newMoon.at.toISOString(), '2026-05-16T20:01:00.000Z');
+  assert.equal(lateUtcFullMoon.name, 'Полнолуние');
+  assert.equal(lateUtcFullMoon.at.toISOString(), '2026-06-29T23:56:38.000Z');
+});
+
+test('returns null for days without exact new or full Moon', () => {
+  assert.equal(getPreciseMajorMoonPhase(new Date('2026-05-10T15:53:00+03:00'), fixture), null);
+});
+
 test('returns null when precise data does not cover the requested date', () => {
   assert.equal(getPreciseMoonSignInfo(new Date('2032-01-01T00:00:00Z'), fixture), null);
   assert.equal(getPreciseVoidOfCourse(new Date('2032-01-01T00:00:00Z'), fixture), null);
   assert.equal(getPreciseLunarDayInfo(new Date('2032-01-01T00:00:00Z'), fixture), null);
   assert.equal(getPreciseSolarMonthBranch(new Date('2032-01-01T00:00:00Z'), fixture), null);
+  assert.equal(getPreciseMajorMoonPhase(new Date('2032-01-01T00:00:00Z'), fixture), null);
 });
 
 test('generated Swiss Ephemeris data covers the app release range', () => {
@@ -81,14 +105,17 @@ test('generated Swiss Ephemeris data covers the app release range', () => {
   const voc = getPreciseVoidOfCourse(new Date('2026-05-10T21:42:00+03:00'), PRECISE_EPHEMERIS);
   const lunarDay = getPreciseLunarDayInfo(new Date('2026-05-10T15:53:00+03:00'), PRECISE_EPHEMERIS);
   const solarMonth = getPreciseSolarMonthBranch(new Date('2026-05-10T15:53:00+03:00'), PRECISE_EPHEMERIS);
+  const fullMoon = getPreciseMajorMoonPhase(new Date('2026-05-01T12:00:00+03:00'), PRECISE_EPHEMERIS);
 
   assert.equal(PRECISE_EPHEMERIS.source.includes('Swiss Ephemeris'), true);
   assert.ok(PRECISE_EPHEMERIS.signIngresses.length > 700);
   assert.ok(PRECISE_EPHEMERIS.voidOfCourse.length > 700);
+  assert.ok(PRECISE_EPHEMERIS.moonPhases.length > 100);
   assert.ok(PRECISE_EPHEMERIS.lunarDays.length > 1700);
   assert.ok(PRECISE_EPHEMERIS.solarMonths.length > 50);
   assert.equal(sign.source, 'swisseph');
   assert.equal(voc.source, 'swisseph');
   assert.equal(lunarDay.lunarDay, 23);
   assert.equal(solarMonth.key, 'si');
+  assert.equal(fullMoon.name, 'Полнолуние');
 });
