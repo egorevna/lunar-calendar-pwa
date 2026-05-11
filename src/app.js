@@ -16,6 +16,7 @@ import {
 import {
   getPreciseLunarDayInfo,
   getPreciseMajorMoonPhase,
+  getPreciseMoonAspectInfo,
   getPreciseMoonSignInfo,
   getPreciseSolarMonthBranch,
   getPreciseVoidOfCourse,
@@ -31,6 +32,9 @@ const elements = {
   moonSign: document.querySelector('[data-moon-sign]'),
   nextMoonSign: document.querySelector('[data-next-moon-sign]'),
   voc: document.querySelector('[data-voc]'),
+  vocAspect: document.querySelector('[data-voc-aspect]'),
+  lastMoonAspect: document.querySelector('[data-last-moon-aspect]'),
+  nextMoonAspect: document.querySelector('[data-next-moon-aspect]'),
   lunarSymbol: document.querySelector('[data-lunar-symbol]'),
   sexagenaryDay: document.querySelector('[data-sexagenary-day]'),
   dayOfficer: document.querySelector('[data-day-officer]'),
@@ -48,6 +52,7 @@ function render() {
   const planetaryHour = getPlanetaryHour(now);
   const voc = getPreciseVoidOfCourse(now) ?? getVoidOfCourse(now);
   const moonSign = getPreciseMoonSignInfo(now) ?? getMoonSignInfo(now);
+  const moonAspects = getPreciseMoonAspectInfo(now);
   const majorPhase = getPreciseMajorMoonPhase(now);
   const lunarDay = getPreciseLunarDayInfo(now)?.lunarDay ?? lunar.lunarDay;
   const solarMonthBranch = getPreciseSolarMonthBranch(now)?.key;
@@ -63,6 +68,9 @@ function render() {
   elements.moonSign.textContent = `Луна в ${moonSign.current.glyph} ${moonSign.current.locative}`;
   elements.nextMoonSign.textContent = `в ${moonSign.next.name} ${formatMoonIngress(now, moonSign.entersAt)}`;
   elements.voc.textContent = describeVoc(voc);
+  elements.vocAspect.textContent = describeVocAspect(voc);
+  elements.lastMoonAspect.textContent = describeAspect(moonAspects?.previous, 'нет данных');
+  elements.nextMoonAspect.textContent = describeAspect(moonAspects?.next, 'нет данных');
   elements.lunarSymbol.textContent = indicators.lunarSymbol.name;
   elements.sexagenaryDay.textContent = indicators.sexagenaryDay.name;
   elements.dayOfficer.textContent = indicators.dayOfficer.name;
@@ -71,6 +79,42 @@ function render() {
   elements.hourGlyph.textContent = planetaryHour.glyph;
   elements.hourName.textContent = planetaryHour.name;
   elements.hourRange.textContent = formatRange(planetaryHour.startsAt, planetaryHour.endsAt);
+}
+
+function describeVocAspect(voc) {
+  if (!voc.aspect || !voc.planet) return '';
+  return `после: ${formatAspect(voc.aspect)} ${formatPlanet(voc.planet)}`;
+}
+
+function describeAspect(aspect, fallback) {
+  if (!aspect) return fallback;
+  return `${formatAspect(aspect.aspect)} ${formatPlanet(aspect.planet)} в ${formatTimeWithSeconds(aspect.at)}`;
+}
+
+function formatAspect(aspect) {
+  const glyphs = {
+    0: '☌',
+    60: '✶',
+    90: '□',
+    120: '△',
+    180: '☍',
+  };
+  return glyphs[aspect] ?? `${aspect}°`;
+}
+
+function formatPlanet(planet) {
+  const names = {
+    sun: 'Солнце',
+    mercury: 'Меркурий',
+    venus: 'Венера',
+    mars: 'Марс',
+    jupiter: 'Юпитер',
+    saturn: 'Сатурн',
+    uranus: 'Уран',
+    neptune: 'Нептун',
+    pluto: 'Плутон',
+  };
+  return names[planet] ?? planet;
 }
 
 function describeVoc(voc) {

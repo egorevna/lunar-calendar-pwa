@@ -227,12 +227,50 @@ button {
   overflow-wrap: anywhere;
 }
 
+.voc-card small {
+  display: block;
+  margin-top: 4px;
+  color: rgba(244, 199, 127, 0.78);
+  font-size: clamp(12px, 3.3vw, 15px);
+  line-height: 1.15;
+}
+
 .planetary-card {
   padding: 11px 15px;
 }
 
-.indicators-card {
+.indicators-card,
+.moon-aspects-card {
   padding: 14px 17px 13px;
+}
+
+.moon-aspects-card h2 {
+  margin-bottom: 10px;
+}
+
+.aspect-row {
+  display: grid;
+  grid-template-columns: minmax(0, 88px) minmax(0, 1fr);
+  gap: 10px;
+  align-items: baseline;
+  min-height: 24px;
+  font-size: clamp(13px, 3.5vw, 16px);
+}
+
+.aspect-row + .aspect-row {
+  margin-top: 5px;
+}
+
+.aspect-row span {
+  color: var(--muted);
+}
+
+.aspect-row strong {
+  color: var(--gold);
+  font-size: clamp(14px, 3.8vw, 17px);
+  font-weight: 500;
+  line-height: 1.12;
+  text-align: right;
 }
 
 .indicator-heading {

@@ -58,7 +58,8 @@ const ASPECTS = [
 swe.swe_set_ephe_path(path.join(ROOT, 'node_modules', 'swisseph', 'ephe'));
 
 const signIngresses = generateSignIngresses(START, END);
-const voidOfCourse = generateVoidOfCourse(signIngresses);
+const moonAspects = generateMoonAspects(START, END);
+const voidOfCourse = generateVoidOfCourse(signIngresses, moonAspects);
 const newMoons = generateNewMoons(START, END);
 const moonPhases = generateMoonPhases(newMoons, START, END);
 const lunarDays = generateLunarDays(newMoons);
@@ -70,6 +71,7 @@ const data = {
   rangeEnd: END.toISOString(),
   signIngresses,
   voidOfCourse,
+  moonAspects,
   moonPhases,
   lunarDays,
   solarMonths,
@@ -82,6 +84,7 @@ fs.writeFileSync(
 
 console.log(`Generated ${signIngresses.length} Moon sign ingresses`);
 console.log(`Generated ${voidOfCourse.length} Moon void-of-course intervals`);
+console.log(`Generated ${moonAspects.length} Moon major aspects`);
 console.log(`Generated ${moonPhases.length} exact new/full Moon events`);
 console.log(`Generated ${lunarDays.length} Moscow lunar day boundaries`);
 console.log(`Generated ${solarMonths.length} Chinese solar month boundaries`);
@@ -117,7 +120,7 @@ function generateSignIngresses(start, end) {
   ));
 }
 
-function generateVoidOfCourse(ingresses) {
+function generateVoidOfCourse(ingresses, aspects) {
   const intervals = [];
 
   for (let index = 0; index < ingresses.length - 1; index += 1) {
@@ -125,8 +128,8 @@ function generateVoidOfCourse(ingresses) {
     const exit = new Date(ingresses[index + 1].at);
     if (exit <= START || entry >= END) continue;
 
-    const aspect = findLastAspect(dateToJulian(entry), dateToJulian(exit));
-    const start = aspect ? aspect.at : entry;
+    const aspect = findLastAspectBetween(aspects, entry, exit);
+    const start = aspect ? new Date(aspect.at) : entry;
     intervals.push({
       start: roundToSecond(start).toISOString(),
       end: roundToSecond(exit).toISOString(),
@@ -138,6 +141,55 @@ function generateVoidOfCourse(ingresses) {
   return intervals.filter((interval) => (
     new Date(interval.end) > START && new Date(interval.start) < END
   ));
+}
+
+function generateMoonAspects(start, end) {
+  const scanStart = dateToJulian(new Date(start.getTime() - 5 * MS_PER_DAY));
+  const scanEnd = dateToJulian(new Date(end.getTime() + 3 * MS_PER_DAY));
+  const step = 0.02;
+  const events = [];
+  let previous = aspectSamples(scanStart);
+
+  for (let jd = scanStart + step; jd <= scanEnd; jd += step) {
+    const current = aspectSamples(jd);
+    for (const sample of current.values()) {
+      const old = previous.get(sample.id);
+      if (!old) continue;
+      const crossed = old.delta * sample.delta <= 0;
+      const realCrossing = Math.abs(old.delta - sample.delta) < 30;
+      if (crossed && realCrossing) {
+        events.push({
+          at: roundToSecond(julianToDate(refineAspect(old.jd, jd, sample.body, sample.angle))).toISOString(),
+          planet: sample.body.key,
+          aspect: sample.label,
+        });
+      }
+    }
+    previous = current;
+  }
+
+  return dedupeAspectEvents(events)
+    .filter((event) => new Date(event.at) >= start && new Date(event.at) < end)
+    .sort((a, b) => new Date(a.at) - new Date(b.at));
+}
+
+function findLastAspectBetween(aspects, start, end) {
+  for (let index = aspects.length - 1; index >= 0; index -= 1) {
+    const aspect = aspects[index];
+    const at = new Date(aspect.at);
+    if (at >= start && at < end) return aspect;
+  }
+  return null;
+}
+
+function dedupeAspectEvents(events) {
+  const seen = new Set();
+  return events.filter((event) => {
+    const key = `${event.at}-${event.planet}-${event.aspect}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
 function generateNewMoons(start, end) {

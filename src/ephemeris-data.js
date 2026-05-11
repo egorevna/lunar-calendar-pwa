@@ -1,5 +1,5 @@
 export const PRECISE_EPHEMERIS = {
-  "generatedAt": "2026-05-10T16:53:29.467Z",
+  "generatedAt": "2026-05-11T06:22:37.837Z",
   "source": "Swiss Ephemeris swisseph npm package, SEFLG_SWIEPH",
   "rangeStart": "2026-01-01T00:00:00.000Z",
   "rangeEnd": "2031-01-01T00:00:00.000Z",
@@ -3273,10 +3273,10 @@ export const PRECISE_EPHEMERIS = {
       "planet": "neptune"
     },
     {
-      "start": "2026-01-18T19:51:56.000Z",
+      "start": "2026-01-18T21:56:38.000Z",
       "end": "2026-01-18T22:17:53.000Z",
-      "aspect": 0,
-      "planet": "sun"
+      "aspect": 60,
+      "planet": "neptune"
     },
     {
       "start": "2026-01-21T02:16:26.000Z",
@@ -3285,10 +3285,10 @@ export const PRECISE_EPHEMERIS = {
       "planet": "uranus"
     },
     {
-      "start": "2026-01-23T09:32:52.000Z",
+      "start": "2026-01-23T13:17:13.000Z",
       "end": "2026-01-23T13:25:39.000Z",
       "aspect": 0,
-      "planet": "saturn"
+      "planet": "neptune"
     },
     {
       "start": "2026-01-24T21:36:18.000Z",
@@ -3339,10 +3339,10 @@ export const PRECISE_EPHEMERIS = {
       "planet": "venus"
     },
     {
-      "start": "2026-02-12T06:52:37.000Z",
+      "start": "2026-02-12T19:28:42.000Z",
       "end": "2026-02-12T19:44:21.000Z",
-      "aspect": 60,
-      "planet": "sun"
+      "aspect": 90,
+      "planet": "saturn"
     },
     {
       "start": "2026-02-15T01:31:23.000Z",
@@ -3387,10 +3387,10 @@ export const PRECISE_EPHEMERIS = {
       "planet": "uranus"
     },
     {
-      "start": "2026-03-02T08:35:59.000Z",
+      "start": "2026-03-02T12:27:19.000Z",
       "end": "2026-03-02T12:33:38.000Z",
-      "aspect": 90,
-      "planet": "uranus"
+      "aspect": 180,
+      "planet": "mars"
     },
     {
       "start": "2026-03-04T14:52:58.000Z",
@@ -3459,10 +3459,10 @@ export const PRECISE_EPHEMERIS = {
       "planet": "uranus"
     },
     {
-      "start": "2026-03-29T17:08:09.000Z",
+      "start": "2026-03-29T17:27:34.000Z",
       "end": "2026-03-29T19:33:17.000Z",
-      "aspect": 90,
-      "planet": "uranus"
+      "aspect": 120,
+      "planet": "venus"
     },
     {
       "start": "2026-04-01T00:31:25.000Z",
@@ -3525,10 +3525,10 @@ export const PRECISE_EPHEMERIS = {
       "planet": "mars"
     },
     {
-      "start": "2026-04-23T18:52:17.000Z",
+      "start": "2026-04-23T19:28:10.000Z",
       "end": "2026-04-23T19:40:40.000Z",
       "aspect": 60,
-      "planet": "venus"
+      "planet": "uranus"
     },
     {
       "start": "2026-04-24T22:20:56.000Z",
@@ -4395,10 +4395,10 @@ export const PRECISE_EPHEMERIS = {
       "planet": "sun"
     },
     {
-      "start": "2027-03-19T16:16:21.000Z",
+      "start": "2027-03-19T16:16:34.000Z",
       "end": "2027-03-20T05:36:52.000Z",
-      "aspect": 0,
-      "planet": "mars"
+      "aspect": 180,
+      "planet": "venus"
     },
     {
       "start": "2027-03-20T09:33:36.000Z",
@@ -4455,10 +4455,10 @@ export const PRECISE_EPHEMERIS = {
       "planet": "mars"
     },
     {
-      "start": "2027-04-11T16:07:13.000Z",
+      "start": "2027-04-11T16:09:58.000Z",
       "end": "2027-04-12T06:31:50.000Z",
       "aspect": 60,
-      "planet": "mars"
+      "planet": "sun"
     },
     {
       "start": "2027-04-13T22:56:36.000Z",
@@ -5055,10 +5055,10 @@ export const PRECISE_EPHEMERIS = {
       "planet": "mars"
     },
     {
-      "start": "2027-11-24T20:43:34.000Z",
+      "start": "2027-11-25T11:05:15.000Z",
       "end": "2027-11-25T11:10:11.000Z",
-      "aspect": 180,
-      "planet": "saturn"
+      "aspect": 60,
+      "planet": "venus"
     },
     {
       "start": "2027-11-27T11:21:43.000Z",
@@ -5439,10 +5439,10 @@ export const PRECISE_EPHEMERIS = {
       "planet": "sun"
     },
     {
-      "start": "2028-04-18T21:00:32.000Z",
+      "start": "2028-04-19T10:44:46.000Z",
       "end": "2028-04-19T10:56:45.000Z",
       "aspect": 60,
-      "planet": "mars"
+      "planet": "sun"
     },
     {
       "start": "2028-04-21T00:04:34.000Z",
@@ -5619,10 +5619,10 @@ export const PRECISE_EPHEMERIS = {
       "planet": "jupiter"
     },
     {
-      "start": "2028-06-25T15:07:18.000Z",
+      "start": "2028-06-25T15:07:45.000Z",
       "end": "2028-06-26T19:57:36.000Z",
       "aspect": 60,
-      "planet": "mars"
+      "planet": "mercury"
     },
     {
       "start": "2028-06-28T06:05:47.000Z",
@@ -5685,10 +5685,10 @@ export const PRECISE_EPHEMERIS = {
       "planet": "mars"
     },
     {
-      "start": "2028-07-21T19:20:03.000Z",
+      "start": "2028-07-22T03:01:39.000Z",
       "end": "2028-07-22T03:16:48.000Z",
       "aspect": 0,
-      "planet": "mercury"
+      "planet": "sun"
     },
     {
       "start": "2028-07-23T06:39:47.000Z",
@@ -6273,10 +6273,10 @@ export const PRECISE_EPHEMERIS = {
       "planet": "jupiter"
     },
     {
-      "start": "2029-02-28T16:58:03.000Z",
+      "start": "2029-02-28T17:10:12.000Z",
       "end": "2029-03-02T00:10:30.000Z",
-      "aspect": 90,
-      "planet": "uranus"
+      "aspect": 180,
+      "planet": "sun"
     },
     {
       "start": "2029-03-03T18:43:09.000Z",
@@ -7083,10 +7083,10 @@ export const PRECISE_EPHEMERIS = {
       "planet": "jupiter"
     },
     {
-      "start": "2030-01-02T04:03:22.000Z",
+      "start": "2030-01-02T04:14:26.000Z",
       "end": "2030-01-03T03:54:24.000Z",
-      "aspect": 180,
-      "planet": "uranus"
+      "aspect": 60,
+      "planet": "mars"
     },
     {
       "start": "2030-01-04T15:19:02.000Z",
@@ -7377,10 +7377,10 @@ export const PRECISE_EPHEMERIS = {
       "planet": "venus"
     },
     {
-      "start": "2030-04-24T01:52:04.000Z",
+      "start": "2030-04-24T01:52:08.000Z",
       "end": "2030-04-24T10:25:56.000Z",
-      "aspect": 120,
-      "planet": "saturn"
+      "aspect": 60,
+      "planet": "jupiter"
     },
     {
       "start": "2030-04-26T08:25:46.000Z",
@@ -7473,10 +7473,10 @@ export const PRECISE_EPHEMERIS = {
       "planet": "uranus"
     },
     {
-      "start": "2030-05-30T13:17:42.000Z",
+      "start": "2030-05-31T08:06:18.000Z",
       "end": "2030-05-31T08:18:21.000Z",
-      "aspect": 180,
-      "planet": "jupiter"
+      "aspect": 0,
+      "planet": "saturn"
     },
     {
       "start": "2030-06-01T21:20:36.000Z",
@@ -7929,10 +7929,10 @@ export const PRECISE_EPHEMERIS = {
       "planet": "sun"
     },
     {
-      "start": "2030-11-20T20:12:24.000Z",
+      "start": "2030-11-20T22:21:31.000Z",
       "end": "2030-11-20T22:45:51.000Z",
-      "aspect": 60,
-      "planet": "sun"
+      "aspect": 0,
+      "planet": "mars"
     },
     {
       "start": "2030-11-22T11:54:56.000Z",
@@ -8041,6 +8041,23339 @@ export const PRECISE_EPHEMERIS = {
       "end": "2030-12-30T19:07:18.000Z",
       "aspect": 60,
       "planet": "venus"
+    },
+    {
+      "start": "2030-12-31T23:58:09.000Z",
+      "end": "2031-01-02T04:19:51.000Z",
+      "aspect": 120,
+      "planet": "jupiter"
+    }
+  ],
+  "moonAspects": [
+    {
+      "at": "2026-01-02T07:09:25.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-01-02T12:23:35.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-01-02T14:57:48.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2026-01-03T08:40:08.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-01-03T10:02:52.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2026-01-03T12:37:09.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2026-01-03T22:54:22.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2026-01-04T07:44:26.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-01-04T10:11:27.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-01-04T12:59:12.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-01-04T18:25:10.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2026-01-06T13:04:37.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-01-07T08:01:52.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-01-08T01:04:06.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-01-08T01:43:55.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-01-08T01:46:17.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-01-08T05:59:06.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-01-08T17:45:36.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2026-01-08T19:49:41.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-01-08T23:22:40.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2026-01-09T05:46:45.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-01-10T00:33:31.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-01-10T15:08:13.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-01-10T15:11:40.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-01-10T15:48:21.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-01-10T17:54:12.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-01-11T17:02:34.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-01-12T21:43:57.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-01-13T02:45:45.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-01-13T07:42:54.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-01-13T09:48:23.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-01-13T13:26:50.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-01-13T17:32:43.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-01-13T18:48:52.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-01-13T22:58:54.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-01-14T05:53:49.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-01-16T06:16:55.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-01-16T11:18:57.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-01-18T01:13:31.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2026-01-18T15:11:23.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2026-01-18T15:47:48.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2026-01-18T17:21:47.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-01-18T17:38:40.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-01-18T19:51:56.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2026-01-18T21:56:38.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-01-19T02:02:32.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-01-19T04:35:19.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2026-01-21T02:16:26.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-01-22T16:40:50.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-01-23T08:59:10.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-01-23T09:32:52.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2026-01-23T13:17:13.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2026-01-23T13:40:59.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-01-23T19:33:24.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-01-23T20:16:30.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-01-23T23:16:00.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-01-24T04:17:37.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-01-24T21:36:18.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-01-25T21:27:12.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-01-26T00:06:56.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-01-26T04:47:21.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-01-26T10:50:04.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-01-26T13:31:07.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-01-27T00:40:33.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-01-27T16:42:43.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-01-27T17:57:44.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-01-27T20:57:53.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-01-28T02:52:12.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-01-28T03:04:52.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-01-28T11:06:30.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-01-28T20:00:33.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-01-28T20:32:22.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-01-29T19:56:32.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-01-29T22:39:54.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-01-31T03:18:10.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2026-01-31T19:54:56.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-01-31T21:51:47.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-02-01T00:22:58.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-02-01T06:21:16.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2026-02-01T12:06:07.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2026-02-01T22:09:12.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2026-02-02T09:55:40.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-02-02T13:55:15.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2026-02-02T22:55:07.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-02-04T09:37:10.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-02-05T04:49:01.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-02-05T07:49:09.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2026-02-05T10:02:14.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2026-02-05T16:44:39.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-02-06T05:59:59.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-02-06T17:21:22.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-02-06T19:49:01.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-02-07T11:59:25.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-02-07T22:39:16.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-02-08T02:58:42.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-02-08T20:53:20.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-02-09T04:10:03.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-02-09T12:43:04.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-02-10T02:15:32.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-02-10T06:32:35.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-02-10T07:00:55.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-02-10T08:12:04.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-02-10T15:27:07.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-02-10T21:01:52.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-02-11T13:42:54.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-02-12T06:52:37.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-02-12T19:28:42.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-02-12T20:43:18.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-02-13T02:22:56.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-02-13T18:17:27.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-02-14T03:27:38.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2026-02-15T01:31:23.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-02-15T06:32:35.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-02-15T07:22:07.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-02-15T14:09:58.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2026-02-16T18:09:16.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2026-02-17T09:39:50.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-02-17T12:01:06.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2026-02-18T08:01:39.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-02-18T18:30:39.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-02-18T23:08:37.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2026-02-19T15:22:57.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-02-19T20:48:03.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2026-02-19T20:55:09.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2026-02-20T03:08:17.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-02-20T22:49:09.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-02-21T11:11:18.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-02-22T05:40:23.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-02-22T06:56:17.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-02-23T01:55:51.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-02-23T02:31:37.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-02-23T12:51:01.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-02-23T17:19:06.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-02-23T22:28:41.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-02-24T03:57:23.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-02-24T04:26:07.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-02-24T09:55:50.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-02-24T12:27:34.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-02-25T10:10:05.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-02-25T16:33:39.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-02-25T23:00:13.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-02-26T06:47:14.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-02-26T07:33:50.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-02-26T19:03:54.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-02-27T07:10:29.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2026-02-27T17:58:58.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-02-27T19:13:06.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-02-28T04:21:17.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-02-28T10:02:09.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-02-28T11:07:53.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-02-28T16:03:52.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2026-03-02T08:35:59.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-03-02T12:27:19.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2026-03-03T11:37:51.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2026-03-03T15:45:22.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-03-04T00:38:57.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2026-03-04T14:41:45.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-03-04T14:52:58.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-03-04T21:07:46.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2026-03-04T23:01:04.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2026-03-05T03:34:46.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-03-05T23:22:16.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-03-07T11:33:04.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-03-07T13:13:36.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-03-08T09:46:09.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-03-08T11:16:23.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-03-08T15:41:31.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-03-09T11:28:12.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-03-09T18:21:27.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-03-09T21:14:54.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-03-10T00:34:17.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-03-10T01:13:03.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-03-10T03:36:46.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-03-10T18:59:05.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-03-11T09:38:28.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-03-12T07:02:39.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-03-12T10:21:11.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-03-12T19:58:49.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-03-12T20:15:26.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-03-13T03:07:35.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-03-13T10:10:16.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2026-03-14T02:41:24.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-03-14T11:33:08.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-03-14T18:12:24.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-03-14T21:46:50.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-03-15T00:34:45.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2026-03-15T12:42:02.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-03-16T19:56:40.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-03-17T15:24:58.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2026-03-17T20:46:32.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2026-03-18T02:18:30.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-03-19T01:02:32.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-03-19T01:23:26.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2026-03-19T06:59:59.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2026-03-19T10:51:26.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2026-03-19T12:33:40.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-03-20T05:52:59.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-03-20T09:23:18.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-03-21T14:55:55.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-03-21T20:45:58.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-03-22T07:56:15.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-03-22T08:22:15.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-03-23T05:39:35.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-03-23T11:26:06.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-03-23T13:08:49.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-03-23T15:47:52.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-03-23T16:43:47.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-03-23T23:12:49.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-03-24T13:06:41.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-03-24T22:37:08.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-03-25T13:52:30.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-03-25T18:39:05.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-03-25T19:17:40.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-03-26T03:12:33.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-03-26T12:57:32.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2026-03-26T19:07:18.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-03-27T06:53:49.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-03-27T11:40:16.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-03-27T17:44:52.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-03-27T23:01:01.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-03-27T23:11:56.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2026-03-28T03:16:12.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-03-29T17:08:09.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-03-29T17:27:34.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-03-30T18:44:10.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2026-03-31T00:16:38.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-03-31T13:20:22.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2026-04-01T00:31:25.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-04-01T07:00:25.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2026-04-01T12:40:47.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-04-01T13:25:15.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2026-04-02T02:11:55.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2026-04-02T08:55:06.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-04-03T22:26:00.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-04-03T22:27:11.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-04-04T19:42:23.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-04-04T22:24:30.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-04-05T17:06:54.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-04-05T21:28:47.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-04-06T04:20:15.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-04-06T10:10:14.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-04-06T12:02:50.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-04-07T11:05:02.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-04-07T16:44:57.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-04-08T09:51:31.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-04-08T17:05:56.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-04-09T01:16:04.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-04-09T12:26:28.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-04-09T21:10:01.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2026-04-10T04:51:36.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-04-10T11:44:01.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-04-10T22:23:37.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-04-11T01:50:34.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-04-11T04:58:03.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-04-11T10:22:20.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2026-04-11T13:15:18.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-04-12T05:43:07.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-04-12T19:47:22.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-04-13T07:42:18.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-04-14T15:22:38.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-04-14T18:10:53.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-04-15T13:07:10.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-04-15T15:15:47.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2026-04-15T18:44:47.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2026-04-15T22:08:22.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2026-04-15T23:15:47.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-04-16T02:37:39.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2026-04-16T18:53:48.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-04-17T11:51:45.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2026-04-18T00:46:02.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-04-18T20:01:19.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-04-19T06:43:49.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-04-19T15:44:44.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-04-19T20:56:19.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-04-20T01:03:08.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-04-20T04:18:39.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-04-20T04:59:59.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-04-20T05:17:25.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-04-21T19:50:18.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-04-21T21:53:45.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-04-22T06:30:29.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-04-22T09:11:40.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-04-22T11:29:46.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-04-22T22:51:58.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2026-04-23T18:52:17.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-04-23T19:28:10.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-04-24T00:56:48.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-04-24T02:31:42.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-04-24T05:12:40.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2026-04-24T10:19:58.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-04-24T15:49:05.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-04-24T22:20:56.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-04-26T01:04:26.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-04-26T05:40:06.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-04-26T12:37:25.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-04-27T11:11:50.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-04-28T09:17:23.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-04-28T15:06:44.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2026-04-28T19:31:58.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-04-28T19:50:21.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-04-29T02:07:09.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2026-04-29T14:24:00.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2026-04-29T21:06:08.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-04-30T08:51:37.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2026-05-01T05:50:41.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-05-01T17:23:08.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2026-05-02T08:47:21.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-05-03T07:21:53.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-05-03T13:15:32.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-05-03T17:37:08.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-05-04T01:38:09.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-05-04T07:16:08.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-05-04T21:33:25.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-05-06T02:00:53.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-05-06T07:54:30.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-05-06T14:51:42.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-05-07T04:44:25.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-05-07T11:11:02.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2026-05-07T14:18:24.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-05-08T08:49:38.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-05-08T14:22:39.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-05-08T18:21:57.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2026-05-09T03:16:41.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-05-09T08:07:44.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-05-09T20:39:47.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-05-09T21:10:25.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-05-10T05:08:50.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-05-10T19:13:02.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-05-12T03:42:44.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-05-12T07:29:23.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-05-12T09:22:53.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-05-12T10:04:14.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-05-13T01:44:03.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-05-13T06:20:46.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2026-05-13T09:34:51.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-05-13T18:10:12.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2026-05-14T11:40:47.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-05-14T18:06:46.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-05-14T21:32:41.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2026-05-15T11:24:57.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-05-16T12:39:25.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-05-16T20:01:00.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2026-05-17T01:02:03.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2026-05-17T04:16:18.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-05-17T08:15:16.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-05-17T11:00:41.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-05-17T19:35:42.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-05-19T01:49:33.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-05-19T01:56:36.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-05-19T07:48:55.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-05-19T19:40:20.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-05-20T13:26:41.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2026-05-21T02:57:05.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-05-21T05:12:38.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-05-21T05:42:37.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-05-21T09:15:35.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-05-21T12:01:26.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2026-05-21T18:42:30.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-05-21T22:05:22.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-05-23T09:45:56.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-05-23T11:10:54.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-05-23T13:12:16.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-05-23T17:00:51.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-05-24T10:05:53.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-05-25T00:54:07.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-05-25T17:48:39.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-05-25T22:05:17.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2026-05-25T23:41:22.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-05-26T00:56:37.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-05-26T07:08:21.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-05-26T13:10:59.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2026-05-27T06:10:22.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-05-27T11:32:13.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-05-28T11:34:03.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-05-28T15:15:41.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2026-05-29T00:25:42.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-05-30T00:04:36.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-05-30T16:44:49.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-05-30T20:52:31.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-05-30T23:34:08.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-05-31T08:45:09.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2026-05-31T13:20:59.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-06-02T03:31:47.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2026-06-02T09:35:07.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-06-03T00:02:31.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-06-03T02:25:11.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-06-03T14:37:26.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-06-04T03:04:12.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2026-06-04T18:18:54.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-06-04T22:00:18.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-06-05T00:21:47.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2026-06-05T14:50:28.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-06-05T15:59:54.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-06-05T19:50:39.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-06-07T05:21:20.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-06-07T19:14:55.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-06-08T05:16:02.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-06-08T10:00:28.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-06-08T23:04:37.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-06-09T00:38:27.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-06-09T13:07:47.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-06-09T16:04:35.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2026-06-09T17:55:46.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-06-10T07:29:31.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2026-06-10T07:40:03.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-06-10T19:28:15.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-06-11T05:51:50.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-06-11T08:22:11.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-06-11T21:07:40.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-06-12T14:26:02.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-06-12T18:37:33.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2026-06-13T07:30:09.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-06-13T13:17:35.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-06-13T17:30:46.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-06-13T19:50:39.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-06-13T21:18:03.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-06-14T10:00:00.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-06-15T02:54:07.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2026-06-15T18:59:02.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-06-16T09:23:10.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-06-16T20:11:34.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2026-06-16T22:14:37.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-06-17T07:40:33.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2026-06-17T17:00:19.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-06-17T19:08:43.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-06-17T20:28:03.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-06-17T20:28:52.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2026-06-18T10:26:33.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-06-19T02:33:05.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-06-19T11:30:18.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-06-19T20:05:17.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-06-21T09:03:14.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-06-21T11:05:35.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-06-21T17:33:07.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-06-21T21:55:21.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-06-22T03:01:22.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-06-22T05:06:44.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2026-06-22T06:25:15.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-06-22T17:15:01.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-06-22T23:07:13.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2026-06-23T20:47:03.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-06-24T04:11:06.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-06-24T12:42:47.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-06-24T16:36:36.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-06-25T10:12:47.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-06-26T10:17:31.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-06-26T15:33:49.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2026-06-26T17:09:58.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-06-27T01:45:36.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-06-27T03:32:20.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-06-27T04:40:37.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-06-27T23:03:49.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-06-28T05:04:44.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-06-29T16:11:29.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-06-29T23:56:38.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2026-06-30T11:51:05.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-07-01T11:50:43.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2026-07-01T20:13:43.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2026-07-02T00:04:01.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-07-02T03:02:00.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-07-02T04:19:04.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-07-02T05:11:32.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2026-07-02T23:48:35.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-07-03T17:27:20.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-07-04T13:59:15.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-07-04T14:25:37.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-07-05T08:01:15.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-07-06T05:21:07.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-07-06T17:40:55.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-07-06T22:25:39.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-07-06T23:11:42.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2026-07-06T23:47:53.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-07-07T01:48:55.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-07-07T17:14:45.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2026-07-07T19:28:56.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-07-08T09:24:38.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-07-08T18:41:38.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-07-08T23:45:29.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-07-09T04:34:16.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-07-10T02:46:49.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-07-10T10:13:14.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-07-11T01:05:05.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-07-11T02:30:50.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-07-11T05:30:23.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-07-11T05:51:39.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-07-11T06:15:03.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-07-11T13:16:12.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2026-07-11T22:11:21.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-07-13T04:54:08.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-07-13T05:46:11.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-07-13T21:57:48.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-07-14T06:26:48.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2026-07-14T09:43:34.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2026-07-15T03:49:03.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2026-07-15T05:39:13.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-07-15T05:42:05.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-07-15T05:57:58.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2026-07-15T17:58:31.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-07-15T22:26:36.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-07-17T07:44:15.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-07-17T15:05:34.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-07-17T23:22:26.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-07-18T06:49:34.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-07-18T22:13:11.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-07-19T12:38:57.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-07-19T12:58:36.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2026-07-19T13:08:16.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-07-19T13:17:53.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-07-20T08:15:59.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2026-07-20T09:03:41.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-07-20T12:18:33.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-07-21T11:05:33.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-07-21T22:11:09.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-07-21T22:49:29.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-07-22T17:37:01.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-07-22T21:48:28.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-07-24T03:43:13.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-07-24T09:52:02.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-07-24T09:53:26.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-07-24T10:40:50.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-07-24T11:48:01.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-07-25T06:54:02.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-07-25T11:53:40.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-07-25T14:58:09.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2026-07-26T22:26:34.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-07-27T19:24:04.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-07-28T00:08:23.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2026-07-28T06:11:03.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-07-29T10:07:56.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2026-07-29T10:14:23.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-07-29T11:29:28.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-07-29T14:27:13.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2026-07-29T14:35:40.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2026-07-30T06:43:33.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-07-30T21:26:46.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-07-31T21:47:42.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-08-02T02:58:35.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-08-02T09:32:32.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-08-02T12:33:09.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-08-03T04:10:54.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-08-03T04:22:29.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2026-08-03T05:55:47.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-08-03T10:20:24.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-08-03T17:24:44.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-08-03T23:21:44.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2026-08-04T14:16:31.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-08-04T18:51:43.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-08-05T09:43:30.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-08-05T16:33:36.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-08-06T02:21:26.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-08-06T23:24:59.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-08-07T06:57:30.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-08-07T12:52:38.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-08-07T13:06:53.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-08-07T14:51:34.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-08-07T20:18:13.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-08-08T06:29:35.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-08-08T08:29:44.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-08-09T05:27:01.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2026-08-09T12:11:29.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-08-09T14:30:22.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-08-10T07:30:17.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-08-11T13:41:03.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2026-08-11T15:03:48.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2026-08-11T15:20:12.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-08-11T16:36:17.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-08-11T17:20:04.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-08-12T00:01:05.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2026-08-12T08:28:17.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-08-12T17:36:42.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2026-08-13T12:43:58.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-08-13T19:23:48.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-08-15T19:36:35.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-08-15T21:12:59.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-08-15T21:32:48.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2026-08-16T00:04:11.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-08-16T07:10:33.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-08-16T09:02:26.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-08-16T12:20:01.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-08-16T16:27:16.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2026-08-17T11:30:32.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-08-18T05:01:02.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-08-18T06:29:24.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-08-18T18:43:23.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-08-19T08:06:28.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-08-20T02:46:18.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-08-20T15:58:42.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-08-20T16:21:30.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-08-20T19:32:36.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-08-21T07:26:12.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-08-21T13:02:22.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-08-21T13:04:02.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-08-22T08:21:41.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-08-22T20:30:49.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-08-23T04:47:53.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-08-23T13:04:58.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2026-08-24T01:21:13.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-08-24T06:30:01.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-08-25T16:10:48.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2026-08-25T16:32:18.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-08-25T20:01:07.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-08-26T09:31:38.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2026-08-26T12:21:14.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-08-26T21:59:22.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-08-28T04:18:29.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2026-08-28T05:20:22.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2026-08-28T05:39:15.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-08-28T16:14:04.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-08-30T09:02:07.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-08-30T09:19:48.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2026-08-30T12:49:18.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-08-31T01:38:57.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-08-31T02:55:11.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-08-31T03:18:02.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2026-08-31T19:47:05.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-09-01T14:08:06.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-09-02T00:43:02.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-09-02T08:18:52.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-09-02T08:47:34.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-09-02T10:46:42.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-09-03T17:41:05.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-09-03T17:54:51.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-09-03T21:26:48.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-09-04T07:51:11.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-09-04T10:40:15.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-09-04T12:16:58.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-09-04T21:29:21.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-09-05T08:39:52.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-09-05T20:27:32.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-09-06T12:54:16.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-09-06T13:59:41.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-09-06T19:05:47.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2026-09-07T07:01:08.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-09-07T13:39:41.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-09-07T22:31:27.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2026-09-07T22:41:19.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-09-08T02:23:37.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-09-08T15:04:26.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-09-08T18:36:42.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2026-09-09T18:57:51.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-09-10T05:21:32.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-09-11T03:26:57.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2026-09-11T05:52:03.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-09-12T04:21:06.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2026-09-12T05:48:05.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-09-12T05:53:29.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2026-09-12T10:03:04.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-09-12T23:08:05.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2026-09-13T05:07:46.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-09-13T14:26:26.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-09-14T11:32:37.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-09-14T12:56:42.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-09-15T14:35:50.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-09-16T02:30:38.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-09-16T03:29:51.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-09-16T23:07:51.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-09-16T23:09:20.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-09-17T03:57:58.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-09-17T15:14:20.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-09-17T17:47:00.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-09-18T03:00:51.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-09-18T20:43:44.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-09-19T11:20:59.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-09-19T15:27:28.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-09-20T05:59:19.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-09-20T12:48:12.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-09-21T09:16:31.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2026-09-21T14:31:20.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-09-21T23:24:10.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-09-21T23:34:57.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2026-09-22T04:23:38.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-09-22T05:40:08.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-09-22T17:16:42.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-09-23T04:47:23.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2026-09-23T08:18:16.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-09-24T13:55:55.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-09-24T16:45:32.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-09-26T08:31:48.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-09-26T15:41:13.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2026-09-26T15:59:46.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-09-26T16:48:59.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2026-09-26T20:17:53.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-09-27T07:19:47.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2026-09-27T19:46:09.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-09-28T09:50:20.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2026-09-28T15:11:05.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-09-28T20:01:33.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-09-29T04:35:19.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-09-29T23:36:03.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-09-30T20:06:44.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-09-30T22:14:50.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-09-30T22:40:55.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-01T02:43:01.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-10-01T07:05:40.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-01T12:49:11.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-10-02T02:41:45.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-10-03T00:38:22.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-10-03T01:35:37.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-03T10:15:24.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-03T13:25:00.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-10-03T15:08:26.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-10-05T03:37:06.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-05T04:13:04.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2026-10-05T06:01:24.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2026-10-05T08:15:23.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-10-05T09:43:22.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-10-05T13:19:48.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-10-05T18:11:02.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-05T20:37:59.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-10-06T10:22:06.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2026-10-07T12:21:40.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-10-07T17:07:57.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-10-07T18:56:34.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-10-09T12:55:34.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2026-10-09T13:44:24.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-09T17:51:35.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-09T20:25:51.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-10-10T03:53:45.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2026-10-10T15:50:02.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2026-10-10T23:07:16.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-10-11T21:08:14.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-10-12T04:26:52.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-10-12T06:42:38.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-10-12T18:48:24.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2026-10-13T08:45:42.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-10-14T05:55:04.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-14T07:01:51.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-10-14T11:18:16.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-10-14T19:51:03.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-14T21:44:35.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-15T20:57:45.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-15T21:55:37.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-10-16T17:53:32.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-10-16T22:51:15.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-10-17T09:50:17.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-10-18T03:07:04.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-10-18T16:12:38.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-10-19T06:25:55.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-10-19T07:49:17.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2026-10-19T08:52:23.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-10-19T11:51:35.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-19T21:51:29.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-10-20T02:24:29.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2026-10-20T17:41:57.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-10-20T22:49:20.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2026-10-21T08:42:20.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-21T16:51:08.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-21T22:06:36.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-10-23T03:31:14.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-23T23:54:16.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2026-10-24T01:21:19.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-10-24T04:38:08.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-10-24T13:05:49.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2026-10-24T22:05:06.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-25T12:36:38.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-25T22:59:20.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-10-26T04:11:46.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2026-10-26T04:44:52.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-10-27T02:18:03.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-10-27T09:11:23.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2026-10-27T14:51:06.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-10-28T04:33:53.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-10-28T06:05:36.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-28T08:52:04.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-10-28T16:31:31.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-10-29T05:06:12.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-10-29T16:17:07.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-10-29T21:43:19.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-30T05:35:26.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-10-30T13:55:23.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-30T17:35:29.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-10-31T07:01:37.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-10-31T21:59:35.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-11-01T07:50:48.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-11-01T09:38:59.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2026-11-01T12:15:48.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-11-01T20:08:05.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-11-01T20:28:24.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-11-02T06:25:44.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-11-02T13:48:48.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2026-11-02T22:50:30.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2026-11-03T00:10:26.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-11-03T16:36:02.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-11-04T05:33:44.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-11-04T06:57:27.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-11-05T18:17:41.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2026-11-05T20:28:22.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-11-05T22:54:30.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-11-06T07:11:48.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2026-11-07T07:01:31.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-11-07T10:49:44.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-11-07T13:19:44.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-11-08T04:44:27.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-11-08T13:01:48.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2026-11-09T07:02:04.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2026-11-09T18:43:30.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-11-09T23:25:11.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-11-10T12:20:08.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-11-10T14:56:14.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-11-10T17:04:16.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-11-11T01:47:40.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-11-12T06:11:17.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-11-12T08:34:45.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-11-12T11:29:03.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-11-13T00:13:05.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-11-13T06:40:27.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-11-13T13:52:09.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-11-14T17:54:25.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-11-14T18:55:32.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-11-15T13:05:53.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-11-15T16:04:14.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2026-11-15T17:42:48.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-11-15T20:27:51.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-11-16T02:33:24.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-11-17T07:43:41.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-11-17T11:47:46.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-11-17T13:28:27.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2026-11-17T14:25:49.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2026-11-18T05:05:43.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-11-18T10:46:29.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-11-20T01:46:07.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-11-20T09:02:47.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2026-11-20T11:56:26.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-11-20T12:54:27.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-11-20T20:44:19.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2026-11-22T00:09:54.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-11-22T03:58:00.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-11-22T07:38:32.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-11-22T15:50:50.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-11-23T05:27:12.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2026-11-24T05:28:48.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-11-24T10:09:08.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-11-24T13:53:23.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-11-24T14:53:30.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2026-11-24T16:38:47.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-11-24T17:06:39.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-11-25T00:10:14.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-11-26T03:51:11.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-11-26T05:23:30.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-11-26T11:09:22.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-11-26T13:32:33.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-11-26T23:47:56.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-11-27T14:30:30.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-11-28T05:40:10.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-11-28T14:06:17.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-11-28T17:09:14.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2026-11-28T17:13:54.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-11-28T22:27:38.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-11-29T00:43:57.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-11-29T21:44:01.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-11-30T08:34:47.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2026-11-30T10:10:22.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-11-30T17:24:43.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2026-11-30T20:17:08.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-12-01T06:08:37.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-12-02T09:10:43.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-12-02T23:05:36.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2026-12-03T02:18:12.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-12-03T02:43:24.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-12-03T10:52:13.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2026-12-03T17:33:58.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-12-04T22:40:22.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-12-05T05:41:38.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-12-05T11:23:06.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-12-05T11:37:02.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-12-07T09:07:34.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-12-07T18:19:00.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-12-07T19:28:28.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2026-12-07T21:24:18.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-12-07T22:27:35.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-12-07T23:47:04.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-12-08T06:51:48.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-12-09T00:51:48.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2026-12-09T21:06:05.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-12-10T06:24:32.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-12-10T11:49:18.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-12-10T13:39:36.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-12-10T19:12:20.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-12-12T19:22:25.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-12-12T22:08:50.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-12-12T23:53:04.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2026-12-13T05:05:50.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-12-13T08:13:12.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-12-13T14:35:53.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2026-12-14T13:46:30.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2026-12-14T22:39:30.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2026-12-15T10:18:01.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-12-15T17:48:52.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2026-12-15T21:32:26.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-12-16T10:57:09.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-12-17T05:42:37.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2026-12-17T17:35:36.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2026-12-17T19:45:57.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-12-17T21:55:58.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2026-12-18T05:20:16.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2026-12-19T02:14:08.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-12-19T15:12:51.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2026-12-19T16:39:49.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-12-20T03:23:22.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2026-12-20T09:54:45.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2026-12-20T18:13:36.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2026-12-21T17:26:13.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2026-12-22T01:05:18.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2026-12-22T02:41:09.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2026-12-22T04:59:58.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-12-22T11:21:34.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2026-12-22T11:46:20.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2026-12-23T16:53:44.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2026-12-23T17:00:59.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2026-12-24T00:33:17.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2026-12-24T01:28:11.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2026-12-24T10:39:19.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2026-12-24T11:37:12.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2026-12-25T00:09:19.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-12-25T23:51:21.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2026-12-26T01:11:03.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-12-26T03:53:17.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2026-12-26T10:15:49.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2026-12-27T03:28:53.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-12-27T16:38:28.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2026-12-28T02:18:14.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2026-12-28T04:41:48.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2026-12-28T09:28:31.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2026-12-28T14:13:19.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2026-12-29T10:17:36.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2026-12-30T05:30:46.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2026-12-30T06:42:01.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2026-12-30T10:14:27.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2026-12-30T16:38:45.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2026-12-30T17:30:55.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2026-12-30T18:59:26.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-01T03:27:21.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-01-01T18:40:13.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-02T05:34:17.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-01-02T08:54:37.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-01-02T09:46:52.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-01-03T13:07:16.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-01-03T13:33:01.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-04T00:26:33.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-01-04T01:21:22.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-01-04T05:49:12.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-01-04T13:53:06.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-01-04T17:22:27.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-06T01:23:01.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-01-06T12:54:32.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-07T02:43:08.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-07T06:18:16.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-01-07T20:24:20.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2027-01-08T05:11:05.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2027-01-09T01:47:56.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-01-09T01:52:54.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-01-09T02:23:30.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-01-09T07:30:36.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2027-01-09T15:50:56.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-01-11T01:58:34.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2027-01-11T14:36:31.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-11T19:56:31.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-12T07:12:56.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2027-01-13T07:32:16.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-01-13T23:33:04.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-01-14T00:51:41.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2027-01-14T00:57:46.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-01-14T06:15:46.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-01-14T11:31:02.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-01-14T14:15:20.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2027-01-15T20:08:54.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-01-15T20:34:28.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-16T13:18:57.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-16T14:46:37.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-16T22:41:18.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-01-18T00:09:37.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-18T04:57:30.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-01-18T11:40:12.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-01-18T11:52:11.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-01-18T16:40:58.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-01-18T23:54:19.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-01-19T00:37:58.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-01-19T01:01:00.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-19T05:31:08.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-01-20T01:01:16.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-01-20T12:35:28.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-21T00:17:39.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-21T00:45:23.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-01-22T11:36:42.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-01-22T12:02:23.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-01-22T12:17:20.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2027-01-22T16:41:42.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2027-01-22T23:53:27.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-01-23T12:05:29.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2027-01-23T12:29:22.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-01-23T23:33:18.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2027-01-24T11:39:36.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-24T23:39:38.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2027-01-25T17:56:01.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-26T14:15:54.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-01-26T14:59:59.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2027-01-26T20:13:41.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-01-26T23:03:41.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-01-27T04:35:51.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2027-01-28T03:44:27.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-01-28T05:53:02.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-01-28T07:46:09.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-01-29T03:11:30.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-29T08:39:50.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-01-29T10:55:25.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-30T14:28:51.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-31T00:36:07.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-31T06:37:17.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-01-31T07:46:41.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-01-31T13:46:06.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-01-31T18:07:20.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-01-31T23:41:46.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-02-01T03:11:42.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-02-02T01:47:22.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-02-02T13:05:12.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-02-02T19:40:18.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-02-02T20:20:55.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-02-03T05:19:00.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-02-03T12:52:37.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-02-05T07:53:12.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-02-05T09:23:43.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-02-05T15:30:51.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2027-02-06T02:05:31.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-02-06T15:56:04.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2027-02-07T01:46:43.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2027-02-07T19:51:01.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-02-08T02:43:34.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2027-02-08T02:45:32.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-02-08T03:52:32.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2027-02-10T06:00:56.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-02-10T07:42:54.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2027-02-10T13:28:38.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-02-10T18:28:30.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-02-10T23:57:19.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2027-02-11T19:57:21.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-02-11T21:48:44.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-02-12T17:04:48.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-02-12T20:01:30.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-02-12T21:02:53.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-02-13T06:55:42.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-02-14T01:24:43.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-02-14T07:58:26.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-02-14T18:54:44.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-02-14T20:34:36.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-02-14T20:40:02.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-02-14T22:15:51.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-02-15T01:52:55.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-02-15T11:53:17.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-02-16T04:16:33.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-02-16T14:49:52.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-02-16T21:32:54.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-02-16T21:42:52.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-02-16T23:14:14.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-02-17T14:04:41.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-02-17T21:49:08.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-02-18T22:18:34.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-02-19T00:07:07.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-02-19T04:59:49.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2027-02-19T14:56:46.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-02-20T05:07:11.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2027-02-20T16:01:36.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2027-02-20T20:27:45.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2027-02-20T22:50:12.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-02-20T23:23:36.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2027-02-22T07:53:33.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-02-23T00:45:48.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-02-23T02:50:12.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2027-02-23T07:59:39.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-02-23T19:15:06.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2027-02-24T08:59:37.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-02-24T15:01:00.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-02-24T16:36:41.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-02-24T23:58:28.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-02-25T13:30:07.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-02-25T14:47:57.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-02-26T15:40:57.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-02-26T19:48:46.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-02-27T06:14:50.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-02-27T06:35:08.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-02-27T14:28:00.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-02-27T17:01:05.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-02-27T22:51:39.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-02-28T05:16:27.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-02-28T12:29:21.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-03-01T01:54:31.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-03-01T04:53:19.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-03-01T16:19:05.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-03-02T05:09:18.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-03-02T23:14:46.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-03-03T01:37:21.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-03-04T15:27:00.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-03-04T18:15:41.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-03-04T20:05:32.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-03-05T00:10:59.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2027-03-05T14:55:15.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-03-06T02:02:23.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2027-03-06T06:16:51.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2027-03-06T14:00:24.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2027-03-07T03:19:46.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-03-08T09:29:26.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2027-03-09T12:53:27.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-03-09T15:37:08.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2027-03-09T20:59:42.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-03-10T04:52:45.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-03-10T11:24:39.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2027-03-10T19:42:22.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-03-11T04:50:53.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-03-11T05:06:20.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-03-12T03:51:36.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-03-12T16:38:46.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-03-13T01:15:57.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-03-13T08:24:59.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-03-13T09:43:03.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-03-13T13:32:42.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-03-14T01:17:45.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-03-14T03:54:56.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-03-14T08:49:08.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-03-14T23:00:57.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-03-15T02:03:20.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-03-15T05:09:43.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-03-15T12:51:40.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-03-15T16:25:09.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-03-15T20:52:08.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-03-16T07:33:26.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-03-17T02:29:42.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-03-17T22:51:51.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-03-18T07:30:57.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-03-18T10:04:39.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-03-18T14:40:26.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2027-03-19T05:02:30.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-03-19T09:33:40.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2027-03-19T16:16:21.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2027-03-19T16:16:34.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-03-20T09:10:43.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2027-03-20T09:33:36.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-03-22T10:43:44.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2027-03-22T12:11:18.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-03-22T14:50:56.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2027-03-22T19:27:38.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-03-23T11:09:09.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2027-03-23T14:28:17.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-03-23T21:02:54.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-03-24T07:58:47.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-03-25T00:25:34.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-03-25T02:27:57.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-03-25T20:13:54.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-03-26T03:04:07.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-03-26T20:55:50.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-03-27T00:41:49.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-03-27T03:41:59.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-03-27T08:03:47.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-03-27T08:43:31.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-03-27T17:35:37.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-03-28T03:22:49.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-03-28T05:27:43.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-03-28T12:39:02.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-03-29T14:26:29.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-03-29T15:07:08.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-03-30T00:53:53.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-03-30T13:28:53.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-03-30T16:12:35.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-04-01T01:00:34.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-04-01T04:09:44.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-04-01T09:13:50.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2027-04-01T19:15:36.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-04-02T05:34:42.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-04-02T05:59:30.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2027-04-02T13:28:42.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2027-04-03T13:06:40.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-04-04T04:09:03.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-04-05T05:21:45.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2027-04-05T22:23:03.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-04-06T01:12:48.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2027-04-06T05:37:36.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-04-06T23:51:06.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2027-04-07T00:02:12.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-04-07T00:59:16.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2027-04-07T07:21:10.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-04-08T11:26:08.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-04-09T04:24:56.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-04-09T04:57:29.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-04-09T12:22:09.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-04-10T07:12:58.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-04-10T08:51:22.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-04-10T11:25:09.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-04-10T15:20:46.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-04-11T08:24:57.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-04-11T10:21:01.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-04-11T12:45:08.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-04-11T16:07:13.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-04-11T16:09:58.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-04-12T14:39:20.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-04-12T17:32:49.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-04-13T13:47:39.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-04-13T20:30:31.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-04-13T22:56:36.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-04-14T15:17:55.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-04-14T17:45:55.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-04-14T21:29:30.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2027-04-15T04:00:41.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-04-15T14:27:18.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2027-04-15T17:18:18.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-04-15T23:10:51.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2027-04-16T05:52:05.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-04-16T18:40:29.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-04-18T12:56:24.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-04-18T22:40:25.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-04-19T01:06:08.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2027-04-19T04:44:10.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-04-19T22:17:06.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-04-20T02:06:02.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2027-04-20T04:09:55.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2027-04-20T08:39:19.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-04-20T22:27:06.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2027-04-21T10:11:54.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-04-22T04:33:01.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-04-22T16:12:37.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-04-23T11:56:12.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-04-23T12:19:28.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-04-23T14:26:49.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-04-23T18:11:10.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-04-24T13:39:04.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-04-24T18:44:41.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-04-25T02:54:36.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-04-25T18:19:38.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-04-26T01:21:07.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-04-26T02:07:06.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-04-26T05:33:39.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-04-27T07:19:05.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-04-28T11:46:04.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-04-28T14:14:46.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-04-28T17:55:57.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2027-04-28T20:10:05.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-04-28T20:17:49.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-04-29T01:16:52.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-04-29T14:41:26.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2027-04-29T20:45:35.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-04-30T06:31:24.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2027-05-01T00:17:10.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-05-01T13:24:05.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-05-01T20:47:10.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-05-03T09:51:57.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-05-03T11:54:51.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2027-05-03T14:59:35.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-05-04T09:18:04.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-05-04T10:04:33.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-05-04T16:00:51.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2027-05-05T02:08:47.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-05-05T20:20:46.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-05-06T10:58:35.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2027-05-06T14:35:27.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-05-07T04:35:16.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2027-05-07T06:48:27.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-05-07T18:51:33.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-05-07T20:31:41.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-05-07T23:06:08.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-05-08T17:04:09.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-05-08T22:55:39.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-05-09T01:15:15.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-05-09T09:54:57.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-05-09T22:26:06.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-05-10T22:18:34.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-05-11T01:11:45.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-05-11T07:45:26.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-05-11T23:13:05.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-05-12T00:42:47.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-05-12T00:47:20.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-05-12T03:06:33.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2027-05-12T22:03:38.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2027-05-13T04:21:30.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-05-13T04:43:50.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-05-13T15:30:55.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-05-13T17:31:45.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2027-05-14T02:43:44.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-05-14T12:02:39.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-05-15T12:47:56.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-05-16T07:39:47.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-05-16T09:00:37.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2027-05-16T11:18:08.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-05-17T00:49:23.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-05-17T08:04:54.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-05-17T14:55:19.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2027-05-18T07:06:45.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-05-18T12:41:41.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-05-18T17:41:27.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-05-19T15:38:32.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-05-20T10:58:58.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2027-05-20T16:55:44.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-05-20T22:44:36.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-05-20T23:54:29.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-05-21T02:05:57.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-05-22T01:30:06.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-05-22T08:15:16.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2027-05-22T08:58:31.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-05-23T05:24:45.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-05-23T10:45:57.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-05-23T20:29:09.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-05-24T21:29:45.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-05-25T20:01:12.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-05-25T22:38:48.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-05-25T23:32:04.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-05-26T01:32:40.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2027-05-26T16:17:04.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-05-27T03:20:57.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2027-05-27T10:59:15.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-05-27T22:23:28.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-05-28T11:06:12.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2027-05-28T11:34:46.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-05-28T13:57:53.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-05-29T11:03:22.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-05-30T13:47:06.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-05-30T21:55:07.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-05-30T22:23:40.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2027-05-30T23:57:13.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-05-31T04:32:55.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-06-01T00:27:45.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-06-01T07:01:52.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2027-06-01T23:35:10.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-06-02T05:51:15.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-06-02T07:03:59.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-06-03T05:11:52.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-06-03T10:23:00.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-06-04T07:00:19.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-06-04T07:08:43.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-06-04T08:17:48.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-06-04T11:06:45.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-06-04T19:40:18.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2027-06-05T07:04:57.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-06-05T12:44:30.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-06-06T06:40:42.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2027-06-06T07:54:10.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-06-06T13:18:59.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-06-07T13:33:13.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-06-07T20:55:13.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-06-08T08:40:25.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-06-08T08:48:12.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-06-08T09:37:24.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2027-06-09T04:05:47.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-06-09T09:50:43.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2027-06-09T15:21:46.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-06-10T03:20:57.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-06-10T10:49:07.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-06-10T11:12:52.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-06-10T20:04:06.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2027-06-11T10:56:05.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-06-12T12:37:54.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-06-12T15:02:34.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-06-12T15:26:42.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2027-06-12T15:54:27.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-06-12T16:15:08.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-06-13T20:01:27.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-06-13T20:42:32.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-06-14T01:33:32.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2027-06-14T20:57:37.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-06-14T23:03:39.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-06-15T12:31:30.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-06-16T04:45:47.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-06-17T07:28:30.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-06-17T08:05:17.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-06-17T08:22:09.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-06-17T16:31:56.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-06-18T00:35:29.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-06-18T15:44:40.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-06-18T20:59:42.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-06-19T00:44:18.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2027-06-19T13:08:30.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2027-06-19T18:39:16.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-06-20T14:54:53.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-06-21T09:36:56.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-06-22T07:23:05.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-06-22T07:44:41.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2027-06-22T08:46:48.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-06-23T06:39:56.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-06-23T18:34:38.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2027-06-23T23:02:20.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-06-24T09:09:13.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-06-24T12:40:22.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-06-24T21:55:32.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-06-25T21:47:41.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2027-06-26T01:50:16.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-06-26T18:08:11.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-06-27T04:54:18.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-06-27T07:19:04.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2027-06-27T07:24:04.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-06-27T09:03:52.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-06-28T17:02:43.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-06-28T17:10:54.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-06-28T20:15:46.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2027-06-29T00:27:45.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-06-29T14:36:24.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-06-29T16:34:31.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-06-30T17:16:51.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-06-30T22:41:39.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-07-01T17:53:09.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-07-01T18:00:01.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-07-01T19:51:32.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-07-02T20:53:11.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-07-03T00:44:36.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-07-03T02:39:18.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-07-03T04:05:18.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2027-07-03T08:30:06.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-07-03T18:35:27.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-07-04T03:02:02.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2027-07-04T22:30:46.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-07-05T02:35:47.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-07-05T18:00:11.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2027-07-05T18:16:00.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-07-05T20:21:54.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-07-07T01:48:41.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2027-07-07T02:54:52.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-07-07T04:11:00.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-07-07T17:17:35.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-07-07T21:15:10.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-07-08T10:37:40.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-07-09T04:30:12.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2027-07-09T07:28:28.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-07-09T21:32:16.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-07-09T21:59:30.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2027-07-10T00:39:12.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-07-10T01:17:48.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-07-10T18:38:57.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-07-11T10:32:27.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-07-11T10:40:49.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2027-07-11T14:49:39.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-07-12T03:39:17.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-07-12T13:29:45.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-07-13T06:39:12.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-07-13T19:46:45.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-07-13T23:08:46.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-07-14T12:46:49.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-07-14T13:28:25.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-07-14T16:52:34.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-07-16T06:23:00.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-07-16T07:41:15.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-07-16T13:09:08.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-07-16T18:39:22.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2027-07-17T00:59:03.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-07-18T00:32:57.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-07-18T15:44:52.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2027-07-18T19:06:15.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-07-19T04:53:45.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-07-19T12:50:29.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2027-07-19T13:45:25.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-07-19T17:47:53.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-07-21T08:17:00.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-07-21T11:17:40.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2027-07-22T06:50:58.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-07-22T10:15:44.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-07-23T15:47:46.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-07-24T03:11:30.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-07-24T11:37:50.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2027-07-24T13:00:24.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-07-24T14:02:30.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2027-07-24T18:21:31.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-07-25T05:45:14.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-07-26T06:11:17.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2027-07-26T07:43:24.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-07-26T10:33:17.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-07-26T16:54:52.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-07-26T21:32:00.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-07-27T21:28:06.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-07-28T17:03:24.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-07-28T18:51:07.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-07-29T02:04:33.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-07-29T02:24:13.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-07-29T03:25:26.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-07-29T06:11:42.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-07-29T07:34:45.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-07-30T14:48:36.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-07-30T19:58:02.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-07-31T05:00:49.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-07-31T09:44:47.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-08-01T14:58:14.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-08-01T15:53:59.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2027-08-02T03:41:28.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2027-08-02T04:42:54.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-08-02T05:31:58.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-08-02T08:52:58.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-08-02T10:05:11.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2027-08-02T11:21:53.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-08-03T14:30:51.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-08-03T20:49:32.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2027-08-04T08:46:07.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-08-06T04:38:37.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-08-06T05:48:46.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2027-08-06T08:27:18.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-08-06T10:37:46.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-08-06T16:09:27.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-08-06T17:32:23.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2027-08-06T18:53:18.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-08-07T19:04:43.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2027-08-08T03:44:25.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-08-08T09:13:01.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-08-08T23:25:13.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-08-09T03:18:15.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-08-09T04:54:07.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-08-10T12:45:52.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-08-10T17:31:47.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-08-10T18:56:06.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-08-11T00:50:34.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-08-11T14:21:01.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-08-11T19:21:41.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-08-11T19:29:05.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-08-11T20:23:26.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-08-12T13:18:49.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-08-13T01:05:41.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-08-13T06:21:13.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-08-14T05:51:09.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-08-15T01:57:45.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-08-15T17:38:33.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2027-08-15T19:10:12.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-08-16T01:47:50.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-08-16T22:15:48.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-08-17T07:28:38.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2027-08-17T10:46:32.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-08-17T14:48:42.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-08-17T21:58:49.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2027-08-18T04:57:33.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2027-08-18T14:32:05.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-08-20T17:33:23.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-08-20T19:02:31.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2027-08-21T01:46:30.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-08-22T03:12:26.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2027-08-22T12:17:33.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2027-08-22T15:15:55.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-08-22T21:20:38.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-08-23T02:38:51.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-08-23T03:36:53.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-08-23T14:42:37.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-08-25T02:27:18.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-08-25T08:55:27.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-08-25T09:27:49.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-08-25T10:16:00.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-08-25T10:47:52.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-08-25T16:40:25.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-08-26T04:11:54.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-08-26T20:31:37.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-08-26T23:20:27.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-08-27T09:55:49.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-08-27T13:30:37.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-08-27T14:52:33.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-08-27T17:39:10.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-08-28T13:12:33.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-08-29T00:26:24.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-08-29T00:46:03.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-08-29T13:12:07.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2027-08-29T14:24:36.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-08-29T20:31:47.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-08-31T00:43:43.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-08-31T02:40:58.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-08-31T17:10:03.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2027-08-31T17:41:08.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2027-08-31T20:30:29.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-09-01T03:10:07.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-09-02T01:28:44.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2027-09-02T13:40:32.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-09-02T14:53:15.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2027-09-02T21:28:07.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-09-04T03:06:00.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2027-09-04T10:25:44.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2027-09-04T16:46:51.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-09-04T23:03:52.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-09-05T05:47:52.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-09-05T19:05:48.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-09-06T23:41:28.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-09-07T00:03:38.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-09-07T01:01:22.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-09-07T07:30:29.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-09-07T08:52:45.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-09-07T18:31:15.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-09-08T10:28:06.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-09-08T18:28:20.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-09-09T09:50:56.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-09-09T11:42:30.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-09-09T18:54:06.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-09-09T19:45:17.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-09-10T11:30:53.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-09-11T05:49:04.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-09-11T06:42:34.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-09-11T23:05:39.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2027-09-12T00:25:17.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-09-12T02:18:31.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-09-12T09:05:31.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-09-12T15:54:40.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-09-13T19:19:39.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-09-14T18:27:45.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-09-14T21:32:34.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-09-14T23:21:29.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2027-09-15T23:03:28.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2027-09-16T19:40:44.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-09-16T22:33:11.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-09-16T23:41:33.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2027-09-17T08:08:36.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-09-18T03:56:47.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2027-09-18T15:40:01.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2027-09-19T07:17:01.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-09-19T20:01:07.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2027-09-19T20:10:49.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-09-21T01:13:11.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-09-21T13:53:56.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-09-21T14:50:01.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-09-21T22:41:38.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-09-21T22:51:32.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-09-22T03:13:39.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-09-23T03:00:47.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-09-23T03:35:17.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-09-23T10:20:25.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-09-23T19:18:06.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-09-24T08:01:52.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-09-24T08:07:37.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-09-24T11:44:43.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-09-25T06:32:55.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-09-25T10:03:33.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-09-25T17:01:16.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-09-25T21:06:21.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2027-09-25T21:51:19.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-09-26T05:28:00.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-09-26T14:57:12.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-09-26T16:20:33.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-09-27T07:55:22.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-09-27T14:47:28.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-09-28T06:36:09.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-09-28T12:54:42.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2027-09-28T19:48:31.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-09-29T23:27:35.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-09-30T00:04:46.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2027-09-30T02:36:01.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2027-09-30T07:48:11.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-10-01T02:51:20.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-10-01T10:24:40.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2027-10-01T23:22:00.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2027-10-02T02:02:33.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-10-02T19:14:59.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-10-03T06:42:20.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2027-10-04T07:46:56.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-10-04T08:18:52.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-10-04T17:08:10.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-10-04T20:06:35.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-10-05T03:12:06.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-10-05T22:55:02.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-10-06T03:01:18.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-10-06T17:37:10.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-10-06T17:52:41.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-10-07T11:47:21.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-10-07T15:04:28.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-10-08T09:16:18.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-10-08T10:21:01.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-10-08T22:03:51.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-10-09T05:51:07.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-10-09T05:51:34.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2027-10-09T06:13:16.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-10-09T15:55:13.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-10-10T06:11:05.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-10-10T22:53:41.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-10-11T02:03:23.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-10-11T16:46:08.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-10-11T17:57:02.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-10-12T04:19:49.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-10-12T18:10:37.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2027-10-13T17:03:58.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-10-14T05:16:57.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-10-14T05:23:47.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2027-10-14T14:31:13.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-10-15T13:46:57.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2027-10-15T18:37:35.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2027-10-16T04:50:43.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2027-10-16T13:19:10.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-10-17T00:43:09.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-10-17T12:36:15.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-10-18T14:05:15.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2027-10-18T19:05:17.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-10-18T19:11:12.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-10-19T03:33:03.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-10-19T18:32:48.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-10-20T05:23:17.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-10-20T07:06:34.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-10-20T09:48:53.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-10-20T23:27:11.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-10-21T20:49:01.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-10-21T23:15:58.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-10-22T06:57:10.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-10-22T08:54:09.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-10-22T17:29:06.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-10-23T02:51:46.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-10-23T03:09:08.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2027-10-23T03:49:40.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-10-23T10:59:48.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-10-24T04:53:24.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-10-24T06:48:24.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-10-24T11:36:23.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-10-25T00:10:35.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-10-25T09:16:22.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-10-25T13:33:05.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-10-26T06:16:05.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2027-10-26T12:13:01.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-10-27T07:54:37.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2027-10-27T08:23:30.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-10-27T14:28:01.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-10-27T15:56:31.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-10-28T09:03:28.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2027-10-28T16:19:44.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2027-10-29T11:39:09.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-10-29T13:36:30.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2027-10-30T14:28:48.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-10-31T06:00:11.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-10-31T16:24:20.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-10-31T17:09:11.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-11-01T01:04:43.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-11-01T06:01:10.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2027-11-01T22:22:07.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-11-01T23:22:43.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-11-02T03:39:59.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-11-03T01:05:55.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-11-03T14:02:14.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-11-04T09:50:41.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-11-04T14:12:27.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-11-04T14:44:09.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-11-05T12:53:48.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-11-05T14:00:24.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2027-11-05T15:04:32.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-11-05T22:18:51.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-11-06T07:59:58.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-11-06T11:55:04.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-11-07T02:41:50.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-11-07T10:09:44.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-11-08T10:54:30.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-11-08T10:59:56.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-11-09T02:05:01.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-11-09T04:20:59.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-11-09T12:31:27.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2027-11-10T12:42:14.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2027-11-10T14:01:52.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-11-10T21:23:00.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-11-11T04:00:49.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-11-11T17:35:30.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-11-11T23:16:01.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2027-11-12T20:22:44.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2027-11-12T21:51:27.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-11-14T03:25:52.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2027-11-14T05:06:51.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-11-15T01:21:35.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-11-15T02:47:08.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-11-15T09:01:47.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-11-16T01:45:58.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-11-16T08:29:20.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-11-16T09:26:19.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-11-16T09:40:35.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2027-11-17T04:34:12.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-11-17T17:11:57.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-11-18T11:08:19.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-11-18T12:50:15.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-11-18T17:57:31.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-11-19T07:18:29.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-11-19T08:54:59.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2027-11-19T14:39:42.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-11-20T02:20:05.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-11-20T13:48:22.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-11-20T17:19:48.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-11-20T21:07:36.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-11-21T00:48:09.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-11-21T17:35:07.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-11-22T12:01:17.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-11-22T20:06:01.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2027-11-23T01:40:52.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-11-23T03:26:39.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-11-23T08:15:17.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-11-23T13:45:56.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2027-11-23T15:37:22.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-11-23T21:04:17.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-11-24T20:43:34.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2027-11-25T10:43:50.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-11-25T11:05:15.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-11-25T20:11:06.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-11-27T06:41:58.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-11-27T11:21:43.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2027-11-28T00:14:37.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-11-28T02:27:25.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-11-28T03:24:23.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2027-11-28T07:46:57.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-11-29T09:11:47.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-11-29T15:02:26.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-11-30T07:58:34.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2027-11-30T08:52:14.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-11-30T13:26:02.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-12-01T19:21:40.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-12-02T02:17:18.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-12-02T20:17:20.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-12-02T22:59:19.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2027-12-02T23:43:32.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-12-03T04:12:27.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-12-03T10:43:48.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-12-04T07:46:28.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-12-05T16:38:42.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-12-05T16:58:27.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-12-05T22:01:04.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-12-06T04:05:06.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-12-06T05:22:05.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-12-07T04:39:42.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2027-12-07T21:04:37.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2027-12-07T23:56:40.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-12-08T04:19:47.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-12-08T08:07:35.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-12-08T17:50:08.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-12-08T21:29:21.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-12-08T21:31:44.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-12-09T06:17:16.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2027-12-10T08:27:00.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-12-10T19:23:31.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-12-11T09:58:46.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-12-11T20:57:52.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-12-12T10:31:31.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-12-12T13:14:39.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-12-12T16:35:55.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-12-13T15:39:33.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2027-12-13T16:08:44.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2027-12-13T17:57:42.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2027-12-14T00:04:00.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-12-14T12:45:43.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-12-15T06:57:23.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2027-12-15T17:04:05.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-12-16T00:03:24.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-12-16T01:42:08.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-12-16T14:00:30.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-12-16T16:47:42.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2027-12-16T19:35:40.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-12-17T18:23:27.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-12-18T02:28:07.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2027-12-18T08:56:44.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2027-12-18T21:18:18.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-12-19T16:10:04.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2027-12-20T06:29:27.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2027-12-20T09:10:51.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2027-12-20T13:55:38.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-12-20T18:27:19.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2027-12-20T18:54:16.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2027-12-20T22:01:34.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2027-12-21T00:30:56.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-12-21T23:21:30.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2027-12-22T01:00:26.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2027-12-22T18:11:11.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2027-12-23T00:08:44.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2027-12-23T03:17:38.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2027-12-23T06:42:03.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2027-12-24T08:55:48.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2027-12-24T18:11:35.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2027-12-25T07:04:59.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2027-12-25T10:38:36.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2027-12-25T12:47:03.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2027-12-25T13:06:40.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2027-12-26T15:33:24.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2027-12-27T03:13:43.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2027-12-27T16:25:01.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2027-12-27T20:12:16.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2027-12-28T16:45:06.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2027-12-29T02:10:24.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2027-12-29T11:57:59.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2027-12-29T14:28:46.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2027-12-30T03:56:18.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2027-12-30T07:58:21.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2027-12-30T09:38:55.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2027-12-30T23:52:10.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2027-12-31T14:41:46.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-01-01T22:27:03.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-01-02T08:10:20.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-01-03T12:57:55.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-01-03T16:22:28.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2028-01-03T21:58:37.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-01-04T05:29:02.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2028-01-04T09:38:32.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-01-04T10:40:04.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-01-05T01:40:25.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-01-05T14:02:35.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-01-05T15:06:46.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2028-01-06T08:12:33.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-01-06T12:06:45.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-01-06T19:24:42.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-01-07T15:00:36.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-01-08T03:22:13.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-01-08T10:01:37.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-01-08T21:27:02.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-01-08T21:35:19.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-01-08T21:37:44.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-01-09T01:13:03.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-01-09T01:38:05.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-01-10T02:48:35.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-01-10T11:35:49.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-01-10T13:08:18.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-01-10T23:53:59.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-01-12T03:53:08.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-01-12T04:03:01.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2028-01-12T13:44:27.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-01-13T00:14:16.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-01-13T03:48:44.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2028-01-13T03:49:23.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-01-13T05:42:19.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2028-01-13T10:52:29.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2028-01-14T03:54:42.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-01-14T20:42:18.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-01-15T03:49:10.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-01-16T11:57:04.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-01-16T14:38:41.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2028-01-17T01:51:10.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2028-01-17T05:22:24.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-01-17T05:44:30.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-01-17T13:20:32.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-01-17T22:17:44.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-01-18T07:48:12.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2028-01-18T19:25:55.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-01-19T10:14:25.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-01-19T11:58:00.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-01-19T21:31:51.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-01-20T07:25:06.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-01-21T00:30:37.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-01-21T06:47:03.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-01-21T13:23:46.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-01-21T16:59:39.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-01-21T17:51:02.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-01-22T01:24:03.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-01-22T09:23:36.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-01-22T18:26:58.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-01-22T23:05:59.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-01-23T09:46:39.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-01-23T23:28:31.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-01-24T18:18:09.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-01-25T10:35:53.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-01-25T21:07:55.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-01-26T11:30:35.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-01-26T14:57:45.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-01-26T15:12:27.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2028-01-26T16:21:33.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2028-01-27T16:35:03.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2028-01-27T17:04:11.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2028-01-27T23:32:04.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-01-29T03:49:32.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-01-30T09:14:16.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-01-30T22:15:34.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2028-01-31T13:21:18.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2028-01-31T16:23:48.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-01-31T18:13:39.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-02-01T03:58:06.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-02-01T08:47:52.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-02-02T00:57:09.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2028-02-02T02:25:29.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-02-03T05:01:29.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-02-03T13:38:56.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-02-03T19:10:27.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-02-04T15:02:21.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-02-04T17:40:34.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-02-04T18:04:47.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-02-05T08:02:29.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-02-05T10:27:28.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-02-05T12:25:43.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-02-05T15:59:05.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-02-06T05:48:23.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-02-06T15:51:31.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-02-06T22:09:35.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-02-06T23:07:37.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-02-07T03:34:37.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-02-07T11:55:18.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-02-08T17:53:14.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-02-08T23:18:32.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-02-09T08:51:00.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-02-09T12:43:45.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-02-09T14:03:24.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2028-02-09T14:39:33.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-02-09T16:39:10.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2028-02-10T15:03:43.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2028-02-10T17:45:06.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-02-11T05:14:35.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2028-02-11T13:55:01.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-02-12T21:43:25.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2028-02-13T10:46:55.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-02-13T12:03:19.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2028-02-13T13:50:04.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-02-13T16:02:18.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-02-13T16:05:33.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-02-14T18:53:23.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2028-02-14T22:49:17.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-02-15T12:38:45.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-02-15T13:01:35.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-02-15T18:49:35.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-02-17T03:18:53.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-02-17T08:07:56.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-02-17T20:01:38.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-02-17T20:44:12.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-02-17T22:07:49.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-02-17T22:32:49.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-02-18T01:22:14.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-02-18T11:31:46.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-02-19T08:45:12.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-02-19T11:34:22.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-02-19T22:18:43.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-02-20T06:42:35.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-02-20T12:04:18.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-02-21T04:18:08.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-02-21T20:46:48.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-02-21T22:41:09.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-02-22T19:08:36.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-02-22T20:50:47.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-02-23T00:02:03.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2028-02-23T00:07:55.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2028-02-23T23:28:15.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-02-24T10:12:14.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-02-25T09:54:57.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-02-25T10:37:21.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2028-02-25T22:09:39.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2028-02-26T23:13:10.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2028-02-27T20:59:02.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2028-02-27T22:25:29.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-02-28T01:49:28.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-02-28T11:19:28.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-02-29T11:37:54.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2028-02-29T12:26:17.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-03-01T12:48:08.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-03-01T20:26:50.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-03-02T03:24:37.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-03-02T04:52:16.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-03-02T19:20:15.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-03-03T16:56:12.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-03-03T18:05:11.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-03-03T21:18:58.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-03-04T09:02:21.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-03-04T15:54:23.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-03-04T16:27:44.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-03-05T01:35:08.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-03-05T04:43:14.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-03-05T14:21:04.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-03-05T22:33:14.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-03-06T17:31:10.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-03-06T23:00:34.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-03-07T04:37:01.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-03-07T08:24:12.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-03-07T21:07:09.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-03-08T00:55:57.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-03-08T01:49:57.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-03-08T04:44:40.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2028-03-09T07:05:48.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2028-03-09T09:19:39.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-03-10T00:50:58.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-03-10T01:50:15.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-03-11T01:06:01.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2028-03-11T03:55:59.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2028-03-11T04:41:31.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2028-03-12T00:32:58.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2028-03-12T01:20:29.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-03-12T04:13:04.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-03-13T09:40:53.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2028-03-13T16:51:45.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-03-14T05:30:04.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-03-14T08:58:22.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-03-15T05:49:14.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-03-15T11:22:12.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-03-15T13:38:29.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-03-16T03:05:58.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-03-16T06:16:28.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-03-16T07:05:28.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-03-16T10:21:42.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-03-17T12:02:55.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-03-17T21:13:20.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-03-17T23:22:48.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-03-18T00:45:35.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-03-18T15:09:52.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-03-18T19:41:02.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-03-19T09:30:24.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-03-19T22:07:34.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-03-20T09:00:57.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-03-20T16:06:43.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-03-20T16:18:53.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-03-21T03:22:00.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-03-21T04:11:49.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-03-21T07:45:52.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2028-03-22T03:43:59.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-03-22T22:38:39.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-03-23T17:26:41.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-03-24T16:14:18.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2028-03-24T22:06:00.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-03-24T22:31:48.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2028-03-26T02:12:47.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2028-03-26T04:31:16.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2028-03-26T05:03:10.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2028-03-26T05:48:51.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-03-26T09:09:23.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-03-27T23:29:10.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2028-03-28T19:37:13.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-03-29T18:25:56.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-03-30T04:31:24.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-03-30T08:22:40.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-03-31T00:27:29.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-03-31T01:09:28.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-03-31T04:07:00.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-03-31T04:46:59.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-03-31T09:05:49.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-04-01T01:31:17.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-04-01T16:39:29.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-04-02T00:11:40.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-04-02T06:57:13.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-04-02T14:11:33.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-04-02T19:15:26.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-04-03T06:19:10.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-04-03T21:38:27.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-04-03T23:50:23.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-04-04T10:55:23.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-04-04T11:34:29.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-04-04T12:27:13.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-04-04T14:05:50.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2028-04-04T20:36:12.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-04-05T02:16:00.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-04-06T00:07:56.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-04-06T04:55:02.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-04-06T13:13:06.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-04-07T09:09:35.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2028-04-08T08:10:15.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-04-08T13:00:00.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2028-04-08T13:39:14.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-04-08T15:53:05.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-04-09T03:21:14.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2028-04-09T05:18:42.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2028-04-09T10:26:34.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2028-04-10T01:58:19.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2028-04-10T16:54:06.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-04-11T10:30:48.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-04-12T17:35:07.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-04-12T18:10:29.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-04-12T18:21:56.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-04-12T20:35:59.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-04-13T15:06:44.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-04-13T15:36:42.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-04-14T01:43:06.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-04-14T06:59:25.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-04-14T12:04:29.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-04-15T01:10:06.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-04-15T23:46:40.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-04-16T04:30:56.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-04-16T16:36:52.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-04-16T23:09:32.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-04-17T05:33:12.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-04-17T12:32:42.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-04-17T13:32:03.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-04-17T15:43:04.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2028-04-17T20:13:02.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-04-18T21:00:32.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-04-19T10:44:46.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-04-19T12:35:45.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-04-20T02:42:51.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-04-20T07:28:59.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-04-20T12:40:16.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-04-21T00:04:34.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2028-04-22T13:56:47.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2028-04-22T15:03:06.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-04-22T16:46:34.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-04-23T03:28:39.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-04-24T04:34:10.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2028-04-24T12:44:32.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2028-04-24T19:46:53.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2028-04-25T02:39:41.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-04-25T20:02:41.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-04-26T02:33:40.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2028-04-27T07:58:42.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-04-27T09:09:06.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-04-27T10:21:38.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-04-28T00:40:35.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-04-28T02:55:14.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-04-29T02:10:49.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-04-29T04:15:45.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-04-29T14:04:29.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-04-29T18:18:04.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-04-30T08:08:54.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-01T05:50:53.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-01T09:24:00.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-01T09:54:31.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-01T18:33:40.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-05-01T19:49:06.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-01T20:35:01.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2028-05-02T02:25:42.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-02T12:53:56.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-03T12:57:00.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-05-03T14:53:17.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-03T15:48:38.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-05-03T22:49:10.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-04T08:43:01.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-05-04T14:07:50.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2028-05-04T16:14:02.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-05T21:40:03.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-05-05T23:24:22.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2028-05-06T00:46:23.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-05-06T01:08:48.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-05-06T18:33:26.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-05-07T17:27:41.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2028-05-08T00:54:43.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2028-05-08T03:02:10.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-08T17:50:54.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-08T19:48:53.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2028-05-10T05:02:11.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-05-10T06:40:21.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-10T06:41:16.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-05-10T11:27:19.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2028-05-10T22:15:07.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-11T02:06:20.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-05-12T03:49:26.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-05-12T11:53:57.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-12T17:44:04.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-05-13T06:09:14.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-05-13T17:39:05.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-05-14T14:16:54.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-14T22:22:43.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-14T23:56:17.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2028-05-15T00:30:28.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-05-15T08:15:14.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-15T12:11:18.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-05-15T20:47:41.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-05-16T10:43:03.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-17T03:19:09.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-17T13:24:25.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-18T00:58:04.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-18T02:51:33.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-18T06:14:41.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2028-05-18T08:18:34.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-19T04:41:11.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-19T23:26:11.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2028-05-20T00:40:13.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-20T01:50:43.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-20T15:22:22.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-20T18:14:40.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-22T03:03:44.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2028-05-22T10:26:04.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-23T02:59:39.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-05-23T04:58:59.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2028-05-24T08:16:15.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2028-05-24T16:33:17.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-24T17:24:45.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-05-24T19:01:22.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-05-25T05:47:06.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-05-25T05:52:27.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2028-05-25T09:24:15.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-26T16:26:48.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-26T21:33:30.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-27T13:58:21.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-27T21:26:49.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-28T20:36:04.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-29T00:56:28.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-29T01:16:33.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-05-29T01:51:36.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2028-05-29T03:53:22.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-29T09:39:55.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-29T10:57:53.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-05-30T03:29:20.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-31T00:01:25.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-05-31T07:02:48.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-31T07:36:34.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-31T10:26:11.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-31T12:02:38.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-05-31T20:32:02.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2028-06-01T09:00:49.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-02T07:08:55.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2028-06-02T07:30:19.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-02T10:00:43.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-02T11:02:20.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-02T12:53:01.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-02T14:02:53.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-04T06:40:25.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2028-06-04T10:37:12.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-06-05T03:13:43.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-06-05T21:22:36.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2028-06-06T14:24:34.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-06-06T14:56:53.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-06T15:05:12.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-06-06T16:55:25.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2028-06-06T18:16:28.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-06-07T06:08:45.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2028-06-07T08:41:03.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-06-08T18:40:33.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-08T21:57:17.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-06-09T16:54:47.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-10T19:11:53.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-11T02:34:32.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-11T04:56:01.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-06-11T06:49:19.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-11T07:49:54.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2028-06-11T07:57:33.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-06-11T12:01:47.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-12T10:31:56.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-13T10:53:10.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-06-13T12:38:20.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-06-13T17:36:31.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-06-13T18:23:11.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-06-14T00:38:34.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-06-14T17:10:22.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2028-06-15T04:27:21.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-06-15T23:35:43.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-06-16T03:15:16.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-06-16T07:08:39.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-06-16T08:20:20.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-06-16T08:45:45.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2028-06-16T13:16:36.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-06-17T20:57:49.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-06-18T17:26:43.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2028-06-18T18:34:43.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-06-19T15:10:44.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-20T16:19:49.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-06-21T01:34:10.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-21T02:11:22.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-06-21T03:27:48.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2028-06-21T03:34:57.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2028-06-21T06:35:59.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-06-21T21:28:47.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-06-22T18:27:30.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2028-06-23T05:29:24.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-06-23T06:21:05.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-06-24T01:12:42.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-06-24T23:28:55.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-06-25T07:59:10.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2028-06-25T08:12:20.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-06-25T08:45:43.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-25T13:13:09.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-06-25T15:07:18.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-06-25T15:07:45.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-06-27T01:47:16.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-06-27T06:09:42.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-06-27T10:24:52.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-27T15:19:27.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-06-27T19:35:46.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-06-27T20:29:27.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-06-28T06:05:47.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2028-06-29T04:45:57.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-29T12:10:34.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-06-29T12:11:33.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-29T13:10:20.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2028-06-29T18:04:00.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-30T00:52:36.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-06-30T03:21:53.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-07-01T15:49:14.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-07-01T17:13:17.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2028-07-01T19:44:48.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-07-02T14:18:35.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-07-03T15:50:00.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-07-03T21:13:01.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-07-03T22:27:55.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-07-04T04:05:30.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-07-04T16:55:14.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2028-07-04T21:13:50.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-07-05T01:34:57.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2028-07-06T06:11:24.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-07-06T07:09:43.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-07-06T18:10:45.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2028-07-07T06:33:14.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-07-08T13:12:53.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-07-08T14:42:54.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2028-07-08T16:17:26.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-07-08T17:39:03.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-07-08T22:51:25.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-07-09T19:17:25.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-07-10T16:02:08.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-07-11T03:58:49.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-07-11T06:06:43.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-07-11T11:19:42.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-07-12T03:29:09.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-07-12T07:35:18.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2028-07-12T11:34:01.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-07-13T15:10:23.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-07-13T15:58:49.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-07-13T16:59:50.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2028-07-13T19:44:03.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-07-14T00:09:02.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-07-14T20:56:31.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-07-15T03:15:07.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-07-16T02:14:31.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-07-16T06:23:43.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2028-07-16T14:17:22.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-07-17T07:00:10.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-07-17T11:16:28.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-07-18T10:07:05.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-07-18T11:55:34.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-07-18T18:44:45.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-07-18T20:18:29.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-07-19T13:44:12.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-07-20T00:04:05.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2028-07-20T16:10:17.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-07-20T18:40:50.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-07-21T17:06:11.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-07-21T19:20:03.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2028-07-22T03:01:39.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2028-07-22T15:59:34.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2028-07-22T17:44:54.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-07-22T20:21:50.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-07-23T00:16:03.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-07-23T06:39:47.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-07-24T07:43:27.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-07-24T21:01:37.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-07-25T00:53:57.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-07-25T09:52:57.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-07-25T19:39:31.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2028-07-26T10:55:19.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-07-26T11:16:11.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-07-26T13:19:06.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-07-26T17:23:37.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-07-26T19:17:42.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2028-07-27T02:19:44.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-07-27T14:28:02.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-07-28T16:07:24.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-07-28T17:40:06.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-07-28T20:14:38.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-07-29T01:02:46.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-07-29T01:42:10.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2028-07-30T03:20:22.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-07-31T01:44:22.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-07-31T03:19:43.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-07-31T03:57:00.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-07-31T12:07:30.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-07-31T16:49:29.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-08-01T08:49:19.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-08-01T11:19:36.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-08-02T11:44:09.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2028-08-02T12:17:15.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-08-02T16:28:49.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-08-03T21:53:46.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-08-04T20:20:11.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2028-08-04T22:50:06.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-08-05T03:23:05.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-08-05T08:06:57.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-08-05T08:09:46.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2028-08-06T10:53:54.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2028-08-06T15:28:41.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-08-07T15:45:45.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-08-07T17:28:46.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-08-07T20:36:17.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-08-09T00:01:09.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2028-08-09T09:20:45.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-08-09T20:55:43.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-08-09T23:33:57.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2028-08-10T09:27:57.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-08-10T09:44:25.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-08-10T19:43:31.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-08-12T02:40:18.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-08-12T08:31:12.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-08-12T08:42:33.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-08-12T16:21:30.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2028-08-13T00:33:32.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-08-13T11:45:16.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-08-14T00:34:48.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-08-14T17:55:30.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-08-14T20:23:52.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-08-15T02:11:28.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-08-15T05:49:21.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-08-15T23:41:57.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-08-16T08:10:31.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-08-17T01:46:12.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-08-17T02:48:41.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-08-17T06:26:38.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-08-17T13:57:14.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-08-17T18:44:30.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2028-08-18T11:53:09.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-08-19T01:27:10.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2028-08-19T03:38:54.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-08-19T08:08:54.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-08-19T12:14:41.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-08-20T10:43:48.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2028-08-21T07:52:12.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-08-21T11:26:30.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-08-21T11:56:59.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-08-21T23:36:54.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-08-22T01:28:06.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2028-08-22T12:55:38.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2028-08-23T00:46:40.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-08-23T02:57:46.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2028-08-23T11:50:19.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-08-23T14:48:57.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-08-24T02:00:41.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-08-24T17:39:55.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-08-25T02:00:31.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-08-25T09:15:52.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2028-08-25T20:59:16.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-08-26T07:20:56.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-08-26T15:46:17.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-08-26T18:46:56.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-08-27T01:35:50.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-08-27T06:24:45.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-08-27T08:52:23.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-08-27T19:15:14.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-08-29T03:00:54.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-08-29T05:10:28.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-08-29T14:01:23.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-08-29T16:59:16.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-08-29T22:43:42.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-08-30T22:34:02.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-08-31T05:57:10.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2028-08-31T14:26:00.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-08-31T22:12:16.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-09-01T01:09:20.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2028-09-01T03:49:52.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-09-01T09:48:49.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-09-01T15:34:24.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-09-03T22:10:21.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-09-03T23:47:32.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2028-09-04T04:09:39.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-09-05T11:07:50.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-09-05T13:28:13.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-09-05T17:27:41.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2028-09-06T02:00:28.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-09-06T04:39:14.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2028-09-06T11:08:03.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2028-09-06T16:51:35.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-09-08T05:06:35.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-09-08T05:30:24.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-09-08T14:01:10.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-09-08T22:30:34.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2028-09-09T10:43:49.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-09-10T18:23:01.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-09-10T18:52:25.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-09-10T21:48:59.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-09-11T00:15:39.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-09-11T02:40:01.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-09-11T14:23:05.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-09-11T17:04:42.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-09-12T00:45:43.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-09-13T02:53:17.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-09-13T09:39:12.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-09-13T14:54:22.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-09-14T01:41:01.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-09-14T10:25:48.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-09-15T07:31:56.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-09-15T10:56:39.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2028-09-15T11:13:09.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2028-09-15T12:57:58.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-09-15T17:49:39.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-09-15T17:52:16.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-09-15T23:25:46.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-09-16T05:32:42.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-09-17T17:52:34.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-09-17T23:23:19.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-09-18T18:23:42.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2028-09-19T08:41:27.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2028-09-19T10:27:44.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-09-19T12:17:43.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2028-09-19T14:51:43.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-09-19T22:29:30.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-09-20T00:48:32.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-09-20T05:21:51.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2028-09-21T10:20:12.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-09-21T16:51:34.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2028-09-21T17:05:33.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-09-22T05:35:47.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-09-23T02:42:11.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-09-23T12:45:12.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-09-23T13:04:08.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-09-23T15:00:37.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-09-23T22:50:03.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-09-24T02:41:28.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-09-24T08:18:32.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-09-24T14:51:09.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-09-25T13:09:59.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-09-25T20:29:44.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-09-25T21:51:30.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-09-26T03:03:02.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-09-26T13:39:48.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-09-28T04:25:53.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-09-28T06:16:30.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2028-09-28T08:05:08.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-09-28T08:18:43.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-09-28T13:36:53.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-09-28T20:44:10.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-09-28T21:40:11.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-09-28T23:34:19.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2028-09-29T23:49:23.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-10-01T01:52:50.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-10-01T10:16:57.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-10-03T07:19:33.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-10-03T09:10:59.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2028-10-03T11:28:23.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2028-10-03T11:36:25.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2028-10-03T16:24:56.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2028-10-03T22:45:10.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-10-04T07:11:41.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-10-05T13:41:14.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-10-05T19:08:29.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-10-06T01:34:05.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2028-10-06T21:35:58.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-10-08T01:49:05.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-10-08T05:32:32.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-10-08T06:21:55.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-10-08T07:06:30.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-10-08T11:36:46.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-10-08T20:06:34.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-10-09T00:12:14.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-10-09T09:58:45.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-10-10T08:33:59.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-10-10T15:09:56.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-10-10T19:09:14.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-10-10T20:07:18.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-10-10T20:30:14.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-10-11T11:56:48.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-10-12T14:08:46.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-10-12T19:00:20.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2028-10-12T20:13:48.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-10-12T23:48:40.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-10-13T02:10:32.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-10-13T07:56:17.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-10-13T19:43:16.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-10-14T01:00:08.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2028-10-15T01:25:11.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-10-15T09:18:27.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-10-15T11:42:44.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-10-16T20:22:16.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2028-10-16T21:04:42.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-10-16T22:02:47.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2028-10-17T05:06:39.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2028-10-17T08:56:13.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-10-18T02:56:45.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2028-10-18T05:05:52.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-10-18T20:45:48.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-10-19T00:33:26.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2028-10-19T19:56:08.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-10-20T07:53:15.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-10-20T22:20:36.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-10-20T23:12:36.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-10-21T05:56:57.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-10-21T08:35:33.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-10-21T11:04:57.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-10-22T04:05:24.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-10-22T14:19:57.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-10-22T15:24:44.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-10-23T04:24:38.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-10-23T07:18:29.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-10-23T15:34:23.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-10-23T18:21:23.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-10-24T17:41:58.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-10-25T04:53:07.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-10-25T12:56:48.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2028-10-25T13:42:11.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-10-25T16:31:57.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-10-26T02:43:35.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-10-26T03:19:38.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-10-26T13:02:52.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-10-27T16:18:50.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2028-10-27T22:17:12.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-10-28T04:22:33.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-10-28T15:39:48.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-10-30T07:33:45.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-10-30T13:49:40.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-10-30T14:19:05.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2028-10-31T04:01:44.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-10-31T05:52:16.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2028-11-01T08:37:46.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2028-11-01T22:40:27.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-11-02T01:24:42.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-11-02T03:43:18.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2028-11-02T09:17:18.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2028-11-04T11:17:09.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-11-04T11:17:30.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-11-04T11:29:24.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-11-04T17:52:34.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-11-05T00:19:28.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-11-05T04:16:13.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-11-06T19:25:18.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-11-06T20:09:33.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-11-06T20:45:39.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-11-06T21:47:32.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-11-07T07:24:10.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-11-07T11:59:27.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-11-07T12:34:34.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-11-09T01:18:15.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-11-09T01:21:17.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2028-11-09T02:21:25.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-11-09T09:25:02.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-11-09T13:04:11.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-11-09T18:05:13.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-11-09T18:36:28.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-11-09T21:25:49.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-11-11T05:40:49.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-11-11T11:24:27.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2028-11-11T16:04:54.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-11-11T19:15:36.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-11-12T04:00:56.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-11-13T06:27:48.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2028-11-13T06:42:44.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-11-13T17:16:17.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-11-14T00:03:37.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2028-11-14T07:18:17.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-11-15T07:30:54.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-11-15T07:32:50.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2028-11-15T17:22:09.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-11-16T09:29:27.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2028-11-16T13:17:58.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2028-11-17T08:44:29.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-11-17T09:12:12.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-11-17T19:51:59.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-11-17T21:23:38.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-11-18T04:43:34.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-11-18T20:57:20.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-11-19T12:57:26.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-11-19T12:58:43.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-11-20T04:48:35.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-11-20T11:13:47.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-11-21T08:04:22.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-11-21T09:39:05.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-11-21T09:48:41.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-11-21T20:41:30.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-11-21T20:58:05.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-11-21T21:45:07.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2028-11-22T09:27:12.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-11-22T21:41:02.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-11-24T00:14:36.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-11-24T03:27:11.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-11-24T05:24:48.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-11-24T07:42:11.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-11-24T21:05:25.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-11-25T07:18:04.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2028-11-26T18:29:44.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-11-26T20:50:55.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2028-11-26T21:57:32.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-11-27T03:14:01.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-11-27T09:28:26.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-11-28T00:11:31.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2028-11-29T07:20:45.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2028-11-29T09:37:27.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-11-29T17:20:24.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-11-30T11:38:12.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-12-01T17:44:24.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-12-01T19:01:51.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-12-02T01:40:11.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2028-12-02T05:09:40.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-12-02T15:43:18.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2028-12-02T20:42:45.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-12-02T22:07:12.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-12-03T23:24:36.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-12-04T00:48:51.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-12-04T20:34:10.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-12-05T03:34:24.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-12-05T06:16:24.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-12-06T04:32:18.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-12-06T06:05:03.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-12-06T07:30:39.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2028-12-06T16:30:31.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-12-06T22:08:06.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-12-07T06:31:21.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-12-07T08:45:58.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-12-07T16:15:14.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-12-08T08:16:40.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-12-08T20:00:12.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-12-09T05:38:52.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-12-09T14:49:11.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-12-09T17:38:11.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2028-12-10T01:40:13.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-12-10T12:46:04.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2028-12-10T14:19:55.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-12-10T22:31:48.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-12-11T12:03:41.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-12-11T15:42:21.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2028-12-12T10:09:37.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-12-12T13:08:47.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2028-12-12T16:44:40.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-12-14T01:59:08.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2028-12-14T05:30:44.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-12-14T17:53:39.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2028-12-14T19:40:43.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-12-15T03:36:40.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-12-15T22:53:29.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2028-12-16T02:06:16.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2028-12-16T07:38:51.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-12-16T20:04:38.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2028-12-16T22:26:36.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-12-17T06:36:23.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2028-12-18T05:33:25.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2028-12-18T16:08:33.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-12-19T03:11:43.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2028-12-19T03:47:23.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-12-19T05:51:04.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-12-19T08:02:32.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2028-12-19T16:17:09.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-12-20T15:27:47.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-12-21T03:53:38.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2028-12-21T13:26:22.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-12-21T20:59:03.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-12-22T03:05:30.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2028-12-22T17:48:33.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2028-12-23T18:32:09.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2028-12-23T21:44:54.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2028-12-24T04:49:36.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2028-12-24T07:23:20.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2028-12-24T15:26:08.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2028-12-24T16:35:12.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2028-12-25T14:25:49.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2028-12-25T17:11:58.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2028-12-26T13:41:46.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2028-12-26T15:26:42.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2028-12-26T19:28:24.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2028-12-28T08:02:54.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2028-12-28T20:47:10.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2028-12-29T02:29:33.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2028-12-29T05:03:24.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2028-12-29T11:52:12.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2028-12-30T01:37:14.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2028-12-30T12:44:07.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2028-12-31T05:14:27.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2028-12-31T06:01:10.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2028-12-31T09:03:10.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2028-12-31T16:48:28.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2029-01-01T18:03:23.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-01-02T05:00:49.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2029-01-02T10:09:26.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-01-02T10:52:40.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-01-02T13:08:22.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-01-02T15:38:04.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2029-01-02T21:23:56.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-01-03T20:27:23.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-01-03T21:30:59.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-01-04T12:52:42.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-01-04T23:51:14.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-01-05T07:01:29.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-01-06T03:42:23.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-01-06T13:52:07.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-01-06T18:18:43.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2029-01-06T18:37:18.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2029-01-06T20:54:41.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-01-07T02:11:18.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-01-07T13:26:19.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-01-08T03:20:44.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2029-01-08T11:24:08.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-01-08T16:32:25.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-01-08T18:12:06.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2029-01-09T00:01:32.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-01-09T20:50:19.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-01-10T18:46:31.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-01-11T01:27:24.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-01-11T04:16:10.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-01-11T04:18:00.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-01-11T09:21:43.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-01-12T12:47:16.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-01-13T03:52:16.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-01-13T07:12:54.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-01-13T07:36:10.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-01-13T11:22:34.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-01-14T17:24:27.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2029-01-14T20:11:13.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-01-14T23:46:20.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2029-01-15T11:36:22.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-01-15T15:05:28.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-01-15T18:17:29.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2029-01-15T20:42:24.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-01-15T23:15:13.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-01-17T05:57:29.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-01-17T21:46:26.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-01-18T09:40:36.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-01-18T14:51:27.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-01-19T09:44:00.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-01-20T01:10:08.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-01-20T13:38:56.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2029-01-20T17:10:54.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-01-20T21:53:29.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-01-20T22:11:06.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2029-01-21T10:25:04.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-01-21T17:27:46.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-01-22T06:53:36.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2029-01-22T19:23:11.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-01-22T22:39:00.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2029-01-23T05:45:04.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-01-24T01:59:44.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-01-24T05:18:22.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-01-25T11:20:48.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-01-25T12:47:16.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-01-25T16:11:18.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-01-25T20:05:22.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-01-25T22:41:58.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-01-27T02:51:18.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-01-27T16:47:39.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-01-27T19:50:10.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-01-28T05:47:27.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-01-28T15:03:53.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2029-01-29T06:21:40.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-01-29T07:30:00.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-01-29T20:36:32.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-01-29T23:24:31.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-01-30T02:28:12.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2029-01-30T05:33:49.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-01-30T06:03:34.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2029-01-30T09:22:10.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-01-31T09:25:01.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-01-31T22:07:34.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-02-01T06:38:51.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-02-01T20:50:13.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-02-02T18:09:39.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-02-03T01:40:48.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2029-02-03T04:43:58.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-02-03T07:29:18.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-02-03T12:20:26.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2029-02-03T15:24:22.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-02-04T00:14:01.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-02-04T11:49:46.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2029-02-05T00:40:48.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-02-05T01:09:26.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2029-02-05T06:55:25.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-02-05T21:52:10.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-02-06T06:12:55.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-02-07T07:59:04.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-02-07T09:59:42.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-02-07T11:20:06.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-02-07T14:01:13.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-02-07T20:09:54.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-02-08T07:15:30.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-02-08T21:08:12.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-02-09T12:06:03.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-02-09T14:40:13.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-02-10T03:31:54.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-02-11T04:35:11.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2029-02-11T05:13:58.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-02-11T21:02:10.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-02-11T23:32:18.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-02-12T03:10:50.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2029-02-12T05:45:06.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-02-12T12:53:10.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-02-12T13:57:33.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-02-13T10:31:28.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2029-02-13T15:13:55.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-02-14T07:52:38.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-02-14T16:30:31.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-02-16T15:16:23.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-02-16T22:31:12.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2029-02-17T02:20:37.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-02-17T04:43:17.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-02-17T12:07:04.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2029-02-18T03:25:44.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-02-18T15:22:37.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2029-02-18T21:53:01.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-02-19T09:21:59.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2029-02-19T11:26:15.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-02-19T15:10:12.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-02-20T22:45:46.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-02-21T15:09:51.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-02-21T22:58:51.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-02-22T02:36:48.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-02-22T04:37:23.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-02-22T06:14:00.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-02-22T10:55:54.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-02-23T12:38:16.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-02-23T14:40:52.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-02-24T04:34:41.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-02-24T05:57:10.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-02-24T07:19:56.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-02-24T17:50:07.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-02-25T17:58:47.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-02-26T10:30:19.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-02-26T11:35:46.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-02-26T14:42:01.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2029-02-26T16:16:38.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-02-26T20:43:09.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-02-27T05:28:04.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2029-02-27T19:38:29.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-02-28T07:09:20.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-02-28T11:43:19.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-02-28T16:58:03.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-02-28T17:10:12.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2029-03-02T12:10:19.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2029-03-02T15:04:15.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-03-02T16:27:51.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-03-02T19:28:57.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2029-03-03T16:01:19.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-03-03T18:43:09.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2029-03-04T12:00:35.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2029-03-04T15:30:33.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-03-04T15:39:05.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-03-05T00:10:22.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-03-05T23:54:40.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-03-06T15:26:47.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-03-06T18:35:21.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-03-06T20:02:36.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-03-06T21:35:40.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-03-06T23:47:04.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-03-07T07:51:33.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-03-08T00:47:18.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-03-08T12:40:54.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-03-08T21:40:51.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-03-08T21:46:12.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-03-09T03:01:26.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-03-09T12:25:04.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-03-09T19:46:57.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-03-10T08:35:10.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-03-11T07:07:51.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-03-11T07:20:06.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-03-11T10:31:45.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2029-03-11T11:05:42.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-03-11T12:04:36.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-03-12T18:42:47.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-03-13T19:02:03.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-03-13T23:29:23.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-03-14T03:36:35.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2029-03-14T23:26:11.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-03-15T04:19:12.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2029-03-16T06:58:27.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2029-03-16T07:28:12.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2029-03-16T10:22:17.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-03-16T11:57:24.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-03-17T18:19:00.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2029-03-18T21:06:09.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2029-03-18T23:10:12.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-03-20T02:33:26.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-03-20T14:32:13.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-03-20T16:18:11.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-03-21T04:34:56.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-03-21T07:59:33.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-03-21T11:08:50.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-03-21T12:43:23.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-03-22T16:31:56.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-03-23T00:05:21.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-03-23T07:16:28.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-03-23T07:33:05.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-03-23T12:35:45.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-03-23T17:39:09.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-03-23T19:28:08.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-03-24T23:30:44.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-03-25T16:12:02.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-03-25T17:07:16.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-03-25T18:07:11.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-03-25T19:02:22.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-03-25T23:25:15.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-03-26T01:23:35.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-03-26T02:02:16.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2029-03-26T03:29:00.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-03-27T02:31:05.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-03-28T03:24:35.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-03-28T05:05:31.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-03-29T16:24:44.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2029-03-30T00:45:53.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2029-03-30T02:26:21.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2029-03-30T03:01:43.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-03-30T04:26:12.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-03-30T05:08:00.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-03-30T08:50:46.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2029-03-31T00:56:12.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2029-04-01T02:15:10.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-04-01T02:35:37.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2029-04-02T13:33:33.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-04-03T01:15:29.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-04-03T03:34:40.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-04-03T05:14:11.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-04-03T10:04:39.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-04-03T15:08:56.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-04-04T02:39:23.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-04-04T02:46:42.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-04-04T15:58:23.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-04-05T06:06:51.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-04-05T09:43:46.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-04-05T19:51:33.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-04-06T02:40:13.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-04-06T08:54:23.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-04-06T19:35:12.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-04-06T22:03:55.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-04-07T14:50:44.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-04-07T17:18:44.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2029-04-07T19:04:46.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-04-07T19:25:00.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-04-08T10:16:15.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-04-08T18:22:57.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-04-08T18:59:25.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-04-09T17:14:28.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-04-10T07:05:37.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-04-10T07:09:25.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-04-11T17:54:10.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2029-04-12T15:04:26.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2029-04-12T17:24:25.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-04-12T19:52:47.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-04-13T17:49:33.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2029-04-13T21:40:07.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2029-04-14T09:47:15.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-04-15T06:03:09.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-04-15T09:34:02.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2029-04-15T14:05:49.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2029-04-16T16:05:05.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-04-17T15:53:10.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-04-17T17:54:39.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-04-17T20:38:37.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-04-18T16:11:12.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-04-19T01:55:01.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-04-19T07:17:33.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-04-19T21:37:58.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-04-20T02:05:05.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-04-20T08:16:11.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-04-20T23:55:40.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-04-21T00:32:48.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-04-21T09:27:12.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-04-21T19:50:05.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-04-22T09:12:06.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-04-22T10:26:04.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-04-22T10:48:00.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2029-04-22T13:33:48.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-04-22T15:21:52.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-04-23T05:35:44.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-04-23T09:13:59.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-04-24T03:53:05.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-04-24T16:47:44.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-04-24T18:26:50.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-04-24T18:45:26.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-04-25T13:32:16.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-04-25T14:50:42.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2029-04-26T13:12:46.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2029-04-26T14:27:41.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-04-26T17:12:46.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-04-27T06:37:30.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2029-04-28T10:36:45.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2029-04-28T13:45:03.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-04-28T19:01:38.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2029-04-29T02:24:06.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-04-29T13:15:51.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-04-29T15:16:39.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2029-04-30T12:58:51.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-04-30T14:05:47.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-04-30T17:16:39.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-05-01T06:23:31.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-05-01T14:37:26.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-05-02T16:19:50.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-05-02T21:32:48.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-05-03T00:17:35.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-05-03T10:30:26.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-05-03T18:08:15.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-05-03T19:39:52.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-05-03T22:31:26.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-05-04T23:39:57.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-05-05T00:42:27.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2029-05-05T04:48:07.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-05-05T08:39:13.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-05-05T09:48:03.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-05-05T18:31:22.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-05-06T06:37:53.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-05-06T09:31:28.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-05-07T16:00:21.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-05-07T20:24:09.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-05-08T02:10:29.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-05-08T16:30:27.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-05-08T16:40:45.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2029-05-09T04:26:59.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-05-09T23:11:05.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2029-05-09T23:59:22.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-05-10T04:51:48.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-05-10T17:42:09.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2029-05-12T12:30:34.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-05-12T22:44:13.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2029-05-13T11:56:36.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2029-05-13T13:42:05.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2029-05-13T18:07:56.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-05-14T18:28:26.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-05-14T23:26:54.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-05-14T23:55:30.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-05-15T05:10:36.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-05-15T16:06:22.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-05-16T05:17:07.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-05-17T09:16:48.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-05-17T20:24:15.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-05-18T00:51:04.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-05-18T02:46:05.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-05-18T14:28:06.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-05-18T18:29:25.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-05-19T16:45:50.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-05-19T16:56:19.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2029-05-19T22:16:31.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-05-19T23:25:43.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-05-20T03:46:06.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-05-20T07:10:46.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-05-20T07:35:44.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-05-21T04:16:06.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-05-22T02:47:38.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-05-22T08:15:14.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-05-22T08:36:48.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-05-22T10:18:26.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-05-23T00:51:44.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2029-05-23T10:39:37.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-05-23T23:29:53.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-05-23T23:33:31.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2029-05-24T04:46:59.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-05-24T12:02:55.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2029-05-24T14:38:56.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-05-25T23:58:25.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-05-26T11:02:09.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2029-05-26T11:31:22.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2029-05-27T03:38:39.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-05-27T18:37:27.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2029-05-28T00:35:22.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-05-28T00:51:34.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-05-28T06:21:55.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-05-28T13:01:03.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-05-29T01:09:02.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-05-29T06:02:54.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-05-30T03:33:04.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-05-30T16:08:56.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-05-30T16:10:27.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-05-30T17:19:55.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-05-31T11:32:36.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-06-01T09:02:53.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2029-06-01T09:36:32.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-06-01T10:40:48.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-06-01T16:09:00.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-06-01T22:52:26.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-06-01T23:32:56.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-06-02T02:18:54.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-06-03T00:49:40.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-06-04T01:18:48.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-06-04T02:26:16.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-06-04T10:32:42.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-06-04T16:03:21.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-06-05T09:58:12.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2029-06-05T19:10:07.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-06-06T06:38:02.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-06-06T07:33:08.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2029-06-06T15:00:41.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-06-06T18:51:09.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-06-06T21:21:20.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2029-06-08T14:39:04.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-06-08T19:05:23.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-06-09T12:27:11.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2029-06-10T02:07:28.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2029-06-10T13:38:45.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-06-11T06:12:13.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-06-11T07:22:51.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-06-11T14:53:44.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-06-11T20:13:58.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-06-12T03:50:29.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2029-06-13T00:57:32.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-06-13T16:26:36.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-06-13T23:19:05.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-06-14T04:42:23.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-06-14T08:27:07.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-06-15T07:18:00.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-06-15T09:53:50.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-06-15T21:55:28.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2029-06-15T23:15:48.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-06-16T06:33:23.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-06-16T11:00:35.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-06-16T15:03:07.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-06-17T02:20:46.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-06-17T18:33:52.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-06-18T11:14:23.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-06-18T19:38:41.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-06-18T20:29:04.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-06-19T09:54:04.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-06-19T21:26:41.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2029-06-20T03:57:55.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-06-20T05:38:43.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-06-20T07:06:51.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2029-06-20T14:16:50.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-06-20T18:09:12.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2029-06-21T03:45:15.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-06-21T15:46:08.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-06-22T07:34:04.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-06-23T00:50:46.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2029-06-23T10:06:21.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-06-24T04:18:29.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-06-24T09:22:13.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-06-24T11:01:58.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-06-24T18:31:33.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-06-24T21:13:17.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2029-06-24T22:12:29.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-06-26T03:22:17.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2029-06-26T08:45:42.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-06-26T14:07:59.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-06-27T01:50:57.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-06-27T07:27:39.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-06-28T02:45:58.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-06-28T15:49:43.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-06-28T17:38:49.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2029-06-28T19:41:12.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-06-29T04:18:14.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-06-29T08:13:37.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-06-29T14:26:11.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-06-30T01:29:06.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-07-01T01:23:14.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-07-01T13:47:23.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-07-02T00:42:16.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-07-02T23:59:05.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-07-03T10:08:32.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-07-03T13:30:25.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-07-03T16:00:00.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2029-07-03T16:19:57.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2029-07-03T17:57:27.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-07-04T01:53:36.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-07-04T06:07:55.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2029-07-06T01:41:48.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-07-06T01:55:29.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-07-06T05:28:32.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-07-06T11:41:46.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-07-07T02:06:04.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2029-07-08T13:09:26.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-07-08T15:47:34.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-07-08T20:53:33.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-07-08T23:02:07.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-07-09T01:42:57.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-07-09T05:51:07.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-07-11T00:21:56.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-07-11T07:24:51.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-07-11T14:01:39.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-07-11T15:51:00.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2029-07-11T20:30:06.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2029-07-11T20:46:19.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-07-13T03:35:57.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2029-07-13T06:10:32.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-07-13T14:57:28.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-07-13T15:35:15.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-07-13T19:33:44.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-07-13T23:15:01.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-07-14T02:03:09.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-07-15T19:19:32.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-07-16T05:40:05.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-07-16T07:58:12.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-07-16T22:43:48.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-07-17T10:08:40.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-07-17T12:46:14.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2029-07-17T22:12:25.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-07-18T01:06:41.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2029-07-18T02:20:39.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2029-07-18T14:14:16.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-07-18T14:41:47.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-07-19T09:34:16.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-07-19T12:40:49.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-07-20T11:37:31.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2029-07-20T20:43:09.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-07-20T22:13:36.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-07-21T15:39:32.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-07-21T18:28:23.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-07-21T20:42:33.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-07-22T04:28:51.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-07-22T09:06:27.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-07-22T11:11:20.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-07-23T06:50:27.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-07-23T22:37:57.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-07-24T14:08:15.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-07-24T18:05:26.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-07-24T20:27:29.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-07-25T13:35:42.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2029-07-26T01:25:16.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2029-07-26T04:34:08.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-07-26T15:43:03.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-07-26T21:14:28.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-07-27T00:16:07.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2029-07-27T03:21:23.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-07-27T03:39:51.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-07-28T07:17:17.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-07-29T00:53:57.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-07-29T13:32:13.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-07-30T17:30:01.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-07-30T20:23:04.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-07-30T23:57:55.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2029-07-31T12:35:34.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-07-31T19:21:16.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2029-08-01T06:37:02.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2029-08-01T16:21:25.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-08-02T08:45:38.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-08-02T11:15:20.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-08-02T19:51:35.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-08-03T14:32:22.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2029-08-04T13:19:07.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-08-04T20:30:41.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-08-05T00:08:06.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-08-05T04:04:54.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-08-05T12:49:44.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-08-05T13:39:03.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-08-05T20:09:33.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-08-06T11:12:36.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-08-07T06:02:40.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-08-07T08:57:17.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-08-08T03:11:27.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-08-08T04:23:10.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-08-08T09:00:48.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-08-08T20:23:13.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-08-09T10:58:51.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2029-08-09T14:16:11.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-08-10T01:53:24.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-08-10T01:55:44.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2029-08-10T09:10:49.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-08-10T13:12:29.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-08-11T02:04:38.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-08-12T00:59:33.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2029-08-12T04:18:44.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-08-12T15:21:13.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-08-12T18:44:58.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-08-13T15:14:39.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-08-13T18:26:19.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2029-08-14T05:57:55.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-08-14T12:51:23.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-08-14T13:51:46.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2029-08-15T09:53:21.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2029-08-15T17:03:07.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-08-16T13:42:02.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-08-16T18:55:16.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-08-16T19:41:51.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2029-08-17T08:10:22.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-08-17T20:10:41.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-08-17T23:34:49.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-08-18T12:06:19.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-08-18T21:25:51.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-08-18T21:54:20.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-08-19T02:57:42.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-08-19T17:44:07.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-08-19T22:32:18.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-08-20T04:33:52.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-08-21T03:53:56.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-08-21T05:56:13.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-08-21T07:51:58.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-08-22T05:38:51.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-08-22T07:40:34.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2029-08-22T07:57:08.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-08-22T11:20:28.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-08-23T01:07:52.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-08-23T12:17:41.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-08-23T13:47:21.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-08-24T01:51:10.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2029-08-24T19:38:00.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-08-25T10:33:34.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-08-25T23:40:47.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-08-26T08:53:57.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2029-08-27T02:54:08.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-08-27T06:50:34.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2029-08-27T13:21:04.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-08-27T22:03:50.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-08-28T11:28:27.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2029-08-29T10:42:28.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-08-29T15:14:26.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-08-30T01:48:14.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2029-08-31T00:22:31.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2029-08-31T13:47:43.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-09-01T03:37:22.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-09-01T04:33:01.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-09-01T07:31:43.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-09-01T22:56:16.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-09-02T02:54:12.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-09-02T13:26:41.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-09-03T00:58:37.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-09-03T17:19:34.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-09-03T19:21:33.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-09-04T05:43:11.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-09-04T17:01:24.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-09-04T19:58:56.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-09-04T22:10:38.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-09-05T07:26:18.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-09-05T19:48:53.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2029-09-05T23:11:21.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-09-06T12:54:55.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-09-06T13:22:05.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-09-07T00:02:53.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-09-07T01:52:58.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-09-07T02:46:14.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-09-08T10:44:19.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2029-09-08T14:35:55.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-09-08T17:17:36.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-09-09T01:11:07.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-09-09T08:15:31.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2029-09-09T22:41:48.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-09-10T01:45:51.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2029-09-10T14:50:23.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-09-11T05:13:53.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2029-09-11T11:17:25.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-09-11T23:01:02.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-09-12T18:35:39.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-09-12T23:01:07.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2029-09-13T02:24:36.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2029-09-13T04:15:51.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-09-14T00:59:25.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-09-14T04:11:54.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-09-14T18:31:20.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-09-15T01:29:14.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-09-15T04:10:41.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-09-15T11:34:56.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-09-16T02:11:42.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-09-16T08:52:44.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-09-17T06:16:13.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-09-17T11:43:37.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-09-17T11:47:10.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-09-17T13:54:57.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-09-17T18:47:53.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-09-18T12:41:07.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2029-09-18T14:37:10.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-09-18T16:06:38.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-09-19T08:04:47.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-09-19T20:07:06.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-09-20T01:40:41.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-09-20T04:24:22.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-09-21T05:47:18.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-09-21T17:39:08.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2029-09-21T18:01:35.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-09-22T06:17:36.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-09-22T15:38:21.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-09-22T16:29:15.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2029-09-23T08:54:39.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-09-23T12:24:33.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2029-09-24T05:35:54.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-09-25T05:04:16.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2029-09-25T21:16:33.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-09-26T16:30:57.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-09-26T18:10:50.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-09-27T06:40:04.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2029-09-28T00:05:01.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2029-09-28T04:20:43.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-09-28T10:02:46.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-09-28T13:24:28.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-09-29T06:50:17.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-09-29T07:35:49.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-09-30T07:54:07.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-09-30T20:56:48.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-01T00:22:34.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-01T21:55:59.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-10-02T04:01:00.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-10-02T04:07:27.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-10-02T17:25:28.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-03T02:31:32.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-10-03T04:53:10.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2029-10-03T07:42:03.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-10-03T09:00:57.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-10-03T23:09:35.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-10-04T09:10:57.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-04T13:58:01.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-04T22:31:16.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-10-05T08:48:23.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-06T01:19:08.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-06T10:34:46.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-10-06T15:14:03.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2029-10-06T19:06:36.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-10-07T08:38:45.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-10-07T11:00:36.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2029-10-07T11:29:49.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-10-07T19:14:30.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2029-10-08T01:00:03.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-10-08T23:59:30.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2029-10-09T07:53:31.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-10T09:19:24.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2029-10-11T01:42:26.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-10-11T01:51:48.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-10-11T08:13:51.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-10-11T10:33:28.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-10-11T16:13:59.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2029-10-12T01:28:49.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-10-12T02:34:52.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-10-13T04:09:42.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-10-13T11:28:52.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-13T13:43:14.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-14T11:08:49.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-14T15:27:02.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-10-15T11:08:18.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-15T17:49:57.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2029-10-15T20:07:12.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-10-15T20:16:28.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-10-16T02:27:50.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-10-16T09:21:28.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-10-16T13:14:17.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-10-16T23:20:31.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-16T23:53:34.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-10-17T21:19:32.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-10-18T11:05:34.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-18T23:09:09.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-18T23:23:54.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-19T09:38:11.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-10-20T14:43:10.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-10-20T17:05:10.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2029-10-21T04:23:17.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-10-21T11:10:30.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-10-21T14:56:18.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-10-21T19:46:35.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2029-10-22T09:27:31.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2029-10-22T23:16:38.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2029-10-23T03:14:12.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-24T09:47:01.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2029-10-25T16:01:48.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-10-25T18:08:36.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-10-26T12:15:24.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-10-26T16:59:53.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-10-27T00:08:21.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2029-10-27T16:43:55.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-10-27T21:18:53.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-10-28T02:09:46.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-10-28T05:44:04.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-29T08:11:09.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-10-30T10:52:42.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-30T11:32:14.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-30T12:17:38.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-30T12:53:33.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2029-10-30T14:34:18.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-10-31T06:53:42.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-10-31T15:05:44.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-10-31T20:19:47.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-11-01T00:14:31.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-11-01T18:20:59.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-11-01T20:52:47.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-11-01T23:10:42.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-11-02T10:39:20.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-11-02T18:06:43.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-11-03T02:49:05.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-11-03T05:36:35.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-11-03T19:38:15.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-11-03T20:54:31.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2029-11-04T11:11:17.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-11-05T05:53:36.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-11-05T07:54:03.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-11-05T19:04:55.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-11-05T20:41:41.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2029-11-06T04:24:04.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2029-11-06T11:05:02.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2029-11-06T17:02:44.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2029-11-07T18:30:59.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-11-07T19:36:15.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-11-08T10:01:00.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-11-09T12:17:31.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-11-09T13:14:15.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2029-11-09T21:02:19.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-11-09T23:12:43.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-11-10T13:44:38.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-11-10T19:31:04.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-11-11T02:18:56.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-11-12T00:55:27.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2029-11-12T01:56:06.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-11-12T05:15:07.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-11-12T18:17:17.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-11-13T00:35:14.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-11-13T01:48:33.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-11-13T17:12:48.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-11-14T08:49:16.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-11-14T08:50:31.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-11-14T15:10:35.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-11-15T03:46:04.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-11-15T11:28:23.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-11-15T15:49:49.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-11-16T12:39:44.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-11-16T21:04:56.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-11-16T21:54:22.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2029-11-17T00:15:48.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-11-17T00:34:08.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-11-17T15:32:29.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-11-19T09:48:36.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-11-19T17:07:14.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-11-19T17:31:34.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-11-19T17:43:01.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2029-11-20T11:34:13.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2029-11-21T04:02:55.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2029-11-21T22:28:04.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-11-21T22:59:26.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-11-22T07:36:30.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2029-11-22T16:15:53.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-11-24T10:25:15.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-11-24T19:38:15.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-11-25T00:39:57.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-11-25T00:51:21.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2029-11-25T09:50:04.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-11-26T12:24:39.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-11-26T19:35:36.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2029-11-26T19:48:48.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-11-27T05:37:35.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-11-27T11:35:39.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-11-27T17:51:36.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-11-27T19:03:31.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-11-28T23:47:45.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-11-29T12:25:24.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-11-29T17:02:28.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-11-29T20:19:11.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-11-29T21:51:27.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-11-29T22:48:30.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-11-30T06:28:05.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-01T05:35:29.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2029-12-01T05:36:29.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-12-01T07:10:01.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-12-01T19:25:27.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-12-02T00:34:25.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-02T02:55:10.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-02T13:43:31.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-12-03T06:31:34.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-03T17:07:47.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2029-12-04T00:48:59.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2029-12-04T02:25:49.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-12-04T05:44:44.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-12-05T06:15:48.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-12-05T06:27:44.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-12-05T14:52:04.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2029-12-05T19:29:10.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-12-07T00:09:10.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2029-12-07T06:59:20.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-07T19:39:27.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-12-08T01:53:59.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-12-08T06:52:40.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-12-08T13:24:09.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2029-12-09T10:21:16.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-12-09T10:46:47.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2029-12-10T00:44:22.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-10T00:49:53.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-12-10T04:20:58.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-12-10T06:21:21.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-11T21:29:03.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-12-12T08:48:18.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-12T09:49:22.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-12-12T14:36:36.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-12-12T17:49:26.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-12T23:07:00.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-12-13T11:56:03.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2029-12-14T04:06:31.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2029-12-14T04:50:33.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2029-12-14T14:14:01.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-14T19:59:04.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-12-15T11:10:16.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-12-15T11:36:42.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-16T04:29:52.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-16T17:36:11.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-17T07:47:55.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-12-17T12:05:17.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2029-12-17T14:26:57.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2029-12-18T00:28:23.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-12-18T21:25:55.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-12-19T05:15:01.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2029-12-19T06:14:26.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-12-19T20:35:01.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2029-12-20T22:46:27.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2029-12-21T16:14:21.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-22T10:14:21.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2029-12-22T12:18:36.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2029-12-22T12:24:39.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2029-12-22T20:54:07.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2029-12-24T01:06:31.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2029-12-24T01:20:44.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2029-12-24T02:14:46.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2029-12-24T14:59:02.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-12-24T20:11:33.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-24T21:18:13.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-26T00:55:14.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2029-12-26T20:44:07.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2029-12-26T20:54:20.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-27T01:53:34.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2029-12-27T03:52:05.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2029-12-27T07:35:55.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-12-28T09:49:03.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-28T12:14:43.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2029-12-28T13:28:09.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2029-12-28T18:46:44.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2029-12-28T21:07:29.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-29T00:44:16.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2029-12-29T09:35:46.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-30T16:08:28.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-30T16:21:28.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2029-12-30T19:22:49.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2029-12-31T00:05:08.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2029-12-31T07:31:47.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2029-12-31T09:54:51.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2029-12-31T10:55:27.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2030-01-01T16:21:12.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-01-01T17:40:10.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-01-02T04:03:22.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-01-02T04:14:26.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-01-03T14:01:10.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2030-01-03T17:50:24.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-01-04T02:49:30.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2030-01-04T09:12:41.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-01-04T10:24:12.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-01-04T15:19:02.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-01-05T20:50:28.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-01-05T22:22:58.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2030-01-06T09:00:46.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-01-06T14:06:13.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-01-06T15:43:27.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2030-01-06T20:03:01.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-01-07T15:42:59.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-01-08T15:04:00.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-01-08T15:35:53.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-01-08T21:05:25.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-01-08T22:00:38.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-01-09T04:16:31.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-01-09T22:48:54.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-01-10T12:22:17.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2030-01-10T14:17:00.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-01-10T22:36:40.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-01-11T01:43:15.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-01-11T14:06:01.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-01-11T17:37:23.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-01-12T10:33:14.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-01-13T02:44:03.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-01-13T08:26:54.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-01-13T20:11:45.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2030-01-14T05:36:56.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2030-01-14T08:33:50.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-01-14T10:43:36.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-01-15T13:25:32.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-01-15T15:31:24.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-01-16T02:23:54.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-01-17T02:40:16.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-01-17T15:23:18.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2030-01-18T00:19:31.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-01-18T03:26:36.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-01-18T18:23:09.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-01-19T04:32:03.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-01-19T15:54:19.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2030-01-20T08:26:31.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-01-20T10:28:23.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2030-01-20T19:52:12.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-01-21T01:35:05.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-01-21T11:51:19.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-01-22T01:04:35.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2030-01-22T13:22:17.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-01-22T14:43:06.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-01-23T00:58:21.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-01-23T06:37:00.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-01-23T17:04:39.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-01-24T10:58:24.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-01-24T18:13:11.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2030-01-24T18:14:26.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-01-24T20:13:21.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-01-24T21:42:59.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-01-25T04:41:28.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-01-26T14:53:17.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-01-26T18:14:23.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-01-26T21:17:06.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-01-26T23:31:09.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-01-27T05:26:47.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-01-27T13:27:30.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2030-01-28T00:32:09.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2030-01-28T20:45:41.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-01-29T00:26:25.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-01-29T01:02:35.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-01-29T02:29:15.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-01-29T10:29:04.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-01-31T02:42:46.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-01-31T03:29:18.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-01-31T03:43:30.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-01-31T19:34:17.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-01-31T21:24:30.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2030-02-01T07:34:26.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-02-02T07:24:15.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-02-02T09:35:02.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2030-02-02T16:07:27.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2030-02-02T17:31:47.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-02-02T23:59:07.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-02-03T12:46:28.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-02-04T15:24:02.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-02-04T19:03:01.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2030-02-04T23:46:47.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-02-05T06:46:01.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-02-05T20:36:30.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-02-05T21:26:03.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-02-06T22:12:34.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2030-02-07T00:40:51.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-02-07T02:01:18.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-02-07T09:06:14.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-02-07T17:48:03.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-02-08T15:57:59.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-02-09T12:38:21.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-02-09T16:09:24.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-02-10T00:23:48.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-02-10T05:14:18.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2030-02-10T11:49:23.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-02-10T20:46:53.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2030-02-11T13:24:32.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-02-11T23:01:39.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-02-12T01:36:55.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-02-12T09:50:48.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-02-12T17:18:50.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-02-13T05:47:53.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-02-14T10:23:10.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-02-14T21:13:11.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-02-15T04:32:41.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-02-15T07:25:02.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-02-15T19:11:34.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-02-16T18:22:27.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-02-16T20:41:40.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2030-02-17T00:42:11.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2030-02-17T03:43:42.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-02-17T11:29:38.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-02-18T01:21:21.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-02-18T06:19:45.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2030-02-19T07:53:03.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-02-19T13:41:48.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-02-19T15:31:09.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-02-19T23:52:23.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2030-02-20T04:53:37.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-02-21T01:52:53.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2030-02-21T04:01:44.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-02-21T10:22:35.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-02-21T18:44:02.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-02-21T20:37:00.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-02-22T19:21:20.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-02-23T06:22:31.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-02-23T20:40:24.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2030-02-23T23:54:01.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-02-24T05:44:00.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-02-24T10:04:38.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2030-02-24T10:27:11.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-02-25T01:57:39.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-02-25T07:12:01.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-02-25T09:22:24.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-02-25T15:41:19.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-02-26T16:20:01.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-02-26T16:57:46.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-02-27T09:50:10.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-02-27T11:13:37.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-02-28T04:37:14.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-02-28T13:58:03.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-02-28T18:27:33.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-03-01T00:49:07.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-03-01T16:27:14.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-03-01T18:41:16.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2030-03-02T01:08:02.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-03-02T10:27:32.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-03-03T00:33:14.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-03-03T19:48:38.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2030-03-04T06:34:37.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2030-03-04T08:08:31.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-03-04T18:06:34.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-03-05T08:34:41.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-03-05T11:29:31.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-03-05T22:22:50.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2030-03-06T08:18:20.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2030-03-06T10:39:19.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-03-06T17:29:14.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-03-08T02:46:30.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-03-08T22:18:00.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-03-09T13:30:19.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-03-09T14:18:17.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-03-09T16:47:11.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2030-03-10T07:42:32.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2030-03-10T20:38:55.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-03-11T06:33:03.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-03-11T09:00:34.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-03-11T11:21:55.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-03-11T18:21:15.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-03-12T08:47:33.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-03-12T14:14:21.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-03-13T21:06:29.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-03-13T22:33:07.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-03-14T17:29:14.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-03-15T00:37:23.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-03-15T06:33:13.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-03-15T11:23:59.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-03-16T03:38:56.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-03-16T05:48:11.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-03-16T07:48:01.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2030-03-16T10:26:15.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-03-16T13:57:57.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-03-17T00:57:25.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-03-17T12:40:40.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-03-18T18:03:18.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-03-19T04:37:47.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-03-19T15:18:26.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-03-19T17:56:26.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2030-03-20T11:54:55.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2030-03-20T12:17:55.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2030-03-20T13:59:42.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-03-20T17:31:00.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-03-20T19:33:13.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-03-20T21:44:48.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2030-03-22T14:47:26.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-03-22T21:51:41.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-03-23T07:13:48.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2030-03-23T17:01:25.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2030-03-24T03:02:54.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-03-24T14:46:43.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-03-24T16:25:05.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-03-24T22:11:57.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-03-25T03:31:34.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-03-25T05:09:04.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-03-25T05:52:25.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-03-26T09:51:20.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-03-26T18:17:34.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-03-27T12:58:00.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-03-27T14:16:49.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-03-27T16:44:48.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-03-27T23:48:39.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-03-28T19:20:57.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-03-28T23:59:25.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-03-29T01:37:42.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2030-03-29T07:58:13.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-03-29T21:03:26.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-03-29T22:35:32.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-03-29T22:44:48.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-03-30T06:18:26.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-03-30T06:36:13.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-03-31T15:59:20.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-04-01T05:53:25.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-04-01T14:44:14.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-04-02T17:30:31.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2030-04-02T19:05:17.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-04-02T22:02:29.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2030-04-03T02:01:30.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-04-04T01:00:42.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2030-04-04T04:40:55.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-04-04T14:52:01.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2030-04-05T06:48:02.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-04-06T05:37:17.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2030-04-06T13:13:50.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2030-04-06T23:20:01.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-04-07T18:25:16.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-04-07T19:50:59.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-04-08T03:15:30.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-04-08T09:44:52.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-04-09T10:36:18.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-04-09T18:19:36.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-04-09T23:20:01.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-04-10T07:06:24.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-04-11T02:56:51.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-04-11T07:25:56.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-04-11T12:46:36.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-04-12T01:08:47.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-04-12T10:25:44.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-04-12T16:55:50.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-04-12T18:01:12.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2030-04-13T00:56:53.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-04-13T15:44:03.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-04-13T15:55:16.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-04-13T20:01:22.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-04-14T10:57:12.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-04-14T16:14:01.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-04-14T20:54:14.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-04-15T05:59:56.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-04-15T20:09:30.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-04-15T23:12:55.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-04-17T00:31:24.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2030-04-17T01:18:13.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-04-17T07:34:08.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-04-18T03:19:58.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2030-04-18T16:17:23.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2030-04-18T18:42:03.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2030-04-19T01:12:49.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-04-19T06:31:48.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-04-19T21:23:02.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2030-04-19T22:54:29.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2030-04-21T00:37:54.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-04-21T01:14:53.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-04-21T07:47:31.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-04-21T10:38:13.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-04-22T10:53:18.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-04-22T13:34:47.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-04-23T01:25:47.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-04-23T02:34:33.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-04-23T17:25:36.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-04-24T01:52:04.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-04-24T01:52:08.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-04-24T14:57:47.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-04-24T18:38:56.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-04-25T07:23:02.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-04-25T07:51:48.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2030-04-25T09:05:58.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-04-25T15:27:32.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-04-26T07:26:37.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-04-26T08:25:46.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-04-26T19:00:29.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-04-27T06:10:49.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-04-27T20:16:53.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-04-27T23:44:47.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-04-28T15:45:12.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-04-28T17:53:27.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-04-28T18:26:46.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-04-30T01:31:50.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2030-04-30T01:47:31.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-04-30T10:28:07.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-05-01T10:41:59.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2030-05-02T13:48:42.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-05-02T14:12:06.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2030-05-03T02:29:53.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2030-05-03T14:06:05.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2030-05-03T18:51:05.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2030-05-04T06:58:41.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-05-05T02:49:13.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-05-05T02:50:56.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-05-05T12:14:00.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-05-06T10:06:35.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-05-07T02:26:41.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-05-07T15:41:37.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-05-08T02:30:00.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-05-08T11:37:47.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-05-08T13:59:34.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-05-08T21:04:17.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-05-08T22:15:13.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-05-09T19:36:52.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-05-10T02:04:43.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2030-05-10T02:23:14.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-05-10T11:16:32.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-05-10T17:11:26.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-05-10T22:44:40.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-05-11T00:26:52.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-05-11T06:30:18.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-05-11T08:10:29.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-05-12T17:45:51.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-05-13T03:03:17.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-05-13T03:42:48.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-05-13T08:38:51.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-05-13T11:53:16.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-05-14T12:03:53.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-05-14T12:33:20.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2030-05-14T15:40:28.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-05-14T20:26:49.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-05-15T17:50:53.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2030-05-16T12:20:59.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-05-17T04:30:51.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2030-05-17T11:19:05.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2030-05-17T13:41:38.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2030-05-17T14:38:53.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2030-05-18T11:41:12.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-05-18T12:21:19.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-05-18T20:10:18.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-05-18T23:08:52.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-05-19T22:19:47.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-05-20T12:50:04.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-05-21T04:15:13.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-05-21T04:20:41.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-05-21T15:51:48.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-05-21T19:31:27.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-05-21T21:11:27.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-05-22T04:11:31.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-05-22T15:02:13.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2030-05-22T16:00:29.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-05-23T00:56:16.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-05-23T07:53:46.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-05-23T13:29:22.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-05-23T21:19:50.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-05-24T04:57:25.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-05-24T05:34:28.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-05-24T14:55:24.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-05-25T08:26:37.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-05-25T15:04:21.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-05-26T06:29:52.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-05-26T18:07:27.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-05-26T18:49:51.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-05-27T07:30:51.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-05-27T08:54:01.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2030-05-27T19:12:58.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-05-28T21:10:03.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-05-29T19:41:30.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-05-30T02:40:01.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2030-05-30T13:17:42.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2030-05-31T08:06:18.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2030-06-01T02:34:39.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2030-06-01T06:21:17.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2030-06-01T08:41:08.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-06-01T10:26:09.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-06-01T21:20:36.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-06-03T12:13:17.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-06-03T23:02:54.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-06-04T13:21:58.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-06-04T21:28:56.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-06-05T09:54:03.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-06-06T05:33:25.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-06-06T07:56:29.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2030-06-06T09:20:58.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-06-06T09:53:35.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-06-06T15:42:58.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-06-06T20:29:10.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-06-06T23:02:26.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-06-07T16:05:45.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-06-07T19:39:35.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-06-08T19:13:17.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-06-08T20:23:52.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-06-09T03:35:42.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-06-09T04:03:23.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-06-09T05:48:28.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-06-10T02:06:11.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-06-10T06:27:09.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-06-10T20:35:48.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-06-10T22:34:05.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2030-06-11T03:31:57.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-06-11T08:14:59.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-06-11T11:19:35.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-06-12T22:17:30.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-06-13T10:07:44.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-06-13T10:11:16.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2030-06-14T06:02:53.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2030-06-14T22:12:30.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-06-14T23:53:31.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2030-06-15T00:14:45.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-06-15T09:26:21.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2030-06-15T09:36:29.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-06-15T18:40:57.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2030-06-17T00:13:32.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-06-17T09:34:15.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-06-17T18:31:00.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-06-18T07:26:47.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-06-18T23:39:47.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2030-06-19T02:03:46.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-06-19T11:37:29.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-06-19T12:31:10.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-06-19T17:04:26.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-06-19T19:03:43.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-06-20T02:16:50.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-06-20T05:33:23.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-06-20T11:42:18.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-06-21T17:12:17.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-06-21T18:42:36.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-06-22T02:26:30.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-06-22T12:49:01.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-06-22T15:00:14.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-06-22T17:19:39.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-06-22T19:55:38.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-06-23T13:22:38.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-06-23T16:23:39.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2030-06-24T04:47:04.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-06-24T16:12:23.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-06-25T09:31:30.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-06-25T12:53:07.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-06-26T01:13:18.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-06-26T14:40:01.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2030-06-27T21:15:30.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2030-06-28T04:18:47.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-06-28T14:10:48.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-06-28T17:35:49.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-06-29T06:48:31.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-06-30T01:09:01.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2030-06-30T21:34:25.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2030-07-01T05:51:05.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-07-01T15:09:42.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-07-01T16:22:44.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2030-07-02T22:02:03.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-07-03T12:44:19.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2030-07-03T16:12:15.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-07-03T16:12:22.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-07-04T00:58:02.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-07-04T05:02:07.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-07-05T04:03:05.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-07-05T07:17:21.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-07-06T01:33:33.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-07-06T05:49:38.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-07-06T08:28:56.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-07-06T12:44:02.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-07-07T05:36:12.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-07-07T13:21:42.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-07-07T14:02:49.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-07-08T02:26:50.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-07-08T05:49:27.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2030-07-08T11:01:50.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-07-08T16:11:37.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-07-08T17:56:27.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-07-09T17:41:53.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-07-09T19:50:23.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-07-10T05:42:35.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-07-10T16:23:52.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2030-07-10T17:36:50.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-07-11T20:28:42.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2030-07-12T02:20:06.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-07-12T07:05:32.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-07-12T10:24:00.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-07-12T22:04:24.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-07-13T04:53:43.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-07-14T02:56:29.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2030-07-14T11:02:15.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-07-14T18:10:10.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-07-15T02:11:56.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2030-07-15T22:56:14.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-07-16T08:57:23.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2030-07-16T12:31:42.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-07-16T17:01:14.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2030-07-16T19:56:16.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-07-17T01:04:35.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-07-17T17:20:57.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-07-18T02:31:21.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-07-18T12:55:42.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-07-19T00:31:53.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-07-19T06:12:01.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-07-19T17:37:35.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-07-20T05:05:06.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-07-20T09:43:22.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-07-20T20:08:09.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-07-20T23:35:49.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-07-21T00:23:54.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2030-07-21T15:13:51.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-07-21T20:31:05.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-07-22T08:07:32.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-07-22T21:55:11.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-07-23T07:09:53.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-07-23T14:24:49.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-07-23T20:51:25.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2030-07-24T16:30:30.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-07-25T01:59:56.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-07-25T10:02:15.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2030-07-25T19:58:33.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-07-26T00:40:17.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-07-26T16:40:26.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-07-27T12:24:58.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-07-28T12:40:15.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-07-28T12:44:09.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-07-28T21:57:52.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-07-28T22:16:58.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2030-07-30T09:44:10.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-07-30T11:10:57.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2030-07-30T17:57:41.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2030-07-30T22:28:32.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-07-31T07:32:05.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-07-31T13:44:52.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-08-01T17:54:01.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2030-08-01T17:55:42.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-08-02T14:43:11.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-08-02T17:07:56.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-08-02T20:24:32.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-08-02T20:39:58.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-08-04T00:00:07.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-08-04T06:47:52.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-08-04T08:56:36.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-08-04T11:06:37.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2030-08-05T01:46:04.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-08-05T03:18:44.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-08-05T03:59:19.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-08-06T10:43:21.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-08-06T10:43:49.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-08-06T16:42:40.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-08-06T23:58:52.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2030-08-07T09:58:48.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-08-07T11:41:11.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-08-08T07:42:05.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2030-08-08T13:28:27.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-08-08T15:58:51.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-08-08T17:40:50.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-08-08T23:02:58.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-08-09T08:05:15.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-08-10T19:39:45.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-08-10T19:50:52.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-08-11T05:02:34.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-08-11T19:06:43.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2030-08-12T01:22:20.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-08-12T12:24:41.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-08-12T17:33:29.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2030-08-12T21:52:11.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-08-13T07:46:59.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-08-13T10:44:21.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2030-08-13T12:54:11.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-08-14T16:08:14.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-08-15T04:02:18.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2030-08-15T12:31:52.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-08-15T17:43:44.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-08-16T08:34:10.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-08-16T20:57:13.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-08-16T22:44:13.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-08-17T03:45:02.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-08-17T08:37:21.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2030-08-18T01:55:51.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-08-18T08:16:50.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-08-18T20:46:58.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-08-19T13:18:43.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-08-19T13:52:28.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-08-19T20:32:29.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-08-20T08:17:21.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2030-08-21T01:15:23.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-08-21T12:25:54.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-08-21T21:45:22.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2030-08-22T02:24:16.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-08-22T06:58:48.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-08-22T07:41:58.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-08-22T08:59:06.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-08-23T02:33:54.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-08-23T19:27:29.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-08-24T16:06:25.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-08-24T19:53:27.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-08-25T10:04:18.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-08-26T18:09:31.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2030-08-26T20:54:57.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-08-27T00:34:13.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2030-08-27T05:28:04.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-08-27T19:12:53.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-08-27T19:29:12.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-08-27T23:07:22.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-08-28T23:07:18.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2030-08-29T01:54:09.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2030-08-29T04:07:36.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-08-30T01:54:51.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-08-30T05:00:09.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-08-31T08:55:18.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-08-31T11:17:22.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-08-31T11:48:24.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-08-31T16:18:34.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2030-09-01T09:01:46.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-09-01T15:26:14.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-09-02T04:01:21.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-09-02T15:07:00.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-09-02T15:07:52.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-09-02T17:06:38.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-09-03T10:04:18.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2030-09-03T23:28:07.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-09-04T04:47:23.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-09-04T15:37:13.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2030-09-04T18:04:56.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-09-04T21:55:32.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-09-04T22:29:56.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-09-04T22:32:50.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-09-05T15:22:04.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-09-06T06:17:23.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-09-06T07:24:13.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-09-07T01:29:52.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-09-07T04:47:28.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-09-07T17:15:20.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-09-08T22:16:32.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-09-09T00:27:18.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2030-09-09T04:54:14.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-09-09T10:02:38.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2030-09-09T21:33:20.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-09-09T22:26:31.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-09-10T13:43:10.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2030-09-11T01:12:56.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-09-11T02:48:28.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-09-11T21:17:52.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2030-09-12T03:25:38.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-09-12T03:48:16.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-09-13T09:27:43.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-09-13T11:32:03.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-09-13T16:17:33.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2030-09-14T03:45:44.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-09-14T11:46:54.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-09-15T10:56:03.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-09-15T21:09:40.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-09-16T05:58:03.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-09-16T17:34:12.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-09-16T23:46:52.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2030-09-17T01:35:46.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-09-18T05:25:19.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-09-18T07:22:37.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2030-09-18T09:23:11.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-09-18T14:26:31.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-09-19T01:38:17.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-09-19T09:45:10.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-09-19T11:41:29.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-09-19T19:56:28.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-09-21T02:28:03.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-09-21T02:59:07.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-09-21T20:55:17.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-09-22T02:19:40.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-09-22T12:50:53.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-09-23T06:48:27.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-09-23T08:33:01.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2030-09-23T13:07:12.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-09-24T08:50:59.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-09-24T11:55:59.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-09-24T12:55:58.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2030-09-25T13:48:49.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-09-26T11:03:34.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2030-09-26T14:16:33.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-09-26T17:50:28.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-09-26T22:35:04.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-09-27T09:54:37.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2030-09-27T17:38:08.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-09-27T19:09:52.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-09-27T23:08:00.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2030-09-28T17:07:57.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-09-29T01:31:47.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-09-29T21:14:01.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-09-30T23:41:06.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2030-10-01T05:36:33.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-10-01T06:14:22.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-10-01T12:31:50.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-10-01T21:24:54.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-10-01T21:33:43.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2030-10-01T23:07:06.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-10-02T02:56:11.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-10-02T21:10:05.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-10-03T10:17:10.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-10-03T16:01:21.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-10-03T19:56:53.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-10-04T03:56:07.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-10-04T05:39:17.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-10-05T06:42:06.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-10-06T03:33:51.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-10-06T04:02:46.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-10-06T05:00:09.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-10-06T05:47:43.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2030-10-06T09:39:35.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-10-06T12:03:26.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-10-07T05:01:09.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-10-07T12:16:34.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-10-07T23:58:43.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2030-10-08T09:23:58.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-10-09T11:17:17.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-10-09T19:39:34.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-10-10T16:37:19.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-10-10T18:42:36.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-10-10T22:40:36.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2030-10-11T05:49:21.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-10-11T09:53:54.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2030-10-11T10:46:47.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2030-10-11T19:40:52.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-10-12T22:11:30.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-10-13T04:30:30.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-10-14T17:39:03.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2030-10-15T13:21:17.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-10-15T14:00:05.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2030-10-15T16:35:46.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-10-15T20:38:01.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-10-16T18:40:25.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-10-16T19:12:02.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-10-16T20:47:53.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-10-17T04:54:30.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-10-18T05:40:59.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-10-18T09:29:14.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-10-19T14:21:16.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-10-19T14:50:19.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-10-19T20:57:52.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-10-20T02:43:02.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-10-20T14:08:55.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-10-20T17:03:16.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2030-10-20T20:38:42.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-10-21T17:46:17.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-10-22T05:16:34.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-10-22T06:11:52.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-10-22T07:08:26.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-10-22T19:31:59.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-10-22T22:02:18.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-10-23T06:30:50.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2030-10-23T23:51:26.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-10-24T13:10:11.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-10-25T02:03:52.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-10-25T05:00:20.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-10-25T07:56:18.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2030-10-26T02:27:42.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-10-26T20:16:56.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2030-10-26T23:11:29.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-10-27T06:21:48.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-10-27T13:37:31.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2030-10-27T15:38:59.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-10-28T17:07:10.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2030-10-29T03:34:35.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2030-10-29T06:48:44.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-10-29T09:27:53.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-10-29T18:10:30.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-10-30T03:37:25.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-10-31T04:55:09.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-10-31T09:56:05.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-10-31T10:40:07.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-10-31T21:55:53.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-11-01T03:23:28.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-11-01T22:01:45.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-11-02T07:13:14.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-11-02T11:12:19.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2030-11-02T11:55:57.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-11-02T13:51:43.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-11-02T18:20:53.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-11-03T09:32:24.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-11-03T14:04:02.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-11-04T03:54:32.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-11-04T12:24:06.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-11-04T22:04:36.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-11-05T06:07:04.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-11-05T13:15:04.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2030-11-05T16:08:48.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-11-06T04:16:13.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-11-06T12:27:26.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-11-06T20:03:03.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-11-07T01:04:17.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-11-07T03:43:40.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2030-11-08T01:08:51.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-11-09T11:31:07.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-11-10T03:30:15.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2030-11-10T15:14:02.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-11-10T15:27:30.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-11-11T12:28:36.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2030-11-11T17:37:10.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2030-11-11T17:54:37.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2030-11-11T23:46:17.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-11-12T02:17:43.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-11-13T00:45:45.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-11-13T07:25:14.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-11-14T15:14:32.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-11-15T16:17:21.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-11-15T23:23:50.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-11-16T07:06:21.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-11-16T16:12:53.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-11-16T18:13:08.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-11-17T01:05:01.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2030-11-17T03:14:05.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-11-17T10:54:33.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-11-18T00:33:25.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-11-18T08:32:17.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-11-18T23:48:34.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-11-19T03:04:10.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-11-19T03:35:06.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-11-20T01:55:07.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-11-20T08:11:07.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-11-20T20:12:24.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-11-20T22:21:31.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2030-11-21T09:09:18.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-11-21T09:52:09.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-11-21T11:21:13.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-11-21T15:53:25.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-11-21T17:31:48.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2030-11-22T11:16:44.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-11-22T11:54:56.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-11-23T17:48:26.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-11-25T05:32:15.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-11-25T06:46:26.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2030-11-25T10:52:36.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2030-11-25T13:31:29.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2030-11-25T17:40:42.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-11-25T19:00:03.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-11-25T22:15:09.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-11-26T12:03:07.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-11-26T19:31:38.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2030-11-27T06:57:43.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-11-27T18:39:57.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-11-29T09:52:14.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-11-29T10:57:15.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-11-29T14:30:11.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-11-29T15:51:55.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-11-29T18:51:39.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2030-11-29T20:04:32.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-11-30T09:14:12.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-11-30T14:21:18.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-12-01T05:36:21.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-12-01T14:33:02.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-01T21:00:07.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-01T22:56:49.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-02T19:57:43.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-02T20:22:26.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-03T14:49:03.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-03T21:34:54.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-12-04T02:06:02.000Z",
+      "planet": "mars",
+      "aspect": 180
+    },
+    {
+      "at": "2030-12-04T05:48:51.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-12-04T07:24:01.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-12-04T08:31:35.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2030-12-04T11:48:18.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-12-05T04:54:44.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-12-05T12:03:34.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-12-06T01:54:51.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-12-06T18:19:59.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-08T19:31:48.000Z",
+      "planet": "saturn",
+      "aspect": 0
+    },
+    {
+      "at": "2030-12-09T06:57:52.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-12-09T07:04:50.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-12-09T07:23:24.000Z",
+      "planet": "jupiter",
+      "aspect": 180
+    },
+    {
+      "at": "2030-12-09T07:52:14.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-12-09T22:40:24.000Z",
+      "planet": "sun",
+      "aspect": 180
+    },
+    {
+      "at": "2030-12-10T04:55:28.000Z",
+      "planet": "uranus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-12-10T22:43:47.000Z",
+      "planet": "mercury",
+      "aspect": 180
+    },
+    {
+      "at": "2030-12-11T03:08:02.000Z",
+      "planet": "venus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-12-11T20:48:07.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-11T23:03:01.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-13T20:10:51.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-12-14T08:22:07.000Z",
+      "planet": "pluto",
+      "aspect": 180
+    },
+    {
+      "at": "2030-12-14T08:58:44.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-12-14T10:50:25.000Z",
+      "planet": "jupiter",
+      "aspect": 120
+    },
+    {
+      "at": "2030-12-14T14:04:00.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-12-15T04:59:30.000Z",
+      "planet": "uranus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-12-15T10:17:08.000Z",
+      "planet": "sun",
+      "aspect": 120
+    },
+    {
+      "at": "2030-12-15T11:51:09.000Z",
+      "planet": "mercury",
+      "aspect": 120
+    },
+    {
+      "at": "2030-12-16T06:32:51.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-16T15:48:52.000Z",
+      "planet": "venus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-12-16T21:57:41.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-17T14:00:27.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-17T15:17:36.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-18T00:01:09.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-18T14:01:21.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-12-19T01:48:44.000Z",
+      "planet": "pluto",
+      "aspect": 120
+    },
+    {
+      "at": "2030-12-19T02:08:23.000Z",
+      "planet": "neptune",
+      "aspect": 180
+    },
+    {
+      "at": "2030-12-19T04:40:38.000Z",
+      "planet": "venus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-19T05:42:33.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-12-19T11:25:02.000Z",
+      "planet": "mars",
+      "aspect": 0
+    },
+    {
+      "at": "2030-12-19T16:43:43.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-12-19T19:39:32.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-12-20T09:20:14.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-12-21T05:23:36.000Z",
+      "planet": "pluto",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-21T12:50:19.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-12-22T18:57:25.000Z",
+      "planet": "saturn",
+      "aspect": 180
+    },
+    {
+      "at": "2030-12-23T06:06:12.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-12-23T06:13:50.000Z",
+      "planet": "neptune",
+      "aspect": 120
+    },
+    {
+      "at": "2030-12-23T10:54:24.000Z",
+      "planet": "jupiter",
+      "aspect": 0
+    },
+    {
+      "at": "2030-12-23T14:48:39.000Z",
+      "planet": "mercury",
+      "aspect": 0
+    },
+    {
+      "at": "2030-12-23T18:13:29.000Z",
+      "planet": "mars",
+      "aspect": 60
+    },
+    {
+      "at": "2030-12-23T21:46:10.000Z",
+      "planet": "uranus",
+      "aspect": 180
+    },
+    {
+      "at": "2030-12-24T17:32:10.000Z",
+      "planet": "sun",
+      "aspect": 0
+    },
+    {
+      "at": "2030-12-25T05:33:25.000Z",
+      "planet": "neptune",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-25T19:15:20.000Z",
+      "planet": "mars",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-25T21:04:56.000Z",
+      "planet": "venus",
+      "aspect": 0
+    },
+    {
+      "at": "2030-12-26T17:39:49.000Z",
+      "planet": "saturn",
+      "aspect": 120
+    },
+    {
+      "at": "2030-12-27T05:34:53.000Z",
+      "planet": "neptune",
+      "aspect": 60
+    },
+    {
+      "at": "2030-12-27T05:36:18.000Z",
+      "planet": "pluto",
+      "aspect": 0
+    },
+    {
+      "at": "2030-12-27T11:51:02.000Z",
+      "planet": "jupiter",
+      "aspect": 60
+    },
+    {
+      "at": "2030-12-27T14:07:09.000Z",
+      "planet": "mercury",
+      "aspect": 60
+    },
+    {
+      "at": "2030-12-27T21:30:12.000Z",
+      "planet": "uranus",
+      "aspect": 120
+    },
+    {
+      "at": "2030-12-27T21:42:21.000Z",
+      "planet": "mars",
+      "aspect": 120
+    },
+    {
+      "at": "2030-12-28T19:18:28.000Z",
+      "planet": "saturn",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-29T02:43:35.000Z",
+      "planet": "sun",
+      "aspect": 60
+    },
+    {
+      "at": "2030-12-29T15:48:11.000Z",
+      "planet": "jupiter",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-29T18:57:22.000Z",
+      "planet": "mercury",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-30T01:11:59.000Z",
+      "planet": "uranus",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-30T12:07:56.000Z",
+      "planet": "venus",
+      "aspect": 60
+    },
+    {
+      "at": "2030-12-31T00:38:34.000Z",
+      "planet": "saturn",
+      "aspect": 60
+    },
+    {
+      "at": "2030-12-31T13:36:06.000Z",
+      "planet": "sun",
+      "aspect": 90
+    },
+    {
+      "at": "2030-12-31T14:54:00.000Z",
+      "planet": "neptune",
+      "aspect": 0
+    },
+    {
+      "at": "2030-12-31T15:06:49.000Z",
+      "planet": "pluto",
+      "aspect": 60
+    },
+    {
+      "at": "2030-12-31T23:58:09.000Z",
+      "planet": "jupiter",
+      "aspect": 120
     }
   ],
   "moonPhases": [

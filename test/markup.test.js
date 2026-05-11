@@ -9,3 +9,9 @@ test('home screen does not render inactive chrome or decorative Moon image', () 
   assert.equal(html.includes('class="moon-visual"'), false);
   assert.equal(html.includes('class="tab-bar"'), false);
 });
+
+test('home screen renders compact Moon aspect fields', () => {
+  assert.equal(html.includes('data-voc-aspect'), true);
+  assert.equal(html.includes('data-last-moon-aspect'), true);
+  assert.equal(html.includes('data-next-moon-aspect'), true);
+});
