@@ -36,7 +36,7 @@ test('describes a day without void-of-course as Moon in course', () => {
     end: new Date('2026-05-12T03:03:38+03:00'),
   };
 
-  assert.equal(describeVoc(voc, now), 'Луна в курсе\nСледующая VOC: 11 мая, 13:04');
+  assert.equal(describeVoc(voc, now), 'Луна в курсе\nБез курса: 11 мая, 13:04');
 });
 
 test('treats a future void-of-course on another Moscow day as no VOC today', () => {
@@ -48,7 +48,7 @@ test('treats a future void-of-course on another Moscow day as no VOC today', () 
     end: new Date('2026-05-12T03:03:38+03:00'),
   };
 
-  assert.equal(describeVoc(voc, now), 'Луна в курсе\nСледующая VOC: 11 мая, 13:04');
+  assert.equal(describeVoc(voc, now), 'Луна в курсе\nБез курса: 11 мая, 13:04');
 });
 
 test('uses compact last aspect wording for void-of-course', () => {

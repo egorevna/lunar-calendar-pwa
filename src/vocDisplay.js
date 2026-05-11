@@ -32,7 +32,7 @@ export function describeVoc(voc, now = new Date()) {
   const next = voc.start ? `${formatVocDate(voc.start)}, ${formatVocTime(voc.start)}` : 'нет данных';
   return [
     'Луна в курсе',
-    `Следующая VOC: ${next}`,
+    `Без курса: ${next}`,
   ].join('\n');
 }
 
