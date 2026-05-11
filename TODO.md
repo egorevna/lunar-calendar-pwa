@@ -165,8 +165,6 @@ Codex must:
 
 # Completed Task
 
----
-
 ## Task 1.2 — Add VOC Quality Label
 
 Status: done

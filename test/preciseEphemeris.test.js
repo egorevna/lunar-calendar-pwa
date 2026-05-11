@@ -26,6 +26,12 @@ const fixture = {
       aspect: 120,
       planet: 'venus',
     },
+    {
+      start: '2026-05-12T10:04:14.000Z',
+      end: '2026-05-13T00:03:38.000Z',
+      aspect: 90,
+      planet: 'venus',
+    },
   ],
   moonPhases: [
     { at: '2026-05-01T17:23:08.000Z', type: 'full' },
@@ -64,6 +70,20 @@ test('returns active precise void-of-course interval', () => {
   assert.equal(voc.status, 'active');
   assert.equal(voc.start.toISOString(), '2026-05-10T15:55:11.000Z');
   assert.equal(voc.end.toISOString(), '2026-05-10T18:00:45.000Z');
+});
+
+test('returns next future void-of-course after the current interval has ended', () => {
+  const date = new Date('2026-05-10T21:01:00+03:00');
+  const voc = getPreciseVoidOfCourse(date, fixture);
+
+  assert.equal(voc.source, 'swisseph');
+  assert.equal(voc.isActive, false);
+  assert.equal(voc.status, 'upcoming');
+  assert.equal(voc.start > date, true);
+  assert.equal(voc.end > date, true);
+  assert.notEqual(voc.start.toISOString(), '2026-05-10T15:55:11.000Z');
+  assert.equal(voc.start.toISOString(), '2026-05-12T10:04:14.000Z');
+  assert.equal(voc.end.toISOString(), '2026-05-13T00:03:38.000Z');
 });
 
 test('returns precise Moscow lunar day from moonrise boundaries', () => {
