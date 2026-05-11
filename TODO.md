@@ -47,11 +47,11 @@ Do not start profiles, natal charts, personal transits, import/export, or cloud 
 
 ---
 
-# Active Task
+# Completed Task
 
 ## Task 1.1 — Fix VOC Block States and Copy
 
-Status: not started
+Status: done
 
 ### Goal
 
@@ -185,9 +185,9 @@ Codex must:
 
 ---
 
-# Sprint 1 Backlog
+# Active Task
 
-Do not start these tasks until Task 1.1 is completed and approved.
+Do not start this task until the user explicitly asks for it.
 
 ---
 
@@ -856,17 +856,16 @@ Use this prompt when starting the active task:
 ```txt
 Работаем по TODO.md.
 
-Выполни только Task 1.1 — Fix VOC Block States and Copy.
+Выполни только Task 1.2 — Add VOC Quality Label.
 
 Перед кодом:
-1. Найди файлы, где сейчас отображается блок «Луна без курса».
-2. Найди функцию или данные, откуда берется VOC.
+1. Найди, где сейчас формируется текст VOC.
+2. Найди, откуда берется последний аспект перед VOC.
 3. Кратко объясни минимальный план изменения.
 
 Потом внеси минимальные безопасные изменения.
 
 Ограничения:
-- Не делай Task 1.2.
 - Не делай Task 1.3.
 - Не трогай профили.
 - Не трогай натальную карту.
@@ -879,7 +878,7 @@ Use this prompt when starting the active task:
 1. запусти npm test;
 2. обнови PROJECT_STATE.md;
 3. обнови CHANGELOG.md;
-4. отметь Task 1.1 как done в TODO.md;
+4. отметь Task 1.2 как done в TODO.md;
 5. оцени, изменилась ли архитектура;
 6. если архитектура изменилась — обнови ARCHITECTURE.md;
 7. если архитектура не изменилась — не трогай ARCHITECTURE.md и объясни почему;

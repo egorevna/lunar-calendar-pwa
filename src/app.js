@@ -8,7 +8,6 @@ import {
 import {
   formatDate,
   formatRange,
-  formatRangeWithSeconds,
   formatTime,
   formatTimeWithSeconds,
   formatWeekday,
@@ -23,6 +22,12 @@ import {
 } from './preciseEphemeris.js';
 import { getDayIndicators } from './dayIndicators.js';
 import { getFieldQuality } from './fieldQuality.js';
+import {
+  describeVoc,
+  describeVocAspect,
+  formatAspect,
+  formatPlanet,
+} from './vocDisplay.js';
 
 const elements = {
   date: document.querySelector('[data-date]'),
@@ -82,7 +87,7 @@ function render() {
     : lunar.phaseName;
   elements.moonSign.textContent = `Луна в ${moonSign.current.glyph} ${moonSign.current.locative}`;
   elements.nextMoonSign.textContent = `в ${moonSign.next.name} ${formatMoonIngress(now, moonSign.entersAt)}`;
-  elements.voc.textContent = describeVoc(voc);
+  elements.voc.textContent = describeVoc(voc, now);
   elements.vocAspect.textContent = describeVocAspect(voc);
   elements.lastMoonAspect.textContent = describeAspect(moonAspects?.previous, 'нет данных');
   elements.nextMoonAspect.textContent = describeAspect(moonAspects?.next, 'нет данных');
@@ -129,50 +134,9 @@ function renderSimpleList(element, items) {
   }));
 }
 
-function describeVocAspect(voc) {
-  if (!voc.aspect || !voc.planet) return '';
-  return `после: ${formatAspect(voc.aspect)} ${formatPlanet(voc.planet)}`;
-}
-
 function describeAspect(aspect, fallback) {
   if (!aspect) return fallback;
   return `${formatAspect(aspect.aspect)} ${formatPlanet(aspect.planet)} в ${formatTimeWithSeconds(aspect.at)}`;
-}
-
-function formatAspect(aspect) {
-  const glyphs = {
-    0: '☌',
-    60: '✶',
-    90: '□',
-    120: '△',
-    180: '☍',
-  };
-  return glyphs[aspect] ?? `${aspect}°`;
-}
-
-function formatPlanet(planet) {
-  const names = {
-    sun: 'Солнце',
-    mercury: 'Меркурий',
-    venus: 'Венера',
-    mars: 'Марс',
-    jupiter: 'Юпитер',
-    saturn: 'Сатурн',
-    uranus: 'Уран',
-    neptune: 'Нептун',
-    pluto: 'Плутон',
-  };
-  return names[planet] ?? planet;
-}
-
-function describeVoc(voc) {
-  const range = voc.source === 'swisseph'
-    ? formatRangeWithSeconds(voc.start, voc.end)
-    : formatRange(voc.start, voc.end);
-  const end = voc.source === 'swisseph' ? formatTimeWithSeconds(voc.end) : formatTime(voc.end);
-  if (voc.isActive) return `сейчас, до ${end}`;
-  if (voc.status === 'upcoming') return `с ${range}`;
-  return `ближайший период: ${range}`;
 }
 
 function formatMoonIngress(now, entersAt) {

@@ -192,6 +192,20 @@ It should not become overloaded with deep astrology rules over time.
 
 If future work extracts dashboard cards, domain services, view models, or state management out of `src/app.js`, this file must be updated.
 
+## `src/vocDisplay.js`
+
+Formats the dashboard display state for Void of Course Moon.
+
+Current responsibilities:
+
+- distinguish upcoming, active, and no-VOC states;
+- format VOC start/end time as `HH:mm` for the main dashboard;
+- calculate compact countdown text;
+- format the last aspect before VOC as `VOC после: ...`;
+- expose aspect and planet formatting helpers used by `src/app.js`.
+
+This module does not calculate VOC intervals. It only formats display text from existing VOC data.
+
 ## `src/format.js`
 
 Formats date and time values.
@@ -346,7 +360,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v19
+lunar-calendar-v20
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -381,7 +395,9 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 7. `src/format.js` formats dates and times.
 
-8. `src/app.js` updates DOM elements on the main dashboard.
+8. `src/vocDisplay.js` formats the VOC display state for the dashboard.
+
+9. `src/app.js` updates DOM elements on the main dashboard.
 
 ## Current Preferred Source Order
 
@@ -479,7 +495,13 @@ Expected VOC quality labels:
 - `тяжелый VOC`
 - `нервный VOC`
 
-If VOC logic is extracted into a dedicated module, document the module and data flow here.
+VOC display formatting currently lives in:
+
+```txt
+src/vocDisplay.js
+```
+
+This module handles display state and copy only. VOC interval calculation still comes from precise ephemeris data or fallback logic.
 
 ---
 
@@ -684,7 +706,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v19
+lunar-calendar-v20
 ```
 
 Important operational rule:
@@ -985,7 +1007,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v19
+lunar-calendar-v20
 ```
 
 If this value changes in `sw.js`, update this section.

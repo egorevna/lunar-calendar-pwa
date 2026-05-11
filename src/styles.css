@@ -225,6 +225,7 @@ button {
   font-size: clamp(15px, 4vw, 19px);
   line-height: 1.15;
   overflow-wrap: anywhere;
+  white-space: pre-line;
 }
 
 .voc-card small {
