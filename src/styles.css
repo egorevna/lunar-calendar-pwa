@@ -264,8 +264,9 @@ button {
 
 .field-metrics {
   display: grid;
-  gap: 7px;
+  gap: 8px;
   margin-top: 13px;
+  margin-bottom: 18px;
 }
 
 .field-metric {
@@ -292,16 +293,17 @@ button {
 }
 
 .field-reasons-title {
-  margin-top: 14px;
+  margin-top: 2px;
   color: rgba(255, 248, 239, 0.72);
   font-size: clamp(13px, 3.5vw, 16px);
   font-weight: 600;
+  line-height: 1.2;
 }
 
 .field-reasons {
   display: grid;
-  gap: 6px;
-  margin: 7px 0 0;
+  gap: 8px;
+  margin: 10px 0 0;
   padding: 0;
   list-style: none;
 }
