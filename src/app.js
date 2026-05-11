@@ -22,6 +22,7 @@ import {
   getPreciseVoidOfCourse,
 } from './preciseEphemeris.js';
 import { getDayIndicators } from './dayIndicators.js';
+import { getFieldQuality } from './fieldQuality.js';
 
 const elements = {
   date: document.querySelector('[data-date]'),
@@ -43,6 +44,8 @@ const elements = {
   hourGlyph: document.querySelector('[data-hour-glyph]'),
   hourName: document.querySelector('[data-planetary-hour]'),
   hourRange: document.querySelector('[data-hour-range]'),
+  fieldSummary: document.querySelector('[data-field-summary]'),
+  fieldMetrics: document.querySelector('[data-field-metrics]'),
 };
 
 function render() {
@@ -57,6 +60,14 @@ function render() {
   const lunarDay = getPreciseLunarDayInfo(now)?.lunarDay ?? lunar.lunarDay;
   const solarMonthBranch = getPreciseSolarMonthBranch(now)?.key;
   const indicators = getDayIndicators(now, { lunarDay, solarMonthBranch });
+  const fieldQuality = getFieldQuality({
+    lunar,
+    voc,
+    moonSign,
+    moonAspects,
+    indicators,
+    planetaryHour,
+  });
 
   elements.date.textContent = formatDate(now);
   elements.weekday.textContent = formatWeekday(now);
@@ -79,6 +90,24 @@ function render() {
   elements.hourGlyph.textContent = planetaryHour.glyph;
   elements.hourName.textContent = planetaryHour.name;
   elements.hourRange.textContent = formatRange(planetaryHour.startsAt, planetaryHour.endsAt);
+  elements.fieldSummary.textContent = fieldQuality.summary;
+  renderFieldMetrics(fieldQuality.metrics);
+}
+
+function renderFieldMetrics(metrics) {
+  elements.fieldMetrics.replaceChildren(...metrics.map((metric) => {
+    const row = document.createElement('div');
+    row.className = 'field-metric';
+
+    const label = document.createElement('span');
+    label.textContent = metric.label;
+
+    const value = document.createElement('strong');
+    value.textContent = `${metric.level} · ${metric.score}/10`;
+
+    row.append(label, value);
+    return row;
+  }));
 }
 
 function describeVocAspect(voc) {

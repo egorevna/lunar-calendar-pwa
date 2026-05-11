@@ -15,3 +15,8 @@ test('home screen renders compact Moon aspect fields', () => {
   assert.equal(html.includes('data-last-moon-aspect'), true);
   assert.equal(html.includes('data-next-moon-aspect'), true);
 });
+
+test('home screen renders field quality fields', () => {
+  assert.equal(html.includes('data-field-summary'), true);
+  assert.equal(html.includes('data-field-metrics'), true);
+});
