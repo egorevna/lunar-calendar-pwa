@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lunar-calendar-v16';
+const CACHE_NAME = 'lunar-calendar-v17';
 const ASSETS = [
   './',
   'index.html',

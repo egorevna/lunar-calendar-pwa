@@ -46,6 +46,7 @@ const elements = {
   hourRange: document.querySelector('[data-hour-range]'),
   fieldSummary: document.querySelector('[data-field-summary]'),
   fieldMetrics: document.querySelector('[data-field-metrics]'),
+  fieldReasons: document.querySelector('[data-field-reasons]'),
 };
 
 function render() {
@@ -92,6 +93,7 @@ function render() {
   elements.hourRange.textContent = formatRange(planetaryHour.startsAt, planetaryHour.endsAt);
   elements.fieldSummary.textContent = fieldQuality.summary;
   renderFieldMetrics(fieldQuality.metrics);
+  renderFieldReasons(fieldQuality.reasons);
 }
 
 function renderFieldMetrics(metrics) {
@@ -107,6 +109,14 @@ function renderFieldMetrics(metrics) {
 
     row.append(label, value);
     return row;
+  }));
+}
+
+function renderFieldReasons(reasons) {
+  elements.fieldReasons.replaceChildren(...reasons.map((reason) => {
+    const item = document.createElement('li');
+    item.textContent = reason;
+    return item;
   }));
 }
 
