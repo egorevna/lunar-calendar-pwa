@@ -10,6 +10,7 @@ const RITUAL_HOURS = new Set(['moon', 'mars', 'saturn']);
 const STABLE_OFFICERS = new Set(['stable', 'success', 'receive', 'open']);
 const CAUTION_OFFICERS = new Set(['danger', 'destruction', 'close']);
 const CLEANSING_OFFICERS = new Set(['remove', 'destruction']);
+const HARD_ASPECT_ECHO_MS = 4 * 3600000;
 
 export function getFieldQuality(context) {
   const scores = {
@@ -35,7 +36,7 @@ function getReasons(context) {
   const sign = context.moonSign?.current?.key;
   const officer = context.indicators?.dayOfficer?.key;
   const hour = context.planetaryHour?.key;
-  const aspects = [context.moonAspects?.previous, context.moonAspects?.next];
+  const aspects = getRelevantAspects(context);
 
   if (context.voc?.isActive) {
     reasons.push('Луна без курса снижает надежность стартов и материальных решений.');
@@ -69,7 +70,7 @@ function scoreIntuition(context) {
   let score = 5;
   const sign = context.moonSign?.current?.key;
   const hour = context.planetaryHour?.key;
-  const aspects = [context.moonAspects?.previous, context.moonAspects?.next];
+  const aspects = getRelevantAspects(context);
 
   if (WATER_SIGNS.has(sign)) score += 2;
   if (hour === 'moon') score += 1;
@@ -85,7 +86,7 @@ function scoreMaterial(context) {
   const sign = context.moonSign?.current?.key;
   const hour = context.planetaryHour?.key;
   const officer = context.indicators?.dayOfficer?.key;
-  const aspects = [context.moonAspects?.previous, context.moonAspects?.next];
+  const aspects = getRelevantAspects(context);
 
   if (EARTH_SIGNS.has(sign)) score += 1;
   if (STABLE_OFFICERS.has(officer)) score += 2;
@@ -103,7 +104,7 @@ function scoreRituals(context) {
   const hour = context.planetaryHour?.key;
   const officer = context.indicators?.dayOfficer?.key;
   const illumination = context.lunar?.illumination ?? 0.5;
-  const aspects = [context.moonAspects?.previous, context.moonAspects?.next];
+  const aspects = getRelevantAspects(context);
 
   if (RITUAL_HOURS.has(hour)) score += 1;
   if (CLEANSING_OFFICERS.has(officer) || STABLE_OFFICERS.has(officer)) score += 1;
@@ -118,7 +119,7 @@ function scoreRituals(context) {
 function summarize(context, scores) {
   const sign = context.moonSign?.current?.key;
   const officer = context.indicators?.dayOfficer?.key;
-  const aspects = [context.moonAspects?.previous, context.moonAspects?.next];
+  const aspects = getRelevantAspects(context);
 
   if (context.voc?.isActive || aspects.some(isHardDisruptiveAspect) || CAUTION_OFFICERS.has(officer)) {
     return 'Поле нестабильно: лучше завершать и чистить, а не начинать.';
@@ -137,6 +138,22 @@ function summarize(context, scores) {
 
 function isSoftBeneficAspect(aspect) {
   return aspect && SOFT_ASPECTS.has(aspect.aspect) && SOFT_PLANETS.has(aspect.planet);
+}
+
+function getRelevantAspects(context) {
+  return [
+    isRecentHardAspect(context.moonAspects?.previous, context.now) ? context.moonAspects.previous : null,
+    context.moonAspects?.next,
+  ].filter(Boolean);
+}
+
+function isRecentHardAspect(aspect, now) {
+  if (!isHardDisruptiveAspect(aspect)) return true;
+  if (!now || !aspect.at) return true;
+
+  const aspectTime = new Date(aspect.at).getTime();
+  const nowTime = new Date(now).getTime();
+  return nowTime - aspectTime <= HARD_ASPECT_ECHO_MS;
 }
 
 function isHardDisruptiveAspect(aspect) {

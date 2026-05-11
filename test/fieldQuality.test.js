@@ -59,3 +59,22 @@ test('raises intuition for water Moon signs and Neptune influence', () => {
   assert.equal(quality.scores.intuition.level, 'высоко');
   assert.ok(quality.reasons.includes('Водный знак Луны усиливает интуицию и сновидческое поле.'));
 });
+
+test('limits the echo of an old hard Moon aspect', () => {
+  const quality = getFieldQuality({
+    now: new Date('2026-05-11T12:00:00+03:00'),
+    lunar: { illumination: 0.32, waxing: false },
+    voc: { isActive: false, status: 'upcoming' },
+    moonSign: { current: { key: 'pisces' } },
+    moonAspects: {
+      previous: { at: new Date('2026-05-10T22:13:02+03:00'), aspect: 90, planet: 'uranus' },
+      next: { at: new Date('2026-05-11T06:42:44+03:00'), aspect: 60, planet: 'mercury' },
+    },
+    indicators: { dayOfficer: { key: 'stable' } },
+    planetaryHour: { key: 'venus' },
+  });
+
+  assert.notEqual(quality.summary, 'Поле нестабильно: лучше завершать и чистить, а не начинать.');
+  assert.equal(quality.scores.material.level, 'высоко');
+  assert.equal(quality.reasons.includes('Напряженный аспект к жесткой планете повышает фон осторожности.'), false);
+});

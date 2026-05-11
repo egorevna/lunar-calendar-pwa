@@ -62,6 +62,7 @@ function render() {
   const solarMonthBranch = getPreciseSolarMonthBranch(now)?.key;
   const indicators = getDayIndicators(now, { lunarDay, solarMonthBranch });
   const fieldQuality = getFieldQuality({
+    now,
     lunar,
     voc,
     moonSign,

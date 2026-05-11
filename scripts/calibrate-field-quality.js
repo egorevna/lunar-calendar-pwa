@@ -69,6 +69,7 @@ function buildContext(date) {
   const planetaryHour = getPlanetaryHour(date);
 
   return {
+    now: date,
     lunar,
     lunarDay,
     majorPhase,
