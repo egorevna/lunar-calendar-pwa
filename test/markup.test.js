@@ -20,4 +20,6 @@ test('home screen renders field quality fields', () => {
   assert.equal(html.includes('data-field-summary'), true);
   assert.equal(html.includes('data-field-metrics'), true);
   assert.equal(html.includes('data-field-reasons'), true);
+  assert.equal(html.includes('data-field-supports'), true);
+  assert.equal(html.includes('data-field-avoid'), true);
 });

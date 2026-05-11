@@ -23,12 +23,47 @@ export function getFieldQuality(context) {
     summary: summarize(context, scores),
     scores,
     reasons: getReasons(context),
+    supports: getSupports(context, scores),
+    avoid: getAvoid(context, scores),
     metrics: [
       toMetric('intuition', 'Интуиция', scores.intuition),
       toMetric('material', 'Материальные дела', scores.material),
       toMetric('rituals', 'Ритуалы', scores.rituals),
     ],
   };
+}
+
+function getSupports(context, scores) {
+  const items = [];
+  const sign = context.moonSign?.current?.key;
+  const officer = context.indicators?.dayOfficer?.key;
+  const hour = context.planetaryHour?.key;
+
+  if (context.voc?.isActive) items.push('завершение начатого');
+  if (WATER_SIGNS.has(sign) || scores.intuition.level === 'высоко') items.push('Таро и диагностика');
+  if (STABLE_OFFICERS.has(officer)) items.push('закрепление решений');
+  if (CLEANSING_OFFICERS.has(officer) || (!context.lunar?.waxing && (context.lunar?.illumination ?? 0.5) < 0.35)) {
+    items.push('чистки и отсечение');
+  }
+  if (scores.material.level === 'высоко') items.push('спокойные договоренности');
+  if (RITUAL_HOURS.has(hour) || scores.rituals.level === 'высоко') items.push('ритуальная работа');
+
+  return uniqueFirst(items, 3);
+}
+
+function getAvoid(context, scores) {
+  const items = [];
+  const officer = context.indicators?.dayOfficer?.key;
+  const aspects = getRelevantAspects(context);
+
+  if (context.voc?.isActive) items.push('запуск новых дел');
+  if (aspects.some(isHardDisruptiveAspect)) items.push('импульсивные решения');
+  if (CAUTION_OFFICERS.has(officer)) items.push('рисковые старты');
+  if (scores.material.level !== 'высоко') items.push('жесткие финансовые решения');
+  if (scores.intuition.level === 'высоко') items.push('жесткие разговоры');
+  if (STABLE_OFFICERS.has(officer)) items.push('хаотичные развороты');
+
+  return uniqueFirst(items, 3);
 }
 
 function getReasons(context) {
@@ -162,6 +197,10 @@ function isHardDisruptiveAspect(aspect) {
 
 function toMetric(key, label, score) {
   return { key, label, ...score };
+}
+
+function uniqueFirst(items, limit) {
+  return [...new Set(items)].slice(0, limit);
 }
 
 function toScore(value) {

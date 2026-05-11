@@ -41,6 +41,8 @@ function printSample(sample) {
   for (const metric of quality.metrics) {
     console.log(`- ${metric.label}: ${metric.level} (${metric.score}/10)`);
   }
+  console.log(`Подходит: ${quality.supports.join(', ')}`);
+  console.log(`Не подходит: ${quality.avoid.join(', ')}`);
   console.log('Контекст:');
   console.log(`- Лунный день: ${context.lunarDay}`);
   console.log(`- Фаза: ${context.majorPhase ? `${context.majorPhase.name} в ${formatTimeWithSeconds(context.majorPhase.at)}` : context.lunar.phaseName}`);
