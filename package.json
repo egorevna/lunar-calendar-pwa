@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "generate:ephemeris": "node scripts/generate-ephemeris.cjs",
+    "calibrate:field": "node scripts/calibrate-field-quality.js",
     "test": "node --test",
     "preview": "npx http-server . -p 4173 -c-1"
   },

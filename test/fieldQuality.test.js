@@ -20,6 +20,7 @@ test('describes a stable moment for practical work', () => {
   assert.equal(quality.scores.material.level, 'высоко');
   assert.equal(quality.scores.rituals.level, 'высоко');
   assert.equal(quality.metrics.length, 3);
+  assert.ok(quality.reasons.includes('Стабильный индикатор дня поддерживает закрепление результата.'));
 });
 
 test('warns when void-of-course and hard Mars aspect make the field unstable', () => {
@@ -38,6 +39,7 @@ test('warns when void-of-course and hard Mars aspect make the field unstable', (
   assert.equal(quality.summary, 'Поле нестабильно: лучше завершать и чистить, а не начинать.');
   assert.equal(quality.scores.material.level, 'низко');
   assert.equal(quality.scores.rituals.level, 'средне');
+  assert.ok(quality.reasons.includes('Луна без курса снижает надежность стартов и материальных решений.'));
 });
 
 test('raises intuition for water Moon signs and Neptune influence', () => {
@@ -55,4 +57,5 @@ test('raises intuition for water Moon signs and Neptune influence', () => {
 
   assert.equal(quality.summary, 'Поле тонкое: хорошо для интуиции, Таро и снов.');
   assert.equal(quality.scores.intuition.level, 'высоко');
+  assert.ok(quality.reasons.includes('Водный знак Луны усиливает интуицию и сновидческое поле.'));
 });

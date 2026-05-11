@@ -21,12 +21,48 @@ export function getFieldQuality(context) {
   return {
     summary: summarize(context, scores),
     scores,
+    reasons: getReasons(context),
     metrics: [
       toMetric('intuition', 'Интуиция', scores.intuition),
       toMetric('material', 'Материальные дела', scores.material),
       toMetric('rituals', 'Ритуалы', scores.rituals),
     ],
   };
+}
+
+function getReasons(context) {
+  const reasons = [];
+  const sign = context.moonSign?.current?.key;
+  const officer = context.indicators?.dayOfficer?.key;
+  const hour = context.planetaryHour?.key;
+  const aspects = [context.moonAspects?.previous, context.moonAspects?.next];
+
+  if (context.voc?.isActive) {
+    reasons.push('Луна без курса снижает надежность стартов и материальных решений.');
+  }
+  if (WATER_SIGNS.has(sign)) {
+    reasons.push('Водный знак Луны усиливает интуицию и сновидческое поле.');
+  }
+  if (EARTH_SIGNS.has(sign)) {
+    reasons.push('Земной знак Луны поддерживает практические и материальные дела.');
+  }
+  if (STABLE_OFFICERS.has(officer)) {
+    reasons.push('Стабильный индикатор дня поддерживает закрепление результата.');
+  }
+  if (CLEANSING_OFFICERS.has(officer)) {
+    reasons.push('Индикатор дня поддерживает очищение, отсечение и завершение.');
+  }
+  if (aspects.some(isSoftBeneficAspect)) {
+    reasons.push('Мягкий аспект к Венере или Юпитеру смягчает поле.');
+  }
+  if (aspects.some(isHardDisruptiveAspect)) {
+    reasons.push('Напряженный аспект к жесткой планете повышает фон осторожности.');
+  }
+  if (RITUAL_HOURS.has(hour)) {
+    reasons.push('Планетарный час поддерживает ритуальную работу.');
+  }
+
+  return reasons.length ? reasons : ['Явных усилителей или красных флагов немного.'];
 }
 
 function scoreIntuition(context) {
