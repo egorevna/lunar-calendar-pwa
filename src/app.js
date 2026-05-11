@@ -88,7 +88,7 @@ function render() {
   elements.moonSign.textContent = `Луна в ${moonSign.current.glyph} ${moonSign.current.locative}`;
   elements.nextMoonSign.textContent = `в ${moonSign.next.name} ${formatMoonIngress(now, moonSign.entersAt)}`;
   elements.voc.textContent = describeVoc(voc, now);
-  elements.vocAspect.textContent = describeVocAspect(voc);
+  renderVocAspect(voc);
   elements.lastMoonAspect.textContent = describeAspect(moonAspects?.previous, 'нет данных');
   elements.nextMoonAspect.textContent = describeAspect(moonAspects?.next, 'нет данных');
   elements.lunarSymbol.textContent = indicators.lunarSymbol.name;
@@ -131,6 +131,16 @@ function renderSimpleList(element, items) {
     const item = document.createElement('li');
     item.textContent = text;
     return item;
+  }));
+}
+
+function renderVocAspect(voc) {
+  const lines = describeVocAspect(voc).split('\n').filter(Boolean);
+  elements.vocAspect.replaceChildren(...lines.map((text, index) => {
+    const line = document.createElement('span');
+    line.textContent = text;
+    if (index > 0) line.className = 'voc-background';
+    return line;
   }));
 }
 

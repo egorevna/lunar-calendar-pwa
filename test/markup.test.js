@@ -16,9 +16,9 @@ test('home screen renders compact Moon aspect fields', () => {
   assert.equal(html.includes('data-next-moon-aspect'), true);
 });
 
-test('home screen uses neutral Moon status heading for VOC card', () => {
-  assert.equal(html.includes('<h2>Статус Луны</h2>'), true);
-  assert.equal(html.includes('<h2>Луна без курса</h2>'), false);
+test('home screen uses event heading for VOC card', () => {
+  assert.equal(html.includes('<h2>Луна без курса</h2>'), true);
+  assert.equal(html.includes('<h2>Статус Луны</h2>'), false);
 });
 
 test('home screen renders field quality fields', () => {

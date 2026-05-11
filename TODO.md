@@ -55,13 +55,7 @@ Status: done
 
 ### Goal
 
-Improve the `Луна без курса` block so it shows a clear current state instead of a raw interval.
-
-The block should tell the user whether Void of Course Moon:
-
-1. has not started yet;
-2. is active now;
-3. is absent in the current day.
+Keep the `Луна без курса` card focused on the nearest or current VOC period.
 
 ### Current behavior
 
@@ -82,42 +76,25 @@ And below:
 If VOC has not started yet:
 
 ```txt
-Луна без курса начнется
 с 13:04 до 03:03
-через 2ч 50м
 ```
 
 If VOC is currently active:
 
 ```txt
-Луна без курса
 до 03:03
-осталось 4ч 12м
 ```
 
-If there is no VOC in the current day:
+If there is no VOC data:
 
 ```txt
-Луна в курсе
-Следующая VOC: дата, время
+нет данных
 ```
 
-Replace:
+Use last aspect copy:
 
 ```txt
 после: □ Венера
-```
-
-With compact wording:
-
-```txt
-VOC после: □ Венера
-```
-
-Alternative if the UI has enough space:
-
-```txt
-Последний аспект перед VOC: □ Венера
 ```
 
 ### Formatting rules
@@ -145,11 +122,12 @@ Do not implement:
 
 ### Acceptance criteria
 
-- Before VOC start, the block shows the correct title, interval, and countdown.
-- During VOC, the block shows the correct title, end time, and countdown.
-- If no VOC exists today, the block shows `Луна в курсе` and the next VOC date/time.
-- The old line `после: ...` is replaced by a clearer line.
+- Before VOC start, the block shows `с HH:mm до HH:mm`.
+- During VOC, the block shows `до HH:mm`.
+- If VOC data is unavailable, the block shows `нет данных`.
+- The aspect line uses `после: ...`.
 - No seconds are shown in the VOC block on the main dashboard.
+- No `Луна в курсе`, `Без курса: ...`, `VOC после: ...`, countdown, or `... VOC` quality wording is shown.
 - Existing precise VOC calculation is not broken.
 - Existing fallback logic is not broken.
 - Existing tests pass.
@@ -185,27 +163,25 @@ Codex must:
 
 ---
 
-# Active Task
-
-Do not start this task until the user explicitly asks for it.
+# Completed Task
 
 ---
 
 ## Task 1.2 — Add VOC Quality Label
 
-Status: not started
+Status: done
 
 ### Goal
 
-Add a short quality label for the current or upcoming VOC.
+Add a short human background label for the current or upcoming VOC.
 
 ### Rules
 
-- after harmonious aspect: `мягкий VOC`;
-- after tense aspect: `напряженный VOC`;
-- after aspect with Neptune: `размытый VOC`;
-- after aspect with Saturn: `тяжелый VOC`;
-- after aspect with Mars or Uranus: `нервный VOC`.
+- after harmonious aspect: `фон мягкий`;
+- after tense aspect: `фон напряженный`;
+- after aspect with Neptune: `фон размытый`;
+- after aspect with Saturn: `фон тяжелый`;
+- after aspect with Mars or Uranus: `фон нервный`.
 
 ### Priority
 
@@ -236,11 +212,16 @@ Do not implement:
 ### Acceptance criteria
 
 - VOC block displays one compact quality label when enough data exists.
+- The label does not include the word `VOC`.
 - App does not crash if last aspect is missing.
 - Existing VOC states from Task 1.1 still work.
 - Tests pass.
 
 ---
+
+# Active Task
+
+Do not start this task until the user explicitly asks for it.
 
 ## Task 1.3 — Improve Moon Aspects Block
 

@@ -1,44 +1,35 @@
-const MOSCOW_SHORT_DATE_FORMAT = new Intl.DateTimeFormat('ru-RU', {
-  day: 'numeric',
-  month: 'long',
-  timeZone: 'Europe/Moscow',
-});
-const MOSCOW_DAY_FORMAT = new Intl.DateTimeFormat('en-CA', {
-  year: 'numeric',
-  month: '2-digit',
-  day: '2-digit',
-  timeZone: 'Europe/Moscow',
-});
-
-export function describeVoc(voc, now = new Date()) {
-  if (!voc) return 'Луна в курсе';
+export function describeVoc(voc) {
+  if (!voc?.start || !voc?.end) return 'нет данных';
 
   if (voc.isActive || voc.status === 'active') {
-    return [
-      'Луна без курса',
-      `до ${formatVocTime(voc.end)}`,
-      `осталось ${formatDuration(now, voc.end)}`,
-    ].join('\n');
+    return `до ${formatVocTime(voc.end)}`;
   }
 
-  if (voc.status === 'upcoming' && isSameMoscowDay(now, voc.start)) {
-    return [
-      'Луна без курса начнется',
-      `с ${formatVocTime(voc.start)} до ${formatVocTime(voc.end)}`,
-      `через ${formatDuration(now, voc.start)}`,
-    ].join('\n');
+  if (voc.status === 'upcoming') {
+    return `с ${formatVocTime(voc.start)} до ${formatVocTime(voc.end)}`;
   }
 
-  const next = voc.start ? `${formatVocDate(voc.start)}, ${formatVocTime(voc.start)}` : 'нет данных';
-  return [
-    'Луна в курсе',
-    `Без курса: ${next}`,
-  ].join('\n');
+  return 'нет данных';
 }
 
 export function describeVocAspect(voc) {
   if (!voc?.aspect || !voc?.planet) return '';
-  return `VOC после: ${formatAspect(voc.aspect)} ${formatPlanet(voc.planet)}`;
+  return [
+    `после: ${formatAspect(voc.aspect)} ${formatPlanet(voc.planet)}`,
+    getVocBackgroundLabel(voc),
+  ].filter(Boolean).join('\n');
+}
+
+export function getVocBackgroundLabel(voc) {
+  if (!voc?.aspect || !voc?.planet) return '';
+
+  if (voc.planet === 'neptune') return 'фон размытый';
+  if (voc.planet === 'saturn') return 'фон тяжелый';
+  if (voc.planet === 'mars' || voc.planet === 'uranus') return 'фон нервный';
+  if (voc.aspect === 90 || voc.aspect === 180) return 'фон напряженный';
+  if (voc.aspect === 60 || voc.aspect === 120) return 'фон мягкий';
+
+  return '';
 }
 
 export function formatAspect(aspect) {
@@ -74,22 +65,4 @@ function formatVocTime(date) {
     hour12: false,
     timeZone: 'Europe/Moscow',
   }).format(date);
-}
-
-function formatVocDate(date) {
-  return MOSCOW_SHORT_DATE_FORMAT.format(date);
-}
-
-function isSameMoscowDay(left, right) {
-  return MOSCOW_DAY_FORMAT.format(left) === MOSCOW_DAY_FORMAT.format(right);
-}
-
-function formatDuration(from, to) {
-  const totalMinutes = Math.max(0, Math.floor((to - from) / 60000));
-  const hours = Math.floor(totalMinutes / 60);
-  const minutes = totalMinutes % 60;
-
-  if (hours <= 0) return `${minutes}м`;
-  if (minutes <= 0) return `${hours}ч`;
-  return `${hours}ч ${minutes}м`;
 }

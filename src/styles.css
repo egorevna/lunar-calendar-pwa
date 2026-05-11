@@ -236,6 +236,16 @@ button {
   line-height: 1.15;
 }
 
+.voc-card small span {
+  display: block;
+}
+
+.voc-card small .voc-background {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.94em;
+}
+
 .planetary-card {
   padding: 11px 15px;
 }
