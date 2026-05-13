@@ -1,4 +1,4 @@
-export function describeVoc(voc) {
+export function describeVoc(voc, now = new Date()) {
   if (!voc?.start || !voc?.end) return 'нет данных';
 
   if (voc.isActive || voc.status === 'active') {
@@ -6,14 +6,18 @@ export function describeVoc(voc) {
   }
 
   if (voc.status === 'upcoming') {
-    return `с ${formatVocTime(voc.start)} до ${formatVocTime(voc.end)}`;
+    return [
+      'Следующая Луна без курса',
+      formatVocDay(now, voc.start),
+      `с ${formatVocTime(voc.start)} до ${formatVocTime(voc.end)}`,
+    ].join('\n');
   }
 
   return 'нет данных';
 }
 
 export function describeVocAspect(voc) {
-  if (!voc?.aspect || !voc?.planet) return '';
+  if (voc?.aspect == null || !voc?.planet) return '';
   return [
     `после: ${formatAspect(voc.aspect)} ${formatPlanet(voc.planet)}`,
     getVocBackgroundLabel(voc),
@@ -21,7 +25,7 @@ export function describeVocAspect(voc) {
 }
 
 export function getVocBackgroundLabel(voc) {
-  if (!voc?.aspect || !voc?.planet) return '';
+  if (voc?.aspect == null || !voc?.planet) return '';
 
   if (voc.planet === 'neptune') return 'фон размытый';
   if (voc.planet === 'saturn') return 'фон тяжелый';
@@ -65,4 +69,29 @@ function formatVocTime(date) {
     hour12: false,
     timeZone: 'Europe/Moscow',
   }).format(date);
+}
+
+function formatVocDay(now, date) {
+  const today = getMoscowDayStart(now);
+  const target = getMoscowDayStart(date);
+  const dayDiff = Math.round((target - today) / 86400000);
+
+  if (dayDiff === 0) return 'сегодня';
+  if (dayDiff === 1) return 'завтра';
+
+  return new Intl.DateTimeFormat('ru-RU', {
+    day: 'numeric',
+    month: 'long',
+    timeZone: 'Europe/Moscow',
+  }).format(date);
+}
+
+function getMoscowDayStart(date) {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    timeZone: 'Europe/Moscow',
+  }).format(date);
+  return new Date(`${parts}T00:00:00Z`);
 }

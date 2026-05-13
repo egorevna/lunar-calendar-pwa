@@ -16,7 +16,7 @@ test('describes an upcoming void-of-course period without seconds', () => {
     end: new Date('2026-05-11T03:03:38+03:00'),
   };
 
-  assert.equal(describeVoc(voc, now), 'с 13:04 до 03:03');
+  assert.equal(describeVoc(voc, now), 'Следующая Луна без курса\nсегодня\nс 13:04 до 03:03');
 });
 
 test('describes an active void-of-course period without seconds', () => {
@@ -46,7 +46,19 @@ test('shows the nearest future void-of-course period even on another Moscow day'
     end: new Date('2026-05-12T03:03:38+03:00'),
   };
 
-  assert.equal(describeVoc(voc, now), 'с 13:04 до 03:03');
+  assert.equal(describeVoc(voc, now), 'Следующая Луна без курса\nзавтра\nс 13:04 до 03:03');
+});
+
+test('shows the date for an upcoming void-of-course period after tomorrow', () => {
+  const now = new Date('2026-05-13T19:38:00+03:00');
+  const voc = {
+    status: 'upcoming',
+    isActive: false,
+    start: new Date('2026-05-15T00:32:41+03:00'),
+    end: new Date('2026-05-15T05:31:04+03:00'),
+  };
+
+  assert.equal(describeVoc(voc, now), 'Следующая Луна без курса\n15 мая\nс 00:32 до 05:31');
 });
 
 test('uses simple last aspect wording for void-of-course', () => {
@@ -56,6 +68,15 @@ test('uses simple last aspect wording for void-of-course', () => {
   };
 
   assert.equal(describeVocAspect(voc), 'после: □ Венера\nфон напряженный');
+});
+
+test('shows conjunction aspect instead of treating aspect zero as missing', () => {
+  const voc = {
+    aspect: 0,
+    planet: 'mars',
+  };
+
+  assert.equal(describeVocAspect(voc), 'после: ☌ Марс\nфон нервный');
 });
 
 test('does not show background label without last aspect data', () => {
