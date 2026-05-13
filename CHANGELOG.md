@@ -1,5 +1,26 @@
 # Changelog
 
+## 2026-05-14 — Center dashboard mode selector
+
+- Mode selector оформлен как отдельная карточка; chips центрируются при переносе на две строки.
+- PWA-кэш обновлен до `lunar-calendar-v33`.
+- Task 2.2 не начиналась.
+
+## 2026-05-14 — Wrap dashboard mode chips
+
+- Mode selector chips теперь переносятся на новую строку вместо горизонтального скролла.
+- PWA-кэш обновлен до `lunar-calendar-v32`.
+- Task 2.2 не начиналась.
+
+## 2026-05-14 — Complete Task 2.1 dashboard mode selector
+
+- Добавлен compact mode selector с режимами `Общее`, `Таро`, `Свечи`, `Деньги`, `Отношения`, `Чистки`, `Прогнозы`.
+- Селектор расположен после `Луна без курса` и `Осторожно сегодня`, перед `Аспекты Луны`.
+- Default mode — `Общее`; активный режим визуально выделяется и хранится в in-memory state.
+- Добавлен `src/dashboardModes.js` и тесты списка режимов.
+- PWA-кэш обновлен до `lunar-calendar-v31`.
+- Task 2.2 оставлена следующей активной задачей и не начиналась.
+
 ## 2026-05-13 — Prepare Sprint 2 documentation
 
 - Sprint 1 зафиксирован как завершенный, активным спринтом стал `Sprint 2 — Modes and Best Windows`.

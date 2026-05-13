@@ -40,6 +40,12 @@ import {
   describeDebugPanel,
   isDebugMode,
 } from './debugPanel.js';
+import {
+  DEFAULT_DASHBOARD_MODE,
+  isDashboardModeKey,
+} from './dashboardModes.js';
+
+let selectedDashboardMode = DEFAULT_DASHBOARD_MODE;
 
 const elements = {
   date: document.querySelector('[data-date]'),
@@ -75,6 +81,8 @@ const elements = {
   warnings: document.querySelector('[data-warnings]'),
   debugPanel: document.querySelector('[data-debug-panel]'),
   debugContent: document.querySelector('[data-debug-content]'),
+  modeSelector: document.querySelector('[data-mode-selector]'),
+  modeButtons: document.querySelectorAll('[data-mode-button]'),
 };
 
 function render() {
@@ -132,6 +140,7 @@ function render() {
   renderSimpleList(elements.fieldAvoid, fieldQuality.avoid);
   renderFieldReasons(fieldQuality.reasons);
   renderWarnings(fieldQuality.warnings);
+  renderModeSelector();
   renderDebugPanel({
     now,
     debugDate,
@@ -142,6 +151,19 @@ function render() {
     moonAspects,
     indicators,
     ephemeris: PRECISE_EPHEMERIS,
+  });
+}
+
+function setDashboardMode(mode) {
+  if (!isDashboardModeKey(mode)) return;
+  selectedDashboardMode = mode;
+  renderModeSelector();
+}
+
+function renderModeSelector() {
+  elements.modeButtons.forEach((button) => {
+    const isSelected = button.dataset.modeButton === selectedDashboardMode;
+    button.setAttribute('aria-pressed', String(isSelected));
   });
 }
 
@@ -229,6 +251,12 @@ elements.moonAspectsToggle.addEventListener('click', () => {
   const shouldShow = elements.moonAspectInterpretation.hidden;
   elements.moonAspectInterpretation.hidden = !shouldShow;
   elements.moonAspectsToggle.setAttribute('aria-expanded', String(shouldShow));
+});
+
+elements.modeSelector.addEventListener('click', (event) => {
+  const button = event.target.closest('[data-mode-button]');
+  if (!button) return;
+  setDashboardMode(button.dataset.modeButton);
 });
 
 render();

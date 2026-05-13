@@ -103,7 +103,7 @@ Astro PWA — статическое PWA-приложение астрологи
 PWA-кэш обновлен до:
 
 ```txt
-lunar-calendar-v30
+lunar-calendar-v31
 ```
 
 Добавлен обновленный архитектурный принцип:
@@ -190,7 +190,7 @@ PWA устанавливается на экран iPhone через Safari.
 Тестовый набор проходит:
 
 ```txt
-66 тестов
+70 тестов
 ```
 
 ---
@@ -238,6 +238,8 @@ PWA устанавливается на экран iPhone через Safari.
 - `test/moonSignDisplay.test.js` — тесты строки перехода Луны без секунд и с `сегодня` / `завтра` / датой.
 - `src/debugPanel.js` — форматирование скрытой debug-панели и проверка `?debug=1`.
 - `test/debugPanel.test.js` — тесты режима debug, `debugDate` и ключевых секций debug-панели.
+- `src/dashboardModes.js` — список режимов главного экрана, default mode и проверка ключей.
+- `test/dashboardModes.test.js` — тесты списка режимов, default mode и валидности ключей.
 - `TODO.md`, `PROJECT_STATE.md`, `CHANGELOG.md` — актуализация состояния задач.
 
 Что сейчас работает в VOC-блоке:
@@ -274,10 +276,10 @@ PWA устанавливается на экран iPhone через Safari.
 Следующая задача:
 
 ```txt
-Task 2.1 — Add Dashboard Mode Selector
+Task 2.2 — Add Mode-Specific Scores
 ```
 
-Не начинать Task 2.2 и следующие задачи Sprint 2 без отдельной команды пользователя.
+Не начинать Task 2.3 и следующие задачи Sprint 2 без отдельной команды пользователя.
 
 ---
 
@@ -401,7 +403,7 @@ Task 2.1 — Add Dashboard Mode Selector
 Статус:
 
 ```txt
-active
+done
 ```
 
 Цель:
@@ -426,6 +428,15 @@ Acceptance criteria:
 - тесты проходят;
 - Task 2.2 не начата.
 
+Что выполнено:
+
+- добавлен compact mode selector после `Луна без курса` и `Осторожно сегодня`, перед `Аспекты Луны`;
+- default mode — `Общее`;
+- режимы переключаются по chips;
+- активный режим выделяется через `aria-pressed="true"` и визуальный стиль;
+- выбранный режим хранится в in-memory state в `src/app.js`;
+- persistence / `localStorage` не добавлялись.
+
 ---
 
 # Current Focus
@@ -435,10 +446,10 @@ Acceptance criteria:
 Запустить Sprint 2 с минимального безопасного шага:
 
 ```txt
-Task 2.1 — Add Dashboard Mode Selector
+Task 2.2 — Add Mode-Specific Scores
 ```
 
-Не добавлять mode-specific scores, best windows, профили, натал или персональные транзиты в Task 2.1.
+Не добавлять best windows, профили, натал или персональные транзиты в Task 2.2.
 
 ---
 
@@ -1001,7 +1012,7 @@ git commit -m "checkpoint before continuing in new codex chat"
 Текущая версия:
 
 ```txt
-lunar-calendar-v30
+lunar-calendar-v31
 ```
 
 ## Moscow Hardcoding
@@ -1051,13 +1062,13 @@ lunar-calendar-v30
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 2.1 — Add Dashboard Mode Selector.
+Выполнить Task 2.2 — Add Mode-Specific Scores.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 2.2.
+2. Не начинать Task 2.3.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не трогать профили, натал, персональные транзиты и best-window scoring.
@@ -1073,4 +1084,4 @@ lunar-calendar-v30
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Текущий приоритет Sprint 1 выполнен. Sprint 2 подготовлен в документации; следующая реализационная задача — Task 2.1.
+Текущий приоритет Sprint 1 выполнен. Sprint 2 начат; следующая реализационная задача — Task 2.2.

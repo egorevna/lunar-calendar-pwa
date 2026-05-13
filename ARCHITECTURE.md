@@ -393,6 +393,20 @@ Current behavior:
 
 The debug panel does not store data and does not expose profile or birth data.
 
+## `src/dashboardModes.js`
+
+Defines the dashboard mode list for Sprint 2.
+
+Current behavior:
+
+- exports the seven allowed dashboard modes;
+- exports `DEFAULT_DASHBOARD_MODE` as `general`;
+- validates mode keys through `isDashboardModeKey`;
+- does not calculate recommendations or best windows.
+
+The currently selected dashboard mode is held in memory in `src/app.js`.
+No `localStorage` or persistence is used yet.
+
 ## `scripts/generate-ephemeris.cjs`
 
 Generates Swiss Ephemeris data.
@@ -441,7 +455,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v30
+lunar-calendar-v31
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -456,6 +470,8 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
    For development checks, `src/debugDate.js` may override this with `?debugDate=...`.
    `src/debugPanel.js` may expose a hidden technical panel when `?debug=1`.
+
+   `src/app.js` also owns the current dashboard mode in memory for Sprint 2.
 
 2. Exact lunar data is requested from `src/preciseEphemeris.js`.
 
@@ -488,9 +504,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 11. `src/vocDisplay.js` formats the VOC display state for the dashboard.
 
-12. `src/debugPanel.js` formats the hidden debug panel when enabled.
+12. `src/dashboardModes.js` defines allowed dashboard modes and default mode.
 
-13. `src/app.js` updates DOM elements on the main dashboard and optional debug panel.
+13. `src/debugPanel.js` formats the hidden debug panel when enabled.
+
+14. `src/app.js` updates DOM elements on the main dashboard, mode selector, and optional debug panel.
 
 ## Current Preferred Source Order
 
@@ -830,7 +848,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v30
+lunar-calendar-v31
 ```
 
 Important operational rule:
@@ -1131,7 +1149,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v30
+lunar-calendar-v31
 ```
 
 If this value changes in `sw.js`, update this section.

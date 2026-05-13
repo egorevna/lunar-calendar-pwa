@@ -50,6 +50,20 @@ test('home screen uses clear indicators heading', () => {
   assert.equal(html.includes('<span>Индикатор дня</span>'), false);
 });
 
+test('home screen renders compact dashboard mode selector', () => {
+  assert.equal(html.includes('class="glass-card mode-selector"'), true);
+  assert.equal(html.includes('data-mode-selector'), true);
+  assert.equal(html.includes('data-mode-button'), true);
+  assert.equal(html.includes('aria-pressed="true" data-mode-button="general"'), true);
+  assert.equal(html.includes('Общее'), true);
+  assert.equal(html.includes('Таро'), true);
+  assert.equal(html.includes('Свечи'), true);
+  assert.equal(html.includes('Деньги'), true);
+  assert.equal(html.includes('Отношения'), true);
+  assert.equal(html.includes('Чистки'), true);
+  assert.equal(html.includes('Прогнозы'), true);
+});
+
 test('home screen renders hidden warnings card shell', () => {
   assert.equal(html.includes('Осторожно сегодня'), true);
   assert.equal(html.includes('data-warnings-card hidden'), true);
@@ -72,4 +86,16 @@ test('home screen places warnings between VOC and Moon aspects', () => {
   assert.equal(aspectsIndex >= 0, true);
   assert.equal(vocIndex < warningsIndex, true);
   assert.equal(warningsIndex < aspectsIndex, true);
+});
+
+test('home screen places mode selector after warnings and before Moon aspects', () => {
+  const warningsIndex = html.indexOf('data-warnings-card hidden');
+  const modeIndex = html.indexOf('data-mode-selector');
+  const aspectsIndex = html.indexOf('class="glass-card moon-aspects-card"');
+
+  assert.equal(warningsIndex >= 0, true);
+  assert.equal(modeIndex >= 0, true);
+  assert.equal(aspectsIndex >= 0, true);
+  assert.equal(warningsIndex < modeIndex, true);
+  assert.equal(modeIndex < aspectsIndex, true);
 });

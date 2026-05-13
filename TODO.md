@@ -641,7 +641,7 @@ Do not implement profiles, natal charts, personal transits, import/export, cloud
 
 ## Task 2.1 — Add Dashboard Mode Selector
 
-Status: active
+Status: done
 
 ### Goal
 
@@ -687,7 +687,7 @@ On small screens, horizontal scroll chips are acceptable.
 
 ## Task 2.2 — Add Mode-Specific Scores
 
-Status: not started
+Status: active
 
 Add scores relevant to selected mode.
 
