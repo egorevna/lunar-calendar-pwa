@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { getBestWindows } from '../src/bestWindows.js';
+import {
+  describeBestWindows,
+  getBestWindows,
+} from '../src/bestWindows.js';
 
 const stableField = {
   summary: 'Поле устойчивое: хорошо для закрепления результата.',
@@ -125,4 +128,87 @@ test('unknown mode safely falls back to general scoring', () => {
   });
 
   assert.equal(windows.length > 0, true);
+});
+
+test('describes best windows with mode-specific title and compact time ranges', () => {
+  const view = describeBestWindows([
+    {
+      start: new Date('2026-05-11T19:40:00+03:00'),
+      end: new Date('2026-05-11T21:10:00+03:00'),
+      suitableFor: ['расклады', 'записи'],
+      reasons: ['час Меркурия'],
+      cautions: [],
+    },
+  ], 'tarot');
+
+  assert.equal(view.hidden, false);
+  assert.equal(view.title, 'Лучшее окно для Таро');
+  assert.deepEqual(view.ranges, ['19:40–21:10']);
+  assert.deepEqual(view.suitableFor, ['расклады', 'записи']);
+  assert.deepEqual(view.reasons, ['час Меркурия']);
+  assert.equal(view.ranges[0].includes(':'), true);
+  assert.equal(/\d{2}:\d{2}:\d{2}/.test(view.ranges[0]), false);
+});
+
+test('describes general best window with general title', () => {
+  const view = describeBestWindows([
+    {
+      start: new Date('2026-05-11T10:00:00+03:00'),
+      end: new Date('2026-05-11T11:00:00+03:00'),
+      suitableFor: ['спокойные действия'],
+      reasons: ['стабильное поле'],
+      cautions: [],
+    },
+  ], 'general');
+
+  assert.equal(view.title, 'Лучшее окно сегодня');
+});
+
+test('uses natural Russian labels for mode-specific best window titles', () => {
+  const windows = [
+    {
+      start: new Date('2026-05-11T10:00:00+03:00'),
+      end: new Date('2026-05-11T11:00:00+03:00'),
+      suitableFor: [],
+      reasons: [],
+      cautions: [],
+    },
+  ];
+
+  assert.equal(describeBestWindows(windows, 'tarot').title, 'Лучшее окно для Таро');
+  assert.equal(describeBestWindows(windows, 'candles').title, 'Лучшее окно для свечей');
+  assert.equal(describeBestWindows(windows, 'money').title, 'Лучшее окно для денег');
+  assert.equal(describeBestWindows(windows, 'relationships').title, 'Лучшее окно для отношений');
+  assert.equal(describeBestWindows(windows, 'cleansing').title, 'Лучшее окно для чисток');
+  assert.equal(describeBestWindows(windows, 'forecasts').title, 'Лучшее окно для прогнозов');
+});
+
+test('hides best window view when helper returns no windows', () => {
+  const view = describeBestWindows([], 'money');
+
+  assert.equal(view.hidden, true);
+  assert.deepEqual(view.ranges, []);
+});
+
+test('best window description does not expose empty technical values', () => {
+  const view = describeBestWindows([
+    {
+      start: new Date('2026-05-11T10:00:00+03:00'),
+      end: new Date('2026-05-11T11:00:00+03:00'),
+      suitableFor: ['сделки', undefined, null, ''],
+      reasons: ['час Юпитера', undefined, null, ''],
+      cautions: [undefined, null, ''],
+    },
+  ], 'money');
+  const renderedText = [
+    view.title,
+    ...view.ranges,
+    ...view.suitableFor,
+    ...view.reasons,
+    ...view.cautions,
+  ].join(' ');
+
+  assert.equal(renderedText.includes('undefined'), false);
+  assert.equal(renderedText.includes('null'), false);
+  assert.equal(renderedText.includes('NaN'), false);
 });

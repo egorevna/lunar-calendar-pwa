@@ -22,6 +22,15 @@ const HARD_ASPECTS = new Set([90, 180]);
 const WATER_SIGNS = new Set(['cancer', 'scorpio', 'pisces']);
 const EARTH_SIGNS = new Set(['taurus', 'virgo', 'capricorn']);
 const AIR_SIGNS = new Set(['gemini', 'libra', 'aquarius']);
+const BEST_WINDOW_TITLES = {
+  general: 'Лучшее окно сегодня',
+  tarot: 'Лучшее окно для Таро',
+  candles: 'Лучшее окно для свечей',
+  money: 'Лучшее окно для денег',
+  relationships: 'Лучшее окно для отношений',
+  cleansing: 'Лучшее окно для чисток',
+  forecasts: 'Лучшее окно для прогнозов',
+};
 
 const MODE_SUPPORT = {
   general: {
@@ -106,6 +115,20 @@ export function getBestWindows(options = {}) {
   return mergeSlots(slots)
     .sort((left, right) => right.score - left.score || left.start - right.start)
     .slice(0, maxWindows);
+}
+
+export function describeBestWindows(windows = [], selectedMode = DEFAULT_DASHBOARD_MODE) {
+  const safeMode = isDashboardModeKey(selectedMode) ? selectedMode : DEFAULT_DASHBOARD_MODE;
+  const visibleWindows = windows.slice(0, DEFAULT_MAX_WINDOWS);
+
+  return {
+    hidden: visibleWindows.length === 0,
+    title: BEST_WINDOW_TITLES[safeMode],
+    ranges: visibleWindows.map((window) => formatWindowRange(window.start, window.end)),
+    suitableFor: unique(visibleWindows.flatMap((window) => window.suitableFor ?? [])),
+    reasons: unique(visibleWindows.flatMap((window) => window.reasons ?? [])),
+    cautions: unique(visibleWindows.flatMap((window) => window.cautions ?? [])),
+  };
 }
 
 function scoreSlot(context) {
@@ -301,6 +324,19 @@ function getModeLabel(mode) {
     cleansing: 'Чистки',
     forecasts: 'Прогнозы',
   }[mode] ?? 'Общее';
+}
+
+function formatWindowRange(start, end) {
+  return `${formatWindowTime(start)}–${formatWindowTime(end)}`;
+}
+
+function formatWindowTime(date) {
+  return new Intl.DateTimeFormat('ru-RU', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+    timeZone: 'Europe/Moscow',
+  }).format(date);
 }
 
 function getPlanetaryHourSuitability(hour) {

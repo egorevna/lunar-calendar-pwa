@@ -46,6 +46,10 @@ import {
 } from './dashboardModes.js';
 import { getModeScores } from './modeScores.js';
 import { getModeRecommendations } from './modeRecommendations.js';
+import {
+  describeBestWindows,
+  getBestWindows,
+} from './bestWindows.js';
 
 let selectedDashboardMode = DEFAULT_DASHBOARD_MODE;
 
@@ -81,6 +85,12 @@ const elements = {
   fieldReasons: document.querySelector('[data-field-reasons]'),
   warningsCard: document.querySelector('[data-warnings-card]'),
   warnings: document.querySelector('[data-warnings]'),
+  bestWindowCard: document.querySelector('[data-best-window-card]'),
+  bestWindowTitle: document.querySelector('[data-best-window-title]'),
+  bestWindowTimes: document.querySelector('[data-best-window-times]'),
+  bestWindowSuitable: document.querySelector('[data-best-window-suitable]'),
+  bestWindowReasons: document.querySelector('[data-best-window-reasons]'),
+  bestWindowCautions: document.querySelector('[data-best-window-cautions]'),
   debugPanel: document.querySelector('[data-debug-panel]'),
   debugContent: document.querySelector('[data-debug-content]'),
   modeSelector: document.querySelector('[data-mode-selector]'),
@@ -153,6 +163,7 @@ function render() {
   renderSimpleList(elements.fieldAvoid, modeRecommendations.careful);
   renderFieldReasons(fieldQuality.reasons);
   renderWarnings(fieldQuality.warnings);
+  renderBestWindows(describeBestWindows(getBestWindows({ selectedMode: selectedDashboardMode, now }), selectedDashboardMode));
   renderModeSelector();
   renderDebugPanel({
     now,
@@ -218,6 +229,24 @@ function renderFieldReasons(reasons) {
 function renderWarnings(warnings = []) {
   elements.warningsCard.hidden = warnings.length === 0;
   renderSimpleList(elements.warnings, warnings);
+}
+
+function renderBestWindows(view) {
+  elements.bestWindowCard.hidden = view.hidden;
+  elements.bestWindowTitle.textContent = view.title;
+  elements.bestWindowTimes.replaceChildren(...view.ranges.map((range) => {
+    const item = document.createElement('strong');
+    item.textContent = range;
+    return item;
+  }));
+  renderBestWindowLine(elements.bestWindowSuitable, 'Подходит для', view.suitableFor);
+  renderBestWindowLine(elements.bestWindowReasons, 'Почему', view.reasons);
+  renderBestWindowLine(elements.bestWindowCautions, 'Осторожно', view.cautions);
+}
+
+function renderBestWindowLine(element, label, items) {
+  element.hidden = items.length === 0;
+  element.textContent = items.length ? `${label}: ${items.join(', ')}` : '';
 }
 
 function renderPlanetaryHourHint(hint) {

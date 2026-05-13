@@ -449,8 +449,10 @@ Current responsibilities:
 - scores slots by mode, planetary hour, Moon sign / element, field quality, warnings, and nearby tense Moon aspects;
 - groups adjacent good slots into intervals;
 - returns up to 2 best windows with `start`, `end`, `score`, `label`, `suitableFor`, `reasons`, and `cautions`.
+- formats a compact dashboard view with title, time ranges, suitable-for text, reasons, and cautions.
 
-This helper is not rendered on the dashboard yet. Task 2.5 will decide how to display its output.
+`src/app.js` calls this helper during dashboard render and displays its output in the `Лучшее окно сегодня` card.
+If no good windows are returned, the card is hidden; no fallback text is rendered in Task 2.5.
 
 ## `scripts/generate-ephemeris.cjs`
 
@@ -500,7 +502,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v37
+lunar-calendar-v39
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -555,11 +557,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 14. `src/modeRecommendations.js` converts the selected mode and current moment context into `Хорошо` / `Осторожно` lists.
 
-15. `src/bestWindows.js` can calculate best-window candidates for the selected mode when called by future UI code.
+15. `src/bestWindows.js` calculates best-window candidates for the selected mode and provides the compact dashboard view model.
 
 16. `src/debugPanel.js` formats the hidden debug panel when enabled.
 
-17. `src/app.js` updates DOM elements on the main dashboard, mode selector, mode-specific scores, mode-specific recommendations, and optional debug panel.
+17. `src/app.js` updates DOM elements on the main dashboard, mode selector, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 
@@ -899,7 +901,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v37
+lunar-calendar-v39
 ```
 
 Important operational rule:
@@ -1200,7 +1202,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v37
+lunar-calendar-v39
 ```
 
 If this value changes in `sw.js`, update this section.

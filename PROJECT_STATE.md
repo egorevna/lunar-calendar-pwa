@@ -103,7 +103,7 @@ Astro PWA — статическое PWA-приложение астрологи
 PWA-кэш обновлен до:
 
 ```txt
-lunar-calendar-v37
+lunar-calendar-v39
 ```
 
 Добавлен обновленный архитектурный принцип:
@@ -282,10 +282,10 @@ PWA устанавливается на экран iPhone через Safari.
 Следующая задача:
 
 ```txt
-Task 2.5 — Display Best Window Today
+Task 2.6 — Add No-Good-Window Fallback
 ```
 
-Не начинать Task 2.5 без отдельной команды пользователя.
+Не начинать Task 2.6 без отдельной команды пользователя.
 
 ---
 
@@ -508,6 +508,26 @@ done
 
 ---
 
+## Task 2.5 — Display Best Window Today
+
+Статус:
+
+```txt
+done
+```
+
+Что выполнено:
+
+- helper `getBestWindows()` подключен к рендеру главного экрана;
+- добавлена карточка `Лучшее окно сегодня` / `Лучшее окно для [режим]`;
+- карточка расположена после блока `Качество поля` и перед debug-панелью;
+- отображается максимум 2 окна в формате `HH:mm–HH:mm`, без секунд;
+- строки `Подходит для`, `Почему` и `Осторожно` скрываются, если данных нет;
+- если хороших окон нет, карточка скрывается; no-good-window fallback не добавлялся;
+- PWA-кэш обновлен до `lunar-calendar-v39`.
+
+---
+
 # Current Focus
 
 Текущий фокус:
@@ -515,10 +535,10 @@ done
 Продолжить Sprint 2 следующим безопасным шагом:
 
 ```txt
-Task 2.5 — Display Best Window Today
+Task 2.6 — Add No-Good-Window Fallback
 ```
 
-Не добавлять no-good-window fallback, профили, натал или персональные транзиты в Task 2.5.
+Не начинать профили, натал или персональные транзиты. No-good-window fallback делать только в рамках Task 2.6 по отдельной команде.
 
 ---
 
@@ -1081,7 +1101,7 @@ git commit -m "checkpoint before continuing in new codex chat"
 Текущая версия:
 
 ```txt
-lunar-calendar-v37
+lunar-calendar-v39
 ```
 
 ## Moscow Hardcoding
@@ -1131,7 +1151,7 @@ lunar-calendar-v37
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 2.5 — Display Best Window Today.
+Выполнить Task 2.6 — Add No-Good-Window Fallback.
 ```
 
 Перед реализацией Codex должен:
@@ -1153,4 +1173,4 @@ lunar-calendar-v37
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Текущий приоритет Sprint 1 выполнен. Sprint 2 начат; следующая реализационная задача — Task 2.5.
+Текущий приоритет Sprint 1 выполнен. Sprint 2 начат; следующая реализационная задача — Task 2.6.

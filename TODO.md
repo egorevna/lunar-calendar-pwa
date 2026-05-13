@@ -726,7 +726,7 @@ Do not modify ephemeris data.
 
 ## Task 2.5 — Display Best Window Today
 
-Status: active
+Status: done
 
 Add card:
 
@@ -740,7 +740,7 @@ Show no more than 2 windows.
 
 ## Task 2.6 — Add No-Good-Window Fallback
 
-Status: not started
+Status: active
 
 If no good window exists:
 

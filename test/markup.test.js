@@ -74,6 +74,17 @@ test('home screen renders hidden warnings card shell', () => {
   assert.equal(html.includes('data-warnings'), true);
 });
 
+test('home screen renders hidden best window card shell', () => {
+  assert.equal(html.includes('class="glass-card best-window-card"'), true);
+  assert.equal(html.includes('data-best-window-card hidden'), true);
+  assert.equal(html.includes('data-best-window-title'), true);
+  assert.equal(html.includes('data-best-window-times'), true);
+  assert.equal(html.includes('data-best-window-suitable'), true);
+  assert.equal(html.includes('data-best-window-reasons'), true);
+  assert.equal(html.includes('data-best-window-cautions'), true);
+  assert.equal(html.includes('Лучшее окно сегодня'), true);
+});
+
 test('home screen renders hidden debug panel shell', () => {
   assert.equal(html.includes('data-debug-panel hidden'), true);
   assert.equal(html.includes('data-debug-content'), true);
@@ -102,4 +113,16 @@ test('home screen places mode selector after warnings and before Moon aspects', 
   assert.equal(aspectsIndex >= 0, true);
   assert.equal(warningsIndex < modeIndex, true);
   assert.equal(modeIndex < aspectsIndex, true);
+});
+
+test('home screen places best window after field quality and before debug panel', () => {
+  const fieldIndex = html.indexOf('class="glass-card field-card"');
+  const bestWindowIndex = html.indexOf('data-best-window-card hidden');
+  const debugIndex = html.indexOf('data-debug-panel hidden');
+
+  assert.equal(fieldIndex >= 0, true);
+  assert.equal(bestWindowIndex >= 0, true);
+  assert.equal(debugIndex >= 0, true);
+  assert.equal(fieldIndex < bestWindowIndex, true);
+  assert.equal(bestWindowIndex < debugIndex, true);
 });
