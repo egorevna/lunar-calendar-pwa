@@ -332,13 +332,11 @@ They should not be scattered randomly inside `src/app.js`.
 
 ---
 
-# Active Task
-
-Do not start this task until the user explicitly asks for it.
+# Completed Task
 
 ## Task 1.5 — Improve Field Quality Block
 
-Status: not started
+Status: done
 
 ### Goal
 
@@ -387,6 +385,10 @@ Do not remove this rule unless explicitly asked.
 - Tests pass.
 
 ---
+
+# Active Task
+
+Do not start this task until the user explicitly asks for it.
 
 ## Task 1.6 — Add Warnings Block
 

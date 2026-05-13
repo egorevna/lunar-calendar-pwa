@@ -5,6 +5,8 @@ const HARD_ASPECTS = new Set([90, 180]);
 const SOFT_PLANETS = new Set(['venus', 'jupiter']);
 const INTUITIVE_PLANETS = new Set(['moon', 'neptune']);
 const HARD_PLANETS = new Set(['mars', 'saturn', 'uranus', 'pluto']);
+const DENSE_PLANETS = new Set(['saturn']);
+const BLURRED_PLANETS = new Set(['neptune']);
 const MATERIAL_HOURS = new Set(['sun', 'venus', 'jupiter', 'saturn']);
 const RITUAL_HOURS = new Set(['moon', 'mars', 'saturn']);
 const STABLE_OFFICERS = new Set(['stable', 'success', 'receive', 'open']);
@@ -18,9 +20,11 @@ export function getFieldQuality(context) {
     material: scoreMaterial(context),
     rituals: scoreRituals(context),
   };
+  const field = getFieldState(context, scores);
 
   return {
-    summary: summarize(context, scores),
+    summary: field.summary,
+    advice: field.advice,
     scores,
     reasons: getReasons(context),
     supports: getSupports(context, scores),
@@ -152,23 +156,69 @@ function scoreRituals(context) {
 }
 
 function summarize(context, scores) {
+  return getFieldState(context, scores).summary;
+}
+
+function getFieldState(context, scores) {
   const sign = context.moonSign?.current?.key;
   const officer = context.indicators?.dayOfficer?.key;
+  const hour = context.planetaryHour?.key;
+  const illumination = context.lunar?.illumination ?? 0.5;
   const aspects = getRelevantAspects(context);
 
-  if (context.voc?.isActive || aspects.some(isHardDisruptiveAspect) || CAUTION_OFFICERS.has(officer)) {
-    return 'Поле нестабильно: лучше завершать и чистить, а не начинать.';
+  if (aspects.some(isHardNeptuneAspect)) {
+    return {
+      summary: 'Поле размытое: осторожно с обещаниями, договорами и ожиданиями.',
+      advice: 'Проверять обещания и ожидания; лучше не строить решения на туманных вводных.',
+    };
+  }
+
+  if (aspects.some(isHardMarsOrUranusAspect) || (aspects.some(isHardDisruptiveAspect) && CAUTION_OFFICERS.has(officer))) {
+    return {
+      summary: 'Поле нервное: возможны резкие реакции и сбои планов.',
+      advice: 'Не действовать на раздражении; важные решения лучше отложить до более спокойного фона.',
+    };
+  }
+
+  if (context.voc?.isActive || CLEANSING_OFFICERS.has(officer) || (!context.lunar?.waxing && illumination < 0.25)) {
+    return {
+      summary: 'Поле очищающее: хорошо завершать, убирать и отсекать лишнее.',
+      advice: 'Сначала чистка, завершение и отсечение лишнего; новые запуски лучше отложить.',
+    };
+  }
+
+  if (aspects.some(isSaturnAspect) || (hour === 'saturn' && EARTH_SIGNS.has(sign))) {
+    return {
+      summary: 'Поле плотное: хорошо для телесных практик, защиты и стабилизации.',
+      advice: 'Сначала стабилизация, границы и дисциплина, потом действие.',
+    };
   }
 
   if (WATER_SIGNS.has(sign) && scores.intuition.level === 'высоко') {
-    return 'Поле тонкое: хорошо для интуиции, Таро и снов.';
+    return {
+      summary: 'Поле тонкое: хорошо для интуиции, Таро и снов.',
+      advice: 'Хороший момент для диагностики, Таро, снов и тонкой настройки.',
+    };
+  }
+
+  if (scores.material.level === 'высоко' && aspects.some(isSoftBeneficAspect) && MATERIAL_HOURS.has(hour)) {
+    return {
+      summary: 'Поле денежное: хорошо для практик на ресурс, клиентов и устойчивый доход.',
+      advice: 'Работать с ресурсом и клиентами спокойно, без резких обещаний.',
+    };
   }
 
   if (STABLE_OFFICERS.has(officer) && scores.material.level === 'высоко') {
-    return 'Поле устойчиво, подходит для закрепления решений.';
+    return {
+      summary: 'Поле устойчивое: хорошо для закрепления результата.',
+      advice: 'Лучше закреплять, а не резко менять.',
+    };
   }
 
-  return 'Поле рабочее: лучше действовать спокойно и без перегруза.';
+  return {
+    summary: 'Поле устойчивое: хорошо для закрепления результата.',
+    advice: 'Действовать спокойно и без перегруза.',
+  };
 }
 
 function isSoftBeneficAspect(aspect) {
@@ -193,6 +243,18 @@ function isRecentHardAspect(aspect, now) {
 
 function isHardDisruptiveAspect(aspect) {
   return aspect && HARD_ASPECTS.has(aspect.aspect) && HARD_PLANETS.has(aspect.planet);
+}
+
+function isHardMarsOrUranusAspect(aspect) {
+  return aspect && HARD_ASPECTS.has(aspect.aspect) && (aspect.planet === 'mars' || aspect.planet === 'uranus');
+}
+
+function isHardNeptuneAspect(aspect) {
+  return aspect && HARD_ASPECTS.has(aspect.aspect) && BLURRED_PLANETS.has(aspect.planet);
+}
+
+function isSaturnAspect(aspect) {
+  return aspect && DENSE_PLANETS.has(aspect.planet);
 }
 
 function toMetric(key, label, score) {

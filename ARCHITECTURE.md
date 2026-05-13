@@ -316,6 +316,7 @@ Current responsibilities:
 - receives Tong Shu data
 - receives planetary day/hour data
 - returns a field quality phrase
+- returns main moment advice
 - returns practical scores
 - returns reason list
 - returns “good for” list
@@ -375,7 +376,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v23
+lunar-calendar-v24
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -572,6 +573,7 @@ It should remain the central place for combining moment indicators into human-re
 Current field quality output includes:
 
 - phrase of the moment
+- main moment advice
 - practical scores
 - reasons
 - suitable actions
@@ -731,7 +733,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v23
+lunar-calendar-v24
 ```
 
 Important operational rule:
@@ -1032,7 +1034,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v23
+lunar-calendar-v24
 ```
 
 If this value changes in `sw.js`, update this section.

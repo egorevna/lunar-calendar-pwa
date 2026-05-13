@@ -273,6 +273,26 @@ button {
   font-size: clamp(22px, 5.9vw, 28px);
 }
 
+.field-main-advice {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.11);
+}
+
+.field-main-advice p {
+  margin: 0 0 5px;
+  color: var(--muted);
+  font-size: clamp(13px, 3.5vw, 16px);
+  font-weight: 700;
+}
+
+.field-main-advice strong {
+  color: rgba(255, 248, 239, 0.84);
+  font-size: clamp(15px, 4vw, 18px);
+  font-weight: 500;
+  line-height: 1.24;
+}
+
 .field-metrics {
   display: grid;
   gap: 8px;

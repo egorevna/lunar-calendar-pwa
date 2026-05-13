@@ -16,7 +16,8 @@ test('describes a stable moment for practical work', () => {
     planetaryHour: { key: 'venus' },
   });
 
-  assert.equal(quality.summary, 'Поле устойчиво, подходит для закрепления решений.');
+  assert.equal(quality.summary, 'Поле денежное: хорошо для практик на ресурс, клиентов и устойчивый доход.');
+  assert.equal(quality.advice, 'Работать с ресурсом и клиентами спокойно, без резких обещаний.');
   assert.equal(quality.scores.material.level, 'высоко');
   assert.equal(quality.scores.rituals.level, 'высоко');
   assert.equal(quality.metrics.length, 3);
@@ -38,7 +39,8 @@ test('warns when void-of-course and hard Mars aspect make the field unstable', (
     planetaryHour: { key: 'mars' },
   });
 
-  assert.equal(quality.summary, 'Поле нестабильно: лучше завершать и чистить, а не начинать.');
+  assert.equal(quality.summary, 'Поле нервное: возможны резкие реакции и сбои планов.');
+  assert.equal(quality.advice, 'Не действовать на раздражении; важные решения лучше отложить до более спокойного фона.');
   assert.equal(quality.scores.material.level, 'низко');
   assert.equal(quality.scores.rituals.level, 'средне');
   assert.ok(quality.reasons.includes('Луна без курса снижает надежность стартов и материальных решений.'));
@@ -60,6 +62,7 @@ test('raises intuition for water Moon signs and Neptune influence', () => {
   });
 
   assert.equal(quality.summary, 'Поле тонкое: хорошо для интуиции, Таро и снов.');
+  assert.equal(quality.advice, 'Хороший момент для диагностики, Таро, снов и тонкой настройки.');
   assert.equal(quality.scores.intuition.level, 'высоко');
   assert.ok(quality.reasons.includes('Водный знак Луны усиливает интуицию и сновидческое поле.'));
   assert.ok(quality.supports.includes('Таро и диагностика'));
@@ -83,4 +86,61 @@ test('limits the echo of an old hard Moon aspect', () => {
   assert.notEqual(quality.summary, 'Поле нестабильно: лучше завершать и чистить, а не начинать.');
   assert.equal(quality.scores.material.level, 'высоко');
   assert.equal(quality.reasons.includes('Напряженный аспект к жесткой планете повышает фон осторожности.'), false);
+});
+
+test('gives dense advice for Saturnian field', () => {
+  const quality = getFieldQuality({
+    now: new Date('2026-05-11T10:00:00+03:00'),
+    lunar: { illumination: 0.62, waxing: true },
+    voc: { isActive: false },
+    moonSign: { current: { key: 'capricorn' } },
+    moonAspects: {
+      previous: { at: new Date('2026-05-11T09:00:00+03:00'), aspect: 60, planet: 'saturn' },
+      next: { aspect: 120, planet: 'saturn' },
+    },
+    indicators: { dayOfficer: { key: 'stable' } },
+    planetaryHour: { key: 'saturn' },
+  });
+
+  assert.equal(quality.summary, 'Поле плотное: хорошо для телесных практик, защиты и стабилизации.');
+  assert.equal(quality.advice, 'Сначала стабилизация, границы и дисциплина, потом действие.');
+  assert.equal(quality.metrics.length, 3);
+});
+
+test('gives cleansing advice for cleansing field', () => {
+  const quality = getFieldQuality({
+    lunar: { illumination: 0.18, waxing: false },
+    voc: { isActive: true },
+    moonSign: { current: { key: 'virgo' } },
+    moonAspects: {
+      previous: { aspect: 60, planet: 'venus' },
+      next: { aspect: 60, planet: 'mercury' },
+    },
+    indicators: { dayOfficer: { key: 'remove' } },
+    planetaryHour: { key: 'moon' },
+  });
+
+  assert.equal(quality.summary, 'Поле очищающее: хорошо завершать, убирать и отсекать лишнее.');
+  assert.equal(quality.advice, 'Сначала чистка, завершение и отсечение лишнего; новые запуски лучше отложить.');
+  assert.ok(quality.supports.includes('чистки и отсечение'));
+  assert.ok(quality.avoid.includes('запуск новых дел'));
+});
+
+test('gives blurred advice for Neptunian field', () => {
+  const quality = getFieldQuality({
+    now: new Date('2026-05-11T10:00:00+03:00'),
+    lunar: { illumination: 0.48, waxing: true },
+    voc: { isActive: false },
+    moonSign: { current: { key: 'libra' } },
+    moonAspects: {
+      previous: { at: new Date('2026-05-11T09:00:00+03:00'), aspect: 90, planet: 'neptune' },
+      next: { aspect: 120, planet: 'venus' },
+    },
+    indicators: { dayOfficer: { key: 'open' } },
+    planetaryHour: { key: 'venus' },
+  });
+
+  assert.equal(quality.summary, 'Поле размытое: осторожно с обещаниями, договорами и ожиданиями.');
+  assert.equal(quality.advice, 'Проверять обещания и ожидания; лучше не строить решения на туманных вводных.');
+  assert.equal(quality.metrics.length, 3);
 });

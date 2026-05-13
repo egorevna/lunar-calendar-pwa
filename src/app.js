@@ -55,6 +55,7 @@ const elements = {
   hourName: document.querySelector('[data-planetary-hour]'),
   hourRange: document.querySelector('[data-hour-range]'),
   fieldSummary: document.querySelector('[data-field-summary]'),
+  fieldAdvice: document.querySelector('[data-field-advice]'),
   fieldMetrics: document.querySelector('[data-field-metrics]'),
   fieldSupports: document.querySelector('[data-field-supports]'),
   fieldAvoid: document.querySelector('[data-field-avoid]'),
@@ -106,6 +107,7 @@ function render() {
   elements.hourName.textContent = planetaryHour.name;
   elements.hourRange.textContent = formatRange(planetaryHour.startsAt, planetaryHour.endsAt);
   elements.fieldSummary.textContent = fieldQuality.summary;
+  elements.fieldAdvice.textContent = fieldQuality.advice;
   renderFieldMetrics(fieldQuality.metrics);
   renderSimpleList(elements.fieldSupports, fieldQuality.supports);
   renderSimpleList(elements.fieldAvoid, fieldQuality.avoid);
