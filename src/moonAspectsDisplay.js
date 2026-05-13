@@ -22,6 +22,14 @@ const PLANET_NAMES = {
   pluto: 'Плутон',
 };
 
+const INTERPRETATIONS = {
+  '60:mercury': 'хорошо для раскладов, разговоров, формулировок, записей, диагностики.',
+  '90:uranus': 'нервное поле, внезапности, лучше не принимать резких решений.',
+  '0:saturn': 'плотный фон, хорошо для дисциплины, границ и серьезных решений; осторожно с тяжестью и зажимом.',
+  '120:venus': 'мягкий фон, хорошо для отношений, красоты, примирения, свечей на гармонию.',
+  '180:mars': 'острый фон, возможны раздражение и конфликты; лучше не действовать на импульсе.',
+};
+
 export function describeMoonAspect(aspect, now = new Date()) {
   if (!isMajorMoonAspect(aspect)) return 'нет данных';
 
@@ -32,6 +40,15 @@ export function describeNextMoonAspect(aspect, now = new Date()) {
   if (!isMajorMoonAspect(aspect)) return 'нет данных';
 
   return `${describeMoonAspect(aspect, now)} · через ${formatCountdown(now, aspect.at)}`;
+}
+
+export function describeMoonAspectInterpretation(aspect) {
+  if (!isMajorMoonAspect(aspect)) return '';
+
+  const key = `${aspect.aspect}:${aspect.planet}`;
+  const text = INTERPRETATIONS[key] ?? getFallbackInterpretation(aspect.aspect);
+
+  return `Луна ${formatAspectGlyph(aspect.aspect)} ${formatPlanetName(aspect.planet)}: ${text}`;
 }
 
 function isMajorMoonAspect(aspect) {
@@ -70,6 +87,18 @@ function formatCountdown(now, date) {
   const hours = Math.floor(diffMinutes / 60);
   const minutes = diffMinutes % 60;
   return `${hours}ч ${minutes}м`;
+}
+
+function getFallbackInterpretation(aspect) {
+  if (aspect === 60 || aspect === 120) {
+    return 'мягкий фон, хорошо для спокойных действий, настройки и согласования.';
+  }
+
+  if (aspect === 90 || aspect === 180) {
+    return 'напряженный фон, лучше не принимать резких решений и не действовать на эмоциях.';
+  }
+
+  return 'сильный акцент на теме планеты, лучше действовать осознанно.';
 }
 
 function getMoscowDayStart(date) {

@@ -14,6 +14,8 @@ test('home screen renders compact Moon aspect fields', () => {
   assert.equal(html.includes('data-voc-aspect'), true);
   assert.equal(html.includes('data-last-moon-aspect'), true);
   assert.equal(html.includes('data-next-moon-aspect'), true);
+  assert.equal(html.includes('data-moon-aspect-interpretation'), true);
+  assert.equal(html.includes('data-moon-aspects-toggle'), true);
   assert.equal(html.includes('Последний аспект'), true);
   assert.equal(html.includes('Следующий аспект'), true);
 });

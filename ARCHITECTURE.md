@@ -217,6 +217,7 @@ Current responsibilities:
 - format relative Moscow day labels such as `вчера`, `сегодня`, `завтра`;
 - format aspect time as `HH:mm`;
 - add countdown text for the next Moon aspect.
+- keep short practical interpretation texts and fallback rules for Moon aspects.
 
 This module does not calculate Moon aspects. It only formats aspect data from `src/preciseEphemeris.js`.
 
@@ -374,7 +375,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v22
+lunar-calendar-v23
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -552,11 +553,13 @@ src/moonAspectsDisplay.js
 
 Moon aspect calculation still comes from generated precise ephemeris data through `src/preciseEphemeris.js`.
 
-If tap-to-expand interpretations are added, document where interpretation rules live.
+Tap-to-expand interpretation rules live in:
 
-Interpretation rules should not be scattered randomly inside DOM manipulation code.
+```txt
+src/moonAspectsDisplay.js
+```
 
-They should live in a dedicated helper, dictionary, or domain module.
+Interpretation rules are not scattered through DOM manipulation code.
 
 ---
 
@@ -728,7 +731,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v22
+lunar-calendar-v23
 ```
 
 Important operational rule:
@@ -1029,7 +1032,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v22
+lunar-calendar-v23
 ```
 
 If this value changes in `sw.js`, update this section.

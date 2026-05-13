@@ -38,7 +38,10 @@
           </article>
 
           <article class="glass-card moon-aspects-card">
-            <h2>Аспекты Луны</h2>
+            <div class="card-heading">
+              <h2>Аспекты Луны</h2>
+              <button class="help-button" type="button" aria-label="Пояснить следующий аспект Луны" aria-expanded="false" data-moon-aspects-toggle>?</button>
+            </div>
             <div class="aspect-row">
               <span>Последний аспект</span>
               <strong data-last-moon-aspect></strong>
@@ -47,6 +50,7 @@
               <span>Следующий аспект</span>
               <strong data-next-moon-aspect></strong>
             </div>
+            <p class="aspect-interpretation" data-moon-aspect-interpretation hidden></p>
           </article>
 
           <article class="glass-card indicators-card">

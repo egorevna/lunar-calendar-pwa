@@ -26,7 +26,11 @@ import {
   describeVoc,
   describeVocAspect,
 } from './vocDisplay.js';
-import { describeMoonAspect, describeNextMoonAspect } from './moonAspectsDisplay.js';
+import {
+  describeMoonAspect,
+  describeMoonAspectInterpretation,
+  describeNextMoonAspect,
+} from './moonAspectsDisplay.js';
 
 const elements = {
   date: document.querySelector('[data-date]'),
@@ -40,6 +44,8 @@ const elements = {
   vocAspect: document.querySelector('[data-voc-aspect]'),
   lastMoonAspect: document.querySelector('[data-last-moon-aspect]'),
   nextMoonAspect: document.querySelector('[data-next-moon-aspect]'),
+  moonAspectInterpretation: document.querySelector('[data-moon-aspect-interpretation]'),
+  moonAspectsToggle: document.querySelector('[data-moon-aspects-toggle]'),
   lunarSymbol: document.querySelector('[data-lunar-symbol]'),
   sexagenaryDay: document.querySelector('[data-sexagenary-day]'),
   dayOfficer: document.querySelector('[data-day-officer]'),
@@ -90,6 +96,7 @@ function render() {
   renderVocAspect(voc);
   elements.lastMoonAspect.textContent = describeMoonAspect(moonAspects?.previous, now);
   elements.nextMoonAspect.textContent = describeNextMoonAspect(moonAspects?.next, now);
+  renderMoonAspectInterpretation(moonAspects?.next);
   elements.lunarSymbol.textContent = indicators.lunarSymbol.name;
   elements.sexagenaryDay.textContent = indicators.sexagenaryDay.name;
   elements.dayOfficer.textContent = indicators.dayOfficer.name;
@@ -143,6 +150,15 @@ function renderVocAspect(voc) {
   }));
 }
 
+function renderMoonAspectInterpretation(aspect) {
+  const text = describeMoonAspectInterpretation(aspect);
+  elements.moonAspectInterpretation.textContent = text;
+  if (!text) {
+    elements.moonAspectInterpretation.hidden = true;
+    elements.moonAspectsToggle.setAttribute('aria-expanded', 'false');
+  }
+}
+
 function formatMoonIngress(now, entersAt) {
   const current = formatDate(now);
   const next = formatDate(entersAt);
@@ -155,6 +171,14 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js');
   });
 }
+
+elements.moonAspectsToggle.addEventListener('click', () => {
+  if (!elements.moonAspectInterpretation.textContent) return;
+
+  const shouldShow = elements.moonAspectInterpretation.hidden;
+  elements.moonAspectInterpretation.hidden = !shouldShow;
+  elements.moonAspectsToggle.setAttribute('aria-expanded', String(shouldShow));
+});
 
 render();
 window.setInterval(render, 30000);

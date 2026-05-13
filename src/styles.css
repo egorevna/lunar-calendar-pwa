@@ -368,6 +368,14 @@ button {
 }
 
 .moon-aspects-card h2 {
+  margin: 0;
+}
+
+.card-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
   margin-bottom: 10px;
 }
 
@@ -394,6 +402,15 @@ button {
   font-weight: 500;
   line-height: 1.12;
   text-align: right;
+}
+
+.aspect-interpretation {
+  margin: 12px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.11);
+  color: rgba(255, 248, 239, 0.72);
+  font-size: clamp(13px, 3.45vw, 16px);
+  line-height: 1.28;
 }
 
 .indicator-heading {
