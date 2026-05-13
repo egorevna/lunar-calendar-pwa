@@ -437,6 +437,21 @@ Current responsibilities:
 
 The helper reads existing moment data only. It does not calculate ephemeris events, choose best windows, or store user data.
 
+## `src/bestWindows.js`
+
+Calculates best-window candidates for the current Moscow day.
+
+Current responsibilities:
+
+- receives selected dashboard mode and calculation date;
+- scans the Moscow day by fixed time slots;
+- excludes slots where the Moon is void of course;
+- scores slots by mode, planetary hour, Moon sign / element, field quality, warnings, and nearby tense Moon aspects;
+- groups adjacent good slots into intervals;
+- returns up to 2 best windows with `start`, `end`, `score`, `label`, `suitableFor`, `reasons`, and `cautions`.
+
+This helper is not rendered on the dashboard yet. Task 2.5 will decide how to display its output.
+
 ## `scripts/generate-ephemeris.cjs`
 
 Generates Swiss Ephemeris data.
@@ -485,7 +500,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v36
+lunar-calendar-v37
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -540,9 +555,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 14. `src/modeRecommendations.js` converts the selected mode and current moment context into `Хорошо` / `Осторожно` lists.
 
-15. `src/debugPanel.js` formats the hidden debug panel when enabled.
+15. `src/bestWindows.js` can calculate best-window candidates for the selected mode when called by future UI code.
 
-16. `src/app.js` updates DOM elements on the main dashboard, mode selector, mode-specific scores, mode-specific recommendations, and optional debug panel.
+16. `src/debugPanel.js` formats the hidden debug panel when enabled.
+
+17. `src/app.js` updates DOM elements on the main dashboard, mode selector, mode-specific scores, mode-specific recommendations, and optional debug panel.
 
 ## Current Preferred Source Order
 
@@ -882,7 +899,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v36
+lunar-calendar-v37
 ```
 
 Important operational rule:
@@ -1183,7 +1200,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v36
+lunar-calendar-v37
 ```
 
 If this value changes in `sw.js`, update this section.

@@ -716,7 +716,7 @@ Show short mode-specific recommendations:
 
 ## Task 2.4 — Add Best Window Scoring Helper
 
-Status: active
+Status: done
 
 Create the logic for selecting 1–2 best windows for selected mode.
 
@@ -726,7 +726,7 @@ Do not modify ephemeris data.
 
 ## Task 2.5 — Display Best Window Today
 
-Status: not started
+Status: active
 
 Add card:
 

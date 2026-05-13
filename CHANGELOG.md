@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-14 — Complete Task 2.4 best window scoring helper
+
+- Добавлен `src/bestWindows.js` для расчета 1–2 лучших окон текущего московского дня.
+- Helper исключает active VOC, учитывает режим, планетарный час, знак Луны, fieldQuality, warnings и напряженные аспекты Луны.
+- Добавлены тесты `test/bestWindows.test.js`.
+- UI-карточка лучших окон не добавлялась.
+- PWA-кэш обновлен до `lunar-calendar-v37`.
+- Task 2.5 оставлена следующей активной задачей и не начиналась.
+
 ## 2026-05-14 — Improve Task 2.3 mode recommendation heuristics
 
 - `src/modeRecommendations.js` переведен на внутреннюю rule-based модель `signals → rules → priority → top 3`.

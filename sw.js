@@ -1,10 +1,11 @@
-const CACHE_NAME = 'lunar-calendar-v36';
+const CACHE_NAME = 'lunar-calendar-v37';
 const ASSETS = [
   './',
   'index.html',
   'manifest.webmanifest',
   'src/app.js',
   'src/astro.js',
+  'src/bestWindows.js',
   'src/format.js',
   'src/vocDisplay.js',
   'src/moonAspectsDisplay.js',

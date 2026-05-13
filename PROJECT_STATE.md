@@ -103,7 +103,7 @@ Astro PWA — статическое PWA-приложение астрологи
 PWA-кэш обновлен до:
 
 ```txt
-lunar-calendar-v36
+lunar-calendar-v37
 ```
 
 Добавлен обновленный архитектурный принцип:
@@ -190,7 +190,7 @@ PWA устанавливается на экран iPhone через Safari.
 Тестовый набор проходит:
 
 ```txt
-82 теста
+95 тестов
 ```
 
 ---
@@ -244,6 +244,8 @@ PWA устанавливается на экран iPhone через Safari.
 - `test/modeScores.test.js` — тесты режимных оценок, fallback и диапазона 1–10.
 - `src/modeRecommendations.js` — mode-specific списки `Хорошо` / `Осторожно`.
 - `test/modeRecommendations.test.js` — тесты режимных рекомендаций, лимита 3/3 и fallback.
+- `src/bestWindows.js` — helper расчета 1–2 лучших окон дня для выбранного режима.
+- `test/bestWindows.test.js` — тесты scoring helper, VOC exclusion, reasons и fallback.
 - `TODO.md`, `PROJECT_STATE.md`, `CHANGELOG.md` — актуализация состояния задач.
 
 Что сейчас работает в VOC-блоке:
@@ -280,10 +282,10 @@ PWA устанавливается на экран iPhone через Safari.
 Следующая задача:
 
 ```txt
-Task 2.4 — Add Best Window Scoring Helper
+Task 2.5 — Display Best Window Today
 ```
 
-Не начинать Task 2.4 без отдельной команды пользователя.
+Не начинать Task 2.5 без отдельной команды пользователя.
 
 ---
 
@@ -485,6 +487,27 @@ done
 
 ---
 
+## Task 2.4 — Add Best Window Scoring Helper
+
+Статус:
+
+```txt
+done
+```
+
+Что выполнено:
+
+- добавлен helper `src/bestWindows.js`;
+- helper сканирует текущий московский день слотами, исключает active VOC и скорит оставшиеся слоты;
+- учитываются выбранный режим, планетарный час, знак / элемент Луны, fieldQuality, warnings и ближайший напряженный аспект Луны;
+- соседние хорошие слоты группируются в интервалы;
+- возвращается максимум 2 окна с `start`, `end`, `score`, `label`, `suitableFor`, `reasons`, `cautions`;
+- если хороших окон нет, helper возвращает пустой массив;
+- UI-карточка лучших окон не добавлялась;
+- PWA-кэш обновлен до `lunar-calendar-v37`.
+
+---
+
 # Current Focus
 
 Текущий фокус:
@@ -492,10 +515,10 @@ done
 Продолжить Sprint 2 следующим безопасным шагом:
 
 ```txt
-Task 2.4 — Add Best Window Scoring Helper
+Task 2.5 — Display Best Window Today
 ```
 
-Не добавлять best window card, no-good-window fallback, профили, натал или персональные транзиты в Task 2.4.
+Не добавлять no-good-window fallback, профили, натал или персональные транзиты в Task 2.5.
 
 ---
 
@@ -1058,7 +1081,7 @@ git commit -m "checkpoint before continuing in new codex chat"
 Текущая версия:
 
 ```txt
-lunar-calendar-v36
+lunar-calendar-v37
 ```
 
 ## Moscow Hardcoding
@@ -1108,16 +1131,16 @@ lunar-calendar-v36
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 2.4 — Add Best Window Scoring Helper.
+Выполнить Task 2.5 — Display Best Window Today.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 2.5.
+2. Не начинать Task 2.6.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
-5. Не трогать профили, натал, персональные транзиты и best-window scoring.
+5. Не трогать профили, натал, персональные транзиты и no-good-window fallback.
 6. После реализации обновить документацию и запустить тесты.
 
 ---
@@ -1130,4 +1153,4 @@ lunar-calendar-v36
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Текущий приоритет Sprint 1 выполнен. Sprint 2 начат; следующая реализационная задача — Task 2.4.
+Текущий приоритет Sprint 1 выполнен. Sprint 2 начат; следующая реализационная задача — Task 2.5.
