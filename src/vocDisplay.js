@@ -2,12 +2,11 @@ export function describeVoc(voc, now = new Date()) {
   if (!voc?.start || !voc?.end) return 'нет данных';
 
   if (voc.isActive || voc.status === 'active') {
-    return `до ${formatVocTime(voc.end)}`;
+    return `сейчас\nдо ${formatVocTime(voc.end)}`;
   }
 
   if (voc.status === 'upcoming') {
     return [
-      'Следующая Луна без курса',
       formatVocDay(now, voc.start),
       `с ${formatVocTime(voc.start)} до ${formatVocTime(voc.end)}`,
     ].join('\n');

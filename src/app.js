@@ -25,9 +25,8 @@ import { getFieldQuality } from './fieldQuality.js';
 import {
   describeVoc,
   describeVocAspect,
-  formatAspect,
-  formatPlanet,
 } from './vocDisplay.js';
+import { describeMoonAspect, describeNextMoonAspect } from './moonAspectsDisplay.js';
 
 const elements = {
   date: document.querySelector('[data-date]'),
@@ -89,8 +88,8 @@ function render() {
   elements.nextMoonSign.textContent = `в ${moonSign.next.name} ${formatMoonIngress(now, moonSign.entersAt)}`;
   elements.voc.textContent = describeVoc(voc, now);
   renderVocAspect(voc);
-  elements.lastMoonAspect.textContent = describeAspect(moonAspects?.previous, 'нет данных');
-  elements.nextMoonAspect.textContent = describeAspect(moonAspects?.next, 'нет данных');
+  elements.lastMoonAspect.textContent = describeMoonAspect(moonAspects?.previous, now);
+  elements.nextMoonAspect.textContent = describeNextMoonAspect(moonAspects?.next, now);
   elements.lunarSymbol.textContent = indicators.lunarSymbol.name;
   elements.sexagenaryDay.textContent = indicators.sexagenaryDay.name;
   elements.dayOfficer.textContent = indicators.dayOfficer.name;
@@ -142,11 +141,6 @@ function renderVocAspect(voc) {
     if (index > 0) line.className = 'voc-background';
     return line;
   }));
-}
-
-function describeAspect(aspect, fallback) {
-  if (!aspect) return fallback;
-  return `${formatAspect(aspect.aspect)} ${formatPlanet(aspect.planet)} в ${formatTimeWithSeconds(aspect.at)}`;
 }
 
 function formatMoonIngress(now, entersAt) {

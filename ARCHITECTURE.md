@@ -206,6 +206,20 @@ Current responsibilities:
 
 This module does not calculate VOC intervals. It only formats display text from existing VOC data.
 
+## `src/moonAspectsDisplay.js`
+
+Formats the dashboard display text for previous and next Moon aspects.
+
+Current responsibilities:
+
+- keep only major Moon aspects for the dashboard;
+- format aspect name and planet name;
+- format relative Moscow day labels such as `вчера`, `сегодня`, `завтра`;
+- format aspect time as `HH:mm`;
+- add countdown text for the next Moon aspect.
+
+This module does not calculate Moon aspects. It only formats aspect data from `src/preciseEphemeris.js`.
+
 ## `src/format.js`
 
 Formats date and time values.
@@ -360,7 +374,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v20
+lunar-calendar-v22
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -529,6 +543,14 @@ Expected display concepts:
 - relative day label: yesterday / today / tomorrow
 - `HH:mm` time
 - countdown to next aspect
+
+Current dashboard formatting lives in:
+
+```txt
+src/moonAspectsDisplay.js
+```
+
+Moon aspect calculation still comes from generated precise ephemeris data through `src/preciseEphemeris.js`.
 
 If tap-to-expand interpretations are added, document where interpretation rules live.
 
@@ -706,7 +728,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v20
+lunar-calendar-v22
 ```
 
 Important operational rule:
@@ -1007,7 +1029,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v20
+lunar-calendar-v22
 ```
 
 If this value changes in `sw.js`, update this section.

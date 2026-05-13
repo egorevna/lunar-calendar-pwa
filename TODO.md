@@ -217,13 +217,11 @@ Do not implement:
 
 ---
 
-# Active Task
-
-Do not start this task until the user explicitly asks for it.
+# Completed Task
 
 ## Task 1.3 — Improve Moon Aspects Block
 
-Status: not started
+Status: done
 
 ### Goal
 
@@ -241,19 +239,19 @@ Use labels:
 If previous aspect was yesterday:
 
 ```txt
-□ Уран — вчера 22:13
+Квадрат Уран · вчера 22:13
 ```
 
 If previous or next aspect is today:
 
 ```txt
-□ Уран — сегодня 22:13
+Квадрат Уран · сегодня 22:13
 ```
 
 If next aspect is tomorrow:
 
 ```txt
-✶ Меркурий — завтра 06:42
+Секстиль Меркурий · завтра 06:42 · через 20 ч 28 мин
 ```
 
 For the next aspect, add countdown:
@@ -289,6 +287,10 @@ Do not implement profiles or personal astrology.
 - Tests pass.
 
 ---
+
+# Active Task
+
+Do not start this task until the user explicitly asks for it.
 
 ## Task 1.4 — Add Moon Aspect Interpretation
 
