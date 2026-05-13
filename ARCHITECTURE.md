@@ -216,10 +216,22 @@ Current responsibilities:
 - format aspect name and planet name;
 - format relative Moscow day labels such as `вчера`, `сегодня`, `завтра`;
 - format aspect time as `HH:mm`;
-- add countdown text for the next Moon aspect.
 - keep short practical interpretation texts and fallback rules for Moon aspects.
 
 This module does not calculate Moon aspects. It only formats aspect data from `src/preciseEphemeris.js`.
+
+## `src/moonPrecisionDisplay.js`
+
+Formats compact Moon precision rows for the main Moon block.
+
+Current responsibilities:
+
+- format Moon illumination as a percentage;
+- format time until the nearest exact New Moon or Full Moon;
+- format Moon age in days;
+- skip unavailable values without showing `undefined` / `null`.
+
+This module does not calculate Moon phases. It formats values from `src/astro.js` and `src/preciseEphemeris.js`.
 
 ## `src/format.js`
 
@@ -263,6 +275,7 @@ Current responsibilities:
 - returning Void of Course Moon intervals
 - returning major Moon aspects
 - returning exact New Moon / Full Moon events
+- returning the next exact New Moon / Full Moon event
 - returning lunar day boundaries for Moscow
 - returning Chinese solar month boundaries if included in generated data
 
@@ -391,7 +404,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v26
+lunar-calendar-v27
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -427,11 +440,13 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
    - Tong Shu / Ba Zi / lunar day context
    - compact warnings for dashboard red flags
 
-7. `src/format.js` formats dates and times.
+7. `src/moonPrecisionDisplay.js` formats compact Moon precision rows for the hero Moon block.
 
-8. `src/vocDisplay.js` formats the VOC display state for the dashboard.
+8. `src/format.js` formats dates and times.
 
-9. `src/app.js` updates DOM elements on the main dashboard.
+9. `src/vocDisplay.js` formats the VOC display state for the dashboard.
+
+10. `src/app.js` updates DOM elements on the main dashboard.
 
 ## Current Preferred Source Order
 
@@ -751,7 +766,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v26
+lunar-calendar-v27
 ```
 
 Important operational rule:
@@ -1052,7 +1067,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v26
+lunar-calendar-v27
 ```
 
 If this value changes in `sw.js`, update this section.

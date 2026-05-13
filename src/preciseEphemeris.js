@@ -91,6 +91,24 @@ export function getPreciseMajorMoonPhase(date = new Date(), data = PRECISE_EPHEM
   };
 }
 
+export function getNextPreciseMajorMoonPhase(date = new Date(), data = PRECISE_EPHEMERIS) {
+  if (!covers(date, data) || !Array.isArray(data.moonPhases)) return null;
+
+  const event = data.moonPhases
+    .map((phase) => ({ ...phase, time: new Date(phase.at) }))
+    .sort((a, b) => a.time - b.time)
+    .find((phase) => phase.time > date && MAJOR_PHASE_NAMES[phase.type]);
+
+  if (!event) return null;
+
+  return {
+    source: 'swisseph',
+    type: event.type,
+    name: MAJOR_PHASE_NAMES[event.type],
+    at: event.time,
+  };
+}
+
 export function getPreciseMoonAspectInfo(date = new Date(), data = PRECISE_EPHEMERIS) {
   if (!covers(date, data) || !Array.isArray(data.moonAspects)) return null;
 

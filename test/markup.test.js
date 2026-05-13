@@ -35,6 +35,11 @@ test('home screen renders field quality fields', () => {
   assert.equal(html.includes('data-field-avoid'), true);
 });
 
+test('home screen renders Moon precision field', () => {
+  assert.equal(html.includes('data-moon-precision'), true);
+  assert.equal(html.includes('class="moon-precision"'), true);
+});
+
 test('home screen renders hidden warnings card shell', () => {
   assert.equal(html.includes('Осторожно сегодня'), true);
   assert.equal(html.includes('data-warnings-card hidden'), true);

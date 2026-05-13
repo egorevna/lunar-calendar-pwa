@@ -4,6 +4,7 @@ import test from 'node:test';
 import {
   getPreciseLunarDayInfo,
   getPreciseMajorMoonPhase,
+  getNextPreciseMajorMoonPhase,
   getPreciseMoonAspectInfo,
   getPreciseMoonSignInfo,
   getPreciseSolarMonthBranch,
@@ -114,6 +115,15 @@ test('returns exact major Moon phase for the matching Moscow day', () => {
   assert.equal(lateUtcFullMoon.at.toISOString(), '2026-06-29T23:56:38.000Z');
 });
 
+test('returns next exact New or Full Moon phase', () => {
+  const next = getNextPreciseMajorMoonPhase(new Date('2026-05-10T15:53:00+03:00'), fixture);
+
+  assert.equal(next.source, 'swisseph');
+  assert.equal(next.name, 'Новолуние');
+  assert.equal(next.type, 'new');
+  assert.equal(next.at.toISOString(), '2026-05-16T20:01:00.000Z');
+});
+
 test('returns previous and next precise Moon aspects', () => {
   const aspects = getPreciseMoonAspectInfo(new Date('2026-05-10T19:10:00+03:00'), fixture);
 
@@ -136,6 +146,7 @@ test('returns null when precise data does not cover the requested date', () => {
   assert.equal(getPreciseLunarDayInfo(new Date('2032-01-01T00:00:00Z'), fixture), null);
   assert.equal(getPreciseSolarMonthBranch(new Date('2032-01-01T00:00:00Z'), fixture), null);
   assert.equal(getPreciseMajorMoonPhase(new Date('2032-01-01T00:00:00Z'), fixture), null);
+  assert.equal(getNextPreciseMajorMoonPhase(new Date('2032-01-01T00:00:00Z'), fixture), null);
   assert.equal(getPreciseMoonAspectInfo(new Date('2032-01-01T00:00:00Z'), fixture), null);
 });
 

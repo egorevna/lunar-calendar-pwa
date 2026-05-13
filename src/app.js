@@ -15,6 +15,7 @@ import {
 import {
   getPreciseLunarDayInfo,
   getPreciseMajorMoonPhase,
+  getNextPreciseMajorMoonPhase,
   getPreciseMoonAspectInfo,
   getPreciseMoonSignInfo,
   getPreciseSolarMonthBranch,
@@ -32,6 +33,7 @@ import {
   describeMoonAspectInterpretation,
   describeNextMoonAspect,
 } from './moonAspectsDisplay.js';
+import { describeMoonPrecision } from './moonPrecisionDisplay.js';
 
 const elements = {
   date: document.querySelector('[data-date]'),
@@ -39,6 +41,7 @@ const elements = {
   clock: document.querySelector('[data-clock]'),
   lunarDay: document.querySelector('[data-lunar-day]'),
   phase: document.querySelector('[data-phase]'),
+  moonPrecision: document.querySelector('[data-moon-precision]'),
   moonSign: document.querySelector('[data-moon-sign]'),
   nextMoonSign: document.querySelector('[data-next-moon-sign]'),
   voc: document.querySelector('[data-voc]'),
@@ -74,6 +77,7 @@ function render() {
   const moonSign = getPreciseMoonSignInfo(now) ?? getMoonSignInfo(now);
   const moonAspects = getPreciseMoonAspectInfo(now);
   const majorPhase = getPreciseMajorMoonPhase(now);
+  const nextMajorPhase = getNextPreciseMajorMoonPhase(now);
   const lunarDay = getPreciseLunarDayInfo(now)?.lunarDay ?? lunar.lunarDay;
   const solarMonthBranch = getPreciseSolarMonthBranch(now)?.key;
   const indicators = getDayIndicators(now, { lunarDay, solarMonthBranch });
@@ -94,6 +98,7 @@ function render() {
   elements.phase.textContent = majorPhase
     ? `${majorPhase.name} в ${formatTimeWithSeconds(majorPhase.at)}`
     : lunar.phaseName;
+  renderMoonPrecision(describeMoonPrecision({ lunar, nextPhase: nextMajorPhase, now }));
   elements.moonSign.textContent = `Луна в ${moonSign.current.glyph} ${moonSign.current.locative}`;
   elements.nextMoonSign.textContent = `в ${moonSign.next.name} ${formatMoonIngress(now, moonSign.entersAt)}`;
   elements.voc.textContent = describeVoc(voc, now);
@@ -134,6 +139,15 @@ function renderFieldMetrics(metrics) {
     value.textContent = `${metric.level} · ${metric.score}/10`;
 
     row.append(label, value);
+    return row;
+  }));
+}
+
+function renderMoonPrecision(rows) {
+  elements.moonPrecision.hidden = rows.length === 0;
+  elements.moonPrecision.replaceChildren(...rows.map((text) => {
+    const row = document.createElement('span');
+    row.textContent = text;
     return row;
   }));
 }

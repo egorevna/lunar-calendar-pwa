@@ -418,13 +418,9 @@ Show it only when there are real red flags.
 
 ---
 
-# Active Task
-
-Do not start this task until the user explicitly asks for it.
-
 ## Task 1.7 — Add Moon Precision
 
-Status: not started
+Status: done
 
 ### Goal
 
@@ -471,6 +467,10 @@ If generated ephemeris data must be expanded, update:
 - Tests pass.
 
 ---
+
+# Active Task
+
+Do not start this task until the user explicitly asks for it.
 
 ## Task 1.8 — Add Planetary Hour Hints
 
