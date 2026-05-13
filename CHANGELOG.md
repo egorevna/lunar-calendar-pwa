@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-05-13 — Prepare Sprint 2 documentation
+
+- Sprint 1 зафиксирован как завершенный, активным спринтом стал `Sprint 2 — Modes and Best Windows`.
+- В `TODO.md` добавлены Task 2.1–2.7; активная задача — `Task 2.1 — Add Dashboard Mode Selector`.
+- В `ASTRO_LOGIC.md` добавлены правила режимов и scoring notes для best windows.
+- В `UI_RULES.md` добавлены правила mode selector, mode recommendations и best window UI.
+- Код приложения не менялся.
+
 ## 2026-05-13 — Complete Task 1.10 hidden debug screen
 
 - Добавлена скрытая debug-панель, доступная только через `?debug=1`.

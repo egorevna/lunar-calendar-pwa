@@ -515,9 +515,7 @@ Do not hardcode repeated strings in multiple DOM branches.
 
 ---
 
-# Active Task
-
-Do not start this task until the user explicitly asks for it.
+# Completed Task
 
 ## Task 1.9 — Clean Up Terminology and Visual Clarity
 
@@ -627,18 +625,145 @@ If this adds a new screen or route-like state, update `ARCHITECTURE.md`.
 
 ---
 
-# Next Stage
+# Current Active Sprint
 
 ## Sprint 2 — Modes and Best Windows
 
+Status: active
+
+Goal:
+
+Add mode-aware recommendations and best windows to the main dashboard.
+
+Do not implement profiles, natal charts, personal transits, import/export, cloud sync, backend, or new public navigation in this sprint.
+
+# Active Task
+
+## Task 2.1 — Add Dashboard Mode Selector
+
+Status: active
+
+### Goal
+
+Add a compact selector for dashboard modes:
+
+- Общее
+- Таро
+- Свечи
+- Деньги
+- Отношения
+- Чистки
+- Прогнозы
+
+### Required Behavior
+
+- User can switch mode on the main dashboard.
+- Selected mode has visible active state.
+- Mode state is available for later recommendation blocks.
+- Existing dashboard blocks continue to work.
+- No profile or natal logic.
+
+### UX
+
+Preferred:
+
+```txt
+Режим
+[Общее] [Таро] [Свечи] [Деньги] [Отношения] [Чистки] [Прогнозы]
+```
+
+On small screens, horizontal scroll chips are acceptable.
+
+### Acceptance Criteria
+
+- Mode selector is visible.
+- Default mode is `Общее`.
+- User can switch to each mode.
+- Active mode is visually marked.
+- Tests pass.
+- Task 2.2 is not started.
+
+# Sprint 2 Backlog
+
+## Task 2.2 — Add Mode-Specific Scores
+
 Status: not started
 
-Purpose:
+Add scores relevant to selected mode.
 
-- add dashboard modes only after explicit user approval;
-- add best windows only after explicit user approval.
+Examples:
 
-Do not start Sprint 2 from this document alone.
+- Таро: Интуиция, Ясность трактовки, Риск искажений
+- Свечи: Программные свечи, Чистки, Денежные свечи, Любовные свечи, Защита
+- Деньги: Сделки, Продажи, Покупки, Запуск рекламы, Подписание
+- Отношения: Разговоры, Примирение, Притяжение, Гармонизация, Риск конфликта
+- Чистки: Чистки, Отсечение, Защита, Восстановление, Риск отката
+- Прогнозы: Ясность прогноза, Риск искажений, Логика, Интуиция
+
+## Task 2.3 — Add Mode-Specific Good / Careful Recommendations
+
+Status: not started
+
+Show short mode-specific recommendations:
+
+```txt
+Хорошо:
+...
+
+Осторожно:
+...
+```
+
+## Task 2.4 — Add Best Window Scoring Helper
+
+Status: not started
+
+Create the logic for selecting 1–2 best windows for selected mode.
+
+Exclude active VOC and risky moments.
+
+Do not modify ephemeris data.
+
+## Task 2.5 — Display Best Window Today
+
+Status: not started
+
+Add card:
+
+```txt
+Лучшее окно для [режим]
+19:40–21:10
+Почему: ...
+```
+
+Show no more than 2 windows.
+
+## Task 2.6 — Add No-Good-Window Fallback
+
+Status: not started
+
+If no good window exists:
+
+```txt
+Сегодня лучше завершать и очищать, а не запускать новое.
+```
+
+## Task 2.7 — Add Debug Reasoning for Best Windows
+
+Status: not started
+
+With `?debug=1`, show best-window candidate scoring and reasons.
+
+# Do Not Do Now
+
+- profiles;
+- natal chart;
+- personal transits;
+- import/export;
+- cloud sync;
+- backend;
+- new public navigation;
+- rewriting the whole dashboard.
 
 ---
 

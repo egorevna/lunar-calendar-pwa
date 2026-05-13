@@ -160,6 +160,70 @@ Modes:
 
 Mode switcher should be visible but not dominate the screen.
 
+The mode selector must be compact.
+
+Allowed modes:
+
+- `Общее`
+- `Таро`
+- `Свечи`
+- `Деньги`
+- `Отношения`
+- `Чистки`
+- `Прогнозы`
+
+The selected mode should be visually obvious.
+
+On mobile, prefer:
+
+- horizontal scroll chips;
+- compact segmented control;
+- select-like control if chips become too crowded.
+
+Do not add a new navigation bar.
+
+Do not add a new public screen.
+
+## Mode Recommendations
+
+Mode recommendations should be short.
+
+Prefer:
+
+```txt
+Хорошо:
+диагностика, сны, внутренние расклады
+
+Осторожно:
+денежные прогнозы при Луне без курса
+```
+
+## Best Window Card
+
+Best window card should be easy to scan.
+
+Preferred format:
+
+```txt
+Лучшее окно для Таро
+
+19:40–21:10
+Подходит для: раскладов, записей, диагностики
+Почему: Луна не без курса, час Меркурия.
+```
+
+Do not show more than 2 windows on the main screen.
+
+## No Good Window
+
+If no good window exists:
+
+```txt
+Сегодня лучше завершать и очищать, а не запускать новое.
+```
+
+Keep it calm and practical.
+
 ## Profile Switcher
 
 Main screen profile selector:

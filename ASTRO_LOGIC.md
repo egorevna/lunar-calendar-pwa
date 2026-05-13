@@ -287,6 +287,133 @@ Each mode changes:
 - Recommendations.
 - Warnings.
 
+## Sprint 2 Dashboard Modes
+
+### Общее
+
+General-purpose mode.
+
+### Таро
+
+Primary factors:
+
+- Moon in water signs increases intuition;
+- Mercury hour supports formulation, cards, notes, diagnostics;
+- Moon hour supports dreams, intuition, inner work;
+- VOC can support reflection but weakens concrete predictions;
+- Neptune / Pisces increases imagery but also distortion risk.
+
+Scores:
+
+- Интуиция;
+- Ясность трактовки;
+- Риск искажений.
+
+### Свечи
+
+Primary factors:
+
+- avoid starting programming candles during VOC;
+- cleanings can be acceptable in waning Moon / cleansing field;
+- Mars supports cutting / cleansing / protection;
+- Saturn supports boundaries / protection / stability;
+- Venus supports harmony / love / beauty;
+- Jupiter supports growth / money / blessing.
+
+Scores:
+
+- Программные свечи;
+- Чистки;
+- Денежные свечи;
+- Любовные свечи;
+- Защита.
+
+### Деньги
+
+Primary factors:
+
+- avoid material launches during VOC;
+- Mercury supports negotiations and documents;
+- Jupiter supports growth, money, learning;
+- Sun supports visibility / status;
+- Venus supports attraction, clients, beauty-related money.
+
+Scores:
+
+- Сделки;
+- Продажи;
+- Покупки;
+- Запуск рекламы;
+- Подписание.
+
+### Отношения
+
+Primary factors:
+
+- Venus hour supports harmony, attraction, reconciliation;
+- Moon hour supports sensitivity and family;
+- Sun can support honest visibility;
+- Mercury supports conversations.
+
+Scores:
+
+- Разговоры;
+- Примирение;
+- Притяжение;
+- Гармонизация;
+- Риск конфликта.
+
+### Чистки
+
+Primary factors:
+
+- waning Moon supports cleaning / removal;
+- Mars supports cutting off;
+- Saturn supports boundaries / protection;
+- Moon supports water / ritual sensitivity;
+- 29 lunar day favors cleaning over starting.
+
+Scores:
+
+- Чистки;
+- Отсечение;
+- Защита;
+- Восстановление;
+- Риск отката.
+
+### Прогнозы
+
+Primary factors:
+
+- Mercury supports logic, language, diagnostics;
+- Moon supports intuition;
+- Jupiter supports big-picture meaning;
+- Neptune / Pisces can increase symbolic perception but raises distortion risk.
+
+Scores:
+
+- Ясность прогноза;
+- Достоверность ощущения;
+- Риск искажений;
+- Логика;
+- Интуиция.
+
+## Sprint 2 Window Scoring Notes
+
+Use simple heuristics first.
+
+A first version can score:
+
+- `+2` if planetary hour supports mode;
+- `+2` if Moon sign supports mode;
+- `+2` if field quality supports mode;
+- `-4` if active VOC;
+- `-3` if exact tense Moon aspect nearby;
+- `-2` if warning conflicts with mode;
+- `+1` if Tong Shu / day indicator supports stability or completion, depending on mode.
+
+Avoid overfitting.
+
 ## Personal Transit Importance
 
 Show only 3–5 most important current transits.
