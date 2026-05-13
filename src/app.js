@@ -35,6 +35,11 @@ import {
 import { describeMoonPrecision } from './moonPrecisionDisplay.js';
 import { describePlanetaryHourHint } from './planetaryHourHints.js';
 import { describeMoonIngress } from './moonSignDisplay.js';
+import { PRECISE_EPHEMERIS } from './ephemeris-data.js';
+import {
+  describeDebugPanel,
+  isDebugMode,
+} from './debugPanel.js';
 
 const elements = {
   date: document.querySelector('[data-date]'),
@@ -68,10 +73,13 @@ const elements = {
   fieldReasons: document.querySelector('[data-field-reasons]'),
   warningsCard: document.querySelector('[data-warnings-card]'),
   warnings: document.querySelector('[data-warnings]'),
+  debugPanel: document.querySelector('[data-debug-panel]'),
+  debugContent: document.querySelector('[data-debug-content]'),
 };
 
 function render() {
-  const now = getNow();
+  const debugDate = getDebugDate();
+  const now = debugDate ?? new Date();
   const lunar = getLunarInfo(now);
   const planetaryDay = getPlanetaryDay(now);
   const planetaryHour = getPlanetaryHour(now);
@@ -124,10 +132,23 @@ function render() {
   renderSimpleList(elements.fieldAvoid, fieldQuality.avoid);
   renderFieldReasons(fieldQuality.reasons);
   renderWarnings(fieldQuality.warnings);
+  renderDebugPanel({
+    now,
+    debugDate,
+    lunarDay,
+    solarMonthBranch,
+    moonSign,
+    voc,
+    moonAspects,
+    indicators,
+    ephemeris: PRECISE_EPHEMERIS,
+  });
 }
 
-function getNow() {
-  return getDebugDate() ?? new Date();
+function renderDebugPanel(context) {
+  const shouldShow = isDebugMode();
+  elements.debugPanel.hidden = !shouldShow;
+  elements.debugContent.textContent = shouldShow ? describeDebugPanel(context) : '';
 }
 
 function renderFieldMetrics(metrics) {

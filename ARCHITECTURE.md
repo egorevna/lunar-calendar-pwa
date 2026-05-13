@@ -380,6 +380,19 @@ Current behavior:
 
 Without `debugDate`, the app uses the real current time.
 
+## `src/debugPanel.js`
+
+Formats the hidden technical debug panel and detects debug mode.
+
+Current behavior:
+
+- reads `debug=1` from URL query parameters;
+- returns hidden-panel text for calculation verification;
+- includes calculated time, `debugDate` status, Moscow day system, Moon sign, VOC, Moon aspects, indicators, ephemeris range/source, and cache version;
+- allows technical timestamps with seconds because this is debug-only.
+
+The debug panel does not store data and does not expose profile or birth data.
+
 ## `scripts/generate-ephemeris.cjs`
 
 Generates Swiss Ephemeris data.
@@ -428,7 +441,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v29
+lunar-calendar-v30
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -442,6 +455,7 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 1. `src/app.js` gets the current time.
 
    For development checks, `src/debugDate.js` may override this with `?debugDate=...`.
+   `src/debugPanel.js` may expose a hidden technical panel when `?debug=1`.
 
 2. Exact lunar data is requested from `src/preciseEphemeris.js`.
 
@@ -474,7 +488,9 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 11. `src/vocDisplay.js` formats the VOC display state for the dashboard.
 
-12. `src/app.js` updates DOM elements on the main dashboard.
+12. `src/debugPanel.js` formats the hidden debug panel when enabled.
+
+13. `src/app.js` updates DOM elements on the main dashboard and optional debug panel.
 
 ## Current Preferred Source Order
 
@@ -751,9 +767,16 @@ If these require expanding generated data, update:
 
 # Debug Architecture
 
-A future hidden debug screen may be added.
+The hidden debug panel is implemented.
 
-Expected debug information:
+Access method:
+
+```txt
+?debug=1
+?debug=1&debugDate=2026-05-15T00:40:00
+```
+
+Current debug information:
 
 - current timezone
 - selected day calculation system
@@ -767,15 +790,30 @@ Expected debug information:
 - calculation coordinates
 - ephemeris version
 
-If implemented, document:
+Files involved:
 
-- route or access method
-- files involved
-- whether it is visible in production
-- whether seconds are allowed
-- whether it exposes private profile data
+- `index.html` — hidden debug panel shell
+- `src/app.js` — passes already calculated dashboard data to the panel
+- `src/debugPanel.js` — query detection and text formatting
+- `src/styles.css` — simple technical panel styling
 
-Debug data should help check calculation differences between calendars.
+Visibility:
+
+- no public navigation or button
+- hidden unless `debug=1` is present
+- ordinary main dashboard keeps working
+
+Seconds:
+
+- allowed in debug raw timestamps
+- still not allowed on the ordinary main dashboard
+
+Privacy:
+
+- no profiles or birth data are currently displayed
+- if personal data is added later, debug output must follow `PRIVACY_RULES.md`
+
+Debug data helps check calculation differences between calendars.
 
 ---
 
@@ -792,7 +830,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v29
+lunar-calendar-v30
 ```
 
 Important operational rule:
@@ -1093,7 +1131,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v29
+lunar-calendar-v30
 ```
 
 If this value changes in `sw.js`, update this section.

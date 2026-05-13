@@ -27,7 +27,7 @@ Document priority:
 
 ---
 
-# Current Active Sprint
+# Completed Sprint
 
 ## Sprint 1 — Main Dashboard Cleanup
 
@@ -581,7 +581,7 @@ Main dashboard time format:
 
 ## Task 1.10 — Add Hidden Debug Screen
 
-Status: next
+Status: done
 
 ### Goal
 
@@ -627,6 +627,21 @@ If this adds a new screen or route-like state, update `ARCHITECTURE.md`.
 
 ---
 
+# Next Stage
+
+## Sprint 2 — Modes and Best Windows
+
+Status: not started
+
+Purpose:
+
+- add dashboard modes only after explicit user approval;
+- add best windows only after explicit user approval.
+
+Do not start Sprint 2 from this document alone.
+
+---
+
 # Calibration / Research Tasks
 
 These tasks are important but are not the current implementation priority.
@@ -643,7 +658,7 @@ Previous next step:
 Проверить формулировки и веса Качества поля на реальных рабочих днях.
 ```
 
-Keep this task, but it is lower priority than Sprint 1 UI cleanup.
+Keep this task, but it is lower priority than the next explicitly approved sprint task.
 
 ### Subtasks
 

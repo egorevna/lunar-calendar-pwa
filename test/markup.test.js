@@ -56,6 +56,12 @@ test('home screen renders hidden warnings card shell', () => {
   assert.equal(html.includes('data-warnings'), true);
 });
 
+test('home screen renders hidden debug panel shell', () => {
+  assert.equal(html.includes('data-debug-panel hidden'), true);
+  assert.equal(html.includes('data-debug-content'), true);
+  assert.equal(html.includes('Debug'), true);
+});
+
 test('home screen places warnings between VOC and Moon aspects', () => {
   const vocIndex = html.indexOf('class="glass-card voc-card"');
   const warningsIndex = html.indexOf('data-warnings-card hidden');
