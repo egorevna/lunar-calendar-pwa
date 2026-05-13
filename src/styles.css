@@ -550,6 +550,18 @@ button {
   color: var(--gold);
 }
 
+.planet-hint {
+  display: block;
+  margin-top: 6px;
+  color: rgba(255, 248, 239, 0.56);
+  font-size: clamp(12px, 3.25vw, 15px);
+  line-height: 1.22;
+}
+
+.planet-hint[hidden] {
+  display: none;
+}
+
 .divider {
   height: 1px;
   margin: 8px 0;

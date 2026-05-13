@@ -468,13 +468,9 @@ If generated ephemeris data must be expanded, update:
 
 ---
 
-# Active Task
-
-Do not start this task until the user explicitly asks for it.
-
 ## Task 1.8 — Add Planetary Hour Hints
 
-Status: not started
+Status: done
 
 ### Goal
 
@@ -518,6 +514,10 @@ Do not hardcode repeated strings in multiple DOM branches.
 - Tests pass.
 
 ---
+
+# Active Task
+
+Do not start this task until the user explicitly asks for it.
 
 ## Task 1.9 — Clean Up Terminology and Visual Clarity
 

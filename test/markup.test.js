@@ -40,6 +40,11 @@ test('home screen renders Moon precision field', () => {
   assert.equal(html.includes('class="moon-precision"'), true);
 });
 
+test('home screen renders planetary hour hint field', () => {
+  assert.equal(html.includes('data-hour-hint'), true);
+  assert.equal(html.includes('class="planet-hint"'), true);
+});
+
 test('home screen renders hidden warnings card shell', () => {
   assert.equal(html.includes('Осторожно сегодня'), true);
   assert.equal(html.includes('data-warnings-card hidden'), true);

@@ -228,10 +228,21 @@ Current responsibilities:
 
 - format Moon illumination as a percentage;
 - format time until the nearest exact New Moon or Full Moon;
-- format Moon age in days;
 - skip unavailable values without showing `undefined` / `null`.
 
 This module does not calculate Moon phases. It formats values from `src/astro.js` and `src/preciseEphemeris.js`.
+
+## `src/planetaryHourHints.js`
+
+Formats practical hints for the current planetary hour.
+
+Current responsibilities:
+
+- keep the reusable dictionary of planetary hour meanings;
+- return a short `Хорошо для: ...` hint by planetary hour key;
+- return an empty string for unknown values so the dashboard can hide the hint.
+
+This module does not calculate planetary hours. It formats data from `src/astro.js`.
 
 ## `src/format.js`
 
@@ -404,7 +415,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v27
+lunar-calendar-v28
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -442,11 +453,13 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 7. `src/moonPrecisionDisplay.js` formats compact Moon precision rows for the hero Moon block.
 
-8. `src/format.js` formats dates and times.
+8. `src/planetaryHourHints.js` formats the practical hint for the current planetary hour.
 
-9. `src/vocDisplay.js` formats the VOC display state for the dashboard.
+9. `src/format.js` formats dates and times.
 
-10. `src/app.js` updates DOM elements on the main dashboard.
+10. `src/vocDisplay.js` formats the VOC display state for the dashboard.
+
+11. `src/app.js` updates DOM elements on the main dashboard.
 
 ## Current Preferred Source Order
 
@@ -683,9 +696,7 @@ If indicator calculation logic or data structure changes, update this file.
 
 Current planetary day/hour fallback logic exists in `src/astro.js`.
 
-The dashboard currently displays the planetary hour.
-
-Future UI may add short hints for each planetary hour.
+The dashboard currently displays the planetary day, planetary hour, hour range, and a short practical hint for the current planetary hour.
 
 Expected meaning dictionary:
 
@@ -697,7 +708,7 @@ Expected meaning dictionary:
 - Venus: relationships, beauty, harmony, attraction
 - Saturn: protection, boundaries, structure, long commitments
 
-If these hints are added, they should live in a reusable dictionary/helper and not be hardcoded repeatedly in DOM update code.
+These hints live in `src/planetaryHourHints.js` and are not hardcoded repeatedly in DOM update code.
 
 ---
 
@@ -766,7 +777,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v27
+lunar-calendar-v28
 ```
 
 Important operational rule:
@@ -1067,7 +1078,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v27
+lunar-calendar-v28
 ```
 
 If this value changes in `sw.js`, update this section.

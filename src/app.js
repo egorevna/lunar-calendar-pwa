@@ -34,6 +34,7 @@ import {
   describeNextMoonAspect,
 } from './moonAspectsDisplay.js';
 import { describeMoonPrecision } from './moonPrecisionDisplay.js';
+import { describePlanetaryHourHint } from './planetaryHourHints.js';
 
 const elements = {
   date: document.querySelector('[data-date]'),
@@ -58,6 +59,7 @@ const elements = {
   hourGlyph: document.querySelector('[data-hour-glyph]'),
   hourName: document.querySelector('[data-planetary-hour]'),
   hourRange: document.querySelector('[data-hour-range]'),
+  hourHint: document.querySelector('[data-hour-hint]'),
   fieldSummary: document.querySelector('[data-field-summary]'),
   fieldAdvice: document.querySelector('[data-field-advice]'),
   fieldMetrics: document.querySelector('[data-field-metrics]'),
@@ -114,6 +116,7 @@ function render() {
   elements.hourGlyph.textContent = planetaryHour.glyph;
   elements.hourName.textContent = planetaryHour.name;
   elements.hourRange.textContent = formatRange(planetaryHour.startsAt, planetaryHour.endsAt);
+  renderPlanetaryHourHint(describePlanetaryHourHint(planetaryHour.key));
   elements.fieldSummary.textContent = fieldQuality.summary;
   elements.fieldAdvice.textContent = fieldQuality.advice;
   renderFieldMetrics(fieldQuality.metrics);
@@ -159,6 +162,11 @@ function renderFieldReasons(reasons) {
 function renderWarnings(warnings = []) {
   elements.warningsCard.hidden = warnings.length === 0;
   renderSimpleList(elements.warnings, warnings);
+}
+
+function renderPlanetaryHourHint(hint) {
+  elements.hourHint.hidden = !hint;
+  elements.hourHint.textContent = hint;
 }
 
 function renderSimpleList(element, items) {
