@@ -39,7 +39,7 @@ export function describeMoonAspect(aspect, now = new Date()) {
 export function describeNextMoonAspect(aspect, now = new Date()) {
   if (!isMajorMoonAspect(aspect)) return 'нет данных';
 
-  return `${describeMoonAspect(aspect, now)} · через ${formatCountdown(now, aspect.at)}`;
+  return describeMoonAspect(aspect, now);
 }
 
 export function describeMoonAspectInterpretation(aspect) {
@@ -80,13 +80,6 @@ function formatRelativeDay(now, date) {
     month: 'long',
     timeZone: 'Europe/Moscow',
   }).format(date);
-}
-
-function formatCountdown(now, date) {
-  const diffMinutes = Math.max(0, Math.floor((date - now) / 60000));
-  const hours = Math.floor(diffMinutes / 60);
-  const minutes = diffMinutes % 60;
-  return `${hours}ч ${minutes}м`;
 }
 
 function getFallbackInterpretation(aspect) {

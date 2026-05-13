@@ -18,7 +18,7 @@ test('describes previous Moon aspect with relative Moscow day and minutes', () =
   assert.equal(describeMoonAspect(aspect, now), '□ Уран · вчера 22:13');
 });
 
-test('describes next Moon aspect with countdown', () => {
+test('describes next Moon aspect without countdown', () => {
   const now = new Date('2026-05-11T10:14:00+03:00');
   const aspect = {
     aspect: 60,
@@ -26,7 +26,7 @@ test('describes next Moon aspect with countdown', () => {
     at: new Date('2026-05-12T06:42:44+03:00'),
   };
 
-  assert.equal(describeNextMoonAspect(aspect, now), '✶ Меркурий · завтра 06:42 · через 20ч 28м');
+  assert.equal(describeNextMoonAspect(aspect, now), '✶ Меркурий · завтра 06:42');
 });
 
 test('returns fallback for missing or non-major Moon aspects', () => {
