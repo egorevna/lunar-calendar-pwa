@@ -22,6 +22,7 @@ import {
 } from './preciseEphemeris.js';
 import { getDayIndicators } from './dayIndicators.js';
 import { getFieldQuality } from './fieldQuality.js';
+import { getDebugDate } from './debugDate.js';
 import {
   describeVoc,
   describeVocAspect,
@@ -60,10 +61,12 @@ const elements = {
   fieldSupports: document.querySelector('[data-field-supports]'),
   fieldAvoid: document.querySelector('[data-field-avoid]'),
   fieldReasons: document.querySelector('[data-field-reasons]'),
+  warningsCard: document.querySelector('[data-warnings-card]'),
+  warnings: document.querySelector('[data-warnings]'),
 };
 
 function render() {
-  const now = new Date();
+  const now = getNow();
   const lunar = getLunarInfo(now);
   const planetaryDay = getPlanetaryDay(now);
   const planetaryHour = getPlanetaryHour(now);
@@ -76,7 +79,7 @@ function render() {
   const indicators = getDayIndicators(now, { lunarDay, solarMonthBranch });
   const fieldQuality = getFieldQuality({
     now,
-    lunar,
+    lunar: { ...lunar, lunarDay },
     voc,
     moonSign,
     moonAspects,
@@ -112,6 +115,11 @@ function render() {
   renderSimpleList(elements.fieldSupports, fieldQuality.supports);
   renderSimpleList(elements.fieldAvoid, fieldQuality.avoid);
   renderFieldReasons(fieldQuality.reasons);
+  renderWarnings(fieldQuality.warnings);
+}
+
+function getNow() {
+  return getDebugDate() ?? new Date();
 }
 
 function renderFieldMetrics(metrics) {
@@ -132,6 +140,11 @@ function renderFieldMetrics(metrics) {
 
 function renderFieldReasons(reasons) {
   renderSimpleList(elements.fieldReasons, reasons);
+}
+
+function renderWarnings(warnings = []) {
+  elements.warningsCard.hidden = warnings.length === 0;
+  renderSimpleList(elements.warnings, warnings);
 }
 
 function renderSimpleList(element, items) {

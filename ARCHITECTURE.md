@@ -321,12 +321,27 @@ Current responsibilities:
 - returns reason list
 - returns “good for” list
 - returns “not good for” list
+- returns compact warning list for the `Осторожно сегодня` block
 
 Important current rule:
 
 The previous tense Moon aspect is treated as a strong factor only during the first 4 hours after the exact aspect.
 
 If this logic expands into modes such as Tarot, Candles, Money, Relationships, Cleansings, or Forecasts, document the new data flow here.
+
+## `src/debugDate.js`
+
+Small development-only helper for manual dashboard checks.
+
+Current behavior:
+
+- reads `debugDate` from URL query parameters;
+- returns a valid `Date` when the parameter is present and parseable;
+- returns `null` when the parameter is missing or invalid.
+
+`src/app.js` uses this helper only to choose the dashboard `now` value.
+
+Without `debugDate`, the app uses the real current time.
 
 ## `scripts/generate-ephemeris.cjs`
 
@@ -376,7 +391,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v24
+lunar-calendar-v26
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -388,6 +403,8 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 ## Main Dashboard Flow
 
 1. `src/app.js` gets the current time.
+
+   For development checks, `src/debugDate.js` may override this with `?debugDate=...`.
 
 2. Exact lunar data is requested from `src/preciseEphemeris.js`.
 
@@ -408,6 +425,7 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
    - VOC state
    - planetary day/hour
    - Tong Shu / Ba Zi / lunar day context
+   - compact warnings for dashboard red flags
 
 7. `src/format.js` formats dates and times.
 
@@ -733,7 +751,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v24
+lunar-calendar-v26
 ```
 
 Important operational rule:
@@ -1034,7 +1052,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v24
+lunar-calendar-v26
 ```
 
 If this value changes in `sw.js`, update this section.

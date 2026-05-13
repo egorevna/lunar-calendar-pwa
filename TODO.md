@@ -386,13 +386,9 @@ Do not remove this rule unless explicitly asked.
 
 ---
 
-# Active Task
-
-Do not start this task until the user explicitly asks for it.
-
 ## Task 1.6 — Add Warnings Block
 
-Status: not started
+Status: done
 
 ### Goal
 
@@ -421,6 +417,10 @@ Show it only when there are real red flags.
 - Tests pass.
 
 ---
+
+# Active Task
+
+Do not start this task until the user explicitly asks for it.
 
 ## Task 1.7 — Add Moon Precision
 

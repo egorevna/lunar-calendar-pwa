@@ -26,10 +26,10 @@ test('describes a stable moment for practical work', () => {
   assert.ok(quality.avoid.includes('хаотичные развороты'));
 });
 
-test('warns when void-of-course and hard Mars aspect make the field unstable', () => {
+test('warns when void-of-course and hard next aspect make the field unstable', () => {
   const quality = getFieldQuality({
     lunar: { illumination: 0.18, waxing: false },
-    voc: { isActive: true },
+    voc: { isActive: true, end: new Date('2026-05-12T05:31:00+03:00') },
     moonSign: { current: { key: 'gemini' } },
     moonAspects: {
       previous: { aspect: 90, planet: 'mars' },
@@ -46,6 +46,8 @@ test('warns when void-of-course and hard Mars aspect make the field unstable', (
   assert.ok(quality.reasons.includes('Луна без курса снижает надежность стартов и материальных решений.'));
   assert.ok(quality.supports.includes('завершение начатого'));
   assert.ok(quality.avoid.includes('запуск новых дел'));
+  assert.ok(quality.warnings.includes('Луна без курса до 05:31 — лучше не начинать важное.'));
+  assert.ok(quality.warnings.includes('Напряженный аспект Луны к Сатурну — лучше действовать осторожнее.'));
 });
 
 test('raises intuition for water Moon signs and Neptune influence', () => {
@@ -143,4 +145,73 @@ test('gives blurred advice for Neptunian field', () => {
   assert.equal(quality.summary, 'Поле размытое: осторожно с обещаниями, договорами и ожиданиями.');
   assert.equal(quality.advice, 'Проверять обещания и ожидания; лучше не строить решения на туманных вводных.');
   assert.equal(quality.metrics.length, 3);
+});
+
+test('returns no warnings when there are no red flags', () => {
+  const quality = getFieldQuality({
+    now: new Date('2026-05-11T10:00:00+03:00'),
+    lunar: { lunarDay: 12, illumination: 0.62, waxing: true },
+    voc: {
+      isActive: false,
+      status: 'upcoming',
+      start: new Date('2026-05-12T13:04:00+03:00'),
+      end: new Date('2026-05-13T03:03:00+03:00'),
+    },
+    moonSign: { current: { key: 'taurus' } },
+    moonAspects: {
+      previous: { at: new Date('2026-05-11T08:00:00+03:00'), aspect: 120, planet: 'venus' },
+      next: { at: new Date('2026-05-11T18:00:00+03:00'), aspect: 60, planet: 'jupiter' },
+    },
+    indicators: { dayOfficer: { key: 'stable' } },
+    planetaryHour: { key: 'venus' },
+  });
+
+  assert.deepEqual(quality.warnings, []);
+});
+
+test('warns about upcoming void-of-course today', () => {
+  const quality = getFieldQuality({
+    now: new Date('2026-05-11T10:00:00+03:00'),
+    lunar: { lunarDay: 12, illumination: 0.62, waxing: true },
+    voc: {
+      isActive: false,
+      status: 'upcoming',
+      start: new Date('2026-05-11T13:04:00+03:00'),
+      end: new Date('2026-05-12T03:03:00+03:00'),
+    },
+    moonSign: { current: { key: 'taurus' } },
+    moonAspects: { next: { aspect: 60, planet: 'jupiter' } },
+    indicators: { dayOfficer: { key: 'stable' } },
+    planetaryHour: { key: 'venus' },
+  });
+
+  assert.ok(quality.warnings.includes('VOC с 13:04 — важные запуски лучше сделать до этого времени.'));
+});
+
+test('warns about hard Moon aspect, 23 and 29 lunar days, and Pisces Moon', () => {
+  const quality23 = getFieldQuality({
+    now: new Date('2026-05-11T10:00:00+03:00'),
+    lunar: { lunarDay: 23, illumination: 0.38, waxing: false },
+    voc: { isActive: false },
+    moonSign: { current: { key: 'pisces' } },
+    moonAspects: { next: { aspect: 90, planet: 'uranus' } },
+    indicators: { dayOfficer: { key: 'open' } },
+    planetaryHour: { key: 'moon' },
+  });
+
+  assert.ok(quality23.warnings.includes('Напряженный аспект Луны к Урану — возможны резкие реакции.'));
+  assert.ok(quality23.warnings.includes('23 лунные сутки — не делать магию из злости.'));
+  assert.ok(quality23.warnings.includes('Луна в Рыбах — риск иллюзий и эмоциональной размытости.'));
+  assert.equal(quality23.warnings.length, 3);
+
+  const quality29 = getFieldQuality({
+    lunar: { lunarDay: 29, illumination: 0.04, waxing: false },
+    voc: { isActive: false },
+    moonSign: { current: { key: 'virgo' } },
+    moonAspects: { next: { aspect: 60, planet: 'venus' } },
+    indicators: { dayOfficer: { key: 'remove' } },
+    planetaryHour: { key: 'moon' },
+  });
+
+  assert.ok(quality29.warnings.includes('29 лунные сутки — лучше чистки, не запуск нового.'));
 });

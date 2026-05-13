@@ -29,6 +29,7 @@ export function getFieldQuality(context) {
     reasons: getReasons(context),
     supports: getSupports(context, scores),
     avoid: getAvoid(context, scores),
+    warnings: getWarnings(context),
     metrics: [
       toMetric('intuition', 'Интуиция', scores.intuition),
       toMetric('material', 'Материальные дела', scores.material),
@@ -103,6 +104,55 @@ function getReasons(context) {
   }
 
   return reasons.length ? reasons : ['Явных усилителей или красных флагов немного.'];
+}
+
+function getWarnings(context) {
+  const warnings = [];
+  const sign = context.moonSign?.current?.key;
+  const lunarDay = context.lunar?.lunarDay;
+  const nextAspect = context.moonAspects?.next;
+
+  if (context.voc?.isActive && context.voc?.end) {
+    warnings.push(`Луна без курса до ${formatWarningTime(context.voc.end)} — лучше не начинать важное.`);
+  } else if (isUpcomingVocToday(context)) {
+    warnings.push(`VOC с ${formatWarningTime(context.voc.start)} — важные запуски лучше сделать до этого времени.`);
+  }
+
+  const aspectWarning = getHardAspectWarning(nextAspect);
+  if (aspectWarning) warnings.push(aspectWarning);
+
+  if (lunarDay === 23) {
+    warnings.push('23 лунные сутки — не делать магию из злости.');
+  }
+  if (lunarDay === 29) {
+    warnings.push('29 лунные сутки — лучше чистки, не запуск нового.');
+  }
+  if (sign === 'pisces') {
+    warnings.push('Луна в Рыбах — риск иллюзий и эмоциональной размытости.');
+  }
+
+  return uniqueFirst(warnings, 3);
+}
+
+function isUpcomingVocToday(context) {
+  if (context.voc?.status !== 'upcoming' || !context.voc?.start || !context.now) return false;
+  return getMoscowDateKey(context.voc.start) === getMoscowDateKey(context.now);
+}
+
+function getHardAspectWarning(aspect) {
+  if (!aspect || !HARD_ASPECTS.has(aspect.aspect)) return '';
+
+  const planet = formatWarningPlanet(aspect.planet);
+  if (!planet) return '';
+
+  if (aspect.planet === 'mars') {
+    return 'Напряженный аспект Луны к Марсу — выше риск конфликтов и импульсивности.';
+  }
+  if (aspect.planet === 'uranus') {
+    return 'Напряженный аспект Луны к Урану — возможны резкие реакции.';
+  }
+
+  return `Напряженный аспект Луны к ${planet} — лучше действовать осторожнее.`;
 }
 
 function scoreIntuition(context) {
@@ -263,6 +313,31 @@ function toMetric(key, label, score) {
 
 function uniqueFirst(items, limit) {
   return [...new Set(items)].slice(0, limit);
+}
+
+function formatWarningTime(date) {
+  return new Intl.DateTimeFormat('ru-RU', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+    timeZone: 'Europe/Moscow',
+  }).format(date);
+}
+
+function getMoscowDateKey(date) {
+  const shifted = new Date(new Date(date).getTime() + 3 * 3600000);
+  return shifted.toISOString().slice(0, 10);
+}
+
+function formatWarningPlanet(planet) {
+  const names = {
+    mars: 'Марсу',
+    saturn: 'Сатурну',
+    uranus: 'Урану',
+    neptune: 'Нептуну',
+    pluto: 'Плутону',
+  };
+  return names[planet] ?? '';
 }
 
 function toScore(value) {

@@ -34,3 +34,21 @@ test('home screen renders field quality fields', () => {
   assert.equal(html.includes('data-field-supports'), true);
   assert.equal(html.includes('data-field-avoid'), true);
 });
+
+test('home screen renders hidden warnings card shell', () => {
+  assert.equal(html.includes('Осторожно сегодня'), true);
+  assert.equal(html.includes('data-warnings-card hidden'), true);
+  assert.equal(html.includes('data-warnings'), true);
+});
+
+test('home screen places warnings between VOC and Moon aspects', () => {
+  const vocIndex = html.indexOf('class="glass-card voc-card"');
+  const warningsIndex = html.indexOf('data-warnings-card hidden');
+  const aspectsIndex = html.indexOf('class="glass-card moon-aspects-card"');
+
+  assert.equal(vocIndex >= 0, true);
+  assert.equal(warningsIndex >= 0, true);
+  assert.equal(aspectsIndex >= 0, true);
+  assert.equal(vocIndex < warningsIndex, true);
+  assert.equal(warningsIndex < aspectsIndex, true);
+});
