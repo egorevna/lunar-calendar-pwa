@@ -502,7 +502,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v39
+lunar-calendar-v40
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -901,7 +901,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v39
+lunar-calendar-v40
 ```
 
 Important operational rule:
@@ -1202,7 +1202,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v39
+lunar-calendar-v40
 ```
 
 If this value changes in `sw.js`, update this section.

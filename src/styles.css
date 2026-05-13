@@ -589,6 +589,10 @@ button {
   line-height: 1.28;
 }
 
+.aspect-interpretation[hidden] {
+  display: none;
+}
+
 .indicator-heading {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;

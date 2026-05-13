@@ -59,3 +59,8 @@ test('returns practical fallback interpretation by aspect type', () => {
     'Луна ☌ Венера: сильный акцент на теме планеты, лучше действовать осознанно.',
   );
 });
+
+test('returns empty interpretation for missing next Moon aspect', () => {
+  assert.equal(describeMoonAspectInterpretation(null), '');
+  assert.equal(describeMoonAspectInterpretation({ aspect: 45, planet: 'venus', at: new Date() }), '');
+});

@@ -67,7 +67,6 @@ const elements = {
   lastMoonAspect: document.querySelector('[data-last-moon-aspect]'),
   nextMoonAspect: document.querySelector('[data-next-moon-aspect]'),
   moonAspectInterpretation: document.querySelector('[data-moon-aspect-interpretation]'),
-  moonAspectsToggle: document.querySelector('[data-moon-aspects-toggle]'),
   lunarSymbol: document.querySelector('[data-lunar-symbol]'),
   sexagenaryDay: document.querySelector('[data-sexagenary-day]'),
   dayOfficer: document.querySelector('[data-day-officer]'),
@@ -275,10 +274,7 @@ function renderVocAspect(voc) {
 function renderMoonAspectInterpretation(aspect) {
   const text = describeMoonAspectInterpretation(aspect);
   elements.moonAspectInterpretation.textContent = text;
-  if (!text) {
-    elements.moonAspectInterpretation.hidden = true;
-    elements.moonAspectsToggle.setAttribute('aria-expanded', 'false');
-  }
+  elements.moonAspectInterpretation.hidden = !text;
 }
 
 if ('serviceWorker' in navigator) {
@@ -286,14 +282,6 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js');
   });
 }
-
-elements.moonAspectsToggle.addEventListener('click', () => {
-  if (!elements.moonAspectInterpretation.textContent) return;
-
-  const shouldShow = elements.moonAspectInterpretation.hidden;
-  elements.moonAspectInterpretation.hidden = !shouldShow;
-  elements.moonAspectsToggle.setAttribute('aria-expanded', String(shouldShow));
-});
 
 elements.modeSelector.addEventListener('click', (event) => {
   const button = event.target.closest('[data-mode-button]');

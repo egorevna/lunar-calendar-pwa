@@ -242,7 +242,7 @@ function applyAspectScore(signals, score, date) {
 function applyWarningScore(signals, score) {
   if (!signals.warnings.length) return;
   score.value -= 20;
-  score.cautions.push('есть предупреждения момента');
+  score.cautions.push(signals.warnings[0]);
 }
 
 function applyModeSpecificScore(mode, signals, score) {

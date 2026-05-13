@@ -103,7 +103,7 @@ Astro PWA — статическое PWA-приложение астрологи
 PWA-кэш обновлен до:
 
 ```txt
-lunar-calendar-v39
+lunar-calendar-v40
 ```
 
 Добавлен обновленный архитектурный принцип:
@@ -1101,7 +1101,7 @@ git commit -m "checkpoint before continuing in new codex chat"
 Текущая версия:
 
 ```txt
-lunar-calendar-v39
+lunar-calendar-v40
 ```
 
 ## Moscow Hardcoding

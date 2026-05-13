@@ -130,6 +130,26 @@ test('unknown mode safely falls back to general scoring', () => {
   assert.equal(windows.length > 0, true);
 });
 
+test('uses one concrete field warning as best window caution', () => {
+  const firstWarning = 'Напряженный аспект Луны к Урану — возможны резкие реакции.';
+  const secondWarning = 'Луна в Рыбах — риск иллюзий и эмоциональной размытости.';
+  const windows = getBestWindows({
+    selectedMode: 'tarot',
+    now: new Date('2026-05-11T10:00:00+03:00'),
+    slotMinutes: 60,
+    ...baseContext,
+    getFieldQuality: () => ({
+      ...thinField,
+      warnings: [firstWarning, secondWarning],
+    }),
+  });
+
+  assert.equal(windows.length > 0, true);
+  assert.equal(windows[0].cautions.includes(firstWarning), true);
+  assert.equal(windows[0].cautions.includes(secondWarning), false);
+  assert.equal(windows[0].cautions.includes('есть предупреждения момента'), false);
+});
+
 test('describes best windows with mode-specific title and compact time ranges', () => {
   const view = describeBestWindows([
     {
