@@ -45,6 +45,7 @@ import {
   isDashboardModeKey,
 } from './dashboardModes.js';
 import { getModeScores } from './modeScores.js';
+import { getModeRecommendations } from './modeRecommendations.js';
 
 let selectedDashboardMode = DEFAULT_DASHBOARD_MODE;
 
@@ -109,7 +110,7 @@ function render() {
     indicators,
     planetaryHour,
   });
-  const modeScoreContext = {
+  const modeContext = {
     now,
     lunar: { ...lunar, lunarDay },
     voc,
@@ -146,9 +147,10 @@ function render() {
   renderPlanetaryHourHint(describePlanetaryHourHint(planetaryHour.key));
   elements.fieldSummary.textContent = fieldQuality.summary;
   elements.fieldAdvice.textContent = fieldQuality.advice;
-  renderFieldMetrics(getModeScores(selectedDashboardMode, modeScoreContext, fieldQuality));
-  renderSimpleList(elements.fieldSupports, fieldQuality.supports);
-  renderSimpleList(elements.fieldAvoid, fieldQuality.avoid);
+  renderFieldMetrics(getModeScores(selectedDashboardMode, modeContext, fieldQuality));
+  const modeRecommendations = getModeRecommendations(selectedDashboardMode, modeContext, fieldQuality);
+  renderSimpleList(elements.fieldSupports, modeRecommendations.good);
+  renderSimpleList(elements.fieldAvoid, modeRecommendations.careful);
   renderFieldReasons(fieldQuality.reasons);
   renderWarnings(fieldQuality.warnings);
   renderModeSelector();

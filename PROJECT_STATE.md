@@ -103,7 +103,7 @@ Astro PWA — статическое PWA-приложение астрологи
 PWA-кэш обновлен до:
 
 ```txt
-lunar-calendar-v35
+lunar-calendar-v36
 ```
 
 Добавлен обновленный архитектурный принцип:
@@ -190,7 +190,7 @@ PWA устанавливается на экран iPhone через Safari.
 Тестовый набор проходит:
 
 ```txt
-76 тестов
+82 теста
 ```
 
 ---
@@ -242,6 +242,8 @@ PWA устанавливается на экран iPhone через Safari.
 - `test/dashboardModes.test.js` — тесты списка режимов, default mode и валидности ключей.
 - `src/modeScores.js` — mode-specific scores для выбранного режима.
 - `test/modeScores.test.js` — тесты режимных оценок, fallback и диапазона 1–10.
+- `src/modeRecommendations.js` — mode-specific списки `Хорошо` / `Осторожно`.
+- `test/modeRecommendations.test.js` — тесты режимных рекомендаций, лимита 3/3 и fallback.
 - `TODO.md`, `PROJECT_STATE.md`, `CHANGELOG.md` — актуализация состояния задач.
 
 Что сейчас работает в VOC-блоке:
@@ -278,10 +280,10 @@ PWA устанавливается на экран iPhone через Safari.
 Следующая задача:
 
 ```txt
-Task 2.3 — Add Mode-Specific Good / Careful Recommendations
+Task 2.4 — Add Best Window Scoring Helper
 ```
 
-Не начинать Task 2.3 без отдельной команды пользователя.
+Не начинать Task 2.4 без отдельной команды пользователя.
 
 ---
 
@@ -462,6 +464,27 @@ done
 
 ---
 
+## Task 2.3 — Add Mode-Specific Good / Careful Recommendations
+
+Статус:
+
+```txt
+done
+```
+
+Что выполнено:
+
+- добавлен helper `src/modeRecommendations.js`;
+- блок рекомендаций в `Качество поля` переименован из `Подходит` / `Не подходит` в `Хорошо` / `Осторожно`;
+- режим `Общее` использует текущие списки `fieldQuality.supports` / `fieldQuality.avoid`;
+- режимы `Таро`, `Свечи`, `Деньги`, `Отношения`, `Чистки`, `Прогнозы` показывают свои короткие рекомендации;
+- рекомендации учитывают доступные факторы момента: VOC, warnings, fieldQuality, аспекты Луны, планетарный час, знак Луны и лунный день;
+- каждый список ограничен максимум 3 пунктами;
+- `localStorage`, best windows, профили, натал и персональные транзиты не добавлялись;
+- PWA-кэш обновлен до `lunar-calendar-v36`.
+
+---
+
 # Current Focus
 
 Текущий фокус:
@@ -469,10 +492,10 @@ done
 Продолжить Sprint 2 следующим безопасным шагом:
 
 ```txt
-Task 2.3 — Add Mode-Specific Good / Careful Recommendations
+Task 2.4 — Add Best Window Scoring Helper
 ```
 
-Не добавлять best windows, профили, натал или персональные транзиты в Task 2.3.
+Не добавлять best window card, no-good-window fallback, профили, натал или персональные транзиты в Task 2.4.
 
 ---
 
@@ -1035,7 +1058,7 @@ git commit -m "checkpoint before continuing in new codex chat"
 Текущая версия:
 
 ```txt
-lunar-calendar-v35
+lunar-calendar-v36
 ```
 
 ## Moscow Hardcoding
@@ -1085,13 +1108,13 @@ lunar-calendar-v35
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 2.3 — Add Mode-Specific Good / Careful Recommendations.
+Выполнить Task 2.4 — Add Best Window Scoring Helper.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 2.4.
+2. Не начинать Task 2.5.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не трогать профили, натал, персональные транзиты и best-window scoring.
@@ -1107,4 +1130,4 @@ lunar-calendar-v35
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Текущий приоритет Sprint 1 выполнен. Sprint 2 начат; следующая реализационная задача — Task 2.3.
+Текущий приоритет Sprint 1 выполнен. Sprint 2 начат; следующая реализационная задача — Task 2.4.

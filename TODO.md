@@ -702,7 +702,7 @@ Examples:
 
 ## Task 2.3 — Add Mode-Specific Good / Careful Recommendations
 
-Status: active
+Status: done
 
 Show short mode-specific recommendations:
 
@@ -716,7 +716,7 @@ Show short mode-specific recommendations:
 
 ## Task 2.4 — Add Best Window Scoring Helper
 
-Status: not started
+Status: active
 
 Create the logic for selecting 1–2 best windows for selected mode.
 

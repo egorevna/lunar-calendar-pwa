@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-05-14 — Improve Task 2.3 mode recommendation heuristics
+
+- `src/modeRecommendations.js` переведен на внутреннюю rule-based модель `signals → rules → priority → top 3`.
+- Добавлены тесты конфликтных сценариев для VOC, Рыб, Марса/Урана, 29 лунных суток и свечей.
+- UI не менялся; Task 2.4 не начиналась.
+
+## 2026-05-14 — Complete Task 2.3 mode-specific recommendations
+
+- Добавлен `src/modeRecommendations.js` со списками `Хорошо` / `Осторожно` для всех режимов.
+- Блок `Качество поля` теперь меняет рекомендации при переключении режима.
+- Заголовки `Подходит` / `Не подходит` заменены на `Хорошо` / `Осторожно`.
+- Каждый список ограничен максимум 3 пунктами; unknown mode безопасно падает в `Общее`.
+- Добавлены тесты `test/modeRecommendations.test.js`.
+- PWA-кэш обновлен до `lunar-calendar-v36`.
+- Task 2.4 оставлена следующей активной задачей и не начиналась.
+
 ## 2026-05-14 — Complete Task 2.2 mode-specific scores
 
 - Добавлен `src/modeScores.js` со scoring logic для режимов `Общее`, `Таро`, `Свечи`, `Деньги`, `Отношения`, `Чистки`, `Прогнозы`.

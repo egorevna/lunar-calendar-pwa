@@ -422,6 +422,21 @@ Current responsibilities:
 
 The helper uses existing moment data only. It does not calculate ephemeris events and does not store user data.
 
+## `src/modeRecommendations.js`
+
+Builds mode-specific `Хорошо` / `Осторожно` recommendation lists for the `Качество поля` card.
+
+Current responsibilities:
+
+- receives selected dashboard mode;
+- receives the current dashboard context from `src/app.js`;
+- receives base `fieldQuality` output;
+- returns `{ good, careful }`;
+- limits each list to 3 compact items;
+- falls back to `Общее` for unknown mode keys.
+
+The helper reads existing moment data only. It does not calculate ephemeris events, choose best windows, or store user data.
+
 ## `scripts/generate-ephemeris.cjs`
 
 Generates Swiss Ephemeris data.
@@ -470,7 +485,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v35
+lunar-calendar-v36
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -523,9 +538,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 13. `src/modeScores.js` converts the selected mode and current moment context into score rows.
 
-14. `src/debugPanel.js` formats the hidden debug panel when enabled.
+14. `src/modeRecommendations.js` converts the selected mode and current moment context into `Хорошо` / `Осторожно` lists.
 
-15. `src/app.js` updates DOM elements on the main dashboard, mode selector, mode-specific scores, and optional debug panel.
+15. `src/debugPanel.js` formats the hidden debug panel when enabled.
+
+16. `src/app.js` updates DOM elements on the main dashboard, mode selector, mode-specific scores, mode-specific recommendations, and optional debug panel.
 
 ## Current Preferred Source Order
 
@@ -865,7 +882,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v35
+lunar-calendar-v36
 ```
 
 Important operational rule:
@@ -1166,7 +1183,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v35
+lunar-calendar-v36
 ```
 
 If this value changes in `sw.js`, update this section.

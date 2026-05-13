@@ -33,6 +33,10 @@ test('home screen renders field quality fields', () => {
   assert.equal(html.includes('data-field-reasons'), true);
   assert.equal(html.includes('data-field-supports'), true);
   assert.equal(html.includes('data-field-avoid'), true);
+  assert.equal(html.includes('<h3>Хорошо</h3>'), true);
+  assert.equal(html.includes('<h3>Осторожно</h3>'), true);
+  assert.equal(html.includes('<h3>Подходит</h3>'), false);
+  assert.equal(html.includes('<h3>Не подходит</h3>'), false);
 });
 
 test('home screen renders Moon precision field', () => {
