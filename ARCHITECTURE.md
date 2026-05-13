@@ -407,6 +407,21 @@ Current behavior:
 The currently selected dashboard mode is held in memory in `src/app.js`.
 No `localStorage` or persistence is used yet.
 
+## `src/modeScores.js`
+
+Builds mode-specific score rows for the dashboard.
+
+Current responsibilities:
+
+- receives selected dashboard mode;
+- receives the current dashboard context from `src/app.js`;
+- receives base `fieldQuality` output;
+- returns score items for the `Качество поля` metrics block;
+- keeps score values clamped to the 1–10 range;
+- falls back to `Общее` for unknown mode keys.
+
+The helper uses existing moment data only. It does not calculate ephemeris events and does not store user data.
+
 ## `scripts/generate-ephemeris.cjs`
 
 Generates Swiss Ephemeris data.
@@ -455,7 +470,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v31
+lunar-calendar-v35
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -506,9 +521,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 12. `src/dashboardModes.js` defines allowed dashboard modes and default mode.
 
-13. `src/debugPanel.js` formats the hidden debug panel when enabled.
+13. `src/modeScores.js` converts the selected mode and current moment context into score rows.
 
-14. `src/app.js` updates DOM elements on the main dashboard, mode selector, and optional debug panel.
+14. `src/debugPanel.js` formats the hidden debug panel when enabled.
+
+15. `src/app.js` updates DOM elements on the main dashboard, mode selector, mode-specific scores, and optional debug panel.
 
 ## Current Preferred Source Order
 
@@ -848,7 +865,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v31
+lunar-calendar-v35
 ```
 
 Important operational rule:
@@ -1149,7 +1166,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v31
+lunar-calendar-v35
 ```
 
 If this value changes in `sw.js`, update this section.

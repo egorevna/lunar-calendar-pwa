@@ -687,7 +687,7 @@ On small screens, horizontal scroll chips are acceptable.
 
 ## Task 2.2 — Add Mode-Specific Scores
 
-Status: active
+Status: done
 
 Add scores relevant to selected mode.
 
@@ -702,7 +702,7 @@ Examples:
 
 ## Task 2.3 — Add Mode-Specific Good / Careful Recommendations
 
-Status: not started
+Status: active
 
 Show short mode-specific recommendations:
 

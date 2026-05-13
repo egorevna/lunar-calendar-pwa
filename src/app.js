@@ -44,6 +44,7 @@ import {
   DEFAULT_DASHBOARD_MODE,
   isDashboardModeKey,
 } from './dashboardModes.js';
+import { getModeScores } from './modeScores.js';
 
 let selectedDashboardMode = DEFAULT_DASHBOARD_MODE;
 
@@ -108,6 +109,16 @@ function render() {
     indicators,
     planetaryHour,
   });
+  const modeScoreContext = {
+    now,
+    lunar: { ...lunar, lunarDay },
+    voc,
+    moonSign,
+    moonAspects,
+    indicators,
+    planetaryHour,
+    warnings: fieldQuality.warnings,
+  };
 
   elements.date.textContent = formatDate(now);
   elements.weekday.textContent = formatWeekday(now);
@@ -135,7 +146,7 @@ function render() {
   renderPlanetaryHourHint(describePlanetaryHourHint(planetaryHour.key));
   elements.fieldSummary.textContent = fieldQuality.summary;
   elements.fieldAdvice.textContent = fieldQuality.advice;
-  renderFieldMetrics(fieldQuality.metrics);
+  renderFieldMetrics(getModeScores(selectedDashboardMode, modeScoreContext, fieldQuality));
   renderSimpleList(elements.fieldSupports, fieldQuality.supports);
   renderSimpleList(elements.fieldAvoid, fieldQuality.avoid);
   renderFieldReasons(fieldQuality.reasons);
@@ -157,7 +168,7 @@ function render() {
 function setDashboardMode(mode) {
   if (!isDashboardModeKey(mode)) return;
   selectedDashboardMode = mode;
-  renderModeSelector();
+  render();
 }
 
 function renderModeSelector() {
@@ -182,7 +193,7 @@ function renderFieldMetrics(metrics) {
     label.textContent = metric.label;
 
     const value = document.createElement('strong');
-    value.textContent = `${metric.level} · ${metric.score}/10`;
+    value.textContent = `${metric.level} · ${(metric.value ?? metric.score)}/10`;
 
     row.append(label, value);
     return row;

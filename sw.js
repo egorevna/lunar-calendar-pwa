@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lunar-calendar-v34';
+const CACHE_NAME = 'lunar-calendar-v35';
 const ASSETS = [
   './',
   'index.html',
@@ -10,6 +10,7 @@ const ASSETS = [
   'src/moonAspectsDisplay.js',
   'src/moonPrecisionDisplay.js',
   'src/moonSignDisplay.js',
+  'src/modeScores.js',
   'src/planetaryHourHints.js',
   'src/dayIndicators.js',
   'src/debugDate.js',
