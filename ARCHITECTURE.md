@@ -198,10 +198,11 @@ Formats the dashboard display state for Void of Course Moon.
 
 Current responsibilities:
 
-- distinguish upcoming, active, and no-VOC states;
+- distinguish upcoming, active, and unavailable VOC display states;
 - format VOC start/end time as `HH:mm` for the main dashboard;
-- calculate compact countdown text;
-- format the last aspect before VOC as `VOC после: ...`;
+- format the nearest or current VOC period without technical `VOC` wording in the UI;
+- format the last aspect before VOC as `после: ...`;
+- format the compact background line `фон ...`;
 - expose aspect and planet formatting helpers used by `src/app.js`.
 
 This module does not calculate VOC intervals. It only formats display text from existing VOC data.
@@ -231,6 +232,18 @@ Current responsibilities:
 - skip unavailable values without showing `undefined` / `null`.
 
 This module does not calculate Moon phases. It formats values from `src/astro.js` and `src/preciseEphemeris.js`.
+
+## `src/moonSignDisplay.js`
+
+Formats the dashboard display text for the Moon's next sign transition.
+
+Current responsibilities:
+
+- format the next Moon sign transition as `Переход в ...: сегодня/завтра HH:mm`;
+- format later transitions as a compact Moscow date plus `HH:mm`;
+- keep seconds out of the main dashboard Moon sign line.
+
+This module does not calculate Moon sign transitions. It formats data from `src/preciseEphemeris.js`.
 
 ## `src/planetaryHourHints.js`
 
@@ -415,7 +428,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v28
+lunar-calendar-v29
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -453,13 +466,15 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 7. `src/moonPrecisionDisplay.js` formats compact Moon precision rows for the hero Moon block.
 
-8. `src/planetaryHourHints.js` formats the practical hint for the current planetary hour.
+8. `src/moonSignDisplay.js` formats the next Moon sign transition line for the hero Moon block.
 
-9. `src/format.js` formats dates and times.
+9. `src/planetaryHourHints.js` formats the practical hint for the current planetary hour.
 
-10. `src/vocDisplay.js` formats the VOC display state for the dashboard.
+10. `src/format.js` formats dates and times.
 
-11. `src/app.js` updates DOM elements on the main dashboard.
+11. `src/vocDisplay.js` formats the VOC display state for the dashboard.
+
+12. `src/app.js` updates DOM elements on the main dashboard.
 
 ## Current Preferred Source Order
 
@@ -777,7 +792,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v28
+lunar-calendar-v29
 ```
 
 Important operational rule:
@@ -1078,7 +1093,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v28
+lunar-calendar-v29
 ```
 
 If this value changes in `sw.js`, update this section.

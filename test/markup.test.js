@@ -45,6 +45,11 @@ test('home screen renders planetary hour hint field', () => {
   assert.equal(html.includes('class="planet-hint"'), true);
 });
 
+test('home screen uses clear indicators heading', () => {
+  assert.equal(html.includes('<span>Индикаторы</span>'), true);
+  assert.equal(html.includes('<span>Индикатор дня</span>'), false);
+});
+
 test('home screen renders hidden warnings card shell', () => {
   assert.equal(html.includes('Осторожно сегодня'), true);
   assert.equal(html.includes('data-warnings-card hidden'), true);

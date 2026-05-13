@@ -9,7 +9,6 @@ import {
   formatDate,
   formatRange,
   formatTime,
-  formatTimeWithSeconds,
   formatWeekday,
 } from './format.js';
 import {
@@ -35,6 +34,7 @@ import {
 } from './moonAspectsDisplay.js';
 import { describeMoonPrecision } from './moonPrecisionDisplay.js';
 import { describePlanetaryHourHint } from './planetaryHourHints.js';
+import { describeMoonIngress } from './moonSignDisplay.js';
 
 const elements = {
   date: document.querySelector('[data-date]'),
@@ -98,11 +98,11 @@ function render() {
   elements.clock.textContent = formatTime(now);
   elements.lunarDay.textContent = `${lunarDay}-й лунный день`;
   elements.phase.textContent = majorPhase
-    ? `${majorPhase.name} в ${formatTimeWithSeconds(majorPhase.at)}`
+    ? `${majorPhase.name} в ${formatTime(majorPhase.at)}`
     : lunar.phaseName;
   renderMoonPrecision(describeMoonPrecision({ lunar, nextPhase: nextMajorPhase, now }));
   elements.moonSign.textContent = `Луна в ${moonSign.current.glyph} ${moonSign.current.locative}`;
-  elements.nextMoonSign.textContent = `в ${moonSign.next.name} ${formatMoonIngress(now, moonSign.entersAt)}`;
+  elements.nextMoonSign.textContent = describeMoonIngress(moonSign, now);
   elements.voc.textContent = describeVoc(voc, now);
   renderVocAspect(voc);
   elements.lastMoonAspect.textContent = describeMoonAspect(moonAspects?.previous, now);
@@ -194,13 +194,6 @@ function renderMoonAspectInterpretation(aspect) {
     elements.moonAspectInterpretation.hidden = true;
     elements.moonAspectsToggle.setAttribute('aria-expanded', 'false');
   }
-}
-
-function formatMoonIngress(now, entersAt) {
-  const current = formatDate(now);
-  const next = formatDate(entersAt);
-  const dayLabel = current === next ? 'сегодня' : 'завтра';
-  return `${dayLabel} в ${formatTimeWithSeconds(entersAt)}`;
 }
 
 if ('serviceWorker' in navigator) {

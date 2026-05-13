@@ -521,7 +521,7 @@ Do not start this task until the user explicitly asks for it.
 
 ## Task 1.9 — Clean Up Terminology and Visual Clarity
 
-Status: not started
+Status: done
 
 ### Goal
 
@@ -581,7 +581,7 @@ Main dashboard time format:
 
 ## Task 1.10 — Add Hidden Debug Screen
 
-Status: not started
+Status: next
 
 ### Goal
 
