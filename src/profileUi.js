@@ -3,7 +3,7 @@ export const PROFILE_PRIVACY_COPY = 'Данные карты хранятся т
 export const PROFILE_EMPTY_TITLE = 'Пока нет сохраненных карт.';
 export const PROFILE_EMPTY_HINT = 'Начните с добавления профиля.';
 export const PROFILE_ADD_BUTTON_LABEL = '+ Добавить профиль';
-export const PROFILE_ADD_BUTTON_HELP = 'Добавление профиля — следующий шаг.';
+export const PROFILE_ADD_BUTTON_HELP = 'Профили нужны для будущих личных расчетов.';
 
 const ERROR_MESSAGES = {
   'name is required': 'Укажите имя.',

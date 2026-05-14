@@ -188,6 +188,7 @@ Responsibilities:
 - reads local profile names for the compact `Профиль` / `Мои карты` UI shell
 - reads and writes the active profile id through `src/profileStorage.js`
 - handles inline profile creation, editing, and deletion through `src/profileStorage.js`
+- handles local profile export/import actions through `src/profileImportExport.js`
 
 `src/app.js` is currently the composition layer.
 
@@ -512,6 +513,21 @@ Current responsibilities:
 
 This module does not store profiles, export/import data, or calculate natal charts / personal transits.
 
+## `src/profileImportExport.js`
+
+Serializes and imports local profile backup JSON.
+
+Current responsibilities:
+
+- create the export envelope with `schemaVersion`, `app`, `exportedAt`, and `profiles`;
+- parse imported JSON safely;
+- validate imported profiles through `src/profileModel.js`;
+- import only valid profiles into `src/profileStorage.js`;
+- regenerate duplicate profile ids so existing profiles are not overwritten;
+- return short result objects for UI status.
+
+The module does not call `fetch`, does not use geolocation, does not upload profile data, does not use cloud sync, and does not calculate natal charts / personal transits.
+
 ## `scripts/generate-ephemeris.cjs`
 
 Generates Swiss Ephemeris data.
@@ -623,7 +639,9 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 18. `src/profileUi.js` formats the minimal `Профиль` / `Мои карты` shell, active-profile state, and create/edit form view.
 
-19. `src/debugPanel.js` formats the hidden debug panel when enabled.
+19. `src/profileImportExport.js` serializes and imports local profile backup JSON.
+
+20. `src/debugPanel.js` formats the hidden debug panel when enabled.
 
 20. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 

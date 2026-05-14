@@ -51,6 +51,7 @@ import {
   getBestWindows,
   getBestWindowsDebug,
 } from './bestWindows.js';
+import { exportProfilesData, importProfilesIntoStorage } from './profileImportExport.js';
 import { createProfileDraft } from './profileModel.js';
 import {
   addProfile,
@@ -115,6 +116,10 @@ const elements = {
   profileFormErrors: document.querySelector('[data-profile-form-errors]'),
   profileFormCancel: document.querySelector('[data-profile-form-cancel]'),
   profileDelete: document.querySelector('[data-profile-delete]'),
+  profileExport: document.querySelector('[data-profile-export]'),
+  profileImport: document.querySelector('[data-profile-import]'),
+  profileImportFile: document.querySelector('[data-profile-import-file]'),
+  profileImportStatus: document.querySelector('[data-profile-import-status]'),
   profilePrivacy: document.querySelector('[data-profile-privacy]'),
   bestWindowCard: document.querySelector('[data-best-window-card]'),
   bestWindowTitle: document.querySelector('[data-best-window-title]'),
@@ -391,6 +396,11 @@ function renderProfileFormErrors(errors) {
   }));
 }
 
+function renderProfileImportStatus(text) {
+  elements.profileImportStatus.hidden = !text;
+  elements.profileImportStatus.textContent = text;
+}
+
 function updateBirthTimeState() {
   const birthTimeAccuracy = elements.profileForm.elements.birthTimeAccuracy.value;
   const birthTime = elements.profileForm.elements.birthTime;
@@ -428,6 +438,57 @@ function handleProfileDelete() {
   deleteProfile(editingProfileId);
   setProfileFormOpen(false);
   renderStoredProfilesShell();
+}
+
+function downloadTextFile({ text, filename, mimeType }) {
+  const blob = new Blob([text], { type: mimeType });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+
+  link.href = url;
+  link.download = filename;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+function handleProfileExport() {
+  downloadTextFile(exportProfilesData(loadProfiles()));
+  renderProfileImportStatus('Экспорт готов.');
+}
+
+function handleProfileImportText(jsonText) {
+  const result = importProfilesIntoStorage(jsonText);
+
+  if (!result.ok) {
+    renderProfileImportStatus('Не удалось импортировать профили.');
+    return;
+  }
+
+  renderStoredProfilesShell();
+  if (result.importedCount > 0 && result.skippedCount > 0) {
+    renderProfileImportStatus(`Импортировано: ${result.importedCount}, пропущено: ${result.skippedCount}`);
+  } else if (result.importedCount > 0) {
+    renderProfileImportStatus(`Импортировано: ${result.importedCount}`);
+  } else {
+    renderProfileImportStatus('Новые профили не найдены');
+  }
+}
+
+function handleProfileImportFile(file) {
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.addEventListener('load', () => {
+    handleProfileImportText(String(reader.result ?? ''));
+    elements.profileImportFile.value = '';
+  });
+  reader.addEventListener('error', () => {
+    renderProfileImportStatus('Не удалось прочитать файл.');
+    elements.profileImportFile.value = '';
+  });
+  reader.readAsText(file);
 }
 
 function renderBestWindows(view) {
@@ -526,6 +587,13 @@ elements.profileFormCancel.addEventListener('click', () => {
 });
 
 elements.profileDelete.addEventListener('click', handleProfileDelete);
+elements.profileExport.addEventListener('click', handleProfileExport);
+elements.profileImport.addEventListener('click', () => {
+  elements.profileImportFile.click();
+});
+elements.profileImportFile.addEventListener('change', () => {
+  handleProfileImportFile(elements.profileImportFile.files?.[0] ?? null);
+});
 
 elements.profileForm.addEventListener('change', (event) => {
   if (event.target.name === 'birthTimeAccuracy') {

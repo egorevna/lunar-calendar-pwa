@@ -122,6 +122,21 @@ test('home screen renders create profile form shell', () => {
   assert.equal(html.includes('MC'), false);
 });
 
+test('home screen renders profile import and export controls without personal astrology UI', () => {
+  assert.equal(html.includes('Резервная копия'), true);
+  assert.equal(html.includes('Экспорт всех карт'), true);
+  assert.equal(html.includes('Импорт'), true);
+  assert.equal(html.includes('data-profile-export'), true);
+  assert.equal(html.includes('data-profile-import'), true);
+  assert.equal(html.includes('data-profile-import-file'), true);
+  assert.equal(html.includes('Файл остается у вас. Мы не отправляем данные на сервер.'), true);
+  assert.equal(html.includes('Данные карты хранятся только на этом устройстве.'), true);
+  assert.equal(html.includes('Натальная карта'), false);
+  assert.equal(html.includes('Транзиты'), false);
+  assert.equal(html.includes('ASC'), false);
+  assert.equal(html.includes('MC'), false);
+});
+
 test('profile edit/delete and active selection flow use explicit actions', () => {
   assert.equal(appJs.includes('updateProfile'), true);
   assert.equal(appJs.includes('deleteProfile'), true);

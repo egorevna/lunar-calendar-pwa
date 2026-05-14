@@ -138,6 +138,16 @@
                 Удалить профиль
               </button>
             </form>
+            <div class="profile-backup">
+              <h3>Резервная копия</h3>
+              <div class="profile-backup-actions">
+                <button type="button" data-profile-export>Экспорт всех карт</button>
+                <button type="button" data-profile-import>Импорт</button>
+              </div>
+              <input type="file" accept="application/json,.json" data-profile-import-file hidden>
+              <p class="profile-backup-copy">Файл остается у вас. Мы не отправляем данные на сервер.</p>
+              <p class="profile-import-status" data-profile-import-status hidden></p>
+            </div>
             <p class="profile-privacy" data-profile-privacy>
               Данные карты хранятся только на этом устройстве.
             </p>

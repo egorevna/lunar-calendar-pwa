@@ -519,6 +519,52 @@ button {
   display: none;
 }
 
+.profile-backup {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+  padding-top: 13px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.profile-backup h3 {
+  margin: 0;
+  color: rgba(255, 248, 239, 0.84);
+  font-size: clamp(15px, 4vw, 18px);
+}
+
+.profile-backup-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.profile-backup-actions button {
+  min-height: 34px;
+  border: 1px solid rgba(244, 199, 127, 0.34);
+  border-radius: 999px;
+  background: rgba(244, 199, 127, 0.09);
+  padding: 7px 12px;
+  color: var(--gold);
+  font-size: clamp(13px, 3.5vw, 15px);
+  font-weight: 700;
+}
+
+.profile-backup-copy,
+.profile-import-status {
+  color: var(--muted);
+  font-size: clamp(13px, 3.5vw, 15px);
+  line-height: 1.25;
+}
+
+.profile-import-status {
+  color: rgba(255, 248, 239, 0.78);
+}
+
+.profile-import-status[hidden] {
+  display: none;
+}
+
 .glass-card {
   border: 1px solid var(--line);
   border-radius: 22px;

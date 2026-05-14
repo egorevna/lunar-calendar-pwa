@@ -869,25 +869,27 @@ Allow selecting active profile on main dashboard.
 
 Default active profile is `Общий день`. Main app calculations remain general for now.
 
-# Active Task
+# Completed Task
 
 ## Task 3.7 — Profile Export / Import
 
-Status: active
+Status: done
 
 Export/import profile JSON.
 
 Export should include schemaVersion. Import must validate JSON and avoid duplicate IDs.
 
-# Sprint 3 Backlog
+# Active Task
 
 ## Task 3.8 — Privacy Copy and Debug Profile State
 
-Status: not started
+Status: active
 
 Show privacy copy and safe debug profile state.
 
 Debug may show activeProfileId, activeProfileName, profilesCount, storage type, and sync disabled.
+
+# Sprint 3 Backlog
 
 # Do Not Do Now
 

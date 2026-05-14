@@ -22,7 +22,7 @@ test('profiles shell describes general day and empty state', () => {
   assert.equal(view.emptyTitle, 'Пока нет сохраненных карт.');
   assert.equal(view.emptyHint, 'Начните с добавления профиля.');
   assert.equal(view.addButtonLabel, '+ Добавить профиль');
-  assert.equal(view.addButtonHelp, 'Добавление профиля — следующий шаг.');
+  assert.equal(view.addButtonHelp, 'Профили нужны для будущих личных расчетов.');
   assert.equal(view.privacyCopy, 'Данные карты хранятся только на этом устройстве.');
 });
 
