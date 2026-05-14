@@ -895,11 +895,11 @@ Status: complete
 
 Sprint 3 — Profiles / Мои карты is complete.
 
-# Current Active Sprint
+# Completed Sprint
 
 ## Sprint 4 — Personal Moment Foundation / Лично для меня
 
-Status: active
+Status: done
 
 Goal:
 
@@ -1125,20 +1125,37 @@ Add safe debug visibility for personal readiness / recommendations without dumpi
 - Do not add geocoding.
 - Do not add new dependencies.
 
-# Active Task
+# Completed Task
 
 ## Task 4.7 — Sprint 4 Hardening
 
-Status: not started
+Status: done
 
 ### Goal
 
 Harden Sprint 4 after the safe personal-context/debug foundation is complete.
 
+### Result
+
+- Verified Sprint 4 guardrails for user-facing personal copy and debug privacy.
+- Added a markup guardrail that `Personal Debug` is not present in ordinary HTML and remains gated behind debug mode.
+- Confirmed no natal chart, houses, ASC / MC calculations, personal transits, transit orbs, geocoding, backend or cloud sync were added.
+- Sprint 4 is complete.
+
 ### Boundaries
 
 - Do not start Sprint 5.
 - Do not add natal calculations without a reliable calculation engine.
+
+# Next Stage
+
+## Sprint 5
+
+Status: not started
+
+### Goal
+
+Prepare the next sprint only after explicit user approval.
 
 # Do Not Do Now
 

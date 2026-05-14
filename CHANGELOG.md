@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-05-14 — Complete Sprint 4 hardening
+
+- Завершена Task 4.7 — Sprint 4 Hardening.
+- Добавлен guardrail-тест, что `Personal Debug` не присутствует в обычном HTML и остается debug-only.
+- Подтверждены Sprint 4 boundaries: без натала, домов, ASC / MC, персональных транзитов, орбов, geocoding, backend и cloud sync.
+- Sprint 4 закрыт; Sprint 5 не начинался.
+
 ## 2026-05-14 — Complete Task 4.6 personal debug safety
 
 - Debug-панель при `?debug=1` получила секцию `Personal Debug`.

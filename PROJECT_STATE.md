@@ -589,7 +589,7 @@ Sprint 2 — Modes and Best Windows
 Sprint 3 — Profiles / Мои карты
 ```
 
-Активный спринт:
+Завершенный спринт:
 
 ```txt
 Sprint 4 — Personal Moment Foundation / Лично для меня
@@ -701,13 +701,31 @@ Task 4.6 — Debug Personal Calculations
 - натал, дома, ASC / MC, персональные транзиты, орбы и personal ritual scoring не добавлялись;
 - PWA cache поднят до `lunar-calendar-v57`.
 
-Текущая активная задача:
+Завершенная задача:
 
 ```txt
 Task 4.7 — Sprint 4 Hardening
 ```
 
-Task 4.7 должна закрепить Sprint 4 без добавления натальных расчетов.
+Результат Task 4.7:
+
+- проведена финальная проверка Sprint 4;
+- добавлен тестовый guardrail, что `Personal Debug` не присутствует в обычном HTML и остается debug-only;
+- подтверждено, что пользовательский UI не показывает фейковые личные расчеты;
+- подтверждено, что debug не выводит birth date, birth time, raw coordinates или полный profile JSON;
+- натал, дома, ASC / MC, персональные транзиты, орбы, geocoding, backend и cloud sync не добавлялись.
+
+Sprint 4 завершен:
+
+```txt
+Personal Moment Foundation / Лично для меня
+```
+
+Следующий этап:
+
+```txt
+Sprint 5 — подготовка, не начинать без отдельной команды.
+```
 
 Завершенная задача:
 
@@ -854,10 +872,10 @@ Sprint 4 — Personal Moment Foundation / Лично для меня
 Текущий следующий шаг:
 
 ```txt
-Task 4.7 — Sprint 4 Hardening
+Подготовка Sprint 5
 ```
 
-В Task 4.7 нужно закрепить Sprint 4 после добавления safe personal context/debug state. Натал, дома, ASC / MC, персональные транзиты и фейковые личные расчеты не делать.
+Sprint 5 не начинать без отдельной команды. Натал, дома, ASC / MC, персональные транзиты и фейковые личные расчеты не делать.
 
 В Sprint 4 пока НЕ делается:
 
@@ -878,14 +896,18 @@ Task 4.7 — Sprint 4 Hardening
 
 ---
 
-# Sprint 4 Backlog
+# Sprint 4 Status
 
-Активная задача:
+Sprint 4 завершен.
 
-- Task 4.6 — Debug Personal Calculations.
+Выполнены:
 
-Backlog:
-
+- Task 4.1 — Personal Astrology Strategy and Data Audit;
+- Task 4.2 — Profile Calculation Input Adapter;
+- Task 4.3 — Personal Readiness / Context MVP;
+- Task 4.4 — Dashboard Block `Лично для меня`;
+- Task 4.5 — Safe Personal Recommendations MVP;
+- Task 4.6 — Debug Personal Calculations;
 - Task 4.7 — Sprint 4 hardening / tests.
 
 ---
@@ -1533,7 +1555,7 @@ lunar-calendar-v57
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 4.7 — Sprint 4 Hardening.
+Подготовить Sprint 5 после отдельного подтверждения.
 ```
 
 Перед реализацией Codex должен:
@@ -1555,4 +1577,4 @@ lunar-calendar-v57
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2 и Sprint 3 завершены. Активный спринт — Sprint 4; Task 4.1, Task 4.2, Task 4.3, Task 4.4, Task 4.5 и Task 4.6 завершены, следующая задача — Task 4.7 — Sprint 4 Hardening.
+Sprint 1, Sprint 2, Sprint 3 и Sprint 4 завершены. Следующий этап — подготовка Sprint 5, но разработка Sprint 5 не начиналась.
