@@ -1031,15 +1031,46 @@ Use `src/personalProfileInput.js` to produce honest readiness / context copy for
 - No geocoding.
 - No new dependencies.
 
-# Active Task
+# Completed Task
 
 ## Task 4.4 — Dashboard Block `Лично для меня`
+
+Status: done
+
+### Goal
+
+Add a compact dashboard block that uses `src/personalContext.js` for honest personal readiness / context copy.
+
+### Result
+
+- Added a hidden dashboard shell for `Лично для меня`.
+- `src/app.js` now uses the active profile from the existing profile storage flow.
+- The block is hidden for `Общий день`.
+- When a saved profile is active, the block shows `Лично для [имя]`, a safe summary, and up to 3 human-readable readiness / limitation lines.
+- Technical profile keys, birth date, birth time, coordinates and full profile JSON are not rendered in the block.
+- Natal planets, houses, ASC / MC, Moon in natal house, personal transits, transit orbs and personal ritual scoring remain unavailable.
+- PWA cache updated to `lunar-calendar-v53`.
+
+### Boundaries
+
+- Do not show natal planetary positions.
+- Do not calculate houses.
+- Do not calculate ASC / MC.
+- Do not calculate personal transits.
+- Do not show Moon in natal house.
+- Do not add personal ritual scoring.
+- Do not add geocoding.
+- Do not add new dependencies.
+
+# Active Task
+
+## Task 4.5 — Safe Personal Recommendations MVP
 
 Status: not started
 
 ### Goal
 
-Add a compact dashboard block that uses `src/personalContext.js` for honest personal readiness / context copy.
+Add safe personal recommendations based only on profile readiness / context, without natal calculations.
 
 ### Boundaries
 
@@ -1054,7 +1085,6 @@ Add a compact dashboard block that uses `src/personalContext.js` for honest pers
 
 # Sprint 4 Backlog
 
-- Task 4.5 — Safe Personal Recommendations MVP
 - Task 4.6 — Debug Personal Calculations
 - Task 4.7 — Sprint 4 Hardening
 

@@ -189,6 +189,7 @@ Responsibilities:
 - reads and writes the active profile id through `src/profileStorage.js`
 - handles inline profile creation, editing, and deletion through `src/profileStorage.js`
 - handles local profile export/import actions through `src/profileImportExport.js`
+- renders the compact `Лично для меня` dashboard block through `src/personalContext.js` and `src/profileUi.js`
 - passes safe profile summary state into the hidden debug panel
 
 `src/app.js` is currently the composition layer.
@@ -498,7 +499,7 @@ The module does not render UI, does not call `fetch`, does not use geolocation, 
 
 ## `src/profileUi.js`
 
-Formats the Sprint 3 profile UI text for the dashboard.
+Formats profile-related UI view models and text for the dashboard.
 
 Current responsibilities:
 
@@ -510,7 +511,9 @@ Current responsibilities:
 - provide add-profile copy;
 - describe create/edit form titles and delete-button visibility;
 - convert a profile into safe form values for prefill;
-- map profile validation errors into short Russian UI messages.
+- map profile validation errors into short Russian UI messages;
+- format the compact `Лично для меня` dashboard block from `src/personalContext.js`;
+- translate missing personal profile fields into human-readable Russian copy without rendering technical keys.
 
 This module does not store profiles, export/import data, or calculate natal charts / personal transits.
 
@@ -547,7 +550,7 @@ This helper does not store data, does not render UI, does not call geocoding API
 
 ## `src/personalContext.js`
 
-Builds safe user-facing personal readiness / context copy for future dashboard UI.
+Builds safe user-facing personal readiness / context copy for the dashboard.
 
 Current responsibilities:
 
@@ -556,6 +559,8 @@ Current responsibilities:
 - return `hasActiveProfile`, `profileName`, `title`, `status`, `summary`, `readiness`, `limitations`, `nextSteps`, `missingFields`, `warnings`, and `capabilities`;
 - expose status helpers for `general`, `incomplete`, `readyForContext`, and `calculationLimited`;
 - keep personal context honest when the profile is filled but natal calculation capabilities are still unavailable.
+
+`src/app.js` now uses this helper for the compact `Лично для меня` dashboard block when a saved profile is active.
 
 This helper does not render UI, does not store data, does not call external APIs, and does not calculate natal planets, houses, ASC / MC, Moon in natal house, personal transits, transit orbs, or personal ritual scoring.
 
@@ -607,7 +612,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v52
+lunar-calendar-v54
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -674,7 +679,7 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 20. `src/personalProfileInput.js` converts selected profile data into safe future personal-calculation input and readiness/capability state without performing natal calculations.
 
-21. `src/personalContext.js` converts personal profile readiness into safe user-facing context copy for future dashboard UI without performing natal calculations.
+21. `src/personalContext.js` converts personal profile readiness into safe user-facing context copy for the `Лично для меня` dashboard block without performing natal calculations.
 
 22. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state without birth details.
 
@@ -1018,7 +1023,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v52
+lunar-calendar-v54
 ```
 
 Important operational rule:
@@ -1319,7 +1324,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v52
+lunar-calendar-v54
 ```
 
 If this value changes in `sw.js`, update this section.

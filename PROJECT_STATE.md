@@ -190,7 +190,7 @@ PWA устанавливается на экран iPhone через Safari.
 Тестовый набор проходит:
 
 ```txt
-189 тестов
+193 теста
 ```
 
 ---
@@ -309,19 +309,21 @@ Task 3.5 — Edit / Delete Profile
 
 В секции `Мои карты` есть inline-форма создания профиля.
 
+Есть выбор активного профиля и возврат к `Общий день`.
+
+Есть импорт / экспорт профилей через локальный JSON.
+
+Есть компактный блок `Лично для меня`, который показывает только readiness / context и честные ограничения.
+
 Нет натальной карты.
 
 Нет персональных транзитов.
-
-Active profile id можно хранить в localStorage helper, но полноценного пользовательского selector UI пока нет.
-
-Нет персонального блока `Лично для меня`.
 
 Нет расчета текущей Луны в доме натала.
 
 Нет персональной оценки ритуалов.
 
-Нет импорта / экспорта профилей.
+Нет safe personal recommendations MVP.
 
 ---
 
@@ -648,13 +650,31 @@ Task 4.3 — Personal Readiness / Context MVP
 - для полного профиля показывается честное ограничение: натальные дома, ASC / MC и персональные транзиты пока не рассчитываются;
 - UI, `app.js`, `index.html`, `sw.js`, storage, эфемериды, натал, дома, ASC / MC и транзиты не подключались.
 
-Текущая активная задача:
+Завершенная задача:
 
 ```txt
 Task 4.4 — Dashboard Block `Лично для меня`
 ```
 
-Task 4.4 должна вывести компактный dashboard-блок на основе `src/personalContext.js`, не добавляя фейковые натальные расчеты.
+Результат Task 4.4:
+
+- добавлен компактный dashboard-блок `Лично для меня`;
+- блок расположен после карточки `Профиль` и перед `Режим`, не выше `Луна без курса` и `Осторожно сегодня`;
+- при `Общий день` блок скрыт;
+- при выбранном профиле блок показывает `Лично для [имя]`, safe summary и до 3 человеческих строк readiness / limitations;
+- `src/app.js` использует active profile из существующего profile storage flow и `createPersonalContext()`;
+- `src/profileUi.js` форматирует block view и переводит missing field keys в человеческие строки;
+- birth date, birth time, coordinates, full profile JSON и технические ключи не выводятся в блоке;
+- натал, дома, ASC / MC, Moon in natal house, персональные транзиты, орбы и personal ritual scoring не добавлялись;
+- PWA cache поднят до `lunar-calendar-v53`.
+
+Текущая активная задача:
+
+```txt
+Task 4.5 — Safe Personal Recommendations MVP
+```
+
+Task 4.5 должна добавлять только безопасные персональные рекомендации на основе readiness / context, без натала, домов, ASC / MC и персональных транзитов.
 
 Завершенная задача:
 
@@ -801,10 +821,10 @@ Sprint 4 — Personal Moment Foundation / Лично для меня
 Текущий следующий шаг:
 
 ```txt
-Task 4.4 — Dashboard Block `Лично для меня`
+Task 4.5 — Safe Personal Recommendations MVP
 ```
 
-В Task 4.4 нужно подключить honest personal context к dashboard UI. Натал, дома, ASC / MC, персональные транзиты и фейковые личные рекомендации не делать.
+В Task 4.5 нужно добавить safe personal recommendations MVP на основе readiness / context. Натал, дома, ASC / MC, персональные транзиты и фейковые личные рекомендации не делать.
 
 В Sprint 4 пока НЕ делается:
 
@@ -829,11 +849,10 @@ Task 4.4 — Dashboard Block `Лично для меня`
 
 Активная задача:
 
-- Task 4.4 — Dashboard Block `Лично для меня`.
+- Task 4.5 — Safe Personal Recommendations MVP.
 
 Backlog:
 
-- Task 4.5 — Safe Personal Recommendations MVP;
 - Task 4.6 — Debug Personal Calculations;
 - Task 4.7 — Sprint 4 hardening / tests.
 
@@ -1242,7 +1261,7 @@ done
 Не начинать:
 
 - персональные транзиты;
-- блок `Лично для меня`;
+- натальные расчеты в блоке `Лично для меня`;
 - Луна в доме натала;
 - личная оценка ритуалов;
 - личный прогноз момента.
@@ -1299,7 +1318,7 @@ Sprint 3 — Profiles / Мои карты — завершен.
 
 ## Sprint 4 — Personal Moment Foundation / Лично для меня
 
-Активный спринт. Начать нужно с аудита данных и стратегии личной астрологии.
+Активный спринт. Аудит, profile input adapter, personal context helper и dashboard-блок `Лично для меня` уже выполнены.
 
 Не показывать в UI:
 
@@ -1432,7 +1451,7 @@ git commit -m "checkpoint before continuing in new codex chat"
 Текущая версия:
 
 ```txt
-lunar-calendar-v52
+lunar-calendar-v54
 ```
 
 ## Moscow Hardcoding
@@ -1482,13 +1501,13 @@ lunar-calendar-v52
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 4.4 — Dashboard Block `Лично для меня`.
+Выполнить Task 4.5 — Safe Personal Recommendations MVP.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 4.5.
+2. Не начинать Task 4.6.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или личные рекомендации.
@@ -1504,4 +1523,4 @@ lunar-calendar-v52
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2 и Sprint 3 завершены. Активный спринт — Sprint 4; Task 4.1, Task 4.2 и Task 4.3 завершены, следующая задача — Task 4.4 — Dashboard Block `Лично для меня`.
+Sprint 1, Sprint 2 и Sprint 3 завершены. Активный спринт — Sprint 4; Task 4.1, Task 4.2, Task 4.3 и Task 4.4 завершены, следующая задача — Task 4.5 — Safe Personal Recommendations MVP.

@@ -1,6 +1,6 @@
 import { formatAspect, formatPlanet } from './vocDisplay.js';
 
-export const APP_CACHE_VERSION = 'lunar-calendar-v52';
+export const APP_CACHE_VERSION = 'lunar-calendar-v54';
 
 export function isDebugMode(search = window.location.search) {
   return new URLSearchParams(search).get('debug') === '1';

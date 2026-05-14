@@ -71,7 +71,7 @@ test('home screen renders compact dashboard mode selector', () => {
   assert.equal(html.includes('Прогнозы'), true);
 });
 
-test('home screen renders profile shell without personal astrology UI', () => {
+test('home screen renders profile shell', () => {
   assert.equal(html.includes('class="glass-card profile-card"'), true);
   assert.equal(html.includes('data-profile-current'), true);
   assert.equal(html.includes('data-profiles-toggle'), true);
@@ -90,6 +90,25 @@ test('home screen renders profile shell without personal astrology UI', () => {
   assert.equal(html.includes('Добавление профиля — следующий шаг.'), false);
   assert.equal(html.includes('Натальная карта'), false);
   assert.equal(html.includes('Персональные транзиты'), false);
+});
+
+test('home screen renders hidden personal context card shell', () => {
+  const cardStart = html.indexOf('class="glass-card personal-context-card"');
+  const cardEnd = html.indexOf('class="glass-card profiles-panel"');
+  const personalCardHtml = html.slice(cardStart, cardEnd);
+
+  assert.equal(html.includes('class="glass-card personal-context-card"'), true);
+  assert.equal(html.includes('data-personal-context-card hidden'), true);
+  assert.equal(html.includes('data-personal-context-title'), true);
+  assert.equal(html.includes('data-personal-context-summary'), true);
+  assert.equal(html.includes('data-personal-context-list'), true);
+  assert.equal(html.includes('Лично для меня'), true);
+  assert.equal(appJs.includes('createPersonalContext'), true);
+  assert.equal(appJs.includes('describePersonalContextBlock'), true);
+  assert.equal(personalCardHtml.includes('birthDate'), false);
+  assert.equal(personalCardHtml.includes('birthTime'), false);
+  assert.equal(personalCardHtml.includes('latitude'), false);
+  assert.equal(personalCardHtml.includes('longitude'), false);
 });
 
 test('home screen renders create profile form shell', () => {
@@ -152,6 +171,13 @@ test('profile edit/delete and active selection flow use explicit actions', () =>
   assert.equal(html.includes('Выбрать активный профиль'), false);
 });
 
+test('profile selection closes the profiles panel without hiding the personal block', () => {
+  assert.equal(html.includes('data-profiles-panel\n            hidden'), true);
+  assert.equal(appJs.includes('function closeProfilesPanel()'), true);
+  assert.equal(appJs.includes('closeProfilesPanel();\n      renderStoredProfilesShell();'), true);
+  assert.equal(html.includes('data-personal-context-card hidden'), true);
+});
+
 test('home screen renders hidden warnings card shell', () => {
   assert.equal(html.includes('Осторожно сегодня'), true);
   assert.equal(html.includes('data-warnings-card hidden'), true);
@@ -191,15 +217,18 @@ test('home screen places warnings between VOC and Moon aspects', () => {
 test('home screen places mode selector after warnings and before Moon aspects', () => {
   const warningsIndex = html.indexOf('data-warnings-card hidden');
   const profileIndex = html.indexOf('class="glass-card profile-card"');
+  const personalIndex = html.indexOf('data-personal-context-card hidden');
   const modeIndex = html.indexOf('data-mode-selector');
   const aspectsIndex = html.indexOf('class="glass-card moon-aspects-card"');
 
   assert.equal(warningsIndex >= 0, true);
   assert.equal(profileIndex >= 0, true);
+  assert.equal(personalIndex >= 0, true);
   assert.equal(modeIndex >= 0, true);
   assert.equal(aspectsIndex >= 0, true);
   assert.equal(warningsIndex < profileIndex, true);
-  assert.equal(profileIndex < modeIndex, true);
+  assert.equal(profileIndex < personalIndex, true);
+  assert.equal(personalIndex < modeIndex, true);
   assert.equal(modeIndex < aspectsIndex, true);
 });
 

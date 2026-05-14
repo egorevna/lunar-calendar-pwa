@@ -4,6 +4,15 @@ export const PROFILE_EMPTY_TITLE = 'Пока нет сохраненных ка�
 export const PROFILE_EMPTY_HINT = 'Начните с добавления профиля.';
 export const PROFILE_ADD_BUTTON_LABEL = '+ Добавить профиль';
 export const PROFILE_ADD_BUTTON_HELP = 'Профили нужны для будущих личных расчетов.';
+const PERSONAL_INCOMPLETE_SUMMARY =
+  'Профиль выбран, но для глубокого личного расчета не хватает данных.';
+
+const MISSING_FIELD_LABELS = {
+  birthDate: 'дата рождения',
+  birthTime: 'время рождения',
+  'birthPlace.coordinates': 'координаты места рождения',
+  'birthPlace.timezone': 'часовой пояс места рождения',
+};
 
 const ERROR_MESSAGES = {
   'name is required': 'Укажите имя.',
@@ -94,4 +103,46 @@ export function describeProfileFormValues(profile = {}) {
     houseSystem: typeof profile.houseSystem === 'string' ? profile.houseSystem.trim() : 'wholeSign',
     zodiac: typeof profile.zodiac === 'string' ? profile.zodiac.trim() : 'tropical',
   };
+}
+
+export function describePersonalContextBlock(context = {}) {
+  if (!context.hasActiveProfile) {
+    return {
+      hidden: true,
+      title: '',
+      summary: '',
+      items: [],
+    };
+  }
+
+  return {
+    hidden: false,
+    title: typeof context.title === 'string' ? context.title : '',
+    summary: context.status === 'incomplete'
+      ? PERSONAL_INCOMPLETE_SUMMARY
+      : cleanText(context.summary),
+    items: getPersonalContextItems(context),
+  };
+}
+
+function getPersonalContextItems(context) {
+  const missing = Array.isArray(context.missingFields)
+    ? context.missingFields.map((field) => MISSING_FIELD_LABELS[field]).filter(Boolean)
+    : [];
+  const warnings = Array.isArray(context.warnings) ? context.warnings.map(cleanText) : [];
+  const limitations = Array.isArray(context.limitations) ? context.limitations.map(cleanText) : [];
+
+  return unique([
+    ...missing.map((label) => `Не хватает: ${label}`),
+    ...warnings,
+    ...limitations,
+  ]).slice(0, 3);
+}
+
+function cleanText(value) {
+  return typeof value === 'string' ? value.trim() : '';
+}
+
+function unique(items) {
+  return [...new Set(items.filter(Boolean))];
 }

@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-14 — Complete Task 4.4 personal dashboard block
+
+- Добавлен компактный dashboard-блок `Лично для меня`.
+- Блок скрыт для `Общий день` и показывается только при выбранном сохраненном профиле.
+- `src/app.js` подключает `createPersonalContext()` к существующему active profile flow.
+- `src/profileUi.js` форматирует safe block view, переводит missing field keys в человеческий текст и ограничивает вывод до 3 строк.
+- Birth date, birth time, coordinates, full profile JSON и технические profile keys не выводятся в блоке.
+- Натал, дома, ASC / MC, Moon in natal house, personal transits, transit orbs и personal ritual scoring не добавлялись.
+- PWA-кэш обновлен до `lunar-calendar-v53`.
+- Task 4.5 оставлена следующей активной задачей и не начиналась.
+
 ## 2026-05-14 — Complete Task 4.3 personal readiness context MVP
 
 - Добавлен `src/personalContext.js`.

@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import {
+  describePersonalContextBlock,
   describeProfileFormMode,
   describeProfileFormValues,
   describeProfileValidationErrors,
@@ -134,4 +135,73 @@ test('profile UI describes validation errors in short Russian copy', () => {
 
 test('profile UI keeps unknown validation errors readable', () => {
   assert.deepEqual(describeProfileValidationErrors(['custom error']), ['custom error']);
+});
+
+test('personal context block is hidden for general day', () => {
+  const view = describePersonalContextBlock({
+    hasActiveProfile: false,
+    profileName: 'Общий день',
+    title: null,
+    summary: 'Выбран общий день. Личный блок появится после выбора профиля.',
+    missingFields: [],
+    warnings: [],
+    limitations: [],
+  });
+
+  assert.equal(view.hidden, true);
+  assert.equal(view.title, '');
+  assert.equal(view.summary, '');
+  assert.deepEqual(view.items, []);
+});
+
+test('personal context block describes selected profile without sensitive fields', () => {
+  const view = describePersonalContextBlock({
+    hasActiveProfile: true,
+    profileName: 'Егор',
+    title: 'Лично для Егора',
+    status: 'calculationLimited',
+    summary:
+      'Профиль выбран. Сейчас доступны общие рекомендации момента; личные дома и транзиты будут добавлены после подключения натального расчетного движка.',
+    missingFields: [],
+    warnings: [],
+    limitations: ['Натальные дома, ASC/MC и персональные транзиты пока не рассчитываются.'],
+  });
+  const text = JSON.stringify(view);
+
+  assert.equal(view.hidden, false);
+  assert.equal(view.title, 'Лично для Егора');
+  assert.equal(
+    view.summary,
+    'Профиль выбран. Сейчас доступны общие рекомендации момента; личные дома и транзиты будут добавлены после подключения натального расчетного движка.',
+  );
+  assert.deepEqual(view.items, ['Натальные дома, ASC/MC и персональные транзиты пока не рассчитываются.']);
+  assert.equal(text.includes('birthDate'), false);
+  assert.equal(text.includes('birthTime'), false);
+  assert.equal(text.includes('latitude'), false);
+  assert.equal(text.includes('longitude'), false);
+});
+
+test('personal context block maps missing fields to human copy and limits items', () => {
+  const view = describePersonalContextBlock({
+    hasActiveProfile: true,
+    profileName: 'Егор',
+    title: 'Лично для Егора',
+    status: 'incomplete',
+    summary: 'Профиль выбран, но для личного расчета не хватает данных.',
+    missingFields: ['birthPlace.coordinates', 'birthPlace.timezone', 'birthTime'],
+    warnings: ['Время рождения неизвестно — дома и ASC/MC недоступны.'],
+    limitations: [
+      'Для домов и ASC/MC нужны координаты места рождения.',
+      'Для точного расчета нужно знать часовой пояс места рождения.',
+    ],
+  });
+
+  assert.equal(view.summary, 'Профиль выбран, но для глубокого личного расчета не хватает данных.');
+  assert.deepEqual(view.items, [
+    'Не хватает: координаты места рождения',
+    'Не хватает: часовой пояс места рождения',
+    'Не хватает: время рождения',
+  ]);
+  assert.equal(view.items.length <= 3, true);
+  assert.equal(JSON.stringify(view).includes('birthPlace.coordinates'), false);
 });

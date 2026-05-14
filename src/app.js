@@ -53,6 +53,7 @@ import {
 } from './bestWindows.js';
 import { exportProfilesData, importProfilesIntoStorage } from './profileImportExport.js';
 import { createProfileDraft } from './profileModel.js';
+import { createPersonalContext } from './personalContext.js';
 import {
   addProfile,
   deleteProfile,
@@ -64,6 +65,7 @@ import {
 import {
   describeProfileFormMode,
   describeProfileFormValues,
+  describePersonalContextBlock,
   describeProfilesShell,
   describeProfileValidationErrors,
 } from './profileUi.js';
@@ -121,6 +123,10 @@ const elements = {
   profileImportFile: document.querySelector('[data-profile-import-file]'),
   profileImportStatus: document.querySelector('[data-profile-import-status]'),
   profilePrivacy: document.querySelector('[data-profile-privacy]'),
+  personalContextCard: document.querySelector('[data-personal-context-card]'),
+  personalContextTitle: document.querySelector('[data-personal-context-title]'),
+  personalContextSummary: document.querySelector('[data-personal-context-summary]'),
+  personalContextList: document.querySelector('[data-personal-context-list]'),
   bestWindowCard: document.querySelector('[data-best-window-card]'),
   bestWindowTitle: document.querySelector('[data-best-window-title]'),
   bestWindowTimes: document.querySelector('[data-best-window-times]'),
@@ -321,7 +327,19 @@ function renderProfilesShell(view) {
 }
 
 function renderStoredProfilesShell() {
-  renderProfilesShell(describeProfilesShell(loadProfiles(), getActiveProfileId()));
+  const profiles = loadProfiles();
+  const activeProfileId = getActiveProfileId();
+  const activeProfile = profiles.find((profile) => profile.id === activeProfileId) ?? null;
+
+  renderProfilesShell(describeProfilesShell(profiles, activeProfileId));
+  renderPersonalContextBlock(describePersonalContextBlock(createPersonalContext(activeProfile)));
+}
+
+function renderPersonalContextBlock(view) {
+  elements.personalContextCard.hidden = view.hidden;
+  elements.personalContextTitle.textContent = view.title;
+  elements.personalContextSummary.textContent = view.summary;
+  renderSimpleList(elements.personalContextList, view.items);
 }
 
 function getProfileDebugState() {
@@ -575,6 +593,11 @@ elements.profilesToggle.addEventListener('click', () => {
   elements.profilesToggle.setAttribute('aria-expanded', String(shouldOpen));
 });
 
+function closeProfilesPanel() {
+  elements.profilesPanel.hidden = true;
+  elements.profilesToggle.setAttribute('aria-expanded', 'false');
+}
+
 elements.profileAdd.addEventListener('click', () => {
   setProfileFormOpen(true);
 });
@@ -585,6 +608,7 @@ elements.profilesList.addEventListener('click', (event) => {
     const profileId = selectButton.dataset.profileSelect || null;
     const result = setActiveProfileId(profileId);
     if (result.ok) {
+      closeProfilesPanel();
       renderStoredProfilesShell();
     }
     return;
