@@ -443,3 +443,89 @@ After adding profiles, dashboard should answer:
 - Which rituals fit me today?
 - What is the best window personally for me?
 - What should I avoid today?
+
+---
+
+# Sprint 5 Natal Calculation Logic
+
+Sprint 5 builds the calculation foundation for natal astrology.
+
+Main rule:
+
+```txt
+Do not show a natal value unless it was calculated by a reliable provider and covered by tests.
+```
+
+This applies to:
+
+- natal planets;
+- houses;
+- ASC;
+- MC;
+- aspects;
+- personal transits;
+- orbs.
+
+## Zodiac Sign Mapping
+
+Normalize all ecliptic longitudes to `0–360`.
+
+Sign starts:
+
+- `0°` Aries;
+- `30°` Taurus;
+- `60°` Gemini;
+- `90°` Cancer;
+- `120°` Leo;
+- `150°` Virgo;
+- `180°` Libra;
+- `210°` Scorpio;
+- `240°` Sagittarius;
+- `270°` Capricorn;
+- `300°` Aquarius;
+- `330°` Pisces.
+
+## Natal Aspect Rules
+
+Major aspects:
+
+- conjunction: `0°`;
+- sextile: `60°`;
+- square: `90°`;
+- trine: `120°`;
+- opposition: `180°`.
+
+Orb must be explicit input for engine-foundation helpers.
+
+Do not hardcode personal transit orbs until `NATAL_ENGINE_STRATEGY.md` approves them.
+
+## Houses / ASC / MC
+
+Do not calculate houses unless the house engine is reliable.
+
+If birth time is unknown:
+
+- houses unsupported;
+- ASC / MC unsupported.
+
+If coordinates are missing:
+
+- houses unsupported;
+- ASC / MC unsupported.
+
+If timezone is missing:
+
+- calculation is not ready.
+
+## Personal Transits
+
+Do not show personal transits until both natal positions and current planetary positions are reliable.
+
+Transit output must include:
+
+- transit body;
+- aspect;
+- natal body / point;
+- orb;
+- exactness;
+- source / provider.

@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-14 — Prepare Sprint 5 documentation
+
+- Sprint 1, Sprint 2, Sprint 3 and Sprint 4 зафиксированы как завершенные.
+- Активным спринтом стал `Sprint 5 — Natal Calculation Engine Foundation`.
+- В `TODO.md` добавлены Task 5.1–5.8; активная задача — `Task 5.1 — Natal Engine Audit and Decision`.
+- В `ASTRO_LOGIC.md` добавлены правила natal calculation foundation: no fake natal values, zodiac mapping, explicit orb/aspect rules, house/ASC/MC limitations and transit requirements.
+- В `PRIVACY_RULES.md` добавлены Sprint 5 privacy rules для natal calculation engine work.
+- Код приложения не менялся.
+
 ## 2026-05-14 — Complete Sprint 4 hardening
 
 - Завершена Task 4.7 — Sprint 4 Hardening.

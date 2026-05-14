@@ -281,3 +281,48 @@ Debug must not dump:
 If the app cannot calculate a personal result reliably, it must say so.
 
 Do not display invented houses, ASC / MC, Moon in natal house, personal transit aspects, personal transit orbs, or personal ritual scoring.
+
+---
+
+# Sprint 5 Privacy Rules
+
+Sprint 5 starts natal calculation engine foundation work. Natal calculation uses sensitive birth data.
+
+## Natal Calculation Privacy
+
+Do not send birth data to:
+
+- server;
+- remote ephemeris service;
+- geocoding API;
+- analytics;
+- logs.
+
+No backend, cloud sync, external geocoding or automatic location permission in Sprint 5.
+
+## Dependency Rule
+
+If a calculation dependency is added later, it must run locally and must not transmit user data.
+
+Adding a dependency requires explicit approval.
+
+## Debug Rule
+
+Debug must not expose:
+
+- full birth date;
+- full birth time;
+- coordinates;
+- birth place object;
+- full profile JSON.
+
+Debug can show:
+
+- capability status;
+- provider name;
+- missing-field labels;
+- unsupported feature labels.
+
+## Honesty Rule
+
+Unsupported natal calculations must return explicit unsupported state instead of approximate or invented values.

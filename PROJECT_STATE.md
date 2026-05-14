@@ -587,20 +587,45 @@ done
 Sprint 1 — Main Dashboard Cleanup
 Sprint 2 — Modes and Best Windows
 Sprint 3 — Profiles / Мои карты
-```
-
-Завершенный спринт:
-
-```txt
 Sprint 4 — Personal Moment Foundation / Лично для меня
 ```
 
-Цель Sprint 4:
+Активный спринт:
 
-- начать персонализацию на основе активного профиля;
-- не фальсифицировать натальную астрологию;
-- сначала провести аудит доступных данных и возможностей расчета;
-- добавлять только честный readiness / context слой, если точные расчеты пока недоступны.
+```txt
+Sprint 5 — Natal Calculation Engine Foundation
+```
+
+Цель Sprint 5:
+
+- построить расчетную основу для настоящей натальной астрологии;
+- выбрать надежный путь natal engine до появления natal UI;
+- не показывать фейковые натальные планеты, дома, ASC / MC, personal transits или orbs;
+- явно возвращать `notSupported`, если расчет пока не подключен или не доказан тестами.
+
+Текущая активная задача:
+
+```txt
+Task 5.1 — Natal Engine Audit and Decision
+```
+
+Task 5.1 должна создать `NATAL_ENGINE_STRATEGY.md` и определить безопасный расчетный путь без изменений кода приложения, без зависимостей и без фейковых расчетов.
+
+Do not start yet:
+
+- natal chart UI;
+- house table;
+- ASC / MC display;
+- personal transits;
+- synastry;
+- geocoding API;
+- backend / cloud sync.
+
+Ключевой риск:
+
+```txt
+Do not fake natal calculations.
+```
 
 Завершенная задача:
 
@@ -724,7 +749,13 @@ Personal Moment Foundation / Лично для меня
 Следующий этап:
 
 ```txt
-Sprint 5 — подготовка, не начинать без отдельной команды.
+Sprint 5 — Natal Calculation Engine Foundation.
+```
+
+Активная задача:
+
+```txt
+Task 5.1 — Natal Engine Audit and Decision
 ```
 
 Завершенная задача:
@@ -866,16 +897,16 @@ Profiles / Мои карты
 Активный спринт:
 
 ```txt
-Sprint 4 — Personal Moment Foundation / Лично для меня
+Sprint 5 — Natal Calculation Engine Foundation
 ```
 
 Текущий следующий шаг:
 
 ```txt
-Подготовка Sprint 5
+Task 5.1 — Natal Engine Audit and Decision
 ```
 
-Sprint 5 не начинать без отдельной команды. Натал, дома, ASC / MC, персональные транзиты и фейковые личные расчеты не делать.
+В Task 5.1 нужно провести аудит natal engine и создать `NATAL_ENGINE_STRATEGY.md`. Натал UI, дома, ASC / MC, персональные транзиты и фейковые личные расчеты не делать.
 
 В Sprint 4 пока НЕ делается:
 
@@ -1372,7 +1403,7 @@ Sprint 3 — Profiles / Мои карты — завершен.
 
 ## Sprint 4 — Personal Moment Foundation / Лично для меня
 
-Активный спринт. Аудит, profile input adapter, personal context helper и dashboard-блок `Лично для меня` уже выполнены.
+Завершенный спринт. Аудит, profile input adapter, personal context helper, dashboard-блок `Лично для меня`, safe recommendations, personal debug и hardening выполнены.
 
 Не показывать в UI:
 
@@ -1555,13 +1586,13 @@ lunar-calendar-v57
 Сейчас следующий конкретный шаг:
 
 ```txt
-Подготовить Sprint 5 после отдельного подтверждения.
+Выполнить Task 5.1 — Natal Engine Audit and Decision.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать следующий спринт.
+2. Не начинать Task 5.2.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или фейковые личные расчеты.
@@ -1577,4 +1608,4 @@ lunar-calendar-v57
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3 и Sprint 4 завершены. Следующий этап — подготовка Sprint 5, но разработка Sprint 5 не начиналась.
+Sprint 1, Sprint 2, Sprint 3 и Sprint 4 завершены. Активный спринт — Sprint 5; текущая задача — Task 5.1 — Natal Engine Audit and Decision.

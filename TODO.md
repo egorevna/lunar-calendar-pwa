@@ -1147,15 +1147,121 @@ Harden Sprint 4 after the safe personal-context/debug foundation is complete.
 - Do not start Sprint 5.
 - Do not add natal calculations without a reliable calculation engine.
 
-# Next Stage
+# Current Active Sprint
 
-## Sprint 5
+## Sprint 5 — Natal Calculation Engine Foundation
+
+Status: active
+
+### Goal
+
+Build the calculation foundation for real natal astrology before showing natal chart UI or personal transit claims.
+
+### Important Boundary
+
+Do not fake natal planets, houses, ASC / MC, aspects, personal transits or orbs.
+
+# Active Task
+
+## Task 5.1 — Natal Engine Audit and Decision
 
 Status: not started
 
 ### Goal
 
-Prepare the next sprint only after explicit user approval.
+Audit the project and decide the safest path for natal calculations.
+
+### Required Investigation
+
+Read:
+
+- `package.json`;
+- `scripts/generate-ephemeris.cjs`;
+- `src/astro.js`;
+- `src/preciseEphemeris.js`;
+- `src/ephemeris-data.js`;
+- `PERSONAL_ASTROLOGY_STRATEGY.md`;
+- profile modules.
+
+Answer:
+
+1. Is `swisseph` available only in Node scripts or also in browser runtime?
+2. Can the current PWA calculate arbitrary natal dates?
+3. Do we need a browser-compatible dependency?
+4. Can we calculate planetary ecliptic longitudes?
+5. Can we calculate houses / ASC / MC?
+6. How should historical timezone be handled?
+7. What is safe for Sprint 5?
+8. What requires separate approval / dependency?
+
+### Deliverable
+
+Create:
+
+```txt
+NATAL_ENGINE_STRATEGY.md
+```
+
+It should include:
+
+- available current tools;
+- recommended engine path;
+- dependency recommendation, if any;
+- risks;
+- implementation plan;
+- what remains unsupported.
+
+### Acceptance Criteria
+
+- Strategy document exists.
+- No app code changed.
+- No dependency added without explicit approval.
+- No fake calculations.
+- Task 5.2 remains next.
+
+# Sprint 5 Backlog
+
+## Task 5.2 — Add Astrology Math Primitives
+
+Status: not started
+
+Goal: add pure, tested helpers for degree normalization, zodiac sign mapping, degree within sign, angular distance, aspect detection, orb checking and degree formatting.
+
+## Task 5.3 — Add Natal Chart Data Model and Engine Interface
+
+Status: not started
+
+Goal: create neutral natal chart result shapes and an engine interface that returns explicit `notSupported` for unsupported calculations.
+
+## Task 5.4 — Birth DateTime / Timezone Strategy
+
+Status: not started
+
+Goal: define safe conversion/readiness for birth date, birth time, place and timezone without faking historical timezone precision.
+
+## Task 5.5 — Planetary Position Provider MVP
+
+Status: not started
+
+Goal: connect a reliable provider only if Task 5.1 allows it; otherwise return explicit `notSupported`.
+
+## Task 5.6 — Natal Planets MVP
+
+Status: not started
+
+Goal: calculate natal planetary positions only if the provider is reliable; do not calculate houses / ASC / MC unless proven reliable.
+
+## Task 5.7 — Natal Calculation Debug / Fixtures
+
+Status: not started
+
+Goal: add safe debug inspection and fixture strategy without dumping sensitive birth data.
+
+## Task 5.8 — Sprint 5 Hardening
+
+Status: not started
+
+Goal: verify Sprint 5 outputs, no fake natal claims, unsupported states explicit, tests pass.
 
 # Do Not Do Now
 
