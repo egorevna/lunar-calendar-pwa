@@ -834,11 +834,11 @@ Add minimal UI shell for profile list and privacy copy.
 
 No new navigation bar and no natal chart screen.
 
-# Active Task
+# Completed Task
 
 ## Task 3.4 — Create Profile Form
 
-Status: active
+Status: done
 
 Allow creation of a profile with validation.
 
@@ -849,15 +849,17 @@ Defaults:
 - houseSystem: Whole Sign;
 - zodiac: tropical.
 
-# Sprint 3 Backlog
+# Active Task
 
 ## Task 3.5 — Edit / Delete Profile
 
-Status: not started
+Status: active
 
 Allow profile editing and deletion.
 
 Deleting a profile must require confirmation. Deleting active profile switches app to `Общий день`.
+
+# Sprint 3 Backlog
 
 ## Task 3.6 — Active Profile Selector
 

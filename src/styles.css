@@ -345,6 +345,10 @@ button {
   padding: 9px 13px;
 }
 
+.profile-add-button[hidden] {
+  display: none;
+}
+
 .profile-add-button:disabled {
   cursor: default;
   opacity: 0.72;
@@ -358,6 +362,99 @@ button {
   margin: 12px 0 0;
   padding-top: 11px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.profile-form[hidden] {
+  display: none;
+}
+
+.profile-form {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+  padding-top: 13px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.profile-form-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.profile-form label {
+  display: grid;
+  gap: 5px;
+  color: var(--muted);
+  font-size: clamp(13px, 3.5vw, 16px);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.profile-form input,
+.profile-form select {
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: rgba(5, 15, 26, 0.58);
+  color: rgba(255, 248, 239, 0.88);
+  font: inherit;
+  font-weight: 500;
+  padding: 8px 10px;
+}
+
+.profile-form input:disabled {
+  opacity: 0.5;
+}
+
+.profile-form-place {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(13px, 3.5vw, 16px);
+  line-height: 1.25;
+}
+
+.profile-form-errors {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.profile-form-errors[hidden] {
+  display: none;
+}
+
+.profile-form-errors li {
+  color: #ffcfb9;
+  font-size: clamp(13px, 3.5vw, 16px);
+  line-height: 1.22;
+}
+
+.profile-form-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.profile-form-actions button {
+  min-height: 38px;
+  border-radius: 999px;
+  font-size: clamp(13px, 3.5vw, 15px);
+  font-weight: 700;
+}
+
+.profile-form-actions button[type="submit"] {
+  border: 1px solid rgba(244, 199, 127, 0.5);
+  background: rgba(244, 199, 127, 0.16);
+  color: var(--gold);
+}
+
+.profile-form-actions button[type="button"] {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(9, 22, 36, 0.48);
+  color: rgba(255, 248, 239, 0.66);
 }
 
 .glass-card {

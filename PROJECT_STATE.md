@@ -282,7 +282,7 @@ PWA устанавливается на экран iPhone через Safari.
 Следующая задача:
 
 ```txt
-Task 3.4 — Create Profile Form
+Task 3.5 — Edit / Delete Profile
 ```
 
 Натальная карта, персональные транзиты, дома, ASC/MC и личные рекомендации пока не делаются.
@@ -306,6 +306,8 @@ Task 3.4 — Create Profile Form
 Профили можно сохранять в localStorage через `src/profileStorage.js`.
 
 На главном экране есть компактный блок `Профиль` и раскрываемая секция `Мои карты`.
+
+В секции `Мои карты` есть inline-форма создания профиля.
 
 Нет натальной карты.
 
@@ -635,10 +637,27 @@ Task 3.3 — Add Profiles UI Shell / “Мои карты”
 - `src/app.js` читает profiles через `loadProfiles()`, но не делает active profile selector;
 - PWA cache поднят до `lunar-calendar-v43`.
 
-Следующая активная задача:
+Завершенная задача:
 
 ```txt
 Task 3.4 — Create Profile Form
+```
+
+Что выполнено:
+
+- кнопка `+ Добавить профиль` открывает inline-форму внутри `Мои карты`;
+- форма содержит имя, дату рождения, время рождения, точность времени, место рождения, timezone, систему домов и зодиак;
+- для текущего места расчета используется Москва / Россия / Europe/Moscow;
+- при `неизвестно` поле времени рождения отключается и может быть пустым;
+- создание профиля идет через `addProfile()` из `src/profileStorage.js`;
+- validation errors показываются короткими русскими сообщениями;
+- после успешного создания профиль появляется в списке `Мои карты`;
+- PWA cache поднят до `lunar-calendar-v44`.
+
+Следующая активная задача:
+
+```txt
+Task 3.5 — Edit / Delete Profile
 ```
 
 В Sprint 3 пока НЕ делается:
@@ -656,13 +675,12 @@ Task 3.4 — Create Profile Form
 - geocoding API;
 - автоматическое определение текущего местоположения.
 
-Форма создания профиля, edit/delete и import/export идут дальше по задачам Sprint 3. Task 3.4 еще не начиналась в рамках Task 3.3.
+Edit/delete и import/export идут дальше по задачам Sprint 3. Task 3.5 еще не начиналась в рамках Task 3.4.
 
 ---
 
 # Sprint 3 Backlog
 
-- Task 3.4 — Create Profile Form.
 - Task 3.5 — Edit / Delete Profile.
 - Task 3.6 — Active Profile Selector.
 - Task 3.7 — Profile Export / Import.
@@ -1259,7 +1277,7 @@ git commit -m "checkpoint before continuing in new codex chat"
 Текущая версия:
 
 ```txt
-lunar-calendar-v43
+lunar-calendar-v44
 ```
 
 ## Moscow Hardcoding
@@ -1309,13 +1327,13 @@ lunar-calendar-v43
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 3.4 — Create Profile Form.
+Выполнить Task 3.5 — Edit / Delete Profile.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 3.5.
+2. Не начинать Task 3.6.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или личные рекомендации.
@@ -1331,4 +1349,4 @@ lunar-calendar-v43
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1 и Sprint 2 завершены. Активный спринт — Sprint 3; Task 3.1, Task 3.2 и Task 3.3 завершены, следующая реализационная задача — Task 3.4.
+Sprint 1 и Sprint 2 завершены. Активный спринт — Sprint 3; Task 3.1–3.4 завершены, следующая реализационная задача — Task 3.5.

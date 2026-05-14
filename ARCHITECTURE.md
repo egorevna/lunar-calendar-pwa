@@ -186,6 +186,7 @@ Responsibilities:
 - updates DOM elements on the main dashboard
 - controls the visible dashboard state
 - reads local profile names for the compact `Профиль` / `Мои карты` UI shell
+- handles inline profile creation form submission through `src/profileStorage.js`
 
 `src/app.js` is currently the composition layer.
 
@@ -494,7 +495,7 @@ The module does not render UI, does not call `fetch`, does not use geolocation, 
 
 ## `src/profileUi.js`
 
-Formats the minimal Sprint 3 profile shell view for the dashboard.
+Formats the Sprint 3 profile UI text for the dashboard.
 
 Current responsibilities:
 
@@ -502,7 +503,8 @@ Current responsibilities:
 - always include `Общий день` as the non-personal default item;
 - convert stored profiles into a compact list of display names;
 - provide the empty-state copy for `Мои карты`;
-- provide disabled add-profile copy for Task 3.3.
+- provide add-profile copy;
+- map profile validation errors into short Russian UI messages.
 
 This module does not create profiles, edit profiles, delete profiles, select an active profile, export/import data, or calculate natal charts / personal transits.
 
@@ -1325,9 +1327,10 @@ The current implemented profile layer includes:
 - local profile list storage;
 - local active profile id storage;
 - compact dashboard profile shell;
-- inline `Мои карты` panel.
+- inline `Мои карты` panel;
+- inline profile creation form.
 
-The app still has no profile creation form, edit/delete UI, active profile selector UI, import/export UI, natal chart, houses, ASC / MC, or personal transits.
+The app still has no edit/delete UI, active profile selector UI, import/export UI, natal chart, houses, ASC / MC, or personal transits.
 
 Sprint 3 must not implement natal chart calculations, houses, Ascendant / MC, personal transits, personal recommendations, backend sync, or external geocoding without an explicit later task.
 
@@ -1347,4 +1350,4 @@ Core logic:
 
 Current priority:
 
-Prepare Sprint 3 profile creation form while keeping natal charts, houses, personal transits, and personal recommendations out of scope.
+Prepare Sprint 3 edit/delete profile UI while keeping natal charts, houses, personal transits, and personal recommendations out of scope.

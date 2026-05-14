@@ -72,10 +72,66 @@
               <p>Пока нет сохраненных карт.</p>
               <span>Начните с добавления профиля.</span>
             </div>
-            <button type="button" class="profile-add-button" data-profile-add disabled>
+            <button type="button" class="profile-add-button" data-profile-add>
               + Добавить профиль
             </button>
             <p class="profile-next-step" data-profile-next-step></p>
+            <form class="profile-form" data-profile-form hidden novalidate>
+              <div class="profile-form-grid">
+                <label>
+                  Имя
+                  <input type="text" name="name" autocomplete="name" placeholder="Анна" required>
+                </label>
+                <label>
+                  Дата рождения
+                  <input type="date" name="birthDate" required>
+                </label>
+                <label>
+                  Время рождения
+                  <input type="time" name="birthTime" required>
+                </label>
+                <label>
+                  Точность времени
+                  <select name="birthTimeAccuracy">
+                    <option value="exact">точное</option>
+                    <option value="approximate">примерно</option>
+                    <option value="unknown">неизвестно</option>
+                  </select>
+                </label>
+                <label>
+                  Город рождения
+                  <input type="text" name="birthCity" placeholder="Москва" required>
+                </label>
+                <label>
+                  Страна рождения
+                  <input type="text" name="birthCountry" placeholder="Россия" required>
+                </label>
+                <label>
+                  Timezone рождения
+                  <input type="text" name="birthTimezone" value="Europe/Moscow" required>
+                </label>
+                <label>
+                  Система домов
+                  <select name="houseSystem">
+                    <option value="wholeSign">Whole Sign</option>
+                    <option value="placidus">Placidus</option>
+                    <option value="equal">Равнодомная</option>
+                  </select>
+                </label>
+                <label>
+                  Зодиак
+                  <select name="zodiac">
+                    <option value="tropical">тропический</option>
+                  </select>
+                </label>
+              </div>
+              <p class="profile-form-place">Текущее место расчета: Москва, Россия, Europe/Moscow.</p>
+              <ul class="profile-form-errors" data-profile-form-errors hidden></ul>
+              <div class="profile-form-actions">
+                <button type="submit">Сохранить профиль</button>
+                <button type="button" data-profile-form-cancel>Отмена</button>
+              </div>
+            </form>
             <p class="profile-privacy" data-profile-privacy>
               Данные карты хранятся только на этом устройстве.
             </p>

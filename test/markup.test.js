@@ -77,7 +77,8 @@ test('home screen renders profile shell without personal astrology UI', () => {
   assert.equal(html.includes('data-profiles-panel'), true);
   assert.equal(html.includes('data-profiles-list'), true);
   assert.equal(html.includes('data-profiles-empty hidden'), true);
-  assert.equal(html.includes('data-profile-add disabled'), true);
+  assert.equal(html.includes('data-profile-add'), true);
+  assert.equal(html.includes('data-profile-add disabled'), false);
   assert.equal(html.includes('Данные карты хранятся только на этом устройстве.'), true);
   assert.equal(html.includes('Профиль'), true);
   assert.equal(html.includes('Общий день'), true);
@@ -88,6 +89,33 @@ test('home screen renders profile shell without personal astrology UI', () => {
   assert.equal(html.includes('Добавление профиля — следующий шаг.'), false);
   assert.equal(html.includes('Натальная карта'), false);
   assert.equal(html.includes('Персональные транзиты'), false);
+});
+
+test('home screen renders create profile form shell', () => {
+  assert.equal(html.includes('data-profile-form hidden'), true);
+  assert.equal(html.includes('name="name"'), true);
+  assert.equal(html.includes('name="birthDate"'), true);
+  assert.equal(html.includes('name="birthTime"'), true);
+  assert.equal(html.includes('name="birthTimeAccuracy"'), true);
+  assert.equal(html.includes('value="exact"'), true);
+  assert.equal(html.includes('value="approximate"'), true);
+  assert.equal(html.includes('value="unknown"'), true);
+  assert.equal(html.includes('name="birthCity"'), true);
+  assert.equal(html.includes('name="birthCountry"'), true);
+  assert.equal(html.includes('name="birthTimezone"'), true);
+  assert.equal(html.includes('name="houseSystem"'), true);
+  assert.equal(html.includes('value="wholeSign"'), true);
+  assert.equal(html.includes('value="placidus"'), true);
+  assert.equal(html.includes('value="equal"'), true);
+  assert.equal(html.includes('name="zodiac"'), true);
+  assert.equal(html.includes('value="tropical"'), true);
+  assert.equal(html.includes('Текущее место расчета: Москва, Россия, Europe/Moscow.'), true);
+  assert.equal(html.includes('data-profile-form-errors hidden'), true);
+  assert.equal(html.includes('Сохранить профиль'), true);
+  assert.equal(html.includes('data-profile-form-cancel'), true);
+  assert.equal(html.includes('Транзиты'), false);
+  assert.equal(html.includes('ASC'), false);
+  assert.equal(html.includes('MC'), false);
 });
 
 test('home screen renders hidden warnings card shell', () => {

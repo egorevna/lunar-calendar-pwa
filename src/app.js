@@ -51,8 +51,12 @@ import {
   getBestWindows,
   getBestWindowsDebug,
 } from './bestWindows.js';
-import { loadProfiles } from './profileStorage.js';
-import { describeProfilesShell } from './profileUi.js';
+import { createProfileDraft } from './profileModel.js';
+import { addProfile, loadProfiles } from './profileStorage.js';
+import {
+  describeProfilesShell,
+  describeProfileValidationErrors,
+} from './profileUi.js';
 
 let selectedDashboardMode = DEFAULT_DASHBOARD_MODE;
 
@@ -94,6 +98,9 @@ const elements = {
   profilesEmpty: document.querySelector('[data-profiles-empty]'),
   profileAdd: document.querySelector('[data-profile-add]'),
   profileNextStep: document.querySelector('[data-profile-next-step]'),
+  profileForm: document.querySelector('[data-profile-form]'),
+  profileFormErrors: document.querySelector('[data-profile-form-errors]'),
+  profileFormCancel: document.querySelector('[data-profile-form-cancel]'),
   profilePrivacy: document.querySelector('[data-profile-privacy]'),
   bestWindowCard: document.querySelector('[data-best-window-card]'),
   bestWindowTitle: document.querySelector('[data-best-window-title]'),
@@ -264,6 +271,80 @@ function renderProfilesShell(view) {
   elements.profilePrivacy.textContent = view.privacyCopy;
 }
 
+function profileFromForm(form) {
+  const data = new FormData(form);
+  const birthTimeAccuracy = String(data.get('birthTimeAccuracy') ?? 'exact');
+  const draft = createProfileDraft();
+
+  return {
+    ...draft,
+    name: String(data.get('name') ?? ''),
+    birthDate: String(data.get('birthDate') ?? ''),
+    birthTime: birthTimeAccuracy === 'unknown' ? '' : String(data.get('birthTime') ?? ''),
+    birthTimeAccuracy,
+    birthPlace: {
+      ...draft.birthPlace,
+      city: String(data.get('birthCity') ?? ''),
+      country: String(data.get('birthCountry') ?? ''),
+      timezone: String(data.get('birthTimezone') ?? ''),
+    },
+    currentPlace: {
+      ...draft.currentPlace,
+      mode: 'moscow',
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+    },
+    houseSystem: String(data.get('houseSystem') ?? 'wholeSign'),
+    zodiac: String(data.get('zodiac') ?? 'tropical'),
+  };
+}
+
+function setProfileFormOpen(isOpen) {
+  elements.profileForm.hidden = !isOpen;
+  elements.profileAdd.hidden = isOpen;
+  elements.profileNextStep.hidden = isOpen;
+
+  if (!isOpen) {
+    elements.profileForm.reset();
+    updateBirthTimeState();
+    renderProfileFormErrors([]);
+  }
+}
+
+function renderProfileFormErrors(errors) {
+  elements.profileFormErrors.hidden = errors.length === 0;
+  elements.profileFormErrors.replaceChildren(...errors.map((text) => {
+    const item = document.createElement('li');
+    item.textContent = text;
+    return item;
+  }));
+}
+
+function updateBirthTimeState() {
+  const birthTimeAccuracy = elements.profileForm.elements.birthTimeAccuracy.value;
+  const birthTime = elements.profileForm.elements.birthTime;
+  const isUnknown = birthTimeAccuracy === 'unknown';
+
+  birthTime.disabled = isUnknown;
+  birthTime.required = !isUnknown;
+  if (isUnknown) birthTime.value = '';
+}
+
+function handleProfileFormSubmit(event) {
+  event.preventDefault();
+
+  const result = addProfile(profileFromForm(elements.profileForm));
+
+  if (!result.ok) {
+    renderProfileFormErrors(describeProfileValidationErrors(result.errors));
+    return;
+  }
+
+  setProfileFormOpen(false);
+  renderProfilesShell(describeProfilesShell(loadProfiles()));
+}
+
 function renderBestWindows(view) {
   elements.bestWindowCard.hidden = view.hidden;
   elements.bestWindowTitle.textContent = view.title;
@@ -330,6 +411,22 @@ elements.profilesToggle.addEventListener('click', () => {
   elements.profilesPanel.hidden = !shouldOpen;
   elements.profilesToggle.setAttribute('aria-expanded', String(shouldOpen));
 });
+
+elements.profileAdd.addEventListener('click', () => {
+  setProfileFormOpen(true);
+});
+
+elements.profileFormCancel.addEventListener('click', () => {
+  setProfileFormOpen(false);
+});
+
+elements.profileForm.addEventListener('change', (event) => {
+  if (event.target.name === 'birthTimeAccuracy') {
+    updateBirthTimeState();
+  }
+});
+
+elements.profileForm.addEventListener('submit', handleProfileFormSubmit);
 
 render();
 window.setInterval(render, 30000);
