@@ -909,11 +909,11 @@ Important boundary:
 
 Do not show natal houses, ASC/MC, personal transits, Moon in natal house, or personal ritual scoring unless the calculation is proven reliable and covered by tests.
 
-# Active Task
+# Completed Task
 
 ## Task 4.1 — Personal Astrology Strategy and Data Audit
 
-Status: not started
+Status: done
 
 ### Goal
 
@@ -967,9 +967,43 @@ The document must include:
 - No fake calculations.
 - Task 4.2 remains next.
 
+# Active Task
+
+## Task 4.2 — Profile Calculation Input Adapter
+
+Status: not started
+
+### Goal
+
+Create a helper that converts active profile data into safe calculation input and readiness state.
+
+### Output should include
+
+- profileId;
+- name;
+- birthDateTime readiness;
+- birthTimeAccuracy;
+- birthPlace readiness;
+- currentPlace;
+- houseSystem;
+- zodiac;
+- isReadyForNatal;
+- missingFields;
+- warnings;
+- unsupportedFeatures.
+
+### Boundaries
+
+- No natal planetary positions.
+- No house calculations.
+- No ASC / MC.
+- No personal transits.
+- No UI block `Лично для меня` yet.
+- No geocoding.
+- No new dependencies.
+
 # Sprint 4 Backlog
 
-- Task 4.2 — Profile Calculation Input Adapter
 - Task 4.3 — Personal Readiness / Context MVP
 - Task 4.4 — Dashboard Block `Лично для меня`
 - Task 4.5 — Safe Personal Recommendations MVP

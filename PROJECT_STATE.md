@@ -600,7 +600,7 @@ Sprint 4 — Personal Moment Foundation / Лично для меня
 - сначала провести аудит доступных данных и возможностей расчета;
 - добавлять только честный readiness / context слой, если точные расчеты пока недоступны.
 
-Текущая активная задача:
+Завершенная задача:
 
 ```txt
 Task 4.1 — Personal Astrology Strategy and Data Audit
@@ -612,7 +612,20 @@ Task 4.1 — Personal Astrology Strategy and Data Audit
 Pseudo-precision: нельзя показывать личные расчеты, которые проект фактически не умеет надежно считать.
 ```
 
-Task 4.1 должна создать `PERSONAL_ASTROLOGY_STRATEGY.md` и не менять код приложения.
+Результат Task 4.1:
+
+- создан `PERSONAL_ASTROLOGY_STRATEGY.md`;
+- зафиксировано, что текущие точные данные покрывают общий момент 2026–2030, а не произвольные даты рождения;
+- подтверждено, что сейчас нет надежного расчета натальных планет, домов, ASC / MC, Moon in natal house или персональных транзитов;
+- рекомендованный Sprint 4 MVP — readiness / context слой без фейковых персональных расчетов.
+
+Текущая активная задача:
+
+```txt
+Task 4.2 — Profile Calculation Input Adapter
+```
+
+Task 4.2 должна подготовить safe profile calculation input / readiness helper, но не считать натал, дома, ASC / MC или транзиты.
 
 Завершенная задача:
 
@@ -759,10 +772,10 @@ Sprint 4 — Personal Moment Foundation / Лично для меня
 Текущий следующий шаг:
 
 ```txt
-Task 4.1 — Personal Astrology Strategy and Data Audit
+Task 4.2 — Profile Calculation Input Adapter
 ```
 
-В Task 4.1 нужно только провести аудит и подготовить стратегию. Код приложения, UI и расчеты не менять.
+В Task 4.2 нужно создать adapter для profile calculation input и readiness state. Натал, дома, ASC / MC, персональные транзиты и UI-блок `Лично для меня` не делать.
 
 В Sprint 4 пока НЕ делается:
 
@@ -787,11 +800,10 @@ Task 4.1 — Personal Astrology Strategy and Data Audit
 
 Активная задача:
 
-- Task 4.1 — Personal Astrology Strategy and Data Audit.
+- Task 4.2 — Profile Calculation Input Adapter.
 
 Backlog:
 
-- Task 4.2 — Profile Calculation Input Adapter;
 - Task 4.3 — Personal Readiness / Context MVP;
 - Task 4.4 — Dashboard Block `Лично для меня`;
 - Task 4.5 — Safe Personal Recommendations MVP;
@@ -1465,4 +1477,4 @@ lunar-calendar-v44
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2 и Sprint 3 завершены. Активный спринт — Sprint 4; следующая задача — Task 4.1 — Personal Astrology Strategy and Data Audit.
+Sprint 1, Sprint 2 и Sprint 3 завершены. Активный спринт — Sprint 4; Task 4.1 завершена, следующая задача — Task 4.2 — Profile Calculation Input Adapter.

@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-14 — Complete Task 4.1 personal astrology audit
+
+- Создан `PERSONAL_ASTROLOGY_STRATEGY.md`.
+- Аудит подтвердил, что текущий `src/ephemeris-data.js` содержит pre-generated current-dashboard events на 2026–2030 годы, а не произвольные natal positions.
+- Зафиксировано, что сейчас нельзя надежно считать натальные планеты, дома, ASC / MC, Moon in natal house, персональные транзиты и transit orbs.
+- Рекомендованный Sprint 4 MVP: profile calculation input adapter и honest readiness / context layer без фейковых личных расчетов.
+- Task 4.2 оставлена следующей активной задачей и не начиналась.
+- Код приложения не менялся.
+
 ## 2026-05-14 — Prepare Sprint 4 documentation
 
 - Sprint 1, Sprint 2 and Sprint 3 зафиксированы как завершенные.
