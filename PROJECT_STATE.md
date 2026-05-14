@@ -619,13 +619,27 @@ Pseudo-precision: нельзя показывать личные расчеты,
 - подтверждено, что сейчас нет надежного расчета натальных планет, домов, ASC / MC, Moon in natal house или персональных транзитов;
 - рекомендованный Sprint 4 MVP — readiness / context слой без фейковых персональных расчетов.
 
-Текущая активная задача:
+Завершенная задача:
 
 ```txt
 Task 4.2 — Profile Calculation Input Adapter
 ```
 
-Task 4.2 должна подготовить safe profile calculation input / readiness helper, но не считать натал, дома, ASC / MC или транзиты.
+Результат Task 4.2:
+
+- добавлен `src/personalProfileInput.js`;
+- helper готовит selected profile или `Общий день` к будущему personal calculation flow;
+- возвращаются readiness-флаги, `missingFields`, warnings и explicit capabilities;
+- все возможности натальных планет, домов, ASC / MC, Moon in natal house, personal transits, transit orbs и personal ritual scoring честно отключены;
+- UI, `app.js`, `index.html`, `sw.js`, эфемериды и storage не подключались.
+
+Текущая активная задача:
+
+```txt
+Task 4.3 — Personal Readiness / Context MVP
+```
+
+Task 4.3 должна использовать adapter для честного readiness / context слоя, не добавляя фейковые натальные расчеты.
 
 Завершенная задача:
 
@@ -772,10 +786,10 @@ Sprint 4 — Personal Moment Foundation / Лично для меня
 Текущий следующий шаг:
 
 ```txt
-Task 4.2 — Profile Calculation Input Adapter
+Task 4.3 — Personal Readiness / Context MVP
 ```
 
-В Task 4.2 нужно создать adapter для profile calculation input и readiness state. Натал, дома, ASC / MC, персональные транзиты и UI-блок `Лично для меня` не делать.
+В Task 4.3 нужно подготовить honest personal readiness / context MVP на основе adapter. Натал, дома, ASC / MC, персональные транзиты и фейковые личные рекомендации не делать.
 
 В Sprint 4 пока НЕ делается:
 
@@ -800,11 +814,10 @@ Task 4.2 — Profile Calculation Input Adapter
 
 Активная задача:
 
-- Task 4.2 — Profile Calculation Input Adapter.
+- Task 4.3 — Personal Readiness / Context MVP.
 
 Backlog:
 
-- Task 4.3 — Personal Readiness / Context MVP;
 - Task 4.4 — Dashboard Block `Лично для меня`;
 - Task 4.5 — Safe Personal Recommendations MVP;
 - Task 4.6 — Debug Personal Calculations;
@@ -1477,4 +1490,4 @@ lunar-calendar-v44
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2 и Sprint 3 завершены. Активный спринт — Sprint 4; Task 4.1 завершена, следующая задача — Task 4.2 — Profile Calculation Input Adapter.
+Sprint 1, Sprint 2 и Sprint 3 завершены. Активный спринт — Sprint 4; Task 4.1 и Task 4.2 завершены, следующая задача — Task 4.3 — Personal Readiness / Context MVP.

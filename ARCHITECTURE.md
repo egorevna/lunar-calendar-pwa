@@ -529,6 +529,22 @@ Current responsibilities:
 
 The module does not call `fetch`, does not use geolocation, does not upload profile data, does not use cloud sync, and does not calculate natal charts / personal transits.
 
+## `src/personalProfileInput.js`
+
+Converts a selected profile into safe input and readiness state for future personal astrology work.
+
+Current responsibilities:
+
+- accept a profile object or `null` / `Общий день`;
+- normalize selected profile fields through `src/profileModel.js`;
+- return profile identity, birth data, birth place, current place, house system, and zodiac settings as structured input;
+- return `missingFields` for absent birth date, required birth time, birth coordinates, or birth timezone;
+- return warnings for unknown birth time, missing birth coordinates, and missing birth timezone;
+- return explicit calculation capabilities with natal planets, houses, ASC / MC, personal transits, Moon in natal house, transit orbs, and personal ritual scoring disabled;
+- expose `createPersonalProfileInput()`, `getPersonalProfileReadiness()`, and `getPersonalCalculationCapabilities()`.
+
+This helper does not store data, does not render UI, does not call geocoding APIs, does not use `fetch` or geolocation, and does not calculate natal planets, houses, ASC / MC, Moon in natal house, or personal transits.
+
 ## `scripts/generate-ephemeris.cjs`
 
 Generates Swiss Ephemeris data.
@@ -642,9 +658,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 19. `src/profileImportExport.js` serializes and imports local profile backup JSON.
 
-20. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state without birth details.
+20. `src/personalProfileInput.js` converts selected profile data into safe future personal-calculation input and readiness/capability state without performing natal calculations.
 
-20. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
+21. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state without birth details.
+
+22. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 

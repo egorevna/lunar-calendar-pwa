@@ -967,11 +967,11 @@ The document must include:
 - No fake calculations.
 - Task 4.2 remains next.
 
-# Active Task
+# Completed Task
 
 ## Task 4.2 — Profile Calculation Input Adapter
 
-Status: not started
+Status: done
 
 ### Goal
 
@@ -1002,9 +1002,28 @@ Create a helper that converts active profile data into safe calculation input an
 - No geocoding.
 - No new dependencies.
 
+# Active Task
+
+## Task 4.3 — Personal Readiness / Context MVP
+
+Status: not started
+
+### Goal
+
+Use `src/personalProfileInput.js` to produce honest readiness / context copy for the selected active profile.
+
+### Boundaries
+
+- No natal planetary positions.
+- No house calculations.
+- No ASC / MC.
+- No personal transits.
+- No UI block `Лично для меня` unless explicitly requested in this task.
+- No geocoding.
+- No new dependencies.
+
 # Sprint 4 Backlog
 
-- Task 4.3 — Personal Readiness / Context MVP
 - Task 4.4 — Dashboard Block `Лично для меня`
 - Task 4.5 — Safe Personal Recommendations MVP
 - Task 4.6 — Debug Personal Calculations

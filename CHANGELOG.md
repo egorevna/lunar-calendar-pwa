@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-14 — Complete Task 4.2 profile calculation input adapter
+
+- Добавлен `src/personalProfileInput.js`.
+- Adapter принимает selected profile или `null` / `Общий день` и возвращает structured input, readiness flags, `missingFields`, warnings и calculation capabilities.
+- Натальные планеты, дома, ASC / MC, Moon in natal house, personal transits, transit orbs и personal ritual scoring явно отключены до появления надежного расчетного движка.
+- Добавлены тесты `test/personalProfileInput.test.js`.
+- UI, `app.js`, `index.html`, `sw.js`, эфемериды, storage, geocoding и зависимости не менялись.
+- Task 4.3 оставлена следующей активной задачей и не начиналась.
+
 ## 2026-05-14 — Complete Task 4.1 personal astrology audit
 
 - Создан `PERSONAL_ASTROLOGY_STRATEGY.md`.
