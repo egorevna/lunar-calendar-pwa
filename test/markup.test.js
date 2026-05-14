@@ -80,7 +80,7 @@ test('home screen renders profile shell without personal astrology UI', () => {
   assert.equal(html.includes('data-profiles-empty hidden'), true);
   assert.equal(html.includes('data-profile-add'), true);
   assert.equal(html.includes('data-profile-add disabled'), false);
-  assert.equal(html.includes('Данные карты хранятся только на этом устройстве.'), true);
+  assert.equal(html.includes('Данные хранятся на этом устройстве и не отправляются на сервер.'), true);
   assert.equal(html.includes('Профиль'), true);
   assert.equal(html.includes('Общий день'), true);
   assert.equal(html.includes('Мои карты'), true);
@@ -129,8 +129,10 @@ test('home screen renders profile import and export controls without personal as
   assert.equal(html.includes('data-profile-export'), true);
   assert.equal(html.includes('data-profile-import'), true);
   assert.equal(html.includes('data-profile-import-file'), true);
-  assert.equal(html.includes('Файл остается у вас. Мы не отправляем данные на сервер.'), true);
-  assert.equal(html.includes('Данные карты хранятся только на этом устройстве.'), true);
+  assert.equal(html.includes('Файл остается у вас. Мы не отправляем данные на сервер.'), false);
+  assert.equal(html.includes('Данные хранятся на этом устройстве и не отправляются на сервер.'), true);
+  assert.equal(html.includes('Данные карты хранятся только на этом устройстве.'), false);
+  assert.equal(html.includes('Мы не отправляем дату, время и место рождения на сервер.'), false);
   assert.equal(html.includes('Натальная карта'), false);
   assert.equal(html.includes('Транзиты'), false);
   assert.equal(html.includes('ASC'), false);

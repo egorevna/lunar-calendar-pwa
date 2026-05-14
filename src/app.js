@@ -218,6 +218,7 @@ function render() {
     bestWindowsDebug: shouldShowDebug
       ? getBestWindowsDebug({ selectedMode: selectedDashboardMode, now })
       : null,
+    profileDebug: shouldShowDebug ? getProfileDebugState() : null,
   });
 }
 
@@ -321,6 +322,22 @@ function renderProfilesShell(view) {
 
 function renderStoredProfilesShell() {
   renderProfilesShell(describeProfilesShell(loadProfiles(), getActiveProfileId()));
+}
+
+function getProfileDebugState() {
+  const profiles = loadProfiles();
+  const activeProfileId = getActiveProfileId();
+  const activeProfile = profiles.find((profile) => profile.id === activeProfileId);
+
+  return {
+    profilesCount: profiles.length,
+    activeProfileId,
+    activeProfileName: activeProfile?.name ?? 'Общий день',
+    storage: 'localStorage',
+    sync: 'disabled',
+    serverUpload: 'disabled',
+    importExport: 'enabled',
+  };
 }
 
 function profileFromForm(form, baseProfile = createProfileDraft()) {

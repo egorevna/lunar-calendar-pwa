@@ -399,10 +399,13 @@ button {
   margin: 0 0 12px;
 }
 
-.profile-privacy {
-  margin: 0;
+.profile-privacy-block {
   padding-top: 11px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.profile-privacy {
+  margin: 0;
 }
 
 .profile-form[hidden] {
@@ -550,7 +553,6 @@ button {
   font-weight: 700;
 }
 
-.profile-backup-copy,
 .profile-import-status {
   color: var(--muted);
   font-size: clamp(13px, 3.5vw, 15px);

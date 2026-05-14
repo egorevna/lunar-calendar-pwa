@@ -754,11 +754,11 @@ Status: done
 
 With `?debug=1`, show best-window candidate scoring and reasons.
 
-# Current Active Sprint
+# Completed Sprint
 
 ## Sprint 3 — Profiles / Мои карты
 
-Status: active
+Status: complete
 
 Goal:
 
@@ -879,15 +879,21 @@ Export/import profile JSON.
 
 Export should include schemaVersion. Import must validate JSON and avoid duplicate IDs.
 
-# Active Task
+# Completed Task
 
 ## Task 3.8 — Privacy Copy and Debug Profile State
 
-Status: active
+Status: done
 
 Show privacy copy and safe debug profile state.
 
 Debug may show activeProfileId, activeProfileName, profilesCount, storage type, and sync disabled.
+
+# Sprint 3 Status
+
+Status: complete
+
+Next stage: Sprint 4 — Personal Moment. Do not start Sprint 4 without explicit approval and planning docs.
 
 # Sprint 3 Backlog
 

@@ -579,7 +579,7 @@ done
 
 Текущий фокус:
 
-Активный спринт:
+Завершенный спринт:
 
 ```txt
 Sprint 3 — Profiles / Мои карты
@@ -705,11 +705,35 @@ Task 3.7 — Profile Export / Import
 - добавлен helper `src/profileImportExport.js`;
 - PWA cache поднят до `lunar-calendar-v48`.
 
-Следующая активная задача:
+Завершенная задача:
 
 ```txt
 Task 3.8 — Privacy Copy and Debug Profile State
 ```
+
+Что выполнено:
+
+- в `Мои карты` явно показано: `Данные карты хранятся только на этом устройстве.`;
+- добавлена строка: `Мы не отправляем дату, время и место рождения на сервер.`;
+- backup copy сохранен: `Файл остается у вас. Мы не отправляем данные на сервер.`;
+- debug-панель при `?debug=1` показывает безопасную секцию `Profiles`;
+- debug `Profiles` показывает только `profilesCount`, `activeProfileId`, `activeProfileName`, `storage`, `sync`, `serverUpload`, `importExport`;
+- debug не выводит `birthDate`, `birthTime`, `birthPlace`, координаты, timezone рождения, currentPlace, houseSystem, zodiac или полный profiles dump;
+- PWA cache поднят до `lunar-calendar-v49`.
+
+Sprint 3 завершен:
+
+```txt
+Profiles / Мои карты
+```
+
+Следующий этап:
+
+```txt
+Sprint 4 — Personal Moment
+```
+
+Sprint 4 пока НЕ начинался. Следующий шаг — подготовить planning docs для Sprint 4 / Personal Moment, без разработки.
 
 В Sprint 3 пока НЕ делается:
 
@@ -726,13 +750,13 @@ Task 3.8 — Privacy Copy and Debug Profile State
 - geocoding API;
 - автоматическое определение текущего местоположения.
 
-Privacy/debug state идет дальше по задачам Sprint 3. Task 3.8 еще не начиналась в рамках Task 3.7.
+Эти ограничения сохраняются после завершения Sprint 3 до отдельного старта Sprint 4:
 
 ---
 
 # Sprint 3 Backlog
 
-- Task 3.8 — Privacy Copy and Debug Profile State.
+Sprint 3 закрыт. Активных задач Sprint 3 не осталось.
 
 ---
 

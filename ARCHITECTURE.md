@@ -189,6 +189,7 @@ Responsibilities:
 - reads and writes the active profile id through `src/profileStorage.js`
 - handles inline profile creation, editing, and deletion through `src/profileStorage.js`
 - handles local profile export/import actions through `src/profileImportExport.js`
+- passes safe profile summary state into the hidden debug panel
 
 `src/app.js` is currently the composition layer.
 
@@ -641,7 +642,7 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 19. `src/profileImportExport.js` serializes and imports local profile backup JSON.
 
-20. `src/debugPanel.js` formats the hidden debug panel when enabled.
+20. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state without birth details.
 
 20. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 

@@ -223,5 +223,18 @@ Debug panel may show:
 - profilesCount;
 - storage type;
 - sync disabled.
+- serverUpload disabled;
+- importExport enabled.
 
-Debug panel should not dump full birth data unless explicitly needed for a later debugging task.
+Debug panel must not dump full profile arrays or birth details.
+
+Do not show in debug:
+
+- birthDate;
+- birthTime;
+- birthPlace;
+- latitude / longitude;
+- birth timezone;
+- currentPlace;
+- houseSystem;
+- zodiac.

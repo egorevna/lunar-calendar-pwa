@@ -1,6 +1,6 @@
 import { formatAspect, formatPlanet } from './vocDisplay.js';
 
-export const APP_CACHE_VERSION = 'lunar-calendar-v48';
+export const APP_CACHE_VERSION = 'lunar-calendar-v52';
 
 export function isDebugMode(search = window.location.search) {
   return new URLSearchParams(search).get('debug') === '1';
@@ -65,6 +65,7 @@ export function describeDebugPanel(context = {}) {
       `source: ${ephemeris?.source ?? 'generated Swiss Ephemeris data'}`,
       `cache: ${APP_CACHE_VERSION}`,
     ]),
+    formatProfileDebug(context.profileDebug),
     formatBestWindowsDebug(bestWindowsDebug),
   ].filter(Boolean).join('\n\n');
 }
@@ -131,6 +132,20 @@ function formatBestWindowsDebug(debug) {
     ...lines,
     ...(windowLines.length ? ['selected windows', ...windowLines] : []),
     ...(rejectedLines.length ? ['rejected candidates', ...rejectedLines] : []),
+  ]);
+}
+
+function formatProfileDebug(debug) {
+  if (!debug) return '';
+
+  return formatSection('Profiles', [
+    `profilesCount: ${debug.profilesCount ?? 0}`,
+    `activeProfileId: ${debug.activeProfileId ?? 'null'}`,
+    `activeProfileName: ${debug.activeProfileName ?? 'Общий день'}`,
+    `storage: ${debug.storage ?? 'localStorage'}`,
+    `sync: ${debug.sync ?? 'disabled'}`,
+    `serverUpload: ${debug.serverUpload ?? 'disabled'}`,
+    `importExport: ${debug.importExport ?? 'enabled'}`,
   ]);
 }
 

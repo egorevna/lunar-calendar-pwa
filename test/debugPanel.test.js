@@ -80,6 +80,15 @@ test('debug panel marks debugDate as active and includes key sections', () => {
       ],
       rejectedCandidates: [],
     },
+    profileDebug: {
+      profilesCount: 2,
+      activeProfileId: 'profile-egor',
+      activeProfileName: 'Егор',
+      storage: 'localStorage',
+      sync: 'disabled',
+      serverUpload: 'disabled',
+      importExport: 'enabled',
+    },
   });
 
   assert.equal(text.includes('Time'), true);
@@ -94,6 +103,20 @@ test('debug panel marks debugDate as active and includes key sections', () => {
   assert.equal(text.includes('selectedMode: tarot'), true);
   assert.equal(text.includes('windows.length: 1'), true);
   assert.equal(text.includes('score: 55'), true);
+  assert.equal(text.includes('Profiles'), true);
+  assert.equal(text.includes('profilesCount: 2'), true);
+  assert.equal(text.includes('activeProfileId: profile-egor'), true);
+  assert.equal(text.includes('activeProfileName: Егор'), true);
+  assert.equal(text.includes('storage: localStorage'), true);
+  assert.equal(text.includes('sync: disabled'), true);
+  assert.equal(text.includes('serverUpload: disabled'), true);
+  assert.equal(text.includes('importExport: enabled'), true);
+  assert.equal(text.includes('birthDate'), false);
+  assert.equal(text.includes('birthTime'), false);
+  assert.equal(text.includes('birthPlace'), false);
+  assert.equal(text.includes('latitude'), false);
+  assert.equal(text.includes('longitude'), false);
+  assert.equal(text.includes('profiles: ['), false);
 });
 
 test('debug panel marks normal time when debugDate is not used', () => {

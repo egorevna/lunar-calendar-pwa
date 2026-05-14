@@ -1,5 +1,5 @@
 export const GENERAL_PROFILE_LABEL = 'Общий день';
-export const PROFILE_PRIVACY_COPY = 'Данные карты хранятся только на этом устройстве.';
+export const PROFILE_PRIVACY_COPY = 'Данные хранятся на этом устройстве и не отправляются на сервер.';
 export const PROFILE_EMPTY_TITLE = 'Пока нет сохраненных карт.';
 export const PROFILE_EMPTY_HINT = 'Начните с добавления профиля.';
 export const PROFILE_ADD_BUTTON_LABEL = '+ Добавить профиль';

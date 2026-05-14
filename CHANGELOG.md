@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-14 — Complete Task 3.8 privacy copy and profile debug state
+
+- В `Мои карты` добавлена явная privacy copy: данные карт хранятся только на устройстве, дата/время/место рождения не отправляются на сервер.
+- Backup copy сохранен: `Файл остается у вас. Мы не отправляем данные на сервер.`
+- Debug-панель при `?debug=1` получила безопасную секцию `Profiles`.
+- `Profiles` debug показывает `profilesCount`, `activeProfileId`, `activeProfileName`, `storage`, `sync`, `serverUpload`, `importExport`.
+- Debug не выводит birth details, coordinates, timezone рождения, currentPlace, house system, zodiac или полный profiles dump.
+- PWA-кэш обновлен до `lunar-calendar-v49`.
+- Sprint 3 завершен. Следующий этап — Sprint 4 / Personal Moment, но разработка Sprint 4 не начиналась.
+
 ## 2026-05-14 — Complete Task 3.7 profile export/import
 
 - Уточнена кнопка экспорта: `Экспорт всех карт`.
