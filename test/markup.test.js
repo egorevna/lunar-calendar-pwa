@@ -122,12 +122,16 @@ test('home screen renders create profile form shell', () => {
   assert.equal(html.includes('MC'), false);
 });
 
-test('profile edit/delete flow uses confirmation and no active selector UI', () => {
+test('profile edit/delete and active selection flow use explicit actions', () => {
   assert.equal(appJs.includes('updateProfile'), true);
   assert.equal(appJs.includes('deleteProfile'), true);
   assert.equal(appJs.includes('window.confirm'), true);
   assert.equal(appJs.includes('Удалить профиль? Это действие нельзя отменить.'), true);
-  assert.equal(html.includes('data-active-profile'), false);
+  assert.equal(appJs.includes('getActiveProfileId'), true);
+  assert.equal(appJs.includes('setActiveProfileId'), true);
+  assert.equal(appJs.includes('data-profile-select'), true);
+  assert.equal(appJs.includes('data-profile-edit'), true);
+  assert.equal(html.includes('Натальная карта'), false);
   assert.equal(html.includes('Выбрать активный профиль'), false);
 });
 

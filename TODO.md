@@ -859,25 +859,27 @@ Allow profile editing and deletion.
 
 Deleting a profile must require confirmation. Deleting active profile switches app to `Общий день`.
 
-# Active Task
+# Completed Task
 
 ## Task 3.6 — Active Profile Selector
 
-Status: active
+Status: done
 
 Allow selecting active profile on main dashboard.
 
 Default active profile is `Общий день`. Main app calculations remain general for now.
 
-# Sprint 3 Backlog
+# Active Task
 
 ## Task 3.7 — Profile Export / Import
 
-Status: not started
+Status: active
 
 Export/import profile JSON.
 
 Export should include schemaVersion. Import must validate JSON and avoid duplicate IDs.
+
+# Sprint 3 Backlog
 
 ## Task 3.8 — Privacy Copy and Debug Profile State
 

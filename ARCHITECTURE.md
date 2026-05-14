@@ -186,6 +186,7 @@ Responsibilities:
 - updates DOM elements on the main dashboard
 - controls the visible dashboard state
 - reads local profile names for the compact `Профиль` / `Мои карты` UI shell
+- reads and writes the active profile id through `src/profileStorage.js`
 - handles inline profile creation, editing, and deletion through `src/profileStorage.js`
 
 `src/app.js` is currently the composition layer.
@@ -502,13 +503,14 @@ Current responsibilities:
 - keep the profile shell labels and privacy copy in one small helper;
 - always include `Общий день` as the non-personal default item;
 - convert stored profiles into a compact editable list view;
+- mark the active profile and expose explicit select/edit actions for the list;
 - provide the empty-state copy for `Мои карты`;
 - provide add-profile copy;
 - describe create/edit form titles and delete-button visibility;
 - convert a profile into safe form values for prefill;
 - map profile validation errors into short Russian UI messages.
 
-This module does not store profiles, select an active profile, export/import data, or calculate natal charts / personal transits.
+This module does not store profiles, export/import data, or calculate natal charts / personal transits.
 
 ## `scripts/generate-ephemeris.cjs`
 
@@ -619,7 +621,7 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 17. `src/profileStorage.js` stores profiles and active profile id locally through `localStorage`.
 
-18. `src/profileUi.js` formats the minimal `Профиль` / `Мои карты` shell and create/edit form view.
+18. `src/profileUi.js` formats the minimal `Профиль` / `Мои карты` shell, active-profile state, and create/edit form view.
 
 19. `src/debugPanel.js` formats the hidden debug panel when enabled.
 

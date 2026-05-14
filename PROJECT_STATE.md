@@ -670,10 +670,26 @@ Task 3.5 — Edit / Delete Profile
 - `Общий день` остается non-personal option и не редактируется / не удаляется;
 - PWA cache поднят до `lunar-calendar-v45`.
 
-Следующая активная задача:
+Завершенная задача:
 
 ```txt
 Task 3.6 — Active Profile Selector
+```
+
+Что выполнено:
+
+- блок `Профиль` показывает активное значение: `Общий день` или имя выбранного профиля;
+- в `Мои карты` добавлены явные действия `Выбрать` и `Редактировать`;
+- `Общий день` можно выбрать как non-personal режим, но нельзя редактировать / удалять;
+- выбранный профиль сохраняется через `setActiveProfileId()` и читается через `getActiveProfileId()`;
+- если active profile удален или отсутствует, UI возвращается к `Общий день`;
+- основные расчеты приложения остаются общими, без персональных транзитов и натала;
+- PWA cache поднят до `lunar-calendar-v46`.
+
+Следующая активная задача:
+
+```txt
+Task 3.7 — Profile Export / Import
 ```
 
 В Sprint 3 пока НЕ делается:
@@ -691,13 +707,12 @@ Task 3.6 — Active Profile Selector
 - geocoding API;
 - автоматическое определение текущего местоположения.
 
-Active profile selector, import/export и privacy/debug state идут дальше по задачам Sprint 3. Task 3.6 еще не начиналась в рамках Task 3.5.
+Import/export и privacy/debug state идут дальше по задачам Sprint 3. Task 3.7 еще не начиналась в рамках Task 3.6.
 
 ---
 
 # Sprint 3 Backlog
 
-- Task 3.6 — Active Profile Selector.
 - Task 3.7 — Profile Export / Import.
 - Task 3.8 — Privacy Copy and Debug Profile State.
 

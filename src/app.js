@@ -55,7 +55,9 @@ import { createProfileDraft } from './profileModel.js';
 import {
   addProfile,
   deleteProfile,
+  getActiveProfileId,
   loadProfiles,
+  setActiveProfileId,
   updateProfile,
 } from './profileStorage.js';
 import {
@@ -194,7 +196,7 @@ function render() {
   renderSimpleList(elements.fieldAvoid, modeRecommendations.careful);
   renderFieldReasons(fieldQuality.reasons);
   renderWarnings(fieldQuality.warnings);
-  renderProfilesShell(describeProfilesShell(loadProfiles()));
+  renderStoredProfilesShell();
   const bestWindows = getBestWindows({ selectedMode: selectedDashboardMode, now });
   renderBestWindows(describeBestWindows(bestWindows, selectedDashboardMode));
   renderModeSelector();
@@ -271,14 +273,35 @@ function renderProfilesShell(view) {
   elements.profileCurrent.textContent = view.currentLabel;
   elements.profilesList.replaceChildren(...view.items.map((profile) => {
     const item = document.createElement('li');
+    const name = document.createElement('span');
+    name.className = 'profile-list-name';
+    name.textContent = profile.label;
+    item.append(name);
+
+    if (profile.active) {
+      const status = document.createElement('span');
+      status.className = 'profile-active-badge';
+      status.textContent = 'активен';
+      item.append(status);
+    }
+
+    if (profile.selectable) {
+      const selectButton = document.createElement('button');
+      selectButton.type = 'button';
+      selectButton.textContent = 'Выбрать';
+      selectButton.dataset.profileSelect = profile.id;
+      item.append(selectButton);
+    }
+
     if (profile.editable) {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.textContent = profile.label;
-      button.dataset.profileEdit = profile.id;
-      item.append(button);
-    } else {
-      item.textContent = profile.label;
+      const editButton = document.createElement('button');
+      editButton.type = 'button';
+      editButton.textContent = 'Редактировать';
+      editButton.dataset.profileEdit = profile.id;
+      item.append(editButton);
+    }
+
+    if (!profile.editable) {
       item.className = 'profile-general-item';
     }
     return item;
@@ -289,6 +312,10 @@ function renderProfilesShell(view) {
   elements.profileAdd.textContent = view.addButtonLabel;
   elements.profileNextStep.textContent = view.addButtonHelp;
   elements.profilePrivacy.textContent = view.privacyCopy;
+}
+
+function renderStoredProfilesShell() {
+  renderProfilesShell(describeProfilesShell(loadProfiles(), getActiveProfileId()));
 }
 
 function profileFromForm(form, baseProfile = createProfileDraft()) {
@@ -391,7 +418,7 @@ function handleProfileFormSubmit(event) {
   }
 
   setProfileFormOpen(false);
-  renderProfilesShell(describeProfilesShell(loadProfiles()));
+  renderStoredProfilesShell();
 }
 
 function handleProfileDelete() {
@@ -400,7 +427,7 @@ function handleProfileDelete() {
 
   deleteProfile(editingProfileId);
   setProfileFormOpen(false);
-  renderProfilesShell(describeProfilesShell(loadProfiles()));
+  renderStoredProfilesShell();
 }
 
 function renderBestWindows(view) {
@@ -475,6 +502,16 @@ elements.profileAdd.addEventListener('click', () => {
 });
 
 elements.profilesList.addEventListener('click', (event) => {
+  const selectButton = event.target.closest('[data-profile-select]');
+  if (selectButton) {
+    const profileId = selectButton.dataset.profileSelect || null;
+    const result = setActiveProfileId(profileId);
+    if (result.ok) {
+      renderStoredProfilesShell();
+    }
+    return;
+  }
+
   const button = event.target.closest('[data-profile-edit]');
   if (!button) return;
 

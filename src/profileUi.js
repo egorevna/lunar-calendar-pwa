@@ -26,21 +26,30 @@ function profileId(profile) {
   return typeof profile?.id === 'string' && profile.id.trim() ? profile.id.trim() : '';
 }
 
-export function describeProfilesShell(profiles = []) {
+export function describeProfilesShell(profiles = [], activeProfileId = null) {
   const profileItems = Array.isArray(profiles)
     ? profiles
       .map((profile) => ({
         id: profileId(profile),
         label: profileName(profile),
+        active: profileId(profile) === activeProfileId,
         editable: Boolean(profileId(profile)),
+        selectable: Boolean(profileId(profile)) && profileId(profile) !== activeProfileId,
       }))
       .filter((profile) => profile.label)
     : [];
+  const activeProfile = profileItems.find((profile) => profile.active);
 
   return {
-    currentLabel: GENERAL_PROFILE_LABEL,
+    currentLabel: activeProfile?.label ?? GENERAL_PROFILE_LABEL,
     items: [
-      { id: '', label: GENERAL_PROFILE_LABEL, editable: false },
+      {
+        id: '',
+        label: GENERAL_PROFILE_LABEL,
+        active: !activeProfile,
+        editable: false,
+        selectable: Boolean(activeProfile),
+      },
       ...profileItems,
     ],
     emptyTitle: profileItems.length ? '' : PROFILE_EMPTY_TITLE,

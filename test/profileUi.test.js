@@ -12,7 +12,13 @@ test('profiles shell describes general day and empty state', () => {
   const view = describeProfilesShell([]);
 
   assert.equal(view.currentLabel, 'Общий день');
-  assert.deepEqual(view.items, [{ id: '', label: 'Общий день', editable: false }]);
+  assert.deepEqual(view.items, [{
+    id: '',
+    label: 'Общий день',
+    active: true,
+    editable: false,
+    selectable: false,
+  }]);
   assert.equal(view.emptyTitle, 'Пока нет сохраненных карт.');
   assert.equal(view.emptyHint, 'Начните с добавления профиля.');
   assert.equal(view.addButtonLabel, '+ Добавить профиль');
@@ -27,12 +33,26 @@ test('profiles shell includes existing profile names from storage view', () => {
   ]);
 
   assert.deepEqual(view.items, [
-    { id: '', label: 'Общий день', editable: false },
-    { id: 'profile-anna', label: 'Анна', editable: true },
-    { id: 'profile-egor', label: 'Егор', editable: true },
+    { id: '', label: 'Общий день', active: true, editable: false, selectable: false },
+    { id: 'profile-anna', label: 'Анна', active: false, editable: true, selectable: true },
+    { id: 'profile-egor', label: 'Егор', active: false, editable: true, selectable: true },
   ]);
   assert.equal(view.emptyTitle, '');
   assert.equal(view.emptyHint, '');
+});
+
+test('profiles shell marks saved profile as active', () => {
+  const view = describeProfilesShell([
+    { id: 'profile-anna', name: 'Анна' },
+    { id: 'profile-egor', name: 'Егор' },
+  ], 'profile-egor');
+
+  assert.equal(view.currentLabel, 'Егор');
+  assert.deepEqual(view.items, [
+    { id: '', label: 'Общий день', active: false, editable: false, selectable: true },
+    { id: 'profile-anna', label: 'Анна', active: false, editable: true, selectable: true },
+    { id: 'profile-egor', label: 'Егор', active: true, editable: true, selectable: false },
+  ]);
 });
 
 test('profiles shell does not expose empty technical values', () => {
@@ -40,8 +60,8 @@ test('profiles shell does not expose empty technical values', () => {
   const text = JSON.stringify(view);
 
   assert.deepEqual(view.items, [
-    { id: '', label: 'Общий день', editable: false },
-    { id: '', label: 'Анна', editable: false },
+    { id: '', label: 'Общий день', active: true, editable: false, selectable: false },
+    { id: '', label: 'Анна', active: false, editable: false, selectable: false },
   ]);
   assert.equal(text.includes('undefined'), false);
   assert.equal(text.includes('null'), false);
