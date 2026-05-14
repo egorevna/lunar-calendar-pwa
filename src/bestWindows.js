@@ -31,6 +31,15 @@ const BEST_WINDOW_TITLES = {
   cleansing: 'Лучшее окно для чисток',
   forecasts: 'Лучшее окно для прогнозов',
 };
+const BEST_WINDOW_FALLBACKS = {
+  general: 'Сегодня лучше завершать и очищать, а не запускать новое.',
+  tarot: 'Сегодня лучше делать мягкую диагностику и записи, а не окончательные прогнозы.',
+  candles: 'Сегодня лучше чистки, защита и завершение, а не новые программные свечи.',
+  money: 'Сегодня лучше проверять, закрывать хвосты и готовить решения, а не запускать новое.',
+  relationships: 'Сегодня лучше мягкость и пауза, а не резкие разговоры и обещания.',
+  cleansing: 'Сегодня лучше чистки, отсечение и восстановление, а не новые программы.',
+  forecasts: 'Сегодня лучше фиксировать наблюдения и гипотезы, а не делать окончательные выводы.',
+};
 
 const MODE_SUPPORT = {
   general: {
@@ -122,12 +131,13 @@ export function describeBestWindows(windows = [], selectedMode = DEFAULT_DASHBOA
   const visibleWindows = windows.slice(0, DEFAULT_MAX_WINDOWS);
 
   return {
-    hidden: visibleWindows.length === 0,
+    hidden: false,
     title: BEST_WINDOW_TITLES[safeMode],
     ranges: visibleWindows.map((window) => formatWindowRange(window.start, window.end)),
     suitableFor: unique(visibleWindows.flatMap((window) => window.suitableFor ?? [])),
     reasons: unique(visibleWindows.flatMap((window) => window.reasons ?? [])),
     cautions: unique(visibleWindows.flatMap((window) => window.cautions ?? [])),
+    fallback: visibleWindows.length === 0 ? BEST_WINDOW_FALLBACKS[safeMode] : '',
   };
 }
 

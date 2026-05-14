@@ -203,11 +203,30 @@ test('uses natural Russian labels for mode-specific best window titles', () => {
   assert.equal(describeBestWindows(windows, 'forecasts').title, 'Лучшее окно для прогнозов');
 });
 
-test('hides best window view when helper returns no windows', () => {
-  const view = describeBestWindows([], 'money');
+test('shows calm fallback when helper returns no windows', () => {
+  const view = describeBestWindows([], 'general');
 
-  assert.equal(view.hidden, true);
+  assert.equal(view.hidden, false);
+  assert.equal(view.title, 'Лучшее окно сегодня');
   assert.deepEqual(view.ranges, []);
+  assert.equal(view.fallback, 'Сегодня лучше завершать и очищать, а не запускать новое.');
+});
+
+test('shows mode-specific fallback when no best windows exist', () => {
+  const tarot = describeBestWindows([], 'tarot');
+  const money = describeBestWindows([], 'money');
+
+  assert.equal(tarot.title, 'Лучшее окно для Таро');
+  assert.equal(tarot.fallback, 'Сегодня лучше делать мягкую диагностику и записи, а не окончательные прогнозы.');
+  assert.equal(money.fallback, 'Сегодня лучше проверять, закрывать хвосты и готовить решения, а не запускать новое.');
+});
+
+test('fallback does not expose empty technical values', () => {
+  const view = describeBestWindows([], 'unknown');
+
+  assert.equal(view.fallback.includes('undefined'), false);
+  assert.equal(view.fallback.includes('null'), false);
+  assert.equal(view.fallback.includes('NaN'), false);
 });
 
 test('best window description does not expose empty technical values', () => {
@@ -231,4 +250,18 @@ test('best window description does not expose empty technical values', () => {
   assert.equal(renderedText.includes('undefined'), false);
   assert.equal(renderedText.includes('null'), false);
   assert.equal(renderedText.includes('NaN'), false);
+});
+
+test('does not show fallback when best windows exist', () => {
+  const view = describeBestWindows([
+    {
+      start: new Date('2026-05-11T10:00:00+03:00'),
+      end: new Date('2026-05-11T11:00:00+03:00'),
+      suitableFor: ['спокойные действия'],
+      reasons: ['стабильное поле'],
+      cautions: [],
+    },
+  ], 'general');
+
+  assert.equal(view.fallback, '');
 });

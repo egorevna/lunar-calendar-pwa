@@ -87,6 +87,7 @@ const elements = {
   bestWindowCard: document.querySelector('[data-best-window-card]'),
   bestWindowTitle: document.querySelector('[data-best-window-title]'),
   bestWindowTimes: document.querySelector('[data-best-window-times]'),
+  bestWindowFallback: document.querySelector('[data-best-window-fallback]'),
   bestWindowSuitable: document.querySelector('[data-best-window-suitable]'),
   bestWindowReasons: document.querySelector('[data-best-window-reasons]'),
   bestWindowCautions: document.querySelector('[data-best-window-cautions]'),
@@ -238,6 +239,8 @@ function renderBestWindows(view) {
     item.textContent = range;
     return item;
   }));
+  elements.bestWindowFallback.hidden = !view.fallback;
+  elements.bestWindowFallback.textContent = view.fallback;
   renderBestWindowLine(elements.bestWindowSuitable, 'Подходит для', view.suitableFor);
   renderBestWindowLine(elements.bestWindowReasons, 'Почему', view.reasons);
   renderBestWindowLine(elements.bestWindowCautions, 'Осторожно', view.cautions);

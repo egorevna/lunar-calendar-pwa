@@ -452,7 +452,7 @@ Current responsibilities:
 - formats a compact dashboard view with title, time ranges, suitable-for text, reasons, and cautions.
 
 `src/app.js` calls this helper during dashboard render and displays its output in the `Лучшее окно сегодня` card.
-If no good windows are returned, the card is hidden; no fallback text is rendered in Task 2.5.
+If no good windows are returned, the card renders a calm mode-specific fallback from the display formatter.
 
 ## `scripts/generate-ephemeris.cjs`
 
@@ -502,7 +502,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v40
+lunar-calendar-v41
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -901,7 +901,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v40
+lunar-calendar-v41
 ```
 
 Important operational rule:
@@ -1202,7 +1202,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v40
+lunar-calendar-v41
 ```
 
 If this value changes in `sw.js`, update this section.

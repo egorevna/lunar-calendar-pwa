@@ -740,7 +740,7 @@ Show no more than 2 windows.
 
 ## Task 2.6 — Add No-Good-Window Fallback
 
-Status: active
+Status: done
 
 If no good window exists:
 
@@ -750,7 +750,7 @@ If no good window exists:
 
 ## Task 2.7 — Add Debug Reasoning for Best Windows
 
-Status: not started
+Status: active
 
 With `?debug=1`, show best-window candidate scoring and reasons.
 

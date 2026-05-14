@@ -81,6 +81,7 @@ test('home screen renders hidden best window card shell', () => {
   assert.equal(html.includes('data-best-window-card hidden'), true);
   assert.equal(html.includes('data-best-window-title'), true);
   assert.equal(html.includes('data-best-window-times'), true);
+  assert.equal(html.includes('data-best-window-fallback'), true);
   assert.equal(html.includes('data-best-window-suitable'), true);
   assert.equal(html.includes('data-best-window-reasons'), true);
   assert.equal(html.includes('data-best-window-cautions'), true);
