@@ -545,6 +545,20 @@ Current responsibilities:
 
 This helper does not store data, does not render UI, does not call geocoding APIs, does not use `fetch` or geolocation, and does not calculate natal planets, houses, ASC / MC, Moon in natal house, or personal transits.
 
+## `src/personalContext.js`
+
+Builds safe user-facing personal readiness / context copy for future dashboard UI.
+
+Current responsibilities:
+
+- accept a profile object or `null` / `Общий день`;
+- call `src/personalProfileInput.js` to reuse profile normalization, readiness, missing field, warning, and capability logic;
+- return `hasActiveProfile`, `profileName`, `title`, `status`, `summary`, `readiness`, `limitations`, `nextSteps`, `missingFields`, `warnings`, and `capabilities`;
+- expose status helpers for `general`, `incomplete`, `readyForContext`, and `calculationLimited`;
+- keep personal context honest when the profile is filled but natal calculation capabilities are still unavailable.
+
+This helper does not render UI, does not store data, does not call external APIs, and does not calculate natal planets, houses, ASC / MC, Moon in natal house, personal transits, transit orbs, or personal ritual scoring.
+
 ## `scripts/generate-ephemeris.cjs`
 
 Generates Swiss Ephemeris data.
@@ -593,7 +607,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v42
+lunar-calendar-v52
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -660,9 +674,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 20. `src/personalProfileInput.js` converts selected profile data into safe future personal-calculation input and readiness/capability state without performing natal calculations.
 
-21. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state without birth details.
+21. `src/personalContext.js` converts personal profile readiness into safe user-facing context copy for future dashboard UI without performing natal calculations.
 
-22. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
+22. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state without birth details.
+
+23. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 
@@ -1002,7 +1018,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v42
+lunar-calendar-v52
 ```
 
 Important operational rule:
@@ -1303,7 +1319,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v42
+lunar-calendar-v52
 ```
 
 If this value changes in `sw.js`, update this section.

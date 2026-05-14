@@ -2,7 +2,7 @@
 
 ## Дата чекпоинта
 
-2026-05-13
+2026-05-14
 
 ---
 
@@ -190,7 +190,7 @@ PWA устанавливается на экран iPhone через Safari.
 Тестовый набор проходит:
 
 ```txt
-95 тестов
+189 тестов
 ```
 
 ---
@@ -633,13 +633,28 @@ Task 4.2 — Profile Calculation Input Adapter
 - все возможности натальных планет, домов, ASC / MC, Moon in natal house, personal transits, transit orbs и personal ritual scoring честно отключены;
 - UI, `app.js`, `index.html`, `sw.js`, эфемериды и storage не подключались.
 
-Текущая активная задача:
+Завершенная задача:
 
 ```txt
 Task 4.3 — Personal Readiness / Context MVP
 ```
 
-Task 4.3 должна использовать adapter для честного readiness / context слоя, не добавляя фейковые натальные расчеты.
+Результат Task 4.3:
+
+- добавлен `src/personalContext.js`;
+- helper строит безопасный контекст для будущего блока `Лично для меня` на основе `src/personalProfileInput.js`;
+- возвращаются `hasActiveProfile`, `profileName`, `title`, `status`, `summary`, `readiness`, `limitations`, `nextSteps`, `missingFields`, `warnings`, `capabilities`;
+- поддерживаются статусы `general`, `incomplete`, `readyForContext`, `calculationLimited`;
+- для полного профиля показывается честное ограничение: натальные дома, ASC / MC и персональные транзиты пока не рассчитываются;
+- UI, `app.js`, `index.html`, `sw.js`, storage, эфемериды, натал, дома, ASC / MC и транзиты не подключались.
+
+Текущая активная задача:
+
+```txt
+Task 4.4 — Dashboard Block `Лично для меня`
+```
+
+Task 4.4 должна вывести компактный dashboard-блок на основе `src/personalContext.js`, не добавляя фейковые натальные расчеты.
 
 Завершенная задача:
 
@@ -786,10 +801,10 @@ Sprint 4 — Personal Moment Foundation / Лично для меня
 Текущий следующий шаг:
 
 ```txt
-Task 4.3 — Personal Readiness / Context MVP
+Task 4.4 — Dashboard Block `Лично для меня`
 ```
 
-В Task 4.3 нужно подготовить honest personal readiness / context MVP на основе adapter. Натал, дома, ASC / MC, персональные транзиты и фейковые личные рекомендации не делать.
+В Task 4.4 нужно подключить honest personal context к dashboard UI. Натал, дома, ASC / MC, персональные транзиты и фейковые личные рекомендации не делать.
 
 В Sprint 4 пока НЕ делается:
 
@@ -814,11 +829,10 @@ Task 4.3 — Personal Readiness / Context MVP
 
 Активная задача:
 
-- Task 4.3 — Personal Readiness / Context MVP.
+- Task 4.4 — Dashboard Block `Лично для меня`.
 
 Backlog:
 
-- Task 4.4 — Dashboard Block `Лично для меня`;
 - Task 4.5 — Safe Personal Recommendations MVP;
 - Task 4.6 — Debug Personal Calculations;
 - Task 4.7 — Sprint 4 hardening / tests.
@@ -1418,7 +1432,7 @@ git commit -m "checkpoint before continuing in new codex chat"
 Текущая версия:
 
 ```txt
-lunar-calendar-v44
+lunar-calendar-v52
 ```
 
 ## Moscow Hardcoding
@@ -1468,13 +1482,13 @@ lunar-calendar-v44
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 3.5 — Edit / Delete Profile.
+Выполнить Task 4.4 — Dashboard Block `Лично для меня`.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 3.6.
+2. Не начинать Task 4.5.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или личные рекомендации.
@@ -1490,4 +1504,4 @@ lunar-calendar-v44
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2 и Sprint 3 завершены. Активный спринт — Sprint 4; Task 4.1 и Task 4.2 завершены, следующая задача — Task 4.3 — Personal Readiness / Context MVP.
+Sprint 1, Sprint 2 и Sprint 3 завершены. Активный спринт — Sprint 4; Task 4.1, Task 4.2 и Task 4.3 завершены, следующая задача — Task 4.4 — Dashboard Block `Лично для меня`.

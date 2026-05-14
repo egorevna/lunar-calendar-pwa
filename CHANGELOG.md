@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-14 — Complete Task 4.3 personal readiness context MVP
+
+- Добавлен `src/personalContext.js`.
+- Helper строит безопасный user-facing context для `Общий день` или выбранного профиля на основе `src/personalProfileInput.js`.
+- Возвращаются статусы `general`, `incomplete`, `readyForContext`, `calculationLimited`, summary, readiness, limitations, next steps, `missingFields`, warnings и capabilities.
+- Натальные планеты, дома, ASC / MC, personal transits и personal ritual scoring по-прежнему не рассчитываются.
+- Добавлены тесты `test/personalContext.test.js`.
+- UI, `app.js`, `index.html`, `sw.js`, эфемериды, storage, natal chart и transits не менялись.
+- Task 4.4 оставлена следующей активной задачей и не начиналась.
+
 ## 2026-05-14 — Complete Task 4.2 profile calculation input adapter
 
 - Добавлен `src/personalProfileInput.js`.
