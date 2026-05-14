@@ -140,3 +140,88 @@ If profile data is missing, show:
 - `Укажите место рождения, чтобы построить натальную карту.`
 
 Never invent birth data.
+
+---
+
+# Sprint 3 Privacy Rules
+
+Sprint 3 introduces local profile management. Profile data is sensitive and must remain local-first.
+
+Profile data includes:
+
+- name;
+- birth date;
+- birth time;
+- birth time accuracy;
+- birth place;
+- coordinates;
+- timezone;
+- current calculation place;
+- house system;
+- zodiac settings.
+
+## Local-First Rule
+
+Default behavior:
+
+- store profiles only on the local device;
+- do not send profile data to any server;
+- do not add cloud sync;
+- do not add analytics around birth data;
+- do not call external geocoding APIs unless explicitly requested later.
+
+## Required User-Facing Copy
+
+In profile UI, show:
+
+```txt
+Данные карты хранятся только на этом устройстве.
+```
+
+Optional longer copy:
+
+```txt
+Мы не отправляем дату, время и место рождения на сервер. Данные можно удалить, экспортировать или перенести вручную.
+```
+
+## External Geocoding Rule
+
+Do not use external geocoding APIs in Sprint 3 unless the user explicitly asks for that task.
+
+If geocoding is added later, it must clearly explain what location data is sent and require explicit consent.
+
+## Deletion Rule
+
+User must be able to delete a profile.
+
+If deleting the active profile:
+
+- reset active profile to `Общий день`.
+
+## Export / Import Rule
+
+Export should use JSON and include:
+
+- schemaVersion;
+- profiles;
+- exportedAt.
+
+Import must validate:
+
+- JSON structure;
+- required fields;
+- allowed enum values.
+
+Invalid import must not crash the app.
+
+## Debug Safety For Profiles
+
+Debug panel may show:
+
+- activeProfileId;
+- activeProfileName;
+- profilesCount;
+- storage type;
+- sync disabled.
+
+Debug panel should not dump full birth data unless explicitly needed for a later debugging task.

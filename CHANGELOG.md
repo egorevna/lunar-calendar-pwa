@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-05-14 — Prepare Sprint 3 documentation
+
+- Sprint 1 and Sprint 2 зафиксированы как завершенные.
+- Активным спринтом стал `Sprint 3 — Profiles / Мои карты`.
+- В `TODO.md` добавлены Task 3.1–3.8; активная задача — `Task 3.1 — Add Profile Data Model`.
+- В `PRIVACY_RULES.md` добавлены Sprint 3 privacy rules для local-first профилей.
+- Код приложения не менялся.
+
 ## 2026-05-14 — Complete Task 2.7 best windows debug reasoning
 
 - Добавлен `getBestWindowsDebug()` для скрытой проверки reasoning по лучшим окнам.

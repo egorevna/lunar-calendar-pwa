@@ -625,7 +625,7 @@ If this adds a new screen or route-like state, update `ARCHITECTURE.md`.
 
 ---
 
-# Current Active Sprint
+# Completed Sprint
 
 ## Sprint 2 — Modes and Best Windows
 
@@ -754,20 +754,137 @@ Status: done
 
 With `?debug=1`, show best-window candidate scoring and reasons.
 
-# Next Stage
+# Current Active Sprint
 
 ## Sprint 3 — Profiles / Мои карты
 
+Status: active
+
+Goal:
+
+Add local profile management foundation.
+
+Do not implement natal charts, personal transits, house calculations, Ascendant / MC, cloud sync, backend, geocoding API, or personal recommendations in this sprint.
+
+# Active Task
+
+## Task 3.1 — Add Profile Data Model
+
+Status: active
+
+### Goal
+
+Create profile data model and validation helpers.
+
+### Required Fields
+
+- id
+- name
+- birthDate
+- birthTime
+- birthTimeAccuracy
+- birthPlace
+- currentPlace
+- houseSystem
+- zodiac
+- createdAt
+- updatedAt
+
+### Required Defaults / Enums
+
+- birthTimeAccuracy: `exact` / `approximate` / `unknown`
+- currentPlace default: Moscow
+- houseSystem default: `wholeSign`
+- zodiac default: `tropical`
+
+### Acceptance Criteria
+
+- Profile model exists.
+- Validation covers required fields.
+- Defaults are safe.
+- Tests pass.
+- No storage.
+- No UI.
+- No natal chart.
+- No personal transits.
+
+# Sprint 3 Backlog
+
+## Task 3.2 — Add Local Profile Storage
+
 Status: not started
 
-Prepare profile and natal-chart planning only after a separate user command.
+Use localStorage for profile persistence and activeProfileId.
+
+Acceptance criteria:
+
+- profiles persist after reload;
+- active profile persists after reload;
+- deleting active profile resets active profile to `Общий день`;
+- corrupted storage does not crash app;
+- tests pass.
+
+## Task 3.3 — Add Profiles UI Shell / “Мои карты”
+
+Status: not started
+
+Add minimal UI shell for profile list and privacy copy.
+
+No new navigation bar and no natal chart screen.
+
+## Task 3.4 — Create Profile Form
+
+Status: not started
+
+Allow creation of a profile with validation.
+
+Defaults:
+
+- birthTimeAccuracy: exact;
+- current calculation place: Moscow;
+- houseSystem: Whole Sign;
+- zodiac: tropical.
+
+## Task 3.5 — Edit / Delete Profile
+
+Status: not started
+
+Allow profile editing and deletion.
+
+Deleting a profile must require confirmation. Deleting active profile switches app to `Общий день`.
+
+## Task 3.6 — Active Profile Selector
+
+Status: not started
+
+Allow selecting active profile on main dashboard.
+
+Default active profile is `Общий день`. Main app calculations remain general for now.
+
+## Task 3.7 — Profile Export / Import
+
+Status: not started
+
+Export/import profile JSON.
+
+Export should include schemaVersion. Import must validate JSON and avoid duplicate IDs.
+
+## Task 3.8 — Privacy Copy and Debug Profile State
+
+Status: not started
+
+Show privacy copy and safe debug profile state.
+
+Debug may show activeProfileId, activeProfileName, profilesCount, storage type, and sync disabled.
 
 # Do Not Do Now
 
-- profiles;
 - natal chart;
 - personal transits;
-- import/export;
+- house calculations;
+- Ascendant / MC;
+- personal ritual scoring;
+- geocoding API;
 - cloud sync;
 - backend;
 - new public navigation;

@@ -1255,6 +1255,16 @@ Profiles and natal data are sensitive.
 
 Before implementing profiles, privacy rules must be explicit and local-first storage should be designed.
 
+## Sprint 3 Planning Note
+
+Sprint 3 plans local profile management, but no profile modules exist yet.
+
+Planned work may introduce profile model, storage, and UI layers in later tasks, but this document must only describe them as actual architecture after those files are implemented.
+
+Until Task 3.1 is implemented, the app has no `src/profileModel.js`, `src/profileStorage.js`, or profile UI module.
+
+Sprint 3 must not implement natal chart calculations, houses, Ascendant / MC, personal transits, personal recommendations, backend sync, or external geocoding without an explicit later task.
+
 ---
 
 # Current Summary
@@ -1271,4 +1281,4 @@ Core logic:
 
 Current priority:
 
-Stabilize and improve the general main dashboard before adding personal profiles, natal charts, and personal transits.
+Prepare Sprint 3 profile data model while keeping natal charts, houses, personal transits, and personal recommendations out of scope.
