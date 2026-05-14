@@ -43,6 +43,44 @@
             <ul data-warnings></ul>
           </article>
 
+          <article class="glass-card profile-card">
+            <div>
+              <p class="profile-label">Профиль</p>
+              <h2 data-profile-current>Общий день</h2>
+            </div>
+            <button
+              type="button"
+              class="profile-toggle"
+              aria-expanded="false"
+              aria-controls="profiles-panel"
+              data-profiles-toggle
+            >
+              Мои карты
+            </button>
+          </article>
+
+          <section
+            class="glass-card profiles-panel"
+            id="profiles-panel"
+            data-profiles-panel
+            hidden
+            aria-label="Мои карты"
+          >
+            <h2>Мои карты</h2>
+            <ul class="profiles-list" data-profiles-list></ul>
+            <div class="profiles-empty" data-profiles-empty hidden>
+              <p>Пока нет сохраненных карт.</p>
+              <span>Начните с добавления профиля.</span>
+            </div>
+            <button type="button" class="profile-add-button" data-profile-add disabled>
+              + Добавить профиль
+            </button>
+            <p class="profile-next-step" data-profile-next-step></p>
+            <p class="profile-privacy" data-profile-privacy>
+              Данные карты хранятся только на этом устройстве.
+            </p>
+          </section>
+
           <section class="glass-card mode-selector" aria-label="Режим главного экрана">
             <p class="mode-title">Режим</p>
             <div class="mode-chips mode-options" data-mode-selector>

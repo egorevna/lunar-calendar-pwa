@@ -70,6 +70,26 @@ test('home screen renders compact dashboard mode selector', () => {
   assert.equal(html.includes('Прогнозы'), true);
 });
 
+test('home screen renders profile shell without personal astrology UI', () => {
+  assert.equal(html.includes('class="glass-card profile-card"'), true);
+  assert.equal(html.includes('data-profile-current'), true);
+  assert.equal(html.includes('data-profiles-toggle'), true);
+  assert.equal(html.includes('data-profiles-panel'), true);
+  assert.equal(html.includes('data-profiles-list'), true);
+  assert.equal(html.includes('data-profiles-empty hidden'), true);
+  assert.equal(html.includes('data-profile-add disabled'), true);
+  assert.equal(html.includes('Данные карты хранятся только на этом устройстве.'), true);
+  assert.equal(html.includes('Профиль'), true);
+  assert.equal(html.includes('Общий день'), true);
+  assert.equal(html.includes('Мои карты'), true);
+  assert.equal(html.includes('Пока нет сохраненных карт.'), true);
+  assert.equal(html.includes('Начните с добавления профиля.'), true);
+  assert.equal(html.includes('+ Добавить профиль'), true);
+  assert.equal(html.includes('Добавление профиля — следующий шаг.'), false);
+  assert.equal(html.includes('Натальная карта'), false);
+  assert.equal(html.includes('Персональные транзиты'), false);
+});
+
 test('home screen renders hidden warnings card shell', () => {
   assert.equal(html.includes('Осторожно сегодня'), true);
   assert.equal(html.includes('data-warnings-card hidden'), true);
@@ -108,13 +128,16 @@ test('home screen places warnings between VOC and Moon aspects', () => {
 
 test('home screen places mode selector after warnings and before Moon aspects', () => {
   const warningsIndex = html.indexOf('data-warnings-card hidden');
+  const profileIndex = html.indexOf('class="glass-card profile-card"');
   const modeIndex = html.indexOf('data-mode-selector');
   const aspectsIndex = html.indexOf('class="glass-card moon-aspects-card"');
 
   assert.equal(warningsIndex >= 0, true);
+  assert.equal(profileIndex >= 0, true);
   assert.equal(modeIndex >= 0, true);
   assert.equal(aspectsIndex >= 0, true);
-  assert.equal(warningsIndex < modeIndex, true);
+  assert.equal(warningsIndex < profileIndex, true);
+  assert.equal(profileIndex < modeIndex, true);
   assert.equal(modeIndex < aspectsIndex, true);
 });
 

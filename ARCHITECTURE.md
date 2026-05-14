@@ -185,6 +185,7 @@ Responsibilities:
 - formats values
 - updates DOM elements on the main dashboard
 - controls the visible dashboard state
+- reads local profile names for the compact `Профиль` / `Мои карты` UI shell
 
 `src/app.js` is currently the composition layer.
 
@@ -491,6 +492,20 @@ Current responsibilities:
 
 The module does not render UI, does not call `fetch`, does not use geolocation, does not call external geocoding APIs, and does not calculate natal charts, houses, ASC / MC, or personal transits.
 
+## `src/profileUi.js`
+
+Formats the minimal Sprint 3 profile shell view for the dashboard.
+
+Current responsibilities:
+
+- keep the profile shell labels and privacy copy in one small helper;
+- always include `Общий день` as the non-personal default item;
+- convert stored profiles into a compact list of display names;
+- provide the empty-state copy for `Мои карты`;
+- provide disabled add-profile copy for Task 3.3.
+
+This module does not create profiles, edit profiles, delete profiles, select an active profile, export/import data, or calculate natal charts / personal transits.
+
 ## `scripts/generate-ephemeris.cjs`
 
 Generates Swiss Ephemeris data.
@@ -600,9 +615,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 17. `src/profileStorage.js` stores profiles and active profile id locally through `localStorage`.
 
-18. `src/debugPanel.js` formats the hidden debug panel when enabled.
+18. `src/profileUi.js` formats the minimal `Профиль` / `Мои карты` shell view.
 
-19. `src/app.js` updates DOM elements on the main dashboard, mode selector, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
+19. `src/debugPanel.js` formats the hidden debug panel when enabled.
+
+20. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 
@@ -1306,9 +1323,11 @@ The current implemented profile layer includes:
 - profile validation;
 - profile id creation;
 - local profile list storage;
-- local active profile id storage.
+- local active profile id storage;
+- compact dashboard profile shell;
+- inline `Мои карты` panel.
 
-The app still has no profile UI module.
+The app still has no profile creation form, edit/delete UI, active profile selector UI, import/export UI, natal chart, houses, ASC / MC, or personal transits.
 
 Sprint 3 must not implement natal chart calculations, houses, Ascendant / MC, personal transits, personal recommendations, backend sync, or external geocoding without an explicit later task.
 
@@ -1328,4 +1347,4 @@ Core logic:
 
 Current priority:
 
-Prepare Sprint 3 profiles UI shell while keeping natal charts, houses, personal transits, and personal recommendations out of scope.
+Prepare Sprint 3 profile creation form while keeping natal charts, houses, personal transits, and personal recommendations out of scope.

@@ -51,6 +51,8 @@ import {
   getBestWindows,
   getBestWindowsDebug,
 } from './bestWindows.js';
+import { loadProfiles } from './profileStorage.js';
+import { describeProfilesShell } from './profileUi.js';
 
 let selectedDashboardMode = DEFAULT_DASHBOARD_MODE;
 
@@ -85,6 +87,14 @@ const elements = {
   fieldReasons: document.querySelector('[data-field-reasons]'),
   warningsCard: document.querySelector('[data-warnings-card]'),
   warnings: document.querySelector('[data-warnings]'),
+  profileCurrent: document.querySelector('[data-profile-current]'),
+  profilesToggle: document.querySelector('[data-profiles-toggle]'),
+  profilesPanel: document.querySelector('[data-profiles-panel]'),
+  profilesList: document.querySelector('[data-profiles-list]'),
+  profilesEmpty: document.querySelector('[data-profiles-empty]'),
+  profileAdd: document.querySelector('[data-profile-add]'),
+  profileNextStep: document.querySelector('[data-profile-next-step]'),
+  profilePrivacy: document.querySelector('[data-profile-privacy]'),
   bestWindowCard: document.querySelector('[data-best-window-card]'),
   bestWindowTitle: document.querySelector('[data-best-window-title]'),
   bestWindowTimes: document.querySelector('[data-best-window-times]'),
@@ -165,6 +175,7 @@ function render() {
   renderSimpleList(elements.fieldAvoid, modeRecommendations.careful);
   renderFieldReasons(fieldQuality.reasons);
   renderWarnings(fieldQuality.warnings);
+  renderProfilesShell(describeProfilesShell(loadProfiles()));
   const bestWindows = getBestWindows({ selectedMode: selectedDashboardMode, now });
   renderBestWindows(describeBestWindows(bestWindows, selectedDashboardMode));
   renderModeSelector();
@@ -237,6 +248,22 @@ function renderWarnings(warnings = []) {
   renderSimpleList(elements.warnings, warnings);
 }
 
+function renderProfilesShell(view) {
+  elements.profileCurrent.textContent = view.currentLabel;
+  elements.profilesList.replaceChildren(...view.items.map((text) => {
+    const item = document.createElement('li');
+    item.textContent = text;
+    if (text === view.currentLabel) item.className = 'profile-general-item';
+    return item;
+  }));
+  elements.profilesEmpty.hidden = !view.emptyTitle;
+  elements.profilesEmpty.querySelector('p').textContent = view.emptyTitle;
+  elements.profilesEmpty.querySelector('span').textContent = view.emptyHint;
+  elements.profileAdd.textContent = view.addButtonLabel;
+  elements.profileNextStep.textContent = view.addButtonHelp;
+  elements.profilePrivacy.textContent = view.privacyCopy;
+}
+
 function renderBestWindows(view) {
   elements.bestWindowCard.hidden = view.hidden;
   elements.bestWindowTitle.textContent = view.title;
@@ -296,6 +323,12 @@ elements.modeSelector.addEventListener('click', (event) => {
   const button = event.target.closest('[data-mode-button]');
   if (!button) return;
   setDashboardMode(button.dataset.modeButton);
+});
+
+elements.profilesToggle.addEventListener('click', () => {
+  const shouldOpen = elements.profilesPanel.hidden;
+  elements.profilesPanel.hidden = !shouldOpen;
+  elements.profilesToggle.setAttribute('aria-expanded', String(shouldOpen));
 });
 
 render();

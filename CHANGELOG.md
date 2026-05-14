@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-14 — Complete Task 3.3 profiles UI shell
+
+- Добавлен компактный блок `Профиль` на главный экран.
+- Добавлена раскрываемая inline-секция `Мои карты` без новой навигации.
+- Секция показывает `Общий день`, сохраненные profile names, empty state и privacy copy.
+- Кнопка `+ Добавить профиль` пока disabled; форма создания профиля не добавлялась.
+- Добавлен `src/profileUi.js`; `src/app.js` читает profiles через `loadProfiles()`.
+- PWA-кэш обновлен до `lunar-calendar-v43`.
+- Task 3.4 оставлена следующей активной задачей и не начиналась.
+
 ## 2026-05-14 — Complete Task 3.2 local profile storage
 
 - Добавлен `src/profileStorage.js` для local-first хранения профилей в `localStorage`.

@@ -824,21 +824,21 @@ Acceptance criteria:
 - corrupted storage does not crash app;
 - tests pass.
 
-# Active Task
+# Completed Task
 
 ## Task 3.3 — Add Profiles UI Shell / “Мои карты”
 
-Status: active
+Status: done
 
 Add minimal UI shell for profile list and privacy copy.
 
 No new navigation bar and no natal chart screen.
 
-# Sprint 3 Backlog
+# Active Task
 
 ## Task 3.4 — Create Profile Form
 
-Status: not started
+Status: active
 
 Allow creation of a profile with validation.
 
@@ -848,6 +848,8 @@ Defaults:
 - current calculation place: Moscow;
 - houseSystem: Whole Sign;
 - zodiac: tropical.
+
+# Sprint 3 Backlog
 
 ## Task 3.5 — Edit / Delete Profile
 

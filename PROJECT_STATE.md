@@ -282,7 +282,7 @@ PWA устанавливается на экран iPhone через Safari.
 Следующая задача:
 
 ```txt
-Task 3.3 — Add Profiles UI Shell / “Мои карты”
+Task 3.4 — Create Profile Form
 ```
 
 Натальная карта, персональные транзиты, дома, ASC/MC и личные рекомендации пока не делаются.
@@ -303,13 +303,15 @@ Task 3.3 — Add Profiles UI Shell / “Мои карты”
 
 Есть доменная модель профиля, validation helpers и localStorage helper.
 
-Профили можно сохранять в localStorage через `src/profileStorage.js`, но UI для этого пока нет.
+Профили можно сохранять в localStorage через `src/profileStorage.js`.
+
+На главном экране есть компактный блок `Профиль` и раскрываемая секция `Мои карты`.
 
 Нет натальной карты.
 
 Нет персональных транзитов.
 
-Active profile id можно хранить в localStorage helper, но пользовательского selector UI пока нет.
+Active profile id можно хранить в localStorage helper, но полноценного пользовательского selector UI пока нет.
 
 Нет персонального блока `Лично для меня`.
 
@@ -616,10 +618,27 @@ Task 3.2 — Add Local Profile Storage
 - удаление активного профиля сбрасывает active profile в `Общий день`;
 - добавлены тесты `test/profileStorage.test.js`.
 
-Следующая активная задача:
+Завершенная задача:
 
 ```txt
 Task 3.3 — Add Profiles UI Shell / “Мои карты”
+```
+
+Что выполнено:
+
+- добавлен компактный блок `Профиль` на главный экран;
+- блок расположен после `Осторожно сегодня` и перед `Режим`;
+- добавлена раскрываемая inline-секция `Мои карты`;
+- секция показывает `Общий день`, имена сохраненных профилей, empty state и privacy copy;
+- кнопка `+ Добавить профиль` пока disabled и указывает, что добавление профиля — следующий шаг;
+- добавлен helper `src/profileUi.js`;
+- `src/app.js` читает profiles через `loadProfiles()`, но не делает active profile selector;
+- PWA cache поднят до `lunar-calendar-v43`.
+
+Следующая активная задача:
+
+```txt
+Task 3.4 — Create Profile Form
 ```
 
 В Sprint 3 пока НЕ делается:
@@ -637,13 +656,12 @@ Task 3.3 — Add Profiles UI Shell / “Мои карты”
 - geocoding API;
 - автоматическое определение текущего местоположения.
 
-UI, форма создания профиля и import/export идут дальше по задачам Sprint 3. Task 3.3 еще не начиналась в рамках Task 3.2.
+Форма создания профиля, edit/delete и import/export идут дальше по задачам Sprint 3. Task 3.4 еще не начиналась в рамках Task 3.3.
 
 ---
 
 # Sprint 3 Backlog
 
-- Task 3.3 — Add Profiles UI Shell / “Мои карты”.
 - Task 3.4 — Create Profile Form.
 - Task 3.5 — Edit / Delete Profile.
 - Task 3.6 — Active Profile Selector.
@@ -1241,7 +1259,7 @@ git commit -m "checkpoint before continuing in new codex chat"
 Текущая версия:
 
 ```txt
-lunar-calendar-v42
+lunar-calendar-v43
 ```
 
 ## Moscow Hardcoding
@@ -1291,13 +1309,13 @@ lunar-calendar-v42
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 3.3 — Add Profiles UI Shell / “Мои карты”.
+Выполнить Task 3.4 — Create Profile Form.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 3.4.
+2. Не начинать Task 3.5.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или личные рекомендации.
@@ -1313,4 +1331,4 @@ lunar-calendar-v42
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1 и Sprint 2 завершены. Активный спринт — Sprint 3; Task 3.1 и Task 3.2 завершены, следующая реализационная задача — Task 3.3.
+Sprint 1 и Sprint 2 завершены. Активный спринт — Sprint 3; Task 3.1, Task 3.2 и Task 3.3 завершены, следующая реализационная задача — Task 3.4.
