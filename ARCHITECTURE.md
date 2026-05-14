@@ -388,7 +388,7 @@ Current behavior:
 
 - reads `debug=1` from URL query parameters;
 - returns hidden-panel text for calculation verification;
-- includes calculated time, `debugDate` status, Moscow day system, Moon sign, VOC, Moon aspects, indicators, ephemeris range/source, and cache version;
+- includes calculated time, `debugDate` status, Moscow day system, Moon sign, VOC, Moon aspects, indicators, best-window debug reasoning, ephemeris range/source, and cache version;
 - allows technical timestamps with seconds because this is debug-only.
 
 The debug panel does not store data and does not expose profile or birth data.
@@ -450,9 +450,11 @@ Current responsibilities:
 - groups adjacent good slots into intervals;
 - returns up to 2 best windows with `start`, `end`, `score`, `label`, `suitableFor`, `reasons`, and `cautions`.
 - formats a compact dashboard view with title, time ranges, suitable-for text, reasons, and cautions.
+- exports `getBestWindowsDebug()` for hidden debug-panel reasoning without changing the normal `getBestWindows()` array return type.
 
 `src/app.js` calls this helper during dashboard render and displays its output in the `Лучшее окно сегодня` card.
 If no good windows are returned, the card renders a calm mode-specific fallback from the display formatter.
+When `?debug=1` is active, `src/app.js` also requests best-window debug data and passes it to `src/debugPanel.js`.
 
 ## `scripts/generate-ephemeris.cjs`
 
@@ -502,7 +504,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v41
+lunar-calendar-v42
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -557,7 +559,7 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 14. `src/modeRecommendations.js` converts the selected mode and current moment context into `Хорошо` / `Осторожно` lists.
 
-15. `src/bestWindows.js` calculates best-window candidates for the selected mode and provides the compact dashboard view model.
+15. `src/bestWindows.js` calculates best-window candidates for the selected mode, provides the compact dashboard view model, and exposes debug reasoning for the hidden debug panel.
 
 16. `src/debugPanel.js` formats the hidden debug panel when enabled.
 
@@ -901,7 +903,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v41
+lunar-calendar-v42
 ```
 
 Important operational rule:
@@ -1202,7 +1204,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v41
+lunar-calendar-v42
 ```
 
 If this value changes in `sw.js`, update this section.

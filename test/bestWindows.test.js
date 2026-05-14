@@ -4,6 +4,7 @@ import test from 'node:test';
 import {
   describeBestWindows,
   getBestWindows,
+  getBestWindowsDebug,
 } from '../src/bestWindows.js';
 
 const stableField = {
@@ -264,4 +265,53 @@ test('does not show fallback when best windows exist', () => {
   ], 'general');
 
   assert.equal(view.fallback, '');
+});
+
+test('regular getBestWindows remains backward compatible and returns an array', () => {
+  const windows = getBestWindows({
+    selectedMode: 'tarot',
+    now: new Date('2026-05-11T10:00:00+03:00'),
+    slotMinutes: 60,
+    ...baseContext,
+  });
+
+  assert.equal(Array.isArray(windows), true);
+});
+
+test('best windows debug includes config and selected windows', () => {
+  const debug = getBestWindowsDebug({
+    selectedMode: 'tarot',
+    now: new Date('2026-05-11T10:00:00+03:00'),
+    slotMinutes: 60,
+    maxWindows: 2,
+    ...baseContext,
+  });
+
+  assert.equal(debug.selectedMode, 'tarot');
+  assert.equal(debug.threshold, 30);
+  assert.equal(debug.slotMinutes, 60);
+  assert.equal(debug.maxWindows, 2);
+  assert.equal(Array.isArray(debug.windows), true);
+  assert.equal(debug.windows.length > 0, true);
+  assert.equal(debug.windows[0].score >= 30, true);
+  assert.equal(debug.windows[0].reasons.length > 0, true);
+});
+
+test('best windows debug includes fallback and rejected candidates when no windows pass', () => {
+  const debug = getBestWindowsDebug({
+    selectedMode: 'money',
+    now: new Date('2026-05-11T10:00:00+03:00'),
+    slotMinutes: 60,
+    threshold: 80,
+    ...baseContext,
+    getPlanetaryHour: () => ({ key: 'mars' }),
+    getMoonSign: () => ({ current: { key: 'pisces' } }),
+    getFieldQuality: () => blurredField,
+  });
+
+  assert.equal(debug.windows.length, 0);
+  assert.equal(debug.fallback, 'Сегодня лучше проверять, закрывать хвосты и готовить решения, а не запускать новое.');
+  assert.equal(debug.rejectedCandidates.length > 0, true);
+  assert.equal(debug.rejectedCandidates.length <= 5, true);
+  assert.equal(debug.rejectedCandidates.some((candidate) => candidate.rejectReasons.includes('low score')), true);
 });

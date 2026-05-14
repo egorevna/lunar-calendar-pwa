@@ -49,6 +49,7 @@ import { getModeRecommendations } from './modeRecommendations.js';
 import {
   describeBestWindows,
   getBestWindows,
+  getBestWindowsDebug,
 } from './bestWindows.js';
 
 let selectedDashboardMode = DEFAULT_DASHBOARD_MODE;
@@ -100,6 +101,7 @@ const elements = {
 function render() {
   const debugDate = getDebugDate();
   const now = debugDate ?? new Date();
+  const shouldShowDebug = isDebugMode();
   const lunar = getLunarInfo(now);
   const planetaryDay = getPlanetaryDay(now);
   const planetaryHour = getPlanetaryHour(now);
@@ -163,7 +165,8 @@ function render() {
   renderSimpleList(elements.fieldAvoid, modeRecommendations.careful);
   renderFieldReasons(fieldQuality.reasons);
   renderWarnings(fieldQuality.warnings);
-  renderBestWindows(describeBestWindows(getBestWindows({ selectedMode: selectedDashboardMode, now }), selectedDashboardMode));
+  const bestWindows = getBestWindows({ selectedMode: selectedDashboardMode, now });
+  renderBestWindows(describeBestWindows(bestWindows, selectedDashboardMode));
   renderModeSelector();
   renderDebugPanel({
     now,
@@ -175,6 +178,9 @@ function render() {
     moonAspects,
     indicators,
     ephemeris: PRECISE_EPHEMERIS,
+    bestWindowsDebug: shouldShowDebug
+      ? getBestWindowsDebug({ selectedMode: selectedDashboardMode, now })
+      : null,
   });
 }
 

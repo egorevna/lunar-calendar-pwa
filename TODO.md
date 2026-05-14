@@ -629,7 +629,7 @@ If this adds a new screen or route-like state, update `ARCHITECTURE.md`.
 
 ## Sprint 2 — Modes and Best Windows
 
-Status: active
+Status: completed
 
 Goal:
 
@@ -637,7 +637,7 @@ Add mode-aware recommendations and best windows to the main dashboard.
 
 Do not implement profiles, natal charts, personal transits, import/export, cloud sync, backend, or new public navigation in this sprint.
 
-# Active Task
+# Completed Tasks
 
 ## Task 2.1 — Add Dashboard Mode Selector
 
@@ -750,9 +750,17 @@ If no good window exists:
 
 ## Task 2.7 — Add Debug Reasoning for Best Windows
 
-Status: active
+Status: done
 
 With `?debug=1`, show best-window candidate scoring and reasons.
+
+# Next Stage
+
+## Sprint 3 — Profiles / Мои карты
+
+Status: not started
+
+Prepare profile and natal-chart planning only after a separate user command.
 
 # Do Not Do Now
 

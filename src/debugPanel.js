@@ -1,6 +1,6 @@
 import { formatAspect, formatPlanet } from './vocDisplay.js';
 
-export const APP_CACHE_VERSION = 'lunar-calendar-v41';
+export const APP_CACHE_VERSION = 'lunar-calendar-v42';
 
 export function isDebugMode(search = window.location.search) {
   return new URLSearchParams(search).get('debug') === '1';
@@ -17,6 +17,7 @@ export function describeDebugPanel(context = {}) {
     moonAspects,
     indicators,
     ephemeris,
+    bestWindowsDebug,
   } = context;
 
   return [
@@ -64,7 +65,8 @@ export function describeDebugPanel(context = {}) {
       `source: ${ephemeris?.source ?? 'generated Swiss Ephemeris data'}`,
       `cache: ${APP_CACHE_VERSION}`,
     ]),
-  ].join('\n\n');
+    formatBestWindowsDebug(bestWindowsDebug),
+  ].filter(Boolean).join('\n\n');
 }
 
 function formatSection(title, lines) {
@@ -95,4 +97,43 @@ function formatYearRange(ephemeris) {
   const start = new Date(ephemeris.rangeStart).getUTCFullYear();
   const end = new Date(ephemeris.rangeEnd).getUTCFullYear() - 1;
   return `${start}–${end}`;
+}
+
+function formatBestWindowsDebug(debug) {
+  if (!debug) return '';
+
+  const lines = [
+    `selectedMode: ${debug.selectedMode ?? 'нет данных'}`,
+    `windows.length: ${debug.windows?.length ?? 0}`,
+    `threshold: ${debug.threshold ?? 'нет данных'}`,
+    `slotMinutes: ${debug.slotMinutes ?? 'нет данных'}`,
+    `maxWindows: ${debug.maxWindows ?? 'нет данных'}`,
+  ];
+
+  if (debug.fallback) lines.push(`fallback: ${debug.fallback}`);
+
+  const windowLines = (debug.windows ?? []).flatMap((window, index) => [
+    `window ${index + 1}: ${formatDebugDate(window.start)} – ${formatDebugDate(window.end)}`,
+    `score: ${window.score ?? 'нет данных'}`,
+    `reasons: ${formatList(window.reasons)}`,
+    `cautions: ${formatList(window.cautions)}`,
+    `suitableFor: ${formatList(window.suitableFor)}`,
+  ]);
+
+  const rejectedLines = (debug.rejectedCandidates ?? []).flatMap((candidate, index) => [
+    `candidate ${index + 1}: ${formatDebugDate(candidate.start)} – ${formatDebugDate(candidate.end)}`,
+    `score: ${candidate.score ?? 'нет данных'}`,
+    `reject: ${formatList(candidate.rejectReasons)}`,
+    `cautions: ${formatList(candidate.cautions)}`,
+  ]);
+
+  return formatSection('Best Windows Debug', [
+    ...lines,
+    ...(windowLines.length ? ['selected windows', ...windowLines] : []),
+    ...(rejectedLines.length ? ['rejected candidates', ...rejectedLines] : []),
+  ]);
+}
+
+function formatList(items) {
+  return Array.isArray(items) && items.length ? items.join(', ') : 'нет данных';
 }

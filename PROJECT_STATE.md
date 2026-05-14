@@ -103,7 +103,7 @@ Astro PWA — статическое PWA-приложение астрологи
 PWA-кэш обновлен до:
 
 ```txt
-lunar-calendar-v41
+lunar-calendar-v42
 ```
 
 Добавлен обновленный архитектурный принцип:
@@ -282,10 +282,10 @@ PWA устанавливается на экран iPhone через Safari.
 Следующая задача:
 
 ```txt
-Task 2.7 — Add Debug Reasoning for Best Windows
+Подготовка Sprint 3 — Profiles / Мои карты
 ```
 
-Не начинать Task 2.7 без отдельной команды пользователя.
+Не начинать Sprint 3 без отдельной команды пользователя.
 
 ---
 
@@ -362,6 +362,12 @@ Task 2.7 — Add Debug Reasoning for Best Windows
 
 ## Sprint 2 — Modes and Best Windows
 
+Статус:
+
+```txt
+completed
+```
+
 Цель спринта:
 
 Добавить mode-aware рекомендации и лучшие окна на главный экран.
@@ -402,7 +408,7 @@ Task 2.7 — Add Debug Reasoning for Best Windows
 - новая публичная навигация;
 - calendar / date picker screen.
 
-# Active Task
+# Completed Task
 
 ## Task 2.1 — Add Dashboard Mode Selector
 
@@ -546,17 +552,36 @@ done
 
 ---
 
+## Task 2.7 — Add Debug Reasoning for Best Windows
+
+Статус:
+
+```txt
+done
+```
+
+Что выполнено:
+
+- добавлен debug API `getBestWindowsDebug()`;
+- обычный `getBestWindows()` остался обратно совместимым и возвращает массив;
+- debug-панель при `?debug=1` показывает `Best Windows Debug`;
+- debug показывает selected mode, threshold, slotMinutes, maxWindows, выбранные окна, fallback и top rejected / low-score candidates;
+- обычный главный экран без `?debug=1` визуально не менялся;
+- PWA-кэш обновлен до `lunar-calendar-v42`.
+
+---
+
 # Current Focus
 
 Текущий фокус:
 
-Продолжить Sprint 2 следующим безопасным шагом:
+Sprint 2 завершен. Следующий безопасный шаг:
 
 ```txt
-Task 2.7 — Add Debug Reasoning for Best Windows
+Подготовка Sprint 3 — Profiles / Мои карты
 ```
 
-Не начинать профили, натал или персональные транзиты. Debug reasoning делать только в рамках Task 2.7 по отдельной команде.
+Не начинать профили, натал или персональные транзиты без отдельной команды пользователя.
 
 ---
 
@@ -1119,7 +1144,7 @@ git commit -m "checkpoint before continuing in new codex chat"
 Текущая версия:
 
 ```txt
-lunar-calendar-v41
+lunar-calendar-v42
 ```
 
 ## Moscow Hardcoding
@@ -1169,13 +1194,13 @@ lunar-calendar-v41
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 2.7 — Add Debug Reasoning for Best Windows.
+Подготовить Sprint 3 — Profiles / Мои карты.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 2.7.
+2. Не начинать Sprint 3 без отдельной команды пользователя.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не трогать профили, натал, персональные транзиты.
@@ -1191,4 +1216,4 @@ lunar-calendar-v41
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Текущий приоритет Sprint 1 выполнен. Sprint 2 начат; следующая реализационная задача — Task 2.7.
+Текущий приоритет Sprint 1 выполнен. Sprint 2 завершен; следующий этап — подготовка Sprint 3.

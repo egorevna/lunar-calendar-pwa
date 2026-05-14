@@ -62,6 +62,24 @@ test('debug panel marks debugDate as active and includes key sections', () => {
       rangeStart: '2026-01-01T00:00:00.000Z',
       rangeEnd: '2031-01-01T00:00:00.000Z',
     },
+    bestWindowsDebug: {
+      selectedMode: 'tarot',
+      threshold: 30,
+      slotMinutes: 60,
+      maxWindows: 2,
+      fallback: '',
+      windows: [
+        {
+          start: new Date('2026-05-15T19:40:00+03:00'),
+          end: new Date('2026-05-15T21:10:00+03:00'),
+          score: 55,
+          reasons: ['поддерживающий планетарный час'],
+          cautions: [],
+          suitableFor: ['расклады'],
+        },
+      ],
+      rejectedCandidates: [],
+    },
   });
 
   assert.equal(text.includes('Time'), true);
@@ -72,6 +90,10 @@ test('debug panel marks debugDate as active and includes key sections', () => {
   assert.equal(text.includes('major-only: yes'), true);
   assert.equal(text.includes('Indicators'), true);
   assert.equal(text.includes('Tong Shu: Устранение 除'), true);
+  assert.equal(text.includes('Best Windows Debug'), true);
+  assert.equal(text.includes('selectedMode: tarot'), true);
+  assert.equal(text.includes('windows.length: 1'), true);
+  assert.equal(text.includes('score: 55'), true);
 });
 
 test('debug panel marks normal time when debugDate is not used', () => {
@@ -82,4 +104,33 @@ test('debug panel marks normal time when debugDate is not used', () => {
   });
 
   assert.equal(text.includes('debugDate: inactive'), true);
+  assert.equal(text.includes('Best Windows Debug'), false);
+});
+
+test('debug panel shows no-window fallback state and rejected candidates', () => {
+  const text = describeDebugPanel({
+    now: new Date('2026-05-15T00:40:00+03:00'),
+    bestWindowsDebug: {
+      selectedMode: 'money',
+      threshold: 30,
+      slotMinutes: 60,
+      maxWindows: 2,
+      fallback: 'Сегодня лучше проверять, закрывать хвосты и готовить решения, а не запускать новое.',
+      windows: [],
+      rejectedCandidates: [
+        {
+          start: new Date('2026-05-15T10:00:00+03:00'),
+          end: new Date('2026-05-15T11:00:00+03:00'),
+          score: 10,
+          rejectReasons: ['low score', 'warnings'],
+        },
+      ],
+    },
+  });
+
+  assert.equal(text.includes('Best Windows Debug'), true);
+  assert.equal(text.includes('windows.length: 0'), true);
+  assert.equal(text.includes('fallback: Сегодня лучше проверять'), true);
+  assert.equal(text.includes('rejected candidates'), true);
+  assert.equal(text.includes('reject: low score, warnings'), true);
 });

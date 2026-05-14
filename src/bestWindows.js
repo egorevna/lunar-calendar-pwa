@@ -85,6 +85,14 @@ const MODE_SUPPORT = {
 };
 
 export function getBestWindows(options = {}) {
+  return calculateBestWindows(options).windows;
+}
+
+export function getBestWindowsDebug(options = {}) {
+  return calculateBestWindows(options).debug;
+}
+
+function calculateBestWindows(options = {}) {
   const {
     selectedMode = DEFAULT_DASHBOARD_MODE,
     now = new Date(),
@@ -103,6 +111,7 @@ export function getBestWindows(options = {}) {
   const dayEnd = new Date(dayStart.getTime() + 24 * 3600000);
   const slotMs = slotMinutes * 60000;
   const slots = [];
+  const rejectedCandidates = [];
 
   for (let time = dayStart.getTime(); time < dayEnd.getTime(); time += slotMs) {
     const start = new Date(time);
@@ -118,12 +127,32 @@ export function getBestWindows(options = {}) {
       getLunar,
       getField,
     });
-    if (slot && slot.score >= threshold) slots.push(slot);
+    if (slot && !slot.rejectReasons?.includes('active VOC') && slot.score >= threshold) {
+      slots.push(slot);
+    } else {
+      rejectedCandidates.push(describeRejectedSlot(slot, { start, end, threshold, mode }));
+    }
   }
 
-  return mergeSlots(slots)
+  const windows = mergeSlots(slots)
     .sort((left, right) => right.score - left.score || left.start - right.start)
     .slice(0, maxWindows);
+  const view = describeBestWindows(windows, mode);
+
+  return {
+    windows,
+    debug: {
+      selectedMode: mode,
+      threshold,
+      slotMinutes,
+      maxWindows,
+      fallback: view.fallback,
+      windows,
+      rejectedCandidates: rejectedCandidates
+        .sort((left, right) => right.score - left.score || left.start - right.start)
+        .slice(0, 5),
+    },
+  };
 }
 
 export function describeBestWindows(windows = [], selectedMode = DEFAULT_DASHBOARD_MODE) {
@@ -155,7 +184,18 @@ function scoreSlot(context) {
   } = context;
   const midpoint = new Date((start.getTime() + end.getTime()) / 2);
   const voc = getVoc(midpoint);
-  if (voc?.isActive) return null;
+  if (voc?.isActive) {
+    return {
+      start,
+      end,
+      score: -100,
+      label: getModeLabel(mode),
+      suitableFor: [],
+      reasons: [],
+      cautions: ['active VOC'],
+      rejectReasons: ['active VOC'],
+    };
+  }
 
   const lunar = getLunar(midpoint);
   const moonAspects = getMoonAspects(midpoint) ?? {};
@@ -201,7 +241,55 @@ function scoreSlot(context) {
     suitableFor: unique(score.suitableFor),
     reasons: unique(score.reasons),
     cautions: unique(score.cautions),
+    rejectReasons: getSlotSignals({ mode, signals, score }),
   };
+}
+
+function describeRejectedSlot(slot, context) {
+  const base = slot ?? {
+    start: context.start,
+    end: context.end,
+    score: -100,
+    reasons: [],
+    cautions: [],
+    suitableFor: [],
+    rejectReasons: ['active VOC'],
+  };
+  const rejectReasons = [...(base.rejectReasons ?? [])];
+  if (base.score < context.threshold) rejectReasons.unshift('low score');
+
+  return {
+    start: base.start,
+    end: base.end,
+    score: base.score,
+    reasons: unique(base.reasons ?? []),
+    cautions: unique(base.cautions ?? []),
+    suitableFor: unique(base.suitableFor ?? []),
+    rejectReasons: unique(rejectReasons),
+  };
+}
+
+function getSlotSignals({ mode, signals, score }) {
+  const support = MODE_SUPPORT[mode];
+  const reasons = [];
+  if (score.cautions.some((caution) => caution.includes('Луна без курса') || caution === 'active VOC')) {
+    reasons.push('active VOC');
+  }
+  if (signals.warnings.length) reasons.push('warnings');
+  if (signals.moonAspects?.next && HARD_ASPECTS.has(signals.moonAspects.next.aspect)) {
+    reasons.push('tense aspect');
+  }
+  if (support?.hours.length && !support.hours.includes(signals.planetaryHour)) {
+    reasons.push('unsupported planetary hour');
+  }
+  if (
+    (support?.signs.length || support?.elements?.length)
+    && !support.signs.includes(signals.moonSign)
+    && !(support.elements?.includes(signals.moonElement))
+  ) {
+    reasons.push('unsupported Moon sign / element');
+  }
+  return reasons;
 }
 
 function applyPlanetaryHourScore(mode, signals, score) {

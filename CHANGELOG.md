@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-05-14 — Complete Task 2.7 best windows debug reasoning
+
+- Добавлен `getBestWindowsDebug()` для скрытой проверки reasoning по лучшим окнам.
+- Debug-панель при `?debug=1` показывает `Best Windows Debug`, параметры scoring, выбранные окна и top rejected / low-score candidates.
+- Обычный `getBestWindows()` остался обратно совместимым и возвращает массив.
+- PWA-кэш обновлен до `lunar-calendar-v42`.
+- Sprint 2 завершен; Sprint 3 не начинался.
+
 ## 2026-05-14 — Complete Task 2.6 no-good-window fallback
 
 - Карточка `Лучшее окно` теперь остается видимой, если подходящих окон нет.
