@@ -365,6 +365,21 @@ Current responsibilities:
 
 This module does not convert birth local time to UTC, does not call external APIs, does not use geocoding or location permissions, and does not calculate natal planets, houses, ASC / MC, aspects, personal transits, or orbs.
 
+## `src/planetaryPositionProvider.js`
+
+Defines the future planetary position provider contract.
+
+Current responsibilities:
+
+- define provider statuses: `ready`, `incomplete`, `notSupported`, `error`;
+- define the 10 main natal planet keys for future calculations;
+- report provider capabilities with all calculation features disabled;
+- validate future provider input: `utcDateTime`, `zodiac: tropical`, and allowed body keys;
+- return `incomplete` for invalid input and explicit `notSupported` for valid-looking input while no provider is connected;
+- normalize explicitly supplied planetary positions into sign, degree, minutes, retrograde, speed, and source fields.
+
+This module does not connect a runtime ephemeris provider, does not call external APIs, does not use `swisseph`, does not integrate with the dashboard, and does not calculate or fake planetary longitudes, houses, ASC / MC, aspects, personal transits, or orbs.
+
 ## `src/preciseEphemeris.js`
 
 Reads pre-calculated Swiss Ephemeris data from `src/ephemeris-data.js`.
@@ -776,9 +791,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 25. `src/birthDateTime.js` prepares birth date/time/timezone readiness for future natal calculations without converting to fake UTC.
 
-26. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state and safe personal readiness/capability state without birth details.
+26. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
 
-27. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
+27. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state and safe personal readiness/capability state without birth details.
+
+28. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 

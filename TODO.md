@@ -1273,21 +1273,30 @@ Goal: define safe conversion/readiness for birth date, birth time, place and tim
 - Added tests for date/time parsing, timezone validation, unknown birth time, missing timezone, no fake UTC and no fake natal claims.
 - No UI, app flow, dependencies, ephemeris data, houses, ASC / MC or transits were added.
 
-# Active Task
+# Completed Task
 
 ## Task 5.5 — Planetary Position Provider MVP
 
-Status: not started
+Status: done
 
 Goal: connect a reliable provider only if Task 5.1 allows it; otherwise return explicit `notSupported`.
 
-# Sprint 5 Backlog
+### Result
+
+- Added `src/planetaryPositionProvider.js` with provider status constants, required planet keys, capability reporting, input validation and safe position normalization.
+- Provider currently returns `incomplete` for invalid input and explicit `notSupported` for valid-looking input because no runtime provider is connected.
+- Added `test/planetaryPositionProvider.test.js` for capabilities, planet keys, validation, unsupported results, no fake positions and no network/geolocation behavior.
+- No real provider, dependencies, package changes, UI, natal planets, houses, ASC / MC or transits were added.
+
+# Active Task
 
 ## Task 5.6 — Natal Planets MVP
 
 Status: not started
 
 Goal: calculate natal planetary positions only if the provider is reliable; do not calculate houses / ASC / MC unless proven reliable.
+
+# Sprint 5 Backlog
 
 ## Task 5.7 — Natal Calculation Debug / Fixtures
 

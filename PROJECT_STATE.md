@@ -190,7 +190,7 @@ PWA устанавливается на экран iPhone через Safari.
 Тестовый набор проходит:
 
 ```txt
-239 тестов
+251 тестов
 ```
 
 ---
@@ -606,12 +606,31 @@ Sprint 5 — Natal Calculation Engine Foundation
 Текущая активная задача:
 
 ```txt
+Task 5.6 — Natal Planets MVP
+```
+
+Task 5.6 должна рассчитывать natal planets только если provider надежен; дома, ASC / MC и транзиты не делать без доказанной поддержки.
+
+Task 5.6 еще не начата.
+
+Завершенная задача:
+
+```txt
 Task 5.5 — Planetary Position Provider MVP
 ```
 
-Task 5.5 должна подключить reliable provider только если это разрешено и безопасно; иначе оставить explicit `notSupported`.
+Результат Task 5.5:
 
-Task 5.5 еще не начата.
+- добавлен `src/planetaryPositionProvider.js`;
+- provider interface содержит статусы `ready`, `incomplete`, `notSupported`, `error`;
+- определены 10 основных natal planet keys: Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto;
+- `getPlanetaryProviderCapabilities()` возвращает provider `null`, status `notSupported` и все capabilities `false`;
+- `validatePlanetaryProviderInput()` проверяет `utcDateTime`, `zodiac: tropical` и allowed body keys;
+- `getPlanetaryPositions()` возвращает `incomplete` для invalid input и `notSupported` для valid-looking input, потому что runtime provider не подключен;
+- `normalizePlanetaryPosition()` нормализует только явно переданные позиции и не рассчитывает longitudes;
+- добавлен `test/planetaryPositionProvider.test.js`;
+- provider не интегрировался в `natalEngine`, чтобы сохранить минимальный diff и не менять поведение engine до Task 5.6;
+- package.json, зависимости, UI, `app.js`, `index.html`, `sw.js`, эфемериды, натальные планеты, дома, ASC / MC и транзиты не добавлялись.
 
 Завершенная задача:
 
@@ -1648,13 +1667,13 @@ lunar-calendar-v57
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 5.5 — Planetary Position Provider MVP.
+Выполнить Task 5.6 — Natal Planets MVP.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 5.6.
+2. Не начинать Task 5.7.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или фейковые личные расчеты.
@@ -1670,4 +1689,4 @@ lunar-calendar-v57
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3 и Sprint 4 завершены. Активный спринт — Sprint 5; Task 5.1, Task 5.2, Task 5.3 и Task 5.4 завершены. Текущая задача — Task 5.5 — Planetary Position Provider MVP.
+Sprint 1, Sprint 2, Sprint 3 и Sprint 4 завершены. Активный спринт — Sprint 5; Task 5.1, Task 5.2, Task 5.3, Task 5.4 и Task 5.5 завершены. Текущая задача — Task 5.6 — Natal Planets MVP.

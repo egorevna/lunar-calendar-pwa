@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-15 — Complete Task 5.5 planetary position provider MVP
+
+- Добавлен `src/planetaryPositionProvider.js` с provider status constants, 10 main natal planet keys, capability reporting, input validation и safe position normalization.
+- Provider возвращает `incomplete` для invalid input и explicit `notSupported` для valid-looking input, потому что runtime provider не подключен.
+- Добавлен `test/planetaryPositionProvider.test.js`.
+- Реальный provider, dependencies, `package.json`, UI, эфемериды, natal planets, houses, ASC / MC и transits не добавлялись.
+- Provider оставлен отдельным модулем без интеграции в `natalEngine`, чтобы не менять engine behavior до Task 5.6.
+- Task 5.6 оставлена следующей активной задачей и не начиналась.
+
 ## 2026-05-15 — Complete Task 5.4 birth datetime and timezone strategy
 
 - Добавлен `src/birthDateTime.js` с safe parsing/readiness helpers для birth date, birth time и birth timezone.
