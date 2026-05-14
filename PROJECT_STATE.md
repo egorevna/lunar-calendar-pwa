@@ -190,7 +190,7 @@ PWA устанавливается на экран iPhone через Safari.
 Тестовый набор проходит:
 
 ```txt
-226 тестов
+239 тестов
 ```
 
 ---
@@ -606,12 +606,29 @@ Sprint 5 — Natal Calculation Engine Foundation
 Текущая активная задача:
 
 ```txt
+Task 5.5 — Planetary Position Provider MVP
+```
+
+Task 5.5 должна подключить reliable provider только если это разрешено и безопасно; иначе оставить explicit `notSupported`.
+
+Task 5.5 еще не начата.
+
+Завершенная задача:
+
+```txt
 Task 5.4 — Birth DateTime / Timezone Strategy
 ```
 
-Task 5.4 должна определить safe conversion/readiness для birth date, birth time, place и timezone без фейковой historical timezone precision.
+Результат Task 5.4:
 
-Task 5.4 еще не начата.
+- добавлен `src/birthDateTime.js`;
+- helper вручную парсит `YYYY-MM-DD` и `HH:mm` без timezone-shifting `Date` parsing;
+- `normalizeTimezone()` trim-ит timezone и проверяет IANA id через `Intl.DateTimeFormat`, если это доступно;
+- `createBirthDateTimeInput()` возвращает `incomplete` для missing/invalid date, required time или timezone;
+- known local date/time/timezone не превращаются в fake UTC: `canConvertToUtc: false`, `utcDateTime: null`, status `notSupported`;
+- unknown birth time дает warning, что ASC / MC и дома недоступны;
+- добавлен `test/birthDateTime.test.js`;
+- UI, `app.js`, `index.html`, `sw.js`, зависимости, эфемериды, натальные планеты, дома, ASC / MC и транзиты не добавлялись.
 
 Завершенная задача:
 
@@ -1631,13 +1648,13 @@ lunar-calendar-v57
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 5.4 — Birth DateTime / Timezone Strategy.
+Выполнить Task 5.5 — Planetary Position Provider MVP.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 5.5.
+2. Не начинать Task 5.6.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или фейковые личные расчеты.
@@ -1653,4 +1670,4 @@ lunar-calendar-v57
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3 и Sprint 4 завершены. Активный спринт — Sprint 5; Task 5.1, Task 5.2 и Task 5.3 завершены. Текущая задача — Task 5.4 — Birth DateTime / Timezone Strategy.
+Sprint 1, Sprint 2, Sprint 3 и Sprint 4 завершены. Активный спринт — Sprint 5; Task 5.1, Task 5.2, Task 5.3 и Task 5.4 завершены. Текущая задача — Task 5.5 — Planetary Position Provider MVP.

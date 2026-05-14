@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-15 — Complete Task 5.4 birth datetime and timezone strategy
+
+- Добавлен `src/birthDateTime.js` с safe parsing/readiness helpers для birth date, birth time и birth timezone.
+- Helper возвращает `incomplete` для missing/invalid inputs и explicit `notSupported` для UTC conversion, пока нет надежной timezone-стратегии.
+- Unknown birth time и missing timezone получают понятные warnings; `utcDateTime` не фейкается.
+- Добавлен `test/birthDateTime.test.js`.
+- UI, `app.js`, `index.html`, `sw.js`, зависимости, эфемериды, houses, ASC / MC и transits не добавлялись.
+- Task 5.5 оставлена следующей активной задачей и не начиналась.
+
 ## 2026-05-15 — Complete Task 5.3 natal chart model and engine interface
 
 - Добавлен `src/natalChartModel.js` с neutral result shapes, statuses, feature flags, normalization helpers и `hasNatalFeature()`.

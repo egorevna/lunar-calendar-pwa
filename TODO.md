@@ -1258,21 +1258,30 @@ Goal: create neutral natal chart result shapes and an engine interface that retu
 - Added tests for empty, incomplete and ready result shapes, safe normalization, capabilities, unsupported engine behavior and no fake natal claims.
 - No provider, UI, dependencies, houses, ASC / MC, transits or ephemeris changes were added.
 
-# Active Task
+# Completed Task
 
 ## Task 5.4 — Birth DateTime / Timezone Strategy
 
-Status: not started
+Status: done
 
 Goal: define safe conversion/readiness for birth date, birth time, place and timezone without faking historical timezone precision.
 
-# Sprint 5 Backlog
+### Result
+
+- Added `src/birthDateTime.js` with pure parsing and readiness helpers for birth date, birth time and birth timezone.
+- Added explicit `incomplete` / `notSupported` behavior for missing inputs and unsupported UTC conversion.
+- Added tests for date/time parsing, timezone validation, unknown birth time, missing timezone, no fake UTC and no fake natal claims.
+- No UI, app flow, dependencies, ephemeris data, houses, ASC / MC or transits were added.
+
+# Active Task
 
 ## Task 5.5 — Planetary Position Provider MVP
 
 Status: not started
 
 Goal: connect a reliable provider only if Task 5.1 allows it; otherwise return explicit `notSupported`.
+
+# Sprint 5 Backlog
 
 ## Task 5.6 — Natal Planets MVP
 
