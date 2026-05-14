@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-05-15 — Complete Task 5.2 astrology math primitives
+
+- Добавлен `src/astroMath.js` с pure helpers для нормализации градусов, zodiac sign mapping, degree-in-sign, angular distance, major aspect detection и degree formatting.
+- Добавлены тесты `test/astroMath.test.js` для boundary cases, wrap-around, invalid input, major aspects и formatting.
+- Модуль не подключен к UI и не использует profiles, ephemeris data, `swisseph`, localStorage или даты.
+- Натальный движок, дома, ASC / MC, personal transits и зависимости не добавлялись.
+- Task 5.3 оставлена следующей активной задачей и не начиналась.
+
 ## 2026-05-14 — Complete Task 5.1 natal engine audit
 
 - Создан `NATAL_ENGINE_STRATEGY.md`.

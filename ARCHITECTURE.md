@@ -294,6 +294,33 @@ This module is used when precise pre-generated data is unavailable or incomplete
 
 This is a fallback layer, not the preferred source for exact lunar events when Swiss Ephemeris data is available.
 
+## `src/astroMath.js`
+
+Contains pure astrology math primitives for the future natal calculation foundation.
+
+Current responsibilities:
+
+- normalize ecliptic longitudes into `0 <= value < 360`;
+- map longitude to tropical zodiac sign metadata;
+- calculate degree within sign;
+- calculate minimal angular distance between longitudes;
+- detect major aspects with an explicit orb;
+- detect an aspect between two longitudes;
+- format longitude into a stable sign / degree / minute structure.
+
+This module is intentionally independent from:
+
+- UI;
+- profiles;
+- localStorage;
+- dates and timezone conversion;
+- generated ephemeris data;
+- `swisseph`;
+- natal engine providers;
+- houses, ASC / MC and personal transits.
+
+It does not calculate natal planets. It is a reusable math foundation for later engine modules.
+
 ## `src/preciseEphemeris.js`
 
 Reads pre-calculated Swiss Ephemeris data from `src/ephemeris-data.js`.

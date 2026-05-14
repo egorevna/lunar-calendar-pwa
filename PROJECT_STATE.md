@@ -2,7 +2,7 @@
 
 ## Дата чекпоинта
 
-2026-05-14
+2026-05-15
 
 ---
 
@@ -190,7 +190,7 @@ PWA устанавливается на экран iPhone через Safari.
 Тестовый набор проходит:
 
 ```txt
-201 тест
+209 тестов
 ```
 
 ---
@@ -606,12 +606,26 @@ Sprint 5 — Natal Calculation Engine Foundation
 Текущая активная задача:
 
 ```txt
+Task 5.3 — Add Natal Chart Data Model and Engine Interface
+```
+
+Task 5.3 должна создать neutral natal chart result shapes и engine interface, который явно возвращает `notSupported` для неподдержанных расчетов.
+
+Task 5.3 еще не начата.
+
+Завершенная задача:
+
+```txt
 Task 5.2 — Add Astrology Math Primitives
 ```
 
-Task 5.2 должна добавить только чистые math primitives для будущего natal engine: normalization, zodiac mapping, angular distance, aspect/orb helpers and formatting.
+Результат Task 5.2:
 
-Task 5.2 еще не начата.
+- добавлен `src/astroMath.js`;
+- helper содержит pure functions для degree normalization, zodiac sign lookup, degree-in-sign, angular distance, major aspect detection, aspect-between-longitudes и degree formatting;
+- invalid numeric input не возвращает `NaN`: calculation helpers возвращают `null`, `formatDegree()` возвращает stable empty structure;
+- добавлен `test/astroMath.test.js`;
+- UI, profiles, ephemeris data, `swisseph`, houses, ASC / MC, personal transits и зависимости не добавлялись.
 
 Завершенная задача:
 
@@ -1602,13 +1616,13 @@ lunar-calendar-v57
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 5.2 — Add Astrology Math Primitives.
+Выполнить Task 5.3 — Add Natal Chart Data Model and Engine Interface.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 5.3.
+2. Не начинать Task 5.4.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или фейковые личные расчеты.
@@ -1624,4 +1638,4 @@ lunar-calendar-v57
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3 и Sprint 4 завершены. Активный спринт — Sprint 5; Task 5.1 завершена. Текущая задача — Task 5.2 — Add Astrology Math Primitives.
+Sprint 1, Sprint 2, Sprint 3 и Sprint 4 завершены. Активный спринт — Sprint 5; Task 5.1 и Task 5.2 завершены. Текущая задача — Task 5.3 — Add Natal Chart Data Model and Engine Interface.

@@ -1227,21 +1227,31 @@ It should include:
 - Confirmed natal planets, houses, ASC / MC and personal transits are not reliably supported yet.
 - Recommended hybrid path: keep current generated dashboard events, add pure math primitives and strict natal engine interfaces, and connect a local browser-compatible provider later only with explicit approval.
 
-# Active Task
+# Completed Task
 
 ## Task 5.2 — Add Astrology Math Primitives
 
-Status: not started
+Status: done
 
 Goal: add pure, tested helpers for degree normalization, zodiac sign mapping, degree within sign, angular distance, aspect detection, orb checking and degree formatting.
 
-# Sprint 5 Backlog
+### Result
+
+- Added `src/astroMath.js` as a pure astrology math helper module.
+- Added degree normalization, zodiac sign lookup, degree-in-sign, angular distance, major aspect detection, aspect-between-longitudes and degree formatting.
+- Invalid numeric input returns safe `null` for calculation helpers and a stable empty structure for `formatDegree()`.
+- Added `test/astroMath.test.js` for boundaries, wrap-around, invalid input, major aspects and degree formatting.
+- No UI, profile logic, ephemeris data, `swisseph`, houses, ASC / MC, transits or dependencies were added.
+
+# Active Task
 
 ## Task 5.3 — Add Natal Chart Data Model and Engine Interface
 
 Status: not started
 
 Goal: create neutral natal chart result shapes and an engine interface that returns explicit `notSupported` for unsupported calculations.
+
+# Sprint 5 Backlog
 
 ## Task 5.4 — Birth DateTime / Timezone Strategy
 
