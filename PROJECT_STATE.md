@@ -606,10 +606,26 @@ Sprint 5 — Natal Calculation Engine Foundation
 Текущая активная задача:
 
 ```txt
+Task 5.2 — Add Astrology Math Primitives
+```
+
+Task 5.2 должна добавить только чистые math primitives для будущего natal engine: normalization, zodiac mapping, angular distance, aspect/orb helpers and formatting.
+
+Task 5.2 еще не начата.
+
+Завершенная задача:
+
+```txt
 Task 5.1 — Natal Engine Audit and Decision
 ```
 
-Task 5.1 должна создать `NATAL_ENGINE_STRATEGY.md` и определить безопасный расчетный путь без изменений кода приложения, без зависимостей и без фейковых расчетов.
+Результат Task 5.1:
+
+- создан `NATAL_ENGINE_STRATEGY.md`;
+- подтверждено, что текущий `swisseph` — Node/build-time native binding, а не browser/PWA runtime engine;
+- подтверждено, что `src/ephemeris-data.js` содержит current-dashboard events на 2026–2030 годы, а не произвольные natal positions;
+- подтверждено, что сейчас нельзя надежно считать натальные планеты, дома, ASC / MC или персональные транзиты;
+- выбран recommended engine path: hybrid approach — сохранить текущие generated dashboard events, добавить pure math primitives и strict natal engine interface, а local browser-compatible provider подключать позже только после отдельного approval.
 
 Do not start yet:
 
@@ -1586,13 +1602,13 @@ lunar-calendar-v57
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 5.1 — Natal Engine Audit and Decision.
+Выполнить Task 5.2 — Add Astrology Math Primitives.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 5.2.
+2. Не начинать Task 5.3.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или фейковые личные расчеты.
@@ -1608,4 +1624,4 @@ lunar-calendar-v57
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3 и Sprint 4 завершены. Активный спринт — Sprint 5; текущая задача — Task 5.1 — Natal Engine Audit and Decision.
+Sprint 1, Sprint 2, Sprint 3 и Sprint 4 завершены. Активный спринт — Sprint 5; Task 5.1 завершена. Текущая задача — Task 5.2 — Add Astrology Math Primitives.

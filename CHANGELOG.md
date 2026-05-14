@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-14 — Complete Task 5.1 natal engine audit
+
+- Создан `NATAL_ENGINE_STRATEGY.md`.
+- Аудит подтвердил, что текущий `swisseph` — Node/build-time native binding и не является browser/PWA runtime engine.
+- Подтверждено, что `src/ephemeris-data.js` содержит generated current-dashboard events на 2026–2030 годы, а не arbitrary natal positions, houses, ASC / MC или personal transits.
+- Recommended engine path: hybrid approach — текущие generated dashboard events оставить, в Sprint 5 добавить pure math primitives и strict natal engine interface, а local browser-compatible provider подключать позже только после отдельного approval.
+- Код приложения, зависимости, `ephemeris-data.js` и generator не менялись.
+- Task 5.2 оставлена следующей активной задачей и не начиналась.
+
 ## 2026-05-14 — Prepare Sprint 5 documentation
 
 - Sprint 1, Sprint 2, Sprint 3 and Sprint 4 зафиксированы как завершенные.

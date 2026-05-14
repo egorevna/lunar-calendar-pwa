@@ -1161,11 +1161,11 @@ Build the calculation foundation for real natal astrology before showing natal c
 
 Do not fake natal planets, houses, ASC / MC, aspects, personal transits or orbs.
 
-# Active Task
+# Completed Task
 
 ## Task 5.1 — Natal Engine Audit and Decision
 
-Status: not started
+Status: done
 
 ### Goal
 
@@ -1219,13 +1219,23 @@ It should include:
 - No fake calculations.
 - Task 5.2 remains next.
 
-# Sprint 5 Backlog
+### Result
+
+- Created `NATAL_ENGINE_STRATEGY.md`.
+- Confirmed current `swisseph` is a Node/build-time native binding, not a browser/PWA runtime engine.
+- Confirmed current generated ephemeris data supports current dashboard events for 2026–2030, not arbitrary natal calculations.
+- Confirmed natal planets, houses, ASC / MC and personal transits are not reliably supported yet.
+- Recommended hybrid path: keep current generated dashboard events, add pure math primitives and strict natal engine interfaces, and connect a local browser-compatible provider later only with explicit approval.
+
+# Active Task
 
 ## Task 5.2 — Add Astrology Math Primitives
 
 Status: not started
 
 Goal: add pure, tested helpers for degree normalization, zodiac sign mapping, degree within sign, angular distance, aspect detection, orb checking and degree formatting.
+
+# Sprint 5 Backlog
 
 ## Task 5.3 — Add Natal Chart Data Model and Engine Interface
 
