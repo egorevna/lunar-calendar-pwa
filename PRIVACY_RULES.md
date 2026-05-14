@@ -175,7 +175,7 @@ Default behavior:
 In profile UI, show:
 
 ```txt
-Данные карты хранятся только на этом устройстве.
+Данные хранятся на этом устройстве и не отправляются на сервер.
 ```
 
 Optional longer copy:
@@ -238,3 +238,46 @@ Do not show in debug:
 - currentPlace;
 - houseSystem;
 - zodiac.
+
+---
+
+# Sprint 4 Privacy Rules
+
+Sprint 4 starts personal astrology readiness work. Birth data, profile data, natal data and personal calculation state remain sensitive.
+
+## Personal Calculation Privacy
+
+Do not send birth data or personal calculation data to:
+
+- server;
+- geocoding API;
+- analytics;
+- remote calculation service;
+- cloud sync.
+
+Do not add backend, cloud sync, external geocoding, or device location permission in Sprint 4.
+
+## Debug Privacy
+
+Debug may show:
+
+- activeProfileId;
+- activeProfileName;
+- readiness status;
+- missingFields;
+- calculation capability.
+
+Debug must not dump:
+
+- full birthDate;
+- full birthTime;
+- birth coordinates;
+- full birthPlace object;
+- full currentPlace object;
+- full profile JSON.
+
+## Honesty Rule
+
+If the app cannot calculate a personal result reliably, it must say so.
+
+Do not display invented houses, ASC / MC, Moon in natal house, personal transit aspects, personal transit orbs, or personal ritual scoring.

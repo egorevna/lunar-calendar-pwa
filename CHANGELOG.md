@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-14 — Prepare Sprint 4 documentation
+
+- Sprint 1, Sprint 2 and Sprint 3 зафиксированы как завершенные.
+- Активным спринтом стал `Sprint 4 — Personal Moment Foundation / Лично для меня`.
+- В `TODO.md` добавлены Task 4.1–4.7; активная задача — `Task 4.1 — Personal Astrology Strategy and Data Audit`.
+- В `PROJECT_STATE.md` зафиксирован главный риск Sprint 4: не показывать псевдоточность и не выдумывать личные расчеты.
+- В `PRIVACY_RULES.md` добавлены Sprint 4 privacy rules для personal calculation readiness и debug safety.
+- Код приложения не менялся.
+
 ## 2026-05-14 — Complete Task 3.8 privacy copy and profile debug state
 
 - В `Мои карты` добавлена явная privacy copy: данные карт хранятся только на устройстве, дата/время/место рождения не отправляются на сервер.

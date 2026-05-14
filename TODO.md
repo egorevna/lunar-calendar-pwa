@@ -893,9 +893,88 @@ Debug may show activeProfileId, activeProfileName, profilesCount, storage type, 
 
 Status: complete
 
-Next stage: Sprint 4 — Personal Moment. Do not start Sprint 4 without explicit approval and planning docs.
+Sprint 3 — Profiles / Мои карты is complete.
 
-# Sprint 3 Backlog
+# Current Active Sprint
+
+## Sprint 4 — Personal Moment Foundation / Лично для меня
+
+Status: active
+
+Goal:
+
+Start personalizing the dashboard based on the active profile, without fake natal calculations.
+
+Important boundary:
+
+Do not show natal houses, ASC/MC, personal transits, Moon in natal house, or personal ritual scoring unless the calculation is proven reliable and covered by tests.
+
+# Active Task
+
+## Task 4.1 — Personal Astrology Strategy and Data Audit
+
+Status: not started
+
+### Goal
+
+Audit current data, libraries, generated ephemeris, and profile model before implementing personal astrology.
+
+### Required Investigation
+
+Read:
+
+- `package.json`
+- `src/astro.js`
+- `src/preciseEphemeris.js`
+- `src/ephemeris-data.js`
+- `scripts/generate-ephemeris.cjs`
+- `src/profileModel.js`
+- `src/profileStorage.js`
+- `src/profileUi.js`
+
+Answer:
+
+1. Do we have natal planetary positions for arbitrary birth dates?
+2. Do we have house calculation?
+3. Can we calculate ASC/MC?
+4. Can we calculate personal transits to natal planets?
+5. What does current generated Swiss Ephemeris data actually contain?
+6. What is safe to implement now?
+7. What requires new data/library/work?
+
+### Deliverable
+
+Create:
+
+```txt
+PERSONAL_ASTROLOGY_STRATEGY.md
+```
+
+The document must include:
+
+- available data;
+- safe now;
+- not safe yet;
+- required future work;
+- recommended Sprint 4 MVP;
+- decision log.
+
+### Acceptance Criteria
+
+- Strategy doc exists.
+- No app code changed.
+- No UI changed.
+- No fake calculations.
+- Task 4.2 remains next.
+
+# Sprint 4 Backlog
+
+- Task 4.2 — Profile Calculation Input Adapter
+- Task 4.3 — Personal Readiness / Context MVP
+- Task 4.4 — Dashboard Block `Лично для меня`
+- Task 4.5 — Safe Personal Recommendations MVP
+- Task 4.6 — Debug Personal Calculations
+- Task 4.7 — Sprint 4 Hardening
 
 # Do Not Do Now
 
@@ -903,6 +982,7 @@ Next stage: Sprint 4 — Personal Moment. Do not start Sprint 4 without explicit
 - personal transits;
 - house calculations;
 - Ascendant / MC;
+- Moon in natal house;
 - personal ritual scoring;
 - geocoding API;
 - cloud sync;
