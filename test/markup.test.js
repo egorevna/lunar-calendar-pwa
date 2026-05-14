@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import test from 'node:test';
 
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+const appJs = readFileSync(new URL('../src/app.js', import.meta.url), 'utf8');
 
 test('home screen does not render inactive chrome or decorative Moon image', () => {
   assert.equal(html.includes('class="top-bar"'), false);
@@ -111,11 +112,23 @@ test('home screen renders create profile form shell', () => {
   assert.equal(html.includes('value="tropical"'), true);
   assert.equal(html.includes('Текущее место расчета: Москва, Россия, Europe/Moscow.'), true);
   assert.equal(html.includes('data-profile-form-errors hidden'), true);
-  assert.equal(html.includes('Сохранить профиль'), true);
+  assert.equal(html.includes('data-profile-form-title'), true);
+  assert.equal(html.includes('Сохранить'), true);
   assert.equal(html.includes('data-profile-form-cancel'), true);
+  assert.equal(html.includes('data-profile-delete hidden'), true);
+  assert.equal(html.includes('Удалить профиль'), true);
   assert.equal(html.includes('Транзиты'), false);
   assert.equal(html.includes('ASC'), false);
   assert.equal(html.includes('MC'), false);
+});
+
+test('profile edit/delete flow uses confirmation and no active selector UI', () => {
+  assert.equal(appJs.includes('updateProfile'), true);
+  assert.equal(appJs.includes('deleteProfile'), true);
+  assert.equal(appJs.includes('window.confirm'), true);
+  assert.equal(appJs.includes('Удалить профиль? Это действие нельзя отменить.'), true);
+  assert.equal(html.includes('data-active-profile'), false);
+  assert.equal(html.includes('Выбрать активный профиль'), false);
 });
 
 test('home screen renders hidden warnings card shell', () => {

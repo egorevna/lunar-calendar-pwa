@@ -654,10 +654,26 @@ Task 3.4 — Create Profile Form
 - после успешного создания профиль появляется в списке `Мои карты`;
 - PWA cache поднят до `lunar-calendar-v44`.
 
-Следующая активная задача:
+Завершенная задача:
 
 ```txt
 Task 3.5 — Edit / Delete Profile
+```
+
+Что выполнено:
+
+- сохраненные профили в `Мои карты` стали кликабельными;
+- клик по профилю открывает inline-форму `Редактировать профиль`;
+- форма редактирования предзаполняется данными выбранного профиля;
+- сохранение изменений идет через `updateProfile()` из `src/profileStorage.js`;
+- удаление профиля идет через `deleteProfile()` после подтверждения `Удалить профиль? Это действие нельзя отменить.`;
+- `Общий день` остается non-personal option и не редактируется / не удаляется;
+- PWA cache поднят до `lunar-calendar-v45`.
+
+Следующая активная задача:
+
+```txt
+Task 3.6 — Active Profile Selector
 ```
 
 В Sprint 3 пока НЕ делается:
@@ -675,13 +691,12 @@ Task 3.5 — Edit / Delete Profile
 - geocoding API;
 - автоматическое определение текущего местоположения.
 
-Edit/delete и import/export идут дальше по задачам Sprint 3. Task 3.5 еще не начиналась в рамках Task 3.4.
+Active profile selector, import/export и privacy/debug state идут дальше по задачам Sprint 3. Task 3.6 еще не начиналась в рамках Task 3.5.
 
 ---
 
 # Sprint 3 Backlog
 
-- Task 3.5 — Edit / Delete Profile.
 - Task 3.6 — Active Profile Selector.
 - Task 3.7 — Profile Export / Import.
 - Task 3.8 — Privacy Copy and Debug Profile State.

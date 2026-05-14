@@ -22,14 +22,29 @@ function profileName(profile) {
   return typeof profile?.name === 'string' ? profile.name.trim() : '';
 }
 
+function profileId(profile) {
+  return typeof profile?.id === 'string' && profile.id.trim() ? profile.id.trim() : '';
+}
+
 export function describeProfilesShell(profiles = []) {
-  const names = Array.isArray(profiles) ? profiles.map(profileName).filter(Boolean) : [];
+  const profileItems = Array.isArray(profiles)
+    ? profiles
+      .map((profile) => ({
+        id: profileId(profile),
+        label: profileName(profile),
+        editable: Boolean(profileId(profile)),
+      }))
+      .filter((profile) => profile.label)
+    : [];
 
   return {
     currentLabel: GENERAL_PROFILE_LABEL,
-    items: [GENERAL_PROFILE_LABEL, ...names],
-    emptyTitle: names.length ? '' : PROFILE_EMPTY_TITLE,
-    emptyHint: names.length ? '' : PROFILE_EMPTY_HINT,
+    items: [
+      { id: '', label: GENERAL_PROFILE_LABEL, editable: false },
+      ...profileItems,
+    ],
+    emptyTitle: profileItems.length ? '' : PROFILE_EMPTY_TITLE,
+    emptyHint: profileItems.length ? '' : PROFILE_EMPTY_HINT,
     addButtonLabel: PROFILE_ADD_BUTTON_LABEL,
     addButtonHelp: PROFILE_ADD_BUTTON_HELP,
     privacyCopy: PROFILE_PRIVACY_COPY,
@@ -40,4 +55,34 @@ export function describeProfileValidationErrors(errors = []) {
   return Array.isArray(errors)
     ? errors.map((error) => ERROR_MESSAGES[error] ?? error).filter(Boolean)
     : [];
+}
+
+export function describeProfileFormMode(mode = 'create') {
+  const isEdit = mode === 'edit';
+
+  return {
+    title: isEdit ? 'Редактировать профиль' : 'Добавить профиль',
+    deleteVisible: isEdit,
+  };
+}
+
+export function describeProfileFormValues(profile = {}) {
+  return {
+    name: profileName(profile),
+    birthDate: typeof profile.birthDate === 'string' ? profile.birthDate.trim() : '',
+    birthTime: typeof profile.birthTime === 'string' ? profile.birthTime.trim() : '',
+    birthTimeAccuracy: typeof profile.birthTimeAccuracy === 'string'
+      ? profile.birthTimeAccuracy.trim()
+      : 'exact',
+    birthCity: typeof profile.birthPlace?.city === 'string' ? profile.birthPlace.city.trim() : '',
+    birthCountry: typeof profile.birthPlace?.country === 'string'
+      ? profile.birthPlace.country.trim()
+      : '',
+    birthTimezone:
+      typeof profile.birthPlace?.timezone === 'string' && profile.birthPlace.timezone.trim()
+        ? profile.birthPlace.timezone.trim()
+        : 'Europe/Moscow',
+    houseSystem: typeof profile.houseSystem === 'string' ? profile.houseSystem.trim() : 'wholeSign',
+    zodiac: typeof profile.zodiac === 'string' ? profile.zodiac.trim() : 'tropical',
+  };
 }

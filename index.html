@@ -77,6 +77,7 @@
             </button>
             <p class="profile-next-step" data-profile-next-step></p>
             <form class="profile-form" data-profile-form hidden novalidate>
+              <h3 data-profile-form-title>Добавить профиль</h3>
               <div class="profile-form-grid">
                 <label>
                   Имя
@@ -128,9 +129,12 @@
               <p class="profile-form-place">Текущее место расчета: Москва, Россия, Europe/Moscow.</p>
               <ul class="profile-form-errors" data-profile-form-errors hidden></ul>
               <div class="profile-form-actions">
-                <button type="submit">Сохранить профиль</button>
+                <button type="submit">Сохранить</button>
                 <button type="button" data-profile-form-cancel>Отмена</button>
               </div>
+              <button type="button" class="profile-delete-button" data-profile-delete hidden>
+                Удалить профиль
+              </button>
             </form>
             <p class="profile-privacy" data-profile-privacy>
               Данные карты хранятся только на этом устройстве.

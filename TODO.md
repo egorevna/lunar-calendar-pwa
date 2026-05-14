@@ -849,25 +849,27 @@ Defaults:
 - houseSystem: Whole Sign;
 - zodiac: tropical.
 
-# Active Task
+# Completed Task
 
 ## Task 3.5 — Edit / Delete Profile
 
-Status: active
+Status: done
 
 Allow profile editing and deletion.
 
 Deleting a profile must require confirmation. Deleting active profile switches app to `Общий день`.
 
-# Sprint 3 Backlog
+# Active Task
 
 ## Task 3.6 — Active Profile Selector
 
-Status: not started
+Status: active
 
 Allow selecting active profile on main dashboard.
 
 Default active profile is `Общий день`. Main app calculations remain general for now.
+
+# Sprint 3 Backlog
 
 ## Task 3.7 — Profile Export / Import
 

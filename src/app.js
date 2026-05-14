@@ -52,13 +52,23 @@ import {
   getBestWindowsDebug,
 } from './bestWindows.js';
 import { createProfileDraft } from './profileModel.js';
-import { addProfile, loadProfiles } from './profileStorage.js';
 import {
+  addProfile,
+  deleteProfile,
+  loadProfiles,
+  updateProfile,
+} from './profileStorage.js';
+import {
+  describeProfileFormMode,
+  describeProfileFormValues,
   describeProfilesShell,
   describeProfileValidationErrors,
 } from './profileUi.js';
 
 let selectedDashboardMode = DEFAULT_DASHBOARD_MODE;
+let editingProfileId = null;
+
+const DELETE_PROFILE_CONFIRMATION = 'Удалить профиль? Это действие нельзя отменить.';
 
 const elements = {
   date: document.querySelector('[data-date]'),
@@ -99,8 +109,10 @@ const elements = {
   profileAdd: document.querySelector('[data-profile-add]'),
   profileNextStep: document.querySelector('[data-profile-next-step]'),
   profileForm: document.querySelector('[data-profile-form]'),
+  profileFormTitle: document.querySelector('[data-profile-form-title]'),
   profileFormErrors: document.querySelector('[data-profile-form-errors]'),
   profileFormCancel: document.querySelector('[data-profile-form-cancel]'),
+  profileDelete: document.querySelector('[data-profile-delete]'),
   profilePrivacy: document.querySelector('[data-profile-privacy]'),
   bestWindowCard: document.querySelector('[data-best-window-card]'),
   bestWindowTitle: document.querySelector('[data-best-window-title]'),
@@ -257,10 +269,18 @@ function renderWarnings(warnings = []) {
 
 function renderProfilesShell(view) {
   elements.profileCurrent.textContent = view.currentLabel;
-  elements.profilesList.replaceChildren(...view.items.map((text) => {
+  elements.profilesList.replaceChildren(...view.items.map((profile) => {
     const item = document.createElement('li');
-    item.textContent = text;
-    if (text === view.currentLabel) item.className = 'profile-general-item';
+    if (profile.editable) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = profile.label;
+      button.dataset.profileEdit = profile.id;
+      item.append(button);
+    } else {
+      item.textContent = profile.label;
+      item.className = 'profile-general-item';
+    }
     return item;
   }));
   elements.profilesEmpty.hidden = !view.emptyTitle;
@@ -271,25 +291,24 @@ function renderProfilesShell(view) {
   elements.profilePrivacy.textContent = view.privacyCopy;
 }
 
-function profileFromForm(form) {
+function profileFromForm(form, baseProfile = createProfileDraft()) {
   const data = new FormData(form);
   const birthTimeAccuracy = String(data.get('birthTimeAccuracy') ?? 'exact');
-  const draft = createProfileDraft();
 
   return {
-    ...draft,
+    ...baseProfile,
     name: String(data.get('name') ?? ''),
     birthDate: String(data.get('birthDate') ?? ''),
     birthTime: birthTimeAccuracy === 'unknown' ? '' : String(data.get('birthTime') ?? ''),
     birthTimeAccuracy,
     birthPlace: {
-      ...draft.birthPlace,
+      ...baseProfile.birthPlace,
       city: String(data.get('birthCity') ?? ''),
       country: String(data.get('birthCountry') ?? ''),
       timezone: String(data.get('birthTimezone') ?? ''),
     },
     currentPlace: {
-      ...draft.currentPlace,
+      ...baseProfile.currentPlace,
       mode: 'moscow',
       city: 'Москва',
       country: 'Россия',
@@ -300,16 +319,40 @@ function profileFromForm(form) {
   };
 }
 
-function setProfileFormOpen(isOpen) {
+function setProfileFormOpen(isOpen, profile = null) {
+  editingProfileId = profile?.id ?? null;
+  const modeView = describeProfileFormMode(editingProfileId ? 'edit' : 'create');
+
   elements.profileForm.hidden = !isOpen;
   elements.profileAdd.hidden = isOpen;
   elements.profileNextStep.hidden = isOpen;
+  elements.profileFormTitle.textContent = modeView.title;
+  elements.profileDelete.hidden = !modeView.deleteVisible;
 
-  if (!isOpen) {
+  if (isOpen) {
+    fillProfileForm(profile);
+    renderProfileFormErrors([]);
+  } else {
+    editingProfileId = null;
     elements.profileForm.reset();
     updateBirthTimeState();
     renderProfileFormErrors([]);
   }
+}
+
+function fillProfileForm(profile = null) {
+  const values = describeProfileFormValues(profile ?? createProfileDraft());
+
+  elements.profileForm.elements.name.value = values.name;
+  elements.profileForm.elements.birthDate.value = values.birthDate;
+  elements.profileForm.elements.birthTime.value = values.birthTime;
+  elements.profileForm.elements.birthTimeAccuracy.value = values.birthTimeAccuracy;
+  elements.profileForm.elements.birthCity.value = values.birthCity;
+  elements.profileForm.elements.birthCountry.value = values.birthCountry;
+  elements.profileForm.elements.birthTimezone.value = values.birthTimezone;
+  elements.profileForm.elements.houseSystem.value = values.houseSystem;
+  elements.profileForm.elements.zodiac.value = values.zodiac;
+  updateBirthTimeState();
 }
 
 function renderProfileFormErrors(errors) {
@@ -334,13 +377,28 @@ function updateBirthTimeState() {
 function handleProfileFormSubmit(event) {
   event.preventDefault();
 
-  const result = addProfile(profileFromForm(elements.profileForm));
+  const currentProfile = editingProfileId
+    ? loadProfiles().find((profile) => profile.id === editingProfileId)
+    : null;
+  const formProfile = profileFromForm(elements.profileForm, currentProfile ?? createProfileDraft());
+  const result = editingProfileId
+    ? updateProfile(editingProfileId, formProfile)
+    : addProfile(formProfile);
 
   if (!result.ok) {
     renderProfileFormErrors(describeProfileValidationErrors(result.errors));
     return;
   }
 
+  setProfileFormOpen(false);
+  renderProfilesShell(describeProfilesShell(loadProfiles()));
+}
+
+function handleProfileDelete() {
+  if (!editingProfileId) return;
+  if (!window.confirm(DELETE_PROFILE_CONFIRMATION)) return;
+
+  deleteProfile(editingProfileId);
   setProfileFormOpen(false);
   renderProfilesShell(describeProfilesShell(loadProfiles()));
 }
@@ -416,9 +474,21 @@ elements.profileAdd.addEventListener('click', () => {
   setProfileFormOpen(true);
 });
 
+elements.profilesList.addEventListener('click', (event) => {
+  const button = event.target.closest('[data-profile-edit]');
+  if (!button) return;
+
+  const profile = loadProfiles().find((item) => item.id === button.dataset.profileEdit);
+  if (!profile) return;
+
+  setProfileFormOpen(true, profile);
+});
+
 elements.profileFormCancel.addEventListener('click', () => {
   setProfileFormOpen(false);
 });
+
+elements.profileDelete.addEventListener('click', handleProfileDelete);
 
 elements.profileForm.addEventListener('change', (event) => {
   if (event.target.name === 'birthTimeAccuracy') {

@@ -303,6 +303,15 @@ button {
   line-height: 1.15;
 }
 
+.profiles-list button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+
 .profiles-list .profile-general-item {
   border-color: rgba(244, 199, 127, 0.28);
   color: var(--gold);
@@ -374,6 +383,13 @@ button {
   margin-top: 14px;
   padding-top: 13px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.profile-form h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(19px, 5vw, 24px);
+  line-height: 1.1;
 }
 
 .profile-form-grid {
@@ -455,6 +471,20 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(9, 22, 36, 0.48);
   color: rgba(255, 248, 239, 0.66);
+}
+
+.profile-delete-button {
+  min-height: 38px;
+  border: 1px solid rgba(255, 120, 92, 0.38);
+  border-radius: 999px;
+  background: rgba(255, 120, 92, 0.1);
+  color: #ffcfb9;
+  font-size: clamp(13px, 3.5vw, 15px);
+  font-weight: 700;
+}
+
+.profile-delete-button[hidden] {
+  display: none;
 }
 
 .glass-card {
