@@ -456,6 +456,23 @@ Current responsibilities:
 If no good windows are returned, the card renders a calm mode-specific fallback from the display formatter.
 When `?debug=1` is active, `src/app.js` also requests best-window debug data and passes it to `src/debugPanel.js`.
 
+## `src/profileModel.js`
+
+Defines the Sprint 3 profile domain model and validation helpers.
+
+Current responsibilities:
+
+- create a unique profile id with `crypto.randomUUID()` when available and a dependency-free fallback;
+- create an empty safe profile draft with Moscow defaults;
+- expose default profile settings for birth time accuracy, house system, zodiac, and current calculation place;
+- normalize partial profile input into a complete profile object;
+- trim user text fields;
+- reject unsupported enum values during validation;
+- validate required profile fields and return testable errors;
+- expose a boolean `isValidProfile()` wrapper.
+
+The module does not store profiles, does not use `localStorage`, does not render UI, does not call geocoding APIs, and does not calculate natal charts, houses, ASC / MC, or personal transits.
+
 ## `scripts/generate-ephemeris.cjs`
 
 Generates Swiss Ephemeris data.
@@ -561,9 +578,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 15. `src/bestWindows.js` calculates best-window candidates for the selected mode, provides the compact dashboard view model, and exposes debug reasoning for the hidden debug panel.
 
-16. `src/debugPanel.js` formats the hidden debug panel when enabled.
+16. `src/profileModel.js` defines the local-first profile data model, defaults, normalization, and validation helpers.
 
-17. `src/app.js` updates DOM elements on the main dashboard, mode selector, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
+17. `src/debugPanel.js` formats the hidden debug panel when enabled.
+
+18. `src/app.js` updates DOM elements on the main dashboard, mode selector, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 
@@ -1255,13 +1274,19 @@ Profiles and natal data are sensitive.
 
 Before implementing profiles, privacy rules must be explicit and local-first storage should be designed.
 
-## Sprint 3 Planning Note
+## Sprint 3 Profile Foundation
 
-Sprint 3 plans local profile management, but no profile modules exist yet.
+Sprint 3 local profile management has started with `src/profileModel.js`.
 
-Planned work may introduce profile model, storage, and UI layers in later tasks, but this document must only describe them as actual architecture after those files are implemented.
+The current implemented profile layer is limited to:
 
-Until Task 3.1 is implemented, the app has no `src/profileModel.js`, `src/profileStorage.js`, or profile UI module.
+- profile draft creation;
+- profile defaults;
+- profile normalization;
+- profile validation;
+- profile id creation.
+
+The app still has no `src/profileStorage.js` and no profile UI module.
 
 Sprint 3 must not implement natal chart calculations, houses, Ascendant / MC, personal transits, personal recommendations, backend sync, or external geocoding without an explicit later task.
 
@@ -1281,4 +1306,4 @@ Core logic:
 
 Current priority:
 
-Prepare Sprint 3 profile data model while keeping natal charts, houses, personal transits, and personal recommendations out of scope.
+Prepare Sprint 3 local profile storage while keeping natal charts, houses, personal transits, and personal recommendations out of scope.

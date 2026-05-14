@@ -766,11 +766,11 @@ Add local profile management foundation.
 
 Do not implement natal charts, personal transits, house calculations, Ascendant / MC, cloud sync, backend, geocoding API, or personal recommendations in this sprint.
 
-# Active Task
+# Completed Task
 
 ## Task 3.1 — Add Profile Data Model
 
-Status: active
+Status: done
 
 ### Goal
 
@@ -808,11 +808,11 @@ Create profile data model and validation helpers.
 - No natal chart.
 - No personal transits.
 
-# Sprint 3 Backlog
+# Active Task
 
 ## Task 3.2 — Add Local Profile Storage
 
-Status: not started
+Status: active
 
 Use localStorage for profile persistence and activeProfileId.
 
@@ -823,6 +823,8 @@ Acceptance criteria:
 - deleting active profile resets active profile to `Общий день`;
 - corrupted storage does not crash app;
 - tests pass.
+
+# Sprint 3 Backlog
 
 ## Task 3.3 — Add Profiles UI Shell / “Мои карты”
 

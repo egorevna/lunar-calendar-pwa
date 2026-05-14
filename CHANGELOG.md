@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-05-14 — Complete Task 3.1 profile data model
+
+- Добавлен `src/profileModel.js` с profile draft/defaults, normalization и validation helpers.
+- Добавлены allowed values для точности времени рождения, системы домов, зодиака и режима текущего места.
+- Добавлены тесты `test/profileModel.test.js`.
+- Storage, UI, `localStorage`, натальная карта и персональные транзиты не добавлялись.
+- Task 3.2 оставлена следующей активной задачей и не начиналась.
+
 ## 2026-05-14 — Prepare Sprint 3 documentation
 
 - Sprint 1 and Sprint 2 зафиксированы как завершенные.
