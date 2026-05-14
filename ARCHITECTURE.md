@@ -394,10 +394,10 @@ Current behavior:
 
 - reads `debug=1` from URL query parameters;
 - returns hidden-panel text for calculation verification;
-- includes calculated time, `debugDate` status, Moscow day system, Moon sign, VOC, Moon aspects, indicators, best-window debug reasoning, ephemeris range/source, and cache version;
+- includes calculated time, `debugDate` status, Moscow day system, Moon sign, VOC, Moon aspects, indicators, safe profile debug state, safe personal debug state, best-window debug reasoning, ephemeris range/source, and cache version;
 - allows technical timestamps with seconds because this is debug-only.
 
-The debug panel does not store data and does not expose birth data or full profile data.
+The debug panel does not store data and does not expose birth data, raw place objects, raw coordinates or full profile data.
 
 ## `src/dashboardModes.js`
 
@@ -628,7 +628,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v56
+lunar-calendar-v57
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -699,7 +699,7 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 22. `src/personalRecommendations.js` converts personal context into safe `goodNow`, `nextSteps`, and `cautions` sections for the `Лично для меня` dashboard block.
 
-23. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state without birth details.
+23. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state and safe personal readiness/capability state without birth details.
 
 24. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
@@ -998,8 +998,10 @@ Current debug information:
 - source of VOC calculation
 - previous Moon aspect
 - next Moon aspect
-- calculation coordinates
+- calculation point
 - ephemeris version
+- safe profile count / active profile id / active profile name
+- safe personal readiness status and unavailable personal-calculation capabilities
 
 Files involved:
 
@@ -1041,7 +1043,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v56
+lunar-calendar-v57
 ```
 
 Important operational rule:
@@ -1342,7 +1344,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v56
+lunar-calendar-v57
 ```
 
 If this value changes in `sw.js`, update this section.

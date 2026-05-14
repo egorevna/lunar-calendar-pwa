@@ -89,6 +89,26 @@ test('debug panel marks debugDate as active and includes key sections', () => {
       serverUpload: 'disabled',
       importExport: 'enabled',
     },
+    personalDebug: {
+      profilesCount: 2,
+      activeProfileId: 'profile-egor',
+      activeProfileName: 'Егор',
+      hasActiveProfile: true,
+      personalStatus: 'calculationLimited',
+      profilesStorage: 'localStorage',
+      sync: 'disabled',
+      serverUpload: 'disabled',
+      geocoding: 'disabled',
+      natalEngine: 'not connected',
+      capabilities: {
+        canCalculateNatalPlanets: false,
+        canCalculateHouses: false,
+        canCalculateAscMc: false,
+        canCalculatePersonalTransits: false,
+      },
+      missingFields: ['координаты места рождения'],
+      warnings: ['Время рождения неизвестно — дома и ASC/MC недоступны.'],
+    },
   });
 
   assert.equal(text.includes('Time'), true);
@@ -111,12 +131,29 @@ test('debug panel marks debugDate as active and includes key sections', () => {
   assert.equal(text.includes('sync: disabled'), true);
   assert.equal(text.includes('serverUpload: disabled'), true);
   assert.equal(text.includes('importExport: enabled'), true);
+  assert.equal(text.includes('Personal Debug'), true);
+  assert.equal(text.includes('hasActiveProfile: yes'), true);
+  assert.equal(text.includes('personalStatus: calculationLimited'), true);
+  assert.equal(text.includes('profilesStorage: localStorage'), true);
+  assert.equal(text.includes('geocoding: disabled'), true);
+  assert.equal(text.includes('natalEngine: not connected'), true);
+  assert.equal(text.includes('canCalculateNatalPlanets: no'), true);
+  assert.equal(text.includes('canCalculateHouses: no'), true);
+  assert.equal(text.includes('canCalculateAscMc: no'), true);
+  assert.equal(text.includes('canCalculatePersonalTransits: no'), true);
+  assert.equal(text.includes('missingFields: координаты места рождения'), true);
+  assert.equal(text.includes('warnings: Время рождения неизвестно'), true);
   assert.equal(text.includes('birthDate'), false);
   assert.equal(text.includes('birthTime'), false);
   assert.equal(text.includes('birthPlace'), false);
   assert.equal(text.includes('latitude'), false);
   assert.equal(text.includes('longitude'), false);
+  assert.equal(text.includes('coordinates'), false);
   assert.equal(text.includes('profiles: ['), false);
+  assert.equal(text.includes('Луна в 7 доме'), false);
+  assert.equal(text.includes('Марс □ ASC'), false);
+  assert.equal(text.includes('Плутон ☌ Венера'), false);
+  assert.equal(text.includes('орб'), false);
 });
 
 test('debug panel marks normal time when debugDate is not used', () => {
@@ -128,6 +165,7 @@ test('debug panel marks normal time when debugDate is not used', () => {
 
   assert.equal(text.includes('debugDate: inactive'), true);
   assert.equal(text.includes('Best Windows Debug'), false);
+  assert.equal(text.includes('Personal Debug'), false);
 });
 
 test('debug panel shows no-window fallback state and rejected candidates', () => {

@@ -225,6 +225,7 @@ function render() {
       ? getBestWindowsDebug({ selectedMode: selectedDashboardMode, now })
       : null,
     profileDebug: shouldShowDebug ? getProfileDebugState() : null,
+    personalDebug: shouldShowDebug ? getPersonalDebugState() : null,
   });
 }
 
@@ -374,6 +375,42 @@ function getProfileDebugState() {
     serverUpload: 'disabled',
     importExport: 'enabled',
   };
+}
+
+function getPersonalDebugState() {
+  const profiles = loadProfiles();
+  const activeProfileId = getActiveProfileId();
+  const activeProfile = profiles.find((profile) => profile.id === activeProfileId) ?? null;
+  const personalContext = createPersonalContext(activeProfile);
+
+  return {
+    profilesCount: profiles.length,
+    activeProfileId,
+    activeProfileName: personalContext.profileName ?? 'Общий день',
+    hasActiveProfile: personalContext.hasActiveProfile,
+    personalStatus: personalContext.status,
+    profilesStorage: 'localStorage',
+    sync: 'disabled',
+    serverUpload: 'disabled',
+    geocoding: 'disabled',
+    natalEngine: 'not connected',
+    capabilities: personalContext.capabilities,
+    missingFields: describePersonalDebugMissingFields(personalContext.missingFields),
+    warnings: personalContext.warnings,
+  };
+}
+
+function describePersonalDebugMissingFields(fields = []) {
+  const labels = {
+    birthDate: 'дата рождения',
+    birthTime: 'время рождения',
+    'birthPlace.coordinates': 'координаты места рождения',
+    'birthPlace.timezone': 'часовой пояс места рождения',
+  };
+
+  return Array.isArray(fields)
+    ? fields.map((field) => labels[field]).filter(Boolean)
+    : [];
 }
 
 function profileFromForm(form, baseProfile = createProfileDraft()) {

@@ -685,13 +685,29 @@ Task 4.5 — Safe Personal Recommendations MVP
 - натал, дома, ASC / MC, Moon in natal house, персональные транзиты, орбы и personal ritual scoring не добавлялись;
 - PWA cache поднят до `lunar-calendar-v56`.
 
-Текущая активная задача:
+Завершенная задача:
 
 ```txt
 Task 4.6 — Debug Personal Calculations
 ```
 
-Task 4.6 должна добавить безопасную debug-видимость personal readiness / recommendations без дампа birth data и без натальных расчетов.
+Результат Task 4.6:
+
+- debug-панель при `?debug=1` получила безопасную секцию `Personal Debug`;
+- секция показывает `activeProfileId`, `activeProfileName`, `hasActiveProfile`, personal status, profile count, storage/sync/server/geocoding state и `natalEngine: not connected`;
+- capabilities для natal planets, houses, ASC / MC и personal transits явно показываются как недоступные;
+- missing fields выводятся только человеческими label-ами, без raw birth values;
+- `birthDate`, `birthTime`, raw place objects, raw coordinates и полный profile JSON не выводятся;
+- натал, дома, ASC / MC, персональные транзиты, орбы и personal ritual scoring не добавлялись;
+- PWA cache поднят до `lunar-calendar-v57`.
+
+Текущая активная задача:
+
+```txt
+Task 4.7 — Sprint 4 Hardening
+```
+
+Task 4.7 должна закрепить Sprint 4 без добавления натальных расчетов.
 
 Завершенная задача:
 
@@ -838,10 +854,10 @@ Sprint 4 — Personal Moment Foundation / Лично для меня
 Текущий следующий шаг:
 
 ```txt
-Task 4.6 — Debug Personal Calculations
+Task 4.7 — Sprint 4 Hardening
 ```
 
-В Task 4.6 нужно добавить безопасный debug-слой для personal readiness / recommendations. Натал, дома, ASC / MC, персональные транзиты и фейковые личные расчеты не делать.
+В Task 4.7 нужно закрепить Sprint 4 после добавления safe personal context/debug state. Натал, дома, ASC / MC, персональные транзиты и фейковые личные расчеты не делать.
 
 В Sprint 4 пока НЕ делается:
 
@@ -1467,7 +1483,7 @@ git commit -m "checkpoint before continuing in new codex chat"
 Текущая версия:
 
 ```txt
-lunar-calendar-v56
+lunar-calendar-v57
 ```
 
 ## Moscow Hardcoding
@@ -1517,13 +1533,13 @@ lunar-calendar-v56
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 4.6 — Debug Personal Calculations.
+Выполнить Task 4.7 — Sprint 4 Hardening.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 4.7.
+2. Не начинать следующий спринт.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или фейковые личные расчеты.
@@ -1539,4 +1555,4 @@ lunar-calendar-v56
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2 и Sprint 3 завершены. Активный спринт — Sprint 4; Task 4.1, Task 4.2, Task 4.3, Task 4.4 и Task 4.5 завершены, следующая задача — Task 4.6 — Debug Personal Calculations.
+Sprint 1, Sprint 2 и Sprint 3 завершены. Активный спринт — Sprint 4; Task 4.1, Task 4.2, Task 4.3, Task 4.4, Task 4.5 и Task 4.6 завершены, следующая задача — Task 4.7 — Sprint 4 Hardening.

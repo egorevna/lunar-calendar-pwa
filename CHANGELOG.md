@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-14 — Complete Task 4.6 personal debug safety
+
+- Debug-панель при `?debug=1` получила секцию `Personal Debug`.
+- Секция показывает только безопасное состояние профиля: active id/name, status, storage/sync/server/geocoding flags, unavailable capabilities, missing-field labels и warnings.
+- Birth date, birth time, raw place objects, raw coordinates, full profile JSON и fake natal/transit claims не выводятся.
+- Натал, дома, ASC / MC, персональные транзиты и орбы не добавлялись.
+- PWA-кэш обновлен до `lunar-calendar-v57`.
+- Task 4.7 оставлена следующей активной задачей и не начиналась.
+
 ## 2026-05-14 — Soften personal recommendations copy
 
 - В блоке `Лично для меня` убраны технические user-facing формулировки про `натальный расчетный движок`.

@@ -1096,15 +1096,23 @@ Add safe personal recommendations based only on profile readiness / context, wit
 - Do not add geocoding.
 - Do not add new dependencies.
 
-# Active Task
+# Completed Task
 
 ## Task 4.6 — Debug Personal Calculations
 
-Status: not started
+Status: done
 
 ### Goal
 
 Add safe debug visibility for personal readiness / recommendations without dumping sensitive birth data and without adding natal calculations.
+
+### Result
+
+- Added a hidden `Personal Debug` section to `?debug=1`.
+- The debug section shows active profile id/name, profile count, personal status, storage/sync/server/geocoding state, natal-engine state, safe missing-field labels, warnings and calculation capabilities.
+- Capabilities for natal planets, houses, ASC / MC and personal transits remain explicitly unavailable.
+- Sensitive birth values, raw place objects, raw coordinates and full profile JSON are not shown.
+- PWA cache updated to `lunar-calendar-v57`.
 
 ### Boundaries
 
@@ -1117,9 +1125,20 @@ Add safe debug visibility for personal readiness / recommendations without dumpi
 - Do not add geocoding.
 - Do not add new dependencies.
 
-# Sprint 4 Backlog
+# Active Task
 
-- Task 4.7 — Sprint 4 Hardening
+## Task 4.7 — Sprint 4 Hardening
+
+Status: not started
+
+### Goal
+
+Harden Sprint 4 after the safe personal-context/debug foundation is complete.
+
+### Boundaries
+
+- Do not start Sprint 5.
+- Do not add natal calculations without a reliable calculation engine.
 
 # Do Not Do Now
 

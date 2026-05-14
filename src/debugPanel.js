@@ -1,6 +1,6 @@
 import { formatAspect, formatPlanet } from './vocDisplay.js';
 
-export const APP_CACHE_VERSION = 'lunar-calendar-v56';
+export const APP_CACHE_VERSION = 'lunar-calendar-v57';
 
 export function isDebugMode(search = window.location.search) {
   return new URLSearchParams(search).get('debug') === '1';
@@ -18,6 +18,7 @@ export function describeDebugPanel(context = {}) {
     indicators,
     ephemeris,
     bestWindowsDebug,
+    personalDebug,
   } = context;
 
   return [
@@ -29,7 +30,7 @@ export function describeDebugPanel(context = {}) {
     formatSection('Day system', [
       'base: MSK',
       'calculation place: Moscow',
-      'coordinates: Moscow default / not stored',
+      'calculation point: Moscow default / not stored',
       'energetic day: changes at 23:00 MSK',
       `Jie Qi month branch: ${solarMonthBranch ?? 'нет данных'}`,
     ]),
@@ -66,6 +67,7 @@ export function describeDebugPanel(context = {}) {
       `cache: ${APP_CACHE_VERSION}`,
     ]),
     formatProfileDebug(context.profileDebug),
+    formatPersonalDebug(personalDebug),
     formatBestWindowsDebug(bestWindowsDebug),
   ].filter(Boolean).join('\n\n');
 }
@@ -149,6 +151,35 @@ function formatProfileDebug(debug) {
   ]);
 }
 
+function formatPersonalDebug(debug) {
+  if (!debug) return '';
+
+  const capabilities = debug.capabilities ?? {};
+
+  return formatSection('Personal Debug', [
+    `profilesCount: ${debug.profilesCount ?? 0}`,
+    `activeProfileId: ${debug.activeProfileId ?? 'null'}`,
+    `activeProfileName: ${debug.activeProfileName ?? 'Общий день'}`,
+    `hasActiveProfile: ${formatDebugBoolean(debug.hasActiveProfile)}`,
+    `personalStatus: ${debug.personalStatus ?? 'general'}`,
+    `profilesStorage: ${debug.profilesStorage ?? 'localStorage'}`,
+    `sync: ${debug.sync ?? 'disabled'}`,
+    `serverUpload: ${debug.serverUpload ?? 'disabled'}`,
+    `geocoding: ${debug.geocoding ?? 'disabled'}`,
+    `natalEngine: ${debug.natalEngine ?? 'not connected'}`,
+    `canCalculateNatalPlanets: ${formatDebugBoolean(capabilities.canCalculateNatalPlanets)}`,
+    `canCalculateHouses: ${formatDebugBoolean(capabilities.canCalculateHouses)}`,
+    `canCalculateAscMc: ${formatDebugBoolean(capabilities.canCalculateAscMc)}`,
+    `canCalculatePersonalTransits: ${formatDebugBoolean(capabilities.canCalculatePersonalTransits)}`,
+    `missingFields: ${formatList(debug.missingFields)}`,
+    `warnings: ${formatList(debug.warnings)}`,
+  ]);
+}
+
 function formatList(items) {
   return Array.isArray(items) && items.length ? items.join(', ') : 'нет данных';
+}
+
+function formatDebugBoolean(value) {
+  return value ? 'yes' : 'no';
 }
