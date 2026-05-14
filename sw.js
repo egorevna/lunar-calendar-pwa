@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lunar-calendar-v54';
+const CACHE_NAME = 'lunar-calendar-v56';
 const ASSETS = [
   './',
   'index.html',
@@ -19,6 +19,7 @@ const ASSETS = [
   'src/profileUi.js',
   'src/profileImportExport.js',
   'src/personalContext.js',
+  'src/personalRecommendations.js',
   'src/dayIndicators.js',
   'src/debugDate.js',
   'src/debugPanel.js',

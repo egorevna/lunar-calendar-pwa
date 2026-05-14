@@ -126,7 +126,7 @@ const elements = {
   personalContextCard: document.querySelector('[data-personal-context-card]'),
   personalContextTitle: document.querySelector('[data-personal-context-title]'),
   personalContextSummary: document.querySelector('[data-personal-context-summary]'),
-  personalContextList: document.querySelector('[data-personal-context-list]'),
+  personalContextSections: document.querySelector('[data-personal-context-sections]'),
   bestWindowCard: document.querySelector('[data-best-window-card]'),
   bestWindowTitle: document.querySelector('[data-best-window-title]'),
   bestWindowTimes: document.querySelector('[data-best-window-times]'),
@@ -339,7 +339,25 @@ function renderPersonalContextBlock(view) {
   elements.personalContextCard.hidden = view.hidden;
   elements.personalContextTitle.textContent = view.title;
   elements.personalContextSummary.textContent = view.summary;
-  renderSimpleList(elements.personalContextList, view.items);
+  const sections = Array.isArray(view.sections) ? view.sections : [];
+  elements.personalContextSections.replaceChildren(...sections.map((section) => {
+    const sectionElement = document.createElement('section');
+    sectionElement.className = 'personal-context-section';
+
+    const title = document.createElement('h3');
+    title.textContent = section.title;
+    sectionElement.append(title);
+
+    const list = document.createElement('ul');
+    list.replaceChildren(...section.items.map((item) => {
+      const listItem = document.createElement('li');
+      listItem.textContent = item;
+      return listItem;
+    }));
+    sectionElement.append(list);
+
+    return sectionElement;
+  }));
 }
 
 function getProfileDebugState() {

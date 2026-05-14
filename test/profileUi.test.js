@@ -152,6 +152,7 @@ test('personal context block is hidden for general day', () => {
   assert.equal(view.title, '');
   assert.equal(view.summary, '');
   assert.deepEqual(view.items, []);
+  assert.deepEqual(view.sections, []);
 });
 
 test('personal context block describes selected profile without sensitive fields', () => {
@@ -172,9 +173,32 @@ test('personal context block describes selected profile without sensitive fields
   assert.equal(view.title, 'Лично для Егора');
   assert.equal(
     view.summary,
-    'Профиль выбран. Сейчас доступны общие рекомендации момента; личные дома и транзиты будут добавлены после подключения натального расчетного движка.',
+    'Профиль выбран. Пока рекомендации основаны на общем моменте и выбранном режиме.',
   );
   assert.deepEqual(view.items, ['Натальные дома, ASC/MC и персональные транзиты пока не рассчитываются.']);
+  assert.deepEqual(view.sections, [
+    {
+      title: 'Можно сейчас',
+      items: [
+        'использовать общий момент и режим',
+        'смотреть лучшие окна как ориентир',
+        'подготовить данные профиля',
+      ],
+    },
+    {
+      title: 'Для точного личного расчета',
+      items: ['уточнить время и место рождения, если нужно'],
+    },
+    {
+      title: 'Важно',
+      items: [
+        'это пока не личный транзит',
+        'дома и ASC/MC будут доступны после подключения натального расчета',
+      ],
+    },
+  ]);
+  assert.equal(text.includes('подключить натальный расчетный движок'), false);
+  assert.equal(text.includes('личный натальный расчет пока не подключен'), false);
   assert.equal(text.includes('birthDate'), false);
   assert.equal(text.includes('birthTime'), false);
   assert.equal(text.includes('latitude'), false);
@@ -202,6 +226,14 @@ test('personal context block maps missing fields to human copy and limits items'
     'Не хватает: часовой пояс места рождения',
     'Не хватает: время рождения',
   ]);
+  assert.deepEqual(view.sections[1], {
+    title: 'Для точного личного расчета',
+    items: [
+      'координаты места рождения',
+      'часовой пояс места рождения',
+      'время рождения',
+    ],
+  });
   assert.equal(view.items.length <= 3, true);
   assert.equal(JSON.stringify(view).includes('birthPlace.coordinates'), false);
 });

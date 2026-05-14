@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-05-14 — Soften personal recommendations copy
+
+- В блоке `Лично для меня` убраны технические user-facing формулировки про `натальный расчетный движок`.
+- Summary и пункты `Можно сейчас` / `Для точного личного расчета` / `Важно` стали короче и мягче.
+- Readiness / capabilities logic не менялась; Task 4.6 не начиналась.
+- PWA-кэш обновлен до `lunar-calendar-v56`.
+
+## 2026-05-14 — Complete Task 4.5 safe personal recommendations MVP
+
+- Добавлен `src/personalRecommendations.js`.
+- Блок `Лично для меня` получил безопасные секции `Можно сейчас`, `Нужно добавить` / `Для точного личного расчета` и `Важно`.
+- Missing profile fields переводятся в человеческие next steps без технических ключей и sensitive values.
+- Copy честно говорит, что личный натальный расчет пока не подключен, а рекомендации основаны на общем моменте.
+- Натал, дома, ASC / MC, Moon in natal house, personal transits, transit orbs и personal ritual scoring не добавлялись.
+- PWA-кэш обновлен до `lunar-calendar-v55`.
+- Task 4.6 оставлена следующей активной задачей и не начиналась.
+
 ## 2026-05-14 — Complete Task 4.4 personal dashboard block
 
 - Добавлен компактный dashboard-блок `Лично для меня`.

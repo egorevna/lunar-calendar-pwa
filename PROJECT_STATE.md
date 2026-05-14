@@ -190,7 +190,7 @@ PWA устанавливается на экран iPhone через Safari.
 Тестовый набор проходит:
 
 ```txt
-193 теста
+201 тест
 ```
 
 ---
@@ -323,7 +323,7 @@ Task 3.5 — Edit / Delete Profile
 
 Нет персональной оценки ритуалов.
 
-Нет safe personal recommendations MVP.
+Есть safe personal recommendations MVP без натальных расчетов.
 
 ---
 
@@ -668,13 +668,30 @@ Task 4.4 — Dashboard Block `Лично для меня`
 - натал, дома, ASC / MC, Moon in natal house, персональные транзиты, орбы и personal ritual scoring не добавлялись;
 - PWA cache поднят до `lunar-calendar-v53`.
 
-Текущая активная задача:
+Завершенная задача:
 
 ```txt
 Task 4.5 — Safe Personal Recommendations MVP
 ```
 
-Task 4.5 должна добавлять только безопасные персональные рекомендации на основе readiness / context, без натала, домов, ASC / MC и персональных транзитов.
+Результат Task 4.5:
+
+- добавлен `src/personalRecommendations.js`;
+- helper возвращает безопасные списки `goodNow`, `nextSteps`, `cautions` для выбранного профиля;
+- блок `Лично для меня` теперь показывает секции `Можно сейчас`, `Нужно добавить` / `Для точного личного расчета`, `Важно`;
+- missing fields переводятся в человеческие шаги: координаты места рождения, часовой пояс, дата или время рождения;
+- блок честно говорит, что личный натальный расчет пока не подключен, а рекомендации основаны на общем моменте;
+- birth date, birth time, coordinates, full profile JSON и технические profile keys не выводятся;
+- натал, дома, ASC / MC, Moon in natal house, персональные транзиты, орбы и personal ritual scoring не добавлялись;
+- PWA cache поднят до `lunar-calendar-v56`.
+
+Текущая активная задача:
+
+```txt
+Task 4.6 — Debug Personal Calculations
+```
+
+Task 4.6 должна добавить безопасную debug-видимость personal readiness / recommendations без дампа birth data и без натальных расчетов.
 
 Завершенная задача:
 
@@ -821,10 +838,10 @@ Sprint 4 — Personal Moment Foundation / Лично для меня
 Текущий следующий шаг:
 
 ```txt
-Task 4.5 — Safe Personal Recommendations MVP
+Task 4.6 — Debug Personal Calculations
 ```
 
-В Task 4.5 нужно добавить safe personal recommendations MVP на основе readiness / context. Натал, дома, ASC / MC, персональные транзиты и фейковые личные рекомендации не делать.
+В Task 4.6 нужно добавить безопасный debug-слой для personal readiness / recommendations. Натал, дома, ASC / MC, персональные транзиты и фейковые личные расчеты не делать.
 
 В Sprint 4 пока НЕ делается:
 
@@ -849,11 +866,10 @@ Task 4.5 — Safe Personal Recommendations MVP
 
 Активная задача:
 
-- Task 4.5 — Safe Personal Recommendations MVP.
+- Task 4.6 — Debug Personal Calculations.
 
 Backlog:
 
-- Task 4.6 — Debug Personal Calculations;
 - Task 4.7 — Sprint 4 hardening / tests.
 
 ---
@@ -1451,7 +1467,7 @@ git commit -m "checkpoint before continuing in new codex chat"
 Текущая версия:
 
 ```txt
-lunar-calendar-v54
+lunar-calendar-v56
 ```
 
 ## Moscow Hardcoding
@@ -1501,16 +1517,16 @@ lunar-calendar-v54
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 4.5 — Safe Personal Recommendations MVP.
+Выполнить Task 4.6 — Debug Personal Calculations.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 4.6.
+2. Не начинать Task 4.7.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
-5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или личные рекомендации.
+5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или фейковые личные расчеты.
 6. После реализации обновить документацию и запустить тесты.
 
 ---
@@ -1523,4 +1539,4 @@ lunar-calendar-v54
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2 и Sprint 3 завершены. Активный спринт — Sprint 4; Task 4.1, Task 4.2, Task 4.3 и Task 4.4 завершены, следующая задача — Task 4.5 — Safe Personal Recommendations MVP.
+Sprint 1, Sprint 2 и Sprint 3 завершены. Активный спринт — Sprint 4; Task 4.1, Task 4.2, Task 4.3, Task 4.4 и Task 4.5 завершены, следующая задача — Task 4.6 — Debug Personal Calculations.

@@ -1062,15 +1062,49 @@ Add a compact dashboard block that uses `src/personalContext.js` for honest pers
 - Do not add geocoding.
 - Do not add new dependencies.
 
-# Active Task
+# Completed Task
 
 ## Task 4.5 — Safe Personal Recommendations MVP
+
+Status: done
+
+### Goal
+
+Add safe personal recommendations based only on profile readiness / context, without natal calculations.
+
+### Result
+
+- Added `src/personalRecommendations.js`.
+- The helper returns compact `goodNow`, `nextSteps`, and `cautions` lists for the active profile.
+- The `Лично для меня` card now shows safe sections:
+  - `Можно сейчас`;
+  - `Нужно добавить` / `Для точного личного расчета`;
+  - `Важно`.
+- Missing profile fields are translated into human-readable next steps.
+- The block states that recommendations are based on the general moment and not personal transits.
+- Natal planets, houses, ASC / MC, Moon in natal house, personal transits, transit orbs and personal ritual scoring remain unavailable.
+- PWA cache updated to `lunar-calendar-v55`.
+
+### Boundaries
+
+- Do not show natal planetary positions.
+- Do not calculate houses.
+- Do not calculate ASC / MC.
+- Do not calculate personal transits.
+- Do not show Moon in natal house.
+- Do not add personal ritual scoring.
+- Do not add geocoding.
+- Do not add new dependencies.
+
+# Active Task
+
+## Task 4.6 — Debug Personal Calculations
 
 Status: not started
 
 ### Goal
 
-Add safe personal recommendations based only on profile readiness / context, without natal calculations.
+Add safe debug visibility for personal readiness / recommendations without dumping sensitive birth data and without adding natal calculations.
 
 ### Boundaries
 
@@ -1085,7 +1119,6 @@ Add safe personal recommendations based only on profile readiness / context, wit
 
 # Sprint 4 Backlog
 
-- Task 4.6 — Debug Personal Calculations
 - Task 4.7 — Sprint 4 Hardening
 
 # Do Not Do Now

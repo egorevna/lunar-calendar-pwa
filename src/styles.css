@@ -806,21 +806,34 @@ button {
   line-height: 1.28;
 }
 
-.personal-context-card ul {
+.personal-context-sections {
+  display: grid;
+  gap: 13px;
+  margin-top: 14px;
+}
+
+.personal-context-section h3 {
+  margin: 0 0 7px;
+  color: rgba(255, 248, 239, 0.72);
+  font-size: clamp(13px, 3.5vw, 16px);
+  line-height: 1.15;
+}
+
+.personal-context-section ul {
   display: grid;
   gap: 8px;
-  margin: 12px 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.personal-context-card li {
+.personal-context-section li {
   color: var(--muted);
   font-size: clamp(13px, 3.5vw, 16px);
   line-height: 1.28;
 }
 
-.personal-context-card li::before {
+.personal-context-section li::before {
   content: "";
   display: inline-block;
   width: 5px;

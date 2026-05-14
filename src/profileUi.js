@@ -1,9 +1,13 @@
+import { getPersonalRecommendations } from './personalRecommendations.js';
+
 export const GENERAL_PROFILE_LABEL = 'Общий день';
 export const PROFILE_PRIVACY_COPY = 'Данные хранятся на этом устройстве и не отправляются на сервер.';
 export const PROFILE_EMPTY_TITLE = 'Пока нет сохраненных карт.';
 export const PROFILE_EMPTY_HINT = 'Начните с добавления профиля.';
 export const PROFILE_ADD_BUTTON_LABEL = '+ Добавить профиль';
 export const PROFILE_ADD_BUTTON_HELP = 'Профили нужны для будущих личных расчетов.';
+const PERSONAL_READY_SUMMARY =
+  'Профиль выбран. Пока рекомендации основаны на общем моменте и выбранном режиме.';
 const PERSONAL_INCOMPLETE_SUMMARY =
   'Профиль выбран, но для глубокого личного расчета не хватает данных.';
 
@@ -112,17 +116,28 @@ export function describePersonalContextBlock(context = {}) {
       title: '',
       summary: '',
       items: [],
+      sections: [],
     };
   }
+  const recommendations = getPersonalRecommendations(context);
 
   return {
     hidden: false,
     title: typeof context.title === 'string' ? context.title : '',
     summary: context.status === 'incomplete'
       ? PERSONAL_INCOMPLETE_SUMMARY
-      : cleanText(context.summary),
+      : PERSONAL_READY_SUMMARY,
     items: getPersonalContextItems(context),
+    sections: getPersonalContextSections(context, recommendations),
   };
+}
+
+function getPersonalContextSections(context, recommendations) {
+  return [
+    section('Можно сейчас', recommendations.goodNow),
+    section('Для точного личного расчета', recommendations.nextSteps),
+    section('Важно', recommendations.cautions),
+  ].filter((item) => item.items.length);
 }
 
 function getPersonalContextItems(context) {
@@ -137,6 +152,13 @@ function getPersonalContextItems(context) {
     ...warnings,
     ...limitations,
   ]).slice(0, 3);
+}
+
+function section(title, items = []) {
+  return {
+    title,
+    items: Array.isArray(items) ? items.map(cleanText).filter(Boolean).slice(0, 3) : [],
+  };
 }
 
 function cleanText(value) {

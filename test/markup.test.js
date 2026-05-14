@@ -101,7 +101,7 @@ test('home screen renders hidden personal context card shell', () => {
   assert.equal(html.includes('data-personal-context-card hidden'), true);
   assert.equal(html.includes('data-personal-context-title'), true);
   assert.equal(html.includes('data-personal-context-summary'), true);
-  assert.equal(html.includes('data-personal-context-list'), true);
+  assert.equal(html.includes('data-personal-context-sections'), true);
   assert.equal(html.includes('Лично для меня'), true);
   assert.equal(appJs.includes('createPersonalContext'), true);
   assert.equal(appJs.includes('describePersonalContextBlock'), true);

@@ -189,7 +189,7 @@ Responsibilities:
 - reads and writes the active profile id through `src/profileStorage.js`
 - handles inline profile creation, editing, and deletion through `src/profileStorage.js`
 - handles local profile export/import actions through `src/profileImportExport.js`
-- renders the compact `Лично для меня` dashboard block through `src/personalContext.js` and `src/profileUi.js`
+- renders the compact `Лично для меня` dashboard block through `src/personalContext.js`, `src/personalRecommendations.js`, and `src/profileUi.js`
 - passes safe profile summary state into the hidden debug panel
 
 `src/app.js` is currently the composition layer.
@@ -397,7 +397,7 @@ Current behavior:
 - includes calculated time, `debugDate` status, Moscow day system, Moon sign, VOC, Moon aspects, indicators, best-window debug reasoning, ephemeris range/source, and cache version;
 - allows technical timestamps with seconds because this is debug-only.
 
-The debug panel does not store data and does not expose profile or birth data.
+The debug panel does not store data and does not expose birth data or full profile data.
 
 ## `src/dashboardModes.js`
 
@@ -513,6 +513,7 @@ Current responsibilities:
 - convert a profile into safe form values for prefill;
 - map profile validation errors into short Russian UI messages;
 - format the compact `Лично для меня` dashboard block from `src/personalContext.js`;
+- include safe personal recommendation sections from `src/personalRecommendations.js`;
 - translate missing personal profile fields into human-readable Russian copy without rendering technical keys.
 
 This module does not store profiles, export/import data, or calculate natal charts / personal transits.
@@ -564,6 +565,21 @@ Current responsibilities:
 
 This helper does not render UI, does not store data, does not call external APIs, and does not calculate natal planets, houses, ASC / MC, Moon in natal house, personal transits, transit orbs, or personal ritual scoring.
 
+## `src/personalRecommendations.js`
+
+Builds safe personal recommendation sections for the `Лично для меня` dashboard block.
+
+Current responsibilities:
+
+- accept the safe context object from `src/personalContext.js`;
+- return compact `goodNow`, `nextSteps`, and `cautions` lists;
+- translate missing profile fields into human-readable next steps;
+- keep each list capped at 3 items;
+- avoid rendering birth date, birth time, coordinates, full profile JSON, or technical missing-field keys;
+- state clearly that recommendations are based on the general moment while natal calculations are unavailable.
+
+This helper does not store data, does not call external APIs, does not calculate natal planets, houses, ASC / MC, Moon in natal house, personal transits, transit orbs, or personal ritual scoring.
+
 ## `scripts/generate-ephemeris.cjs`
 
 Generates Swiss Ephemeris data.
@@ -612,7 +628,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v54
+lunar-calendar-v56
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -681,9 +697,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 21. `src/personalContext.js` converts personal profile readiness into safe user-facing context copy for the `Лично для меня` dashboard block without performing natal calculations.
 
-22. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state without birth details.
+22. `src/personalRecommendations.js` converts personal context into safe `goodNow`, `nextSteps`, and `cautions` sections for the `Лично для меня` dashboard block.
 
-23. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
+23. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state without birth details.
+
+24. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 
@@ -1023,7 +1041,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v54
+lunar-calendar-v56
 ```
 
 Important operational rule:
@@ -1324,7 +1342,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v54
+lunar-calendar-v56
 ```
 
 If this value changes in `sw.js`, update this section.
