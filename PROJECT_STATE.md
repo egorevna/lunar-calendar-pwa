@@ -282,7 +282,7 @@ PWA устанавливается на экран iPhone через Safari.
 Следующая задача:
 
 ```txt
-Task 3.2 — Add Local Profile Storage
+Task 3.3 — Add Profiles UI Shell / “Мои карты”
 ```
 
 Натальная карта, персональные транзиты, дома, ASC/MC и личные рекомендации пока не делаются.
@@ -301,15 +301,15 @@ Task 3.2 — Add Local Profile Storage
 
 Нет автоматической проверки визуального состояния в браузере после каждого изменения.
 
-Есть доменная модель профиля и validation helpers.
+Есть доменная модель профиля, validation helpers и localStorage helper.
 
-Пользовательских сохраненных профилей пока нет.
+Профили можно сохранять в localStorage через `src/profileStorage.js`, но UI для этого пока нет.
 
 Нет натальной карты.
 
 Нет персональных транзитов.
 
-Нет выбора активного профиля.
+Active profile id можно хранить в localStorage helper, но пользовательского selector UI пока нет.
 
 Нет персонального блока `Лично для меня`.
 
@@ -601,10 +601,25 @@ Task 3.1 — Add Profile Data Model
 - defaults остаются московскими и local-first;
 - добавлены тесты `test/profileModel.test.js`.
 
-Следующая активная задача:
+Завершенная задача:
 
 ```txt
 Task 3.2 — Add Local Profile Storage
+```
+
+Что выполнено:
+
+- добавлен `src/profileStorage.js`;
+- профили сохраняются локально в `astroPwa.profiles.v1`;
+- active profile id сохраняется локально в `astroPwa.activeProfileId.v1`;
+- битый JSON, non-array storage и невалидные профили безопасно отфильтровываются;
+- удаление активного профиля сбрасывает active profile в `Общий день`;
+- добавлены тесты `test/profileStorage.test.js`.
+
+Следующая активная задача:
+
+```txt
+Task 3.3 — Add Profiles UI Shell / “Мои карты”
 ```
 
 В Sprint 3 пока НЕ делается:
@@ -622,13 +637,12 @@ Task 3.2 — Add Local Profile Storage
 - geocoding API;
 - автоматическое определение текущего местоположения.
 
-Хранилище, UI и `localStorage` идут дальше по задачам Sprint 3. Task 3.2 еще не начиналась в рамках Task 3.1.
+UI, форма создания профиля и import/export идут дальше по задачам Sprint 3. Task 3.3 еще не начиналась в рамках Task 3.2.
 
 ---
 
 # Sprint 3 Backlog
 
-- Task 3.2 — Add Local Profile Storage.
 - Task 3.3 — Add Profiles UI Shell / “Мои карты”.
 - Task 3.4 — Create Profile Form.
 - Task 3.5 — Edit / Delete Profile.
@@ -1277,13 +1291,13 @@ lunar-calendar-v42
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 3.2 — Add Local Profile Storage.
+Выполнить Task 3.3 — Add Profiles UI Shell / “Мои карты”.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 3.3.
+2. Не начинать Task 3.4.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или личные рекомендации.
@@ -1299,4 +1313,4 @@ lunar-calendar-v42
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1 и Sprint 2 завершены. Активный спринт — Sprint 3; Task 3.1 завершена, следующая реализационная задача — Task 3.2.
+Sprint 1 и Sprint 2 завершены. Активный спринт — Sprint 3; Task 3.1 и Task 3.2 завершены, следующая реализационная задача — Task 3.3.

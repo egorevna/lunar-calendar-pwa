@@ -808,11 +808,11 @@ Create profile data model and validation helpers.
 - No natal chart.
 - No personal transits.
 
-# Active Task
+# Completed Task
 
 ## Task 3.2 — Add Local Profile Storage
 
-Status: active
+Status: done
 
 Use localStorage for profile persistence and activeProfileId.
 
@@ -824,15 +824,17 @@ Acceptance criteria:
 - corrupted storage does not crash app;
 - tests pass.
 
-# Sprint 3 Backlog
+# Active Task
 
 ## Task 3.3 — Add Profiles UI Shell / “Мои карты”
 
-Status: not started
+Status: active
 
 Add minimal UI shell for profile list and privacy copy.
 
 No new navigation bar and no natal chart screen.
+
+# Sprint 3 Backlog
 
 ## Task 3.4 — Create Profile Form
 

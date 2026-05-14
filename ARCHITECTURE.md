@@ -473,6 +473,24 @@ Current responsibilities:
 
 The module does not store profiles, does not use `localStorage`, does not render UI, does not call geocoding APIs, and does not calculate natal charts, houses, ASC / MC, or personal transits.
 
+## `src/profileStorage.js`
+
+Stores profiles locally on the device.
+
+Current responsibilities:
+
+- read and write profiles through `localStorage`;
+- use `astroPwa.profiles.v1` for profile list storage;
+- use `astroPwa.activeProfileId.v1` for active profile id storage;
+- normalize and validate profiles through `src/profileModel.js`;
+- filter invalid profiles instead of returning them;
+- return `[]` for empty, corrupted, or non-array profile storage;
+- add, update, and delete profiles through result objects;
+- reset active profile to `Общий день` when the active profile is deleted or missing;
+- expose `clearProfileStorageForTests()` for unit tests.
+
+The module does not render UI, does not call `fetch`, does not use geolocation, does not call external geocoding APIs, and does not calculate natal charts, houses, ASC / MC, or personal transits.
+
 ## `scripts/generate-ephemeris.cjs`
 
 Generates Swiss Ephemeris data.
@@ -580,9 +598,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 16. `src/profileModel.js` defines the local-first profile data model, defaults, normalization, and validation helpers.
 
-17. `src/debugPanel.js` formats the hidden debug panel when enabled.
+17. `src/profileStorage.js` stores profiles and active profile id locally through `localStorage`.
 
-18. `src/app.js` updates DOM elements on the main dashboard, mode selector, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
+18. `src/debugPanel.js` formats the hidden debug panel when enabled.
+
+19. `src/app.js` updates DOM elements on the main dashboard, mode selector, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 
@@ -1278,15 +1298,17 @@ Before implementing profiles, privacy rules must be explicit and local-first sto
 
 Sprint 3 local profile management has started with `src/profileModel.js`.
 
-The current implemented profile layer is limited to:
+The current implemented profile layer includes:
 
 - profile draft creation;
 - profile defaults;
 - profile normalization;
 - profile validation;
-- profile id creation.
+- profile id creation;
+- local profile list storage;
+- local active profile id storage.
 
-The app still has no `src/profileStorage.js` and no profile UI module.
+The app still has no profile UI module.
 
 Sprint 3 must not implement natal chart calculations, houses, Ascendant / MC, personal transits, personal recommendations, backend sync, or external geocoding without an explicit later task.
 
@@ -1306,4 +1328,4 @@ Core logic:
 
 Current priority:
 
-Prepare Sprint 3 local profile storage while keeping natal charts, houses, personal transits, and personal recommendations out of scope.
+Prepare Sprint 3 profiles UI shell while keeping natal charts, houses, personal transits, and personal recommendations out of scope.

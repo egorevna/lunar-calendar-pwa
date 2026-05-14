@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-14 — Complete Task 3.2 local profile storage
+
+- Добавлен `src/profileStorage.js` для local-first хранения профилей в `localStorage`.
+- Добавлены ключи `astroPwa.profiles.v1` и `astroPwa.activeProfileId.v1`.
+- Storage безопасно обрабатывает пустое, битое и не-array состояние.
+- Active profile id сбрасывается, если профиль удален или больше не существует.
+- Добавлены тесты `test/profileStorage.test.js`.
+- UI, `app.js`, натальная карта и персональные транзиты не добавлялись.
+- Task 3.3 оставлена следующей активной задачей и не начиналась.
+
 ## 2026-05-14 — Complete Task 3.1 profile data model
 
 - Добавлен `src/profileModel.js` с profile draft/defaults, normalization и validation helpers.
