@@ -1243,21 +1243,30 @@ Goal: add pure, tested helpers for degree normalization, zodiac sign mapping, de
 - Added `test/astroMath.test.js` for boundaries, wrap-around, invalid input, major aspects and degree formatting.
 - No UI, profile logic, ephemeris data, `swisseph`, houses, ASC / MC, transits or dependencies were added.
 
-# Active Task
+# Completed Task
 
 ## Task 5.3 — Add Natal Chart Data Model and Engine Interface
 
-Status: not started
+Status: done
 
 Goal: create neutral natal chart result shapes and an engine interface that returns explicit `notSupported` for unsupported calculations.
 
-# Sprint 5 Backlog
+### Result
+
+- Added `src/natalChartModel.js` with neutral result shapes, statuses, feature flags, normalization helpers and `hasNatalFeature()`.
+- Added `src/natalEngine.js` with a strict provider interface that currently returns explicit `notSupported` / `incomplete` states.
+- Added tests for empty, incomplete and ready result shapes, safe normalization, capabilities, unsupported engine behavior and no fake natal claims.
+- No provider, UI, dependencies, houses, ASC / MC, transits or ephemeris changes were added.
+
+# Active Task
 
 ## Task 5.4 — Birth DateTime / Timezone Strategy
 
 Status: not started
 
 Goal: define safe conversion/readiness for birth date, birth time, place and timezone without faking historical timezone precision.
+
+# Sprint 5 Backlog
 
 ## Task 5.5 — Planetary Position Provider MVP
 

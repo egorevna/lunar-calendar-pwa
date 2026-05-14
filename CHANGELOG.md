@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-05-15 — Complete Task 5.3 natal chart model and engine interface
+
+- Добавлен `src/natalChartModel.js` с neutral result shapes, statuses, feature flags, normalization helpers и `hasNatalFeature()`.
+- Добавлен `src/natalEngine.js` со strict provider interface, который сейчас честно возвращает `incomplete` или `notSupported`.
+- Добавлены тесты `test/natalChartModel.test.js` и `test/natalEngine.test.js`.
+- Provider, UI, зависимости, ephemeris data, houses, ASC / MC, transits и fake natal values не добавлялись.
+- Task 5.4 оставлена следующей активной задачей и не начиналась.
+
 ## 2026-05-15 — Complete Task 5.2 astrology math primitives
 
 - Добавлен `src/astroMath.js` с pure helpers для нормализации градусов, zodiac sign mapping, degree-in-sign, angular distance, major aspect detection и degree formatting.

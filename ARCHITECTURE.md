@@ -321,6 +321,35 @@ This module is intentionally independent from:
 
 It does not calculate natal planets. It is a reusable math foundation for later engine modules.
 
+## `src/natalChartModel.js`
+
+Defines neutral natal chart result shapes and normalization helpers for future calculation providers.
+
+Current responsibilities:
+
+- define natal engine statuses: `ready`, `incomplete`, `notSupported`, `error`;
+- define feature flags for planets, houses, ASC / MC, aspects, and transits;
+- create empty `notSupported`, `incomplete`, and explicit `ready` result objects;
+- normalize explicitly provided natal planets, points, and aspects into stable objects;
+- derive zodiac sign and degree-in-sign from valid longitudes via `src/astroMath.js`;
+- expose `hasNatalFeature()` based on result capabilities.
+
+This module does not calculate natal planets, houses, ASC / MC, aspects, or transits. It only normalizes data that a future provider explicitly supplies and keeps unsupported features disabled when data is absent.
+
+## `src/natalEngine.js`
+
+Defines the strict natal calculation engine interface.
+
+Current responsibilities:
+
+- report provider capabilities with all calculation features disabled;
+- return `incomplete` when calculation input is missing required profile readiness data;
+- return explicit `notSupported` for valid-looking input while no provider is connected;
+- explain current natal engine limitations;
+- expose a non-throwing provider support check.
+
+This module does not call external APIs, does not use `swisseph`, does not read generated ephemeris data, and does not calculate or fake planets, houses, ASC / MC, aspects, personal transits, or orbs.
+
 ## `src/preciseEphemeris.js`
 
 Reads pre-calculated Swiss Ephemeris data from `src/ephemeris-data.js`.
@@ -726,9 +755,13 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 22. `src/personalRecommendations.js` converts personal context into safe `goodNow`, `nextSteps`, and `cautions` sections for the `Лично для меня` dashboard block.
 
-23. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state and safe personal readiness/capability state without birth details.
+23. `src/natalChartModel.js` defines neutral natal result shapes, feature capabilities, and normalization helpers without calculating natal data.
 
-24. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
+24. `src/natalEngine.js` defines the strict natal engine interface and currently returns `incomplete` / `notSupported` because no provider is connected.
+
+25. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state and safe personal readiness/capability state without birth details.
+
+26. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 

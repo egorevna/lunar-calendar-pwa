@@ -190,7 +190,7 @@ PWA устанавливается на экран iPhone через Safari.
 Тестовый набор проходит:
 
 ```txt
-209 тестов
+226 тестов
 ```
 
 ---
@@ -606,12 +606,27 @@ Sprint 5 — Natal Calculation Engine Foundation
 Текущая активная задача:
 
 ```txt
+Task 5.4 — Birth DateTime / Timezone Strategy
+```
+
+Task 5.4 должна определить safe conversion/readiness для birth date, birth time, place и timezone без фейковой historical timezone precision.
+
+Task 5.4 еще не начата.
+
+Завершенная задача:
+
+```txt
 Task 5.3 — Add Natal Chart Data Model and Engine Interface
 ```
 
-Task 5.3 должна создать neutral natal chart result shapes и engine interface, который явно возвращает `notSupported` для неподдержанных расчетов.
+Результат Task 5.3:
 
-Task 5.3 еще не начата.
+- добавлен `src/natalChartModel.js`;
+- добавлен `src/natalEngine.js`;
+- natal chart result model поддерживает статусы `ready`, `incomplete`, `notSupported`, `error`;
+- feature capabilities явно покрывают `planets`, `houses`, `ascMc`, `aspects`, `transits`;
+- `calculateNatalChart()` пока возвращает только `incomplete` или explicit `notSupported`, потому что provider не подключен;
+- планеты, дома, ASC / MC, аспекты и транзиты не рассчитывались и не генерировались.
 
 Завершенная задача:
 
@@ -1616,13 +1631,13 @@ lunar-calendar-v57
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 5.3 — Add Natal Chart Data Model and Engine Interface.
+Выполнить Task 5.4 — Birth DateTime / Timezone Strategy.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 5.4.
+2. Не начинать Task 5.5.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или фейковые личные расчеты.
@@ -1638,4 +1653,4 @@ lunar-calendar-v57
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3 и Sprint 4 завершены. Активный спринт — Sprint 5; Task 5.1 и Task 5.2 завершены. Текущая задача — Task 5.3 — Add Natal Chart Data Model and Engine Interface.
+Sprint 1, Sprint 2, Sprint 3 и Sprint 4 завершены. Активный спринт — Sprint 5; Task 5.1, Task 5.2 и Task 5.3 завершены. Текущая задача — Task 5.4 — Birth DateTime / Timezone Strategy.
