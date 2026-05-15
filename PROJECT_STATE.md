@@ -621,13 +621,28 @@ Task 5.8 — Sprint 5 Hardening
 - real planetary provider еще не подключен;
 - package/dependency changes, `ephemeris-data.js`, generator, natal planets, houses, ASC / MC и transits не добавлялись.
 
-Текущая активная задача:
+Завершенная задача:
 
 ```txt
 Task 6.1 — Provider Research and Decision
 ```
 
-Task 6.1 должна исследовать local-first natal provider options и создать `NATAL_PROVIDER_RESEARCH.md`.
+Результат Task 6.1:
+
+- создан `NATAL_PROVIDER_RESEARCH.md`;
+- сравнили `astronomy-engine`, `circular-natal-horoscope-js`, `astronomia`, Swiss Ephemeris browser/WASM options, текущий Node/build-time `swisseph`, server-side option и hybrid option;
+- recommended provider path: hybrid approach;
+- лучший первый candidate для будущего approval review: `astronomy-engine` для local natal planet positions;
+- dependency/provider не добавлены;
+- user-facing natal values по-прежнему не показываются.
+
+Текущая активная задача:
+
+```txt
+Task 6.2 — Fixture Strategy and Public Test Fixtures
+```
+
+Task 6.2 должна создать fixture strategy и initial public/synthetic fixtures до любого provider install / approval.
 
 Sprint 6 цель:
 
@@ -1729,13 +1744,13 @@ lunar-calendar-v58
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 6.1 — Provider Research and Decision.
+Выполнить Task 6.2 — Fixture Strategy and Public Test Fixtures.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 6.2.
+2. Не начинать Task 6.3.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или фейковые личные расчеты.
@@ -1751,4 +1766,4 @@ lunar-calendar-v58
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4 и Sprint 5 завершены. Активный спринт — Sprint 6; текущая активная задача — Task 6.1 — Provider Research and Decision.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4 и Sprint 5 завершены. Активный спринт — Sprint 6; текущая активная задача — Task 6.2 — Fixture Strategy and Public Test Fixtures.

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-05-15 — Complete Task 6.1 provider research
+
+- Создан `NATAL_PROVIDER_RESEARCH.md`.
+- Сравнены `astronomy-engine`, `circular-natal-horoscope-js`, `astronomia`, Swiss Ephemeris browser/WASM options, current Node/build-time Swiss Ephemeris, server-side option и hybrid approach.
+- Recommended path: hybrid approach; first approval candidate is `astronomy-engine` for local natal planet positions after public fixtures and explicit approval.
+- Provider dependency, `package.json`, app code, natal planets, houses, ASC / MC, transits, UI, `ephemeris-data.js` и generator не менялись.
+- Task 6.2 оставлена следующей активной задачей и не начиналась.
+
 ## 2026-05-15 — Prepare Sprint 6 documentation
 
 - Sprint 1–5 remain completed; active sprint is now Sprint 6 — Real Natal Provider Selection / Fixture Validation.

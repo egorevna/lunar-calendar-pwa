@@ -1352,11 +1352,11 @@ Do not show natal chart UI in Sprint 6.
 
 Do not fake planets, houses, ASC / MC, transits or orbs.
 
-# Active Task
+# Completed Task
 
 ## Task 6.1 — Provider Research and Decision
 
-Status: not started
+Status: done
 
 ### Goal
 
@@ -1400,13 +1400,22 @@ Compare provider options:
 - No code implementation yet.
 - Task 6.2 remains next.
 
-# Sprint 6 Backlog
+### Result
+
+- Created `NATAL_PROVIDER_RESEARCH.md`.
+- Compared `astronomy-engine`, `circular-natal-horoscope-js`, `astronomia`, Swiss Ephemeris browser/WASM options, current Node/build-time Swiss Ephemeris, server-side calculation and hybrid strategy.
+- Recommended path: hybrid approach with `astronomy-engine` as the first candidate to evaluate for local natal planet positions after fixtures and explicit approval.
+- No dependency, provider connection, app code, package change or natal calculation was added.
+
+# Active Task
 
 ## Task 6.2 — Fixture Strategy and Public Test Fixtures
 
 Status: not started
 
 Goal: create fixture strategy and initial public/synthetic fixtures without private birth data.
+
+# Sprint 6 Backlog
 
 ## Task 6.3 — Provider Adapter Contract
 
