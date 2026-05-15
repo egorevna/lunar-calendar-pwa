@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-15 — Complete Task 5.7 natal engine debug fixtures
+
+- `src/debugPanel.js` получил секцию `Natal Engine Debug` для `?debug=1`.
+- Debug показывает engine/provider status, provider reason, unsupported natal capabilities и safe active-profile readiness labels.
+- Добавлен `test/fixtures/natalFixtures.js` с test-only mock provider для future-ready natal-engine checks.
+- Birth date/time, raw places, coordinates, full profile JSON, fake natal claims, real provider, dependencies, UI, houses, ASC / MC и transits не добавлялись.
+- PWA-кэш обновлен до `lunar-calendar-v58`.
+- Task 5.8 оставлена следующей активной задачей и не начиналась.
+
 ## 2026-05-15 — Complete Task 5.6 natal planets notSupported integration
 
 - `src/natalEngine.js` теперь вызывает `src/planetaryPositionProvider.js` через safe provider path.

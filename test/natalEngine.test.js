@@ -8,6 +8,7 @@ import {
   getNatalEngineCapabilities,
 } from '../src/natalEngine.js';
 import { NATAL_ENGINE_STATUS } from '../src/natalChartModel.js';
+import { createMockReadyPlanetaryProvider } from './fixtures/natalFixtures.js';
 
 const validLookingInput = {
   profileId: 'profile-anna',
@@ -156,18 +157,7 @@ test('assertNatalProviderSupported returns false instead of throwing', () => {
 
 test('calculateNatalChart can build ready result only from explicitly provided mock provider planets', () => {
   const result = calculateNatalChart(validLookingInput, {
-    getPlanetaryPositions() {
-      return {
-        status: 'ready',
-        provider: 'mock',
-        planets: [
-          { key: 'sun', label: 'Солнце', longitude: 45 },
-        ],
-        metadata: {
-          calculatedAt: '2026-05-15T00:00:00.000Z',
-        },
-      };
-    },
+    getPlanetaryPositions: createMockReadyPlanetaryProvider(),
   });
 
   assert.equal(result.status, NATAL_ENGINE_STATUS.READY);
@@ -178,9 +168,20 @@ test('calculateNatalChart can build ready result only from explicitly provided m
   assert.equal(result.planets.length, 1);
   assert.equal(result.planets[0].key, 'sun');
   assert.equal(result.planets[0].sign.key, 'taurus');
+  assert.equal(result.planets[0].source, 'test-mock');
   assert.deepEqual(result.houses, []);
   assert.deepEqual(result.points, []);
   assert.deepEqual(result.transits, []);
+});
+
+test('test fixture mock provider is not used by the production provider path', () => {
+  const result = calculateNatalChart(validLookingInput);
+  const serialized = JSON.stringify(result);
+
+  assert.equal(result.status, NATAL_ENGINE_STATUS.NOT_SUPPORTED);
+  assert.equal(serialized.includes('test-mock'), false);
+  assert.equal(serialized.includes('test-mock-provider'), false);
+  assert.deepEqual(result.planets, []);
 });
 
 test('engine output does not contain fake calculated claims', () => {

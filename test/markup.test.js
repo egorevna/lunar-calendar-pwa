@@ -201,6 +201,7 @@ test('home screen renders hidden debug panel shell', () => {
   assert.equal(html.includes('data-debug-content'), true);
   assert.equal(html.includes('Debug'), true);
   assert.equal(html.includes('Personal Debug'), false);
+  assert.equal(html.includes('Natal Engine Debug'), false);
   assert.equal(appJs.includes('personalDebug: shouldShowDebug ? getPersonalDebugState() : null'), true);
   assert.equal(appJs.includes('function getPersonalDebugState()'), true);
 });

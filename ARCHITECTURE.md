@@ -482,10 +482,10 @@ Current behavior:
 
 - reads `debug=1` from URL query parameters;
 - returns hidden-panel text for calculation verification;
-- includes calculated time, `debugDate` status, Moscow day system, Moon sign, VOC, Moon aspects, indicators, safe profile debug state, safe personal debug state, best-window debug reasoning, ephemeris range/source, and cache version;
+- includes calculated time, `debugDate` status, Moscow day system, Moon sign, VOC, Moon aspects, indicators, safe profile debug state, safe personal debug state, safe natal-engine/provider debug state, best-window debug reasoning, ephemeris range/source, and cache version;
 - allows technical timestamps with seconds because this is debug-only.
 
-The debug panel does not store data and does not expose birth data, raw place objects, raw coordinates or full profile data.
+The debug panel does not store data and does not expose birth data, raw place objects, raw coordinates, exact birth timezone values or full profile data.
 
 ## `src/dashboardModes.js`
 
@@ -716,7 +716,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v57
+lunar-calendar-v58
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -1098,6 +1098,7 @@ Current debug information:
 - ephemeris version
 - safe profile count / active profile id / active profile name
 - safe personal readiness status and unavailable personal-calculation capabilities
+- safe natal engine/provider status and unavailable natal feature capabilities
 
 Files involved:
 
@@ -1119,7 +1120,11 @@ Seconds:
 
 Privacy:
 
-- no profiles or birth data are currently displayed
+- no full profiles, birth date/time, raw places, coordinates or exact birth timezone values are displayed
+
+Testing note:
+
+- `test/fixtures/natalFixtures.js` contains test-only mock provider data for future-ready natal engine tests. It is not used by the production provider path.
 - if personal data is added later, debug output must follow `PRIVACY_RULES.md`
 
 Debug data helps check calculation differences between calendars.
@@ -1139,7 +1144,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v57
+lunar-calendar-v58
 ```
 
 Important operational rule:
@@ -1440,7 +1445,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v57
+lunar-calendar-v58
 ```
 
 If this value changes in `sw.js`, update this section.

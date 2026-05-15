@@ -606,12 +606,28 @@ Sprint 5 — Natal Calculation Engine Foundation
 Текущая активная задача:
 
 ```txt
+Task 5.8 — Sprint 5 Hardening
+```
+
+Task 5.8 должна проверить весь Sprint 5: no fake natal claims, unsupported states explicit, debug safe, tests pass.
+
+Task 5.8 еще не начата.
+
+Завершенная задача:
+
+```txt
 Task 5.7 — Natal Calculation Debug / Fixtures
 ```
 
-Task 5.7 должна добавить safe debug inspection и fixture strategy без dump чувствительных birth data.
+Результат Task 5.7:
 
-Task 5.7 еще не начата.
+- `src/debugPanel.js` получил секцию `Natal Engine Debug` для `?debug=1`;
+- debug показывает engine/provider status, provider reason, unsupported natal feature flags и safe active-profile readiness labels;
+- `Natal Engine Debug` не показывает `birthDate`, `birthTime`, raw place objects, raw coordinates, full profile JSON или fake natal/transit claims;
+- добавлен `test/fixtures/natalFixtures.js` с test-only mock provider для future-ready natal engine проверок;
+- production path остается `notSupported`, mock fixture не используется обычным provider path;
+- PWA cache обновлен до `lunar-calendar-v58`;
+- real provider, dependencies, package changes, normal UI, natal planets, houses, ASC / MC, transits и ephemeris changes не добавлялись.
 
 Завершенная задача:
 
@@ -1633,7 +1649,7 @@ git commit -m "checkpoint before continuing in new codex chat"
 Текущая версия:
 
 ```txt
-lunar-calendar-v57
+lunar-calendar-v58
 ```
 
 ## Moscow Hardcoding
@@ -1683,13 +1699,13 @@ lunar-calendar-v57
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 5.7 — Natal Calculation Debug / Fixtures.
+Выполнить Task 5.8 — Sprint 5 Hardening.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 5.8.
+2. Не начинать Sprint 6.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или фейковые личные расчеты.
@@ -1705,4 +1721,4 @@ lunar-calendar-v57
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3 и Sprint 4 завершены. Активный спринт — Sprint 5; Task 5.1, Task 5.2, Task 5.3, Task 5.4, Task 5.5 и Task 5.6 завершены. Текущая задача — Task 5.7 — Natal Calculation Debug / Fixtures.
+Sprint 1, Sprint 2, Sprint 3 и Sprint 4 завершены. Активный спринт — Sprint 5; Task 5.1, Task 5.2, Task 5.3, Task 5.4, Task 5.5, Task 5.6 и Task 5.7 завершены. Текущая задача — Task 5.8 — Sprint 5 Hardening.

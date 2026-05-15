@@ -143,6 +143,19 @@ test('debug panel marks debugDate as active and includes key sections', () => {
   assert.equal(text.includes('canCalculatePersonalTransits: no'), true);
   assert.equal(text.includes('missingFields: координаты места рождения'), true);
   assert.equal(text.includes('warnings: Время рождения неизвестно'), true);
+  assert.equal(text.includes('Natal Engine Debug'), true);
+  assert.equal(text.includes('engineStatus: notSupported'), true);
+  assert.equal(text.includes('provider: none'), true);
+  assert.equal(text.includes('providerStatus: notSupported'), true);
+  assert.equal(text.includes('natalPlanets: not supported'), true);
+  assert.equal(text.includes('houses: not supported'), true);
+  assert.equal(text.includes('ascMc: not supported'), true);
+  assert.equal(text.includes('aspects: not supported'), true);
+  assert.equal(text.includes('transits: not supported'), true);
+  assert.equal(text.includes('reason: Planetary position provider is not connected.'), true);
+  assert.equal(text.includes('planets: no'), true);
+  assert.equal(text.includes('hasActiveProfile: yes'), true);
+  assert.equal(text.includes('activeProfileName: Егор'), true);
   assert.equal(text.includes('birthDate'), false);
   assert.equal(text.includes('birthTime'), false);
   assert.equal(text.includes('birthPlace'), false);
@@ -166,6 +179,9 @@ test('debug panel marks normal time when debugDate is not used', () => {
   assert.equal(text.includes('debugDate: inactive'), true);
   assert.equal(text.includes('Best Windows Debug'), false);
   assert.equal(text.includes('Personal Debug'), false);
+  assert.equal(text.includes('Natal Engine Debug'), true);
+  assert.equal(text.includes('activeProfile: Общий день'), true);
+  assert.equal(text.includes('natal calculation: inactive'), true);
 });
 
 test('debug panel shows no-window fallback state and rejected candidates', () => {

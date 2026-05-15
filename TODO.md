@@ -1303,21 +1303,32 @@ Goal: calculate natal planetary positions only if the provider is reliable; do n
 - Added test coverage for provider invocation, provider reason propagation, incomplete short-circuiting, no fake data, and future mock-ready planets from explicitly supplied data.
 - No real provider, dependencies, package changes, UI, houses, ASC / MC, transits or ephemeris changes were added.
 
-# Active Task
+# Completed Task
 
 ## Task 5.7 — Natal Calculation Debug / Fixtures
 
-Status: not started
+Status: done
 
 Goal: add safe debug inspection and fixture strategy without dumping sensitive birth data.
 
-# Sprint 5 Backlog
+### Result
+
+- Added `Natal Engine Debug` to the hidden debug panel.
+- Debug shows engine/provider status, unsupported feature flags, safe active-profile readiness labels and no raw birth data.
+- Added `test/fixtures/natalFixtures.js` with a test-only mock provider for future-ready natal-engine tests.
+- Production natal engine path remains `notSupported`; no real provider, dependencies, UI, natal planets, houses, ASC / MC or transits were added.
+
+# Active Task
 
 ## Task 5.8 — Sprint 5 Hardening
 
 Status: not started
 
 Goal: verify Sprint 5 outputs, no fake natal claims, unsupported states explicit, tests pass.
+
+# Sprint 5 Backlog
+
+No active backlog tasks before Sprint 5 hardening.
 
 # Do Not Do Now
 
