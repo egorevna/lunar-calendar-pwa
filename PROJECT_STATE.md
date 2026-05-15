@@ -636,13 +636,28 @@ Task 6.1 — Provider Research and Decision
 - dependency/provider не добавлены;
 - user-facing natal values по-прежнему не показываются.
 
-Текущая активная задача:
+Завершенная задача:
 
 ```txt
 Task 6.2 — Fixture Strategy and Public Test Fixtures
 ```
 
-Task 6.2 должна создать fixture strategy и initial public/synthetic fixtures до любого provider install / approval.
+Результат Task 6.2:
+
+- создан `NATAL_FIXTURE_STRATEGY.md`;
+- добавлен `test/fixtures/natalProviderFixtures.js` с synthetic pending fixtures;
+- добавлены fixture categories: `modern`, `historical`, `moonSensitive`, `timezoneSensitive`, `unknownBirthTime`, `missingCoordinates`;
+- добавлен `test/natalProviderFixtures.test.js`;
+- expected planetary values остаются `null` с `expectedStatus: pending-provider-approval`;
+- private user data, реальные profiles, provider, dependencies, package changes и natal calculations не добавлялись.
+
+Текущая активная задача:
+
+```txt
+Task 6.3 — Provider Adapter Contract
+```
+
+Task 6.3 должна создать provider adapter contract, сохраняя production `notSupported` до approved provider.
 
 Sprint 6 цель:
 
@@ -1744,13 +1759,13 @@ lunar-calendar-v58
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 6.2 — Fixture Strategy and Public Test Fixtures.
+Выполнить Task 6.3 — Provider Adapter Contract.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 6.3.
+2. Не начинать Task 6.4.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или фейковые личные расчеты.
@@ -1766,4 +1781,4 @@ lunar-calendar-v58
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4 и Sprint 5 завершены. Активный спринт — Sprint 6; текущая активная задача — Task 6.2 — Fixture Strategy and Public Test Fixtures.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4 и Sprint 5 завершены. Активный спринт — Sprint 6; текущая активная задача — Task 6.3 — Provider Adapter Contract.

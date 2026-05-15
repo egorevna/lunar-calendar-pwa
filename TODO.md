@@ -1407,21 +1407,32 @@ Compare provider options:
 - Recommended path: hybrid approach with `astronomy-engine` as the first candidate to evaluate for local natal planet positions after fixtures and explicit approval.
 - No dependency, provider connection, app code, package change or natal calculation was added.
 
-# Active Task
+# Completed Task
 
 ## Task 6.2 — Fixture Strategy and Public Test Fixtures
 
-Status: not started
+Status: done
 
 Goal: create fixture strategy and initial public/synthetic fixtures without private birth data.
 
-# Sprint 6 Backlog
+### Result
+
+- Created `NATAL_FIXTURE_STRATEGY.md`.
+- Added `test/fixtures/natalProviderFixtures.js` with synthetic pending fixtures.
+- Added fixture categories: `modern`, `historical`, `moonSensitive`, `timezoneSensitive`, `unknownBirthTime`, `missingCoordinates`.
+- Added `test/natalProviderFixtures.test.js`.
+- Expected planetary values remain `null` and `expectedStatus: pending-provider-approval`; no fake longitudes were added.
+- No provider, dependency, package change, app code, natal planets, houses, ASC / MC or transits were added.
+
+# Active Task
 
 ## Task 6.3 — Provider Adapter Contract
 
 Status: not started
 
 Goal: create a clean adapter interface that keeps production `notSupported` until an approved provider exists.
+
+# Sprint 6 Backlog
 
 ## Task 6.4 — Approved Provider Integration
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-15 — Complete Task 6.2 natal provider fixture strategy
+
+- Создан `NATAL_FIXTURE_STRATEGY.md`.
+- Добавлен `test/fixtures/natalProviderFixtures.js` с public/synthetic pending fixtures для future provider validation.
+- Добавлены fixture categories: `modern`, `historical`, `moonSensitive`, `timezoneSensitive`, `unknownBirthTime`, `missingCoordinates`.
+- Добавлен `test/natalProviderFixtures.test.js` для структуры fixtures, privacy guardrails, pending expected values и запрета fake longitudes.
+- Provider, dependencies, `package.json`, app code, real planets, houses, ASC / MC, transits, UI, `ephemeris-data.js` и generator не менялись.
+- Task 6.3 оставлена следующей активной задачей и не начиналась.
+
 ## 2026-05-15 — Complete Task 6.1 provider research
 
 - Создан `NATAL_PROVIDER_RESEARCH.md`.
