@@ -344,7 +344,9 @@ Current responsibilities:
 
 - report provider capabilities with all calculation features disabled;
 - return `incomplete` when calculation input is missing required profile readiness data;
-- return explicit `notSupported` for valid-looking input while no provider is connected;
+- call `src/planetaryPositionProvider.js` through a safe provider path for valid-looking input;
+- return explicit `notSupported` with the planetary provider reason while no provider is connected;
+- build a ready natal result only from explicitly supplied provider planets, which is currently covered only by test injection;
 - explain current natal engine limitations;
 - expose a non-throwing provider support check.
 

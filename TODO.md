@@ -1288,21 +1288,30 @@ Goal: connect a reliable provider only if Task 5.1 allows it; otherwise return e
 - Added `test/planetaryPositionProvider.test.js` for capabilities, planet keys, validation, unsupported results, no fake positions and no network/geolocation behavior.
 - No real provider, dependencies, package changes, UI, natal planets, houses, ASC / MC or transits were added.
 
-# Active Task
+# Completed Task
 
 ## Task 5.6 — Natal Planets MVP
 
-Status: not started
+Status: done
 
 Goal: calculate natal planetary positions only if the provider is reliable; do not calculate houses / ASC / MC unless proven reliable.
 
-# Sprint 5 Backlog
+### Result
+
+- Integrated `src/planetaryPositionProvider.js` into `src/natalEngine.js` through a safe provider call path.
+- `calculateNatalChart()` now returns provider `incomplete` / `notSupported` states and still does not create fake planets.
+- Added test coverage for provider invocation, provider reason propagation, incomplete short-circuiting, no fake data, and future mock-ready planets from explicitly supplied data.
+- No real provider, dependencies, package changes, UI, houses, ASC / MC, transits or ephemeris changes were added.
+
+# Active Task
 
 ## Task 5.7 — Natal Calculation Debug / Fixtures
 
 Status: not started
 
 Goal: add safe debug inspection and fixture strategy without dumping sensitive birth data.
+
+# Sprint 5 Backlog
 
 ## Task 5.8 — Sprint 5 Hardening
 

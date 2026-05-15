@@ -190,7 +190,7 @@ PWA устанавливается на экран iPhone через Safari.
 Тестовый набор проходит:
 
 ```txt
-251 тестов
+253 теста
 ```
 
 ---
@@ -606,12 +606,28 @@ Sprint 5 — Natal Calculation Engine Foundation
 Текущая активная задача:
 
 ```txt
-Task 5.6 — Natal Planets MVP
+Task 5.7 — Natal Calculation Debug / Fixtures
 ```
 
-Task 5.6 должна рассчитывать natal planets только если provider надежен; дома, ASC / MC и транзиты не делать без доказанной поддержки.
+Task 5.7 должна добавить safe debug inspection и fixture strategy без dump чувствительных birth data.
 
-Task 5.6 еще не начата.
+Task 5.7 еще не начата.
+
+Завершенная задача:
+
+```txt
+Task 5.6 — Natal Planets MVP / NotSupported Integration
+```
+
+Результат Task 5.6:
+
+- `src/natalEngine.js` интегрирован с `src/planetaryPositionProvider.js`;
+- `calculateNatalChart(input, options)` теперь вызывает planetary provider только после проверки incomplete input;
+- incomplete input short-circuit возвращает `incomplete` и не вызывает provider;
+- provider `notSupported` передается как natal chart `notSupported` с provider reason;
+- future-ready branch покрыт тестом через mock provider injection: ready result строится только из явно переданных mock planets;
+- planets остаются `[]`, capabilities остаются false при реальном not-connected provider;
+- houses, ASC / MC, transits, real provider, dependencies, package changes, UI, эфемериды и fake natal values не добавлялись.
 
 Завершенная задача:
 
@@ -1667,13 +1683,13 @@ lunar-calendar-v57
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 5.6 — Natal Planets MVP.
+Выполнить Task 5.7 — Natal Calculation Debug / Fixtures.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 5.7.
+2. Не начинать Task 5.8.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или фейковые личные расчеты.
@@ -1689,4 +1705,4 @@ lunar-calendar-v57
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3 и Sprint 4 завершены. Активный спринт — Sprint 5; Task 5.1, Task 5.2, Task 5.3, Task 5.4 и Task 5.5 завершены. Текущая задача — Task 5.6 — Natal Planets MVP.
+Sprint 1, Sprint 2, Sprint 3 и Sprint 4 завершены. Активный спринт — Sprint 5; Task 5.1, Task 5.2, Task 5.3, Task 5.4, Task 5.5 и Task 5.6 завершены. Текущая задача — Task 5.7 — Natal Calculation Debug / Fixtures.

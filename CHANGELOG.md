@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-05-15 — Complete Task 5.6 natal planets notSupported integration
+
+- `src/natalEngine.js` теперь вызывает `src/planetaryPositionProvider.js` через safe provider path.
+- `calculateNatalChart()` short-circuit-ит incomplete input, передает provider `notSupported` reason и не создает fake planets.
+- Добавлен test injection path для future-ready provider: ready natal result строится только из явно переданных mock planets.
+- Реальный provider, dependencies, `package.json`, UI, эфемериды, houses, ASC / MC и transits не добавлялись.
+- Task 5.7 оставлена следующей активной задачей и не начиналась.
+
 ## 2026-05-15 — Complete Task 5.5 planetary position provider MVP
 
 - Добавлен `src/planetaryPositionProvider.js` с provider status constants, 10 main natal planet keys, capability reporting, input validation и safe position normalization.

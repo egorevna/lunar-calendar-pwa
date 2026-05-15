@@ -1,7 +1,13 @@
 import {
   createNatalChartEmptyResult,
   createNatalChartIncompleteResult,
+  createNatalChartReadyResult,
 } from './natalChartModel.js';
+import {
+  getPlanetaryPositions as getDefaultPlanetaryPositions,
+  getRequiredPlanetKeys,
+  PLANETARY_PROVIDER_STATUS,
+} from './planetaryPositionProvider.js';
 
 export const NATAL_PROVIDER_NOT_CONNECTED_REASON = 'Natal calculation provider is not connected.';
 
@@ -17,14 +23,40 @@ export function getNatalEngineCapabilities() {
   };
 }
 
-export function calculateNatalChart(input) {
+export function calculateNatalChart(input, options = {}) {
   const missingFields = getInputMissingFields(input);
 
   if (missingFields.length > 0) {
     return createNatalChartIncompleteResult('Natal calculation input is incomplete.', missingFields);
   }
 
-  return createNatalChartEmptyResult(NATAL_PROVIDER_NOT_CONNECTED_REASON);
+  const getPlanetaryPositions = typeof options.getPlanetaryPositions === 'function'
+    ? options.getPlanetaryPositions
+    : getDefaultPlanetaryPositions;
+  const planetaryResult = getPlanetaryPositions(createPlanetaryProviderInput(input));
+
+  if (planetaryResult?.status === PLANETARY_PROVIDER_STATUS.READY) {
+    return createNatalChartReadyResult({
+      planets: planetaryResult.planets,
+      metadata: {
+        provider: planetaryResult.provider,
+        calculatedAt: planetaryResult.metadata?.calculatedAt,
+        zodiac: input.zodiac,
+        houseSystem: input.houseSystem,
+      },
+    });
+  }
+
+  if (planetaryResult?.status === PLANETARY_PROVIDER_STATUS.INCOMPLETE) {
+    return createNatalChartIncompleteResult(
+      planetaryResult.reason || 'Planetary provider input is incomplete.',
+      planetaryResult.errors,
+    );
+  }
+
+  return createNatalChartEmptyResult(
+    planetaryResult?.reason || NATAL_PROVIDER_NOT_CONNECTED_REASON,
+  );
 }
 
 export function explainNatalEngineLimitations() {
@@ -56,4 +88,12 @@ function getInputMissingFields(input) {
   }
 
   return [...new Set(missingFields)];
+}
+
+function createPlanetaryProviderInput(input) {
+  return {
+    utcDateTime: input.utcDateTime,
+    zodiac: input.zodiac,
+    bodies: Array.isArray(input.bodies) ? input.bodies : getRequiredPlanetKeys(),
+  };
 }
