@@ -190,7 +190,7 @@ PWA устанавливается на экран iPhone через Safari.
 Тестовый набор проходит:
 
 ```txt
-253 теста
+281 тест
 ```
 
 ---
@@ -651,13 +651,27 @@ Task 6.2 — Fixture Strategy and Public Test Fixtures
 - expected planetary values остаются `null` с `expectedStatus: pending-provider-approval`;
 - private user data, реальные profiles, provider, dependencies, package changes и natal calculations не добавлялись.
 
-Текущая активная задача:
+Завершенная задача:
 
 ```txt
 Task 6.3 — Provider Adapter Contract
 ```
 
-Task 6.3 должна создать provider adapter contract, сохраняя production `notSupported` до approved provider.
+Результат Task 6.3:
+
+- добавлен `src/natalProviderAdapter.js`;
+- production default adapter возвращает `notSupported`;
+- adapter contract умеет проверять capabilities и safe runner нормализует только явно возвращенные mock planet data;
+- mock-ready path покрыт тестами через test-only adapter;
+- real provider, dependencies, package changes и реальные natal calculations не добавлялись.
+
+Текущая активная задача:
+
+```txt
+Task 6.4 — Approved Provider Integration
+```
+
+Task 6.4 заблокирована до отдельного approval. Перед стартом нужно представить provider name, license, browser/PWA compatibility, privacy behavior, bundle impact, capabilities, limitations и fixture validation plan.
 
 Sprint 6 цель:
 
@@ -1759,13 +1773,13 @@ lunar-calendar-v58
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 6.3 — Provider Adapter Contract.
+Выполнить Task 6.4 — Approved Provider Integration после отдельного approval.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 6.4.
+2. Не начинать Task 6.4 без отдельного approval.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или фейковые личные расчеты.
@@ -1781,4 +1795,4 @@ lunar-calendar-v58
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4 и Sprint 5 завершены. Активный спринт — Sprint 6; текущая активная задача — Task 6.3 — Provider Adapter Contract.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4 и Sprint 5 завершены. Активный спринт — Sprint 6; текущая активная задача — Task 6.4 — Approved Provider Integration, заблокирована до отдельного approval.

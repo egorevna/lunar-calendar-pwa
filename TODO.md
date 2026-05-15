@@ -1424,15 +1424,22 @@ Goal: create fixture strategy and initial public/synthetic fixtures without priv
 - Expected planetary values remain `null` and `expectedStatus: pending-provider-approval`; no fake longitudes were added.
 - No provider, dependency, package change, app code, natal planets, houses, ASC / MC or transits were added.
 
-# Active Task
+# Completed Task
 
 ## Task 6.3 — Provider Adapter Contract
 
-Status: not started
+Status: done
 
 Goal: create a clean adapter interface that keeps production `notSupported` until an approved provider exists.
 
-# Sprint 6 Backlog
+### Result
+
+- Added `src/natalProviderAdapter.js`.
+- Added default `notSupported` adapter, adapter capability reporting, contract validation, and safe adapter runner.
+- Added `test/natalProviderAdapter.test.js` with mock-ready coverage through test-only adapters.
+- Production default remains `notSupported`; no real provider, dependency, package change or real natal calculation was added.
+
+# Active Task
 
 ## Task 6.4 — Approved Provider Integration
 
@@ -1441,6 +1448,8 @@ Status: blocked until user approval
 Goal: install/connect a real local provider only after explicit approval.
 
 Before this task starts, Codex must present provider name, license, browser/PWA compatibility, privacy behavior, bundle impact, capabilities, limitations and fixture validation plan.
+
+# Sprint 6 Backlog
 
 ## Task 6.5 — Natal Planet Positions MVP
 

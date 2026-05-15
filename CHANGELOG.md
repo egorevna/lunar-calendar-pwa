@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-05-15 — Complete Task 6.3 natal provider adapter contract
+
+- Добавлен `src/natalProviderAdapter.js` с default `notSupported` adapter, capability reporting, contract validation и safe runner.
+- Добавлен `test/natalProviderAdapter.test.js` с test-only mock-ready adapter coverage.
+- Production adapter не подключает real provider и не создает fake planets, houses, ASC / MC, transits или orbs.
+- `package.json`, dependencies, UI, `app.js`, `index.html`, `sw.js`, `ephemeris-data.js` и generator не менялись.
+- Task 6.4 оставлена следующей активной задачей, но заблокирована до отдельного approval и не начиналась.
+
 ## 2026-05-15 — Complete Task 6.2 natal provider fixture strategy
 
 - Создан `NATAL_FIXTURE_STRATEGY.md`.
