@@ -591,10 +591,10 @@ Sprint 4 — Personal Moment Foundation / Лично для меня
 Sprint 5 — Natal Calculation Engine Foundation
 ```
 
-Следующий этап:
+Активный спринт:
 
 ```txt
-Sprint 6 — подготовка
+Sprint 6 — Real Natal Provider Selection / Fixture Validation
 ```
 
 Sprint 5 завершен.
@@ -620,6 +620,28 @@ Task 5.8 — Sprint 5 Hardening
 - `natalEngine`, `birthDateTime` и `planetaryPositionProvider` сохраняют explicit `notSupported` / false capabilities для unsupported features;
 - real planetary provider еще не подключен;
 - package/dependency changes, `ephemeris-data.js`, generator, natal planets, houses, ASC / MC и transits не добавлялись.
+
+Текущая активная задача:
+
+```txt
+Task 6.1 — Provider Research and Decision
+```
+
+Task 6.1 должна исследовать local-first natal provider options и создать `NATAL_PROVIDER_RESEARCH.md`.
+
+Sprint 6 цель:
+
+- выбрать надежный путь для реального natal provider;
+- проверить privacy, license, browser/PWA compatibility и bundle impact;
+- определить fixture strategy до любых user-facing natal values;
+- сохранить explicit `notSupported` для всего, что provider не умеет или что еще не подтверждено тестами.
+
+Важно:
+
+- dependency/provider не добавлять без отдельного approval;
+- natal chart UI не делать;
+- houses, ASC / MC, personal transits и orbs не считать;
+- private birth data не использовать в fixtures.
 
 Завершенная задача:
 
@@ -1707,13 +1729,13 @@ lunar-calendar-v58
 Сейчас следующий конкретный шаг:
 
 ```txt
-Подготовить Sprint 6.
+Выполнить Task 6.1 — Provider Research and Decision.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Sprint 6.
+2. Не начинать Task 6.2.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или фейковые личные расчеты.
@@ -1729,4 +1751,4 @@ lunar-calendar-v58
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4 и Sprint 5 завершены. Следующий этап — подготовка Sprint 6; Sprint 6 не начат.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4 и Sprint 5 завершены. Активный спринт — Sprint 6; текущая активная задача — Task 6.1 — Provider Research and Decision.

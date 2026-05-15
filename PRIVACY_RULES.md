@@ -326,3 +326,60 @@ Debug can show:
 ## Honesty Rule
 
 Unsupported natal calculations must return explicit unsupported state instead of approximate or invented values.
+
+---
+
+# Sprint 6 Provider Privacy Rules
+
+Sprint 6 evaluates real natal provider options, but the default privacy model remains local-first.
+
+## Provider Privacy Rule
+
+A natal provider must not send birth data externally unless a separate server/cloud sprint is explicitly approved.
+
+Sprint 6 default:
+
+- local provider only;
+- no backend;
+- no remote ephemeris service;
+- no geocoding API;
+- no analytics with birth data;
+- no network calls with birth date, birth time, place, coordinates or timezone.
+
+## Dependency Review Rule
+
+Before adding a provider dependency, review and document:
+
+- whether it makes network calls;
+- whether it requires server components;
+- license;
+- bundle size;
+- browser/PWA compatibility;
+- supported and unsupported calculation features.
+
+Adding a provider dependency requires separate user approval.
+
+## Fixture Privacy Rule
+
+Do not use private user profiles as public fixtures.
+
+Use public, documented, or synthetic fixtures. Fixture data must not be copied from real app users unless the user explicitly asks for a private local-only check.
+
+## Debug Privacy Rule
+
+Provider and fixture debug may show:
+
+- provider status;
+- capability flags;
+- fixture count;
+- pass/fail state;
+- unsupported feature labels.
+
+Debug must not show:
+
+- raw birth date;
+- raw birth time;
+- raw birth place;
+- coordinates;
+- full profile JSON;
+- private profile arrays.

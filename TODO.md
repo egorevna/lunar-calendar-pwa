@@ -1334,13 +1334,117 @@ Goal: verify Sprint 5 outputs, no fake natal claims, unsupported states explicit
 - Confirmed `natalEngine`, `birthDateTime`, and `planetaryPositionProvider` keep unsupported features explicit and do not fake readiness.
 - Confirmed no real provider, dependency, package, ephemeris or generator changes were added during hardening.
 
-# Next Stage
+# Current Active Sprint
 
-## Sprint 6
+## Sprint 6 — Real Natal Provider Selection / Fixture Validation
+
+Status: active
+
+### Goal
+
+Select and validate a reliable local natal calculation provider before showing natal planets, houses, ASC / MC, transits or orbs to users.
+
+### Important Boundary
+
+Do not add a real provider dependency without explicit user approval.
+
+Do not show natal chart UI in Sprint 6.
+
+Do not fake planets, houses, ASC / MC, transits or orbs.
+
+# Active Task
+
+## Task 6.1 — Provider Research and Decision
 
 Status: not started
 
-Sprint 6 remains a future stage and must not start without explicit approval.
+### Goal
+
+Research local natal calculation provider options and decide what path is safe.
+
+### Required Work
+
+Create:
+
+```txt
+NATAL_PROVIDER_RESEARCH.md
+```
+
+Compare provider options:
+
+- browser-compatible library;
+- Swiss Ephemeris in browser, if possible;
+- Swiss Ephemeris via Node/build process;
+- server-side provider;
+- hybrid approach.
+
+### Required Questions
+
+1. Can the provider run in browser/PWA?
+2. Does it send data externally?
+3. Does it calculate arbitrary birth dates?
+4. Does it calculate tropical ecliptic longitudes?
+5. Does it support Sun/Moon/planets?
+6. Does it support retrograde/speed?
+7. Does it support houses/ASC/MC?
+8. What is the license?
+9. What is the bundle size / PWA impact?
+10. What fixtures are needed?
+11. What remains unsupported?
+
+### Acceptance Criteria
+
+- `NATAL_PROVIDER_RESEARCH.md` exists.
+- Recommended provider path is clear.
+- No dependency installed.
+- No code implementation yet.
+- Task 6.2 remains next.
+
+# Sprint 6 Backlog
+
+## Task 6.2 — Fixture Strategy and Public Test Fixtures
+
+Status: not started
+
+Goal: create fixture strategy and initial public/synthetic fixtures without private birth data.
+
+## Task 6.3 — Provider Adapter Contract
+
+Status: not started
+
+Goal: create a clean adapter interface that keeps production `notSupported` until an approved provider exists.
+
+## Task 6.4 — Approved Provider Integration
+
+Status: blocked until user approval
+
+Goal: install/connect a real local provider only after explicit approval.
+
+Before this task starts, Codex must present provider name, license, browser/PWA compatibility, privacy behavior, bundle impact, capabilities, limitations and fixture validation plan.
+
+## Task 6.5 — Natal Planet Positions MVP
+
+Status: not started
+
+Goal: calculate natal planetary positions only if provider is approved and fixtures pass.
+
+## Task 6.6 — Retrograde / Speed Support
+
+Status: not started
+
+Goal: add retrograde/speed only if provider supports it reliably.
+
+## Task 6.7 — Provider Debug and Validation Report
+
+Status: not started
+
+Goal: add safe debug info about provider and fixture validation without private birth data.
+
+## Task 6.8 — Sprint 6 Hardening
+
+Status: not started
+
+Goal: finalize Sprint 6 with privacy, accuracy, unsupported-state and test checks.
 
 # Do Not Do Now
 
@@ -1348,6 +1452,7 @@ Sprint 6 remains a future stage and must not start without explicit approval.
 - personal transits;
 - house calculations;
 - Ascendant / MC;
+- real provider dependency without approval;
 - Moon in natal house;
 - personal ritual scoring;
 - geocoding API;

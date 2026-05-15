@@ -529,3 +529,67 @@ Transit output must include:
 - orb;
 - exactness;
 - source / provider.
+
+---
+
+# Sprint 6 Natal Provider / Fixture Rules
+
+Sprint 6 is about selecting and validating a real local natal provider before any user-facing natal values are shown.
+
+## Provider Approval Rule
+
+Do not use a provider for user-facing natal values until:
+
+- provider is selected;
+- privacy behavior is checked;
+- license is acceptable;
+- browser/PWA compatibility is confirmed;
+- bundle impact is understood;
+- fixture tests pass;
+- unsupported features are explicit.
+
+Adding or connecting a real provider dependency requires separate user approval.
+
+## Fixture Rule
+
+Every real provider must be validated with fixture tests before production use.
+
+Fixtures must use public, documented, or synthetic examples, not private user profiles.
+
+Fixture expectations should include:
+
+- source;
+- tolerance;
+- birth date/time/timezone inputs;
+- coordinates when relevant;
+- expected planet longitude or sign/degree when available.
+
+## Unsupported Feature Rule
+
+If a provider cannot calculate a feature:
+
+- return `notSupported`;
+- do not approximate silently;
+- do not show user-facing values;
+- keep the limitation visible in tests and debug output.
+
+This applies to:
+
+- natal planets;
+- retrograde / speed;
+- houses;
+- ASC / MC;
+- aspects;
+- transits;
+- orbs.
+
+## Planet Position Rule
+
+Provider-backed planetary positions must include:
+
+- body key;
+- longitude;
+- sign / degree after normalization;
+- source / provider.
+
+Retrograde and speed must be provider-backed. Do not infer them without provider support.

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-05-15 — Prepare Sprint 6 documentation
+
+- Sprint 1–5 remain completed; active sprint is now Sprint 6 — Real Natal Provider Selection / Fixture Validation.
+- `TODO.md` lists Task 6.1 as the active task and Task 6.2–6.8 as the Sprint 6 backlog.
+- Added Sprint 6 provider / fixture rules to `ASTRO_LOGIC.md`.
+- Added Sprint 6 local-first provider privacy rules to `PRIVACY_RULES.md`.
+- No app code, provider dependency, real natal calculation, UI, `ephemeris-data.js` or generator changes were added.
+
 ## 2026-05-15 — Fix hero Moon phase before upcoming major phase
 
 - Исправлен hero Moon phase label перед будущим Новолунием / Полнолунием: countdown остается, но текущая фаза больше не называется точным событием заранее.
