@@ -1,3 +1,29 @@
+import { formatTime } from './format.js';
+
+const UPCOMING_MAJOR_PHASE_FALLBACKS = {
+  Новолуние: 'Убывающий серп',
+  Полнолуние: 'Растущая Луна',
+};
+
+export function describeHeroMoonPhase({
+  lunar,
+  majorPhase,
+  nextPhase,
+  now = new Date(),
+}) {
+  if (majorPhase?.name && majorPhase?.at instanceof Date && majorPhase.at <= now) {
+    return `${majorPhase.name} в ${formatTime(majorPhase.at)}`;
+  }
+
+  const phaseName = lunar?.phaseName ?? '';
+
+  if (nextPhase?.name === phaseName && nextPhase?.at instanceof Date && nextPhase.at > now) {
+    return UPCOMING_MAJOR_PHASE_FALLBACKS[phaseName] ?? phaseName;
+  }
+
+  return phaseName;
+}
+
 export function describeMoonPrecision({ lunar, nextPhase, now = new Date() }) {
   const rows = [];
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-05-15 — Fix hero Moon phase before upcoming major phase
+
+- Исправлен hero Moon phase label перед будущим Новолунием / Полнолунием: countdown остается, но текущая фаза больше не называется точным событием заранее.
+- Для `2026-05-15T10:33:00+03:00` hero показывает `Убывающий серп` вместе с `До Новолуния`.
+- PWA-кэш обновлен до `lunar-calendar-v59`.
+- Sprint 6 не начинался.
+
 ## 2026-05-15 — Complete Sprint 5 hardening
 
 - Завершена Task 5.8 — Sprint 5 Hardening.

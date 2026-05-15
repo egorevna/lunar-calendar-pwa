@@ -32,7 +32,10 @@ import {
   describeMoonAspectInterpretation,
   describeNextMoonAspect,
 } from './moonAspectsDisplay.js';
-import { describeMoonPrecision } from './moonPrecisionDisplay.js';
+import {
+  describeHeroMoonPhase,
+  describeMoonPrecision,
+} from './moonPrecisionDisplay.js';
 import { describePlanetaryHourHint } from './planetaryHourHints.js';
 import { describeMoonIngress } from './moonSignDisplay.js';
 import { PRECISE_EPHEMERIS } from './ephemeris-data.js';
@@ -179,9 +182,12 @@ function render() {
   elements.weekday.textContent = formatWeekday(now);
   elements.clock.textContent = formatTime(now);
   elements.lunarDay.textContent = `${lunarDay}-й лунный день`;
-  elements.phase.textContent = majorPhase
-    ? `${majorPhase.name} в ${formatTime(majorPhase.at)}`
-    : lunar.phaseName;
+  elements.phase.textContent = describeHeroMoonPhase({
+    lunar,
+    majorPhase,
+    nextPhase: nextMajorPhase,
+    now,
+  });
   renderMoonPrecision(describeMoonPrecision({ lunar, nextPhase: nextMajorPhase, now }));
   elements.moonSign.textContent = `Луна в ${moonSign.current.glyph} ${moonSign.current.locative}`;
   elements.nextMoonSign.textContent = describeMoonIngress(moonSign, now);
