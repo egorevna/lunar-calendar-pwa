@@ -588,30 +588,38 @@ Sprint 1 — Main Dashboard Cleanup
 Sprint 2 — Modes and Best Windows
 Sprint 3 — Profiles / Мои карты
 Sprint 4 — Personal Moment Foundation / Лично для меня
-```
-
-Активный спринт:
-
-```txt
 Sprint 5 — Natal Calculation Engine Foundation
 ```
 
-Цель Sprint 5:
+Следующий этап:
+
+```txt
+Sprint 6 — подготовка
+```
+
+Sprint 5 завершен.
+
+Результат Sprint 5:
 
 - построить расчетную основу для настоящей натальной астрологии;
 - выбрать надежный путь natal engine до появления natal UI;
 - не показывать фейковые натальные планеты, дома, ASC / MC, personal transits или orbs;
 - явно возвращать `notSupported`, если расчет пока не подключен или не доказан тестами.
 
-Текущая активная задача:
+Завершенная задача:
 
 ```txt
 Task 5.8 — Sprint 5 Hardening
 ```
 
-Task 5.8 должна проверить весь Sprint 5: no fake natal claims, unsupported states explicit, debug safe, tests pass.
+Результат Task 5.8:
 
-Task 5.8 еще не начата.
+- проверены Task 5.1–5.7 и закрыт Sprint 5;
+- production UI не показывает fake natal calculations, natal chart, planet table, house table, ASC / MC values, personal transits или orbs;
+- debug показывает safe capability/provider state и не выводит raw birth data или full profile JSON;
+- `natalEngine`, `birthDateTime` и `planetaryPositionProvider` сохраняют explicit `notSupported` / false capabilities для unsupported features;
+- real planetary provider еще не подключен;
+- package/dependency changes, `ephemeris-data.js`, generator, natal planets, houses, ASC / MC и transits не добавлялись.
 
 Завершенная задача:
 
@@ -1699,7 +1707,7 @@ lunar-calendar-v58
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 5.8 — Sprint 5 Hardening.
+Подготовить Sprint 6.
 ```
 
 Перед реализацией Codex должен:
@@ -1721,4 +1729,4 @@ lunar-calendar-v58
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3 и Sprint 4 завершены. Активный спринт — Sprint 5; Task 5.1, Task 5.2, Task 5.3, Task 5.4, Task 5.5, Task 5.6 и Task 5.7 завершены. Текущая задача — Task 5.8 — Sprint 5 Hardening.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4 и Sprint 5 завершены. Следующий этап — подготовка Sprint 6; Sprint 6 не начат.

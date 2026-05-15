@@ -1147,11 +1147,11 @@ Harden Sprint 4 after the safe personal-context/debug foundation is complete.
 - Do not start Sprint 5.
 - Do not add natal calculations without a reliable calculation engine.
 
-# Current Active Sprint
+# Completed Sprint
 
 ## Sprint 5 — Natal Calculation Engine Foundation
 
-Status: active
+Status: done
 
 ### Goal
 
@@ -1318,17 +1318,29 @@ Goal: add safe debug inspection and fixture strategy without dumping sensitive b
 - Added `test/fixtures/natalFixtures.js` with a test-only mock provider for future-ready natal-engine tests.
 - Production natal engine path remains `notSupported`; no real provider, dependencies, UI, natal planets, houses, ASC / MC or transits were added.
 
-# Active Task
+# Completed Task
 
 ## Task 5.8 — Sprint 5 Hardening
 
-Status: not started
+Status: done
 
 Goal: verify Sprint 5 outputs, no fake natal claims, unsupported states explicit, tests pass.
 
-# Sprint 5 Backlog
+### Result
 
-No active backlog tasks before Sprint 5 hardening.
+- Audited Task 5.1–5.7 outputs and confirmed Sprint 5 foundation is complete.
+- Confirmed production UI does not show fake natal calculations, natal chart, planet table, house table, ASC / MC values, personal transits or orbs.
+- Confirmed debug output shows safe capability/provider state and does not expose raw birth data or full profile JSON.
+- Confirmed `natalEngine`, `birthDateTime`, and `planetaryPositionProvider` keep unsupported features explicit and do not fake readiness.
+- Confirmed no real provider, dependency, package, ephemeris or generator changes were added during hardening.
+
+# Next Stage
+
+## Sprint 6
+
+Status: not started
+
+Sprint 6 remains a future stage and must not start without explicit approval.
 
 # Do Not Do Now
 

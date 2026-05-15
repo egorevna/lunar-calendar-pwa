@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-15 — Complete Sprint 5 hardening
+
+- Завершена Task 5.8 — Sprint 5 Hardening.
+- Проверено, что production UI не показывает fake natal calculations, natal chart, planet table, house table, ASC / MC values, personal transits или orbs.
+- Проверено, что debug выводит только safe capability/provider state и не раскрывает raw birth data или full profile JSON.
+- Подтверждено, что `natalEngine`, `birthDateTime` и `planetaryPositionProvider` сохраняют explicit `notSupported` / false capabilities для unsupported features.
+- Sprint 5 закрыт; real planetary provider, dependencies, `package.json`, `ephemeris-data.js`, generator, natal planets, houses, ASC / MC и transits не добавлялись.
+- Следующий этап — подготовка Sprint 6, но Sprint 6 не начинался.
+
 ## 2026-05-15 — Complete Task 5.7 natal engine debug fixtures
 
 - `src/debugPanel.js` получил секцию `Natal Engine Debug` для `?debug=1`.
