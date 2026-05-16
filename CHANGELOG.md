@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-05-16 — Complete Task 6.4a provider approval review
+
+- Создан `NATAL_PROVIDER_APPROVAL_REVIEW.md` для первого реального natal provider candidate.
+- Primary candidate: `astronomy-engine`; recommendation: лучший первый локальный кандидат для natal planet positions, но approval status остается `pending`.
+- Зафиксировано, что dependency нельзя устанавливать или интегрировать без явного approval и fixture validation.
+- `TODO.md` и `PROJECT_STATE.md` разделили Task 6.4 на `6.4a done` и `6.4b blocked`.
+- Код приложения, `package.json`, `package-lock.json`, provider integration, real natal planets, houses, ASC / MC, transits, aspects и orbs не менялись.
+
 ## 2026-05-15 — Complete Task 6.3 natal provider adapter contract
 
 - Добавлен `src/natalProviderAdapter.js` с default `notSupported` adapter, capability reporting, contract validation и safe runner.

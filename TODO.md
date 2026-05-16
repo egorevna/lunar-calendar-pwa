@@ -1441,13 +1441,37 @@ Goal: create a clean adapter interface that keeps production `notSupported` unti
 
 # Active Task
 
-## Task 6.4 — Approved Provider Integration
+## Task 6.4a — Provider Approval Review
 
-Status: blocked until user approval
+Status: done
+
+Goal: prepare approval review for the first real natal provider candidate before any dependency or integration work.
+
+### Result
+
+- Created `NATAL_PROVIDER_APPROVAL_REVIEW.md`.
+- Primary candidate reviewed: `astronomy-engine`.
+- Recommendation: `astronomy-engine` is the best first local candidate for natal planet positions, but approval remains pending.
+- Dependency was not installed.
+- `package.json` / `package-lock.json` were not changed.
+- Provider was not connected.
+- Real natal planets, houses, ASC / MC, transits, aspects and orbs were not calculated.
+
+## Task 6.4b — Approved Provider Integration
+
+Status: blocked until explicit user approval
 
 Goal: install/connect a real local provider only after explicit approval.
 
 Before this task starts, Codex must present provider name, license, browser/PWA compatibility, privacy behavior, bundle impact, capabilities, limitations and fixture validation plan.
+
+The approval review explicitly says:
+
+```txt
+Do not install or integrate this provider until the user explicitly approves it.
+```
+
+Task 6.5 must not start while Task 6.4b is blocked.
 
 # Sprint 6 Backlog
 
