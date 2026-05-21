@@ -404,7 +404,7 @@ Defines the isolated `astronomy-engine` provider module for the Sprint 6 provide
 Current responsibilities:
 
 - expose installed provider identity for `astronomy-engine@2.1.19`;
-- report provider-layer candidate planet calculation capabilities while reference fixture accuracy remains pending;
+- report provider-layer candidate planet calculation capabilities and selected UTC reference validation status;
 - document the geocentric tropical longitude API paths used by the provider layer;
 - audit installed provider source in Node tests for executable network behavior;
 - validate provider input through `src/planetaryPositionProvider.js`;
@@ -417,7 +417,9 @@ API paths currently used:
 - Moon: `EclipticGeoMoon(date).lon`;
 - planets: `GeoVector(body, date, true) -> Ecliptic(vector).elon`.
 
-This module does not integrate with the dashboard, does not expose user-facing natal values, and does not calculate houses, ASC / MC, personal transits, aspects, retrograde, speed or orbs. Reference fixture accuracy validation is still pending before any user-facing natal values can be enabled.
+Selected UTC natal planet longitudes are validated in tests against the local `swisseph` dev dependency through `test/fixtures/natalProviderReferenceFixtures.js` and `test/natalProviderReferenceValidation.test.js`.
+
+This module does not integrate with the dashboard, does not expose user-facing natal values, and does not calculate houses, ASC / MC, personal transits, aspects, retrograde, speed or orbs.
 
 ## `src/preciseEphemeris.js`
 
@@ -834,7 +836,7 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 27. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
 
-28. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, audits source behavior, and calculates candidate natal planet longitudes in the provider layer only; reference fixture accuracy is still pending, and no user-facing natal values are enabled.
+28. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, audits source behavior, and calculates candidate natal planet longitudes in the provider layer only; selected UTC fixtures are validated against local `swisseph` in tests, and no user-facing natal values are enabled.
 
 29. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state and safe personal readiness/capability state without birth details.
 
@@ -1166,6 +1168,7 @@ Privacy:
 Testing note:
 
 - `test/fixtures/natalFixtures.js` contains test-only mock provider data for future-ready natal engine tests. It is not used by the production provider path.
+- `test/fixtures/natalProviderReferenceFixtures.js` contains test-only UTC reference fixtures and Swiss Ephemeris reference helpers for validating `astronomy-engine` planet longitudes without importing `swisseph` into production code.
 - if personal data is added later, debug output must follow `PRIVACY_RULES.md`
 
 Debug data helps check calculation differences between calendars.

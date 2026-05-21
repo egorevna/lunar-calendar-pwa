@@ -1508,6 +1508,29 @@ Goal: calculate candidate natal planetary positions in the isolated provider lay
 - Houses, ASC / MC, transits, orbs, natal chart UI and user-facing natal values remain unavailable.
 - `src/app.js`, `index.html`, `sw.js`, `src/ephemeris-data.js`, and `scripts/generate-ephemeris.cjs` were not changed.
 
+## Task 6.5b — Validate astronomy-engine planet API against reference fixtures
+
+Status: done
+
+Goal: compare `astronomy-engine` natal planet longitudes against an independent reference source before any user-facing natal values are enabled.
+
+### Result
+
+- Added test-only Swiss Ephemeris reference fixtures in `test/fixtures/natalProviderReferenceFixtures.js`.
+- Added `test/natalProviderReferenceValidation.test.js`.
+- Reference source: local dev dependency `swisseph`, used only in Node tests.
+- Validated UTC fixtures:
+  - `2000-01-01T12:00:00.000Z`;
+  - `1900-06-15T00:00:00.000Z`;
+  - `2026-05-15T10:33:00.000Z`;
+  - `1985-11-03T06:30:00.000Z`.
+- Tolerances:
+  - Sun and planets: `0.25°`;
+  - Moon: `0.5°`.
+- Validated features: geocentric tropical ecliptic longitudes for the 10 main natal planets.
+- Still not validated / not supported: houses, ASC / MC, transits, aspects, orbs, retrograde and speed.
+- User-facing natal values, natal chart UI, `src/app.js`, `index.html`, `sw.js`, `src/ephemeris-data.js`, and `scripts/generate-ephemeris.cjs` were not changed.
+
 # Active Task
 
 ## Task 6.6 — Retrograde / Speed Support

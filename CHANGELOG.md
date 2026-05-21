@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-21 — Complete Task 6.5b astronomy-engine reference validation
+
+- Added `test/fixtures/natalProviderReferenceFixtures.js` with test-only UTC fixtures and local Swiss Ephemeris reference helpers.
+- Added `test/natalProviderReferenceValidation.test.js`.
+- Validated `astronomy-engine@2.1.19` geocentric tropical planet longitudes against local `swisseph` for selected UTC fixtures: 2000-01-01, 1900-06-15, 2026-05-15 and 1985-11-03.
+- Tolerances: `0.25°` for Sun/planets and `0.5°` for Moon.
+- Validated only natal planet longitudes; houses, ASC / MC, transits, aspects, orbs, retrograde, speed, local timezone conversion and user-facing natal UI remain unavailable.
+- No app UI, `src/app.js`, `index.html`, `sw.js`, dependencies, `src/ephemeris-data.js` or generator changes were made.
+
 ## 2026-05-21 — Complete Task 6.5 natal planet positions provider MVP
 
 - `src/astronomyEngineProvider.js` now calculates candidate geocentric tropical ecliptic longitudes for Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto.

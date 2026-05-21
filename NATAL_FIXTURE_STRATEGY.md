@@ -129,8 +129,8 @@ The current required categories are:
 
 Initial tolerance policy:
 
-- Sun, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto longitude: start with `0.5°` until source conventions are confirmed, then tighten toward `0.1°`.
-- Moon longitude: start with `1.0°` for provider comparison, then tighten after UTC/time-scale validation.
+- Sun, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto longitude: `0.25°` for the selected UTC Swiss Ephemeris reference validation; future broader public fixtures may tighten toward `0.1°`.
+- Moon longitude: `0.5°` for the selected UTC Swiss Ephemeris reference validation; future Moon-sensitive fixtures may tighten after broader UTC/time-scale validation.
 - ASC / MC: later only, start with `1.0°` and tighten after house engine approval.
 - House cusps: later only, start with `1.0°`; Placidus and high-latitude cases need separate checks.
 - Retrograde: exact boolean match if provider supports retrograde.
@@ -175,6 +175,68 @@ The fixtures are synthetic and have:
 - `expectedStatus: "pending-provider-approval"`;
 - `validatedProvider: null`;
 - `validatedAt: null`.
+
+## Task 6.5b Reference Validation
+
+Task 6.5b adds selected UTC reference validation for `astronomy-engine@2.1.19`.
+
+Reference source:
+
+- local `swisseph` dev dependency;
+- `swe_calc_ut(jd, body, SEFLG_SWIEPH, callback)`;
+- flags: `SEFLG_SWIEPH`, no sidereal, no topocentric, no true-position, no J2000;
+- used only in Node tests;
+- not imported into production `src/`.
+
+Astronomy Engine paths used:
+
+- Sun: `SunPosition(date).elon`;
+- Moon: `EclipticGeoMoon(date).lon`;
+- Mercury / Venus / Mars / Jupiter / Saturn / Uranus / Neptune / Pluto: `GeoVector(body, date, true)` -> `Ecliptic(vector).elon`.
+
+Reference fixture module:
+
+```txt
+test/fixtures/natalProviderReferenceFixtures.js
+```
+
+Validation test:
+
+```txt
+test/natalProviderReferenceValidation.test.js
+```
+
+UTC fixtures:
+
+- `2000-01-01T12:00:00.000Z` — modern reference fixture;
+- `1900-06-15T00:00:00.000Z` — historical reference fixture;
+- `2026-05-15T10:33:00.000Z` — Moon-sensitive reference fixture;
+- `1985-11-03T06:30:00.000Z` — timezone-sensitive documented UTC fixture, without local timezone conversion.
+
+Max observed deltas:
+
+- Sun and planets: `0.003180°`;
+- Moon: `0.000294°`.
+
+Validated features:
+
+- geocentric tropical ecliptic longitudes for Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto.
+
+Tolerances:
+
+- Sun and planets: `0.25°`;
+- Moon: `0.5°`.
+
+Still pending / not supported:
+
+- local birth timezone conversion;
+- houses;
+- ASC / MC;
+- transits;
+- retrograde / speed;
+- user-facing natal chart UI.
+
+Passing Task 6.5b fixtures means selected UTC planet longitudes are validated. It does not approve user-facing natal values, houses, ASC / MC, transits, retrograde, speed, or any local birth-time-to-UTC conversion.
 
 ## Decision Log
 

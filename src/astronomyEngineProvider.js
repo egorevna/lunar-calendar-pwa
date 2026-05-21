@@ -9,10 +9,11 @@ import {
 export const ASTRONOMY_ENGINE_PACKAGE_NAME = 'astronomy-engine';
 export const ASTRONOMY_ENGINE_VERSION = '2.1.19';
 export const ASTRONOMY_ENGINE_PROVIDER_REASON =
-  'Candidate positions calculated; reference fixture accuracy is pending.';
+  'Candidate positions calculated; selected UTC reference fixtures passed Swiss Ephemeris validation.';
 
 const API_PATH_STATUS = 'identified-pending-reference-validation';
-const FIXTURE_VALIDATION_STATUS = 'pending-reference-fixtures';
+const FIXTURE_VALIDATION_STATUS = 'validated-selected-utc-reference-fixtures';
+const REFERENCE_PROVIDER = 'swisseph';
 
 const DISABLED_CAPABILITIES = Object.freeze({
   planets: false,
@@ -34,6 +35,15 @@ const READY_CAPABILITIES = Object.freeze({
   houses: false,
   ascMc: false,
   transits: false,
+});
+
+const REFERENCE_VALIDATION_FEATURES = Object.freeze({
+  planets: true,
+  houses: false,
+  ascMc: false,
+  transits: false,
+  retrograde: false,
+  speed: false,
 });
 
 const API_PATHS = Object.freeze({
@@ -77,11 +87,13 @@ export function getAstronomyEngineProviderInfo() {
     localOnly: true,
     apiPathStatus: API_PATH_STATUS,
     fixtureValidation: FIXTURE_VALIDATION_STATUS,
+    referenceProvider: REFERENCE_PROVIDER,
+    referenceValidationFeatures: { ...REFERENCE_VALIDATION_FEATURES },
     apiPaths: { ...API_PATHS },
     notes: [
       'Provider package is installed for local-only planet position calculation.',
-      'Geocentric tropical longitude path is identified; reference fixture accuracy is still pending.',
-      'No user-facing natal values should be enabled until fixture expectations are approved.',
+      'Selected UTC fixtures passed Swiss Ephemeris longitude validation for natal planet positions.',
+      'No user-facing natal values should be enabled until UI scope is explicitly approved.',
     ],
   };
 }
@@ -94,6 +106,8 @@ export function getAstronomyEngineProviderCapabilities() {
     ...READY_CAPABILITIES,
     apiPathStatus: API_PATH_STATUS,
     fixtureValidation: FIXTURE_VALIDATION_STATUS,
+    referenceProvider: REFERENCE_PROVIDER,
+    referenceValidationFeatures: { ...REFERENCE_VALIDATION_FEATURES },
     supportedBodies: getRequiredPlanetKeys(),
     reason: ASTRONOMY_ENGINE_PROVIDER_REASON,
   };
@@ -250,6 +264,8 @@ function providerResult(overrides = {}) {
       input: null,
       apiPathStatus: API_PATH_STATUS,
       fixtureValidation: FIXTURE_VALIDATION_STATUS,
+      referenceProvider: REFERENCE_PROVIDER,
+      referenceValidationFeatures: { ...REFERENCE_VALIDATION_FEATURES },
     },
     errors: overrides.errors ?? [],
   };

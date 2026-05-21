@@ -705,9 +705,19 @@ Task 6.5 выполнен в ограниченном provider-layer scope:
 - для Луны используется `EclipticGeoMoon(date).lon`;
 - для остальных планет используется `GeoVector(body, date, true) -> Ecliptic(vector).elon`;
 - smoke validation проверяет finite normalized longitude, sign, degree и minutes;
-- reference fixture accuracy validation все еще pending;
 - `natalEngine` production path остается `notSupported`, пока fixture expected values не утверждены;
 - user-facing natal values, natal chart UI, houses, ASC / MC, transits и orbs не добавлялись.
+
+Task 6.5b выполнен как reference validation:
+
+- reference source: локальный `swisseph` dev dependency, только в Node tests;
+- добавлен `test/fixtures/natalProviderReferenceFixtures.js`;
+- добавлен `test/natalProviderReferenceValidation.test.js`;
+- проверены UTC fixtures: `2000-01-01T12:00:00.000Z`, `1900-06-15T00:00:00.000Z`, `2026-05-15T10:33:00.000Z`, `1985-11-03T06:30:00.000Z`;
+- tolerances: `0.25°` для Sun/planets и `0.5°` для Moon;
+- astronomy-engine natal planet longitude API прошел selected UTC reference validation для 10 основных планет;
+- candidate natal planet longitudes are fixture-validated for selected UTC fixtures; user-facing natal UI remains disabled;
+- houses, ASC / MC, transits, aspects, orbs, retrograde и speed остаются not supported / not approved.
 
 Текущая следующая задача:
 
@@ -1839,4 +1849,4 @@ Task 6.6 — Retrograde / Speed Support.
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4 и Sprint 5 завершены. Активный спринт — Sprint 6; Task 6.5 выполнена в ограниченном provider-layer scope: `astronomy-engine@2.1.19` считает candidate natal planet positions для 10 основных планет, но reference fixture accuracy validation еще pending, `natalEngine` production path остается `notSupported`, а user-facing natal values не показываются. Следующая задача — Task 6.6, но она не начиналась.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4 и Sprint 5 завершены. Активный спринт — Sprint 6; Task 6.5b завершила selected UTC reference validation: `astronomy-engine@2.1.19` candidate natal planet longitudes для 10 основных планет сверены с локальным `swisseph` reference в Node tests. `natalEngine` production path остается `notSupported`, user-facing natal values не показываются, houses / ASC / MC / transits / orbs / retrograde / speed не поддержаны. Следующая задача — Task 6.6, но она не начиналась.

@@ -54,14 +54,15 @@ test('provider info exposes astronomy-engine identity and version', () => {
   assert.equal(info.cloudRequired, false);
 });
 
-test('provider capabilities expose candidate planet calculation with fixture accuracy pending', () => {
+test('provider capabilities expose candidate planet calculation with selected fixture validation', () => {
   const capabilities = getAstronomyEngineProviderCapabilities();
 
   assert.equal(capabilities.provider, 'astronomy-engine');
   assert.equal(capabilities.status, 'ready');
   assert.equal(capabilities.planets, true);
   assert.equal(capabilities.tropical, true);
-  assert.equal(capabilities.fixtureValidation, 'pending-reference-fixtures');
+  assert.equal(capabilities.fixtureValidation, 'validated-selected-utc-reference-fixtures');
+  assert.equal(capabilities.referenceProvider, 'swisseph');
   assert.equal(capabilities.houses, false);
   assert.equal(capabilities.ascMc, false);
   assert.equal(capabilities.transits, false);
@@ -93,10 +94,10 @@ test('valid input returns ready candidate planet positions', () => {
 
   assert.equal(result.status, 'ready');
   assert.equal(result.provider, 'astronomy-engine');
-  assert.equal(result.reason, 'Candidate positions calculated; reference fixture accuracy is pending.');
+  assert.equal(result.reason, 'Candidate positions calculated; selected UTC reference fixtures passed Swiss Ephemeris validation.');
   assert.equal(result.capabilities.planets, true);
   assert.equal(result.capabilities.tropical, true);
-  assert.equal(result.metadata.fixtureValidation, 'pending-reference-fixtures');
+  assert.equal(result.metadata.fixtureValidation, 'validated-selected-utc-reference-fixtures');
   assert.deepEqual(result.planets.map((planet) => planet.key), ['sun', 'moon']);
 });
 
