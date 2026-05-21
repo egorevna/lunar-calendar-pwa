@@ -687,9 +687,18 @@ Task 6.4a — Provider Approval Review
 Task 6.4b — Approved Provider Integration
 ```
 
-Task 6.4b заблокирована до отдельного explicit approval. Перед стартом нужно представить provider name, license, browser/PWA compatibility, privacy behavior, bundle impact, capabilities, limitations и fixture validation plan.
+Task 6.4b stage 1 выполнен в узком approved scope:
 
-Task 6.5 не начинать, пока Task 6.4b заблокирована.
+- установлен `astronomy-engine@2.1.19`;
+- добавлен изолированный модуль `src/astronomyEngineProvider.js`;
+- добавлен `test/astronomyEngineProvider.test.js`;
+- source/privacy audit установленного package не нашел executable `fetch`, `XMLHttpRequest`, `WebSocket` или executable remote URL behavior;
+- remote URLs найдены только как documentation/comment/package metadata references;
+- API path candidates определены: `SunPosition(date).elon`, `EclipticGeoMoon(date).lon`, `GeoVector(body, date, true) -> Ecliptic(vector).elon`;
+- API path еще не fixture-validated, поэтому provider остается capability-disabled и возвращает explicit `notSupported`;
+- user-facing natal values, natal chart UI, houses, ASC / MC, transits и orbs не добавлялись.
+
+Task 6.5 не начинать, пока fixture expected values не утверждены и provider output не проходит validation.
 
 Sprint 6 цель:
 
@@ -1791,13 +1800,13 @@ lunar-calendar-v58
 Сейчас следующий конкретный шаг:
 
 ```txt
-Выполнить Task 6.4b — Approved Provider Integration только после отдельного explicit approval.
+Завершить provider validation gate после отдельного approval fixture expected values.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 6.4b без отдельного approval.
+2. Не начинать Task 6.5 без approved fixture expected values.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или фейковые личные расчеты.
@@ -1813,4 +1822,4 @@ lunar-calendar-v58
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4 и Sprint 5 завершены. Активный спринт — Sprint 6; Task 6.4a — Provider Approval Review завершена; текущая активная задача — Task 6.4b — Approved Provider Integration, заблокирована до отдельного explicit approval.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4 и Sprint 5 завершены. Активный спринт — Sprint 6; Task 6.4a — Provider Approval Review завершена; Task 6.4b stage 1 установлен локальный `astronomy-engine@2.1.19` spike-provider, но provider остается capability-disabled / `notSupported` до fixture validation. Task 6.5 не начинать без approved fixture expected values.

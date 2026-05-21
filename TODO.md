@@ -1459,7 +1459,7 @@ Goal: prepare approval review for the first real natal provider candidate before
 
 ## Task 6.4b — Approved Provider Integration
 
-Status: blocked until explicit user approval
+Status: stage 1 done; provider remains capability-disabled until fixture validation
 
 Goal: install/connect a real local provider only after explicit approval.
 
@@ -1471,7 +1471,22 @@ The approval review explicitly says:
 Do not install or integrate this provider until the user explicitly approves it.
 ```
 
-Task 6.5 must not start while Task 6.4b is blocked.
+### Stage 1 Result
+
+- Installed `astronomy-engine@2.1.19` as an exact dependency.
+- Added isolated `src/astronomyEngineProvider.js`.
+- Added `test/astronomyEngineProvider.test.js`.
+- Source/privacy audit found no executable `fetch`, `XMLHttpRequest`, `WebSocket`, or executable remote URL behavior in the installed package.
+- Remote URLs exist only as documentation/comment/package metadata references.
+- API path candidates are identified:
+  - Sun: `SunPosition(date).elon`;
+  - Moon: `EclipticGeoMoon(date).lon`;
+  - planets: `GeoVector(body, date, true) -> Ecliptic(vector).elon`.
+- The API path is not fixture-validated yet, so `calculateAstronomyEnginePlanetPositions()` returns explicit `notSupported` for valid input.
+- Houses, ASC / MC, transits, orbs, natal chart UI and user-facing natal values remain unavailable.
+- `src/app.js`, `index.html`, `sw.js`, `src/ephemeris-data.js`, and `scripts/generate-ephemeris.cjs` were not changed.
+
+Task 6.5 must not start until fixture expected values are approved and provider output passes validation.
 
 # Sprint 6 Backlog
 

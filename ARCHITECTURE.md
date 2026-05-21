@@ -397,6 +397,27 @@ Current responsibilities:
 
 This module does not connect a real provider, does not add dependencies, does not call external APIs, does not use `swisseph`, does not integrate with the dashboard, and does not calculate or fake planetary longitudes, houses, ASC / MC, aspects, personal transits, or orbs.
 
+## `src/astronomyEngineProvider.js`
+
+Defines the isolated `astronomy-engine` provider spike for Task 6.4b stage 1.
+
+Current responsibilities:
+
+- expose installed provider identity for `astronomy-engine@2.1.19`;
+- report provider capabilities as disabled until fixture validation;
+- document candidate API paths for future geocentric tropical longitude validation;
+- audit installed provider source in Node tests for executable network behavior;
+- validate provider input through `src/planetaryPositionProvider.js`;
+- return `incomplete` for invalid input and explicit `notSupported` for valid input while API paths are not fixture-validated.
+
+Candidate API paths currently identified for future validation:
+
+- Sun: `SunPosition(date).elon`;
+- Moon: `EclipticGeoMoon(date).lon`;
+- planets: `GeoVector(body, date, true) -> Ecliptic(vector).elon`.
+
+This module does not integrate with the dashboard, does not expose user-facing natal values, does not calculate fixture-approved planetary positions yet, and does not calculate houses, ASC / MC, personal transits, aspects or orbs.
+
 ## `src/preciseEphemeris.js`
 
 Reads pre-calculated Swiss Ephemeris data from `src/ephemeris-data.js`.
@@ -812,9 +833,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 27. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
 
-28. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state and safe personal readiness/capability state without birth details.
+28. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider spike, audits source behavior, and keeps capabilities disabled / `notSupported` until fixture validation.
 
-29. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
+29. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state and safe personal readiness/capability state without birth details.
+
+30. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 

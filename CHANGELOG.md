@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-21 — Complete Task 6.4b stage 1 astronomy-engine provider spike
+
+- Installed exact dependency `astronomy-engine@2.1.19`.
+- Added isolated `src/astronomyEngineProvider.js` with provider info, capability reporting, source audit helper and safe `notSupported` calculation path.
+- Added `test/astronomyEngineProvider.test.js`.
+- Source/privacy audit found no executable `fetch`, `XMLHttpRequest`, `WebSocket` or executable remote URL behavior in the installed package; URL matches are documentation/comment/package metadata references.
+- Identified candidate API paths for future fixture validation: `SunPosition(date).elon`, `EclipticGeoMoon(date).lon`, and `GeoVector(body, date, true) -> Ecliptic(vector).elon`.
+- Provider remains capability-disabled because the geocentric tropical longitude path is not fixture-validated yet.
+- User-facing UI, `src/app.js`, `index.html`, `sw.js`, `src/ephemeris-data.js`, generator, natal chart UI, houses, ASC / MC, transits and orbs were not changed.
+
 ## 2026-05-16 — Complete Task 6.4a provider approval review
 
 - Создан `NATAL_PROVIDER_APPROVAL_REVIEW.md` для первого реального natal provider candidate.
