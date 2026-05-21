@@ -1531,21 +1531,36 @@ Goal: compare `astronomy-engine` natal planet longitudes against an independent 
 - Still not validated / not supported: houses, ASC / MC, transits, aspects, orbs, retrograde and speed.
 - User-facing natal values, natal chart UI, `src/app.js`, `index.html`, `sw.js`, `src/ephemeris-data.js`, and `scripts/generate-ephemeris.cjs` were not changed.
 
-# Active Task
+# Completed Sprint 6 Tasks
 
 ## Task 6.6 — Retrograde / Speed Support
 
-Status: next / not started
+Status: done
 
 Goal: add retrograde/speed only if provider supports it reliably.
 
-# Sprint 6 Backlog
+### Result
+
+- `src/astronomyEngineProvider.js` now returns provider-layer longitude speed in degrees per day for the 10 main natal planets.
+- Speed is calculated by central difference on the already validated geocentric tropical longitude path with signed 0/360 wrap-around handling.
+- Retrograde is derived as `speed < 0` and validated against local Swiss Ephemeris speed sign.
+- Swiss Ephemeris speed reference uses `SEFLG_SWIEPH | SEFLG_SPEED` in test-only code.
+- Added Mercury and Venus retrograde-sensitive UTC fixtures.
+- Validated speed tolerances:
+  - Sun and planets: `0.02°/day`;
+  - Moon: `0.05°/day`.
+- Houses, ASC / MC, transits, aspects, orbs, natal chart UI and user-facing natal values remain unavailable.
+- `src/app.js`, `index.html`, `sw.js`, `package.json`, `package-lock.json`, `src/ephemeris-data.js`, and `scripts/generate-ephemeris.cjs` were not changed.
+
+# Active Task
 
 ## Task 6.7 — Provider Debug and Validation Report
 
-Status: not started
+Status: next / not started
 
 Goal: add safe debug info about provider and fixture validation without private birth data.
+
+# Sprint 6 Backlog
 
 ## Task 6.8 — Sprint 6 Hardening
 

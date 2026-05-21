@@ -409,7 +409,9 @@ Current responsibilities:
 - audit installed provider source in Node tests for executable network behavior;
 - validate provider input through `src/planetaryPositionProvider.js`;
 - return `incomplete` for invalid input;
-- calculate candidate planet longitudes for valid UTC input without exposing them to the UI.
+- calculate candidate planet longitudes for valid UTC input without exposing them to the UI;
+- calculate provider-layer longitude speed by central difference on the validated longitude path;
+- derive provider-layer retrograde as `speed < 0`.
 
 API paths currently used:
 
@@ -419,7 +421,9 @@ API paths currently used:
 
 Selected UTC natal planet longitudes are validated in tests against the local `swisseph` dev dependency through `test/fixtures/natalProviderReferenceFixtures.js` and `test/natalProviderReferenceValidation.test.js`.
 
-This module does not integrate with the dashboard, does not expose user-facing natal values, and does not calculate houses, ASC / MC, personal transits, aspects, retrograde, speed or orbs.
+Selected UTC longitude speeds are validated in tests against local `swisseph` with `SEFLG_SWIEPH | SEFLG_SPEED`. Retrograde-sensitive fixtures cover Mercury and Venus retrograde cases.
+
+This module does not integrate with the dashboard, does not expose user-facing natal values, and does not calculate houses, ASC / MC, personal transits, aspects or orbs.
 
 ## `src/preciseEphemeris.js`
 

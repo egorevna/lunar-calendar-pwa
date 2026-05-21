@@ -719,13 +719,26 @@ Task 6.5b выполнен как reference validation:
 - candidate natal planet longitudes are fixture-validated for selected UTC fixtures; user-facing natal UI remains disabled;
 - houses, ASC / MC, transits, aspects, orbs, retrograde и speed остаются not supported / not approved.
 
+Task 6.6 выполнен как provider-layer speed / retrograde validation:
+
+- `src/astronomyEngineProvider.js` теперь возвращает longitude speed в градусах в сутки для 10 основных natal planets;
+- speed считается central difference по уже validated geocentric tropical longitude path;
+- wrap-around 0/360 обрабатывается signed delta в диапазоне `-180..180`;
+- retrograde определяется как `speed < 0`;
+- reference source: local `swisseph` dev dependency, только в Node tests;
+- Swiss Ephemeris speed flags: `SEFLG_SWIEPH | SEFLG_SPEED`;
+- добавлены Mercury / Venus retrograde-sensitive UTC fixtures;
+- speed validation прошла для selected UTC fixtures;
+- user-facing natal UI остается disabled;
+- houses, ASC / MC, transits, aspects и orbs остаются not supported.
+
 Текущая следующая задача:
 
 ```txt
-Task 6.6 — Retrograde / Speed Support
+Task 6.7 — Provider Debug and Validation Report
 ```
 
-Task 6.6 не начиналась.
+Task 6.7 не начиналась.
 
 Sprint 6 цель:
 
@@ -1827,13 +1840,13 @@ lunar-calendar-v58
 Сейчас следующий конкретный шаг:
 
 ```txt
-Task 6.6 — Retrograde / Speed Support.
+Task 6.7 — Provider Debug and Validation Report.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 6.6 без отдельной команды.
+2. Не начинать Task 6.7 без отдельной команды.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или фейковые личные расчеты.
@@ -1849,4 +1862,4 @@ Task 6.6 — Retrograde / Speed Support.
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4 и Sprint 5 завершены. Активный спринт — Sprint 6; Task 6.5b завершила selected UTC reference validation: `astronomy-engine@2.1.19` candidate natal planet longitudes для 10 основных планет сверены с локальным `swisseph` reference в Node tests. `natalEngine` production path остается `notSupported`, user-facing natal values не показываются, houses / ASC / MC / transits / orbs / retrograde / speed не поддержаны. Следующая задача — Task 6.6, но она не начиналась.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4 и Sprint 5 завершены. Активный спринт — Sprint 6; Task 6.6 завершила provider-layer speed / retrograde validation: `astronomy-engine@2.1.19` считает selected UTC longitude speed для 10 основных планет, а retrograde определяется по validated speed sign against local `swisseph` in Node tests. `natalEngine` production path остается `notSupported`, user-facing natal values не показываются, houses / ASC / MC / transits / orbs не поддержаны. Следующая задача — Task 6.7, но она не начиналась.

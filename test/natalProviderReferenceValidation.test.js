@@ -8,12 +8,16 @@ import {
 } from '../src/astronomyEngineProvider.js';
 import {
   getReferenceAngularDifference,
+  getReferenceSpeedToleranceForPlanet,
   getReferenceToleranceForPlanet,
   getSwissEphReferenceLongitudes,
+  getSwissEphReferenceSpeeds,
   isSwissEphReferenceAvailable,
   NATAL_PROVIDER_REFERENCE_FIXTURES,
+  REFERENCE_FLAGS,
   REFERENCE_PROVIDER,
   REFERENCE_PROVIDER_VERSION,
+  REFERENCE_SPEED_FLAGS,
 } from './fixtures/natalProviderReferenceFixtures.js';
 
 const REQUIRED_PLANET_KEYS = [
@@ -37,6 +41,7 @@ test('Swiss Ephemeris reference source is available for test-only validation', (
 
 test('reference fixtures are UTC-only and do not contain private profile data', () => {
   assert.equal(NATAL_PROVIDER_REFERENCE_FIXTURES.length >= 4, true);
+  assert.equal(NATAL_PROVIDER_REFERENCE_FIXTURES.some((fixture) => fixture.categories.includes('retrogradeSensitive')), true);
 
   for (const fixture of NATAL_PROVIDER_REFERENCE_FIXTURES) {
     assert.equal(fixture.type, 'reference');
@@ -47,6 +52,10 @@ test('reference fixtures are UTC-only and do not contain private profile data', 
     assert.equal(JSON.stringify(fixture).includes('birthDate'), false);
     assert.equal(JSON.stringify(fixture).includes('birthTime'), false);
   }
+});
+
+test('Swiss Ephemeris speed reference uses explicit speed flag without sidereal or topocentric flags', () => {
+  assert.equal(REFERENCE_SPEED_FLAGS, REFERENCE_FLAGS | 256);
 });
 
 test('astronomy-engine provider matches Swiss Ephemeris reference longitudes within tolerance', () => {
@@ -91,11 +100,56 @@ test('provider reports selected UTC reference fixtures as validated', () => {
   assert.equal(capabilities.referenceValidationFeatures.houses, false);
   assert.equal(capabilities.referenceValidationFeatures.ascMc, false);
   assert.equal(capabilities.referenceValidationFeatures.transits, false);
-  assert.equal(capabilities.referenceValidationFeatures.retrograde, false);
-  assert.equal(capabilities.referenceValidationFeatures.speed, false);
+  assert.equal(capabilities.referenceValidationFeatures.retrograde, true);
+  assert.equal(capabilities.referenceValidationFeatures.speed, true);
 });
 
-test('reference validation does not approve houses ASC MC transits speed retrograde or UI', () => {
+test('astronomy-engine provider matches Swiss Ephemeris reference longitude speeds within tolerance', () => {
+  for (const fixture of NATAL_PROVIDER_REFERENCE_FIXTURES) {
+    const result = calculateAstronomyEnginePlanetPositions({
+      utcDateTime: fixture.utcDateTime,
+      zodiac: fixture.zodiac,
+    });
+    const reference = getSwissEphReferenceSpeeds(fixture.utcDateTime);
+
+    assert.equal(result.status, 'ready', fixture.id);
+    assert.notEqual(reference, null, fixture.id);
+
+    for (const planet of result.planets) {
+      const referenceSpeed = reference[planet.key];
+      const tolerance = getReferenceSpeedToleranceForPlanet(planet.key);
+      const diff = Math.abs(planet.speed - referenceSpeed);
+
+      assert.equal(Number.isFinite(planet.speed), true, `${fixture.id}:${planet.key}`);
+      assert.equal(diff <= tolerance, true, `${fixture.id}:${planet.key} speed diff=${diff}`);
+    }
+  }
+});
+
+test('retrograde boolean matches Swiss Ephemeris reference for retrograde-sensitive fixtures', () => {
+  const sensitiveFixtures = NATAL_PROVIDER_REFERENCE_FIXTURES
+    .filter((fixture) => fixture.categories.includes('retrogradeSensitive'));
+
+  assert.equal(sensitiveFixtures.length >= 2, true);
+
+  for (const fixture of sensitiveFixtures) {
+    const result = calculateAstronomyEnginePlanetPositions({
+      utcDateTime: fixture.utcDateTime,
+      zodiac: fixture.zodiac,
+    });
+    const reference = getSwissEphReferenceSpeeds(fixture.utcDateTime);
+
+    for (const planet of result.planets) {
+      assert.equal(
+        planet.retrograde,
+        reference[planet.key] < 0,
+        `${fixture.id}:${planet.key}`,
+      );
+    }
+  }
+});
+
+test('reference validation does not approve houses ASC MC transits or UI', () => {
   const result = calculateAstronomyEnginePlanetPositions({
     utcDateTime: NATAL_PROVIDER_REFERENCE_FIXTURES[0].utcDateTime,
     zodiac: 'tropical',
@@ -110,8 +164,8 @@ test('reference validation does not approve houses ASC MC transits speed retrogr
   assert.equal(result.capabilities.houses, false);
   assert.equal(result.capabilities.ascMc, false);
   assert.equal(result.capabilities.transits, false);
-  assert.equal(result.capabilities.retrograde, false);
-  assert.equal(result.capabilities.speed, false);
+  assert.equal(result.capabilities.retrograde, true);
+  assert.equal(result.capabilities.speed, true);
   assert.equal(appSource.includes('astronomyEngineProvider'), false);
   assert.equal(markup.includes('Натальная карта'), false);
   assert.equal(markup.includes('Таблица планет'), false);

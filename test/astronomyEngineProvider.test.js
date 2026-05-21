@@ -61,6 +61,8 @@ test('provider capabilities expose candidate planet calculation with selected fi
   assert.equal(capabilities.status, 'ready');
   assert.equal(capabilities.planets, true);
   assert.equal(capabilities.tropical, true);
+  assert.equal(capabilities.speed, true);
+  assert.equal(capabilities.retrograde, true);
   assert.equal(capabilities.fixtureValidation, 'validated-selected-utc-reference-fixtures');
   assert.equal(capabilities.referenceProvider, 'swisseph');
   assert.equal(capabilities.houses, false);
@@ -119,8 +121,9 @@ test('calculated planet positions are finite normalized values with sign and deg
     assert.equal(typeof planet.sign.ru, 'string', planet.key);
     assert.equal(Number.isInteger(planet.degree), true, planet.key);
     assert.equal(Number.isInteger(planet.minutes), true, planet.key);
-    assert.equal(planet.retrograde, null, planet.key);
-    assert.equal(planet.speed, null, planet.key);
+    assert.equal(typeof planet.retrograde, 'boolean', planet.key);
+    assert.equal(Number.isFinite(planet.speed), true, planet.key);
+    assert.equal(Number.isNaN(planet.speed), false, planet.key);
     assert.equal(planet.source, 'astronomy-engine', planet.key);
   }
 });
@@ -143,8 +146,8 @@ test('houses ASC MC and transits remain notSupported', () => {
   assert.equal(result.capabilities.houses, false);
   assert.equal(result.capabilities.ascMc, false);
   assert.equal(result.capabilities.transits, false);
-  assert.equal(result.capabilities.retrograde, false);
-  assert.equal(result.capabilities.speed, false);
+  assert.equal(result.capabilities.retrograde, true);
+  assert.equal(result.capabilities.speed, true);
 });
 
 test('package.json contains approved astronomy-engine version', () => {

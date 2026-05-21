@@ -7,10 +7,13 @@ const swe = require('swisseph');
 export const REFERENCE_PROVIDER = 'swisseph';
 export const REFERENCE_PROVIDER_VERSION = getSwissEphVersion();
 export const REFERENCE_FLAGS = swe.SEFLG_SWIEPH;
+export const REFERENCE_SPEED_FLAGS = swe.SEFLG_SWIEPH | swe.SEFLG_SPEED;
 
 export const NATAL_PROVIDER_REFERENCE_TOLERANCE = Object.freeze({
   longitudeDegrees: 0.25,
   moonLongitudeDegrees: 0.5,
+  speedDegreesPerDay: 0.02,
+  moonSpeedDegreesPerDay: 0.05,
 });
 
 export const NATAL_PROVIDER_REFERENCE_FIXTURES = Object.freeze([
@@ -39,6 +42,20 @@ export const NATAL_PROVIDER_REFERENCE_FIXTURES = Object.freeze([
     utcDateTime: '1985-11-03T06:30:00.000Z',
     notes: ['UTC-only fixture; no local birth timezone conversion is performed.'],
   }),
+  createUtcReferenceFixture({
+    id: 'reference-mercury-retrograde-2026',
+    label: 'Reference Mercury retrograde-sensitive UTC fixture',
+    categories: ['retrogradeSensitive'],
+    utcDateTime: '2026-03-02T12:00:00.000Z',
+    notes: ['UTC-only fixture selected because Swiss Ephemeris reports Mercury longitude speed below zero.'],
+  }),
+  createUtcReferenceFixture({
+    id: 'reference-venus-retrograde-2025',
+    label: 'Reference Venus retrograde-sensitive UTC fixture',
+    categories: ['retrogradeSensitive'],
+    utcDateTime: '2025-03-04T12:00:00.000Z',
+    notes: ['UTC-only fixture selected because Swiss Ephemeris reports Venus longitude speed below zero.'],
+  }),
 ]);
 
 export function isSwissEphReferenceAvailable() {
@@ -60,10 +77,31 @@ export function getSwissEphReferenceLongitudes(utcDateTime) {
   );
 }
 
+export function getSwissEphReferenceSpeeds(utcDateTime) {
+  if (!isSwissEphReferenceAvailable()) {
+    return null;
+  }
+
+  swe.swe_set_ephe_path(join(process.cwd(), 'node_modules', 'swisseph', 'ephe'));
+
+  return Object.fromEntries(
+    Object.entries(SWISS_EPH_BODY_IDS).map(([key, bodyId]) => [
+      key,
+      calculateSwissEphSpeed(utcDateTime, bodyId),
+    ]),
+  );
+}
+
 export function getReferenceToleranceForPlanet(key) {
   return key === 'moon'
     ? NATAL_PROVIDER_REFERENCE_TOLERANCE.moonLongitudeDegrees
     : NATAL_PROVIDER_REFERENCE_TOLERANCE.longitudeDegrees;
+}
+
+export function getReferenceSpeedToleranceForPlanet(key) {
+  return key === 'moon'
+    ? NATAL_PROVIDER_REFERENCE_TOLERANCE.moonSpeedDegreesPerDay
+    : NATAL_PROVIDER_REFERENCE_TOLERANCE.speedDegreesPerDay;
 }
 
 export function getReferenceAngularDifference(a, b) {
@@ -106,6 +144,21 @@ function calculateSwissEphLongitude(utcDateTime, bodyId) {
   });
 
   return longitude;
+}
+
+function calculateSwissEphSpeed(utcDateTime, bodyId) {
+  const jd = dateToJulian(new Date(utcDateTime));
+  let speed = null;
+
+  swe.swe_calc_ut(jd, bodyId, REFERENCE_SPEED_FLAGS, (body) => {
+    if (body.error) {
+      throw new Error(body.error);
+    }
+
+    speed = body.longitudeSpeed;
+  });
+
+  return speed;
 }
 
 function dateToJulian(date) {

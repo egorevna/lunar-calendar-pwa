@@ -28,8 +28,8 @@ const DISABLED_CAPABILITIES = Object.freeze({
 
 const READY_CAPABILITIES = Object.freeze({
   planets: true,
-  retrograde: false,
-  speed: false,
+  retrograde: true,
+  speed: true,
   tropical: true,
   sidereal: false,
   houses: false,
@@ -42,15 +42,18 @@ const REFERENCE_VALIDATION_FEATURES = Object.freeze({
   houses: false,
   ascMc: false,
   transits: false,
-  retrograde: false,
-  speed: false,
+  retrograde: true,
+  speed: true,
 });
 
 const API_PATHS = Object.freeze({
   sun: 'SunPosition(date).elon',
   moon: 'EclipticGeoMoon(date).lon',
   planets: 'GeoVector(body, date, true) -> Ecliptic(vector).elon',
+  speed: 'central difference of validated longitude path at t ± 0.05 days',
 });
+
+const SPEED_DELTA_DAYS = 0.05;
 
 const ASTRONOMY_BODY_BY_PLANET_KEY = Object.freeze({
   mercury: Astronomy.Body.Mercury,
@@ -92,7 +95,7 @@ export function getAstronomyEngineProviderInfo() {
     apiPaths: { ...API_PATHS },
     notes: [
       'Provider package is installed for local-only planet position calculation.',
-      'Selected UTC fixtures passed Swiss Ephemeris longitude validation for natal planet positions.',
+      'Selected UTC fixtures passed Swiss Ephemeris longitude and speed validation for natal planet positions.',
       'No user-facing natal values should be enabled until UI scope is explicitly approved.',
     ],
   };
@@ -210,12 +213,19 @@ export function calculateAstronomyEnginePlanetPositions(input = {}) {
 
 function calculatePlanetPosition(key, date) {
   const longitude = calculateGeocentricTropicalLongitude(key, date);
+  const speed = calculateGeocentricTropicalLongitudeSpeed(key, date);
+
+  if (!Number.isFinite(speed)) {
+    return null;
+  }
+
+  const retrograde = speed < 0;
   const position = normalizePlanetaryPosition({
     key,
     label: PLANET_LABELS[key],
     longitude,
-    retrograde: null,
-    speed: null,
+    retrograde,
+    speed,
     source: ASTRONOMY_ENGINE_PACKAGE_NAME,
   });
 
@@ -225,8 +235,8 @@ function calculatePlanetPosition(key, date) {
 
   return {
     ...position,
-    retrograde: null,
-    speed: null,
+    retrograde,
+    speed,
   };
 }
 
@@ -246,6 +256,39 @@ function calculateGeocentricTropicalLongitude(key, date) {
   }
 
   return Astronomy.Ecliptic(Astronomy.GeoVector(body, date, true)).elon;
+}
+
+function calculateGeocentricTropicalLongitudeSpeed(key, date) {
+  const before = calculateGeocentricTropicalLongitude(key, addDays(date, -SPEED_DELTA_DAYS));
+  const after = calculateGeocentricTropicalLongitude(key, addDays(date, SPEED_DELTA_DAYS));
+
+  if (!Number.isFinite(before) || !Number.isFinite(after)) {
+    return null;
+  }
+
+  return getSignedLongitudeDelta(after, before) / (2 * SPEED_DELTA_DAYS);
+}
+
+function addDays(date, days) {
+  return new Date(date.getTime() + days * 86400000);
+}
+
+function getSignedLongitudeDelta(a, b) {
+  let diff = normalizeDegrees(a) - normalizeDegrees(b);
+
+  if (diff > 180) {
+    diff -= 360;
+  }
+
+  if (diff < -180) {
+    diff += 360;
+  }
+
+  return diff;
+}
+
+function normalizeDegrees(value) {
+  return ((value % 360) + 360) % 360;
 }
 
 function providerResult(overrides = {}) {

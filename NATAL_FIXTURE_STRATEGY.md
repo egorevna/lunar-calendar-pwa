@@ -134,7 +134,8 @@ Initial tolerance policy:
 - ASC / MC: later only, start with `1.0°` and tighten after house engine approval.
 - House cusps: later only, start with `1.0°`; Placidus and high-latitude cases need separate checks.
 - Retrograde: exact boolean match if provider supports retrograde.
-- Speed: compare only after provider exposes speed and fixture source includes expected speed.
+- Sun, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto longitude speed: `0.02°/day` for selected UTC Swiss Ephemeris speed validation.
+- Moon longitude speed: `0.05°/day` for selected UTC Swiss Ephemeris speed validation.
 
 If fixture output fails tolerance, provider capabilities must remain disabled or `notSupported`.
 
@@ -238,6 +239,56 @@ Still pending / not supported:
 
 Passing Task 6.5b fixtures means selected UTC planet longitudes are validated. It does not approve user-facing natal values, houses, ASC / MC, transits, retrograde, speed, or any local birth-time-to-UTC conversion.
 
+## Task 6.6 Speed / Retrograde Validation
+
+Task 6.6 adds provider-layer speed and retrograde support for `astronomy-engine@2.1.19`.
+
+Reference source:
+
+- local `swisseph` dev dependency;
+- `swe_calc_ut(jd, body, SEFLG_SWIEPH | SEFLG_SPEED, callback)`;
+- flags: `SEFLG_SWIEPH` and `SEFLG_SPEED`, no sidereal, no topocentric, no true-position, no J2000;
+- used only in Node tests;
+- not imported into production `src/`.
+
+Astronomy Engine speed method:
+
+- central difference of the validated geocentric tropical longitude path;
+- delta: `0.05` days on each side of the fixture UTC time;
+- signed wrap-around is applied in the `-180..180` range before dividing by elapsed days.
+
+Additional retrograde-sensitive UTC fixtures:
+
+- `2026-03-02T12:00:00.000Z` — Mercury retrograde-sensitive fixture;
+- `2025-03-04T12:00:00.000Z` — Venus retrograde-sensitive fixture.
+
+Speed tolerances:
+
+- Sun and planets: `0.02°/day`;
+- Moon: `0.05°/day`.
+
+Max observed speed deltas:
+
+- Sun and planets: `0.000288°/day`;
+- Moon: `0.000148°/day`.
+
+Validated features:
+
+- geocentric tropical longitude speed for Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto;
+- retrograde boolean derived as `speed < 0` and checked against Swiss Ephemeris speed sign for retrograde-sensitive fixtures.
+
+Still pending / not supported:
+
+- local birth timezone conversion;
+- houses;
+- ASC / MC;
+- transits;
+- aspects;
+- orbs;
+- user-facing natal chart UI.
+
+Passing Task 6.6 fixtures means selected UTC provider-layer speed and retrograde fields are validated. It does not approve user-facing natal values, houses, ASC / MC, transits, aspects, orbs, or any local birth-time-to-UTC conversion.
+
 ## Decision Log
 
 - Task 6.2 does not connect a real provider.
@@ -246,3 +297,4 @@ Passing Task 6.5b fixtures means selected UTC planet longitudes are validated. I
 - Synthetic fixtures are structure and privacy guardrails only.
 - Expected planetary values remain pending until provider approval and reference-source selection.
 - Task 6.3 may use this fixture shape when creating the provider adapter contract.
+- Task 6.6 validates speed / retrograde only inside the provider layer; user-facing natal UI remains disabled.

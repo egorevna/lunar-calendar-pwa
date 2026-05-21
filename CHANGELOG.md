@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-21 — Complete Task 6.6 retrograde and speed provider support
+
+- `src/astronomyEngineProvider.js` now returns provider-layer longitude speed for the 10 main natal planets.
+- Speed is calculated by central difference on the validated geocentric tropical longitude path with signed 0/360 wrap-around handling.
+- Retrograde is derived as `speed < 0`.
+- Added Swiss Ephemeris speed reference validation using `SEFLG_SWIEPH | SEFLG_SPEED` in test-only code.
+- Added Mercury and Venus retrograde-sensitive UTC fixtures.
+- Validated only provider-layer speed and retrograde; houses, ASC / MC, transits, aspects, orbs, user-facing natal UI and local timezone conversion remain unavailable.
+- No app UI, `src/app.js`, `index.html`, `sw.js`, dependencies, `src/ephemeris-data.js` or generator changes were made.
+
 ## 2026-05-21 — Complete Task 6.5b astronomy-engine reference validation
 
 - Added `test/fixtures/natalProviderReferenceFixtures.js` with test-only UTC fixtures and local Swiss Ephemeris reference helpers.

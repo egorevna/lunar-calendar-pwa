@@ -597,3 +597,18 @@ Provider-backed planetary positions must include:
 - source / provider.
 
 Retrograde and speed must be provider-backed. Do not infer them without provider support.
+
+## Speed / Retrograde Validation Rule
+
+Provider-layer longitude speed may be enabled only after independent reference validation.
+
+Current validated Sprint 6 rule:
+
+- source: `astronomy-engine@2.1.19`;
+- speed method: central difference of the validated geocentric tropical longitude path;
+- reference: local `swisseph` dev dependency in Node tests;
+- Swiss Ephemeris flags: `SEFLG_SWIEPH | SEFLG_SPEED`;
+- tolerance: `0.02°/day` for Sun and planets, `0.05°/day` for Moon;
+- retrograde: `speed < 0`, validated against Swiss Ephemeris speed sign.
+
+This does not approve houses, ASC / MC, transits, aspects, orbs, local birth timezone conversion, or user-facing natal UI.
