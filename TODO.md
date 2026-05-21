@@ -1439,7 +1439,7 @@ Goal: create a clean adapter interface that keeps production `notSupported` unti
 - Added `test/natalProviderAdapter.test.js` with mock-ready coverage through test-only adapters.
 - Production default remains `notSupported`; no real provider, dependency, package change or real natal calculation was added.
 
-# Active Task
+# Completed Sprint 6 Tasks
 
 ## Task 6.4a — Provider Approval Review
 
@@ -1459,7 +1459,7 @@ Goal: prepare approval review for the first real natal provider candidate before
 
 ## Task 6.4b — Approved Provider Integration
 
-Status: stage 1 done; provider remains capability-disabled until fixture validation
+Status: stage 1 done
 
 Goal: install/connect a real local provider only after explicit approval.
 
@@ -1482,25 +1482,41 @@ Do not install or integrate this provider until the user explicitly approves it.
   - Sun: `SunPosition(date).elon`;
   - Moon: `EclipticGeoMoon(date).lon`;
   - planets: `GeoVector(body, date, true) -> Ecliptic(vector).elon`.
-- The API path is not fixture-validated yet, so `calculateAstronomyEnginePlanetPositions()` returns explicit `notSupported` for valid input.
+- The API path is identified but reference fixture accuracy is not validated yet.
 - Houses, ASC / MC, transits, orbs, natal chart UI and user-facing natal values remain unavailable.
 - `src/app.js`, `index.html`, `sw.js`, `src/ephemeris-data.js`, and `scripts/generate-ephemeris.cjs` were not changed.
 
-Task 6.5 must not start until fixture expected values are approved and provider output passes validation.
-
-# Sprint 6 Backlog
+Task 6.5 was approved later as a limited provider-layer smoke MVP. Reference fixture accuracy remains pending before any user-facing natal values.
 
 ## Task 6.5 — Natal Planet Positions MVP
 
-Status: not started
+Status: done
 
-Goal: calculate natal planetary positions only if provider is approved and fixtures pass.
+Goal: calculate candidate natal planetary positions in the isolated provider layer without showing them to users.
+
+### Result
+
+- `src/astronomyEngineProvider.js` now calculates candidate geocentric tropical ecliptic longitudes for the 10 main natal planets through `astronomy-engine@2.1.19`.
+- Covered bodies: Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto.
+- API paths used:
+  - Sun: `SunPosition(date).elon`;
+  - Moon: `EclipticGeoMoon(date).lon`;
+  - planets: `GeoVector(body, date, true) -> Ecliptic(vector).elon`.
+- Smoke validation checks finite normalized longitudes, sign, degree and minutes.
+- Reference fixture accuracy is still pending; synthetic fixtures still have `expectedStatus: "pending-provider-approval"`.
+- `natalEngine` production behavior remains `notSupported` through the existing default `planetaryPositionProvider` path until fixture validation is approved.
+- Houses, ASC / MC, transits, orbs, natal chart UI and user-facing natal values remain unavailable.
+- `src/app.js`, `index.html`, `sw.js`, `src/ephemeris-data.js`, and `scripts/generate-ephemeris.cjs` were not changed.
+
+# Active Task
 
 ## Task 6.6 — Retrograde / Speed Support
 
-Status: not started
+Status: next / not started
 
 Goal: add retrograde/speed only if provider supports it reliably.
+
+# Sprint 6 Backlog
 
 ## Task 6.7 — Provider Debug and Validation Report
 
@@ -1513,6 +1529,21 @@ Goal: add safe debug info about provider and fixture validation without private 
 Status: not started
 
 Goal: finalize Sprint 6 with privacy, accuracy, unsupported-state and test checks.
+
+# Security Backlog
+
+## Security follow-up — Review swisseph dev dependency audit findings
+
+Status: not started
+
+Description:
+
+- `npm audit` shows dev-only vulnerabilities in the `swisseph` / `node-gyp` / `tar` / `cacache` chain.
+- `npm audit --omit=dev` is clean.
+- Do not run `npm audit fix --force` without separate analysis.
+- Check impact on `scripts/generate-ephemeris.cjs`.
+
+This is a future security follow-up and must not be handled as part of Task 6.5.
 
 # Do Not Do Now
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-21 — Complete Task 6.5 natal planet positions provider MVP
+
+- `src/astronomyEngineProvider.js` now calculates candidate geocentric tropical ecliptic longitudes for Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto.
+- Used `astronomy-engine@2.1.19` paths: `SunPosition(date).elon`, `EclipticGeoMoon(date).lon`, and `GeoVector(body, date, true) -> Ecliptic(vector).elon`.
+- Added smoke tests for 10 planet keys, finite normalized longitudes, sign/degree/minute normalization, source marker and disabled houses / ASC / MC / transits.
+- Reference fixture accuracy validation remains pending; synthetic fixtures still do not contain approved expected longitudes.
+- `natalEngine` production path, user-facing UI, `src/app.js`, `index.html`, `sw.js`, `src/ephemeris-data.js`, generator, houses, ASC / MC, transits and orbs were not changed.
+- Added a future security backlog item for dev-only `swisseph` audit findings; no audit fix was run.
+
 ## 2026-05-21 — Complete Task 6.4b stage 1 astronomy-engine provider spike
 
 - Installed exact dependency `astronomy-engine@2.1.19`.

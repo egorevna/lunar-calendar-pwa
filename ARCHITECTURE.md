@@ -399,24 +399,25 @@ This module does not connect a real provider, does not add dependencies, does no
 
 ## `src/astronomyEngineProvider.js`
 
-Defines the isolated `astronomy-engine` provider spike for Task 6.4b stage 1.
+Defines the isolated `astronomy-engine` provider module for the Sprint 6 provider-layer MVP.
 
 Current responsibilities:
 
 - expose installed provider identity for `astronomy-engine@2.1.19`;
-- report provider capabilities as disabled until fixture validation;
-- document candidate API paths for future geocentric tropical longitude validation;
+- report provider-layer candidate planet calculation capabilities while reference fixture accuracy remains pending;
+- document the geocentric tropical longitude API paths used by the provider layer;
 - audit installed provider source in Node tests for executable network behavior;
 - validate provider input through `src/planetaryPositionProvider.js`;
-- return `incomplete` for invalid input and explicit `notSupported` for valid input while API paths are not fixture-validated.
+- return `incomplete` for invalid input;
+- calculate candidate planet longitudes for valid UTC input without exposing them to the UI.
 
-Candidate API paths currently identified for future validation:
+API paths currently used:
 
 - Sun: `SunPosition(date).elon`;
 - Moon: `EclipticGeoMoon(date).lon`;
 - planets: `GeoVector(body, date, true) -> Ecliptic(vector).elon`.
 
-This module does not integrate with the dashboard, does not expose user-facing natal values, does not calculate fixture-approved planetary positions yet, and does not calculate houses, ASC / MC, personal transits, aspects or orbs.
+This module does not integrate with the dashboard, does not expose user-facing natal values, and does not calculate houses, ASC / MC, personal transits, aspects, retrograde, speed or orbs. Reference fixture accuracy validation is still pending before any user-facing natal values can be enabled.
 
 ## `src/preciseEphemeris.js`
 
@@ -833,7 +834,7 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 27. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
 
-28. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider spike, audits source behavior, and keeps capabilities disabled / `notSupported` until fixture validation.
+28. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, audits source behavior, and calculates candidate natal planet longitudes in the provider layer only; reference fixture accuracy is still pending, and no user-facing natal values are enabled.
 
 29. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state and safe personal readiness/capability state without birth details.
 

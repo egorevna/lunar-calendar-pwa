@@ -564,6 +564,10 @@ Fixture expectations should include:
 - coordinates when relevant;
 - expected planet longitude or sign/degree when available.
 
+Provider-layer smoke tests may verify that a local provider returns finite normalized candidate longitudes, but smoke tests are not reference fixture validation.
+
+Candidate provider output must remain non-user-facing until approved expected values and tolerances are added and passed.
+
 ## Unsupported Feature Rule
 
 If a provider cannot calculate a feature:

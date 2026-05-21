@@ -2,21 +2,34 @@ import * as Astronomy from 'astronomy-engine';
 
 import {
   getRequiredPlanetKeys,
+  normalizePlanetaryPosition,
   validatePlanetaryProviderInput,
 } from './planetaryPositionProvider.js';
 
 export const ASTRONOMY_ENGINE_PACKAGE_NAME = 'astronomy-engine';
 export const ASTRONOMY_ENGINE_VERSION = '2.1.19';
 export const ASTRONOMY_ENGINE_PROVIDER_REASON =
-  'Astronomy Engine geocentric tropical longitude path is not fixture-validated.';
+  'Candidate positions calculated; reference fixture accuracy is pending.';
 
-const API_PATH_STATUS = 'identified-not-fixture-validated';
+const API_PATH_STATUS = 'identified-pending-reference-validation';
+const FIXTURE_VALIDATION_STATUS = 'pending-reference-fixtures';
 
-const DEFAULT_CAPABILITIES = Object.freeze({
+const DISABLED_CAPABILITIES = Object.freeze({
   planets: false,
   retrograde: false,
   speed: false,
   tropical: false,
+  sidereal: false,
+  houses: false,
+  ascMc: false,
+  transits: false,
+});
+
+const READY_CAPABILITIES = Object.freeze({
+  planets: true,
+  retrograde: false,
+  speed: false,
+  tropical: true,
   sidereal: false,
   houses: false,
   ascMc: false,
@@ -29,6 +42,30 @@ const API_PATHS = Object.freeze({
   planets: 'GeoVector(body, date, true) -> Ecliptic(vector).elon',
 });
 
+const ASTRONOMY_BODY_BY_PLANET_KEY = Object.freeze({
+  mercury: Astronomy.Body.Mercury,
+  venus: Astronomy.Body.Venus,
+  mars: Astronomy.Body.Mars,
+  jupiter: Astronomy.Body.Jupiter,
+  saturn: Astronomy.Body.Saturn,
+  uranus: Astronomy.Body.Uranus,
+  neptune: Astronomy.Body.Neptune,
+  pluto: Astronomy.Body.Pluto,
+});
+
+const PLANET_LABELS = Object.freeze({
+  sun: 'Солнце',
+  moon: 'Луна',
+  mercury: 'Меркурий',
+  venus: 'Венера',
+  mars: 'Марс',
+  jupiter: 'Юпитер',
+  saturn: 'Сатурн',
+  uranus: 'Уран',
+  neptune: 'Нептун',
+  pluto: 'Плутон',
+});
+
 export function getAstronomyEngineProviderInfo() {
   return {
     provider: ASTRONOMY_ENGINE_PACKAGE_NAME,
@@ -39,11 +76,12 @@ export function getAstronomyEngineProviderInfo() {
     cloudRequired: false,
     localOnly: true,
     apiPathStatus: API_PATH_STATUS,
+    fixtureValidation: FIXTURE_VALIDATION_STATUS,
     apiPaths: { ...API_PATHS },
     notes: [
-      'Provider package is installed for a local-only spike.',
-      'Geocentric tropical longitude path is identified but not fixture-validated.',
-      'No user-facing natal values should be enabled from this module yet.',
+      'Provider package is installed for local-only planet position calculation.',
+      'Geocentric tropical longitude path is identified; reference fixture accuracy is still pending.',
+      'No user-facing natal values should be enabled until fixture expectations are approved.',
     ],
   };
 }
@@ -52,9 +90,10 @@ export function getAstronomyEngineProviderCapabilities() {
   return {
     provider: ASTRONOMY_ENGINE_PACKAGE_NAME,
     version: ASTRONOMY_ENGINE_VERSION,
-    status: 'notSupported',
-    ...DEFAULT_CAPABILITIES,
+    status: 'ready',
+    ...READY_CAPABILITIES,
     apiPathStatus: API_PATH_STATUS,
+    fixtureValidation: FIXTURE_VALIDATION_STATUS,
     supportedBodies: getRequiredPlanetKeys(),
     reason: ASTRONOMY_ENGINE_PROVIDER_REASON,
   };
@@ -126,10 +165,73 @@ export function calculateAstronomyEnginePlanetPositions(input = {}) {
     });
   }
 
-  return providerResult({
-    status: 'notSupported',
-    reason: ASTRONOMY_ENGINE_PROVIDER_REASON,
+  try {
+    const date = new Date(validation.utcDateTime);
+    const planets = validation.bodies
+      .map((key) => calculatePlanetPosition(key, date))
+      .filter(Boolean);
+
+    if (planets.length !== validation.bodies.length) {
+      return providerResult({
+        status: 'error',
+        reason: 'Astronomy Engine could not calculate all requested planet positions.',
+        errors: ['planet position calculation failed'],
+      });
+    }
+
+    return providerResult({
+      status: 'ready',
+      reason: ASTRONOMY_ENGINE_PROVIDER_REASON,
+      planets,
+      capabilities: { ...READY_CAPABILITIES },
+    });
+  } catch {
+    return providerResult({
+      status: 'error',
+      reason: 'Astronomy Engine planet position calculation failed.',
+      errors: ['planet position calculation failed'],
+    });
+  }
+}
+
+function calculatePlanetPosition(key, date) {
+  const longitude = calculateGeocentricTropicalLongitude(key, date);
+  const position = normalizePlanetaryPosition({
+    key,
+    label: PLANET_LABELS[key],
+    longitude,
+    retrograde: null,
+    speed: null,
+    source: ASTRONOMY_ENGINE_PACKAGE_NAME,
   });
+
+  if (!position) {
+    return null;
+  }
+
+  return {
+    ...position,
+    retrograde: null,
+    speed: null,
+  };
+}
+
+function calculateGeocentricTropicalLongitude(key, date) {
+  if (key === 'sun') {
+    return Astronomy.SunPosition(date).elon;
+  }
+
+  if (key === 'moon') {
+    return Astronomy.EclipticGeoMoon(date).lon;
+  }
+
+  const body = ASTRONOMY_BODY_BY_PLANET_KEY[key];
+
+  if (!body) {
+    return null;
+  }
+
+  return Astronomy.Ecliptic(Astronomy.GeoVector(body, date, true)).elon;
 }
 
 function providerResult(overrides = {}) {
@@ -138,15 +240,16 @@ function providerResult(overrides = {}) {
     provider: ASTRONOMY_ENGINE_PACKAGE_NAME,
     version: ASTRONOMY_ENGINE_VERSION,
     reason: overrides.reason ?? '',
-    planets: [],
+    planets: overrides.planets ?? [],
     houses: [],
     points: [],
     transits: [],
-    capabilities: { ...DEFAULT_CAPABILITIES },
+    capabilities: overrides.capabilities ?? { ...DISABLED_CAPABILITIES },
     metadata: {
       calculatedAt: null,
       input: null,
       apiPathStatus: API_PATH_STATUS,
+      fixtureValidation: FIXTURE_VALIDATION_STATUS,
     },
     errors: overrides.errors ?? [],
   };
