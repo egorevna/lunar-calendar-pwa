@@ -607,13 +607,29 @@ Sprint 6 завершен. Sprint 7 активен.
 - не фейкать local birth time to UTC conversion;
 - не добавлять chart wheel, houses, ASC / MC, personal transits, natal aspects, orbs или personal ritual scoring.
 
-Текущий фокус:
+Завершенная задача:
 
 ```txt
 Task 7.1 — Natal Planets UI Readiness Audit
 ```
 
-Task 7.1 должна создать / обновить `NATAL_PLANETS_UI_STRATEGY.md` и решить, можно ли показывать natal planet values сейчас. Код приложения в рамках подготовки Sprint 7 не менялся.
+Результат Task 7.1:
+
+- создан `NATAL_PLANETS_UI_STRATEGY.md`;
+- подтверждено, что `astronomy-engine@2.1.19` validated provider layer готов для selected UTC fixtures;
+- подтверждено, что ordinary saved profiles пока не могут безопасно дать provider-ready UTC input;
+- `src/birthDateTime.js` по-прежнему возвращает `canConvertToUtc: false` и `utcDateTime: null`;
+- user-facing natal planet values для обычных профилей сейчас показывать нельзя;
+- первый UI должен быть readiness-only, предпочтительно внутри `Мои карты` / profile details;
+- Task 7.4 остается blocked until UTC readiness is solved.
+
+Текущий следующий шаг:
+
+```txt
+Task 7.2 — Natal Planet Formatting Helper
+```
+
+Task 7.2 не начиналась. Код приложения в рамках Task 7.1 не менялся.
 
 Ниже сохраняется краткая история предыдущего Sprint 5 и результаты текущего Sprint 6.
 
@@ -1881,7 +1897,7 @@ lunar-calendar-v60
 Сейчас следующий конкретный шаг:
 
 ```txt
-Task 7.1 — Natal Planets UI Readiness Audit.
+Task 7.2 — Natal Planet Formatting Helper.
 ```
 
 Перед реализацией Codex должен:
@@ -1903,4 +1919,4 @@ Task 7.1 — Natal Planets UI Readiness Audit.
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5 и Sprint 6 завершены. Активный спринт — Sprint 7 — Natal Planets UI / Read-only Natal Positions. Sprint 6 закрыл provider research, approval review, isolated `astronomy-engine@2.1.19` provider-layer integration, Swiss Ephemeris reference validation для longitude, speed и retrograde, safe debug summary и validation report. User-facing natal values пока не включены; `natalEngine` production path не показывает пользователям natal chart UI, houses / ASC / MC / transits / aspects / orbs остаются not supported. Следующая активная задача — Task 7.1 — Natal Planets UI Readiness Audit; Task 7.2 не начиналась.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5 и Sprint 6 завершены. Активный спринт — Sprint 7 — Natal Planets UI / Read-only Natal Positions. Task 7.1 завершила readiness audit и создала `NATAL_PLANETS_UI_STRATEGY.md`: user-facing natal values пока нельзя показывать для обычных профилей, потому что provider-ready UTC input не готов (`canConvertToUtc: false`, `utcDateTime: null`). Houses / ASC / MC / transits / aspects / orbs остаются not supported. Следующая активная задача — Task 7.2 — Natal Planet Formatting Helper; Task 7.2 не начиналась.

@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-22 — Complete Task 7.1 natal planets UI readiness audit
+
+- Added `NATAL_PLANETS_UI_STRATEGY.md`.
+- Confirmed `astronomy-engine@2.1.19` provider-layer validation covers geocentric tropical longitudes, speed and retrograde for the 10 main natal planets.
+- Confirmed user-facing natal planet values cannot be shown for ordinary saved profiles yet because `src/birthDateTime.js` still returns `canConvertToUtc: false` and `utcDateTime: null`.
+- Recommended first Sprint 7 UI path: readiness-only natal planets copy inside `Мои карты` / profile details.
+- Task 7.4 remains blocked until UTC readiness is solved.
+- No app code, `src/`, `index.html`, `sw.js`, provider, package files, natal chart UI, houses, ASC / MC, transits, aspects or orbs were changed.
+
 ## 2026-05-22 — Prepare Sprint 7 documentation
 
 - Sprint 1–6 remain completed; active sprint is now Sprint 7 — Natal Planets UI / Read-only Natal Positions.

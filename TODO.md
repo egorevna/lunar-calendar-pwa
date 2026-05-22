@@ -1605,11 +1605,11 @@ Do not fake local birth time to UTC conversion.
 
 Do not implement houses, ASC / MC, transits, aspects, or chart wheel.
 
-# Active Task
+# Completed Task
 
 ## Task 7.1 — Natal Planets UI Readiness Audit
 
-Status: active
+Status: done
 
 ### Goal
 
@@ -1642,11 +1642,20 @@ NATAL_PLANETS_UI_STRATEGY.md
 - No code changes unless explicitly required for documentation-only support.
 - Task 7.2 remains next.
 
-# Sprint 7 Backlog
+### Result
+
+- Created `NATAL_PLANETS_UI_STRATEGY.md`.
+- Confirmed `astronomy-engine@2.1.19` provider-layer longitude, speed and retrograde validation is complete for the 10 main natal planets.
+- Confirmed ordinary saved profiles cannot safely produce provider-ready UTC input yet because `src/birthDateTime.js` returns `canConvertToUtc: false` and `utcDateTime: null`.
+- Decision: user-facing natal planet values for ordinary profiles are not allowed yet.
+- Recommended first UI: readiness-only natal planets copy inside `Мои карты` / profile details.
+- Task 7.4 remains blocked until UTC readiness is solved.
+
+# Active Task
 
 ## Task 7.2 — Natal Planet Formatting Helper
 
-Status: not started
+Status: next / not started
 
 Goal: create pure formatting helpers for already-calculated natal planet positions. Do not calculate planets, call providers or add UI.
 
