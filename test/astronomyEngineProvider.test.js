@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 
 import * as Astronomy from 'astronomy-engine';
@@ -160,10 +161,23 @@ test('user-facing app entry and markup do not import provider or expose natal UI
   const appSource = readFileSync(new URL('../src/app.js', import.meta.url), 'utf8');
   const markup = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 
-  assert.equal(appSource.includes('astronomyEngineProvider'), false);
   assert.equal(appSource.includes('astronomy-engine'), false);
   assert.equal(markup.includes('Натальная карта'), false);
   assert.equal(markup.includes('Таблица планет'), false);
   assert.equal(markup.includes('ASC'), false);
   assert.equal(markup.includes('MC'), false);
+});
+
+test('provider runtime import uses tracked vendored ESM asset for static PWA', async () => {
+  const providerSource = await readFile(new URL('../src/astronomyEngineProvider.js', import.meta.url), 'utf8');
+  const vendorSource = await readFile(new URL('../src/vendor/astronomy-engine.mjs', import.meta.url), 'utf8');
+  const licenseNotice = await readFile(new URL('../src/vendor/astronomy-engine.LICENSE.md', import.meta.url), 'utf8');
+  const swSource = await readFile(new URL('../sw.js', import.meta.url), 'utf8');
+
+  assert.equal(providerSource.includes("from './vendor/astronomy-engine.mjs'"), true);
+  assert.equal(providerSource.includes("from 'astronomy-engine'"), false);
+  assert.equal(vendorSource.includes('MIT License'), true);
+  assert.equal(licenseNotice.includes('MIT License'), true);
+  assert.equal(swSource.includes('src/vendor/astronomy-engine.mjs'), true);
+  assert.equal(swSource.includes('node_modules/astronomy-engine'), false);
 });

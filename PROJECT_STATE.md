@@ -615,6 +615,7 @@ Task 7.2 — Natal Planet Formatting Helper
 Task 7.3 — Natal Planets Readiness UI
 Task 7.4a — Birth Time UTC Strategy / Readiness Unblock
 Task 7.4b — Implement Birth Time UTC Conversion
+Task 7.4 — Read-only Natal Planets Panel
 ```
 
 Результат Task 7.1:
@@ -668,17 +669,31 @@ Task 7.4b — Implement Birth Time UTC Conversion
 - unknown birth time, missing/invalid date/time/timezone остаются `incomplete`;
 - ambiguous DST overlap и nonexistent DST gap fail closed: UTC не создается, warning объясняет проблему;
 - houses / ASC / MC, transits, aspects, orbs, natal chart UI и user-facing natal planet values не добавлялись.
-- PWA cache обновлен до `lunar-calendar-v63`.
+- PWA cache обновлен до `lunar-calendar-v64`.
+
+Результат Task 7.4:
+
+- добавлена read-only панель натальных планет внутри `Мои карты`;
+- добавлен `src/natalPlanetsForProfile.js`, который требует safe `canConvertToUtc: true`, вызывает validated `astronomy-engine` provider и форматирует output через `src/natalPlanetDisplay.js`;
+- planet list показывается только для активного сохраненного профиля с готовым UTC input и provider status `ready`;
+- отсутствие координат места рождения не блокирует список планет;
+- unknown birth time, missing timezone, invalid input, ambiguous DST overlap и nonexistent DST gap оставляют readiness fallback и не показывают планеты;
+- UI показывает только label / sign / degree-minutes / `R` marker и не показывает raw birth data, `utcDateTime`, raw timezone, coordinates, raw longitude или speed;
+- `astronomy-engine` runtime завендорен в tracked path `src/vendor/astronomy-engine.mjs` с notice `src/vendor/astronomy-engine.LICENSE.md`, чтобы static GitHub Pages не зависел от ignored `node_modules`;
+- houses / ASC / MC, transits, aspects, orbs, natal chart UI и personal ritual scoring не добавлялись;
+- после ручной проверки исправлен state regression панели `Мои карты`: открытие панели возвращает list mode, а выбор `Общий день` или сохраненного профиля закрывает create/edit form state;
+- кнопка `+ Добавить профиль` снова видна в list mode;
+- после UX-polish список натальных планет свернут по умолчанию, показывает summary и раскрывается только по явному клику;
+- переключение профиля или выбор `Общий день` сбрасывает раскрытие в collapsed state;
+- PWA cache обновлен до `lunar-calendar-v66`.
 
 Текущий следующий шаг:
 
 ```txt
-Task 7.4 — Read-only Natal Planets Panel
+Task 7.5 — Natal Planets Debug
 ```
 
-Task 7.4 теперь можно начинать для профилей, где `birthDateTime` возвращает safe `utcDateTime`, но она не начиналась.
-
-Task 7.4 должна оставаться fail-closed для unknown birth time, ambiguous/nonexistent timezone transitions, missing timezone and invalid input.
+Task 7.5 не начиналась.
 
 Ниже сохраняется краткая история предыдущего Sprint 5 и результаты текущего Sprint 6.
 
@@ -1896,7 +1911,7 @@ git commit -m "checkpoint before continuing in new codex chat"
 Текущая версия:
 
 ```txt
-lunar-calendar-v63
+lunar-calendar-v66
 ```
 
 ## Moscow Hardcoding
@@ -1946,13 +1961,13 @@ lunar-calendar-v63
 Сейчас следующий конкретный шаг:
 
 ```txt
-Task 7.4 — Read-only Natal Planets Panel.
+Task 7.5 — Natal Planets Debug.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 7.4 без отдельной команды.
+2. Не начинать Task 7.5 без отдельной команды.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC, орбы или фейковые личные расчеты.
@@ -1968,4 +1983,4 @@ Task 7.4 — Read-only Natal Planets Panel.
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5 и Sprint 6 завершены. Активный спринт — Sprint 7 — Natal Planets UI / Read-only Natal Positions. Task 7.1 завершила readiness audit и создала `NATAL_PLANETS_UI_STRATEGY.md`. Task 7.2 добавила pure `src/natalPlanetDisplay.js` для форматирования уже рассчитанных planet positions без provider/UI подключения. Task 7.3 добавила readiness-only блок `Натальные планеты` внутри `Мои карты` без вывода planet values. Task 7.4a создала `BIRTH_TIME_UTC_STRATEGY.md` и рекомендовала `luxon` как local-only UTC conversion candidate после explicit dependency approval. Task 7.4b установила `luxon@3.7.2` и добавила safe UTC conversion в `src/birthDateTime.js`: valid date/time/timezone дает `utcDateTime`, а unknown time / invalid input / ambiguous DST / nonexistent DST fail closed. Houses / ASC / MC / transits / aspects / orbs остаются not supported. Следующая задача — Task 7.4 — Read-only Natal Planets Panel, но она не начиналась.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5 и Sprint 6 завершены. Активный спринт — Sprint 7 — Natal Planets UI / Read-only Natal Positions. Task 7.1 завершила readiness audit и создала `NATAL_PLANETS_UI_STRATEGY.md`. Task 7.2 добавила pure `src/natalPlanetDisplay.js` для форматирования уже рассчитанных planet positions без provider/UI подключения. Task 7.3 добавила readiness-only блок `Натальные планеты` внутри `Мои карты` без вывода planet values. Task 7.4a создала `BIRTH_TIME_UTC_STRATEGY.md` и рекомендовала `luxon` как local-only UTC conversion candidate после explicit dependency approval. Task 7.4b установила `luxon@3.7.2` и добавила safe UTC conversion в `src/birthDateTime.js`: valid date/time/timezone дает `utcDateTime`, а unknown time / invalid input / ambiguous DST / nonexistent DST fail closed. Task 7.4 добавила read-only natal planets panel внутри `Мои карты` только при `canConvertToUtc: true` и ready provider output; missing coordinates не блокируют planet list. Houses / ASC / MC / transits / aspects / orbs остаются not supported. Следующая задача — Task 7.5 — Natal Planets Debug, но она не начиналась.

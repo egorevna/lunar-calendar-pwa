@@ -1,4 +1,4 @@
-import * as Astronomy from 'astronomy-engine';
+import * as Astronomy from './vendor/astronomy-engine.mjs';
 
 import {
   getRequiredPlanetKeys,

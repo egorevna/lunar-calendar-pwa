@@ -1,5 +1,35 @@
 # Changelog
 
+## 2026-05-22 — Make natal planets block collapsible
+
+- Made the `Натальные планеты` list inside `Мои карты` collapsed by default when planet positions are ready.
+- Collapsed state shows a compact summary and `Показать`; expanded state shows the full planet list and `Скрыть`.
+- Switching profiles or selecting `Общий день` resets the disclosure state.
+- Readiness fallback remains visible for incomplete profiles; provider calculations, Luxon conversion, houses / ASC / MC / transits / aspects / orbs were not changed.
+- PWA cache updated to `lunar-calendar-v66`.
+- Task 7.5 was not started.
+
+## 2026-05-22 — Fix My Cards profile form state
+
+- Fixed a UI regression where reopening `Мои карты` could keep the previous create/edit form state instead of returning to list mode.
+- Opening `Мои карты` now resets the profile form state and shows the `+ Добавить профиль` action.
+- Selecting `Общий день` or a saved profile now closes create/edit form state before the profile shell is re-rendered.
+- Read-only natal planets panel remains inside `Мои карты`; provider calculations, Luxon conversion, natal planet math and unsupported houses / ASC / MC / transits / aspects / orbs were not changed.
+- PWA cache updated to `lunar-calendar-v65`.
+- Task 7.5 was not started.
+
+## 2026-05-22 — Complete Task 7.4 read-only natal planets panel
+
+- Added read-only natal planet list inside the existing `Мои карты` natal planets block.
+- Added `src/natalPlanetsForProfile.js` to require safe UTC readiness, call validated `astronomy-engine` provider output and format positions through `src/natalPlanetDisplay.js`.
+- Vendored Astronomy Engine runtime as `src/vendor/astronomy-engine.mjs` with `src/vendor/astronomy-engine.LICENSE.md` so static GitHub Pages does not depend on ignored `node_modules`.
+- The panel shows planets only when `canConvertToUtc: true` and provider status is `ready`; missing coordinates do not block planet display.
+- Unknown birth time, missing timezone, invalid input, ambiguous DST overlap and nonexistent DST gap keep the readiness fallback.
+- User-facing UI shows formatted label / sign / degree-minutes / `R` marker only; raw birth data, UTC input, timezone values, coordinates, raw longitude and speed are not shown.
+- Houses, ASC / MC, transits, aspects, orbs, natal chart UI and personal ritual scoring were not added.
+- PWA cache updated to `lunar-calendar-v64`.
+- Task 7.5 is next, but was not started.
+
 ## 2026-05-22 — Complete Task 7.4b birth time UTC conversion
 
 - Installed approved local-only dependency `luxon@3.7.2`.
@@ -9,7 +39,7 @@
 - Unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap and nonexistent DST gap fail closed with `utcDateTime: null`.
 - Added tests for Luxon import, Moscow modern/historical conversion, New York normal/DST edge cases, invalid inputs, readiness flags and no network/geolocation usage.
 - Task 7.4 is now ready to start, but was not started.
-- PWA cache updated to `lunar-calendar-v63`.
+- PWA cache updated to `lunar-calendar-v64`.
 - User-facing natal planet values, UI, houses, ASC / MC, transits, aspects and orbs were not added.
 - `src/app.js` and `index.html` were not changed; `sw.js` changed only for PWA cache/versioning.
 

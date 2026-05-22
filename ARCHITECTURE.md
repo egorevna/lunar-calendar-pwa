@@ -189,7 +189,7 @@ Responsibilities:
 - reads and writes the active profile id through `src/profileStorage.js`
 - handles inline profile creation, editing, and deletion through `src/profileStorage.js`
 - handles local profile export/import actions through `src/profileImportExport.js`
-- renders the readiness-only natal planets block inside `Мои карты` through `src/profileUi.js` and `src/birthDateTime.js`
+- renders the read-only natal planets block inside `Мои карты` through `src/profileUi.js` when profile UTC readiness and provider output are ready
 - renders the compact `Лично для меня` dashboard block through `src/personalContext.js`, `src/personalRecommendations.js`, and `src/profileUi.js`
 - passes safe profile summary state into the hidden debug panel
 
@@ -403,11 +403,12 @@ This module does not connect a real provider, does not add dependencies, does no
 
 ## `src/astronomyEngineProvider.js`
 
-Defines the isolated `astronomy-engine` provider module for the Sprint 6 provider-layer MVP.
+Defines the isolated `astronomy-engine` provider module for the Sprint 6 provider-layer MVP and Sprint 7 read-only natal planets panel.
 
 Current responsibilities:
 
 - expose installed provider identity for `astronomy-engine@2.1.19`;
+- import Astronomy Engine from tracked vendored runtime asset `src/vendor/astronomy-engine.mjs` so static PWA / GitHub Pages runtime does not depend on ignored `node_modules`;
 - report provider-layer candidate planet calculation capabilities and selected UTC reference validation status;
 - document the geocentric tropical longitude API paths used by the provider layer;
 - audit installed provider source in Node tests for executable network behavior;
@@ -427,7 +428,22 @@ Selected UTC natal planet longitudes are validated in tests against the local `s
 
 Selected UTC longitude speeds are validated in tests against local `swisseph` with `SEFLG_SWIEPH | SEFLG_SPEED`. Retrograde-sensitive fixtures cover Mercury and Venus retrograde cases.
 
-This module does not integrate with the dashboard, does not expose user-facing natal values, and does not calculate houses, ASC / MC, personal transits, aspects or orbs.
+This module does not directly render UI and does not calculate houses, ASC / MC, personal transits, aspects or orbs.
+
+## `src/natalPlanetsForProfile.js`
+
+Builds the safe read-only natal planets view model for an active saved profile.
+
+Current responsibilities:
+
+- call `src/birthDateTime.js` and require `canConvertToUtc: true` plus `utcDateTime`;
+- call `src/astronomyEngineProvider.js` only after UTC readiness succeeds;
+- format provider output through `src/natalPlanetDisplay.js`;
+- return `incomplete` without planets for unknown birth time, missing timezone, invalid input, ambiguous DST overlap or nonexistent DST gap;
+- allow natal planet display without birth coordinates, because coordinates are needed for houses / ASC / MC rather than geocentric planet longitudes;
+- expose only formatted planet text and safe limitations to `src/profileUi.js`.
+
+This module does not read localStorage, does not render DOM, does not send birth data externally, does not show raw birth data or raw UTC input, and does not calculate houses, ASC / MC, personal transits, aspects or orbs.
 
 ## `src/natalPlanetDisplay.js`
 
@@ -780,7 +796,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v63
+lunar-calendar-v66
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -841,7 +857,7 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 17. `src/profileStorage.js` stores profiles and active profile id locally through `localStorage`.
 
-18. `src/profileUi.js` formats the minimal `Профиль` / `Мои карты` shell, active-profile state, create/edit form view, and readiness-only natal planets block.
+18. `src/profileUi.js` formats the minimal `Профиль` / `Мои карты` shell, active-profile state, create/edit form view, and read-only natal planets block.
 
 19. `src/profileImportExport.js` serializes and imports local profile backup JSON.
 
@@ -861,13 +877,15 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 27. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
 
-28. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, audits source behavior, and calculates candidate natal planet longitudes in the provider layer only; selected UTC fixtures are validated against local `swisseph` in tests, and no user-facing natal values are enabled.
+28. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
 
 29. `src/natalProviderValidationSummary.js` exposes a safe provider validation summary for debug/reporting without calculating planets, reading profile data, or importing the `astronomy-engine` provider module.
 
 30. `src/natalPlanetDisplay.js` formats already-calculated natal planet positions into safe compact display objects without calling providers, profiles, localStorage or UI code.
 
-31. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, and provider validation summary without birth details.
+31. `src/natalPlanetsForProfile.js` connects profile UTC readiness to the validated provider and display formatter for the read-only `Мои карты` natal planets panel; it fails closed without planets when readiness is incomplete.
+
+32. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, and provider validation summary without birth details.
 
 32. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
@@ -1219,7 +1237,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v63
+lunar-calendar-v66
 ```
 
 Important operational rule:
@@ -1520,7 +1538,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v63
+lunar-calendar-v66
 ```
 
 If this value changes in `sw.js`, update this section.

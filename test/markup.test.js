@@ -95,7 +95,7 @@ test('home screen renders profile shell', () => {
   assert.equal(html.includes('Персональные транзиты'), false);
 });
 
-test('natal planets readiness shell stays inside profiles panel and is not a planet panel', () => {
+test('natal planets shell stays inside profiles panel and has no static planet values', () => {
   const panelStart = html.indexOf('data-profiles-panel');
   const panelEnd = html.indexOf('class="glass-card mode-selector"');
   const panelHtml = html.slice(panelStart, panelEnd);
@@ -109,12 +109,16 @@ test('natal planets readiness shell stays inside profiles panel and is not a pla
   assert.equal(readinessStart < panelEnd, true);
   assert.equal(personalIndex < readinessStart, true);
   assert.equal(panelHtml.includes('data-natal-planets-readiness hidden'), true);
+  assert.equal(readinessHtml.includes('data-natal-planets-summary'), true);
+  assert.equal(readinessHtml.includes('data-natal-planets-toggle'), true);
+  assert.equal(readinessHtml.includes('data-natal-planets-list'), true);
+  assert.equal(readinessHtml.includes('data-natal-planets-list hidden'), true);
   assert.equal(readinessHtml.includes('data-natal-planets-readiness-missing-list'), true);
   assert.equal(readinessHtml.includes('Ограничения:'), true);
   assert.equal(readinessHtml.includes('data-natal-planets-readiness-limitations'), true);
   assert.equal(readinessHtml.includes('Провайдер планет проверен'), false);
-  assert.equal(readinessHtml.includes('Солнце — Телец'), false);
-  assert.equal(readinessHtml.includes('Луна — Рак'), false);
+  assert.equal(readinessHtml.includes('Солнце —'), false);
+  assert.equal(readinessHtml.includes('Луна —'), false);
   assert.equal(readinessHtml.includes('Меркурий R'), false);
   assert.equal(readinessHtml.includes('birthDate'), false);
   assert.equal(readinessHtml.includes('birthTime'), false);
@@ -207,6 +211,39 @@ test('profile selection closes the profiles panel without hiding the personal bl
   assert.equal(appJs.includes('function closeProfilesPanel()'), true);
   assert.equal(appJs.includes('closeProfilesPanel();\n      renderStoredProfilesShell();'), true);
   assert.equal(html.includes('data-personal-context-card hidden'), true);
+});
+
+test('profiles panel opens in list mode with add button available', () => {
+  assert.equal(html.includes('data-profile-add'), true);
+  assert.equal(html.includes('+ Добавить профиль'), true);
+  assert.equal(
+    appJs.includes('if (shouldOpen) {\n    resetNatalPlanetsDisclosure();\n    setProfileFormOpen(false);\n  }'),
+    true,
+  );
+});
+
+test('profile selection resets create and edit form state', () => {
+  assert.equal(
+    appJs.includes('if (result.ok) {\n      resetNatalPlanetsDisclosure();\n      setProfileFormOpen(false);\n      closeProfilesPanel();'),
+    true,
+  );
+});
+
+test('profile edit form opens only from explicit edit action', () => {
+  assert.equal(appJs.includes("const button = event.target.closest('[data-profile-edit]');"), true);
+  assert.equal(appJs.includes('setProfileFormOpen(true, profile);'), true);
+  assert.equal(appJs.includes('setProfileFormOpen(true, activeProfile'), false);
+});
+
+test('natal planets list is collapsible and resets on profile changes', () => {
+  assert.equal(appJs.includes('let expandedNatalPlanetsProfileId = null;'), true);
+  assert.equal(appJs.includes('function resetNatalPlanetsDisclosure()'), true);
+  assert.equal(appJs.includes('const isExpanded = view.canTogglePlanets'), true);
+  assert.equal(appJs.includes("elements.natalPlanetsToggle.textContent = isExpanded ? 'Скрыть' : 'Показать';"), true);
+  assert.equal(appJs.includes('elements.natalPlanetsList.hidden = !isExpanded;'), true);
+  assert.equal(appJs.includes('expandedNatalPlanetsProfileId = isExpanded ? null : profileId;'), true);
+  assert.equal(appJs.includes('resetNatalPlanetsDisclosure();\n    setProfileFormOpen(false);'), true);
+  assert.equal(appJs.includes('resetNatalPlanetsDisclosure();\n      setProfileFormOpen(false);'), true);
 });
 
 test('home screen renders hidden warnings card shell', () => {

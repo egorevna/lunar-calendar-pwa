@@ -1721,13 +1721,13 @@ Goal: implement safe local birth date/time/timezone to UTC conversion according 
 - Ambiguous DST overlap local times fail closed with a warning instead of silently choosing an offset.
 - Nonexistent DST gap local times fail closed with a warning instead of silently shifting time.
 - Houses, ASC / MC, transits, aspects, orbs, natal chart UI and user-facing natal planet values were not added.
-- PWA cache was updated to `lunar-calendar-v63`.
+- PWA cache was updated to `lunar-calendar-v64`.
 
-# Active Task
+# Completed Task
 
 ## Task 7.4 — Read-only Natal Planets Panel
 
-Status: ready to start
+Status: done
 
 Goal: show actual natal planet positions if and only if provider input is ready and the provider returns validated planet positions.
 
@@ -1736,11 +1736,28 @@ Important boundary:
 - do not show values for profiles whose birth time is unknown;
 - do not show values for ambiguous or nonexistent local birth times;
 - do not show houses, ASC / MC, transits, aspects, orbs, chart wheel, or personal ritual scoring;
-- do not start Task 7.4 without explicit user command.
+- do not show raw birth data, raw UTC input, raw timezone, raw coordinates, raw longitude or speed in the main UI.
+
+### Result
+
+- Added read-only natal planet list inside the existing `Мои карты` natal planets block.
+- Added `src/natalPlanetsForProfile.js` to connect safe UTC readiness, validated `astronomy-engine` provider output and `src/natalPlanetDisplay.js` formatting.
+- Planet list appears only for an active saved profile with `canConvertToUtc: true` and provider status `ready`.
+- Missing coordinates do not block the planet list.
+- Unknown birth time, missing timezone, invalid input, ambiguous DST overlap and nonexistent DST gap keep the readiness fallback and do not show planets.
+- The UI shows formatted planet label, sign, degree/minutes and `R` marker only; it does not show raw birth data, `utcDateTime`, raw timezone, coordinates, raw longitude or speed.
+- Houses, ASC / MC and transits remain limitation-only and are not calculated.
+- Vendored `astronomy-engine` runtime as `src/vendor/astronomy-engine.mjs` with `src/vendor/astronomy-engine.LICENSE.md` for static GitHub Pages / PWA runtime safety.
+- Post-task UI regression fix: opening `Мои карты` resets create/edit state to list mode, and selecting `Общий день` or a saved profile closes the form state.
+- The `+ Добавить профиль` button remains visible in list mode.
+- Post-task UX polish: the ready natal planets list is collapsed by default, shows a compact summary plus `Показать`, expands to the full list on click, and resets to collapsed when profile selection changes.
+- PWA cache was updated to `lunar-calendar-v66`.
+
+# Active Task
 
 ## Task 7.5 — Natal Planets Debug
 
-Status: not started
+Status: ready to start
 
 Goal: add safe debug info such as planet count, provider, validation status and user-facing enabled/disabled. Do not dump birth data.
 

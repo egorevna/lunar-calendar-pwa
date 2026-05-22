@@ -436,6 +436,37 @@ button {
   font-weight: 700;
 }
 
+.natal-planets-disclosure {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.natal-planets-disclosure[hidden] {
+  display: none;
+}
+
+.natal-planets-readiness .natal-planets-summary {
+  color: rgba(255, 248, 239, 0.82);
+  font-weight: 700;
+}
+
+.natal-planets-toggle {
+  flex: 0 0 auto;
+  border: 1px solid rgba(231, 199, 126, 0.42);
+  border-radius: 8px;
+  background: rgba(231, 199, 126, 0.08);
+  color: var(--gold);
+  padding: 7px 10px;
+  font: inherit;
+  font-size: 13px;
+}
+
+.natal-planets-toggle[hidden] {
+  display: none;
+}
+
 .natal-planets-missing {
   display: grid;
   gap: 7px;
@@ -446,6 +477,7 @@ button {
 }
 
 .natal-planets-missing ul,
+.natal-planets-list,
 .natal-planets-limitations {
   display: grid;
   gap: 7px;
@@ -454,11 +486,21 @@ button {
   list-style: none;
 }
 
+.natal-planets-list[hidden] {
+  display: none;
+}
+
 .natal-planets-missing li,
+.natal-planets-list li,
 .natal-planets-limitations li {
   color: var(--muted);
   font-size: clamp(13px, 3.5vw, 16px);
   line-height: 1.28;
+}
+
+.natal-planets-list li {
+  color: rgba(255, 248, 239, 0.86);
+  font-weight: 700;
 }
 
 .natal-planets-missing li::before,

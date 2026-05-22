@@ -1,4 +1,4 @@
-import { createBirthDateTimeInput } from './birthDateTime.js';
+import { getNatalPlanetsForProfile } from './natalPlanetsForProfile.js';
 import { getPersonalRecommendations } from './personalRecommendations.js';
 
 export const GENERAL_PROFILE_LABEL = 'Общий день';
@@ -14,7 +14,7 @@ const PERSONAL_INCOMPLETE_SUMMARY =
 const NATAL_PLANETS_READINESS_TITLE = 'Натальные планеты';
 const NATAL_PLANETS_READINESS_STATUS = 'Пока недоступны для показа.';
 const NATAL_PLANETS_READINESS_EXPLANATION = 'Для точного расчета нужны полные данные рождения.';
-const NATAL_PLANETS_LIMITATION = 'дома, ASC/MC и транзиты пока не рассчитываются';
+const NATAL_PLANETS_LIMITATION = 'Дома, ASC/MC и транзиты пока не рассчитываются.';
 
 const MISSING_FIELD_LABELS = {
   birthDate: 'дата рождения',
@@ -151,20 +151,29 @@ export function describeNatalPlanetsReadinessBlock(profile = null) {
       title: '',
       status: '',
       explanation: '',
+      profileId: '',
+      summary: '',
+      canTogglePlanets: false,
+      planets: [],
       missingTitle: '',
       missingFields: [],
       limitations: [],
     };
   }
 
-  const birthInput = createBirthDateTimeInput(profile);
-  const missingFields = describeNatalMissingFields(birthInput);
+  const natalPlanets = getNatalPlanetsForProfile(profile);
+  const missingFields = describeNatalMissingFields(natalPlanets);
+  const hasPlanets = natalPlanets.status === 'ready' && natalPlanets.formattedPlanets.length > 0;
 
   return {
     hidden: false,
     title: NATAL_PLANETS_READINESS_TITLE,
-    status: NATAL_PLANETS_READINESS_STATUS,
-    explanation: NATAL_PLANETS_READINESS_EXPLANATION,
+    status: hasPlanets ? '' : NATAL_PLANETS_READINESS_STATUS,
+    explanation: hasPlanets ? '' : NATAL_PLANETS_READINESS_EXPLANATION,
+    profileId: profileId(profile),
+    summary: hasPlanets ? `${natalPlanets.formattedPlanets.length} планет рассчитано` : '',
+    canTogglePlanets: hasPlanets,
+    planets: hasPlanets ? natalPlanets.formattedPlanets.map((planet) => planet.text) : [],
     missingTitle: missingFields.length ? 'Нужно уточнить:' : '',
     missingFields,
     limitations: [NATAL_PLANETS_LIMITATION],

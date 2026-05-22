@@ -245,22 +245,24 @@ test('natal planets readiness block is hidden for general day', () => {
   assert.equal(view.hidden, true);
   assert.equal(view.title, '');
   assert.equal(view.status, '');
+  assert.equal(view.summary, '');
+  assert.equal(view.canTogglePlanets, false);
   assert.deepEqual(view.missingFields, []);
   assert.deepEqual(view.limitations, []);
 });
 
-test('natal planets readiness block describes active profile without planet values', () => {
+test('natal planets block shows formatted planets for a UTC-ready active profile', () => {
   const view = describeNatalPlanetsReadinessBlock({
     id: 'profile-egor',
     name: 'Егор',
     birthDate: '1990-05-12',
-    birthTime: '08:45',
+    birthTime: '14:30',
     birthTimeAccuracy: 'exact',
     birthPlace: {
       city: 'Москва',
       country: 'Россия',
-      latitude: 55.7558,
-      longitude: 37.6173,
+      latitude: null,
+      longitude: null,
       timezone: 'Europe/Moscow',
     },
     currentPlace: {
@@ -276,21 +278,58 @@ test('natal planets readiness block describes active profile without planet valu
 
   assert.equal(view.hidden, false);
   assert.equal(view.title, 'Натальные планеты');
-  assert.equal(view.status, 'Пока недоступны для показа.');
-  assert.equal(
-    view.explanation,
-    'Для точного расчета нужны полные данные рождения.',
-  );
+  assert.equal(view.status, '');
+  assert.equal(view.explanation, '');
+  assert.equal(view.summary, '10 планет рассчитано');
+  assert.equal(view.canTogglePlanets, true);
+  assert.equal(view.planets.length, 10);
+  assert.equal(view.planets.some((planet) => planet.startsWith('Солнце — ')), true);
+  assert.equal(view.planets.some((planet) => planet.startsWith('Луна — ')), true);
+  assert.equal(view.planets.some((planet) => planet.startsWith('Меркурий')), true);
+  assert.match(view.planets[0], /^Солнце — .+ \d{1,2}°\d{2}′$/);
   assert.deepEqual(view.missingFields, []);
-  assert.deepEqual(view.limitations, ['дома, ASC/MC и транзиты пока не рассчитываются']);
+  assert.deepEqual(view.limitations, ['Дома, ASC/MC и транзиты пока не рассчитываются.']);
   assert.equal(text.includes('1990-05-12'), false);
-  assert.equal(text.includes('08:45'), false);
-  assert.equal(text.includes('55.7558'), false);
-  assert.equal(text.includes('37.6173'), false);
-  assert.equal(text.includes('Солнце — Телец'), false);
-  assert.equal(text.includes('Луна — Рак'), false);
-  assert.equal(text.includes('Меркурий R'), false);
+  assert.equal(text.includes('14:30'), false);
+  assert.equal(text.includes('Europe/Moscow'), false);
+  assert.equal(text.includes('latitude'), false);
+  assert.equal(text.includes('longitude'), false);
+  assert.equal(text.includes('utcDateTime'), false);
+  assert.equal(text.includes('speedText'), false);
+  assert.equal(text.includes('longitude'), false);
   assert.equal(text.includes('Провайдер планет проверен'), false);
+});
+
+test('natal planets readiness block keeps fallback when birth time is unknown', () => {
+  const view = describeNatalPlanetsReadinessBlock({
+    id: 'profile-egor',
+    name: 'Егор',
+    birthDate: '1990-05-12',
+    birthTime: '',
+    birthTimeAccuracy: 'unknown',
+    birthPlace: {
+      city: 'Москва',
+      country: 'Россия',
+      latitude: null,
+      longitude: null,
+      timezone: 'Europe/Moscow',
+    },
+    currentPlace: {
+      mode: 'moscow',
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+    },
+    houseSystem: 'wholeSign',
+    zodiac: 'tropical',
+  });
+
+  assert.equal(view.hidden, false);
+  assert.equal(view.status, 'Пока недоступны для показа.');
+  assert.equal(view.explanation, 'Для точного расчета нужны полные данные рождения.');
+  assert.deepEqual(view.planets, []);
+  assert.equal(view.missingFields.includes('время рождения'), true);
+  assert.deepEqual(view.limitations, ['Дома, ASC/MC и транзиты пока не рассчитываются.']);
 });
 
 test('natal planets readiness block maps missing fields to human labels', () => {
