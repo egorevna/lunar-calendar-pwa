@@ -633,7 +633,18 @@ Natal planet values may be user-facing only when:
 
 Do not show natal planets if local birth time has not been safely converted to provider-ready UTC.
 
-If `birthDateTime` still returns `canConvertToUtc: false`, user-facing natal planet values must remain hidden or unavailable.
+`birthDateTime` may return provider-ready UTC only when:
+
+- birth date is valid;
+- known birth time is valid;
+- birth timezone is a valid IANA timezone;
+- Luxon conversion succeeds;
+- local time is not an ambiguous DST overlap;
+- local time is not a nonexistent DST gap.
+
+If `birthDateTime` returns `canConvertToUtc: false`, user-facing natal planet values must remain hidden or unavailable.
+
+Unknown birth time, invalid timezone, ambiguous local time, and nonexistent local time must fail closed.
 
 ## Unsupported Features In Sprint 7
 

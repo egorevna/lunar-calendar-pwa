@@ -13,6 +13,7 @@
     "swisseph": "^0.5.17"
   },
   "dependencies": {
-    "astronomy-engine": "2.1.19"
+    "astronomy-engine": "2.1.19",
+    "luxon": "3.7.2"
   }
 }

@@ -172,10 +172,11 @@ test('reference validation does not approve houses ASC MC transits or UI', () =>
   assert.equal(serviceWorker.includes('astronomyEngineProvider'), false);
 });
 
-test('package dependencies remain limited to approved astronomy-engine runtime provider', () => {
+test('package dependencies remain limited to approved runtime providers', () => {
   const packageJson = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
 
   assert.deepEqual(packageJson.dependencies, {
     'astronomy-engine': '2.1.19',
+    luxon: '3.7.2',
   });
 });

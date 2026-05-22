@@ -1,3 +1,5 @@
+import { DateTime, IANAZone } from './vendor/luxon.mjs';
+
 import { normalizeProfile } from './profileModel.js';
 
 export const BIRTH_DATE_TIME_STATUS = Object.freeze({
@@ -12,6 +14,10 @@ const TIMEZONE_WARNING = 'Для точного расчета нужен час
 const COORDINATES_LIMITATION = 'Для домов и ASC/MC нужны координаты места рождения.';
 const UTC_LIMITATION = 'Точная конвертация времени рождения в UTC требует надежной timezone-стратегии.';
 const HOUSE_ENGINE_LIMITATION = 'Дома и ASC/MC требуют отдельного надежного расчетного движка.';
+const AMBIGUOUS_TIME_WARNING =
+  'Время рождения попадает в неоднозначный переход часового пояса — нужен ручной выбор смещения.';
+const NONEXISTENT_TIME_WARNING =
+  'Время рождения попадает в несуществующий переход часового пояса.';
 
 export function parseBirthDate(value) {
   const normalized = trimString(value);
@@ -95,6 +101,18 @@ export function normalizeTimezone(value) {
     return { ok: false, timezone: '', errors };
   }
 
+  if (typeof IANAZone?.isValidZone === 'function') {
+    if (!IANAZone.isValidZone(timezone)) {
+      errors.push('timezone must be a valid IANA timezone');
+    }
+
+    return {
+      ok: errors.length === 0,
+      timezone,
+      errors,
+    };
+  }
+
   if (canValidateTimezoneWithIntl()) {
     try {
       new Intl.DateTimeFormat('en-US', { timeZone: timezone }).format(new Date(0));
@@ -120,6 +138,7 @@ export function createBirthDateTimeInput(profile) {
   const warnings = [];
   const limitations = [];
   const errors = [];
+  let conversion = birthUtcConversionResult();
 
   if (!date.ok) {
     missingFields.push('birthDate');
@@ -147,24 +166,34 @@ export function createBirthDateTimeInput(profile) {
     limitations.push(UNKNOWN_TIME_WARNING);
   }
 
-  if (date.ok && time.ok && timezone.ok) {
-    limitations.push(UTC_LIMITATION);
+  if (date.ok && time.ok && time.hasKnownTime && timezone.ok) {
+    conversion = convertBirthLocalDateTimeToUtc(date, time, timezone.timezone);
+
+    if (!conversion.ok) {
+      warnings.push(...conversion.warnings);
+      limitations.push(...conversion.limitations);
+      errors.push(...conversion.errors);
+    }
   }
 
   const isIncomplete = missingFields.includes('birthDate')
     || missingFields.includes('birthTime')
-    || missingFields.includes('birthPlace.timezone');
+    || missingFields.includes('birthPlace.timezone')
+    || !time.hasKnownTime
+    || (date.ok && time.ok && time.hasKnownTime && timezone.ok && !conversion.ok);
 
   return {
-    status: isIncomplete ? BIRTH_DATE_TIME_STATUS.INCOMPLETE : BIRTH_DATE_TIME_STATUS.NOT_SUPPORTED,
+    status: conversion.ok && !isIncomplete
+      ? BIRTH_DATE_TIME_STATUS.READY
+      : BIRTH_DATE_TIME_STATUS.INCOMPLETE,
     localDate: date.ok ? pickDate(date) : null,
     localTime: time.ok && time.hasKnownTime ? pickTime(time) : null,
     timezone: timezone.ok ? timezone.timezone : null,
     birthTimeAccuracy: time.accuracy,
     hasKnownTime: time.hasKnownTime,
     birthPlace: normalized.birthPlace,
-    canConvertToUtc: false,
-    utcDateTime: null,
+    canConvertToUtc: conversion.ok && !isIncomplete,
+    utcDateTime: conversion.ok && !isIncomplete ? conversion.utcDateTime : null,
     missingFields: unique(missingFields),
     warnings: unique(warnings),
     limitations: unique(limitations),
@@ -189,7 +218,7 @@ export function getBirthDateTimeReadiness(profile) {
     warnings: input.warnings,
     limitations: unique([
       ...input.limitations,
-      hasDate && hasKnownTime && hasTimezone && hasCoordinates ? HOUSE_ENGINE_LIMITATION : '',
+      input.canConvertToUtc && hasCoordinates ? HOUSE_ENGINE_LIMITATION : '',
     ]),
   };
 }
@@ -206,6 +235,87 @@ export function explainBirthDateTimeLimitations(input) {
     missingFields.includes('birthPlace.timezone') ? TIMEZONE_WARNING : '',
     missingFields.includes('birthPlace.coordinates') ? COORDINATES_LIMITATION : '',
   ]);
+}
+
+function convertBirthLocalDateTimeToUtc(date, time, timezone) {
+  const local = DateTime.fromObject(
+    {
+      year: date.year,
+      month: date.month,
+      day: date.day,
+      hour: time.hour,
+      minute: time.minute,
+      second: 0,
+      millisecond: 0,
+    },
+    { zone: timezone },
+  );
+
+  if (!local.isValid) {
+    return birthUtcConversionResult({
+      errors: [local.invalidReason || 'birth local time is invalid'],
+      limitations: [UTC_LIMITATION],
+    });
+  }
+
+  if (!matchesLocalDateTime(local, date, time)) {
+    return birthUtcConversionResult({
+      warnings: [NONEXISTENT_TIME_WARNING],
+      errors: ['birth local time is nonexistent in timezone'],
+    });
+  }
+
+  const possibleOffsets = getMatchingPossibleOffsets(local, date, time);
+
+  if (new Set(possibleOffsets.map((item) => item.offset)).size > 1) {
+    return birthUtcConversionResult({
+      warnings: [AMBIGUOUS_TIME_WARNING],
+      errors: ['birth local time is ambiguous in timezone'],
+    });
+  }
+
+  const utcDateTime = local.toUTC().toISO({
+    suppressMilliseconds: false,
+    includeOffset: true,
+  });
+
+  if (!utcDateTime || !utcDateTime.endsWith('Z')) {
+    return birthUtcConversionResult({
+      errors: ['birth local time could not be converted to UTC ISO'],
+      limitations: [UTC_LIMITATION],
+    });
+  }
+
+  return birthUtcConversionResult({
+    ok: true,
+    utcDateTime,
+  });
+}
+
+function getMatchingPossibleOffsets(local, date, time) {
+  if (typeof local.getPossibleOffsets !== 'function') {
+    return [local];
+  }
+
+  return local.getPossibleOffsets().filter((candidate) => matchesLocalDateTime(candidate, date, time));
+}
+
+function matchesLocalDateTime(local, date, time) {
+  return local.year === date.year
+    && local.month === date.month
+    && local.day === date.day
+    && local.hour === time.hour
+    && local.minute === time.minute;
+}
+
+function birthUtcConversionResult(overrides = {}) {
+  return {
+    ok: overrides.ok ?? false,
+    utcDateTime: overrides.utcDateTime ?? null,
+    warnings: overrides.warnings ?? [],
+    limitations: overrides.limitations ?? [],
+    errors: overrides.errors ?? [],
+  };
 }
 
 function birthDateResult(overrides = {}) {

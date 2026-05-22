@@ -1704,28 +1704,39 @@ Goal: decide how to safely convert birth local date/time/timezone into UTC for f
 - Task 7.4 remains blocked until UTC conversion is implemented and tested.
 - No app code, provider code, package files, UI, natal planet values, houses, ASC / MC, transits, aspects or orbs were changed.
 
-# Active Task
-
 ## Task 7.4b — Implement Birth Time UTC Conversion
 
-Status: blocked until explicit dependency approval
+Status: done
 
 Goal: implement safe local birth date/time/timezone to UTC conversion according to `BIRTH_TIME_UTC_STRATEGY.md`.
 
-Required before starting:
+### Result
 
-- explicit approval to install the selected timezone dependency;
-- exact package/version;
-- conversion policy for ambiguous and nonexistent local times;
-- tests for modern, historical, DST, ambiguous, nonexistent, unknown-time and missing-timezone cases.
+- Installed approved dependency `luxon@3.7.2`.
+- Vendored Luxon's browser ESM runtime as `src/vendor/luxon.mjs` with `src/vendor/luxon.LICENSE.md` for static GitHub Pages / PWA runtime safety.
+- `src/birthDateTime.js` now converts valid local birth date/time/timezone to UTC ISO using Luxon.
+- Successful conversion returns `status: "ready"`, `canConvertToUtc: true`, and an ISO UTC `utcDateTime`.
+- Missing/invalid birth date, birth time, or timezone returns `status: "incomplete"` and `utcDateTime: null`.
+- Unknown birth time returns `status: "incomplete"` and keeps houses / ASC / MC unavailable.
+- Ambiguous DST overlap local times fail closed with a warning instead of silently choosing an offset.
+- Nonexistent DST gap local times fail closed with a warning instead of silently shifting time.
+- Houses, ASC / MC, transits, aspects, orbs, natal chart UI and user-facing natal planet values were not added.
+- PWA cache was updated to `lunar-calendar-v63`.
 
-Do not start Task 7.4b without explicit approval.
+# Active Task
 
 ## Task 7.4 — Read-only Natal Planets Panel
 
-Status: blocked until UTC conversion strategy implementation passes
+Status: ready to start
 
 Goal: show actual natal planet positions if and only if provider input is ready and the provider returns validated planet positions.
+
+Important boundary:
+
+- do not show values for profiles whose birth time is unknown;
+- do not show values for ambiguous or nonexistent local birth times;
+- do not show houses, ASC / MC, transits, aspects, orbs, chart wheel, or personal ritual scoring;
+- do not start Task 7.4 without explicit user command.
 
 ## Task 7.5 — Natal Planets Debug
 

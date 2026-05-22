@@ -361,12 +361,15 @@ Current responsibilities:
 
 - parse `YYYY-MM-DD` birth dates without timezone-shifting `Date` parsing;
 - parse `HH:mm` birth times with `exact`, `approximate`, and `unknown` time accuracy rules;
-- normalize and validate timezone strings with `Intl.DateTimeFormat` when available;
-- build birth date/time input readiness with `incomplete` and `notSupported` statuses;
+- normalize and validate IANA timezone strings through `luxon` / `Intl` checks;
+- convert valid birth local date/time/timezone into UTC ISO through `luxon@3.7.2`;
+- import Luxon's browser-safe ESM build from tracked vendored asset `src/vendor/luxon.mjs`;
+- fail closed for unknown birth time, missing/invalid inputs, ambiguous DST overlap, and nonexistent DST gap;
+- build birth date/time input readiness with `ready` and `incomplete` statuses;
 - report missing fields, warnings, limitations, and calculation readiness for date-based, time-based, house, and ASC / MC work;
-- keep `canConvertToUtc: false` and `utcDateTime: null` until a reliable historical timezone strategy exists.
+- return `canConvertToUtc: true` and `utcDateTime` only after safe conversion succeeds.
 
-This module does not convert birth local time to UTC, does not call external APIs, does not use geocoding or location permissions, and does not calculate natal planets, houses, ASC / MC, aspects, personal transits, or orbs.
+This module does not call external APIs, does not use geocoding or location permissions, does not use the device timezone as a birth-time fallback, and does not calculate natal planets, houses, ASC / MC, aspects, personal transits, or orbs.
 
 ## `src/planetaryPositionProvider.js`
 
@@ -777,7 +780,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v61
+lunar-calendar-v63
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -852,7 +855,7 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 24. `src/natalEngine.js` defines the strict natal engine interface and currently returns `incomplete` / `notSupported` because no provider is connected.
 
-25. `src/birthDateTime.js` prepares birth date/time/timezone readiness for future natal calculations without converting to fake UTC.
+25. `src/birthDateTime.js` prepares birth date/time/timezone readiness and converts safe local birth time to UTC ISO through `luxon`; ambiguous/nonexistent DST times and missing/invalid inputs fail closed.
 
 26. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
 
@@ -1216,7 +1219,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v61
+lunar-calendar-v63
 ```
 
 Important operational rule:
@@ -1517,7 +1520,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v61
+lunar-calendar-v63
 ```
 
 If this value changes in `sw.js`, update this section.

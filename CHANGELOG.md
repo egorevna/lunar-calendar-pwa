@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-05-22 — Complete Task 7.4b birth time UTC conversion
+
+- Installed approved local-only dependency `luxon@3.7.2`.
+- Vendored Luxon's browser ESM runtime as `src/vendor/luxon.mjs` with `src/vendor/luxon.LICENSE.md` so static GitHub Pages does not depend on ignored `node_modules`.
+- `src/birthDateTime.js` now converts valid birth local date/time/IANA timezone to UTC ISO.
+- Successful conversion returns `status: "ready"`, `canConvertToUtc: true`, and `utcDateTime`.
+- Unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap and nonexistent DST gap fail closed with `utcDateTime: null`.
+- Added tests for Luxon import, Moscow modern/historical conversion, New York normal/DST edge cases, invalid inputs, readiness flags and no network/geolocation usage.
+- Task 7.4 is now ready to start, but was not started.
+- PWA cache updated to `lunar-calendar-v63`.
+- User-facing natal planet values, UI, houses, ASC / MC, transits, aspects and orbs were not added.
+- `src/app.js` and `index.html` were not changed; `sw.js` changed only for PWA cache/versioning.
+
 ## 2026-05-22 — Complete Task 7.4a birth time UTC strategy
 
 - Added `BIRTH_TIME_UTC_STRATEGY.md`.

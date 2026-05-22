@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lunar-calendar-v61';
+const CACHE_NAME = 'lunar-calendar-v63';
 const ASSETS = [
   './',
   'index.html',
@@ -21,6 +21,7 @@ const ASSETS = [
   'src/personalContext.js',
   'src/personalRecommendations.js',
   'src/birthDateTime.js',
+  'src/vendor/luxon.mjs',
   'src/astroMath.js',
   'src/natalChartModel.js',
   'src/natalEngine.js',
