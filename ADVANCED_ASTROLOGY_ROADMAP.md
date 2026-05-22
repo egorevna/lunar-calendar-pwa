@@ -37,6 +37,36 @@ Rules:
 
 ---
 
+## UI Disclosure Rule
+
+Future advanced profile/natal modules must not turn `Мои карты` into a long always-open list.
+
+All large profile/natal sections should be collapsible by default, including:
+
+- Натальные планеты;
+- Натальные аспекты;
+- Достоинства планет;
+- Термы / деканы / управители градусов;
+- Дома / ASC / MC;
+- Куспиды домов / Парс Фортуны / арабские точки;
+- Фиксированные звезды;
+- Лунные узлы / Лилит / Селена;
+- Мидпоинты / антисы.
+
+Collapsed sections should show only:
+
+- title;
+- short summary;
+- `Показать` / `Развернуть` control.
+
+Expanded sections may show the full list and should switch the control to `Скрыть` / `Свернуть`.
+
+When the active profile changes, advanced sections should reset to collapsed state. When `Общий день` is selected, profile-specific sections should reset or hide.
+
+Readiness/fallback copy may remain visible when it is short and important. User-facing values must still pass validation and readiness checks before display, and raw technical data must stay hidden.
+
+---
+
 ## Current Foundation
 
 Completed foundation layers include:

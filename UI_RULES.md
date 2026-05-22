@@ -290,6 +290,42 @@ If a block grows too large, collapse it.
 
 Main dashboard should feel like a decision panel, not a spreadsheet.
 
+## Profile / Natal Section Disclosure
+
+All future large profile or natal sections inside `Мои карты` must be collapsible by default.
+
+This rule applies to:
+
+- Натальные планеты;
+- Натальные аспекты;
+- Достоинства планет;
+- Термы / деканы / управители градусов;
+- Дома / ASC / MC;
+- Куспиды домов / Парс Фортуны / арабские точки;
+- Фиксированные звезды;
+- Лунные узлы / Лилит / Селена;
+- Мидпоинты / антисы.
+
+Default collapsed state:
+
+- show the section title;
+- show a short summary;
+- show a `Показать` or `Развернуть` control.
+
+Expanded state:
+
+- show the full list;
+- change the control to `Скрыть` or `Свернуть`.
+
+Interaction rules:
+
+- reset large profile/natal sections to collapsed state when the active profile changes;
+- reset/hide profile-specific sections when `Общий день` is selected;
+- do not expose raw technical data;
+- do not let `Мои карты` become a long unscannable page;
+- keep short and important readiness/fallback copy visible when values are not ready;
+- show user-facing values only after validation and readiness checks pass.
+
 ## Mobile PWA Rule
 
 Assume the app is used on mobile.
