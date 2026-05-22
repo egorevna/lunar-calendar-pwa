@@ -592,13 +592,30 @@ Sprint 5 — Natal Calculation Engine Foundation
 Sprint 6 — Real Natal Provider Selection / Fixture Validation
 ```
 
-Следующий этап:
+Активный спринт:
 
 ```txt
-Планирование Sprint 7
+Sprint 7 — Natal Planets UI / Read-only Natal Positions
 ```
 
-Sprint 6 завершен. Ниже сохраняется краткая история предыдущего Sprint 5 и результаты текущего Sprint 6.
+Sprint 6 завершен. Sprint 7 активен.
+
+Цель Sprint 7:
+
+- подготовить первый безопасный user-facing слой для read-only natal planet positions;
+- показывать natal planets только если input readiness и provider output действительно готовы;
+- не фейкать local birth time to UTC conversion;
+- не добавлять chart wheel, houses, ASC / MC, personal transits, natal aspects, orbs или personal ritual scoring.
+
+Текущий фокус:
+
+```txt
+Task 7.1 — Natal Planets UI Readiness Audit
+```
+
+Task 7.1 должна создать / обновить `NATAL_PLANETS_UI_STRATEGY.md` и решить, можно ли показывать natal planet values сейчас. Код приложения в рамках подготовки Sprint 7 не менялся.
+
+Ниже сохраняется краткая история предыдущего Sprint 5 и результаты текущего Sprint 6.
 
 Результат Sprint 5:
 
@@ -1864,16 +1881,16 @@ lunar-calendar-v60
 Сейчас следующий конкретный шаг:
 
 ```txt
-Планирование Sprint 7.
+Task 7.1 — Natal Planets UI Readiness Audit.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Sprint 7 без отдельной команды.
+2. Не начинать Task 7.2 без отдельной команды.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
-5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или фейковые личные расчеты.
+5. Не делать натальную карту, персональные транзиты, дома, ASC/MC, орбы или фейковые личные расчеты.
 6. После реализации обновить документацию и запустить тесты.
 
 ---
@@ -1886,4 +1903,4 @@ lunar-calendar-v60
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5 и Sprint 6 завершены. Sprint 6 закрыл provider research, approval review, isolated `astronomy-engine@2.1.19` provider-layer integration, Swiss Ephemeris reference validation для longitude, speed и retrograde, safe debug summary и validation report. User-facing natal values остаются disabled; `natalEngine` production path не показывает пользователям natal chart UI, houses / ASC / MC / transits / aspects / orbs остаются not supported. Следующий шаг — планирование Sprint 7; Sprint 7 не начинался.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5 и Sprint 6 завершены. Активный спринт — Sprint 7 — Natal Planets UI / Read-only Natal Positions. Sprint 6 закрыл provider research, approval review, isolated `astronomy-engine@2.1.19` provider-layer integration, Swiss Ephemeris reference validation для longitude, speed и retrograde, safe debug summary и validation report. User-facing natal values пока не включены; `natalEngine` production path не показывает пользователям natal chart UI, houses / ASC / MC / transits / aspects / orbs остаются not supported. Следующая активная задача — Task 7.1 — Natal Planets UI Readiness Audit; Task 7.2 не начиналась.

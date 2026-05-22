@@ -303,3 +303,49 @@ Prioritize:
 - no dense tables on main dashboard.
 
 Tables are acceptable on the natal chart screen and debug screen.
+
+---
+
+# Sprint 7 UI Rules Addendum
+
+Sprint 7 may introduce a read-only natal planets layer only when values are actually calculated, validated and safe to display.
+
+## Natal Planets Display
+
+Natal planet values must be shown only if they are actually calculated and validated.
+
+Do not show fake or placeholder planet values.
+
+Allowed format:
+
+```txt
+Солнце — Телец 15°30′
+Луна — Рак 03°12′
+Меркурий R — ...
+```
+
+If data is not ready:
+
+```txt
+Натальные планеты пока недоступны.
+```
+
+## Required Limitation Copy
+
+When showing a natal planet section, include:
+
+```txt
+Дома, ASC/MC и транзиты пока не рассчитываются.
+```
+
+## Do Not Show In Sprint 7
+
+- chart wheel;
+- houses;
+- ASC;
+- MC;
+- transits;
+- aspects to natal;
+- orbs;
+- personal ritual scoring;
+- raw birth data.

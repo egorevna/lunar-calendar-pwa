@@ -612,3 +612,37 @@ Current validated Sprint 6 rule:
 - retrograde: `speed < 0`, validated against Swiss Ephemeris speed sign.
 
 This does not approve houses, ASC / MC, transits, aspects, orbs, local birth timezone conversion, or user-facing natal UI.
+
+---
+
+# Sprint 7 Natal Planets User-Facing Rules
+
+Sprint 7 is about a conservative read-only natal planets UI layer.
+
+## User-Facing Natal Values Rule
+
+Natal planet values may be user-facing only when:
+
+- provider output is ready;
+- input is ready;
+- fixture validation has passed;
+- values are not synthetic or mock values;
+- output is formatted through approved display helpers.
+
+## No Fake UTC Rule
+
+Do not show natal planets if local birth time has not been safely converted to provider-ready UTC.
+
+If `birthDateTime` still returns `canConvertToUtc: false`, user-facing natal planet values must remain hidden or unavailable.
+
+## Unsupported Features In Sprint 7
+
+These remain `notSupported` in Sprint 7:
+
+- houses;
+- ASC / MC;
+- personal transits;
+- natal aspects;
+- orbs;
+- chart wheel;
+- personal ritual scoring.

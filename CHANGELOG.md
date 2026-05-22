@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-22 — Prepare Sprint 7 documentation
+
+- Sprint 1–6 remain completed; active sprint is now Sprint 7 — Natal Planets UI / Read-only Natal Positions.
+- `TODO.md` lists Task 7.1 — Natal Planets UI Readiness Audit as the active task and Task 7.2–7.6 as the Sprint 7 backlog.
+- Added Sprint 7 UI rules for read-only natal planet display and required limitation copy.
+- Added Sprint 7 astrology rules: no user-facing natal values without ready input, validated provider output and safe UTC strategy.
+- Added Sprint 7 privacy rules for natal planet UI and debug output.
+- No app code, UI, provider integration, `src/`, `scripts/`, `index.html`, `sw.js` or natal planet display was changed.
+
 ## 2026-05-22 — Complete Sprint 6 hardening
 
 - Завершена Task 6.8 — Sprint 6 Hardening.

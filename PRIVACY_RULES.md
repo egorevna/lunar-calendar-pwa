@@ -239,8 +239,6 @@ Do not show in debug:
 - houseSystem;
 - zodiac.
 
----
-
 # Sprint 4 Privacy Rules
 
 Sprint 4 starts personal astrology readiness work. Birth data, profile data, natal data and personal calculation state remain sensitive.
@@ -383,3 +381,33 @@ Debug must not show:
 - coordinates;
 - full profile JSON;
 - private profile arrays.
+
+---
+
+# Sprint 7 Privacy Rules Addendum
+
+Sprint 7 may prepare a user-facing read-only natal planets layer. Natal planet UI must not expose raw birth data.
+
+## Natal Planets UI Privacy
+
+Do not show:
+
+- birthDate;
+- birthTime;
+- raw birthPlace;
+- raw currentPlace;
+- coordinates;
+- full profile JSON.
+
+Show only calculated planet positions if readiness is confirmed.
+
+## Debug Privacy
+
+Debug can show:
+
+- provider status;
+- planet count;
+- validation status;
+- user-facing enabled / disabled.
+
+Debug must not dump full birth data.

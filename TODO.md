@@ -1587,13 +1587,92 @@ Goal: finalize Sprint 6 with privacy, accuracy, unsupported-state and test check
 - Confirmed houses, ASC / MC, personal transits, natal aspects, orbs, natal chart UI and personal ritual scoring remain unsupported.
 - Confirmed `npm audit --omit=dev` remains clean and the `swisseph` dev dependency audit findings stay in the separate security backlog item.
 
-# Next Stage
+# Current Active Sprint
 
-## Sprint 7 — Planning
+## Sprint 7 — Natal Planets UI / Read-only Natal Positions
+
+Status: active
+
+### Goal
+
+Expose safe read-only natal planet positions only when input readiness and provider output are valid.
+
+### Important Boundary
+
+Do not show natal planets unless calculation input is genuinely ready and provider returns validated positions.
+
+Do not fake local birth time to UTC conversion.
+
+Do not implement houses, ASC / MC, transits, aspects, or chart wheel.
+
+# Active Task
+
+## Task 7.1 — Natal Planets UI Readiness Audit
+
+Status: active
+
+### Goal
+
+Decide whether natal planets can be shown now and where.
+
+### Required Questions
+
+1. Can current profile data produce provider-ready UTC input?
+2. Does `birthDateTime` still return `canConvertToUtc: false`?
+3. Can natal planets be user-facing yet?
+4. Should the first UI be disabled/readiness-only until UTC strategy is solved?
+5. Where should the future natal planets section live?
+6. What must remain hidden?
+
+### Deliverable
+
+Create or update:
+
+```txt
+NATAL_PLANETS_UI_STRATEGY.md
+```
+
+### Acceptance Criteria
+
+- `NATAL_PLANETS_UI_STRATEGY.md` exists.
+- It states whether user-facing natal planet values are allowed now.
+- It identifies blockers.
+- No fake values.
+- No UI changes.
+- No code changes unless explicitly required for documentation-only support.
+- Task 7.2 remains next.
+
+# Sprint 7 Backlog
+
+## Task 7.2 — Natal Planet Formatting Helper
 
 Status: not started
 
-Next step: prepare Sprint 7 planning only after explicit user approval.
+Goal: create pure formatting helpers for already-calculated natal planet positions. Do not calculate planets, call providers or add UI.
+
+## Task 7.3 — Natal Planets Readiness UI
+
+Status: not started
+
+Goal: add an honest UI shell/readiness state if natal planets cannot be shown because UTC conversion or provider input readiness is not ready.
+
+## Task 7.4 — Read-only Natal Planets Panel
+
+Status: blocked until readiness confirmed
+
+Goal: show actual natal planet positions if and only if provider input is ready and the provider returns validated planet positions.
+
+## Task 7.5 — Natal Planets Debug
+
+Status: not started
+
+Goal: add safe debug info such as planet count, provider, validation status and user-facing enabled/disabled. Do not dump birth data.
+
+## Task 7.6 — Sprint 7 Hardening
+
+Status: not started
+
+Goal: finalize Sprint 7 and confirm no fake natal values or unsupported features are shown.
 
 # Security Backlog
 
