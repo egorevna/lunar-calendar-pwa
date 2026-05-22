@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-22 — Complete Sprint 6 hardening
+
+- Завершена Task 6.8 — Sprint 6 Hardening.
+- Проверены результаты Task 6.1–6.7: provider research, fixtures, adapter contract, approval review, isolated `astronomy-engine@2.1.19` integration, longitude/speed/retrograde validation and safe debug report.
+- Подтверждено, что user-facing natal values, natal chart UI, houses, ASC / MC, personal transits, natal aspects, orbs and personal ritual scoring remain disabled / not supported.
+- Подтверждено, что `astronomy-engine` остается provider-layer dependency, validation uses local `swisseph` only in tests, and fixtures do not use private profile data.
+- `src/app.js`, `index.html`, `sw.js`, `package.json`, `package-lock.json`, `src/ephemeris-data.js` and generator were not changed.
+- Sprint 6 closed; next stage is Sprint 7 planning, not started.
+
 ## 2026-05-21 — Complete Task 6.7 provider debug and validation report
 
 - Added `NATAL_PROVIDER_VALIDATION_REPORT.md`.

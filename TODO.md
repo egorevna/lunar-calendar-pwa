@@ -1334,11 +1334,11 @@ Goal: verify Sprint 5 outputs, no fake natal claims, unsupported states explicit
 - Confirmed `natalEngine`, `birthDateTime`, and `planetaryPositionProvider` keep unsupported features explicit and do not fake readiness.
 - Confirmed no real provider, dependency, package, ephemeris or generator changes were added during hardening.
 
-# Current Active Sprint
+# Completed Sprint
 
 ## Sprint 6 — Real Natal Provider Selection / Fixture Validation
 
-Status: active
+Status: done
 
 ### Goal
 
@@ -1570,13 +1570,30 @@ Goal: add safe debug info about provider and fixture validation without private 
 - PWA cache updated to `lunar-calendar-v60`.
 - `src/app.js`, `index.html`, `package.json`, `package-lock.json`, `src/ephemeris-data.js`, and `scripts/generate-ephemeris.cjs` were not changed.
 
-# Active Task
+# Completed Sprint 6 Tasks
 
 ## Task 6.8 — Sprint 6 Hardening
 
-Status: next / not started
+Status: done
 
 Goal: finalize Sprint 6 with privacy, accuracy, unsupported-state and test checks.
+
+### Result
+
+- Audited Task 6.1–6.7 outputs and confirmed Sprint 6 provider selection / fixture validation work is complete.
+- Confirmed user-facing UI does not show natal planet values, natal chart UI, houses, ASC / MC, personal transits, natal aspects or orbs.
+- Confirmed `astronomy-engine@2.1.19` remains isolated to the provider layer and user-facing natal values remain disabled.
+- Confirmed longitude, speed and retrograde validation are documented against local Swiss Ephemeris reference fixtures.
+- Confirmed houses, ASC / MC, personal transits, natal aspects, orbs, natal chart UI and personal ritual scoring remain unsupported.
+- Confirmed `npm audit --omit=dev` remains clean and the `swisseph` dev dependency audit findings stay in the separate security backlog item.
+
+# Next Stage
+
+## Sprint 7 — Planning
+
+Status: not started
+
+Next step: prepare Sprint 7 planning only after explicit user approval.
 
 # Security Backlog
 

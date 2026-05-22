@@ -589,15 +589,16 @@ Sprint 2 — Modes and Best Windows
 Sprint 3 — Profiles / Мои карты
 Sprint 4 — Personal Moment Foundation / Лично для меня
 Sprint 5 — Natal Calculation Engine Foundation
-```
-
-Активный спринт:
-
-```txt
 Sprint 6 — Real Natal Provider Selection / Fixture Validation
 ```
 
-Sprint 5 завершен.
+Следующий этап:
+
+```txt
+Планирование Sprint 7
+```
+
+Sprint 6 завершен. Ниже сохраняется краткая история предыдущего Sprint 5 и результаты текущего Sprint 6.
 
 Результат Sprint 5:
 
@@ -743,15 +744,27 @@ Task 6.7 выполнен как safe provider debug / validation report:
 - houses, ASC / MC, transits, aspects, orbs и personal ritual scoring остаются not supported;
 - PWA cache обновлен до `lunar-calendar-v60`.
 
-Текущая следующая задача:
+Завершенная задача:
 
 ```txt
 Task 6.8 — Sprint 6 Hardening
 ```
 
-Task 6.8 не начиналась.
+Task 6.8 выполнена как финальный hardening Sprint 6:
 
-Sprint 6 цель:
+- проверены результаты Task 6.1–6.7;
+- подтверждено, что provider-layer validation для `astronomy-engine@2.1.19` закрывает longitude, speed и retrograde для selected UTC fixtures;
+- user-facing natal values остаются disabled;
+- natal chart UI не добавлен;
+- houses, ASC / MC, personal transits, natal aspects, orbs и personal ritual scoring остаются not supported;
+- debug показывает только safe validation summary и не выводит private birth data, active-profile planet values или full profile JSON;
+- `npm audit --omit=dev` остается clean;
+- dev-only `swisseph` audit findings сохранены как отдельный future security follow-up;
+- `ephemeris-data.js` и `scripts/generate-ephemeris.cjs` не менялись.
+
+Sprint 6 завершен.
+
+Sprint 6 результат:
 
 - выбрать надежный путь для реального natal provider;
 - проверить privacy, license, browser/PWA compatibility и bundle impact;
@@ -1159,13 +1172,13 @@ Sprint 3 завершен:
 Profiles / Мои карты
 ```
 
-Активный спринт:
+Следующий спринт после Sprint 4:
 
 ```txt
 Sprint 5 — Natal Calculation Engine Foundation
 ```
 
-Текущий следующий шаг:
+Следующий шаг на тот момент:
 
 ```txt
 Task 5.1 — Natal Engine Audit and Decision
@@ -1851,13 +1864,13 @@ lunar-calendar-v60
 Сейчас следующий конкретный шаг:
 
 ```txt
-Task 6.8 — Sprint 6 Hardening.
+Планирование Sprint 7.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 6.8 без отдельной команды.
+2. Не начинать Sprint 7 без отдельной команды.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или фейковые личные расчеты.
@@ -1873,4 +1886,4 @@ Task 6.8 — Sprint 6 Hardening.
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4 и Sprint 5 завершены. Активный спринт — Sprint 6; Task 6.7 добавила safe provider validation report и debug-секцию `Natal Provider Validation` для `?debug=1`. `astronomy-engine@2.1.19` provider-layer validation зафиксирована для longitude, speed и retrograde, но `natalEngine` production path остается `notSupported`, user-facing natal values не показываются, houses / ASC / MC / transits / orbs не поддержаны. Следующая задача — Task 6.8, но она не начиналась.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5 и Sprint 6 завершены. Sprint 6 закрыл provider research, approval review, isolated `astronomy-engine@2.1.19` provider-layer integration, Swiss Ephemeris reference validation для longitude, speed и retrograde, safe debug summary и validation report. User-facing natal values остаются disabled; `natalEngine` production path не показывает пользователям natal chart UI, houses / ASC / MC / transits / aspects / orbs остаются not supported. Следующий шаг — планирование Sprint 7; Sprint 7 не начинался.
