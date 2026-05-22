@@ -189,6 +189,7 @@ Responsibilities:
 - reads and writes the active profile id through `src/profileStorage.js`
 - handles inline profile creation, editing, and deletion through `src/profileStorage.js`
 - handles local profile export/import actions through `src/profileImportExport.js`
+- renders the readiness-only natal planets block inside `Мои карты` through `src/profileUi.js` and `src/birthDateTime.js`
 - renders the compact `Лично для меня` dashboard block through `src/personalContext.js`, `src/personalRecommendations.js`, and `src/profileUi.js`
 - passes safe profile summary state into the hidden debug panel
 
@@ -658,11 +659,13 @@ Current responsibilities:
 - describe create/edit form titles and delete-button visibility;
 - convert a profile into safe form values for prefill;
 - map profile validation errors into short Russian UI messages;
+- format the readiness-only `Натальные планеты` block inside `Мои карты` using `src/birthDateTime.js`;
+- translate natal readiness missing fields into human-readable labels without raw birth data or technical keys;
 - format the compact `Лично для меня` dashboard block from `src/personalContext.js`;
 - include safe personal recommendation sections from `src/personalRecommendations.js`;
 - translate missing personal profile fields into human-readable Russian copy without rendering technical keys.
 
-This module does not store profiles, export/import data, or calculate natal charts / personal transits.
+This module does not store profiles, export/import data, call natal providers, show natal planet values, or calculate natal charts / houses / ASC / MC / personal transits / aspects / orbs.
 
 ## `src/profileImportExport.js`
 
@@ -774,7 +777,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v60
+lunar-calendar-v61
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -835,7 +838,7 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 17. `src/profileStorage.js` stores profiles and active profile id locally through `localStorage`.
 
-18. `src/profileUi.js` formats the minimal `Профиль` / `Мои карты` shell, active-profile state, and create/edit form view.
+18. `src/profileUi.js` formats the minimal `Профиль` / `Мои карты` shell, active-profile state, create/edit form view, and readiness-only natal planets block.
 
 19. `src/profileImportExport.js` serializes and imports local profile backup JSON.
 
@@ -1213,7 +1216,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v60
+lunar-calendar-v61
 ```
 
 Important operational rule:
@@ -1514,7 +1517,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v60
+lunar-calendar-v61
 ```
 
 If this value changes in `sw.js`, update this section.

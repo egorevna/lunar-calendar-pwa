@@ -127,10 +127,8 @@ test('helper does not import provider modules or call astronomy-engine', () => {
 
 test('task does not wire formatter into UI files', () => {
   const appSource = readFileSync(new URL('../src/app.js', import.meta.url), 'utf8');
-  const markup = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
   const serviceWorker = readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
 
   assert.equal(appSource.includes('natalPlanetDisplay'), false);
-  assert.equal(markup.includes('Натальные планеты'), false);
   assert.equal(serviceWorker.includes('natalPlanetDisplay'), false);
 });

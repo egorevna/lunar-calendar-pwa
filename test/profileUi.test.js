@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import {
+  describeNatalPlanetsReadinessBlock,
   describePersonalContextBlock,
   describeProfileFormMode,
   describeProfileFormValues,
@@ -236,4 +237,97 @@ test('personal context block maps missing fields to human copy and limits items'
   });
   assert.equal(view.items.length <= 3, true);
   assert.equal(JSON.stringify(view).includes('birthPlace.coordinates'), false);
+});
+
+test('natal planets readiness block is hidden for general day', () => {
+  const view = describeNatalPlanetsReadinessBlock(null);
+
+  assert.equal(view.hidden, true);
+  assert.equal(view.title, '');
+  assert.equal(view.status, '');
+  assert.deepEqual(view.missingFields, []);
+  assert.deepEqual(view.limitations, []);
+});
+
+test('natal planets readiness block describes active profile without planet values', () => {
+  const view = describeNatalPlanetsReadinessBlock({
+    id: 'profile-egor',
+    name: 'Егор',
+    birthDate: '1990-05-12',
+    birthTime: '08:45',
+    birthTimeAccuracy: 'exact',
+    birthPlace: {
+      city: 'Москва',
+      country: 'Россия',
+      latitude: 55.7558,
+      longitude: 37.6173,
+      timezone: 'Europe/Moscow',
+    },
+    currentPlace: {
+      mode: 'moscow',
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+    },
+    houseSystem: 'wholeSign',
+    zodiac: 'tropical',
+  });
+  const text = JSON.stringify(view);
+
+  assert.equal(view.hidden, false);
+  assert.equal(view.title, 'Натальные планеты');
+  assert.equal(view.status, 'Пока недоступны для показа.');
+  assert.equal(
+    view.explanation,
+    'Для точного расчета нужны полные данные рождения.',
+  );
+  assert.deepEqual(view.missingFields, []);
+  assert.deepEqual(view.limitations, ['дома, ASC/MC и транзиты пока не рассчитываются']);
+  assert.equal(text.includes('1990-05-12'), false);
+  assert.equal(text.includes('08:45'), false);
+  assert.equal(text.includes('55.7558'), false);
+  assert.equal(text.includes('37.6173'), false);
+  assert.equal(text.includes('Солнце — Телец'), false);
+  assert.equal(text.includes('Луна — Рак'), false);
+  assert.equal(text.includes('Меркурий R'), false);
+  assert.equal(text.includes('Провайдер планет проверен'), false);
+});
+
+test('natal planets readiness block maps missing fields to human labels', () => {
+  const view = describeNatalPlanetsReadinessBlock({
+    id: 'profile-egor',
+    name: 'Егор',
+    birthDate: '',
+    birthTime: '',
+    birthTimeAccuracy: 'exact',
+    birthPlace: {
+      city: 'Москва',
+      country: 'Россия',
+      latitude: null,
+      longitude: null,
+      timezone: '',
+    },
+    currentPlace: {
+      mode: 'moscow',
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+    },
+    houseSystem: 'wholeSign',
+    zodiac: 'tropical',
+  });
+  const text = JSON.stringify(view);
+
+  assert.deepEqual(view.missingFields, [
+    'дата рождения',
+    'время рождения',
+    'часовой пояс рождения',
+    'координаты места рождения',
+  ]);
+  assert.equal(text.includes('birthDate'), false);
+  assert.equal(text.includes('birthTime'), false);
+  assert.equal(text.includes('birthPlace.timezone'), false);
+  assert.equal(text.includes('birthPlace.coordinates'), false);
+  assert.equal(text.includes('latitude'), false);
+  assert.equal(text.includes('longitude'), false);
 });

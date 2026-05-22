@@ -87,9 +87,40 @@ test('home screen renders profile shell', () => {
   assert.equal(html.includes('Пока нет сохраненных карт.'), true);
   assert.equal(html.includes('Начните с добавления профиля.'), true);
   assert.equal(html.includes('+ Добавить профиль'), true);
+  assert.equal(html.includes('data-natal-planets-readiness'), true);
+  assert.equal(html.includes('data-natal-planets-readiness-title'), true);
+  assert.equal(html.includes('Натальные планеты'), true);
   assert.equal(html.includes('Добавление профиля — следующий шаг.'), false);
   assert.equal(html.includes('Натальная карта'), false);
   assert.equal(html.includes('Персональные транзиты'), false);
+});
+
+test('natal planets readiness shell stays inside profiles panel and is not a planet panel', () => {
+  const panelStart = html.indexOf('data-profiles-panel');
+  const panelEnd = html.indexOf('class="glass-card mode-selector"');
+  const panelHtml = html.slice(panelStart, panelEnd);
+  const readinessStart = html.indexOf('data-natal-planets-readiness');
+  const readinessEnd = html.indexOf('class="profile-create-actions"');
+  const readinessHtml = html.slice(readinessStart, readinessEnd);
+  const personalIndex = html.indexOf('data-personal-context-card hidden');
+
+  assert.equal(panelStart >= 0, true);
+  assert.equal(readinessStart > panelStart, true);
+  assert.equal(readinessStart < panelEnd, true);
+  assert.equal(personalIndex < readinessStart, true);
+  assert.equal(panelHtml.includes('data-natal-planets-readiness hidden'), true);
+  assert.equal(readinessHtml.includes('data-natal-planets-readiness-missing-list'), true);
+  assert.equal(readinessHtml.includes('Ограничения:'), true);
+  assert.equal(readinessHtml.includes('data-natal-planets-readiness-limitations'), true);
+  assert.equal(readinessHtml.includes('Провайдер планет проверен'), false);
+  assert.equal(readinessHtml.includes('Солнце — Телец'), false);
+  assert.equal(readinessHtml.includes('Луна — Рак'), false);
+  assert.equal(readinessHtml.includes('Меркурий R'), false);
+  assert.equal(readinessHtml.includes('birthDate'), false);
+  assert.equal(readinessHtml.includes('birthTime'), false);
+  assert.equal(readinessHtml.includes('latitude'), false);
+  assert.equal(readinessHtml.includes('longitude'), false);
+  assert.equal(readinessHtml.includes('birthPlace.timezone'), false);
 });
 
 test('home screen renders hidden personal context card shell', () => {

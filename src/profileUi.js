@@ -1,3 +1,4 @@
+import { createBirthDateTimeInput } from './birthDateTime.js';
 import { getPersonalRecommendations } from './personalRecommendations.js';
 
 export const GENERAL_PROFILE_LABEL = 'Общий день';
@@ -10,12 +11,23 @@ const PERSONAL_READY_SUMMARY =
   'Профиль выбран. Пока рекомендации основаны на общем моменте и выбранном режиме.';
 const PERSONAL_INCOMPLETE_SUMMARY =
   'Профиль выбран, но для глубокого личного расчета не хватает данных.';
+const NATAL_PLANETS_READINESS_TITLE = 'Натальные планеты';
+const NATAL_PLANETS_READINESS_STATUS = 'Пока недоступны для показа.';
+const NATAL_PLANETS_READINESS_EXPLANATION = 'Для точного расчета нужны полные данные рождения.';
+const NATAL_PLANETS_LIMITATION = 'дома, ASC/MC и транзиты пока не рассчитываются';
 
 const MISSING_FIELD_LABELS = {
   birthDate: 'дата рождения',
   birthTime: 'время рождения',
   'birthPlace.coordinates': 'координаты места рождения',
   'birthPlace.timezone': 'часовой пояс места рождения',
+};
+
+const NATAL_MISSING_FIELD_LABELS = {
+  birthDate: 'дата рождения',
+  birthTime: 'время рождения',
+  'birthPlace.timezone': 'часовой пояс рождения',
+  'birthPlace.coordinates': 'координаты места рождения',
 };
 
 const ERROR_MESSAGES = {
@@ -132,6 +144,33 @@ export function describePersonalContextBlock(context = {}) {
   };
 }
 
+export function describeNatalPlanetsReadinessBlock(profile = null) {
+  if (!profile) {
+    return {
+      hidden: true,
+      title: '',
+      status: '',
+      explanation: '',
+      missingTitle: '',
+      missingFields: [],
+      limitations: [],
+    };
+  }
+
+  const birthInput = createBirthDateTimeInput(profile);
+  const missingFields = describeNatalMissingFields(birthInput);
+
+  return {
+    hidden: false,
+    title: NATAL_PLANETS_READINESS_TITLE,
+    status: NATAL_PLANETS_READINESS_STATUS,
+    explanation: NATAL_PLANETS_READINESS_EXPLANATION,
+    missingTitle: missingFields.length ? 'Нужно уточнить:' : '',
+    missingFields,
+    limitations: [NATAL_PLANETS_LIMITATION],
+  };
+}
+
 function getPersonalContextSections(context, recommendations) {
   return [
     section('Можно сейчас', recommendations.goodNow),
@@ -152,6 +191,15 @@ function getPersonalContextItems(context) {
     ...warnings,
     ...limitations,
   ]).slice(0, 3);
+}
+
+function describeNatalMissingFields(birthInput) {
+  const fields = Array.isArray(birthInput?.missingFields) ? birthInput.missingFields : [];
+
+  return unique([
+    ...fields,
+    birthInput?.hasKnownTime === false ? 'birthTime' : '',
+  ].map((field) => NATAL_MISSING_FIELD_LABELS[field]).filter(Boolean));
 }
 
 function section(title, items = []) {

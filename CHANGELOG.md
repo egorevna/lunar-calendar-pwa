@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-22 — Complete Task 7.3 natal planets readiness UI
+
+- Added a compact readiness-only `Натальные планеты` block inside the `Мои карты` panel.
+- The block is hidden for `Общий день` and visible only when a saved profile is active.
+- The block explains that natal planets are not ready to display because birth date/time/timezone readiness still cannot produce safe UTC.
+- Missing profile data is shown only as human labels: `дата рождения`, `время рождения`, `часовой пояс рождения`, `координаты места рождения`.
+- Raw birthDate, birthTime, coordinates, full profile JSON and actual natal planet values are not shown.
+- User-facing natal values, natal chart UI, houses, ASC / MC, transits, aspects and orbs were not added.
+- PWA cache updated to `lunar-calendar-v61`.
+
 ## 2026-05-22 — Complete Task 7.2 natal planet formatting helper
 
 - Added `src/natalPlanetDisplay.js`.

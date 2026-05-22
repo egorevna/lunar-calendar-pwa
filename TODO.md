@@ -1651,7 +1651,7 @@ NATAL_PLANETS_UI_STRATEGY.md
 - Recommended first UI: readiness-only natal planets copy inside `Мои карты` / profile details.
 - Task 7.4 remains blocked until UTC readiness is solved.
 
-# Active Task
+# Completed Task
 
 ## Task 7.2 — Natal Planet Formatting Helper
 
@@ -1668,17 +1668,29 @@ Goal: create pure formatting helpers for already-calculated natal planet positio
 - Invalid / incomplete planet objects are filtered safely and do not produce `NaN`, `undefined` or fake signs.
 - The helper does not call `astronomy-engine`, providers, profiles, localStorage or UI code.
 
-# Active Task
+# Completed Task
 
 ## Task 7.3 — Natal Planets Readiness UI
 
-Status: next / not started
+Status: done
 
 Goal: add an honest UI shell/readiness state if natal planets cannot be shown because UTC conversion or provider input readiness is not ready.
 
+### Result
+
+- Added a compact readiness-only `Натальные планеты` block inside the `Мои карты` panel.
+- The block appears only when a saved profile is active; `Общий день` keeps it hidden.
+- The block says natal planets are not ready to display and explains that date, time and birth timezone readiness is still needed.
+- Missing data is shown only as human labels: `дата рождения`, `время рождения`, `часовой пояс рождения`, `координаты места рождения`.
+- The block does not show raw birth date, birth time, coordinates, full profile JSON or natal planet values.
+- UTC readiness remains the blocker for real user-facing natal planets.
+- PWA cache was updated to `lunar-calendar-v61`.
+
+# Active Task
+
 ## Task 7.4 — Read-only Natal Planets Panel
 
-Status: blocked until readiness confirmed
+Status: blocked until UTC readiness is solved
 
 Goal: show actual natal planet positions if and only if provider input is ready and the provider returns validated planet positions.
 

@@ -66,6 +66,7 @@ import {
   updateProfile,
 } from './profileStorage.js';
 import {
+  describeNatalPlanetsReadinessBlock,
   describeProfileFormMode,
   describeProfileFormValues,
   describePersonalContextBlock,
@@ -126,6 +127,14 @@ const elements = {
   profileImportFile: document.querySelector('[data-profile-import-file]'),
   profileImportStatus: document.querySelector('[data-profile-import-status]'),
   profilePrivacy: document.querySelector('[data-profile-privacy]'),
+  natalPlanetsReadiness: document.querySelector('[data-natal-planets-readiness]'),
+  natalPlanetsReadinessTitle: document.querySelector('[data-natal-planets-readiness-title]'),
+  natalPlanetsReadinessStatus: document.querySelector('[data-natal-planets-readiness-status]'),
+  natalPlanetsReadinessExplanation: document.querySelector('[data-natal-planets-readiness-explanation]'),
+  natalPlanetsReadinessMissing: document.querySelector('[data-natal-planets-readiness-missing]'),
+  natalPlanetsReadinessMissingTitle: document.querySelector('[data-natal-planets-readiness-missing-title]'),
+  natalPlanetsReadinessMissingList: document.querySelector('[data-natal-planets-readiness-missing-list]'),
+  natalPlanetsReadinessLimitations: document.querySelector('[data-natal-planets-readiness-limitations]'),
   personalContextCard: document.querySelector('[data-personal-context-card]'),
   personalContextTitle: document.querySelector('[data-personal-context-title]'),
   personalContextSummary: document.querySelector('[data-personal-context-summary]'),
@@ -339,7 +348,19 @@ function renderStoredProfilesShell() {
   const activeProfile = profiles.find((profile) => profile.id === activeProfileId) ?? null;
 
   renderProfilesShell(describeProfilesShell(profiles, activeProfileId));
+  renderNatalPlanetsReadinessBlock(describeNatalPlanetsReadinessBlock(activeProfile));
   renderPersonalContextBlock(describePersonalContextBlock(createPersonalContext(activeProfile)));
+}
+
+function renderNatalPlanetsReadinessBlock(view) {
+  elements.natalPlanetsReadiness.hidden = view.hidden;
+  elements.natalPlanetsReadinessTitle.textContent = view.title;
+  elements.natalPlanetsReadinessStatus.textContent = view.status;
+  elements.natalPlanetsReadinessExplanation.textContent = view.explanation;
+  elements.natalPlanetsReadinessMissing.hidden = !view.missingFields.length;
+  elements.natalPlanetsReadinessMissingTitle.textContent = view.missingTitle;
+  renderSimpleList(elements.natalPlanetsReadinessMissingList, view.missingFields);
+  renderSimpleList(elements.natalPlanetsReadinessLimitations, view.limitations);
 }
 
 function renderPersonalContextBlock(view) {
