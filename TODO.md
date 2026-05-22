@@ -1552,19 +1552,29 @@ Goal: add retrograde/speed only if provider supports it reliably.
 - Houses, ASC / MC, transits, aspects, orbs, natal chart UI and user-facing natal values remain unavailable.
 - `src/app.js`, `index.html`, `sw.js`, `package.json`, `package-lock.json`, `src/ephemeris-data.js`, and `scripts/generate-ephemeris.cjs` were not changed.
 
-# Active Task
+# Completed Sprint 6 Tasks
 
 ## Task 6.7 — Provider Debug and Validation Report
 
-Status: next / not started
+Status: done
 
 Goal: add safe debug info about provider and fixture validation without private birth data.
 
-# Sprint 6 Backlog
+### Result
+
+- Added `NATAL_PROVIDER_VALIDATION_REPORT.md`.
+- Added safe provider validation summary helper for debug output.
+- `?debug=1` now includes `Natal Provider Validation` with provider/version, validation statuses, fixture count, max deltas, validated bodies and unsupported feature labels.
+- Debug does not show private birth data, full profile JSON, active-profile planet values or actual natal longitudes.
+- User-facing natal values, natal chart UI, houses, ASC / MC, transits, aspects, orbs and personal ritual scoring remain unavailable.
+- PWA cache updated to `lunar-calendar-v60`.
+- `src/app.js`, `index.html`, `package.json`, `package-lock.json`, `src/ephemeris-data.js`, and `scripts/generate-ephemeris.cjs` were not changed.
+
+# Active Task
 
 ## Task 6.8 — Sprint 6 Hardening
 
-Status: not started
+Status: next / not started
 
 Goal: finalize Sprint 6 with privacy, accuracy, unsupported-state and test checks.
 

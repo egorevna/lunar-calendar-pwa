@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import test from 'node:test';
 
 import {
@@ -154,15 +155,32 @@ test('debug panel marks debugDate as active and includes key sections', () => {
   assert.equal(text.includes('transits: not supported'), true);
   assert.equal(text.includes('reason: Planetary position provider is not connected.'), true);
   assert.equal(text.includes('planets: no'), true);
+  assert.equal(text.includes('Natal Provider Validation'), true);
+  assert.equal(text.includes('provider: astronomy-engine'), true);
+  assert.equal(text.includes('version: 2.1.19'), true);
+  assert.equal(text.includes('providerStatus: provider-layer only'), true);
+  assert.equal(text.includes('userFacingNatalValues: disabled'), true);
+  assert.equal(text.includes('longitudeValidation: passed'), true);
+  assert.equal(text.includes('speedValidation: passed'), true);
+  assert.equal(text.includes('retrogradeValidation: passed'), true);
+  assert.equal(text.includes('referenceSource: local swisseph dev dependency'), true);
+  assert.equal(text.includes('fixturesCount: 6'), true);
+  assert.equal(text.includes('validatedBodies: sun, moon, mercury, venus, mars, jupiter, saturn, uranus, neptune, pluto'), true);
+  assert.equal(text.includes('maxLongitudeDeltaPlanets: 0.003180°'), true);
+  assert.equal(text.includes('maxLongitudeDeltaMoon: 0.000294°'), true);
+  assert.equal(text.includes('maxSpeedDeltaPlanets: 0.000288°/day'), true);
+  assert.equal(text.includes('maxSpeedDeltaMoon: 0.000148°/day'), true);
+  assert.equal(text.includes('stillNotSupported: houses, ASC / MC, personal transits, natal aspects, orbs, natal chart UI, personal ritual scoring'), true);
   assert.equal(text.includes('hasActiveProfile: yes'), true);
   assert.equal(text.includes('activeProfileName: Егор'), true);
   assert.equal(text.includes('birthDate'), false);
   assert.equal(text.includes('birthTime'), false);
   assert.equal(text.includes('birthPlace'), false);
   assert.equal(text.includes('latitude'), false);
-  assert.equal(text.includes('longitude'), false);
   assert.equal(text.includes('coordinates'), false);
   assert.equal(text.includes('profiles: ['), false);
+  assert.equal(text.includes('actualPlanetLongitudes'), false);
+  assert.equal(text.includes('sunLongitude'), false);
   assert.equal(text.includes('Луна в 7 доме'), false);
   assert.equal(text.includes('Марс □ ASC'), false);
   assert.equal(text.includes('Плутон ☌ Венера'), false);
@@ -180,6 +198,7 @@ test('debug panel marks normal time when debugDate is not used', () => {
   assert.equal(text.includes('Best Windows Debug'), false);
   assert.equal(text.includes('Personal Debug'), false);
   assert.equal(text.includes('Natal Engine Debug'), true);
+  assert.equal(text.includes('Natal Provider Validation'), true);
   assert.equal(text.includes('activeProfile: Общий день'), true);
   assert.equal(text.includes('natal calculation: inactive'), true);
 });
@@ -210,4 +229,35 @@ test('debug panel shows no-window fallback state and rejected candidates', () =>
   assert.equal(text.includes('fallback: Сегодня лучше проверять'), true);
   assert.equal(text.includes('rejected candidates'), true);
   assert.equal(text.includes('reject: low score, warnings'), true);
+});
+
+test('ordinary markup does not contain provider validation debug details', () => {
+  const markup = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+
+  assert.equal(markup.includes('Natal Provider Validation'), false);
+  assert.equal(markup.includes('longitudeValidation: passed'), false);
+  assert.equal(markup.includes('speedValidation: passed'), false);
+  assert.equal(markup.includes('retrogradeValidation: passed'), false);
+});
+
+test('natal provider validation report documents provider validation without private data', () => {
+  const report = readFileSync(new URL('../NATAL_PROVIDER_VALIDATION_REPORT.md', import.meta.url), 'utf8');
+
+  assert.equal(report.includes('# NATAL_PROVIDER_VALIDATION_REPORT.md'), true);
+  assert.equal(report.includes('astronomy-engine@2.1.19'), true);
+  assert.equal(report.includes('local swisseph dev dependency'), true);
+  assert.equal(report.includes('SEFLG_SWIEPH'), true);
+  assert.equal(report.includes('SEFLG_SPEED'), true);
+  assert.equal(report.includes('2000-01-01T12:00:00.000Z'), true);
+  assert.equal(report.includes('2026-03-02T12:00:00.000Z'), true);
+  assert.equal(report.includes('0.003180°'), true);
+  assert.equal(report.includes('0.000294°'), true);
+  assert.equal(report.includes('0.000288°/day'), true);
+  assert.equal(report.includes('0.000148°/day'), true);
+  assert.equal(report.includes('houses'), true);
+  assert.equal(report.includes('ASC / MC'), true);
+  assert.equal(report.includes('personal transits'), true);
+  assert.equal(report.includes('birthDate'), false);
+  assert.equal(report.includes('birthTime'), false);
+  assert.equal(report.includes('profiles: ['), false);
 });

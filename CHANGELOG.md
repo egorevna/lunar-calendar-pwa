@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-21 — Complete Task 6.7 provider debug and validation report
+
+- Added `NATAL_PROVIDER_VALIDATION_REPORT.md`.
+- Added safe `src/natalProviderValidationSummary.js`.
+- `?debug=1` now includes `Natal Provider Validation` with provider/version, validation statuses, fixture count, validated bodies, max deltas and unsupported feature labels.
+- Debug output does not expose birth data, full profile JSON, active-profile natal values or actual planet longitudes.
+- User-facing natal values, natal chart UI, houses, ASC / MC, transits, aspects, orbs and personal ritual scoring remain unavailable.
+- PWA cache updated to `lunar-calendar-v60`.
+- `src/app.js`, `index.html`, dependencies, `src/ephemeris-data.js` and generator were not changed.
+
 ## 2026-05-21 — Complete Task 6.6 retrograde and speed provider support
 
 - `src/astronomyEngineProvider.js` now returns provider-layer longitude speed for the 10 main natal planets.

@@ -1,8 +1,9 @@
 import { getNatalEngineCapabilities } from './natalEngine.js';
+import { getNatalProviderValidationSummary } from './natalProviderValidationSummary.js';
 import { getPlanetaryProviderCapabilities } from './planetaryPositionProvider.js';
 import { formatAspect, formatPlanet } from './vocDisplay.js';
 
-export const APP_CACHE_VERSION = 'lunar-calendar-v58';
+export const APP_CACHE_VERSION = 'lunar-calendar-v60';
 
 export function isDebugMode(search = window.location.search) {
   return new URLSearchParams(search).get('debug') === '1';
@@ -72,6 +73,7 @@ export function describeDebugPanel(context = {}) {
     formatProfileDebug(context.profileDebug),
     formatPersonalDebug(personalDebug),
     formatNatalEngineDebug(natalEngineDebug ?? createNatalEngineDebug(personalDebug)),
+    formatNatalProviderValidation(getNatalProviderValidationSummary()),
     formatBestWindowsDebug(bestWindowsDebug),
   ].filter(Boolean).join('\n\n');
 }
@@ -239,6 +241,28 @@ function formatNatalEngineDebug(debug) {
   return formatSection('Natal Engine Debug', [
     ...baseLines,
     ...profileLines,
+  ]);
+}
+
+function formatNatalProviderValidation(summary) {
+  if (!summary) return '';
+
+  return formatSection('Natal Provider Validation', [
+    `provider: ${summary.provider ?? 'none'}`,
+    `version: ${summary.version ?? 'нет данных'}`,
+    `providerStatus: ${summary.providerStatus ?? 'notSupported'}`,
+    `userFacingNatalValues: ${summary.userFacingNatalValues ?? 'disabled'}`,
+    `longitudeValidation: ${summary.longitudeValidation ?? 'notSupported'}`,
+    `speedValidation: ${summary.speedValidation ?? 'notSupported'}`,
+    `retrogradeValidation: ${summary.retrogradeValidation ?? 'notSupported'}`,
+    `referenceSource: ${summary.referenceSource ?? 'нет данных'}`,
+    `fixturesCount: ${summary.fixturesCount ?? 0}`,
+    `validatedBodies: ${formatList(summary.validatedBodies)}`,
+    `maxLongitudeDeltaPlanets: ${summary.maxLongitudeDeltaPlanets ?? 'нет данных'}`,
+    `maxLongitudeDeltaMoon: ${summary.maxLongitudeDeltaMoon ?? 'нет данных'}`,
+    `maxSpeedDeltaPlanets: ${summary.maxSpeedDeltaPlanets ?? 'нет данных'}`,
+    `maxSpeedDeltaMoon: ${summary.maxSpeedDeltaMoon ?? 'нет данных'}`,
+    `stillNotSupported: ${formatList(summary.stillNotSupported)}`,
   ]);
 }
 

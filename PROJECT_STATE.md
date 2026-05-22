@@ -732,13 +732,24 @@ Task 6.6 выполнен как provider-layer speed / retrograde validation:
 - user-facing natal UI остается disabled;
 - houses, ASC / MC, transits, aspects и orbs остаются not supported.
 
+Task 6.7 выполнен как safe provider debug / validation report:
+
+- создан `NATAL_PROVIDER_VALIDATION_REPORT.md`;
+- добавлен `src/natalProviderValidationSummary.js` с безопасным summary без расчетов и без birth/profile data;
+- debug-панель при `?debug=1` получила секцию `Natal Provider Validation`;
+- секция показывает provider/version, validation statuses, fixture count, validated bodies, max deltas и unsupported feature labels;
+- debug не показывает actual planet longitudes, private birth data, full profile JSON или active-profile natal values;
+- user-facing natal UI остается disabled;
+- houses, ASC / MC, transits, aspects, orbs и personal ritual scoring остаются not supported;
+- PWA cache обновлен до `lunar-calendar-v60`.
+
 Текущая следующая задача:
 
 ```txt
-Task 6.7 — Provider Debug and Validation Report
+Task 6.8 — Sprint 6 Hardening
 ```
 
-Task 6.7 не начиналась.
+Task 6.8 не начиналась.
 
 Sprint 6 цель:
 
@@ -1790,7 +1801,7 @@ git commit -m "checkpoint before continuing in new codex chat"
 Текущая версия:
 
 ```txt
-lunar-calendar-v58
+lunar-calendar-v60
 ```
 
 ## Moscow Hardcoding
@@ -1840,13 +1851,13 @@ lunar-calendar-v58
 Сейчас следующий конкретный шаг:
 
 ```txt
-Task 6.7 — Provider Debug and Validation Report.
+Task 6.8 — Sprint 6 Hardening.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 6.7 без отдельной команды.
+2. Не начинать Task 6.8 без отдельной команды.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC или фейковые личные расчеты.
@@ -1862,4 +1873,4 @@ Task 6.7 — Provider Debug and Validation Report.
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4 и Sprint 5 завершены. Активный спринт — Sprint 6; Task 6.6 завершила provider-layer speed / retrograde validation: `astronomy-engine@2.1.19` считает selected UTC longitude speed для 10 основных планет, а retrograde определяется по validated speed sign against local `swisseph` in Node tests. `natalEngine` production path остается `notSupported`, user-facing natal values не показываются, houses / ASC / MC / transits / orbs не поддержаны. Следующая задача — Task 6.7, но она не начиналась.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4 и Sprint 5 завершены. Активный спринт — Sprint 6; Task 6.7 добавила safe provider validation report и debug-секцию `Natal Provider Validation` для `?debug=1`. `astronomy-engine@2.1.19` provider-layer validation зафиксирована для longitude, speed и retrograde, но `natalEngine` production path остается `notSupported`, user-facing natal values не показываются, houses / ASC / MC / transits / orbs не поддержаны. Следующая задача — Task 6.8, но она не начиналась.

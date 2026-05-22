@@ -759,7 +759,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v58
+lunar-calendar-v60
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -842,9 +842,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 28. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, audits source behavior, and calculates candidate natal planet longitudes in the provider layer only; selected UTC fixtures are validated against local `swisseph` in tests, and no user-facing natal values are enabled.
 
-29. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state and safe personal readiness/capability state without birth details.
+29. `src/natalProviderValidationSummary.js` exposes a safe provider validation summary for debug/reporting without calculating planets, reading profile data, or importing the `astronomy-engine` provider module.
 
-30. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
+30. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, and provider validation summary without birth details.
+
+31. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 
@@ -1152,6 +1154,7 @@ Files involved:
 - `index.html` — hidden debug panel shell
 - `src/app.js` — passes already calculated dashboard data to the panel
 - `src/debugPanel.js` — query detection and text formatting
+- `src/natalProviderValidationSummary.js` — safe provider validation summary for debug output
 - `src/styles.css` — simple technical panel styling
 
 Visibility:
@@ -1173,6 +1176,7 @@ Testing note:
 
 - `test/fixtures/natalFixtures.js` contains test-only mock provider data for future-ready natal engine tests. It is not used by the production provider path.
 - `test/fixtures/natalProviderReferenceFixtures.js` contains test-only UTC reference fixtures and Swiss Ephemeris reference helpers for validating `astronomy-engine` planet longitudes without importing `swisseph` into production code.
+- `NATAL_PROVIDER_VALIDATION_REPORT.md` records the provider-layer validation summary; it does not enable user-facing natal values.
 - if personal data is added later, debug output must follow `PRIVACY_RULES.md`
 
 Debug data helps check calculation differences between calendars.
@@ -1192,7 +1196,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v58
+lunar-calendar-v60
 ```
 
 Important operational rule:
@@ -1493,7 +1497,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v58
+lunar-calendar-v60
 ```
 
 If this value changes in `sw.js`, update this section.

@@ -289,6 +289,12 @@ Still pending / not supported:
 
 Passing Task 6.6 fixtures means selected UTC provider-layer speed and retrograde fields are validated. It does not approve user-facing natal values, houses, ASC / MC, transits, aspects, orbs, or any local birth-time-to-UTC conversion.
 
+The consolidated provider-layer validation report is recorded in:
+
+```txt
+NATAL_PROVIDER_VALIDATION_REPORT.md
+```
+
 ## Decision Log
 
 - Task 6.2 does not connect a real provider.
