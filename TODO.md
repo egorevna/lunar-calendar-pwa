@@ -1587,11 +1587,11 @@ Goal: finalize Sprint 6 with privacy, accuracy, unsupported-state and test check
 - Confirmed houses, ASC / MC, personal transits, natal aspects, orbs, natal chart UI and personal ritual scoring remain unsupported.
 - Confirmed `npm audit --omit=dev` remains clean and the `swisseph` dev dependency audit findings stay in the separate security backlog item.
 
-# Current Active Sprint
+# Completed Sprint
 
 ## Sprint 7 — Natal Planets UI / Read-only Natal Positions
 
-Status: active
+Status: completed
 
 ### Goal
 
@@ -1792,13 +1792,56 @@ Goal: finalize Sprint 7 and confirm no fake natal values or unsupported features
 
 Sprint 7 is completed.
 
-# Next Stage
+# Current Active Sprint
 
 ## Sprint 8 — Natal Aspects Foundation
 
+Status: active
+
+### Goal
+
+Calculate and display natal aspects between validated natal planets.
+
+### Important Boundary
+
+Sprint 8 is for natal aspects between natal planets only.
+
+Do not implement personal transits, houses, ASC / MC, chart wheel, fixed stars, dignities, terms / decans, or ritual scoring.
+
+# Active Task
+
+## Task 8.1 — Natal Aspects Strategy / Orb Rules
+
 Status: not started
 
-Goal: prepare natal aspects foundation in a future explicit task. Do not start Sprint 8 without separate approval.
+### Goal
+
+Define aspect set, orb model, sorting, display constraints, and unsupported features before coding the aspect engine.
+
+### Deliverable
+
+Create:
+
+```txt
+NATAL_ASPECTS_STRATEGY.md
+```
+
+### Acceptance Criteria
+
+- `NATAL_ASPECTS_STRATEGY.md` exists.
+- Orb rules are documented.
+- No code changes.
+- No UI changes.
+- Task 8.2 remains next.
+
+# Sprint 8 Backlog
+
+- Task 8.2 — Natal Aspect Engine.
+- Task 8.3 — Natal Aspect Validation / Fixtures.
+- Task 8.4 — Natal Aspect Display Helper.
+- Task 8.5 — Natal Aspects Collapsible UI.
+- Task 8.6 — Natal Aspects Debug.
+- Task 8.7 — Sprint 8 Hardening.
 
 # Security Backlog
 

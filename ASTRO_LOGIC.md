@@ -657,3 +657,62 @@ These remain `notSupported` in Sprint 7:
 - orbs;
 - chart wheel;
 - personal ritual scoring.
+
+---
+
+# Sprint 8 Natal Aspect Logic
+
+Sprint 8 is about natal aspects between natal planets in a single natal chart.
+
+Natal aspects must not be confused with:
+
+- personal transits;
+- transit aspects;
+- current Moon aspects;
+- aspects to ASC / MC;
+- aspects to houses;
+- aspects to fixed stars.
+
+## Major Aspect Set
+
+Sprint 8 starts with major aspects only:
+
+- conjunction: `0°`;
+- sextile: `60°`;
+- square: `90°`;
+- trine: `120°`;
+- opposition: `180°`.
+
+Minor aspects require explicit approval before becoming user-facing.
+
+## Orb Rule
+
+An aspect is valid only when angular distance is within the configured orb.
+
+No hidden arbitrary orbs.
+
+Orb policy must be documented in `NATAL_ASPECTS_STRATEGY.md` before the aspect engine is implemented.
+
+## Validation Rule
+
+Do not show a natal aspect unless:
+
+- both bodies have valid natal longitudes;
+- angular distance is calculated correctly;
+- `0/360` wrap-around is handled;
+- the aspect is inside the allowed orb;
+- duplicate pairs are removed;
+- same-body aspects are ignored.
+
+## Unsupported In Sprint 8
+
+These remain unsupported unless a later explicit task says otherwise:
+
+- transit aspects;
+- aspects to ASC / MC;
+- aspects to houses;
+- aspects to Arabic Parts;
+- aspects to fixed stars;
+- applying / separating unless explicitly validated;
+- interpretation engine;
+- personal ritual scoring.

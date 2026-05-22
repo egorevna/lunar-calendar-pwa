@@ -411,3 +411,41 @@ Debug can show:
 - user-facing enabled / disabled.
 
 Debug must not dump full birth data.
+
+---
+
+# Sprint 8 Privacy Rules Addendum
+
+Sprint 8 natal aspects are derived from already calculated natal planet positions.
+
+## Natal Aspects Privacy
+
+Do not show raw sensitive profile data in natal aspect UI or debug:
+
+- birthDate;
+- birthTime;
+- utcDateTime;
+- raw timezone;
+- raw birthPlace;
+- raw currentPlace;
+- coordinates;
+- full profile JSON.
+
+Allowed user-facing natal aspect data:
+
+- planet names;
+- aspect type;
+- orb;
+- optional strength / priority only if it is calculated and documented.
+
+## Debug Privacy
+
+Debug may show:
+
+- aspect count;
+- enabled / disabled state;
+- orb model name;
+- supported aspect set;
+- unsupported feature labels.
+
+Debug must not dump full profile data, raw birth data, raw planet longitude values, raw speed values, houses, ASC / MC values, transits, aspects to unsupported points, or private fixture data.

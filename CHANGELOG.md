@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-22 — Prepare Sprint 8 documentation
+
+- Sprint 1–7 remain completed; active sprint is now Sprint 8 — Natal Aspects Foundation.
+- `TODO.md` lists Task 8.1 — Natal Aspects Strategy / Orb Rules as the active task and Task 8.2–8.7 as the Sprint 8 backlog.
+- Added Sprint 8 astrology rules for natal aspects, major aspect scope, explicit orb policy, validation requirements and unsupported features.
+- Added Sprint 8 UI rules for a collapsible `Натальные аспекты` section inside `Мои карты`.
+- Added Sprint 8 privacy rules for natal aspects UI and debug output.
+- No app code, `src/`, `scripts/`, `index.html`, `sw.js`, provider code, natal aspect engine, transits, houses, ASC / MC or dependencies were changed.
+
 ## 2026-05-22 — Complete Sprint 7 hardening
 
 - Completed Task 7.6 and closed Sprint 7 — Natal Planets UI / Read-only Natal Positions.

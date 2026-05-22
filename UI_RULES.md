@@ -385,3 +385,59 @@ When showing a natal planet section, include:
 - orbs;
 - personal ritual scoring;
 - raw birth data.
+
+---
+
+# Sprint 8 UI Rules Addendum
+
+Sprint 8 may add natal aspects only as a profile/natal section inside `Мои карты`.
+
+## Natal Aspects UI
+
+Natal aspects must be collapsible by default.
+
+Collapsed state should show:
+
+```txt
+Натальные аспекты
+8 аспектов найдено
+[Показать]
+```
+
+Expanded state may show compact rows:
+
+```txt
+Солнце □ Луна · орб 2°15′
+Венера △ Марс · орб 1°04′
+```
+
+## Natal Aspect Section Rules
+
+- collapsed by default;
+- summary first;
+- full list only after explicit click;
+- reset collapsed state when the active profile changes;
+- no long interpretations in Sprint 8;
+- no transit aspects;
+- no houses / ASC / MC;
+- no raw birth data;
+- no raw longitude values;
+- no chart wheel.
+
+## Empty State
+
+If no natal aspects are found:
+
+```txt
+Натальные аспекты
+Мажорные аспекты в заданном орбе не найдены.
+```
+
+## Not Ready State
+
+If natal planets are not ready:
+
+```txt
+Натальные аспекты пока недоступны.
+Сначала нужен расчет натальных планет.
+```
