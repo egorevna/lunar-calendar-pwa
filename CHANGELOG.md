@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-22 — Complete Task 7.2 natal planet formatting helper
+
+- Added `src/natalPlanetDisplay.js`.
+- Added `test/natalPlanetDisplay.test.js`.
+- Formatter prepares compact display strings for already-calculated natal planet positions, for example `Солнце — Телец 15°30′`.
+- Retrograde display uses the short `R` marker, for example `Меркурий R — Телец 15°30′`.
+- Invalid / incomplete planet objects are filtered safely and do not produce `NaN`, `undefined` or fake signs.
+- The helper does not call providers, `astronomy-engine`, profiles, localStorage or UI code.
+- User-facing natal values, UI wiring, natal chart UI, houses, ASC / MC, transits, aspects and orbs were not added.
+
 ## 2026-05-22 — Complete Task 7.1 natal planets UI readiness audit
 
 - Added `NATAL_PLANETS_UI_STRATEGY.md`.

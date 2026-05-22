@@ -425,6 +425,21 @@ Selected UTC longitude speeds are validated in tests against local `swisseph` wi
 
 This module does not integrate with the dashboard, does not expose user-facing natal values, and does not calculate houses, ASC / MC, personal transits, aspects or orbs.
 
+## `src/natalPlanetDisplay.js`
+
+Defines pure display helpers for already-calculated natal planet positions.
+
+Current responsibilities:
+
+- validate whether a passed planet position object is safe to display;
+- format label, tropical sign, degree and minute text into compact user-facing copy;
+- format retrograde state with the short `R` marker only when `retrograde === true`;
+- format speed as a separate optional text field without adding it to the primary display line;
+- expose the required Sprint 7 limitation copy for houses, ASC / MC, transits, natal aspects and orbs;
+- filter invalid / incomplete planet objects without producing `NaN`, `undefined` or fake signs.
+
+This module does not import `astronomy-engine`, does not call provider modules, does not read profiles or localStorage, does not integrate with the dashboard, and does not calculate planetary positions, houses, ASC / MC, transits, aspects or orbs.
+
 ## `src/preciseEphemeris.js`
 
 Reads pre-calculated Swiss Ephemeris data from `src/ephemeris-data.js`.
@@ -844,9 +859,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 29. `src/natalProviderValidationSummary.js` exposes a safe provider validation summary for debug/reporting without calculating planets, reading profile data, or importing the `astronomy-engine` provider module.
 
-30. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, and provider validation summary without birth details.
+30. `src/natalPlanetDisplay.js` formats already-calculated natal planet positions into safe compact display objects without calling providers, profiles, localStorage or UI code.
 
-31. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
+31. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, and provider validation summary without birth details.
+
+32. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 

@@ -1655,13 +1655,24 @@ NATAL_PLANETS_UI_STRATEGY.md
 
 ## Task 7.2 — Natal Planet Formatting Helper
 
-Status: next / not started
+Status: done
 
 Goal: create pure formatting helpers for already-calculated natal planet positions. Do not calculate planets, call providers or add UI.
 
+### Result
+
+- Added `src/natalPlanetDisplay.js` as a pure display helper for already-calculated natal planet positions.
+- Added `test/natalPlanetDisplay.test.js`.
+- Formatter outputs compact sign/degree/minute text such as `Солнце — Телец 15°30′`.
+- Retrograde planets use the short `R` marker, for example `Меркурий R — Телец 15°30′`.
+- Invalid / incomplete planet objects are filtered safely and do not produce `NaN`, `undefined` or fake signs.
+- The helper does not call `astronomy-engine`, providers, profiles, localStorage or UI code.
+
+# Active Task
+
 ## Task 7.3 — Natal Planets Readiness UI
 
-Status: not started
+Status: next / not started
 
 Goal: add an honest UI shell/readiness state if natal planets cannot be shown because UTC conversion or provider input readiness is not ready.
 

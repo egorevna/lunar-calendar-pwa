@@ -607,10 +607,11 @@ Sprint 6 завершен. Sprint 7 активен.
 - не фейкать local birth time to UTC conversion;
 - не добавлять chart wheel, houses, ASC / MC, personal transits, natal aspects, orbs или personal ritual scoring.
 
-Завершенная задача:
+Завершенные задачи:
 
 ```txt
 Task 7.1 — Natal Planets UI Readiness Audit
+Task 7.2 — Natal Planet Formatting Helper
 ```
 
 Результат Task 7.1:
@@ -623,13 +624,23 @@ Task 7.1 — Natal Planets UI Readiness Audit
 - первый UI должен быть readiness-only, предпочтительно внутри `Мои карты` / profile details;
 - Task 7.4 остается blocked until UTC readiness is solved.
 
+Результат Task 7.2:
+
+- добавлен `src/natalPlanetDisplay.js`;
+- добавлен `test/natalPlanetDisplay.test.js`;
+- helper форматирует только уже переданные planet positions и не вызывает provider / profile / UI code;
+- базовый формат: `Солнце — Телец 15°30′`;
+- retrograde marker: `R`, например `Меркурий R — Телец 15°30′`;
+- invalid / incomplete planet objects безопасно отбрасываются;
+- houses, ASC / MC, transits, aspects, orbs, natal chart UI и user-facing natal values не добавлялись.
+
 Текущий следующий шаг:
 
 ```txt
-Task 7.2 — Natal Planet Formatting Helper
+Task 7.3 — Natal Planets Readiness UI
 ```
 
-Task 7.2 не начиналась. Код приложения в рамках Task 7.1 не менялся.
+Task 7.3 не начиналась.
 
 Ниже сохраняется краткая история предыдущего Sprint 5 и результаты текущего Sprint 6.
 
@@ -1897,13 +1908,13 @@ lunar-calendar-v60
 Сейчас следующий конкретный шаг:
 
 ```txt
-Task 7.2 — Natal Planet Formatting Helper.
+Task 7.3 — Natal Planets Readiness UI.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 7.2 без отдельной команды.
+2. Не начинать Task 7.3 без отдельной команды.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC, орбы или фейковые личные расчеты.
@@ -1919,4 +1930,4 @@ Task 7.2 — Natal Planet Formatting Helper.
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5 и Sprint 6 завершены. Активный спринт — Sprint 7 — Natal Planets UI / Read-only Natal Positions. Task 7.1 завершила readiness audit и создала `NATAL_PLANETS_UI_STRATEGY.md`: user-facing natal values пока нельзя показывать для обычных профилей, потому что provider-ready UTC input не готов (`canConvertToUtc: false`, `utcDateTime: null`). Houses / ASC / MC / transits / aspects / orbs остаются not supported. Следующая активная задача — Task 7.2 — Natal Planet Formatting Helper; Task 7.2 не начиналась.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5 и Sprint 6 завершены. Активный спринт — Sprint 7 — Natal Planets UI / Read-only Natal Positions. Task 7.1 завершила readiness audit и создала `NATAL_PLANETS_UI_STRATEGY.md`: user-facing natal values пока нельзя показывать для обычных профилей, потому что provider-ready UTC input не готов (`canConvertToUtc: false`, `utcDateTime: null`). Task 7.2 добавила pure `src/natalPlanetDisplay.js` для форматирования уже рассчитанных planet positions без provider/UI подключения. Houses / ASC / MC / transits / aspects / orbs остаются not supported. Следующая активная задача — Task 7.3 — Natal Planets Readiness UI; Task 7.3 не начиналась.
