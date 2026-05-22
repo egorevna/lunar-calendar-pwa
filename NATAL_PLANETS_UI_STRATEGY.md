@@ -10,6 +10,13 @@ Do not show natal planet values to users unless both calculation input readiness
 
 Sprint 7 may prepare UI and formatting, but it must not fake local birth time to UTC conversion.
 
+Sprint 7 hardening update:
+
+- `luxon@3.7.2` is now approved and used through the tracked vendored runtime `src/vendor/luxon.mjs`;
+- `src/birthDateTime.js` can produce safe provider-ready UTC for valid birth date, known valid birth time and valid IANA birth timezone;
+- user-facing natal planet values may now appear only inside `Мои карты` for an active saved profile when UTC readiness succeeds and the validated provider returns `ready`;
+- unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap and nonexistent DST gap still fail closed and keep the planet list hidden.
+
 ## Current Provider Status
 
 `astronomy-engine@2.1.19` is installed and isolated in the provider layer.
@@ -19,7 +26,7 @@ Current provider-layer status:
 - package: `astronomy-engine@2.1.19`;
 - usage: local-only provider layer;
 - validated reference source: local `swisseph` dev dependency in tests;
-- user-facing natal values: disabled;
+- user-facing natal values: enabled only for the read-only `Мои карты` panel when safe UTC readiness and provider output are ready;
 - natal chart UI: disabled.
 
 Validated features:
@@ -49,8 +56,7 @@ Still not supported:
 - natal aspects;
 - orbs;
 - natal chart UI;
-- personal ritual scoring;
-- local birth timezone conversion.
+- personal ritual scoring.
 
 Important implementation note:
 
@@ -78,33 +84,35 @@ It also reports missing fields and limitations.
 
 Current key behavior:
 
-- `createBirthDateTimeInput(profile)` does not convert local birth time to UTC.
-- `canConvertToUtc` is always `false`.
-- `utcDateTime` is always `null`.
-- when date, time and timezone are present, the helper returns a limitation: `Точная конвертация времени рождения в UTC требует надежной timezone-стратегии.`
+- `createBirthDateTimeInput(profile)` converts local birth date/time/timezone to UTC only through the approved Luxon wrapper.
+- `canConvertToUtc` is `true` only when birth date is valid, known birth time is valid, timezone is valid, and conversion succeeds.
+- `utcDateTime` is an ISO UTC string only on successful conversion.
+- unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap and nonexistent DST gap return incomplete state and keep `utcDateTime: null`.
+- missing coordinates are tracked for houses / ASC / MC readiness, but do not block geocentric natal planet positions.
 
-This is intentional. Without a reliable historical timezone strategy, the app must not silently convert local birth time to UTC for arbitrary birth dates.
+The app must still fail closed rather than silently guessing an offset.
 
 ## Can Natal Planets Be User-Facing Now?
 
-No, not for ordinary saved profiles.
+Yes, but only in the narrow Sprint 7 read-only scope.
 
-Reason:
+Allowed user-facing path:
 
-- natal planet provider output requires provider-ready UTC input;
-- profile data currently stores local birth date/time/timezone;
-- the current birth date/time helper does not produce safe UTC;
-- `canConvertToUtc` remains `false`;
-- `utcDateTime` remains `null`.
+- active saved profile exists;
+- `createBirthDateTimeInput(profile).canConvertToUtc === true`;
+- `utcDateTime` is present;
+- `calculateAstronomyEnginePlanetPositions({ utcDateTime, zodiac: "tropical" })` returns `ready`;
+- display formatting goes through `src/natalPlanetDisplay.js`;
+- output is shown only inside the `Мои карты` natal planets section.
 
-The provider can calculate from test/debug UTC input, but that is not a safe user-facing profile path.
+Not allowed:
 
-Therefore:
-
-- real natal planet values for an active profile must remain hidden;
-- no fake planet values may be shown;
-- no local date/time/timezone conversion should be guessed;
-- Task 7.4 must remain blocked until UTC readiness is solved.
+- showing values for `Общий день`;
+- showing values when birth time is unknown;
+- showing values when birth date, birth time or timezone is missing/invalid;
+- showing values for ambiguous/nonexistent DST local times;
+- showing raw longitude, raw speed, UTC datetime, timezone value, birth data or coordinates;
+- showing houses, ASC / MC, transits, natal aspects, orbs, chart wheel or personal ritual scoring.
 
 ## UI Placement Options
 
@@ -220,6 +228,12 @@ If a profile is missing fields, show human missing-field labels only, for exampl
 
 Do not show technical keys such as `birthPlace.timezone` in the UI.
 
+Task 7.4 update:
+
+- the implemented read-only planet panel lives inside `Мои карты`;
+- the ready state is collapsible by default and shows a compact summary before the full list;
+- fallback/readiness copy remains visible when the profile is not ready.
+
 ## What Can Be Shown Now
 
 Safe to show:
@@ -229,6 +243,8 @@ Safe to show:
 - missing field labels;
 - short limitation copy;
 - statement that houses, ASC / MC and transits are not calculated;
+- formatted natal planet label / sign / degree-minute text when safe UTC readiness and provider output are ready;
+- retrograde `R` marker when provider output marks a planet retrograde;
 - user-facing enabled / disabled state in debug;
 - provider name/version in debug;
 - planet count in debug, if no planet values are dumped.
@@ -268,25 +284,19 @@ Do not show:
 
 ## Blockers Before Real Planet Display
 
-Before real user-facing natal planet values can be shown, the project needs:
+Before any broader natal display can be shown, the project still needs:
 
-- a reliable local birth time to UTC conversion strategy;
-- clear handling for historical timezone rules;
-- provider-ready UTC input from profile data;
-- tests proving profile input can safely reach the provider;
-- UI tests that prevent raw birth data and unsupported features from appearing;
-- a decision on whether planet values live in `Мои карты`, `Лично для меня`, or a later dedicated screen.
+- explicit approval for any location outside `Мои карты`;
+- UI hardening for larger natal sections;
+- separate strategy and validation for natal aspects;
+- separate strategy and validation for houses / ASC / MC;
+- separate strategy and validation for personal transits;
+- tests proving unsupported features remain hidden.
 
-Current blocker:
+Current blocker for the planet panel:
 
-`src/birthDateTime.js` intentionally returns:
-
-```txt
-canConvertToUtc: false
-utcDateTime: null
-```
-
-So ordinary saved profiles cannot safely produce user-facing natal planet values yet.
+- no blocker when the profile has valid date, known valid time, valid timezone and successful UTC conversion;
+- incomplete profiles still keep the readiness fallback.
 
 ## Recommended Task 7 Flow
 
@@ -304,7 +314,7 @@ Task 7.3 should add readiness-only UI.
 - It should include limitation copy for houses, ASC / MC and transits.
 - It must not show planet values unless UTC readiness has been solved in a separate explicit task.
 
-Task 7.4 should remain blocked until UTC readiness is solved.
+Task 7.4 was unblocked after Task 7.4b solved UTC readiness for valid inputs.
 
 - It should show actual planet positions only if provider-ready UTC input exists and provider output is ready.
 - It must not show houses, ASC / MC, transits, aspects or orbs.
@@ -322,9 +332,9 @@ Task 7.6 should harden Sprint 7.
 
 ## Decisions
 
-- User-facing natal planets for ordinary profiles are not allowed yet.
-- Provider-layer validation is sufficient for future planet calculation, but not sufficient for user-facing profile display without UTC readiness.
-- First UI should be readiness-only.
+- User-facing natal planets are allowed only for active saved profiles with safe UTC readiness and ready provider output.
+- Provider-layer validation plus safe UTC readiness is sufficient for the Sprint 7 read-only planet list.
+- Incomplete profiles keep readiness-only fallback.
 - Preferred first placement is inside `Мои карты` / profile details, not the top of the main dashboard.
 - `Лично для меня` should not receive real planet values until UTC readiness and UI scope are explicitly approved.
 - Houses, ASC / MC, transits, natal aspects, orbs, chart wheel and personal ritual scoring remain out of scope.

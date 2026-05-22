@@ -1769,13 +1769,36 @@ Goal: add safe debug info such as planet count, provider, validation status and 
 - Houses, ASC / MC, transits, aspects and orbs remain `notSupported`.
 - PWA cache was updated to `lunar-calendar-v67`.
 
-# Active Task
+# Completed Task
 
 ## Task 7.6 — Sprint 7 Hardening
 
-Status: ready to start
+Status: done
 
 Goal: finalize Sprint 7 and confirm no fake natal values or unsupported features are shown.
+
+### Result
+
+- Completed Sprint 7 hardening audit.
+- Confirmed Task 7.1–7.5 are closed.
+- Confirmed the read-only natal planets panel appears only inside `Мои карты` for an active saved profile with safe UTC readiness and ready provider output.
+- Confirmed `Общий день`, unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap and nonexistent DST gap keep the planet list hidden.
+- Confirmed missing coordinates do not block geocentric natal planet display.
+- Confirmed houses, ASC / MC, transits, natal aspects, orbs, chart wheel and personal ritual scoring remain not supported.
+- Confirmed runtime imports use tracked vendor assets for Luxon and Astronomy Engine.
+- Synced Sprint 7 strategy/report docs with the implemented read-only planet panel.
+
+# Sprint 7 Status
+
+Sprint 7 is completed.
+
+# Next Stage
+
+## Sprint 8 — Natal Aspects Foundation
+
+Status: not started
+
+Goal: prepare natal aspects foundation in a future explicit task. Do not start Sprint 8 without separate approval.
 
 # Security Backlog
 

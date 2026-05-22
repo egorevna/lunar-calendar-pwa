@@ -4,13 +4,15 @@
 
 This report records the provider-layer validation status for the approved local natal provider candidate.
 
-It does not enable user-facing natal values.
+Original scope note:
+
+The validation report itself did not enable user-facing natal values. Sprint 7 later enabled a narrow read-only `Мои карты` planet panel only after safe UTC readiness was implemented and tested.
 
 ## Provider
 
 - `astronomy-engine@2.1.19`
 - Usage: local-only provider layer.
-- User-facing natal values: disabled.
+- User-facing natal values: enabled only through the Sprint 7 read-only `Мои карты` panel when profile UTC readiness succeeds.
 - Natal chart UI: disabled.
 
 ## Reference Source
@@ -88,17 +90,17 @@ The last two fixtures are Mercury / Venus retrograde-sensitive checks.
 - No birth data is sent externally.
 - The provider is local-only in the provider layer.
 - The swisseph reference is test-only.
-- Provider output is not user-facing yet.
+- Provider output is user-facing only in the narrow Sprint 7 read-only `Мои карты` planet panel after safe UTC readiness succeeds.
+- Raw provider output, raw longitudes and raw speeds are not shown in the UI.
 - No full profile JSON is used in validation.
 
 ## Decision
 
 The provider is validated for provider-layer natal planet longitude, speed and retrograde calculations.
 
-It is not yet enabled for user-facing natal UI.
+Sprint 7 uses it only for the read-only natal planet list inside `Мои карты`, guarded by the UTC readiness helper and `natalPlanetDisplay` formatting.
 
 ## Next Steps
 
-- Task 6.8 hardening.
-- A later explicit task can decide whether and how to expose natal planet values to users.
-- Houses, ASC / MC and personal transits require separate strategy and validation.
+- Sprint 7 hardening.
+- Houses, ASC / MC, natal aspects, orbs and personal transits require separate strategy and validation.

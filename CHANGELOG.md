@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-05-22 — Complete Sprint 7 hardening
+
+- Completed Task 7.6 and closed Sprint 7 — Natal Planets UI / Read-only Natal Positions.
+- Audited Task 7.1–7.5 results: readiness strategy, formatter, readiness UI, read-only `Мои карты` planet panel, collapsible behavior, and safe debug.
+- Confirmed natal planet values are shown only for an active saved profile with safe UTC readiness and ready provider output, formatted through `src/natalPlanetDisplay.js`.
+- Confirmed `Общий день`, unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap and nonexistent DST gap keep the planet list hidden.
+- Confirmed missing coordinates do not block geocentric natal planet display.
+- Confirmed houses, ASC / MC, transits, natal aspects, orbs, chart wheel and personal ritual scoring remain not supported.
+- Confirmed Luxon and Astronomy Engine runtime imports use tracked `src/vendor/` assets and PWA cache remains `lunar-calendar-v67`.
+- Synced `NATAL_PLANETS_UI_STRATEGY.md` and `NATAL_PROVIDER_VALIDATION_REPORT.md` with the implemented Sprint 7 read-only planet panel.
+- Sprint 8 — Natal Aspects Foundation is the next stage, but was not started.
+
 ## 2026-05-22 — Complete Task 7.5 natal planets debug
 
 - Added safe `Natal Planets UI Debug` output for `?debug=1`.
