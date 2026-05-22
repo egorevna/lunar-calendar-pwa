@@ -693,6 +693,41 @@ No hidden arbitrary orbs.
 
 Orb policy must be documented in `NATAL_ASPECTS_STRATEGY.md` before the aspect engine is implemented.
 
+Selected Sprint 8 policy:
+
+```txt
+finalAllowedOrb = min(aspectBaseOrb, bodyPairOrb)
+```
+
+Aspect base caps:
+
+- conjunction: `8°`;
+- opposition: `8°`;
+- square: `7°`;
+- trine: `7°`;
+- sextile: `5°`.
+
+Body-pair caps:
+
+- if Sun or Moon participates: `8°`;
+- personal planets without luminaries, Mercury / Venus / Mars: `6°`;
+- if Jupiter or Saturn participates: `5°`;
+- if Uranus / Neptune / Pluto participates: `5°`;
+- only outer planets, Uranus / Neptune / Pluto: `3°`.
+
+Orbs are Astro PWA project policy and may be calibrated later.
+
+Strength bands are:
+
+- exact: `orb <= 1°`;
+- strong: `orb <= 3°`;
+- medium: `orb <= 5°`;
+- weak: above `5°`, only if the allowed orb permits it.
+
+Strength is a priority / display helper, not an interpretation.
+
+Applying / separating remains unsupported in Sprint 8 and should be returned as `null` until separately validated.
+
 ## Validation Rule
 
 Do not show a natal aspect unless:

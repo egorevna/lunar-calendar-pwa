@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-22 — Complete Task 8.1 natal aspects strategy
+
+- Added `NATAL_ASPECTS_STRATEGY.md`.
+- Selected Sprint 8 active aspect set: conjunction, sextile, square, trine and opposition.
+- Defined explicit orb policy: `finalAllowedOrb = min(aspectBaseOrb, bodyPairOrb)`.
+- Documented aspect base caps, body-pair caps, exactness / strength bands, sorting, duplicate pair rules, display rules, privacy boundaries and validation requirements.
+- Decided applying / separating remains `null` until separately validated.
+- Updated `TODO.md` and `PROJECT_STATE.md`; Task 8.2 — Natal Aspect Engine is next but was not started.
+- No app code, `src/`, `index.html`, `sw.js`, package files, natal aspect engine, UI, transits, houses, ASC / MC or dependencies were changed.
+
 ## 2026-05-22 — Prepare Sprint 8 documentation
 
 - Sprint 1–7 remain completed; active sprint is now Sprint 8 — Natal Aspects Foundation.

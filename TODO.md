@@ -1808,11 +1808,11 @@ Sprint 8 is for natal aspects between natal planets only.
 
 Do not implement personal transits, houses, ASC / MC, chart wheel, fixed stars, dignities, terms / decans, or ritual scoring.
 
-# Active Task
+# Completed Task
 
 ## Task 8.1 — Natal Aspects Strategy / Orb Rules
 
-Status: not started
+Status: done
 
 ### Goal
 
@@ -1834,9 +1834,40 @@ NATAL_ASPECTS_STRATEGY.md
 - No UI changes.
 - Task 8.2 remains next.
 
+### Result
+
+- Added `NATAL_ASPECTS_STRATEGY.md`.
+- Selected Sprint 8 major aspect set: conjunction, sextile, square, trine and opposition.
+- Defined explicit orb policy: `finalAllowedOrb = min(aspectBaseOrb, bodyPairOrb)`.
+- Defined aspect base caps and body-pair caps, including narrower outer-outer orbs.
+- Defined strength bands for exact / strong / medium / weak aspect priority.
+- Decided that applying / separating remains `null` in Sprint 8 until separately validated.
+- Defined duplicate pair rules, canonical planet order, sorting rules, display rules, privacy boundaries and validation requirements.
+- Code, UI, package files, provider calculations, houses, ASC / MC, transits, fixed stars and interpretation engine were not changed.
+
+# Active Task
+
+## Task 8.2 — Natal Aspect Engine
+
+Status: not started
+
+### Goal
+
+Create a pure engine for aspects between validated natal planet positions.
+
+### Acceptance Criteria
+
+- Major aspects are calculated from passed-in natal planet longitudes.
+- Explicit orb policy from `NATAL_ASPECTS_STRATEGY.md` is applied.
+- Duplicate pairs are prevented.
+- Same-body pairs and invalid planets are ignored.
+- No fake aspects.
+- No transits.
+- No houses / ASC / MC.
+- Tests pass.
+
 # Sprint 8 Backlog
 
-- Task 8.2 — Natal Aspect Engine.
 - Task 8.3 — Natal Aspect Validation / Fixtures.
 - Task 8.4 — Natal Aspect Display Helper.
 - Task 8.5 — Natal Aspects Collapsible UI.
