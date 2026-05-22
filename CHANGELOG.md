@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-22 — Complete Task 7.4a birth time UTC strategy
+
+- Added `BIRTH_TIME_UTC_STRATEGY.md`.
+- Audited current `src/birthDateTime.js` and profile timezone readiness: `canConvertToUtc` remains `false`, `utcDateTime` remains `null`.
+- Compared native `Date`, `Intl.DateTimeFormat`, native `Temporal`, `luxon`, `date-fns-tz`, `moment-timezone`, and Temporal polyfill for local birth time to UTC conversion.
+- Recommended `luxon` as the first local-only Sprint 7 conversion candidate, pending explicit dependency approval.
+- Task 7.4 remains blocked until UTC conversion is implemented and tested; Task 7.4b is the next blocked step.
+- No app code, provider code, UI, package files, natal planet values, houses, ASC / MC, transits, aspects or orbs were changed.
+
 ## 2026-05-22 — Complete Task 7.3 natal planets readiness UI
 
 - Added a compact readiness-only `Натальные планеты` block inside the `Мои карты` panel.

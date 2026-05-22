@@ -613,6 +613,7 @@ Sprint 6 завершен. Sprint 7 активен.
 Task 7.1 — Natal Planets UI Readiness Audit
 Task 7.2 — Natal Planet Formatting Helper
 Task 7.3 — Natal Planets Readiness UI
+Task 7.4a — Birth Time UTC Strategy / Readiness Unblock
 ```
 
 Результат Task 7.1:
@@ -646,13 +647,25 @@ Task 7.3 — Natal Planets Readiness UI
 - user-facing natal planet values, natal chart UI, houses, ASC / MC, transits, aspects и orbs не добавлялись;
 - PWA cache обновлен до `lunar-calendar-v61`.
 
+Результат Task 7.4a:
+
+- создан `BIRTH_TIME_UTC_STRATEGY.md`;
+- подтверждено, что `src/birthDateTime.js` намеренно оставляет `canConvertToUtc: false` и `utcDateTime: null`;
+- подтверждено, что native `Date` нельзя использовать для conversion arbitrary `birthPlace.timezone`, потому что он опирается на host/device timezone или явно заданный UTC offset;
+- рассмотрены native `Intl`, native `Temporal`, `luxon`, `date-fns-tz`, `moment-timezone` и Temporal polyfill;
+- recommended path: `luxon` как первый local-only timezone conversion candidate для Sprint 7, но только после explicit dependency approval;
+- Task 7.4 остается blocked until UTC conversion implementation and tests pass;
+- код приложения, provider, UI, package files и user-facing natal planet values не менялись.
+
 Текущий следующий шаг:
 
 ```txt
-Task 7.4 — Read-only Natal Planets Panel
+Task 7.4b — Implement Birth Time UTC Conversion
 ```
 
-Task 7.4 остается blocked until UTC readiness is solved и не начиналась.
+Task 7.4b остается blocked until explicit dependency approval и не начиналась.
+
+Task 7.4 — Read-only Natal Planets Panel остается blocked until UTC conversion strategy implementation passes и не начиналась.
 
 Ниже сохраняется краткая история предыдущего Sprint 5 и результаты текущего Sprint 6.
 
@@ -1920,13 +1933,13 @@ lunar-calendar-v61
 Сейчас следующий конкретный шаг:
 
 ```txt
-Task 7.4 — Read-only Natal Planets Panel.
+Task 7.4b — Implement Birth Time UTC Conversion.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 7.4 без отдельной команды.
+2. Не начинать Task 7.4b без explicit dependency approval.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC, орбы или фейковые личные расчеты.
@@ -1942,4 +1955,4 @@ Task 7.4 — Read-only Natal Planets Panel.
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5 и Sprint 6 завершены. Активный спринт — Sprint 7 — Natal Planets UI / Read-only Natal Positions. Task 7.1 завершила readiness audit и создала `NATAL_PLANETS_UI_STRATEGY.md`: user-facing natal values пока нельзя показывать для обычных профилей, потому что provider-ready UTC input не готов (`canConvertToUtc: false`, `utcDateTime: null`). Task 7.2 добавила pure `src/natalPlanetDisplay.js` для форматирования уже рассчитанных planet positions без provider/UI подключения. Task 7.3 добавила readiness-only блок `Натальные планеты` внутри `Мои карты` без вывода planet values. Houses / ASC / MC / transits / aspects / orbs остаются not supported. Следующая задача — Task 7.4 — Read-only Natal Planets Panel, но она остается blocked until UTC readiness is solved и не начиналась.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5 и Sprint 6 завершены. Активный спринт — Sprint 7 — Natal Planets UI / Read-only Natal Positions. Task 7.1 завершила readiness audit и создала `NATAL_PLANETS_UI_STRATEGY.md`: user-facing natal values пока нельзя показывать для обычных профилей, потому что provider-ready UTC input не готов (`canConvertToUtc: false`, `utcDateTime: null`). Task 7.2 добавила pure `src/natalPlanetDisplay.js` для форматирования уже рассчитанных planet positions без provider/UI подключения. Task 7.3 добавила readiness-only блок `Натальные планеты` внутри `Мои карты` без вывода planet values. Task 7.4a создала `BIRTH_TIME_UTC_STRATEGY.md` и рекомендовала `luxon` как local-only UTC conversion candidate после explicit dependency approval. Houses / ASC / MC / transits / aspects / orbs остаются not supported. Следующая задача — Task 7.4b — Implement Birth Time UTC Conversion, но она blocked until explicit dependency approval и не начиналась; Task 7.4 остается blocked until UTC conversion implementation passes.

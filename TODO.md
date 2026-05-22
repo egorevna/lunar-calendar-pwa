@@ -1686,11 +1686,44 @@ Goal: add an honest UI shell/readiness state if natal planets cannot be shown be
 - UTC readiness remains the blocker for real user-facing natal planets.
 - PWA cache was updated to `lunar-calendar-v61`.
 
+# Completed Task
+
+## Task 7.4a — Birth Time UTC Strategy / Readiness Unblock
+
+Status: done
+
+Goal: decide how to safely convert birth local date/time/timezone into UTC for future user-facing natal planet display.
+
+### Result
+
+- Added `BIRTH_TIME_UTC_STRATEGY.md`.
+- Confirmed current `src/birthDateTime.js` intentionally keeps `canConvertToUtc: false` and `utcDateTime: null`.
+- Confirmed native `Date` must not be used to treat birth local time as UTC or as the device timezone.
+- Compared native `Intl`, native `Temporal`, `luxon`, `date-fns-tz`, `moment-timezone`, and Temporal polyfill.
+- Recommended `luxon` as the first local-only Sprint 7 implementation candidate, pending explicit dependency approval.
+- Task 7.4 remains blocked until UTC conversion is implemented and tested.
+- No app code, provider code, package files, UI, natal planet values, houses, ASC / MC, transits, aspects or orbs were changed.
+
 # Active Task
+
+## Task 7.4b — Implement Birth Time UTC Conversion
+
+Status: blocked until explicit dependency approval
+
+Goal: implement safe local birth date/time/timezone to UTC conversion according to `BIRTH_TIME_UTC_STRATEGY.md`.
+
+Required before starting:
+
+- explicit approval to install the selected timezone dependency;
+- exact package/version;
+- conversion policy for ambiguous and nonexistent local times;
+- tests for modern, historical, DST, ambiguous, nonexistent, unknown-time and missing-timezone cases.
+
+Do not start Task 7.4b without explicit approval.
 
 ## Task 7.4 — Read-only Natal Planets Panel
 
-Status: blocked until UTC readiness is solved
+Status: blocked until UTC conversion strategy implementation passes
 
 Goal: show actual natal planet positions if and only if provider input is ready and the provider returns validated planet positions.
 
