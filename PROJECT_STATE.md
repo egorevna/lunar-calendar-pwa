@@ -685,15 +685,16 @@ Task 7.4 — Read-only Natal Planets Panel
 - кнопка `+ Добавить профиль` снова видна в list mode;
 - после UX-polish список натальных планет свернут по умолчанию, показывает summary и раскрывается только по явному клику;
 - переключение профиля или выбор `Общий день` сбрасывает раскрытие в collapsed state;
-- PWA cache обновлен до `lunar-calendar-v66`.
+- Task 7.5 добавила safe `Natal Planets UI Debug` в `?debug=1` с status/counts/capabilities без raw birth data, UTC input, timezone values, coordinates, raw planet longitudes, speed values или full planet list;
+- PWA cache обновлен до `lunar-calendar-v67`.
 
 Текущий следующий шаг:
 
 ```txt
-Task 7.5 — Natal Planets Debug
+Task 7.6 — Sprint 7 Hardening
 ```
 
-Task 7.5 не начиналась.
+Task 7.6 не начиналась.
 
 Ниже сохраняется краткая история предыдущего Sprint 5 и результаты текущего Sprint 6.
 
@@ -1911,7 +1912,7 @@ git commit -m "checkpoint before continuing in new codex chat"
 Текущая версия:
 
 ```txt
-lunar-calendar-v66
+lunar-calendar-v67
 ```
 
 ## Moscow Hardcoding
@@ -1961,13 +1962,13 @@ lunar-calendar-v66
 Сейчас следующий конкретный шаг:
 
 ```txt
-Task 7.5 — Natal Planets Debug.
+Task 7.6 — Sprint 7 Hardening.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Task 7.5 без отдельной команды.
+2. Не начинать Task 7.6 без отдельной команды.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC, орбы или фейковые личные расчеты.
@@ -1983,4 +1984,4 @@ Task 7.5 — Natal Planets Debug.
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5 и Sprint 6 завершены. Активный спринт — Sprint 7 — Natal Planets UI / Read-only Natal Positions. Task 7.1 завершила readiness audit и создала `NATAL_PLANETS_UI_STRATEGY.md`. Task 7.2 добавила pure `src/natalPlanetDisplay.js` для форматирования уже рассчитанных planet positions без provider/UI подключения. Task 7.3 добавила readiness-only блок `Натальные планеты` внутри `Мои карты` без вывода planet values. Task 7.4a создала `BIRTH_TIME_UTC_STRATEGY.md` и рекомендовала `luxon` как local-only UTC conversion candidate после explicit dependency approval. Task 7.4b установила `luxon@3.7.2` и добавила safe UTC conversion в `src/birthDateTime.js`: valid date/time/timezone дает `utcDateTime`, а unknown time / invalid input / ambiguous DST / nonexistent DST fail closed. Task 7.4 добавила read-only natal planets panel внутри `Мои карты` только при `canConvertToUtc: true` и ready provider output; missing coordinates не блокируют planet list. Houses / ASC / MC / transits / aspects / orbs остаются not supported. Следующая задача — Task 7.5 — Natal Planets Debug, но она не начиналась.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5 и Sprint 6 завершены. Активный спринт — Sprint 7 — Natal Planets UI / Read-only Natal Positions. Task 7.1 завершила readiness audit и создала `NATAL_PLANETS_UI_STRATEGY.md`. Task 7.2 добавила pure `src/natalPlanetDisplay.js` для форматирования уже рассчитанных planet positions без provider/UI подключения. Task 7.3 добавила readiness-only блок `Натальные планеты` внутри `Мои карты` без вывода planet values. Task 7.4a создала `BIRTH_TIME_UTC_STRATEGY.md` и рекомендовала `luxon` как local-only UTC conversion candidate после explicit dependency approval. Task 7.4b установила `luxon@3.7.2` и добавила safe UTC conversion в `src/birthDateTime.js`: valid date/time/timezone дает `utcDateTime`, а unknown time / invalid input / ambiguous DST / nonexistent DST fail closed. Task 7.4 добавила read-only natal planets panel внутри `Мои карты` только при `canConvertToUtc: true` и ready provider output; missing coordinates не блокируют planet list. Task 7.5 добавила safe `Natal Planets UI Debug` для `?debug=1`: показываются только status/counts/capabilities, без birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes, speed values or full planet list. User-facing planets остаются только внутри `Мои карты`; houses / ASC / MC / transits / aspects / orbs остаются not supported. Следующая задача — Task 7.6 — Sprint 7 Hardening, но она не начиналась.

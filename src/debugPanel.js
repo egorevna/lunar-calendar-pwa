@@ -1,9 +1,10 @@
 import { getNatalEngineCapabilities } from './natalEngine.js';
+import { createNatalPlanetsDebugSummaryFromStorage } from './natalPlanetsDebug.js';
 import { getNatalProviderValidationSummary } from './natalProviderValidationSummary.js';
 import { getPlanetaryProviderCapabilities } from './planetaryPositionProvider.js';
 import { formatAspect, formatPlanet } from './vocDisplay.js';
 
-export const APP_CACHE_VERSION = 'lunar-calendar-v61';
+export const APP_CACHE_VERSION = 'lunar-calendar-v67';
 
 export function isDebugMode(search = window.location.search) {
   return new URLSearchParams(search).get('debug') === '1';
@@ -23,6 +24,7 @@ export function describeDebugPanel(context = {}) {
     bestWindowsDebug,
     personalDebug,
     natalEngineDebug,
+    natalPlanetsUiDebug,
   } = context;
 
   return [
@@ -74,6 +76,7 @@ export function describeDebugPanel(context = {}) {
     formatPersonalDebug(personalDebug),
     formatNatalEngineDebug(natalEngineDebug ?? createNatalEngineDebug(personalDebug)),
     formatNatalProviderValidation(getNatalProviderValidationSummary()),
+    formatNatalPlanetsUiDebug(natalPlanetsUiDebug ?? createNatalPlanetsDebugSummaryFromStorage()),
     formatBestWindowsDebug(bestWindowsDebug),
   ].filter(Boolean).join('\n\n');
 }
@@ -263,6 +266,35 @@ function formatNatalProviderValidation(summary) {
     `maxSpeedDeltaPlanets: ${summary.maxSpeedDeltaPlanets ?? 'нет данных'}`,
     `maxSpeedDeltaMoon: ${summary.maxSpeedDeltaMoon ?? 'нет данных'}`,
     `stillNotSupported: ${formatList(summary.stillNotSupported)}`,
+  ]);
+}
+
+function formatNatalPlanetsUiDebug(debug) {
+  if (!debug) return '';
+
+  const stillNotSupported = debug.stillNotSupported ?? {};
+
+  return formatSection('Natal Planets UI Debug', [
+    `activeProfileId: ${debug.activeProfileId ?? 'null'}`,
+    `activeProfileName: ${debug.activeProfileName ?? 'Общий день'}`,
+    `hasActiveProfile: ${formatDebugBoolean(debug.hasActiveProfile)}`,
+    `panelStatus: ${debug.panelStatus ?? 'hidden'}`,
+    `userFacingNatalPlanets: ${debug.userFacingNatalPlanets ?? 'disabled'}`,
+    `reason: ${debug.reason ?? 'нет данных'}`,
+    `canConvertToUtc: ${formatDebugBoolean(debug.canConvertToUtc)}`,
+    `provider: ${debug.provider ?? 'astronomy-engine'}`,
+    `providerValidated: ${formatDebugBoolean(debug.providerValidated)}`,
+    `planetCount: ${debug.planetCount ?? 0}`,
+    `formattedPlanetCount: ${debug.formattedPlanetCount ?? 0}`,
+    `collapsibleDefault: ${debug.collapsibleDefault ?? 'collapsed'}`,
+    `profilePanelLocation: ${debug.profilePanelLocation ?? 'My Cards'}`,
+    `houses: ${stillNotSupported.houses ?? 'notSupported'}`,
+    `ascMc: ${stillNotSupported.ascMc ?? 'notSupported'}`,
+    `transits: ${stillNotSupported.transits ?? 'notSupported'}`,
+    `aspects: ${stillNotSupported.aspects ?? 'notSupported'}`,
+    `orbs: ${stillNotSupported.orbs ?? 'notSupported'}`,
+    `missingFields: ${formatList(debug.missingFields)}`,
+    `warnings: ${formatList(debug.warnings)}`,
   ]);
 }
 

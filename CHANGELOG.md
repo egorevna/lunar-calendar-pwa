@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-22 — Complete Task 7.5 natal planets debug
+
+- Added safe `Natal Planets UI Debug` output for `?debug=1`.
+- Added `src/natalPlanetsDebug.js` to summarize read-only natal planets UI state with active profile status, panel status, user-facing enabled / disabled state, UTC readiness, provider validation, planet counts, collapsible default and unsupported feature flags.
+- Debug output does not expose birth date, birth time, UTC datetime, raw timezone, coordinates, full profile JSON, raw planet longitudes, speed values, or the full active-profile planet list.
+- Houses, ASC / MC, transits, aspects and orbs remain `notSupported`.
+- User-facing natal planets UI behavior, provider calculations, Luxon conversion, package files and natal chart features were not changed.
+- PWA cache updated to `lunar-calendar-v67`.
+- Task 7.6 is next, but was not started.
+
 ## 2026-05-22 — Make natal planets block collapsible
 
 - Made the `Натальные планеты` list inside `Мои карты` collapsed by default when planet positions are ready.

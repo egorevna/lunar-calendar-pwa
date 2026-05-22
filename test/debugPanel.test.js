@@ -203,6 +203,90 @@ test('debug panel marks normal time when debugDate is not used', () => {
   assert.equal(text.includes('natal calculation: inactive'), true);
 });
 
+test('debug panel shows safe natal planets UI status for ready profile', () => {
+  const text = describeDebugPanel({
+    now: new Date('2026-05-15T00:40:00+03:00'),
+    natalPlanetsUiDebug: {
+      activeProfileId: 'profile-egor',
+      activeProfileName: 'Егор',
+      hasActiveProfile: true,
+      panelStatus: 'ready',
+      userFacingNatalPlanets: 'enabled',
+      reason: 'Натальные планеты доступны в панели «Мои карты».',
+      canConvertToUtc: true,
+      provider: 'astronomy-engine',
+      providerValidated: true,
+      planetCount: 10,
+      formattedPlanetCount: 10,
+      collapsibleDefault: 'collapsed',
+      profilePanelLocation: 'My Cards',
+      missingFields: [],
+      warnings: [],
+    },
+  });
+  const natalSection = text
+    .split('\n\n')
+    .find((section) => section.startsWith('## Natal Planets UI Debug'));
+
+  assert.equal(text.includes('Natal Planets UI Debug'), true);
+  assert.equal(text.includes('activeProfileId: profile-egor'), true);
+  assert.equal(text.includes('activeProfileName: Егор'), true);
+  assert.equal(text.includes('hasActiveProfile: yes'), true);
+  assert.equal(text.includes('panelStatus: ready'), true);
+  assert.equal(text.includes('userFacingNatalPlanets: enabled'), true);
+  assert.equal(text.includes('canConvertToUtc: yes'), true);
+  assert.equal(text.includes('provider: astronomy-engine'), true);
+  assert.equal(text.includes('providerValidated: yes'), true);
+  assert.equal(text.includes('planetCount: 10'), true);
+  assert.equal(text.includes('formattedPlanetCount: 10'), true);
+  assert.equal(text.includes('collapsibleDefault: collapsed'), true);
+  assert.equal(text.includes('profilePanelLocation: My Cards'), true);
+  assert.equal(text.includes('houses: notSupported'), true);
+  assert.equal(text.includes('ascMc: notSupported'), true);
+  assert.equal(text.includes('transits: notSupported'), true);
+  assert.equal(text.includes('aspects: notSupported'), true);
+  assert.equal(text.includes('orbs: notSupported'), true);
+  assert.equal(natalSection.includes('utcDateTime'), false);
+  assert.equal(natalSection.includes('Europe/Moscow'), false);
+  assert.equal(natalSection.includes('latitude'), false);
+  assert.equal(natalSection.includes('longitude'), false);
+  assert.equal(natalSection.includes('coordinates'), false);
+  assert.equal(natalSection.includes('speed:'), false);
+  assert.equal(natalSection.includes('Солнце —'), false);
+});
+
+test('debug panel shows hidden natal planets UI status for general day', () => {
+  const text = describeDebugPanel({
+    now: new Date('2026-05-15T00:40:00+03:00'),
+    natalPlanetsUiDebug: {
+      activeProfileId: null,
+      activeProfileName: 'Общий день',
+      hasActiveProfile: false,
+      panelStatus: 'hidden',
+      userFacingNatalPlanets: 'disabled',
+      reason: 'Общий день не является персональным профилем.',
+      canConvertToUtc: false,
+      provider: 'astronomy-engine',
+      providerValidated: true,
+      planetCount: 0,
+      formattedPlanetCount: 0,
+      collapsibleDefault: 'collapsed',
+      profilePanelLocation: 'My Cards',
+      missingFields: [],
+      warnings: [],
+    },
+  });
+
+  assert.equal(text.includes('Natal Planets UI Debug'), true);
+  assert.equal(text.includes('activeProfileId: null'), true);
+  assert.equal(text.includes('activeProfileName: Общий день'), true);
+  assert.equal(text.includes('hasActiveProfile: no'), true);
+  assert.equal(text.includes('panelStatus: hidden'), true);
+  assert.equal(text.includes('userFacingNatalPlanets: disabled'), true);
+  assert.equal(text.includes('reason: Общий день не является персональным профилем.'), true);
+  assert.equal(text.includes('canConvertToUtc: no'), true);
+});
+
 test('debug panel shows no-window fallback state and rejected candidates', () => {
   const text = describeDebugPanel({
     now: new Date('2026-05-15T00:40:00+03:00'),
@@ -235,6 +319,7 @@ test('ordinary markup does not contain provider validation debug details', () =>
   const markup = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 
   assert.equal(markup.includes('Natal Provider Validation'), false);
+  assert.equal(markup.includes('Natal Planets UI Debug'), false);
   assert.equal(markup.includes('longitudeValidation: passed'), false);
   assert.equal(markup.includes('speedValidation: passed'), false);
   assert.equal(markup.includes('retrogradeValidation: passed'), false);

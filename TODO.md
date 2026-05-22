@@ -1753,17 +1753,27 @@ Important boundary:
 - Post-task UX polish: the ready natal planets list is collapsed by default, shows a compact summary plus `Показать`, expands to the full list on click, and resets to collapsed when profile selection changes.
 - PWA cache was updated to `lunar-calendar-v66`.
 
-# Active Task
+# Completed Task
 
 ## Task 7.5 — Natal Planets Debug
 
-Status: ready to start
+Status: done
 
 Goal: add safe debug info such as planet count, provider, validation status and user-facing enabled/disabled. Do not dump birth data.
 
+### Result
+
+- Added `src/natalPlanetsDebug.js` as a sanitized debug summary helper for the read-only natal planets UI state.
+- `?debug=1` now includes `Natal Planets UI Debug` with active profile status, panel status, user-facing enabled / disabled state, UTC readiness, provider validation, planet counts, collapsible default, `Мои карты` location, and unsupported feature flags.
+- The debug section does not expose birth date, birth time, UTC datetime, timezone values, coordinates, full profile JSON, raw planet longitudes, raw speed values, or the full active-profile planet list.
+- Houses, ASC / MC, transits, aspects and orbs remain `notSupported`.
+- PWA cache was updated to `lunar-calendar-v67`.
+
+# Active Task
+
 ## Task 7.6 — Sprint 7 Hardening
 
-Status: not started
+Status: ready to start
 
 Goal: finalize Sprint 7 and confirm no fake natal values or unsupported features are shown.
 
