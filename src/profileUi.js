@@ -1,5 +1,6 @@
 import { getNatalPlanetsForProfile } from './natalPlanetsForProfile.js';
 import { getNatalAspectsForProfile } from './natalAspectsForProfile.js';
+import { getEssentialDignitiesForProfile } from './essentialDignitiesForProfile.js';
 import { getPersonalRecommendations } from './personalRecommendations.js';
 
 export const GENERAL_PROFILE_LABEL = 'Общий день';
@@ -20,6 +21,11 @@ const NATAL_ASPECTS_TITLE = 'Натальные аспекты';
 const NATAL_ASPECTS_STATUS = 'Пока недоступны.';
 const NATAL_ASPECTS_EXPLANATION = 'Сначала нужен расчет натальных планет.';
 const NATAL_ASPECTS_READY_LIMITATION = 'Это натальные аспекты между планетами, не транзиты.';
+const ESSENTIAL_DIGNITIES_TITLE = 'Достоинства планет';
+const ESSENTIAL_DIGNITIES_STATUS = 'Пока недоступны.';
+const ESSENTIAL_DIGNITIES_EXPLANATION = 'Сначала нужен расчет натальных планет.';
+const ESSENTIAL_DIGNITIES_READY_LIMITATION =
+  'Это базовые достоинства по знаку, без термов, деканов и управителей градусов.';
 
 const MISSING_FIELD_LABELS = {
   birthDate: 'дата рождения',
@@ -217,6 +223,41 @@ export function describeNatalAspectsBlock(profile = null) {
     canToggleAspects: hasAspects,
     aspects: hasAspects ? formattedAspects.map((aspect) => aspect.text) : [],
     limitations: isReady ? [NATAL_ASPECTS_READY_LIMITATION] : [],
+  };
+}
+
+export function describeEssentialDignitiesBlock(profile = null) {
+  if (!profile) {
+    return {
+      hidden: true,
+      title: '',
+      status: '',
+      explanation: '',
+      profileId: '',
+      summary: '',
+      canToggleDignities: false,
+      dignities: [],
+      limitations: [],
+    };
+  }
+
+  const essentialDignities = getEssentialDignitiesForProfile(profile);
+  const formattedDignities = Array.isArray(essentialDignities.formattedDignities)
+    ? essentialDignities.formattedDignities
+    : [];
+  const hasDignities = essentialDignities.status === 'ready' && formattedDignities.length > 0;
+  const isReady = essentialDignities.status === 'ready';
+
+  return {
+    hidden: false,
+    title: ESSENTIAL_DIGNITIES_TITLE,
+    status: isReady ? '' : ESSENTIAL_DIGNITIES_STATUS,
+    explanation: isReady ? '' : ESSENTIAL_DIGNITIES_EXPLANATION,
+    profileId: profileId(profile),
+    summary: isReady ? essentialDignities.summary.text : '',
+    canToggleDignities: hasDignities,
+    dignities: hasDignities ? formattedDignities.map((dignity) => dignity.text) : [],
+    limitations: hasDignities ? [ESSENTIAL_DIGNITIES_READY_LIMITATION] : [],
   };
 }
 

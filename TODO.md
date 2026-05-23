@@ -2181,11 +2181,11 @@ Task 9.5 must not add UI, debug output, lookup rules, terms / decans / degree ru
 - No UI changes.
 - Task 9.6 remains next.
 
-# Active Task
+# Completed Task
 
 ## Task 9.6 — Essential Dignities Collapsible UI
 
-Status: not started
+Status: done
 
 ### Goal
 
@@ -2195,9 +2195,32 @@ Add a collapsible essential dignities section inside `Мои карты` using t
 
 Task 9.6 must not add new dignity rules, terms / decans / degree rulers, Vronsky degree tables, houses, ASC / MC, transits, interpretations or ritual scoring.
 
+### Acceptance Criteria
+
+- `src/essentialDignitiesForProfile.js` connects ready natal planet output to the essential dignity lookup and display helpers.
+- `Достоинства планет` section appears inside `Мои карты` only for active saved profiles.
+- Section is collapsed by default, shows summary in collapsed state and reveals formatted dignity rows only after explicit click.
+- Incomplete natal planets show fallback `Сначала нужен расчет натальных планет.`
+- The section does not expose raw birth data, UTC datetime, timezone values, coordinates, raw longitudes, terms / decans / degree rulers, Vronsky rows, houses, ASC / MC, transits or interpretations.
+- `test/essentialDignitiesForProfile.test.js`, profile UI tests and markup tests cover the helper, shell placement, collapsed state and exclusions.
+- Task 9.7 remains next.
+
+# Active Task
+
+## Task 9.7 — Essential Dignities Debug
+
+Status: not started
+
+### Goal
+
+Add a safe debug/status layer for the essential dignities UI.
+
+### Important Boundary
+
+Task 9.7 must not add new dignity rules, terms / decans / degree rulers, Vronsky degree tables, houses, ASC / MC, transits, interpretations or ritual scoring.
+
 # Sprint 9 Backlog
 
-- Task 9.7 — Essential Dignities Debug.
 - Task 9.8 — Sprint 9 Hardening.
 
 # Security Backlog

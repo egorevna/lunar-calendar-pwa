@@ -93,6 +93,9 @@ test('home screen renders profile shell', () => {
   assert.equal(html.includes('data-natal-aspects'), true);
   assert.equal(html.includes('data-natal-aspects-title'), true);
   assert.equal(html.includes('Натальные аспекты'), true);
+  assert.equal(html.includes('data-essential-dignities'), true);
+  assert.equal(html.includes('data-essential-dignities-title'), true);
+  assert.equal(html.includes('Достоинства планет'), true);
   assert.equal(html.includes('Добавление профиля — следующий шаг.'), false);
   assert.equal(html.includes('Натальная карта'), false);
   assert.equal(html.includes('Персональные транзиты'), false);
@@ -123,6 +126,39 @@ test('natal aspects shell stays inside profiles panel and has no static aspect v
   assert.equal(aspectsHtml.includes('latitude'), false);
   assert.equal(aspectsHtml.includes('longitude'), false);
   assert.equal(aspectsHtml.includes('allowedOrb'), false);
+});
+
+test('essential dignities shell stays inside profiles panel and has no static dignity values', () => {
+  const panelStart = html.indexOf('data-profiles-panel');
+  const panelEnd = html.indexOf('class="glass-card mode-selector"');
+  const panelHtml = html.slice(panelStart, panelEnd);
+  const aspectsStart = html.indexOf('data-natal-aspects');
+  const dignitiesStart = html.indexOf('data-essential-dignities');
+  const addButtonStart = html.indexOf('class="profile-create-actions"');
+  const dignitiesHtml = html.slice(dignitiesStart, addButtonStart);
+
+  assert.equal(panelStart >= 0, true);
+  assert.equal(dignitiesStart > aspectsStart, true);
+  assert.equal(dignitiesStart < panelEnd, true);
+  assert.equal(dignitiesStart < addButtonStart, true);
+  assert.equal(panelHtml.includes('data-essential-dignities hidden'), true);
+  assert.equal(dignitiesHtml.includes('data-essential-dignities-summary'), true);
+  assert.equal(dignitiesHtml.includes('data-essential-dignities-toggle'), true);
+  assert.equal(dignitiesHtml.includes('data-essential-dignities-list'), true);
+  assert.equal(dignitiesHtml.includes('data-essential-dignities-list hidden'), true);
+  assert.equal(dignitiesHtml.includes('Марс в Овне'), false);
+  assert.equal(dignitiesHtml.includes('Венера в Рыбах'), false);
+  assert.equal(dignitiesHtml.includes('Сатурн в Раке'), false);
+  assert.equal(dignitiesHtml.includes('birthDate'), false);
+  assert.equal(dignitiesHtml.includes('birthTime'), false);
+  assert.equal(dignitiesHtml.includes('utcDateTime'), false);
+  assert.equal(dignitiesHtml.includes('latitude'), false);
+  assert.equal(dignitiesHtml.includes('longitude'), false);
+  assert.equal(dignitiesHtml.includes('terms'), false);
+  assert.equal(dignitiesHtml.includes('decans'), false);
+  assert.equal(dignitiesHtml.includes('degreeRulers'), false);
+  assert.equal(dignitiesHtml.includes('Vronsky'), false);
+  assert.equal(dignitiesHtml.includes('interpretation'), false);
 });
 
 test('natal planets shell stays inside profiles panel and has no static planet values', () => {
@@ -283,6 +319,15 @@ test('natal aspects list is collapsible and resets on profile changes', () => {
   assert.equal(appJs.includes('elements.natalAspectsList.hidden = !isExpanded;'), true);
   assert.equal(appJs.includes('expandedNatalAspectsProfileId = isExpanded ? null : profileId;'), true);
   assert.equal(appJs.includes('expandedNatalAspectsProfileId = null;'), true);
+});
+
+test('essential dignities list is collapsible and resets on profile changes', () => {
+  assert.equal(appJs.includes('let expandedEssentialDignitiesProfileId = null;'), true);
+  assert.equal(appJs.includes('const isExpanded = view.canToggleDignities'), true);
+  assert.equal(appJs.includes("elements.essentialDignitiesToggle.textContent = isExpanded ? 'Скрыть' : 'Показать';"), true);
+  assert.equal(appJs.includes('elements.essentialDignitiesList.hidden = !isExpanded;'), true);
+  assert.equal(appJs.includes('expandedEssentialDignitiesProfileId = isExpanded ? null : profileId;'), true);
+  assert.equal(appJs.includes('expandedEssentialDignitiesProfileId = null;'), true);
 });
 
 test('home screen renders hidden warnings card shell', () => {

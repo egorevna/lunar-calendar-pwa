@@ -66,6 +66,7 @@ import {
   updateProfile,
 } from './profileStorage.js';
 import {
+  describeEssentialDignitiesBlock,
   describeNatalAspectsBlock,
   describeNatalPlanetsReadinessBlock,
   describeProfileFormMode,
@@ -79,6 +80,7 @@ let selectedDashboardMode = DEFAULT_DASHBOARD_MODE;
 let editingProfileId = null;
 let expandedNatalPlanetsProfileId = null;
 let expandedNatalAspectsProfileId = null;
+let expandedEssentialDignitiesProfileId = null;
 
 const DELETE_PROFILE_CONFIRMATION = 'Удалить профиль? Это действие нельзя отменить.';
 
@@ -151,6 +153,15 @@ const elements = {
   natalAspectsToggle: document.querySelector('[data-natal-aspects-toggle]'),
   natalAspectsList: document.querySelector('[data-natal-aspects-list]'),
   natalAspectsLimitations: document.querySelector('[data-natal-aspects-limitations]'),
+  essentialDignities: document.querySelector('[data-essential-dignities]'),
+  essentialDignitiesTitle: document.querySelector('[data-essential-dignities-title]'),
+  essentialDignitiesStatus: document.querySelector('[data-essential-dignities-status]'),
+  essentialDignitiesExplanation: document.querySelector('[data-essential-dignities-explanation]'),
+  essentialDignitiesDisclosure: document.querySelector('[data-essential-dignities-disclosure]'),
+  essentialDignitiesSummary: document.querySelector('[data-essential-dignities-summary]'),
+  essentialDignitiesToggle: document.querySelector('[data-essential-dignities-toggle]'),
+  essentialDignitiesList: document.querySelector('[data-essential-dignities-list]'),
+  essentialDignitiesLimitations: document.querySelector('[data-essential-dignities-limitations]'),
   personalContextCard: document.querySelector('[data-personal-context-card]'),
   personalContextTitle: document.querySelector('[data-personal-context-title]'),
   personalContextSummary: document.querySelector('[data-personal-context-summary]'),
@@ -366,6 +377,7 @@ function renderStoredProfilesShell() {
   renderProfilesShell(describeProfilesShell(profiles, activeProfileId));
   renderNatalPlanetsReadinessBlock(describeNatalPlanetsReadinessBlock(activeProfile));
   renderNatalAspectsBlock(describeNatalAspectsBlock(activeProfile));
+  renderEssentialDignitiesBlock(describeEssentialDignitiesBlock(activeProfile));
   renderPersonalContextBlock(describePersonalContextBlock(createPersonalContext(activeProfile)));
 }
 
@@ -417,6 +429,30 @@ function renderNatalAspectsBlock(view) {
   elements.natalAspectsList.hidden = !isExpanded;
   renderSimpleList(elements.natalAspectsLimitations, view.limitations);
   elements.natalAspectsLimitations.hidden = view.limitations.length === 0;
+}
+
+function renderEssentialDignitiesBlock(view) {
+  const isExpanded = view.canToggleDignities
+    && Boolean(view.profileId)
+    && expandedEssentialDignitiesProfileId === view.profileId;
+
+  elements.essentialDignities.hidden = view.hidden;
+  elements.essentialDignitiesTitle.textContent = view.title;
+  elements.essentialDignitiesStatus.textContent = view.status;
+  elements.essentialDignitiesStatus.hidden = !view.status;
+  elements.essentialDignitiesExplanation.textContent = view.explanation;
+  elements.essentialDignitiesExplanation.hidden = !view.explanation;
+  elements.essentialDignitiesDisclosure.hidden = !view.summary;
+  elements.essentialDignitiesSummary.textContent = view.summary;
+  elements.essentialDignitiesSummary.hidden = !view.summary;
+  elements.essentialDignitiesToggle.hidden = !view.canToggleDignities;
+  elements.essentialDignitiesToggle.textContent = isExpanded ? 'Скрыть' : 'Показать';
+  elements.essentialDignitiesToggle.setAttribute('aria-expanded', String(isExpanded));
+  elements.essentialDignitiesToggle.dataset.profileId = view.canToggleDignities ? view.profileId : '';
+  renderSimpleList(elements.essentialDignitiesList, view.dignities);
+  elements.essentialDignitiesList.hidden = !isExpanded;
+  renderSimpleList(elements.essentialDignitiesLimitations, view.limitations);
+  elements.essentialDignitiesLimitations.hidden = view.limitations.length === 0;
 }
 
 function renderPersonalContextBlock(view) {
@@ -587,6 +623,7 @@ function updateBirthTimeState() {
 function resetNatalProfileDisclosures() {
   expandedNatalPlanetsProfileId = null;
   expandedNatalAspectsProfileId = null;
+  expandedEssentialDignitiesProfileId = null;
 }
 
 function handleProfileFormSubmit(event) {
@@ -792,6 +829,15 @@ elements.natalAspectsToggle.addEventListener('click', () => {
 
   const isExpanded = expandedNatalAspectsProfileId === profileId;
   expandedNatalAspectsProfileId = isExpanded ? null : profileId;
+  renderStoredProfilesShell();
+});
+
+elements.essentialDignitiesToggle.addEventListener('click', () => {
+  const profileId = elements.essentialDignitiesToggle.dataset.profileId || null;
+  if (!profileId) return;
+
+  const isExpanded = expandedEssentialDignitiesProfileId === profileId;
+  expandedEssentialDignitiesProfileId = isExpanded ? null : profileId;
   renderStoredProfilesShell();
 });
 

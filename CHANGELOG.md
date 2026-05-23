@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-23 — Complete Task 9.6 essential dignities collapsible UI
+
+- Added `src/essentialDignitiesForProfile.js` to connect ready natal planet output to the essential dignity lookup and display helpers.
+- Added collapsible `Достоинства планет` section inside `Мои карты`, after `Натальные аспекты`.
+- Section is hidden for `Общий день`, falls back to `Сначала нужен расчет натальных планет.` when natal planets are incomplete, and stays collapsed by default for ready profiles.
+- Ready profiles show compact dignity summary and reveal only formatted dignity rows after explicit click.
+- Empty dignity state uses `Ярко выраженных базовых достоинств или слабостей не найдено.`
+- Added helper, profile UI and markup tests for readiness, collapsed state, shell placement and privacy exclusions.
+- Updated PWA cache to `lunar-calendar-v71`.
+- Lookup engine, dataset, provider calculations, package files, terms / decans / degree rulers, Vronsky rows, houses, ASC / MC, transits, interpretations and ritual scoring were not changed.
+
 ## 2026-05-23 — Complete Task 9.5 essential dignity display helper
 
 - Added pure `src/essentialDignityDisplay.js`.

@@ -400,7 +400,8 @@ button {
 }
 
 .natal-planets-readiness,
-.natal-aspects-readiness {
+.natal-aspects-readiness,
+.essential-dignities-readiness {
   display: grid;
   gap: 8px;
   margin-top: 14px;
@@ -409,13 +410,15 @@ button {
 }
 
 .natal-planets-readiness[hidden],
-.natal-aspects-readiness[hidden] {
+.natal-aspects-readiness[hidden],
+.essential-dignities-readiness[hidden] {
   display: none;
 }
 
 .natal-planets-readiness h3,
 .natal-planets-readiness h4,
-.natal-aspects-readiness h3 {
+.natal-aspects-readiness h3,
+.essential-dignities-readiness h3 {
   margin: 0;
   color: rgba(255, 248, 239, 0.84);
   font-size: clamp(15px, 4vw, 18px);
@@ -428,7 +431,8 @@ button {
 }
 
 .natal-planets-readiness p,
-.natal-aspects-readiness p {
+.natal-aspects-readiness p,
+.essential-dignities-readiness p {
   margin: 0;
   color: var(--muted);
   font-size: clamp(13px, 3.5vw, 16px);
@@ -436,13 +440,15 @@ button {
 }
 
 .natal-planets-readiness .natal-planets-status,
-.natal-aspects-readiness .natal-aspects-status {
+.natal-aspects-readiness .natal-aspects-status,
+.essential-dignities-readiness .essential-dignities-status {
   color: rgba(255, 248, 239, 0.82);
   font-weight: 700;
 }
 
 .natal-planets-disclosure,
-.natal-aspects-disclosure {
+.natal-aspects-disclosure,
+.essential-dignities-disclosure {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -450,18 +456,21 @@ button {
 }
 
 .natal-planets-disclosure[hidden],
-.natal-aspects-disclosure[hidden] {
+.natal-aspects-disclosure[hidden],
+.essential-dignities-disclosure[hidden] {
   display: none;
 }
 
 .natal-planets-readiness .natal-planets-summary,
-.natal-aspects-readiness .natal-aspects-summary {
+.natal-aspects-readiness .natal-aspects-summary,
+.essential-dignities-readiness .essential-dignities-summary {
   color: rgba(255, 248, 239, 0.82);
   font-weight: 700;
 }
 
 .natal-planets-toggle,
-.natal-aspects-toggle {
+.natal-aspects-toggle,
+.essential-dignities-toggle {
   flex: 0 0 auto;
   border: 1px solid rgba(231, 199, 126, 0.42);
   border-radius: 8px;
@@ -473,7 +482,8 @@ button {
 }
 
 .natal-planets-toggle[hidden],
-.natal-aspects-toggle[hidden] {
+.natal-aspects-toggle[hidden],
+.essential-dignities-toggle[hidden] {
   display: none;
 }
 
@@ -490,7 +500,9 @@ button {
 .natal-planets-list,
 .natal-planets-limitations,
 .natal-aspects-list,
-.natal-aspects-limitations {
+.natal-aspects-limitations,
+.essential-dignities-list,
+.essential-dignities-limitations {
   display: grid;
   gap: 7px;
   margin: 0;
@@ -500,7 +512,9 @@ button {
 
 .natal-planets-list[hidden],
 .natal-aspects-list[hidden],
-.natal-aspects-limitations[hidden] {
+.natal-aspects-limitations[hidden],
+.essential-dignities-list[hidden],
+.essential-dignities-limitations[hidden] {
   display: none;
 }
 
@@ -508,26 +522,31 @@ button {
 .natal-planets-list li,
 .natal-planets-limitations li,
 .natal-aspects-list li,
-.natal-aspects-limitations li {
+.natal-aspects-limitations li,
+.essential-dignities-list li,
+.essential-dignities-limitations li {
   color: var(--muted);
   font-size: clamp(13px, 3.5vw, 16px);
   line-height: 1.28;
 }
 
 .natal-planets-list li,
-.natal-aspects-list li {
+.natal-aspects-list li,
+.essential-dignities-list li {
   color: rgba(255, 248, 239, 0.86);
   font-weight: 700;
 }
 
-.natal-aspects-list li {
+.natal-aspects-list li,
+.essential-dignities-list li {
   color: rgba(255, 248, 239, 0.8);
   font-weight: 600;
 }
 
 .natal-planets-missing li::before,
 .natal-planets-limitations li::before,
-.natal-aspects-limitations li::before {
+.natal-aspects-limitations li::before,
+.essential-dignities-limitations li::before {
   content: "";
   display: inline-block;
   width: 5px;

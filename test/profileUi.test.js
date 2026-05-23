@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import {
+  describeEssentialDignitiesBlock,
   describeNatalAspectsBlock,
   describeNatalPlanetsReadinessBlock,
   describePersonalContextBlock,
@@ -458,4 +459,133 @@ test('natal aspects block keeps fallback when natal planets are not ready', () =
   assert.equal(view.canToggleAspects, false);
   assert.deepEqual(view.aspects, []);
   assert.deepEqual(view.limitations, []);
+});
+
+test('essential dignities block is hidden for general day', () => {
+  const view = describeEssentialDignitiesBlock(null);
+
+  assert.equal(view.hidden, true);
+  assert.equal(view.title, '');
+  assert.equal(view.status, '');
+  assert.equal(view.summary, '');
+  assert.equal(view.canToggleDignities, false);
+  assert.deepEqual(view.dignities, []);
+  assert.deepEqual(view.limitations, []);
+});
+
+test('essential dignities block shows summary and formatted dignities for a UTC-ready active profile', () => {
+  const view = describeEssentialDignitiesBlock({
+    id: 'profile-egor',
+    name: 'Егор',
+    birthDate: '1990-05-12',
+    birthTime: '14:30',
+    birthTimeAccuracy: 'exact',
+    birthPlace: {
+      city: 'Москва',
+      country: 'Россия',
+      latitude: null,
+      longitude: null,
+      timezone: 'Europe/Moscow',
+    },
+    currentPlace: {
+      mode: 'moscow',
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+    },
+    houseSystem: 'wholeSign',
+    zodiac: 'tropical',
+  });
+  const text = JSON.stringify(view);
+
+  assert.equal(view.hidden, false);
+  assert.equal(view.title, 'Достоинства планет');
+  assert.equal(view.status, '');
+  assert.equal(view.explanation, '');
+  assert.equal(view.summary, '2 достоинства · 1 слабость');
+  assert.equal(view.canToggleDignities, true);
+  assert.deepEqual(view.dignities, [
+    'Венера в Овне — изгнание',
+    'Юпитер в Раке — экзальтация',
+    'Сатурн в Козероге — обитель',
+    'Плутон в Скорпионе — современное управление',
+  ]);
+  assert.deepEqual(view.limitations, [
+    'Это базовые достоинства по знаку, без термов, деканов и управителей градусов.',
+  ]);
+  assert.equal(text.includes('1990-05-12'), false);
+  assert.equal(text.includes('14:30'), false);
+  assert.equal(text.includes('Europe/Moscow'), false);
+  assert.equal(text.includes('utcDateTime'), false);
+  assert.equal(text.includes('longitude'), false);
+  assert.equal(text.includes('coordinates'), false);
+  assert.equal(text.includes('terms'), false);
+  assert.equal(text.includes('decans'), false);
+  assert.equal(text.includes('degreeRulers'), false);
+  assert.equal(text.includes('VronskyStrengthTables'), false);
+  assert.equal(text.includes('interpretation'), false);
+});
+
+test('essential dignities block keeps fallback when natal planets are not ready', () => {
+  const view = describeEssentialDignitiesBlock({
+    id: 'profile-egor',
+    name: 'Егор',
+    birthDate: '1990-05-12',
+    birthTime: '',
+    birthTimeAccuracy: 'unknown',
+    birthPlace: {
+      city: 'Москва',
+      country: 'Россия',
+      latitude: null,
+      longitude: null,
+      timezone: 'Europe/Moscow',
+    },
+    currentPlace: {
+      mode: 'moscow',
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+    },
+    houseSystem: 'wholeSign',
+    zodiac: 'tropical',
+  });
+
+  assert.equal(view.hidden, false);
+  assert.equal(view.title, 'Достоинства планет');
+  assert.equal(view.status, 'Пока недоступны.');
+  assert.equal(view.explanation, 'Сначала нужен расчет натальных планет.');
+  assert.equal(view.summary, '');
+  assert.equal(view.canToggleDignities, false);
+  assert.deepEqual(view.dignities, []);
+  assert.deepEqual(view.limitations, []);
+});
+
+test('essential dignities block shows empty state when no dignity rows are displayable', () => {
+  const view = describeEssentialDignitiesBlock({
+    id: 'profile-empty',
+    name: 'Профиль',
+    birthDate: '2009-07-15',
+    birthTime: '12:00',
+    birthTimeAccuracy: 'exact',
+    birthPlace: {
+      city: 'Москва',
+      country: 'Россия',
+      latitude: null,
+      longitude: null,
+      timezone: 'Europe/Moscow',
+    },
+    currentPlace: {
+      mode: 'moscow',
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+    },
+    houseSystem: 'wholeSign',
+    zodiac: 'tropical',
+  });
+
+  assert.equal(view.hidden, false);
+  assert.equal(view.summary, 'Ярко выраженных базовых достоинств или слабостей не найдено.');
+  assert.equal(view.canToggleDignities, false);
+  assert.deepEqual(view.dignities, []);
 });

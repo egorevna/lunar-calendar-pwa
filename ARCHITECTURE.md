@@ -539,6 +539,21 @@ Current responsibilities:
 
 This module does not import or call `src/essentialDignities.js`, providers, profiles, localStorage, DOM or UI code. It does not calculate dignity flags, signs, coordinates, terms / decans / degree rulers, exact exaltation degrees, Vronsky rows, houses, ASC / MC, transits, interpretations or ritual scoring.
 
+## `src/essentialDignitiesForProfile.js`
+
+Builds the safe read-only essential dignities view model for an active saved profile.
+
+Current responsibilities:
+
+- call `src/natalPlanetsForProfile.js` and require ready natal planet output first;
+- call `src/essentialDignities.js` only with already calculated natal planet positions;
+- format dignity output through `src/essentialDignityDisplay.js`;
+- build collapsed-section summary through `summarizeEssentialDignities()`;
+- return `incomplete` without dignity rows when natal planets are not ready;
+- expose only formatted dignity text, summary counts and safe limitations to `src/profileUi.js`.
+
+This module does not read localStorage, does not render DOM, does not send birth data externally, does not call providers directly, and does not calculate terms / decans / degree rulers, Vronsky rows, houses, ASC / MC, transits, fixed stars, interpretations or ritual scoring.
+
 ## `src/natalPlanetsDebug.js`
 
 Builds the safe debug summary for the read-only natal planets UI state.
@@ -1015,13 +1030,17 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 36. `src/essentialDignities.js` evaluates already-calculated natal planet objects against the Sprint 9 essential dignity dataset and returns flags, additive score, labels and safe summary counts without calling providers or rendering UI.
 
-37. `src/natalPlanetsDebug.js` converts active-profile natal planets UI state into a sanitized debug summary with status/counts/capabilities only.
+37. `src/essentialDignityDisplay.js` formats already-evaluated essential dignity results into compact user-facing rows and summary counts without calling the lookup engine or rendering UI.
 
-38. `src/natalAspectsDebug.js` converts active-profile natal aspects UI state into a sanitized debug summary with status/counts/capabilities only.
+38. `src/essentialDignitiesForProfile.js` connects ready natal planet output to the essential dignity lookup and display helpers for the read-only collapsible `Мои карты` dignity section; it fails closed without dignity rows when natal planets are incomplete.
 
-39. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, provider validation summary, natal planets UI summary and natal aspects UI summary without birth details.
+39. `src/natalPlanetsDebug.js` converts active-profile natal planets UI state into a sanitized debug summary with status/counts/capabilities only.
 
-40. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
+40. `src/natalAspectsDebug.js` converts active-profile natal aspects UI state into a sanitized debug summary with status/counts/capabilities only.
+
+41. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, provider validation summary, natal planets UI summary and natal aspects UI summary without birth details.
+
+42. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 
