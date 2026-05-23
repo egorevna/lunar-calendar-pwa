@@ -2315,11 +2315,11 @@ TERMS_DECANS_DEGREE_RULERS_STRATEGY.md
 - Confirmed no Vronsky screenshot files are currently present in the repository.
 - No code, datasets, OCR import, lookup engine or UI were created.
 
-# Active Task
+# Completed Task
 
 ## Task 10.2 — Vronsky Dataset Entry Policy
 
-Status: not started
+Status: done
 
 Goal:
 
@@ -2334,7 +2334,16 @@ Acceptance criteria:
 - dataset metadata required;
 - Task 10.3 remains next.
 
-# Sprint 10 Backlog
+Result:
+
+- Created `VRONSKY_DATASET_ENTRY_POLICY.md`.
+- Defined no blind OCR policy.
+- Defined source inventory, active/deferred sources, manual entry workflow, dataset metadata, row metadata, verification statuses, boundary testing requirements, OCR usage rules and review checklist.
+- Confirmed Table 5 Terms is the first active target only after source/manual verification.
+- Confirmed Table 6 and Table 7 are separate source systems.
+- No dataset, lookup engine, OCR import, UI or app code was created.
+
+# Active Task
 
 ## Task 10.3 — Terms Dataset
 
@@ -2343,6 +2352,19 @@ Status: not started
 Goal:
 
 Create verified structured terms dataset only after source policy and manual verification rules are accepted.
+
+Acceptance criteria:
+
+- Table 5 source material is available or the task stops and requests it.
+- Dataset is source-tracked.
+- Dataset metadata and row metadata are present.
+- Only verified rows can be active.
+- Boundaries are explicit.
+- No decans or degree rulers are included.
+- No OCR-only rows are active.
+- Tests pass.
+
+# Sprint 10 Backlog
 
 ## Task 10.4 — Terms Lookup Engine / Fixtures
 

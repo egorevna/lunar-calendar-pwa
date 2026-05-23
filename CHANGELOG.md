@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-23 — Complete Task 10.2 Vronsky dataset entry policy
+
+- Created `VRONSKY_DATASET_ENTRY_POLICY.md`.
+- Defined no blind OCR policy: OCR output is not trusted data, and OCR-only rows must not be committed as active dataset rows.
+- Documented source inventory for Table 5 Terms, Table 6 Star of the Magi degree rulers, Table 7 Vronsky degree rulers, Table 4 planetary influence, Table 10 aspects, Table 18 fixed stars and formula tables involving ASC and planets.
+- Confirmed Table 5 Terms is the first active target only after source/manual verification.
+- Confirmed Table 6 and Table 7 are separate source systems and remain deferred.
+- Added dataset metadata, row metadata, verification statuses, boundary testing requirements, OCR usage policy, review checklist and future file/module naming rules.
+- No app code, `src/`, `scripts/`, `index.html`, `sw.js`, package files, datasets, lookup engines, OCR imports, terms / decans / degree ruler data, houses, ASC / MC, transits or interpretations were changed.
+- Task 10.3 — Terms Dataset is next, but was not started.
+
 ## 2026-05-23 — Complete Task 10.1 terms / decans / degree rulers strategy
 
 - Created `TERMS_DECANS_DEGREE_RULERS_STRATEGY.md`.
