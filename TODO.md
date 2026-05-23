@@ -2088,11 +2088,9 @@ ESSENTIAL_DIGNITIES_STRATEGY.md
 - No UI changes.
 - Task 9.2 remains next.
 
-# Active Task
-
 ## Task 9.2 — Essential Dignity Data Model / Dataset
 
-Status: not started
+Status: done
 
 ### Goal
 
@@ -2104,9 +2102,31 @@ Task 9.2 must create data/model foundations only.
 
 Do not create the lookup engine, UI, debug layer, terms / decans / degree rulers, Vronsky degree tables, houses, ASC / MC, transits, interpretations or ritual scoring.
 
+### Acceptance Criteria
+
+- `src/essentialDignitiesData.js` exists.
+- Dataset includes source metadata, classical dignity tables, modern outer rulership labels, score model and deferred feature list.
+- Tests cover policy, tables, score model, exclusions and read-only stability.
+- No lookup engine.
+- No UI changes.
+- Task 9.3 remains next.
+
+# Active Task
+
+## Task 9.3 — Essential Dignity Lookup Engine
+
+Status: not started
+
+### Goal
+
+Create the pure lookup engine that evaluates already-calculated natal planet sign placement against `src/essentialDignitiesData.js`.
+
+### Important Boundary
+
+Task 9.3 must not add UI, debug output, terms / decans / degree rulers, Vronsky degree tables, houses, ASC / MC, transits, interpretations or ritual scoring.
+
 # Sprint 9 Backlog
 
-- Task 9.3 — Essential Dignity Lookup Engine.
 - Task 9.4 — Essential Dignity Validation / Fixtures.
 - Task 9.5 — Essential Dignity Display Helper.
 - Task 9.6 — Essential Dignities Collapsible UI.

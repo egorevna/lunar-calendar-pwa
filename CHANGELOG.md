@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-23 — Complete Task 9.2 essential dignity dataset
+
+- Added `src/essentialDignitiesData.js`.
+- Added `test/essentialDignitiesData.test.js`.
+- Dataset contains source metadata, classical rulership / detriment / exaltation / fall tables for the seven traditional planets, modern outer-planet rulership labels, score model and deferred feature list.
+- Uranus, Neptune and Pluto remain label-only modern rulership entries with `modernRulership: 0` and are not mixed into classical scoring tables.
+- Terms, decans, degree rulers, Vronsky strength rows, exact exaltation degree values, fixed stars, houses, ASC / MC, transits, interpretations and ritual scoring remain deferred.
+- Lookup engine, UI, provider calculations, package files, `index.html`, `src/app.js`, `sw.js`, ephemeris data and generator were not changed.
+
 ## 2026-05-23 — Complete Task 9.1 essential dignities strategy
 
 - Created `ESSENTIAL_DIGNITIES_STRATEGY.md`.

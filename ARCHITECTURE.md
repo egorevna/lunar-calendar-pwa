@@ -493,6 +493,21 @@ Current responsibilities:
 
 This module does not read localStorage, does not render DOM, does not send birth data externally, does not call providers directly, and does not calculate houses, ASC / MC, transits, fixed stars, special points, interpretations or ritual scoring.
 
+## `src/essentialDignitiesData.js`
+
+Defines the source-tracked Sprint 9 essential dignity dataset.
+
+Current responsibilities:
+
+- expose basic dignity type constants for domicile, detriment, exaltation, fall and modern rulership;
+- expose source metadata for the selected classical / traditional seven-planet scoring baseline;
+- store classical rulership, detriment, exaltation and fall sign tables for Sun, Moon, Mercury, Venus, Mars, Jupiter and Saturn;
+- store Uranus, Neptune and Pluto modern rulership labels separately as label-only data with no classical score;
+- expose the explicit Sprint 9 score model: domicile +5, exaltation +4, detriment -5, fall -4, neutral 0 and modern rulership 0;
+- expose deferred feature metadata for terms, decans, degree rulers, exact exaltation degrees, Vronsky strength tables, fixed stars, houses, ASC / MC, transits, interpretations and ritual scoring.
+
+This module does not perform dignity lookup, does not read natal planets, profiles, localStorage or DOM, does not call providers, and does not include terms / decans / degree rulers, exact exaltation degree values, Vronsky table rows, houses, ASC / MC, transits, interpretations or ritual scoring.
+
 ## `src/natalPlanetsDebug.js`
 
 Builds the safe debug summary for the read-only natal planets UI state.
@@ -965,13 +980,15 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 34. `src/natalAspectsForProfile.js` connects ready natal planet output to the natal aspect engine and aspect display helper for the read-only collapsible `Мои карты` natal aspects section; it fails closed without aspects when natal planets are incomplete.
 
-35. `src/natalPlanetsDebug.js` converts active-profile natal planets UI state into a sanitized debug summary with status/counts/capabilities only.
+35. `src/essentialDignitiesData.js` defines the source-tracked Sprint 9 essential dignity dataset for classical basic dignity tables, label-only modern outer rulerships, score model and deferred features; it does not perform lookup or render UI.
 
-36. `src/natalAspectsDebug.js` converts active-profile natal aspects UI state into a sanitized debug summary with status/counts/capabilities only.
+36. `src/natalPlanetsDebug.js` converts active-profile natal planets UI state into a sanitized debug summary with status/counts/capabilities only.
 
-37. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, provider validation summary, natal planets UI summary and natal aspects UI summary without birth details.
+37. `src/natalAspectsDebug.js` converts active-profile natal aspects UI state into a sanitized debug summary with status/counts/capabilities only.
 
-38. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
+38. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, provider validation summary, natal planets UI summary and natal aspects UI summary without birth details.
+
+39. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 
