@@ -825,3 +825,12 @@ Sprint 9 helper scoring policy:
 - fall: -4;
 - neutral: 0;
 - modern rulership: label-only, no classical score.
+
+If a planet has multiple classical flags in the selected source policy, scores are additive.
+
+Examples:
+
+- Mercury in Virgo: domicile + exaltation = +9.
+- Mercury in Pisces: detriment + fall = -9.
+
+Modern rulership labels remain outside the classical score even when present.

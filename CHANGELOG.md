@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-23 — Complete Task 9.3 essential dignity lookup engine
+
+- Added pure `src/essentialDignities.js`.
+- Added `test/essentialDignities.test.js`.
+- Engine evaluates already-calculated natal planet objects against `src/essentialDignitiesData.js` and returns dignity flags, score, labels, modern labels and source metadata.
+- Sign resolution prefers `planet.sign.key` and falls back to valid longitude through `src/astroMath.js`.
+- Multiple classical flags use additive scoring, so Mercury in Virgo is domicile + exaltation = `+9`, and Mercury in Pisces is detriment + fall = `-9`.
+- Uranus, Neptune and Pluto remain modern-rulership label-only with score `0`.
+- UI, display helper, provider calculations, package files, `index.html`, `src/app.js`, `sw.js`, terms / decans / degree rulers, Vronsky rows, houses, ASC / MC, transits, interpretations and ritual scoring were not changed.
+
 ## 2026-05-23 — Complete Task 9.2 essential dignity dataset
 
 - Added `src/essentialDignitiesData.js`.

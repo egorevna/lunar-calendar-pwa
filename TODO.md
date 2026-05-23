@@ -2111,11 +2111,9 @@ Do not create the lookup engine, UI, debug layer, terms / decans / degree rulers
 - No UI changes.
 - Task 9.3 remains next.
 
-# Active Task
-
 ## Task 9.3 — Essential Dignity Lookup Engine
 
-Status: not started
+Status: done
 
 ### Goal
 
@@ -2125,9 +2123,32 @@ Create the pure lookup engine that evaluates already-calculated natal planet sig
 
 Task 9.3 must not add UI, debug output, terms / decans / degree rulers, Vronsky degree tables, houses, ASC / MC, transits, interpretations or ritual scoring.
 
+### Acceptance Criteria
+
+- `src/essentialDignities.js` exists.
+- Engine evaluates passed natal planet objects through `src/essentialDignitiesData.js`.
+- Multiple classical flags use additive scoring.
+- Modern outer rulership labels remain score `0`.
+- Invalid planets are handled safely.
+- No UI changes.
+- Task 9.4 remains next.
+
+# Active Task
+
+## Task 9.4 — Essential Dignity Validation / Fixtures
+
+Status: not started
+
+### Goal
+
+Add deterministic fixture validation for the essential dignity lookup engine.
+
+### Important Boundary
+
+Task 9.4 must not add UI, debug output, terms / decans / degree rulers, Vronsky degree tables, houses, ASC / MC, transits, interpretations or ritual scoring.
+
 # Sprint 9 Backlog
 
-- Task 9.4 — Essential Dignity Validation / Fixtures.
 - Task 9.5 — Essential Dignity Display Helper.
 - Task 9.6 — Essential Dignities Collapsible UI.
 - Task 9.7 — Essential Dignities Debug.
