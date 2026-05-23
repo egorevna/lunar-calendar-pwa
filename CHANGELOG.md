@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-05-23 — Complete Task 9.4 essential dignity fixture validation
+
+- Added `test/fixtures/essentialDignityFixtures.js`.
+- Added `test/essentialDignityFixtures.test.js`.
+- Added `test/essentialDignityValidation.test.js`.
+- Created `ESSENTIAL_DIGNITY_FIXTURE_STRATEGY.md`.
+- Fixture categories cover domicile, detriment, exaltation, fall, multiple flags, modern rulership, neutral placements, invalid planets, mixed summary counts and strict exclusions.
+- Fixtures are synthetic/manual, use provider-style planet objects only and do not contain private birth data, user profiles or real birth charts.
+- Expected values are declared in fixture data and are not generated from `evaluateEssentialDignity()` / `evaluateEssentialDignities()`.
+- Validation confirmed the essential dignity lookup engine against manual fixtures; no engine bug was found.
+- UI, display helper, provider calculations, package files, `index.html`, `src/app.js`, `sw.js`, terms / decans / degree rulers, Vronsky rows, houses, ASC / MC, transits, interpretations and ritual scoring were not changed.
+
 ## 2026-05-23 — Complete Task 9.3 essential dignity lookup engine
 
 - Added pure `src/essentialDignities.js`.
