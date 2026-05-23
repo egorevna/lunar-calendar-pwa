@@ -834,3 +834,72 @@ Examples:
 - Mercury in Pisces: detriment + fall = -9.
 
 Modern rulership labels remain outside the classical score even when present.
+
+---
+
+# Sprint 10 Terms / Decans / Degree Rulers Logic Addendum
+
+Sprint 10 is about detailed dignity lookup layers applied after planet coordinates are known.
+
+## Lookup Layer Rule
+
+Terms, decans and degree rulers use:
+
+- sign;
+- degree within sign;
+- selected source system.
+
+They do not calculate planet coordinates, houses, ASC / MC, transits or aspects.
+
+## Source Rule
+
+Each dataset must name its source system.
+
+Do not mix source systems silently, including:
+
+- Vronsky terms;
+- Star of the Magi degree rulers;
+- Vronsky degree rulers;
+- trigon / triplicity decans;
+- Chaldean decans.
+
+Multiple source systems may be supported later only if the strategy explicitly defines source modes and UI/debug labels.
+
+## Vronsky Screenshot Rule
+
+User-provided Vronsky screenshots are source material, not active data by themselves.
+
+Do not OCR-import dense tables blindly.
+
+Before any row becomes active dataset data, it must have:
+
+- manual entry;
+- source/table reference;
+- row-level verification;
+- boundary tests;
+- dataset metadata.
+
+## Boundary Rule
+
+Degree range lookup must be explicit.
+
+Preferred interval policy:
+
+```txt
+[startDegree, endDegree)
+```
+
+The final interval ends at `30°`.
+
+Tests must cover sign start, every boundary, the last degree before sign end, invalid sign/degree input, and no `NaN`.
+
+## Deferred Features
+
+Sprint 10 planning does not activate:
+
+- fixed stars;
+- houses;
+- ASC / MC;
+- transits;
+- interpretations;
+- ritual scoring.

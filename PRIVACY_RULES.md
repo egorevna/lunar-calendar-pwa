@@ -485,3 +485,47 @@ Debug may show:
 - unsupported feature labels.
 
 Debug must not dump full profile data.
+
+---
+
+# Sprint 10 Privacy Rules Addendum
+
+Sprint 10 detailed dignities are derived from natal planet sign and degree placement.
+
+## Detailed Dignities Privacy
+
+Do not show in terms, decans or degree ruler UI/debug:
+
+- birthDate;
+- birthTime;
+- utcDateTime;
+- raw timezone;
+- raw birthPlace;
+- raw currentPlace;
+- coordinates;
+- full profile JSON;
+- raw longitude values.
+
+Allowed user-facing detailed dignity data:
+
+- planet name;
+- sign name;
+- degree-derived lookup label;
+- source system;
+- verified ruler / term / decan / degree ruler label.
+
+Debug may show:
+
+- layer status;
+- source system;
+- verification status;
+- row count;
+- unsupported / deferred feature labels.
+
+Debug must not dump:
+
+- full profile data;
+- private birth data;
+- raw planet longitudes;
+- full unverified table data;
+- OCR-only rows.

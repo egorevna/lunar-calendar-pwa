@@ -535,3 +535,59 @@ If natal planets are not ready:
 Достоинства планет пока недоступны.
 Сначала нужен расчет натальных планет.
 ```
+
+---
+
+# Sprint 10 UI Rules Addendum
+
+Sprint 10 detailed dignity layers may be shown only as profile/natal sections inside `Мои карты`, after source policy, dataset verification and readiness checks.
+
+## Detailed Dignities UI
+
+Terms, decans and degree rulers must stay collapsible by default.
+
+Possible collapsed state:
+
+```txt
+Термы и деканы
+Доступны термы · деканы пока не добавлены
+[Показать]
+```
+
+Expanded state may show compact lookup rows:
+
+```txt
+Марс в терме Венеры
+Венера в декане Луны
+```
+
+## Detailed Dignity Section Rules
+
+- collapsed by default;
+- summary first;
+- full list only after explicit click;
+- reset collapsed state when the active profile changes;
+- source system must be named;
+- show only verified dataset rows;
+- do not show OCR-only data;
+- do not show long interpretations;
+- do not show raw birth data;
+- do not show raw longitude values;
+- do not show fixed stars, houses, ASC / MC or transits as part of this section.
+
+## Not Ready State
+
+If natal planets are not ready:
+
+```txt
+Термы и деканы пока недоступны.
+Сначала нужен расчет натальных планет.
+```
+
+## Deferred State
+
+If a layer is not verified:
+
+```txt
+Деканы будут добавлены после проверки таблицы источника.
+```

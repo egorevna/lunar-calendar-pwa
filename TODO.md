@@ -2247,15 +2247,154 @@ Final hardening for Sprint 9.
 - UI and debug continue to avoid raw birth data and raw technical dignity data.
 - Sprint 9 is closed.
 
-# Next Stage
+# Current Active Sprint
 
 ## Sprint 10 — Terms / Decans / Degree Rulers
 
+Status: active
+
+### Goal
+
+Add verified detailed dignity lookup layers:
+
+- terms / bounds;
+- decans / faces;
+- degree rulers.
+
+### Important Boundary
+
+Sprint 10 handles source-tracked lookup datasets and lookup logic, not coordinate calculation.
+
+Do not OCR-import dense screenshots blindly.
+
+Do not implement fixed stars, houses / ASC / MC, transits, interpretations or ritual scoring.
+
+# Active Task
+
+## Task 10.1 — Terms / Decans / Degree Rulers Strategy and Source Audit
+
 Status: not started
 
-Sprint 10 is the next stage, but it must not begin until the user explicitly approves the first Sprint 10 task.
+### Goal
 
-Do not implement terms, decans, degree rulers, Vronsky rows, exact exaltation degrees, fixed stars, houses, ASC / MC, transits, interpretations or ritual scoring from this note alone.
+Define source policy, scope, and implementation order for terms, decans, and degree rulers.
+
+### Deliverable
+
+Create:
+
+```txt
+TERMS_DECANS_DEGREE_RULERS_STRATEGY.md
+```
+
+### Must Decide
+
+- whether Sprint 10 implements all three layers or phases them;
+- source system for terms;
+- source system for decans;
+- source system for degree rulers;
+- what Vronsky screenshots are available;
+- what requires manual verification;
+- what remains deferred.
+
+### Acceptance Criteria
+
+- `TERMS_DECANS_DEGREE_RULERS_STRATEGY.md` exists.
+- Source systems are documented.
+- Vronsky screenshot tables are inventoried.
+- No code changes.
+- No dataset created.
+- Task 10.2 remains next.
+
+# Sprint 10 Backlog
+
+## Task 10.2 — Vronsky Dataset Entry Policy
+
+Status: not started
+
+Goal:
+
+Define how screenshot/table data is converted into structured datasets safely.
+
+## Task 10.3 — Terms Dataset
+
+Status: not started
+
+Goal:
+
+Create verified structured terms dataset only after source policy and manual verification rules are accepted.
+
+## Task 10.4 — Terms Lookup Engine / Fixtures
+
+Status: not started
+
+Goal:
+
+Create pure lookup engine for terms with boundary fixtures.
+
+## Task 10.5 — Decans Source Decision / Dataset
+
+Status: not started
+
+Goal:
+
+Choose decan system and create dataset only if source is verified.
+
+## Task 10.6 — Decans Lookup Engine / Fixtures
+
+Status: not started
+
+Goal:
+
+Create pure lookup engine for decans if dataset is ready.
+
+## Task 10.7 — Degree Rulers Source Decision / Dataset
+
+Status: not started
+
+Goal:
+
+Create source decision and dataset for degree rulers only if manually verified.
+
+## Task 10.8 — Degree Rulers Lookup Engine / Fixtures
+
+Status: not started
+
+Goal:
+
+Create pure lookup engine for degree rulers if dataset is ready.
+
+## Task 10.9 — Terms / Decans / Degree Rulers Display Helper
+
+Status: not started
+
+Goal:
+
+Create display formatter for verified lookup results.
+
+## Task 10.10 — Terms / Decans / Degree Rulers Collapsible UI
+
+Status: not started
+
+Goal:
+
+Add collapsible section inside `Мои карты` only for implemented and verified layers.
+
+## Task 10.11 — Terms / Decans / Degree Rulers Debug
+
+Status: not started
+
+Goal:
+
+Add safe debug/status for detailed dignity lookup layers.
+
+## Task 10.12 — Sprint 10 Hardening
+
+Status: not started
+
+Goal:
+
+Finalize Sprint 10.
 
 # Security Backlog
 

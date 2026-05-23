@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-23 — Prepare Sprint 10 documentation
+
+- Sprint 1–9 are completed; active sprint is now Sprint 10 — Terms / Decans / Degree Rulers.
+- `TODO.md` lists Task 10.1 — Terms / Decans / Degree Rulers Strategy and Source Audit as the active task and Task 10.2–10.12 as the Sprint 10 backlog.
+- Added Sprint 10 astrology rules for terms, decans and degree rulers as source-tracked lookup layers applied after validated planet coordinates.
+- Added Sprint 10 source/boundary rules: no blind OCR import, explicit source systems, row-level verification and half-open degree intervals.
+- Added Sprint 10 UI rules for collapsible detailed dignity sections inside `Мои карты`.
+- Added Sprint 10 privacy rules for detailed dignity UI/debug output.
+- No app code, `src/`, `scripts/`, `index.html`, `sw.js`, package files, terms / decans / degree ruler datasets, OCR table data, houses, ASC / MC, transits or interpretations were changed.
+
 ## 2026-05-23 — Complete Sprint 9 hardening
 
 - Completed Task 9.8 and closed Sprint 9 — Essential Dignities Foundation.
