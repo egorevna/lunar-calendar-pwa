@@ -326,6 +326,43 @@ Interaction rules:
 - keep short and important readiness/fallback copy visible when values are not ready;
 - show user-facing values only after validation and readiness checks pass.
 
+## Responsive / Desktop Layout Rule
+
+Desktop layout must be responsive-only and must not change calculation/data flow.
+
+Mobile-first remains the source of truth. Desktop layout should be added later as a responsive polish layer after the main astrology modules are stable.
+
+Allowed for future desktop / responsive work:
+
+- change CSS layout;
+- add wrapper classes;
+- change visual groups;
+- change spacing / max-width;
+- use CSS grid / flex;
+- add media queries;
+- improve tablet / desktop layout;
+- build wide-screen layout on top of the existing DOM/data flow.
+
+Not allowed:
+
+- change calculation modules;
+- change provider modules;
+- change profile storage;
+- change active profile logic;
+- change render data flow;
+- change existing `data-*` hooks;
+- change element ids used by `src/app.js`;
+- create a separate desktop render path;
+- show different data on desktop than on mobile;
+- rewrite the app as a separate desktop version.
+
+Mandatory rule:
+
+```txt
+The same DOM/data must power mobile and desktop.
+Desktop must be a presentation layer, not a second app.
+```
+
 ## Mobile PWA Rule
 
 Assume the app is used on mobile.
