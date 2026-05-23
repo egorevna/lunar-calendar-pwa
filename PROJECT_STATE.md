@@ -603,10 +603,10 @@ Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7, Sprint 8 �
 Текущий фокус:
 
 ```txt
-Task 10.3c — Terms Dataset from Verified Table 5 Rows
+Task 10.4 — Terms Lookup Engine / Fixtures
 ```
 
-Sprint 10 активен. Task 10.1 завершила strategy / source audit. Task 10.2 создала policy для safe Vronsky dataset entry. Task 10.3a создала non-active Table 5 transcription draft. Task 10.3b сверила draft against source image. Код приложения, active datasets, lookup engines и UI для terms / decans / degree rulers еще не создавались.
+Sprint 10 активен. Task 10.1 завершила strategy / source audit. Task 10.2 создала policy для safe Vronsky dataset entry. Task 10.3a создала non-active Table 5 transcription draft. Task 10.3b сверила draft against source image. Task 10.3c создала active source-tracked Terms dataset from verified Table 5 rows. Lookup engines и UI для terms / decans / degree rulers еще не создавались.
 
 Результат Sprint 8:
 
@@ -642,12 +642,17 @@ Task 9.5 — Essential Dignity Display Helper
 Task 9.6 — Essential Dignities Collapsible UI
 Task 9.7 — Essential Dignities Debug
 Task 9.8 — Sprint 9 Hardening
+Task 10.1 — Terms / Decans / Degree Rulers Strategy and Source Audit
+Task 10.2 — Vronsky Dataset Entry Policy
+Task 10.3a — Terms Table 5 Transcription Draft
+Task 10.3b — Terms Table Manual Verification
+Task 10.3c — Terms Dataset from Verified Table 5 Rows
 ```
 
 Текущий фокус:
 
 ```txt
-Task 10.3c — Terms Dataset from Verified Table 5 Rows
+Task 10.4 — Terms Lookup Engine / Fixtures
 ```
 
 Цель Sprint 9:
@@ -753,7 +758,8 @@ Sprint 10 planning подготовлен:
 - Task 10.2 завершена: создан `VRONSKY_DATASET_ENTRY_POLICY.md`;
 - Task 10.3a завершена: создан `TERMS_TABLE_5_TRANSCRIPTION_DRAFT.md`;
 - Task 10.3b завершена: создан `TERMS_TABLE_5_VERIFICATION_REPORT.md`;
-- активная задача — Task 10.3c, Terms Dataset from Verified Table 5 Rows;
+- Task 10.3c завершена: создан `src/termsData.js` active Terms dataset from verified Table 5 rows;
+- активная задача — Task 10.4, Terms Lookup Engine / Fixtures;
 - Sprint 10 должен работать только с source-tracked lookup layers after validated natal planet coordinates;
 - dense Vronsky screenshots must not be OCR-imported blindly;
 - fixed stars, houses, ASC / MC, transits, interpretations и ritual scoring остаются out of scope.
@@ -800,8 +806,21 @@ Sprint 10 planning подготовлен:
 - mismatched rows: 0;
 - signs with final printed end `29°`: Aries / Овен, Taurus / Телец, Libra / Весы, Scorpio / Скорпион;
 - final interval normalization question remains explicit: printed source values stay as printed, while future code likely needs `normalizedEndExclusive = 30` for final sign intervals;
-- Task 10.3c must explicitly approve storing both printed range and normalized range before creating active dataset rows;
+- Task 10.3c was required to store both printed range and normalized range before creating active dataset rows;
 - active dataset, `src/termsData.js`, lookup engine, UI, tests, OCR import, package files и PWA cache не создавались/не менялись.
+
+Результат Task 10.3c:
+
+- создан active source-tracked dataset module `src/termsData.js`;
+- добавлено 60 verified Table 5 terms rows across 12 zodiac signs;
+- dataset metadata фиксирует `sourceKey: "vronsky-table-5-terms"`, Table 5 — Термы, manual verification source and `rowCount: 60`;
+- all rows have `verificationStatus: "verified"` and `sourceCheck: "match"`;
+- printed source ranges are preserved through `printedEndDegree`;
+- future lookup boundaries are stored separately through `normalizedEndExclusive`;
+- final printed `29°` rows for Aries / Овен, Taurus / Телец, Libra / Весы and Scorpio / Скорпион keep `printedEndDegree: 29` and use `normalizedEndExclusive: 30`;
+- interval policy is half-open: `[startDegree, normalizedEndExclusive)`, degree within sign `0 <= degree < 30`;
+- added `test/termsData.test.js` for metadata, row counts, verified-only rows, interval coverage, final `29°` normalization, allowed rulers, read-only boundaries and strict exclusions;
+- lookup engine, UI, display helper, decans, degree rulers, fixed stars, houses, ASC / MC, transits, interpretations, package files and PWA cache were not changed.
 
 Результат Task 8.1:
 
@@ -964,10 +983,10 @@ Sprint 8 завершен. Следующий этап — Sprint 9, Essential D
 Текущий следующий шаг:
 
 ```txt
-Task 10.3c — Terms Dataset from Verified Table 5 Rows
+Task 10.4 — Terms Lookup Engine / Fixtures
 ```
 
-Sprint 8 завершен. Task 8.1, Task 8.2, Task 8.3, Task 8.4, Task 8.5, Task 8.6 и Task 8.7 завершены. Sprint 9 завершен: Task 9.1, Task 9.2, Task 9.3, Task 9.4, Task 9.5, Task 9.6, Task 9.7 и Task 9.8 закрыты. Sprint 10 активен; Task 10.1, Task 10.2, Task 10.3a и Task 10.3b закрыты; текущая задача — Task 10.3c.
+Sprint 8 завершен. Task 8.1, Task 8.2, Task 8.3, Task 8.4, Task 8.5, Task 8.6 и Task 8.7 завершены. Sprint 9 завершен: Task 9.1, Task 9.2, Task 9.3, Task 9.4, Task 9.5, Task 9.6, Task 9.7 и Task 9.8 закрыты. Sprint 10 активен; Task 10.1, Task 10.2, Task 10.3a, Task 10.3b и Task 10.3c закрыты; текущая задача — Task 10.4.
 
 Ниже сохраняется краткая история предыдущего Sprint 5 и результаты текущего Sprint 6.
 
@@ -2235,16 +2254,16 @@ lunar-calendar-v72
 Сейчас следующий конкретный шаг:
 
 ```txt
-Task 10.3c — Terms Dataset from Verified Table 5 Rows.
+Task 10.4 — Terms Lookup Engine / Fixtures.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Работать только над Task 10.3c после отдельной команды пользователя.
+2. Работать только над Task 10.4 после отдельной команды пользователя.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
-5. Не делать terms/decans/degree rulers, Vronsky rows, exact exaltation degrees, натальную карту, персональные транзиты, дома, ASC/MC, интерпретации или фейковые личные расчеты.
+5. Не делать decans/degree rulers, Vronsky degree rows, exact exaltation degrees, натальную карту, персональные транзиты, дома, ASC/MC, интерпретации или фейковые личные расчеты.
 6. После реализации обновить документацию и запустить тесты.
 
 ---
@@ -2257,4 +2276,4 @@ Task 10.3c — Terms Dataset from Verified Table 5 Rows.
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7 и Sprint 8 завершены. Sprint 7 добавил read-only natal planets panel внутри `Мои карты`: planet values показываются только для активного сохраненного профиля при `canConvertToUtc: true` и ready provider output, форматируются через `src/natalPlanetDisplay.js`, а missing coordinates не блокируют список планет. `Общий день`, unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap и nonexistent DST gap не показывают planet list. Safe `Natal Planets UI Debug` доступен только через `?debug=1` и показывает status/counts/capabilities без birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes, speed values or full planet list. Houses / ASC / MC / transits, chart wheel и personal ritual scoring остаются not supported. Sprint 8 — Natal Aspects Foundation завершен: Task 8.1 создала `NATAL_ASPECTS_STRATEGY.md`, Task 8.2 добавила pure `src/natalAspectEngine.js`, Task 8.3 добавила synthetic/manual fixture validation layer, Task 8.4 добавила pure `src/natalAspectDisplay.js`, Task 8.5 добавила collapsible `Натальные аспекты` section внутри `Мои карты`, Task 8.6 добавила safe `Natal Aspects UI Debug`, а Task 8.7 завершила hardening. Sprint 9 — Essential Dignities Foundation завершен: Task 9.1 создала `ESSENTIAL_DIGNITIES_STRATEGY.md`, Task 9.2 добавила source-tracked `src/essentialDignitiesData.js`, Task 9.3 добавила pure lookup engine, Task 9.4 добавила synthetic/manual fixture validation, Task 9.5 добавила pure display helper, Task 9.6 добавила collapsible `Достоинства планет` section внутри `Мои карты`, Task 9.7 добавила safe `Essential Dignities UI Debug`, а Task 9.8 завершила hardening. Sprint 10 — Terms / Decans / Degree Rulers активен; Task 10.1, Task 10.2, Task 10.3a и Task 10.3b закрыты; текущая задача — Task 10.3c, Terms Dataset from Verified Table 5 Rows. Код Sprint 10 еще не начинался.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7 и Sprint 8 завершены. Sprint 7 добавил read-only natal planets panel внутри `Мои карты`: planet values показываются только для активного сохраненного профиля при `canConvertToUtc: true` и ready provider output, форматируются через `src/natalPlanetDisplay.js`, а missing coordinates не блокируют список планет. `Общий день`, unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap и nonexistent DST gap не показывают planet list. Safe `Natal Planets UI Debug` доступен только через `?debug=1` и показывает status/counts/capabilities без birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes, speed values or full planet list. Houses / ASC / MC / transits, chart wheel и personal ritual scoring остаются not supported. Sprint 8 — Natal Aspects Foundation завершен: Task 8.1 создала `NATAL_ASPECTS_STRATEGY.md`, Task 8.2 добавила pure `src/natalAspectEngine.js`, Task 8.3 добавила synthetic/manual fixture validation layer, Task 8.4 добавила pure `src/natalAspectDisplay.js`, Task 8.5 добавила collapsible `Натальные аспекты` section внутри `Мои карты`, Task 8.6 добавила safe `Natal Aspects UI Debug`, а Task 8.7 завершила hardening. Sprint 9 — Essential Dignities Foundation завершен: Task 9.1 создала `ESSENTIAL_DIGNITIES_STRATEGY.md`, Task 9.2 добавила source-tracked `src/essentialDignitiesData.js`, Task 9.3 добавила pure lookup engine, Task 9.4 добавила synthetic/manual fixture validation, Task 9.5 добавила pure display helper, Task 9.6 добавила collapsible `Достоинства планет` section внутри `Мои карты`, Task 9.7 добавила safe `Essential Dignities UI Debug`, а Task 9.8 завершила hardening. Sprint 10 — Terms / Decans / Degree Rulers активен; Task 10.1, Task 10.2, Task 10.3a, Task 10.3b и Task 10.3c закрыты; текущая задача — Task 10.4, Terms Lookup Engine / Fixtures. Sprint 10 code now includes only the verified `src/termsData.js` dataset; terms lookup engine/UI still have not started.

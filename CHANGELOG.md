@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-23 — Complete Task 10.3c Terms dataset from verified Table 5 rows
+
+- Added `src/termsData.js`.
+- Created active source-tracked Vronsky Table 5 — Terms dataset with 60 verified rows across 12 zodiac signs.
+- Preserved printed source ranges through `printedEndDegree` and stored future half-open lookup boundaries through `normalizedEndExclusive`.
+- Kept final printed `29°` rows for Aries / Овен, Taurus / Телец, Libra / Весы and Scorpio / Скорпион as `printedEndDegree: 29`, with `normalizedEndExclusive: 30` for full `0 <= degree < 30` coverage.
+- Added `test/termsData.test.js` for metadata, row counts, verified-only rows, interval coverage, final `29°` normalization, allowed rulers, deferred features, read-only boundaries and strict exclusions.
+- No terms lookup engine, UI, display helper, decans, degree rulers, other Vronsky tables, provider calculations, package files, app shell or PWA cache changes were added.
+- Task 10.4 — Terms Lookup Engine / Fixtures is next, but was not started.
+
 ## 2026-05-23 — Complete Task 10.3b Table 5 manual verification
 
 - Created `TERMS_TABLE_5_VERIFICATION_REPORT.md`.

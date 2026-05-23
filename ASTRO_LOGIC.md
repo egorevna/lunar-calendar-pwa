@@ -893,6 +893,19 @@ The final interval ends at `30°`.
 
 Tests must cover sign start, every boundary, the last degree before sign end, invalid sign/degree input, and no `NaN`.
 
+## Task 10.3c Terms Dataset Policy
+
+Vronsky Table 5 terms rows are active only after manual image-to-draft verification.
+
+The active Table 5 dataset stores both:
+
+- `printedEndDegree` — the source value as printed;
+- `normalizedEndExclusive` — the future half-open lookup boundary.
+
+For final printed intervals ending at `29°`, preserve `printedEndDegree: 29` and use `normalizedEndExclusive: 30` for future code coverage of `0 <= degree < 30`.
+
+This is lookup normalization, not a change to the source table.
+
 ## Task 10.1 Selected Policy
 
 Terms are the first Sprint 10 implementation target, but only from Vronsky Table 5 after manual verification.

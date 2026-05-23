@@ -2401,11 +2401,11 @@ Result:
 - Recorded final printed end `29°` signs: Aries / Овен, Taurus / Телец, Libra / Весы, Scorpio / Скорпион.
 - Confirmed active dataset and lookup engine were not created.
 
-# Active Task
+# Completed Task
 
 ## Task 10.3c — Terms Dataset from Verified Table 5 Rows
 
-Status: not started
+Status: done
 
 Goal:
 
@@ -2425,15 +2425,26 @@ Acceptance criteria:
 - No OCR-only rows are active.
 - Tests pass.
 
-# Sprint 10 Backlog
+Completion:
+
+- Added `src/termsData.js` with the verified Vronsky Table 5 — Terms dataset.
+- Stored 60 verified rows across 12 zodiac signs with source metadata and row metadata.
+- Preserved `printedEndDegree` from the source and added `normalizedEndExclusive` for future half-open lookup intervals.
+- Explicitly normalized final printed `29°` rows for Aries / Овен, Taurus / Телец, Libra / Весы and Scorpio / Скорпион to `normalizedEndExclusive: 30`.
+- Added `test/termsData.test.js` covering row count, sign coverage, verified-only status, interval coverage, final `29°` normalization, allowed rulers, deferred features, read-only boundaries and strict exclusions.
+- No lookup engine, UI, decans, degree rulers or other Vronsky tables were added.
+
+# Active Task
 
 ## Task 10.4 — Terms Lookup Engine / Fixtures
 
-Status: not started
+Status: active
 
 Goal:
 
 Create pure lookup engine for terms with boundary fixtures.
+
+# Sprint 10 Backlog
 
 ## Task 10.5 — Decans Source Decision / Dataset
 

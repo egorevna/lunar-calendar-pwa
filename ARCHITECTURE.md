@@ -508,6 +508,21 @@ Current responsibilities:
 
 This module does not perform dignity lookup, does not read natal planets, profiles, localStorage or DOM, does not call providers, and does not include terms / decans / degree rulers, exact exaltation degree values, Vronsky table rows, houses, ASC / MC, transits, interpretations or ritual scoring.
 
+## `src/termsData.js`
+
+Defines the source-tracked Sprint 10 Vronsky Table 5 — Terms dataset.
+
+Current responsibilities:
+
+- expose verified Table 5 source metadata;
+- store 60 manually verified terms rows across 12 zodiac signs;
+- preserve printed source ranges through `printedEndDegree`;
+- store future half-open lookup boundaries through `normalizedEndExclusive`;
+- normalize final printed `29°` rows to `normalizedEndExclusive: 30` while preserving the printed source value;
+- expose dataset, source, deferred features, sign-row and validation helpers for future lookup work.
+
+This module does not perform degree lookup, does not read natal planets, profiles, localStorage or DOM, does not call providers, and does not include decans, degree rulers, other Vronsky tables, fixed stars, houses, ASC / MC, transits, interpretations or ritual scoring.
+
 ## `src/essentialDignities.js`
 
 Defines the pure Sprint 9 essential dignity lookup engine.
@@ -1042,21 +1057,23 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 35. `src/essentialDignitiesData.js` defines the source-tracked Sprint 9 essential dignity dataset for classical basic dignity tables, label-only modern outer rulerships, score model and deferred features; it does not perform lookup or render UI.
 
-36. `src/essentialDignities.js` evaluates already-calculated natal planet objects against the Sprint 9 essential dignity dataset and returns flags, additive score, labels and safe summary counts without calling providers or rendering UI.
+36. `src/termsData.js` defines the source-tracked Sprint 10 Vronsky Table 5 — Terms dataset with 60 verified rows, printed ranges, normalized half-open interval boundaries and deferred feature metadata; it does not perform degree lookup or render UI.
 
-37. `src/essentialDignityDisplay.js` formats already-evaluated essential dignity results into compact user-facing rows and summary counts without calling the lookup engine or rendering UI.
+37. `src/essentialDignities.js` evaluates already-calculated natal planet objects against the Sprint 9 essential dignity dataset and returns flags, additive score, labels and safe summary counts without calling providers or rendering UI.
 
-38. `src/essentialDignitiesForProfile.js` connects ready natal planet output to the essential dignity lookup and display helpers for the read-only collapsible `Мои карты` dignity section; it fails closed without dignity rows when natal planets are incomplete.
+38. `src/essentialDignityDisplay.js` formats already-evaluated essential dignity results into compact user-facing rows and summary counts without calling the lookup engine or rendering UI.
 
-39. `src/natalPlanetsDebug.js` converts active-profile natal planets UI state into a sanitized debug summary with status/counts/capabilities only.
+39. `src/essentialDignitiesForProfile.js` connects ready natal planet output to the essential dignity lookup and display helpers for the read-only collapsible `Мои карты` dignity section; it fails closed without dignity rows when natal planets are incomplete.
 
-40. `src/natalAspectsDebug.js` converts active-profile natal aspects UI state into a sanitized debug summary with status/counts/capabilities only.
+40. `src/natalPlanetsDebug.js` converts active-profile natal planets UI state into a sanitized debug summary with status/counts/capabilities only.
 
-41. `src/essentialDignitiesDebug.js` converts active-profile essential dignities UI state into a sanitized debug summary with status/counts/source policy/deferred capability labels only.
+41. `src/natalAspectsDebug.js` converts active-profile natal aspects UI state into a sanitized debug summary with status/counts/capabilities only.
 
-42. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, provider validation summary, natal planets UI summary, natal aspects UI summary and essential dignities UI summary without birth details.
+42. `src/essentialDignitiesDebug.js` converts active-profile essential dignities UI state into a sanitized debug summary with status/counts/source policy/deferred capability labels only.
 
-43. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
+43. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, provider validation summary, natal planets UI summary, natal aspects UI summary and essential dignities UI summary without birth details.
+
+44. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 
