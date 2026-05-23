@@ -623,7 +623,7 @@ Task 7.6 — Sprint 7 Hardening
 Текущий фокус:
 
 ```txt
-Task 8.3 — Natal Aspect Validation / Fixtures
+Task 8.4 — Natal Aspect Display Helper
 ```
 
 Результат Task 8.1:
@@ -647,7 +647,18 @@ Task 8.3 — Natal Aspect Validation / Fixtures
 - модуль не импортирует provider, `astronomy-engine`, Luxon, profile storage, localStorage, DOM или UI;
 - UI аспектов, transits, houses, ASC / MC, fixed stars и interpretations еще не добавлены.
 
-Следующий шаг — Task 8.3, validation / fixtures for natal aspect engine. Не начинать Task 8.3 без отдельной команды пользователя.
+Результат Task 8.3:
+
+- добавлен fixture validation layer для natal aspect engine;
+- создан `test/fixtures/natalAspectFixtures.js` с synthetic/manual fixtures;
+- добавлены `test/natalAspectFixtures.test.js` и `test/natalAspectValidation.test.js`;
+- создан `NATAL_ASPECT_FIXTURE_STRATEGY.md`;
+- fixture categories покрывают exact major aspects, near-inside orb, just-outside orb, wrap-around, duplicate prevention, outer-outer narrow orb, luminary wide orb, invalid planets, no aspects и sorting priority;
+- expected aspects заданы вручную и не генерируются через `calculateNatalAspects()`;
+- private birth data, user profiles, real birth charts, transits, houses, ASC / MC and interpretations не используются;
+- bugs в `src/natalAspectEngine.js` не найдены, engine code не менялся.
+
+Следующий шаг — Task 8.4, Natal Aspect Display Helper. Не начинать Task 8.4 без отдельной команды пользователя.
 
 Результат Task 7.1:
 
@@ -724,10 +735,10 @@ Task 8.3 — Natal Aspect Validation / Fixtures
 Текущий следующий шаг:
 
 ```txt
-Task 8.3 — Natal Aspect Validation / Fixtures
+Task 8.4 — Natal Aspect Display Helper
 ```
 
-Sprint 8 активен. Task 8.1 и Task 8.2 завершены. Task 8.3 еще не начиналась.
+Sprint 8 активен. Task 8.1, Task 8.2 и Task 8.3 завершены. Task 8.4 еще не начиналась.
 
 Ниже сохраняется краткая история предыдущего Sprint 5 и результаты текущего Sprint 6.
 
@@ -1995,13 +2006,13 @@ lunar-calendar-v67
 Сейчас следующий конкретный шаг:
 
 ```txt
-Task 8.3 — Natal Aspect Validation / Fixtures.
+Task 8.4 — Natal Aspect Display Helper.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Работать только над Task 8.3 после отдельной команды пользователя.
+2. Работать только над Task 8.4 после отдельной команды пользователя.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC, UI аспектов или фейковые личные расчеты.
@@ -2017,4 +2028,4 @@ Task 8.3 — Natal Aspect Validation / Fixtures.
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6 и Sprint 7 завершены. Sprint 7 добавил read-only natal planets panel внутри `Мои карты`: planet values показываются только для активного сохраненного профиля при `canConvertToUtc: true` и ready provider output, форматируются через `src/natalPlanetDisplay.js`, а missing coordinates не блокируют список планет. `Общий день`, unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap и nonexistent DST gap не показывают planet list. Safe `Natal Planets UI Debug` доступен только через `?debug=1` и показывает status/counts/capabilities без birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes, speed values or full planet list. Houses / ASC / MC / transits, chart wheel и personal ritual scoring остаются not supported. Sprint 8 — Natal Aspects Foundation активен; Task 8.1 создала `NATAL_ASPECTS_STRATEGY.md`, а Task 8.2 добавила pure `src/natalAspectEngine.js` без UI/provider integration. Следующий шаг — Task 8.3, но validation fixtures не начинались.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6 и Sprint 7 завершены. Sprint 7 добавил read-only natal planets panel внутри `Мои карты`: planet values показываются только для активного сохраненного профиля при `canConvertToUtc: true` и ready provider output, форматируются через `src/natalPlanetDisplay.js`, а missing coordinates не блокируют список планет. `Общий день`, unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap и nonexistent DST gap не показывают planet list. Safe `Natal Planets UI Debug` доступен только через `?debug=1` и показывает status/counts/capabilities без birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes, speed values or full planet list. Houses / ASC / MC / transits, chart wheel и personal ritual scoring остаются not supported. Sprint 8 — Natal Aspects Foundation активен; Task 8.1 создала `NATAL_ASPECTS_STRATEGY.md`, Task 8.2 добавила pure `src/natalAspectEngine.js` без UI/provider integration, а Task 8.3 добавила synthetic/manual fixture validation layer. Следующий шаг — Task 8.4, но display helper не начинался.
