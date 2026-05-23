@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-23 — Complete Sprint 9 hardening
+
+- Completed Task 9.8 and closed Sprint 9 — Essential Dignities Foundation.
+- Audited Task 9.1–9.7 results: source strategy, source-tracked dataset, pure lookup engine, synthetic/manual fixture validation, display helper, collapsible `Мои карты` UI and safe debug.
+- Confirmed essential dignities remain basic sign-based domicile / detriment / exaltation / fall lookup over ready natal planet signs.
+- Confirmed classical / traditional seven planets remain the scoring baseline, while Uranus / Neptune / Pluto remain modern rulership label-only with score `0`.
+- Confirmed terms / decans / degree rulers, Vronsky rows, exact exaltation degrees, fixed stars, houses, ASC / MC, transits, interpretations and ritual scoring remain deferred / notSupported.
+- Confirmed UI and debug do not expose raw birth data, UTC datetime, raw timezone, coordinates, raw planet longitude/speed, full natal planet lists or full dignity result lists.
+- Synced documentation for Sprint 9 completion and corrected the documented PWA cache version to `lunar-calendar-v72`.
+- Sprint 10 — Terms / Decans / Degree Rulers is the next stage, but was not started.
+
 ## 2026-05-23 — Complete Task 9.7 essential dignities debug
 
 - Added `src/essentialDignitiesDebug.js`.

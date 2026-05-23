@@ -592,13 +592,21 @@ Sprint 5 — Natal Calculation Engine Foundation
 Sprint 6 — Real Natal Provider Selection / Fixture Validation
 ```
 
-Активный спринт:
+Текущий статус:
 
 ```txt
-Sprint 9 — Essential Dignities Foundation
+Sprint 9 — Essential Dignities Foundation завершен
 ```
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7 и Sprint 8 завершены. Sprint 9 активен.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7, Sprint 8 и Sprint 9 завершены.
+
+Следующий этап:
+
+```txt
+Sprint 10 — Terms / Decans / Degree Rulers
+```
+
+Sprint 10 еще не начат.
 
 Результат Sprint 8:
 
@@ -633,12 +641,13 @@ Task 9.4 — Essential Dignity Validation / Fixtures
 Task 9.5 — Essential Dignity Display Helper
 Task 9.6 — Essential Dignities Collapsible UI
 Task 9.7 — Essential Dignities Debug
+Task 9.8 — Sprint 9 Hardening
 ```
 
-Текущий фокус:
+Текущий следующий шаг:
 
 ```txt
-Task 9.8 — Sprint 9 Hardening
+Подготовка Sprint 10 — Terms / Decans / Degree Rulers
 ```
 
 Цель Sprint 9:
@@ -722,7 +731,20 @@ Task 9.8 — Sprint 9 Hardening
 - PWA cache обновлен до `lunar-calendar-v72`;
 - user-facing UI, dataset, lookup engine, display helper, provider calculations и package files не менялись.
 
-Следующий шаг — Task 9.8, Sprint 9 Hardening.
+Результат Task 9.8:
+
+- проведен финальный hardening Sprint 9;
+- подтверждено, что Task 9.1–9.7 закрыты: strategy, dataset, lookup engine, synthetic/manual fixtures, display helper, collapsible UI и safe debug;
+- подтверждено, что essential dignities остаются только basic sign-based dignity/debility lookup over ready natal planet signs;
+- classical / traditional seven planets остаются scoring baseline;
+- Uranus, Neptune и Pluto остаются modern rulership label-only со score `0`;
+- terms / decans / degree rulers, Vronsky rows, exact exaltation degrees, fixed stars, houses, ASC / MC, transits, interpretations и ritual scoring не добавлены;
+- UI и debug не показывают raw birth data, `utcDateTime`, raw timezone, coordinates, raw planet longitude/speed, full natal planet list или full dignity result list;
+- runtime imports остаются через tracked `src/vendor/luxon.mjs` и `src/vendor/astronomy-engine.mjs`;
+- package files, provider calculations, `src/ephemeris-data.js` и ephemeris generation не менялись;
+- Sprint 9 завершен.
+
+Следующий этап — Sprint 10, Terms / Decans / Degree Rulers. Sprint 10 еще не начат.
 
 Результат Task 8.1:
 
@@ -885,10 +907,10 @@ Sprint 8 завершен. Следующий этап — Sprint 9, Essential D
 Текущий следующий шаг:
 
 ```txt
-Task 9.8 — Sprint 9 Hardening
+Подготовка Sprint 10 — Terms / Decans / Degree Rulers
 ```
 
-Sprint 8 завершен. Task 8.1, Task 8.2, Task 8.3, Task 8.4, Task 8.5, Task 8.6 и Task 8.7 завершены. Sprint 9 активен, Task 9.1, Task 9.2, Task 9.3, Task 9.4, Task 9.5, Task 9.6 и Task 9.7 завершены; Task 9.8 еще не начиналась.
+Sprint 8 завершен. Task 8.1, Task 8.2, Task 8.3, Task 8.4, Task 8.5, Task 8.6 и Task 8.7 завершены. Sprint 9 завершен: Task 9.1, Task 9.2, Task 9.3, Task 9.4, Task 9.5, Task 9.6, Task 9.7 и Task 9.8 закрыты. Sprint 10 еще не начат.
 
 Ниже сохраняется краткая история предыдущего Sprint 5 и результаты текущего Sprint 6.
 
@@ -2106,7 +2128,7 @@ git commit -m "checkpoint before continuing in new codex chat"
 Текущая версия:
 
 ```txt
-lunar-calendar-v70
+lunar-calendar-v72
 ```
 
 ## Moscow Hardcoding
@@ -2156,16 +2178,16 @@ lunar-calendar-v70
 Сейчас следующий конкретный шаг:
 
 ```txt
-Task 9.8 — Sprint 9 Hardening.
+Подготовка Sprint 10 — Terms / Decans / Degree Rulers.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Работать только над Task 9.8 после отдельной команды пользователя.
+2. Не начинать Sprint 10 без отдельной команды пользователя.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
-5. Не делать новые dignity rules, terms/decans/degree rulers, натальную карту, персональные транзиты, дома, ASC/MC, интерпретации или фейковые личные расчеты.
+5. Не делать terms/decans/degree rulers, Vronsky rows, exact exaltation degrees, натальную карту, персональные транзиты, дома, ASC/MC, интерпретации или фейковые личные расчеты.
 6. После реализации обновить документацию и запустить тесты.
 
 ---
@@ -2178,4 +2200,4 @@ Task 9.8 — Sprint 9 Hardening.
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7 и Sprint 8 завершены. Sprint 7 добавил read-only natal planets panel внутри `Мои карты`: planet values показываются только для активного сохраненного профиля при `canConvertToUtc: true` и ready provider output, форматируются через `src/natalPlanetDisplay.js`, а missing coordinates не блокируют список планет. `Общий день`, unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap и nonexistent DST gap не показывают planet list. Safe `Natal Planets UI Debug` доступен только через `?debug=1` и показывает status/counts/capabilities без birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes, speed values or full planet list. Houses / ASC / MC / transits, chart wheel и personal ritual scoring остаются not supported. Sprint 8 — Natal Aspects Foundation завершен: Task 8.1 создала `NATAL_ASPECTS_STRATEGY.md`, Task 8.2 добавила pure `src/natalAspectEngine.js`, Task 8.3 добавила synthetic/manual fixture validation layer, Task 8.4 добавила pure `src/natalAspectDisplay.js`, Task 8.5 добавила collapsible `Натальные аспекты` section внутри `Мои карты`, Task 8.6 добавила safe `Natal Aspects UI Debug`, а Task 8.7 завершила hardening. Sprint 9 — Essential Dignities Foundation активен; Task 9.1 создала `ESSENTIAL_DIGNITIES_STRATEGY.md` и выбрала classical scoring baseline с modern outer-planet rulership labels only; Task 9.2 добавила source-tracked `src/essentialDignitiesData.js` dataset; Task 9.3 добавила pure `src/essentialDignities.js` lookup engine без UI; Task 9.4 добавила synthetic/manual fixture validation без private birth data и без UI; Task 9.5 добавила pure `src/essentialDignityDisplay.js` display helper без UI; Task 9.6 добавила collapsible `Достоинства планет` section внутри `Мои карты`; Task 9.7 добавила safe `Essential Dignities UI Debug`. Следующий шаг — Task 9.8, Sprint 9 Hardening.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7 и Sprint 8 завершены. Sprint 7 добавил read-only natal planets panel внутри `Мои карты`: planet values показываются только для активного сохраненного профиля при `canConvertToUtc: true` и ready provider output, форматируются через `src/natalPlanetDisplay.js`, а missing coordinates не блокируют список планет. `Общий день`, unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap и nonexistent DST gap не показывают planet list. Safe `Natal Planets UI Debug` доступен только через `?debug=1` и показывает status/counts/capabilities без birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes, speed values or full planet list. Houses / ASC / MC / transits, chart wheel и personal ritual scoring остаются not supported. Sprint 8 — Natal Aspects Foundation завершен: Task 8.1 создала `NATAL_ASPECTS_STRATEGY.md`, Task 8.2 добавила pure `src/natalAspectEngine.js`, Task 8.3 добавила synthetic/manual fixture validation layer, Task 8.4 добавила pure `src/natalAspectDisplay.js`, Task 8.5 добавила collapsible `Натальные аспекты` section внутри `Мои карты`, Task 8.6 добавила safe `Natal Aspects UI Debug`, а Task 8.7 завершила hardening. Sprint 9 — Essential Dignities Foundation завершен: Task 9.1 создала `ESSENTIAL_DIGNITIES_STRATEGY.md`, Task 9.2 добавила source-tracked `src/essentialDignitiesData.js`, Task 9.3 добавила pure lookup engine, Task 9.4 добавила synthetic/manual fixture validation, Task 9.5 добавила pure display helper, Task 9.6 добавила collapsible `Достоинства планет` section внутри `Мои карты`, Task 9.7 добавила safe `Essential Dignities UI Debug`, а Task 9.8 завершила hardening. Следующий этап — Sprint 10, Terms / Decans / Degree Rulers, но он еще не начат.

@@ -2022,11 +2022,11 @@ Close Sprint 8 with a final audit of natal aspect calculation, fixtures, display
 
 Sprint 8 is completed.
 
-# Current Active Sprint
+# Completed Sprint
 
 ## Sprint 9 — Essential Dignities Foundation
 
-Status: active
+Status: completed
 
 ### Goal
 
@@ -2229,19 +2229,33 @@ Task 9.7 must not add new dignity rules, terms / decans / degree rulers, Vronsky
 - User-facing essential dignities UI behavior did not change.
 - Task 9.8 remains next.
 
-# Active Task
+# Completed Task
 
 ## Task 9.8 — Sprint 9 Hardening
 
-Status: not started
+Status: done
 
 ### Goal
 
 Final hardening for Sprint 9.
 
-# Sprint 9 Backlog
+### Acceptance Criteria
 
-No remaining Sprint 9 implementation tasks before hardening.
+- Task 9.1–9.7 results audited.
+- Basic essential dignities remain sign-based only.
+- Terms / decans / degree rulers, Vronsky rows, exact exaltation degrees, houses, ASC / MC, transits, interpretations and ritual scoring remain out of scope.
+- UI and debug continue to avoid raw birth data and raw technical dignity data.
+- Sprint 9 is closed.
+
+# Next Stage
+
+## Sprint 10 — Terms / Decans / Degree Rulers
+
+Status: not started
+
+Sprint 10 is the next stage, but it must not begin until the user explicitly approves the first Sprint 10 task.
+
+Do not implement terms, decans, degree rulers, Vronsky rows, exact exaltation degrees, fixed stars, houses, ASC / MC, transits, interpretations or ritual scoring from this note alone.
 
 # Security Backlog
 
@@ -2260,11 +2274,11 @@ This is a future security follow-up and must not be handled as part of Task 6.5.
 
 ## Desktop/responsive layout rule documentation
 
-Status: not started
+Status: documented; future layout implementation not started
 
 Description:
 
-- Add explicit future documentation for desktop / responsive layout rules.
+- `UI_RULES.md` contains the responsive / desktop layout rule.
 - Keep large profile and natal sections scannable on wider screens.
 - Do not implement layout changes without a separate active task.
 
