@@ -2373,11 +2373,11 @@ Result:
 - Recorded manual verification questions for range endings, gaps/overlaps, values and ruler checks.
 - No active dataset, lookup engine, OCR import, UI or app code was created.
 
-# Active Task
+# Completed Task
 
 ## Task 10.3b — Terms Table Manual Verification
 
-Status: not started
+Status: done
 
 Goal:
 
@@ -2393,27 +2393,39 @@ Acceptance criteria:
 - Verified rows and unclear rows are separated.
 - No active JS dataset is created until verification is complete.
 
-# Sprint 10 Backlog
+Result:
 
-## Task 10.3c — Terms Dataset
+- Created `TERMS_TABLE_5_VERIFICATION_REPORT.md`.
+- Checked 60 rows against `table5.png`.
+- Source check counts: 60 match, 0 unclear, 0 mismatch.
+- Recorded final printed end `29°` signs: Aries / Овен, Taurus / Телец, Libra / Весы, Scorpio / Скорпион.
+- Confirmed active dataset and lookup engine were not created.
+
+# Active Task
+
+## Task 10.3c — Terms Dataset from Verified Table 5 Rows
 
 Status: not started
 
 Goal:
 
-Create verified structured terms dataset only after source policy and manual verification rules are accepted.
+Create verified structured terms dataset from manually reviewed Table 5 rows only after final interval normalization is explicitly approved.
 
 Acceptance criteria:
 
 - Table 5 source material is available and manually verified.
+- `TERMS_TABLE_5_VERIFICATION_REPORT.md` has 60 match, 0 unclear, 0 mismatch.
+- Final interval normalization for printed `29°` rows is explicitly approved.
 - Dataset is source-tracked.
 - Dataset metadata and row metadata are present.
+- Dataset stores printed range and normalized range for final intervals.
 - Only verified rows can be active.
 - Boundaries are explicit.
 - No decans or degree rulers are included.
 - No OCR-only rows are active.
 - Tests pass.
 
+# Sprint 10 Backlog
 
 ## Task 10.4 — Terms Lookup Engine / Fixtures
 

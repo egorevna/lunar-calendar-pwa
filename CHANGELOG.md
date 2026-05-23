@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-23 — Complete Task 10.3b Table 5 manual verification
+
+- Created `TERMS_TABLE_5_VERIFICATION_REPORT.md`.
+- Completed image-to-draft review of `TERMS_TABLE_5_TRANSCRIPTION_DRAFT.md` against source image `table5.png`.
+- Checked 60 rows: 60 match, 0 unclear, 0 mismatch.
+- Confirmed final printed end `29°` signs: Aries / Овен, Taurus / Телец, Libra / Весы and Scorpio / Скорпион.
+- Documented the final interval normalization question: printed source values stay as printed, while future active dataset likely needs `normalizedEndExclusive = 30` for final sign intervals.
+- Recommended Task 10.3c — Terms Dataset from Verified Table 5 Rows as the next task, with explicit approval of printed/normalized range storage before active dataset creation.
+- No active JS dataset, `src/termsData.js`, lookup engine, tests, OCR import, UI, app code, package files or PWA cache changes were created.
+
 ## 2026-05-23 — Complete Task 10.3a Table 5 transcription draft
 
 - Created `TERMS_TABLE_5_TRANSCRIPTION_DRAFT.md`.
