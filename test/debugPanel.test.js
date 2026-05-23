@@ -287,6 +287,112 @@ test('debug panel shows hidden natal planets UI status for general day', () => {
   assert.equal(text.includes('canConvertToUtc: no'), true);
 });
 
+test('debug panel shows safe natal aspects UI status for ready profile', () => {
+  const text = describeDebugPanel({
+    now: new Date('2026-05-15T00:40:00+03:00'),
+    natalAspectsUiDebug: {
+      activeProfileId: 'profile-egor',
+      activeProfileName: 'Егор',
+      hasActiveProfile: true,
+      panelStatus: 'ready',
+      userFacingNatalAspects: 'enabled',
+      reason: 'Натальные аспекты доступны в панели «Мои карты».',
+      natalPlanetsReady: true,
+      aspectEngine: 'enabled',
+      aspectSet: 'major only',
+      orbPolicy: 'configured',
+      aspectCount: 12,
+      formattedAspectCount: 12,
+      tenseCount: 3,
+      harmoniousCount: 5,
+      conjunctionCount: 4,
+      collapsibleDefault: 'collapsed',
+      profilePanelLocation: 'My Cards',
+      missingFields: [],
+      warnings: [],
+      stillNotSupported: {
+        transits: 'notSupported',
+        houses: 'notSupported',
+        ascMc: 'notSupported',
+        fixedStars: 'notSupported',
+        interpretations: 'notSupported',
+      },
+    },
+  });
+  const aspectSection = text
+    .split('\n\n')
+    .find((section) => section.startsWith('## Natal Aspects UI Debug'));
+
+  assert.equal(text.includes('Natal Aspects UI Debug'), true);
+  assert.equal(aspectSection.includes('activeProfileId: profile-egor'), true);
+  assert.equal(aspectSection.includes('activeProfileName: Егор'), true);
+  assert.equal(aspectSection.includes('hasActiveProfile: yes'), true);
+  assert.equal(aspectSection.includes('panelStatus: ready'), true);
+  assert.equal(aspectSection.includes('userFacingNatalAspects: enabled'), true);
+  assert.equal(aspectSection.includes('natalPlanetsReady: yes'), true);
+  assert.equal(aspectSection.includes('aspectEngine: enabled'), true);
+  assert.equal(aspectSection.includes('aspectSet: major only'), true);
+  assert.equal(aspectSection.includes('orbPolicy: configured'), true);
+  assert.equal(aspectSection.includes('aspectCount: 12'), true);
+  assert.equal(aspectSection.includes('formattedAspectCount: 12'), true);
+  assert.equal(aspectSection.includes('tenseCount: 3'), true);
+  assert.equal(aspectSection.includes('harmoniousCount: 5'), true);
+  assert.equal(aspectSection.includes('conjunctionCount: 4'), true);
+  assert.equal(aspectSection.includes('collapsibleDefault: collapsed'), true);
+  assert.equal(aspectSection.includes('profilePanelLocation: My Cards'), true);
+  assert.equal(aspectSection.includes('transits: notSupported'), true);
+  assert.equal(aspectSection.includes('houses: notSupported'), true);
+  assert.equal(aspectSection.includes('ascMc: notSupported'), true);
+  assert.equal(aspectSection.includes('fixedStars: notSupported'), true);
+  assert.equal(aspectSection.includes('interpretations: notSupported'), true);
+  assert.equal(aspectSection.includes('birthDate'), false);
+  assert.equal(aspectSection.includes('birthTime'), false);
+  assert.equal(aspectSection.includes('utcDateTime'), false);
+  assert.equal(aspectSection.includes('Europe/Moscow'), false);
+  assert.equal(aspectSection.includes('latitude'), false);
+  assert.equal(aspectSection.includes('longitude'), false);
+  assert.equal(aspectSection.includes('allowedOrb'), false);
+  assert.equal(aspectSection.includes('angle'), false);
+  assert.equal(aspectSection.includes('Солнце □ Луна'), false);
+  assert.equal(aspectSection.includes('орб'), false);
+});
+
+test('debug panel shows hidden natal aspects UI status for general day', () => {
+  const text = describeDebugPanel({
+    now: new Date('2026-05-15T00:40:00+03:00'),
+    natalAspectsUiDebug: {
+      activeProfileId: null,
+      activeProfileName: 'Общий день',
+      hasActiveProfile: false,
+      panelStatus: 'hidden',
+      userFacingNatalAspects: 'disabled',
+      reason: 'Общий день не является персональным профилем.',
+      natalPlanetsReady: false,
+      aspectEngine: 'enabled',
+      aspectSet: 'major only',
+      orbPolicy: 'configured',
+      aspectCount: 0,
+      formattedAspectCount: 0,
+      tenseCount: 0,
+      harmoniousCount: 0,
+      conjunctionCount: 0,
+      collapsibleDefault: 'collapsed',
+      profilePanelLocation: 'My Cards',
+      missingFields: [],
+      warnings: [],
+    },
+  });
+
+  assert.equal(text.includes('Natal Aspects UI Debug'), true);
+  assert.equal(text.includes('activeProfileId: null'), true);
+  assert.equal(text.includes('activeProfileName: Общий день'), true);
+  assert.equal(text.includes('hasActiveProfile: no'), true);
+  assert.equal(text.includes('panelStatus: hidden'), true);
+  assert.equal(text.includes('userFacingNatalAspects: disabled'), true);
+  assert.equal(text.includes('reason: Общий день не является персональным профилем.'), true);
+  assert.equal(text.includes('natalPlanetsReady: no'), true);
+});
+
 test('debug panel shows no-window fallback state and rejected candidates', () => {
   const text = describeDebugPanel({
     now: new Date('2026-05-15T00:40:00+03:00'),
@@ -320,6 +426,7 @@ test('ordinary markup does not contain provider validation debug details', () =>
 
   assert.equal(markup.includes('Natal Provider Validation'), false);
   assert.equal(markup.includes('Natal Planets UI Debug'), false);
+  assert.equal(markup.includes('Natal Aspects UI Debug'), false);
   assert.equal(markup.includes('longitudeValidation: passed'), false);
   assert.equal(markup.includes('speedValidation: passed'), false);
   assert.equal(markup.includes('retrogradeValidation: passed'), false);

@@ -623,7 +623,7 @@ Task 7.6 — Sprint 7 Hardening
 Текущий фокус:
 
 ```txt
-Task 8.6 — Natal Aspects Debug
+Task 8.7 — Sprint 8 Hardening
 ```
 
 Результат Task 8.1:
@@ -683,6 +683,19 @@ Task 8.6 — Natal Aspects Debug
 - aspect engine, provider calculations, package files, ephemeris data, houses, ASC / MC, transits and interpretations не менялись.
 
 Следующий шаг — Task 8.6, Natal Aspects Debug. Не начинать Task 8.6 без отдельной команды пользователя.
+
+Результат Task 8.6:
+
+- добавлен helper `src/natalAspectsDebug.js`;
+- добавлен `test/natalAspectsDebug.test.js`;
+- `?debug=1` теперь включает safe section `Natal Aspects UI Debug`;
+- debug показывает только active profile id/name, panel status, enabled/disabled state, natal planets readiness, aspect engine status, major-only aspect set, configured orb policy, aspect counts, collapsible default, `My Cards` location и still-not-supported flags;
+- missing fields и warnings выводятся только human-readable labels/copy;
+- debug не выводит raw birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes/speeds, raw aspect angles, `allowedOrb`, full planet/aspect list, houses, ASC / MC, transits или interpretations;
+- user-facing natal aspects UI, aspect engine, provider calculations, package files, ephemeris data, houses, ASC / MC, transits and interpretations не менялись;
+- PWA cache поднят до `lunar-calendar-v70`.
+
+Следующий шаг — Task 8.7, Sprint 8 Hardening. Не начинать Task 8.7 без отдельной команды пользователя.
 
 Результат Task 7.1:
 
@@ -759,10 +772,10 @@ Task 8.6 — Natal Aspects Debug
 Текущий следующий шаг:
 
 ```txt
-Task 8.6 — Natal Aspects Debug
+Task 8.7 — Sprint 8 Hardening
 ```
 
-Sprint 8 активен. Task 8.1, Task 8.2, Task 8.3, Task 8.4 и Task 8.5 завершены. Task 8.6 еще не начиналась.
+Sprint 8 активен. Task 8.1, Task 8.2, Task 8.3, Task 8.4, Task 8.5 и Task 8.6 завершены. Task 8.7 еще не начиналась.
 
 Ниже сохраняется краткая история предыдущего Sprint 5 и результаты текущего Sprint 6.
 
@@ -1980,7 +1993,7 @@ git commit -m "checkpoint before continuing in new codex chat"
 Текущая версия:
 
 ```txt
-lunar-calendar-v69
+lunar-calendar-v70
 ```
 
 ## Moscow Hardcoding
@@ -2030,13 +2043,13 @@ lunar-calendar-v69
 Сейчас следующий конкретный шаг:
 
 ```txt
-Task 8.6 — Natal Aspects Debug.
+Task 8.7 — Sprint 8 Hardening.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Работать только над Task 8.6 после отдельной команды пользователя.
+2. Работать только над Task 8.7 после отдельной команды пользователя.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
 5. Не делать натальную карту, персональные транзиты, дома, ASC/MC, интерпретации аспектов или фейковые личные расчеты.
@@ -2052,4 +2065,4 @@ Task 8.6 — Natal Aspects Debug.
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6 и Sprint 7 завершены. Sprint 7 добавил read-only natal planets panel внутри `Мои карты`: planet values показываются только для активного сохраненного профиля при `canConvertToUtc: true` и ready provider output, форматируются через `src/natalPlanetDisplay.js`, а missing coordinates не блокируют список планет. `Общий день`, unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap и nonexistent DST gap не показывают planet list. Safe `Natal Planets UI Debug` доступен только через `?debug=1` и показывает status/counts/capabilities без birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes, speed values or full planet list. Houses / ASC / MC / transits, chart wheel и personal ritual scoring остаются not supported. Sprint 8 — Natal Aspects Foundation активен; Task 8.1 создала `NATAL_ASPECTS_STRATEGY.md`, Task 8.2 добавила pure `src/natalAspectEngine.js`, Task 8.3 добавила synthetic/manual fixture validation layer, Task 8.4 добавила pure `src/natalAspectDisplay.js`, а Task 8.5 добавила collapsible `Натальные аспекты` section внутри `Мои карты`. Следующий шаг — Task 8.6, но debug слой аспектов не начинался.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6 и Sprint 7 завершены. Sprint 7 добавил read-only natal planets panel внутри `Мои карты`: planet values показываются только для активного сохраненного профиля при `canConvertToUtc: true` и ready provider output, форматируются через `src/natalPlanetDisplay.js`, а missing coordinates не блокируют список планет. `Общий день`, unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap и nonexistent DST gap не показывают planet list. Safe `Natal Planets UI Debug` доступен только через `?debug=1` и показывает status/counts/capabilities без birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes, speed values or full planet list. Houses / ASC / MC / transits, chart wheel и personal ritual scoring остаются not supported. Sprint 8 — Natal Aspects Foundation активен; Task 8.1 создала `NATAL_ASPECTS_STRATEGY.md`, Task 8.2 добавила pure `src/natalAspectEngine.js`, Task 8.3 добавила synthetic/manual fixture validation layer, Task 8.4 добавила pure `src/natalAspectDisplay.js`, Task 8.5 добавила collapsible `Натальные аспекты` section внутри `Мои карты`, а Task 8.6 добавила safe `Natal Aspects UI Debug`. Следующий шаг — Task 8.7, но hardening не начинался.

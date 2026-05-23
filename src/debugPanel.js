@@ -1,10 +1,11 @@
 import { getNatalEngineCapabilities } from './natalEngine.js';
+import { createNatalAspectsDebugSummaryFromStorage } from './natalAspectsDebug.js';
 import { createNatalPlanetsDebugSummaryFromStorage } from './natalPlanetsDebug.js';
 import { getNatalProviderValidationSummary } from './natalProviderValidationSummary.js';
 import { getPlanetaryProviderCapabilities } from './planetaryPositionProvider.js';
 import { formatAspect, formatPlanet } from './vocDisplay.js';
 
-export const APP_CACHE_VERSION = 'lunar-calendar-v69';
+export const APP_CACHE_VERSION = 'lunar-calendar-v70';
 
 export function isDebugMode(search = window.location.search) {
   return new URLSearchParams(search).get('debug') === '1';
@@ -25,6 +26,7 @@ export function describeDebugPanel(context = {}) {
     personalDebug,
     natalEngineDebug,
     natalPlanetsUiDebug,
+    natalAspectsUiDebug,
   } = context;
 
   return [
@@ -77,6 +79,7 @@ export function describeDebugPanel(context = {}) {
     formatNatalEngineDebug(natalEngineDebug ?? createNatalEngineDebug(personalDebug)),
     formatNatalProviderValidation(getNatalProviderValidationSummary()),
     formatNatalPlanetsUiDebug(natalPlanetsUiDebug ?? createNatalPlanetsDebugSummaryFromStorage()),
+    formatNatalAspectsUiDebug(natalAspectsUiDebug ?? createNatalAspectsDebugSummaryFromStorage()),
     formatBestWindowsDebug(bestWindowsDebug),
   ].filter(Boolean).join('\n\n');
 }
@@ -293,6 +296,39 @@ function formatNatalPlanetsUiDebug(debug) {
     `transits: ${stillNotSupported.transits ?? 'notSupported'}`,
     `aspects: ${stillNotSupported.aspects ?? 'notSupported'}`,
     `orbs: ${stillNotSupported.orbs ?? 'notSupported'}`,
+    `missingFields: ${formatList(debug.missingFields)}`,
+    `warnings: ${formatList(debug.warnings)}`,
+  ]);
+}
+
+function formatNatalAspectsUiDebug(debug) {
+  if (!debug) return '';
+
+  const stillNotSupported = debug.stillNotSupported ?? {};
+
+  return formatSection('Natal Aspects UI Debug', [
+    `activeProfileId: ${debug.activeProfileId ?? 'null'}`,
+    `activeProfileName: ${debug.activeProfileName ?? 'Общий день'}`,
+    `hasActiveProfile: ${formatDebugBoolean(debug.hasActiveProfile)}`,
+    `panelStatus: ${debug.panelStatus ?? 'hidden'}`,
+    `userFacingNatalAspects: ${debug.userFacingNatalAspects ?? 'disabled'}`,
+    `reason: ${debug.reason ?? 'нет данных'}`,
+    `natalPlanetsReady: ${formatDebugBoolean(debug.natalPlanetsReady)}`,
+    `aspectEngine: ${debug.aspectEngine ?? 'enabled'}`,
+    `aspectSet: ${debug.aspectSet ?? 'major only'}`,
+    `orbPolicy: ${debug.orbPolicy ?? 'configured'}`,
+    `aspectCount: ${debug.aspectCount ?? 0}`,
+    `formattedAspectCount: ${debug.formattedAspectCount ?? 0}`,
+    `tenseCount: ${debug.tenseCount ?? 0}`,
+    `harmoniousCount: ${debug.harmoniousCount ?? 0}`,
+    `conjunctionCount: ${debug.conjunctionCount ?? 0}`,
+    `collapsibleDefault: ${debug.collapsibleDefault ?? 'collapsed'}`,
+    `profilePanelLocation: ${debug.profilePanelLocation ?? 'My Cards'}`,
+    `transits: ${stillNotSupported.transits ?? 'notSupported'}`,
+    `houses: ${stillNotSupported.houses ?? 'notSupported'}`,
+    `ascMc: ${stillNotSupported.ascMc ?? 'notSupported'}`,
+    `fixedStars: ${stillNotSupported.fixedStars ?? 'notSupported'}`,
+    `interpretations: ${stillNotSupported.interpretations ?? 'notSupported'}`,
     `missingFields: ${formatList(debug.missingFields)}`,
     `warnings: ${formatList(debug.warnings)}`,
   ]);

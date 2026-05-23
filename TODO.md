@@ -1966,10 +1966,38 @@ Add a collapsible natal aspects section inside `Мои карты` using already
 - PWA cache updated to `lunar-calendar-v69`.
 - Provider calculations, aspect engine, package files, ephemeris data, transits, houses, ASC / MC and interpretations were not changed.
 
+# Completed Task
+
+## Task 8.6 — Natal Aspects Debug
+
+Status: done
+
+### Goal
+
+Add a safe debug/status layer for the natal aspects UI without exposing raw profile or aspect data.
+
+### Acceptance Criteria
+
+- `?debug=1` includes `Natal Aspects UI Debug`.
+- Ordinary UI does not include debug output.
+- Debug shows only status, counts, configured aspect support and unsupported feature flags.
+- Debug does not show raw birth data, raw planet values, raw aspect angles, `allowedOrb`, full aspect lists, houses, ASC / MC, transits or interpretations.
+- Tests pass.
+
+### Result
+
+- Added `src/natalAspectsDebug.js`.
+- Added `test/natalAspectsDebug.test.js`.
+- Extended `src/debugPanel.js` with a safe `Natal Aspects UI Debug` section.
+- Debug shows active profile id/name, ready/hidden/incomplete status, enabled/disabled user-facing aspect state, natal planets readiness, aspect engine status, major-only aspect set, configured orb policy, aspect counts and still-not-supported feature flags.
+- Missing fields and warnings are human-readable only.
+- Debug does not include raw birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes/speeds, raw aspect angles, `allowedOrb`, full planet/aspect lists, houses, ASC / MC, transits or interpretations.
+- PWA cache updated to `lunar-calendar-v70`.
+- User-facing natal aspects UI, aspect engine, provider calculations, package files, ephemeris data, houses, ASC / MC, transits and interpretations were not changed.
+
 # Sprint 8 Backlog
 
-- Active next: Task 8.6 — Natal Aspects Debug.
-- Task 8.7 — Sprint 8 Hardening.
+- Active next: Task 8.7 — Sprint 8 Hardening.
 
 # Security Backlog
 

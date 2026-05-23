@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-05-23 — Complete Task 8.6 natal aspects debug
+
+- Added `src/natalAspectsDebug.js`.
+- Added `test/natalAspectsDebug.test.js`.
+- Extended `src/debugPanel.js` with a safe `Natal Aspects UI Debug` section.
+- Debug shows only profile status, enabled / disabled state, natal planets readiness, aspect engine status, major-only aspect set, configured orb policy, aspect counts, collapsible default, `My Cards` location and unsupported feature flags.
+- Missing fields and warnings are human-readable only.
+- Debug does not expose raw birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes/speeds, raw aspect angles, `allowedOrb`, full planet/aspect lists, houses, ASC / MC, transits or interpretations.
+- PWA cache updated to `lunar-calendar-v70`.
+- User-facing natal aspects UI, aspect engine, provider calculations, package files, ephemeris data, houses, ASC / MC, transits and interpretations were not changed.
+- Task 8.7 — Sprint 8 Hardening is next, but was not started.
+
 ## 2026-05-23 — Complete Task 8.5 natal aspects collapsible UI
 
 - Added `src/natalAspectsForProfile.js`.

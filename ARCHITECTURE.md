@@ -506,6 +506,19 @@ Current responsibilities:
 
 This helper does not return raw birth date, birth time, UTC datetime, timezone values, coordinates, raw planet longitudes, speed values, full profile JSON, or the full active-profile planet list.
 
+## `src/natalAspectsDebug.js`
+
+Builds the safe debug summary for the read-only natal aspects UI state.
+
+Current responsibilities:
+
+- read the active profile only for `?debug=1` debug output;
+- summarize panel status, user-facing enabled / disabled state, natal planets readiness, aspect engine status, major-only aspect set, configured orb policy, aspect counts, collapsible default and profile-panel location;
+- map missing profile fields to human-readable labels;
+- keep transits, houses, ASC / MC, fixed stars and interpretations explicitly `notSupported`.
+
+This helper does not return raw birth date, birth time, UTC datetime, timezone values, coordinates, raw planet longitudes, speed values, raw aspect angles, `allowedOrb`, full profile JSON, or the full active-profile aspect list.
+
 ## `src/natalPlanetDisplay.js`
 
 Defines pure display helpers for already-calculated natal planet positions.
@@ -857,7 +870,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v69
+lunar-calendar-v70
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -954,9 +967,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 35. `src/natalPlanetsDebug.js` converts active-profile natal planets UI state into a sanitized debug summary with status/counts/capabilities only.
 
-36. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, provider validation summary and natal planets UI summary without birth details.
+36. `src/natalAspectsDebug.js` converts active-profile natal aspects UI state into a sanitized debug summary with status/counts/capabilities only.
 
-36. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
+37. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, provider validation summary, natal planets UI summary and natal aspects UI summary without birth details.
+
+38. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 
@@ -1308,7 +1323,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v69
+lunar-calendar-v70
 ```
 
 Important operational rule:
@@ -1609,7 +1624,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v69
+lunar-calendar-v70
 ```
 
 If this value changes in `sw.js`, update this section.
