@@ -393,6 +393,127 @@ test('debug panel shows hidden natal aspects UI status for general day', () => {
   assert.equal(text.includes('natalPlanetsReady: no'), true);
 });
 
+test('debug panel shows safe essential dignities UI status for ready profile', () => {
+  const text = describeDebugPanel({
+    now: new Date('2026-05-15T00:40:00+03:00'),
+    essentialDignitiesUiDebug: {
+      activeProfileId: 'profile-egor',
+      activeProfileName: 'Егор',
+      hasActiveProfile: true,
+      panelStatus: 'ready',
+      userFacingEssentialDignities: 'enabled',
+      reason: 'Достоинства планет доступны в панели «Мои карты».',
+      natalPlanetsReady: true,
+      dignityEngine: 'enabled',
+      sourcePolicy: 'classical-traditional-seven-planets',
+      modernOuterPlanets: 'label-only',
+      scoringModel: 'enabled',
+      scoreTotal: 8,
+      dignityCount: 3,
+      debilityCount: 1,
+      neutralCount: 6,
+      modernLabelCount: 0,
+      formattedDignityCount: 4,
+      collapsibleDefault: 'collapsed',
+      profilePanelLocation: 'My Cards',
+      deferredFeatures: {
+        terms: 'deferred',
+        decans: 'deferred',
+        degreeRulers: 'deferred',
+        exactExaltationDegrees: 'deferred',
+        VronskyTables: 'deferred',
+      },
+      stillNotSupported: {
+        houses: 'notSupported',
+        ascMc: 'notSupported',
+        transits: 'notSupported',
+        interpretations: 'notSupported',
+      },
+      missingFields: [],
+      warnings: [],
+    },
+  });
+  const dignitySection = text
+    .split('\n\n')
+    .find((section) => section.startsWith('## Essential Dignities UI Debug'));
+
+  assert.equal(text.includes('Essential Dignities UI Debug'), true);
+  assert.equal(dignitySection.includes('activeProfileId: profile-egor'), true);
+  assert.equal(dignitySection.includes('activeProfileName: Егор'), true);
+  assert.equal(dignitySection.includes('hasActiveProfile: yes'), true);
+  assert.equal(dignitySection.includes('panelStatus: ready'), true);
+  assert.equal(dignitySection.includes('userFacingEssentialDignities: enabled'), true);
+  assert.equal(dignitySection.includes('natalPlanetsReady: yes'), true);
+  assert.equal(dignitySection.includes('dignityEngine: enabled'), true);
+  assert.equal(dignitySection.includes('sourcePolicy: classical-traditional-seven-planets'), true);
+  assert.equal(dignitySection.includes('modernOuterPlanets: label-only'), true);
+  assert.equal(dignitySection.includes('scoringModel: enabled'), true);
+  assert.equal(dignitySection.includes('scoreTotal: 8'), true);
+  assert.equal(dignitySection.includes('dignityCount: 3'), true);
+  assert.equal(dignitySection.includes('debilityCount: 1'), true);
+  assert.equal(dignitySection.includes('neutralCount: 6'), true);
+  assert.equal(dignitySection.includes('modernLabelCount: 0'), true);
+  assert.equal(dignitySection.includes('formattedDignityCount: 4'), true);
+  assert.equal(dignitySection.includes('collapsibleDefault: collapsed'), true);
+  assert.equal(dignitySection.includes('profilePanelLocation: My Cards'), true);
+  assert.equal(dignitySection.includes('terms: deferred'), true);
+  assert.equal(dignitySection.includes('decans: deferred'), true);
+  assert.equal(dignitySection.includes('degreeRulers: deferred'), true);
+  assert.equal(dignitySection.includes('exactExaltationDegrees: deferred'), true);
+  assert.equal(dignitySection.includes('VronskyTables: deferred'), true);
+  assert.equal(dignitySection.includes('houses: notSupported'), true);
+  assert.equal(dignitySection.includes('ascMc: notSupported'), true);
+  assert.equal(dignitySection.includes('transits: notSupported'), true);
+  assert.equal(dignitySection.includes('interpretations: notSupported'), true);
+  assert.equal(dignitySection.includes('birthDate'), false);
+  assert.equal(dignitySection.includes('birthTime'), false);
+  assert.equal(dignitySection.includes('utcDateTime'), false);
+  assert.equal(dignitySection.includes('Europe/Moscow'), false);
+  assert.equal(dignitySection.includes('latitude'), false);
+  assert.equal(dignitySection.includes('longitude'), false);
+  assert.equal(dignitySection.includes('coordinates'), false);
+  assert.equal(dignitySection.includes('Марс в Овне'), false);
+  assert.equal(dignitySection.includes('score:'), false);
+});
+
+test('debug panel shows hidden essential dignities UI status for general day', () => {
+  const text = describeDebugPanel({
+    now: new Date('2026-05-15T00:40:00+03:00'),
+    essentialDignitiesUiDebug: {
+      activeProfileId: null,
+      activeProfileName: 'Общий день',
+      hasActiveProfile: false,
+      panelStatus: 'hidden',
+      userFacingEssentialDignities: 'disabled',
+      reason: 'Общий день не является персональным профилем.',
+      natalPlanetsReady: false,
+      dignityEngine: 'enabled',
+      sourcePolicy: 'classical-traditional-seven-planets',
+      modernOuterPlanets: 'label-only',
+      scoringModel: 'enabled',
+      scoreTotal: 0,
+      dignityCount: 0,
+      debilityCount: 0,
+      neutralCount: 0,
+      modernLabelCount: 0,
+      formattedDignityCount: 0,
+      collapsibleDefault: 'collapsed',
+      profilePanelLocation: 'My Cards',
+      missingFields: [],
+      warnings: [],
+    },
+  });
+
+  assert.equal(text.includes('Essential Dignities UI Debug'), true);
+  assert.equal(text.includes('activeProfileId: null'), true);
+  assert.equal(text.includes('activeProfileName: Общий день'), true);
+  assert.equal(text.includes('hasActiveProfile: no'), true);
+  assert.equal(text.includes('panelStatus: hidden'), true);
+  assert.equal(text.includes('userFacingEssentialDignities: disabled'), true);
+  assert.equal(text.includes('reason: Общий день не является персональным профилем.'), true);
+  assert.equal(text.includes('natalPlanetsReady: no'), true);
+});
+
 test('debug panel shows no-window fallback state and rejected candidates', () => {
   const text = describeDebugPanel({
     now: new Date('2026-05-15T00:40:00+03:00'),
@@ -427,6 +548,7 @@ test('ordinary markup does not contain provider validation debug details', () =>
   assert.equal(markup.includes('Natal Provider Validation'), false);
   assert.equal(markup.includes('Natal Planets UI Debug'), false);
   assert.equal(markup.includes('Natal Aspects UI Debug'), false);
+  assert.equal(markup.includes('Essential Dignities UI Debug'), false);
   assert.equal(markup.includes('longitudeValidation: passed'), false);
   assert.equal(markup.includes('speedValidation: passed'), false);
   assert.equal(markup.includes('retrogradeValidation: passed'), false);

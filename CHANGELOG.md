@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-23 — Complete Task 9.7 essential dignities debug
+
+- Added `src/essentialDignitiesDebug.js`.
+- Added safe `Essential Dignities UI Debug` output to `?debug=1`.
+- Debug shows only active-profile status, panel status, enabled / disabled state, natalPlanetsReady, source policy, score/count summaries, collapsed default, profile-panel location and deferred/notSupported feature flags.
+- Deferred flags show terms, decans, degree rulers, exact exaltation degrees and Vronsky tables as `deferred`.
+- Not-supported flags show houses, ASC / MC, transits and interpretations as `notSupported`.
+- Added `test/essentialDignitiesDebug.test.js` and extended debug panel tests.
+- Updated PWA cache and debug cache version to `lunar-calendar-v72`.
+- User-facing UI, dataset, lookup engine, display helper, provider calculations, package files, terms / decans / degree rulers, Vronsky rows, houses, ASC / MC, transits, interpretations and ritual scoring were not changed.
+
 ## 2026-05-23 — Complete Task 9.6 essential dignities collapsible UI
 
 - Added `src/essentialDignitiesForProfile.js` to connect ready natal planet output to the essential dignity lookup and display helpers.

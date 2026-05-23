@@ -2205,11 +2205,11 @@ Task 9.6 must not add new dignity rules, terms / decans / degree rulers, Vronsky
 - `test/essentialDignitiesForProfile.test.js`, profile UI tests and markup tests cover the helper, shell placement, collapsed state and exclusions.
 - Task 9.7 remains next.
 
-# Active Task
+# Completed Task
 
 ## Task 9.7 — Essential Dignities Debug
 
-Status: not started
+Status: done
 
 ### Goal
 
@@ -2219,9 +2219,29 @@ Add a safe debug/status layer for the essential dignities UI.
 
 Task 9.7 must not add new dignity rules, terms / decans / degree rulers, Vronsky degree tables, houses, ASC / MC, transits, interpretations or ritual scoring.
 
+### Acceptance Criteria
+
+- `src/essentialDignitiesDebug.js` exists.
+- `?debug=1` includes `Essential Dignities UI Debug`.
+- Debug output shows only safe status, counts, source policy, deferred feature flags and notSupported capabilities.
+- Debug output does not expose raw birth data, UTC datetime, timezone values, coordinates, raw planet values, full dignity result lists, terms / decans / degree ruler rows, Vronsky rows, houses, ASC / MC values, transits, interpretations or ritual scoring.
+- Existing Natal Planets UI Debug, Natal Aspects UI Debug and Natal Provider Validation debug sections continue to work.
+- User-facing essential dignities UI behavior did not change.
+- Task 9.8 remains next.
+
+# Active Task
+
+## Task 9.8 — Sprint 9 Hardening
+
+Status: not started
+
+### Goal
+
+Final hardening for Sprint 9.
+
 # Sprint 9 Backlog
 
-- Task 9.8 — Sprint 9 Hardening.
+No remaining Sprint 9 implementation tasks before hardening.
 
 # Security Backlog
 

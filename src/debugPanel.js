@@ -1,11 +1,12 @@
 import { getNatalEngineCapabilities } from './natalEngine.js';
+import { createEssentialDignitiesDebugSummaryFromStorage } from './essentialDignitiesDebug.js';
 import { createNatalAspectsDebugSummaryFromStorage } from './natalAspectsDebug.js';
 import { createNatalPlanetsDebugSummaryFromStorage } from './natalPlanetsDebug.js';
 import { getNatalProviderValidationSummary } from './natalProviderValidationSummary.js';
 import { getPlanetaryProviderCapabilities } from './planetaryPositionProvider.js';
 import { formatAspect, formatPlanet } from './vocDisplay.js';
 
-export const APP_CACHE_VERSION = 'lunar-calendar-v70';
+export const APP_CACHE_VERSION = 'lunar-calendar-v72';
 
 export function isDebugMode(search = window.location.search) {
   return new URLSearchParams(search).get('debug') === '1';
@@ -27,6 +28,7 @@ export function describeDebugPanel(context = {}) {
     natalEngineDebug,
     natalPlanetsUiDebug,
     natalAspectsUiDebug,
+    essentialDignitiesUiDebug,
   } = context;
 
   return [
@@ -80,6 +82,9 @@ export function describeDebugPanel(context = {}) {
     formatNatalProviderValidation(getNatalProviderValidationSummary()),
     formatNatalPlanetsUiDebug(natalPlanetsUiDebug ?? createNatalPlanetsDebugSummaryFromStorage()),
     formatNatalAspectsUiDebug(natalAspectsUiDebug ?? createNatalAspectsDebugSummaryFromStorage()),
+    formatEssentialDignitiesUiDebug(
+      essentialDignitiesUiDebug ?? createEssentialDignitiesDebugSummaryFromStorage(),
+    ),
     formatBestWindowsDebug(bestWindowsDebug),
   ].filter(Boolean).join('\n\n');
 }
@@ -328,6 +333,46 @@ function formatNatalAspectsUiDebug(debug) {
     `houses: ${stillNotSupported.houses ?? 'notSupported'}`,
     `ascMc: ${stillNotSupported.ascMc ?? 'notSupported'}`,
     `fixedStars: ${stillNotSupported.fixedStars ?? 'notSupported'}`,
+    `interpretations: ${stillNotSupported.interpretations ?? 'notSupported'}`,
+    `missingFields: ${formatList(debug.missingFields)}`,
+    `warnings: ${formatList(debug.warnings)}`,
+  ]);
+}
+
+function formatEssentialDignitiesUiDebug(debug) {
+  if (!debug) return '';
+
+  const deferredFeatures = debug.deferredFeatures ?? {};
+  const stillNotSupported = debug.stillNotSupported ?? {};
+
+  return formatSection('Essential Dignities UI Debug', [
+    `activeProfileId: ${debug.activeProfileId ?? 'null'}`,
+    `activeProfileName: ${debug.activeProfileName ?? 'Общий день'}`,
+    `hasActiveProfile: ${formatDebugBoolean(debug.hasActiveProfile)}`,
+    `panelStatus: ${debug.panelStatus ?? 'hidden'}`,
+    `userFacingEssentialDignities: ${debug.userFacingEssentialDignities ?? 'disabled'}`,
+    `reason: ${debug.reason ?? 'нет данных'}`,
+    `natalPlanetsReady: ${formatDebugBoolean(debug.natalPlanetsReady)}`,
+    `dignityEngine: ${debug.dignityEngine ?? 'enabled'}`,
+    `sourcePolicy: ${debug.sourcePolicy ?? 'classical-traditional-seven-planets'}`,
+    `modernOuterPlanets: ${debug.modernOuterPlanets ?? 'label-only'}`,
+    `scoringModel: ${debug.scoringModel ?? 'enabled'}`,
+    `scoreTotal: ${debug.scoreTotal ?? 0}`,
+    `dignityCount: ${debug.dignityCount ?? 0}`,
+    `debilityCount: ${debug.debilityCount ?? 0}`,
+    `neutralCount: ${debug.neutralCount ?? 0}`,
+    `modernLabelCount: ${debug.modernLabelCount ?? 0}`,
+    `formattedDignityCount: ${debug.formattedDignityCount ?? 0}`,
+    `collapsibleDefault: ${debug.collapsibleDefault ?? 'collapsed'}`,
+    `profilePanelLocation: ${debug.profilePanelLocation ?? 'My Cards'}`,
+    `terms: ${deferredFeatures.terms ?? 'deferred'}`,
+    `decans: ${deferredFeatures.decans ?? 'deferred'}`,
+    `degreeRulers: ${deferredFeatures.degreeRulers ?? 'deferred'}`,
+    `exactExaltationDegrees: ${deferredFeatures.exactExaltationDegrees ?? 'deferred'}`,
+    `VronskyTables: ${deferredFeatures.VronskyTables ?? 'deferred'}`,
+    `houses: ${stillNotSupported.houses ?? 'notSupported'}`,
+    `ascMc: ${stillNotSupported.ascMc ?? 'notSupported'}`,
+    `transits: ${stillNotSupported.transits ?? 'notSupported'}`,
     `interpretations: ${stillNotSupported.interpretations ?? 'notSupported'}`,
     `missingFields: ${formatList(debug.missingFields)}`,
     `warnings: ${formatList(debug.warnings)}`,

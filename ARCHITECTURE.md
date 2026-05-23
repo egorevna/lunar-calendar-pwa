@@ -580,6 +580,20 @@ Current responsibilities:
 
 This helper does not return raw birth date, birth time, UTC datetime, timezone values, coordinates, raw planet longitudes, speed values, raw aspect angles, `allowedOrb`, full profile JSON, or the full active-profile aspect list.
 
+## `src/essentialDignitiesDebug.js`
+
+Builds the safe debug summary for the read-only essential dignities UI state.
+
+Current responsibilities:
+
+- read the active profile only for `?debug=1` debug output;
+- summarize panel status, user-facing enabled / disabled state, natal planets readiness, dignity engine status, source policy, modern outer-planet label-only policy, scoring model, score/count summary, collapsible default and profile-panel location;
+- map missing profile fields to human-readable labels;
+- keep terms, decans, degree rulers, exact exaltation degrees and Vronsky tables explicitly `deferred`;
+- keep houses, ASC / MC, transits and interpretations explicitly `notSupported`.
+
+This helper does not return raw birth date, birth time, UTC datetime, timezone values, coordinates, raw planet longitudes, speed values, full profile JSON, full natal planet lists, full dignity result lists, exact exaltation degree values, terms / decans / degree ruler rows, Vronsky rows, houses / ASC / MC values, transits, interpretations or ritual scoring.
+
 ## `src/natalPlanetDisplay.js`
 
 Defines pure display helpers for already-calculated natal planet positions.
@@ -931,7 +945,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v70
+lunar-calendar-v72
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -1038,9 +1052,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 40. `src/natalAspectsDebug.js` converts active-profile natal aspects UI state into a sanitized debug summary with status/counts/capabilities only.
 
-41. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, provider validation summary, natal planets UI summary and natal aspects UI summary without birth details.
+41. `src/essentialDignitiesDebug.js` converts active-profile essential dignities UI state into a sanitized debug summary with status/counts/source policy/deferred capability labels only.
 
-42. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
+42. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, provider validation summary, natal planets UI summary, natal aspects UI summary and essential dignities UI summary without birth details.
+
+43. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 
@@ -1343,6 +1359,8 @@ Current debug information:
 - safe personal readiness status and unavailable personal-calculation capabilities
 - safe natal engine/provider status and unavailable natal feature capabilities
 - safe natal planets UI status, user-facing enabled / disabled state, planet counts and unsupported feature labels
+- safe natal aspects UI status, user-facing enabled / disabled state, aspect counts and unsupported feature labels
+- safe essential dignities UI status, source policy, score/count summaries, deferred feature labels and unsupported feature labels
 
 Files involved:
 
@@ -1351,6 +1369,8 @@ Files involved:
 - `src/debugPanel.js` — query detection and text formatting
 - `src/natalProviderValidationSummary.js` — safe provider validation summary for debug output
 - `src/natalPlanetsDebug.js` — safe natal planets UI summary for debug output
+- `src/natalAspectsDebug.js` — safe natal aspects UI summary for debug output
+- `src/essentialDignitiesDebug.js` — safe essential dignities UI summary for debug output
 - `src/styles.css` — simple technical panel styling
 
 Visibility:
@@ -1392,7 +1412,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v70
+lunar-calendar-v72
 ```
 
 Important operational rule:
@@ -1693,7 +1713,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v70
+lunar-calendar-v72
 ```
 
 If this value changes in `sw.js`, update this section.
