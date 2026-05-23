@@ -1,4 +1,5 @@
 import { getNatalPlanetsForProfile } from './natalPlanetsForProfile.js';
+import { getNatalAspectsForProfile } from './natalAspectsForProfile.js';
 import { getPersonalRecommendations } from './personalRecommendations.js';
 
 export const GENERAL_PROFILE_LABEL = 'Общий день';
@@ -15,6 +16,10 @@ const NATAL_PLANETS_READINESS_TITLE = 'Натальные планеты';
 const NATAL_PLANETS_READINESS_STATUS = 'Пока недоступны для показа.';
 const NATAL_PLANETS_READINESS_EXPLANATION = 'Для точного расчета нужны полные данные рождения.';
 const NATAL_PLANETS_LIMITATION = 'Дома, ASC/MC и транзиты пока не рассчитываются.';
+const NATAL_ASPECTS_TITLE = 'Натальные аспекты';
+const NATAL_ASPECTS_STATUS = 'Пока недоступны.';
+const NATAL_ASPECTS_EXPLANATION = 'Сначала нужен расчет натальных планет.';
+const NATAL_ASPECTS_READY_LIMITATION = 'Это натальные аспекты между планетами, не транзиты.';
 
 const MISSING_FIELD_LABELS = {
   birthDate: 'дата рождения',
@@ -177,6 +182,41 @@ export function describeNatalPlanetsReadinessBlock(profile = null) {
     missingTitle: missingFields.length ? 'Нужно уточнить:' : '',
     missingFields,
     limitations: [NATAL_PLANETS_LIMITATION],
+  };
+}
+
+export function describeNatalAspectsBlock(profile = null) {
+  if (!profile) {
+    return {
+      hidden: true,
+      title: '',
+      status: '',
+      explanation: '',
+      profileId: '',
+      summary: '',
+      canToggleAspects: false,
+      aspects: [],
+      limitations: [],
+    };
+  }
+
+  const natalAspects = getNatalAspectsForProfile(profile);
+  const formattedAspects = Array.isArray(natalAspects.formattedAspects)
+    ? natalAspects.formattedAspects
+    : [];
+  const hasAspects = natalAspects.status === 'ready' && formattedAspects.length > 0;
+  const isReady = natalAspects.status === 'ready';
+
+  return {
+    hidden: false,
+    title: NATAL_ASPECTS_TITLE,
+    status: isReady ? '' : NATAL_ASPECTS_STATUS,
+    explanation: isReady ? '' : NATAL_ASPECTS_EXPLANATION,
+    profileId: profileId(profile),
+    summary: isReady ? natalAspects.summary.text : '',
+    canToggleAspects: hasAspects,
+    aspects: hasAspects ? formattedAspects.map((aspect) => aspect.text) : [],
+    limitations: isReady ? [NATAL_ASPECTS_READY_LIMITATION] : [],
   };
 }
 

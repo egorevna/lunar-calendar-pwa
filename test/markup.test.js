@@ -90,9 +90,39 @@ test('home screen renders profile shell', () => {
   assert.equal(html.includes('data-natal-planets-readiness'), true);
   assert.equal(html.includes('data-natal-planets-readiness-title'), true);
   assert.equal(html.includes('Натальные планеты'), true);
+  assert.equal(html.includes('data-natal-aspects'), true);
+  assert.equal(html.includes('data-natal-aspects-title'), true);
+  assert.equal(html.includes('Натальные аспекты'), true);
   assert.equal(html.includes('Добавление профиля — следующий шаг.'), false);
   assert.equal(html.includes('Натальная карта'), false);
   assert.equal(html.includes('Персональные транзиты'), false);
+});
+
+test('natal aspects shell stays inside profiles panel and has no static aspect values', () => {
+  const panelStart = html.indexOf('data-profiles-panel');
+  const panelEnd = html.indexOf('class="glass-card mode-selector"');
+  const panelHtml = html.slice(panelStart, panelEnd);
+  const planetsStart = html.indexOf('data-natal-planets-readiness');
+  const aspectsStart = html.indexOf('data-natal-aspects');
+  const aspectsEnd = html.indexOf('class="profile-create-actions"');
+  const aspectsHtml = html.slice(aspectsStart, aspectsEnd);
+
+  assert.equal(panelStart >= 0, true);
+  assert.equal(aspectsStart > planetsStart, true);
+  assert.equal(aspectsStart < panelEnd, true);
+  assert.equal(panelHtml.includes('data-natal-aspects hidden'), true);
+  assert.equal(aspectsHtml.includes('data-natal-aspects-summary'), true);
+  assert.equal(aspectsHtml.includes('data-natal-aspects-toggle'), true);
+  assert.equal(aspectsHtml.includes('data-natal-aspects-list'), true);
+  assert.equal(aspectsHtml.includes('data-natal-aspects-list hidden'), true);
+  assert.equal(aspectsHtml.includes('Солнце □ Луна'), false);
+  assert.equal(aspectsHtml.includes('Венера △ Марс'), false);
+  assert.equal(aspectsHtml.includes('birthDate'), false);
+  assert.equal(aspectsHtml.includes('birthTime'), false);
+  assert.equal(aspectsHtml.includes('utcDateTime'), false);
+  assert.equal(aspectsHtml.includes('latitude'), false);
+  assert.equal(aspectsHtml.includes('longitude'), false);
+  assert.equal(aspectsHtml.includes('allowedOrb'), false);
 });
 
 test('natal planets shell stays inside profiles panel and has no static planet values', () => {
@@ -217,14 +247,14 @@ test('profiles panel opens in list mode with add button available', () => {
   assert.equal(html.includes('data-profile-add'), true);
   assert.equal(html.includes('+ Добавить профиль'), true);
   assert.equal(
-    appJs.includes('if (shouldOpen) {\n    resetNatalPlanetsDisclosure();\n    setProfileFormOpen(false);\n  }'),
+    appJs.includes('if (shouldOpen) {\n    resetNatalProfileDisclosures();\n    setProfileFormOpen(false);\n  }'),
     true,
   );
 });
 
 test('profile selection resets create and edit form state', () => {
   assert.equal(
-    appJs.includes('if (result.ok) {\n      resetNatalPlanetsDisclosure();\n      setProfileFormOpen(false);\n      closeProfilesPanel();'),
+    appJs.includes('if (result.ok) {\n      resetNatalProfileDisclosures();\n      setProfileFormOpen(false);\n      closeProfilesPanel();'),
     true,
   );
 });
@@ -237,13 +267,22 @@ test('profile edit form opens only from explicit edit action', () => {
 
 test('natal planets list is collapsible and resets on profile changes', () => {
   assert.equal(appJs.includes('let expandedNatalPlanetsProfileId = null;'), true);
-  assert.equal(appJs.includes('function resetNatalPlanetsDisclosure()'), true);
+  assert.equal(appJs.includes('function resetNatalProfileDisclosures()'), true);
   assert.equal(appJs.includes('const isExpanded = view.canTogglePlanets'), true);
   assert.equal(appJs.includes("elements.natalPlanetsToggle.textContent = isExpanded ? 'Скрыть' : 'Показать';"), true);
   assert.equal(appJs.includes('elements.natalPlanetsList.hidden = !isExpanded;'), true);
   assert.equal(appJs.includes('expandedNatalPlanetsProfileId = isExpanded ? null : profileId;'), true);
-  assert.equal(appJs.includes('resetNatalPlanetsDisclosure();\n    setProfileFormOpen(false);'), true);
-  assert.equal(appJs.includes('resetNatalPlanetsDisclosure();\n      setProfileFormOpen(false);'), true);
+  assert.equal(appJs.includes('resetNatalProfileDisclosures();\n    setProfileFormOpen(false);'), true);
+  assert.equal(appJs.includes('resetNatalProfileDisclosures();\n      setProfileFormOpen(false);'), true);
+});
+
+test('natal aspects list is collapsible and resets on profile changes', () => {
+  assert.equal(appJs.includes('let expandedNatalAspectsProfileId = null;'), true);
+  assert.equal(appJs.includes('const isExpanded = view.canToggleAspects'), true);
+  assert.equal(appJs.includes("elements.natalAspectsToggle.textContent = isExpanded ? 'Скрыть' : 'Показать';"), true);
+  assert.equal(appJs.includes('elements.natalAspectsList.hidden = !isExpanded;'), true);
+  assert.equal(appJs.includes('expandedNatalAspectsProfileId = isExpanded ? null : profileId;'), true);
+  assert.equal(appJs.includes('expandedNatalAspectsProfileId = null;'), true);
 });
 
 test('home screen renders hidden warnings card shell', () => {

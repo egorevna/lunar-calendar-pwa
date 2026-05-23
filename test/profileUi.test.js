@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import {
+  describeNatalAspectsBlock,
   describeNatalPlanetsReadinessBlock,
   describePersonalContextBlock,
   describeProfileFormMode,
@@ -369,4 +370,92 @@ test('natal planets readiness block maps missing fields to human labels', () => 
   assert.equal(text.includes('birthPlace.coordinates'), false);
   assert.equal(text.includes('latitude'), false);
   assert.equal(text.includes('longitude'), false);
+});
+
+test('natal aspects block is hidden for general day', () => {
+  const view = describeNatalAspectsBlock(null);
+
+  assert.equal(view.hidden, true);
+  assert.equal(view.title, '');
+  assert.equal(view.status, '');
+  assert.equal(view.summary, '');
+  assert.equal(view.canToggleAspects, false);
+  assert.deepEqual(view.aspects, []);
+  assert.deepEqual(view.limitations, []);
+});
+
+test('natal aspects block shows summary and formatted aspects for a UTC-ready active profile', () => {
+  const view = describeNatalAspectsBlock({
+    id: 'profile-egor',
+    name: 'Егор',
+    birthDate: '1990-05-12',
+    birthTime: '14:30',
+    birthTimeAccuracy: 'exact',
+    birthPlace: {
+      city: 'Москва',
+      country: 'Россия',
+      latitude: null,
+      longitude: null,
+      timezone: 'Europe/Moscow',
+    },
+    currentPlace: {
+      mode: 'moscow',
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+    },
+    houseSystem: 'wholeSign',
+    zodiac: 'tropical',
+  });
+  const text = JSON.stringify(view);
+
+  assert.equal(view.hidden, false);
+  assert.equal(view.title, 'Натальные аспекты');
+  assert.equal(view.status, '');
+  assert.equal(view.explanation, '');
+  assert.equal(view.summary.includes('аспект'), true);
+  assert.equal(view.canToggleAspects, true);
+  assert.equal(view.aspects.length > 0, true);
+  assert.match(view.aspects[0], /^.+ [☌✶□△☍] .+ · орб \d+°\d{2}′$/);
+  assert.deepEqual(view.limitations, ['Это натальные аспекты между планетами, не транзиты.']);
+  assert.equal(text.includes('1990-05-12'), false);
+  assert.equal(text.includes('14:30'), false);
+  assert.equal(text.includes('Europe/Moscow'), false);
+  assert.equal(text.includes('utcDateTime'), false);
+  assert.equal(text.includes('longitude'), false);
+  assert.equal(text.includes('allowedOrb'), false);
+});
+
+test('natal aspects block keeps fallback when natal planets are not ready', () => {
+  const view = describeNatalAspectsBlock({
+    id: 'profile-egor',
+    name: 'Егор',
+    birthDate: '1990-05-12',
+    birthTime: '',
+    birthTimeAccuracy: 'unknown',
+    birthPlace: {
+      city: 'Москва',
+      country: 'Россия',
+      latitude: null,
+      longitude: null,
+      timezone: 'Europe/Moscow',
+    },
+    currentPlace: {
+      mode: 'moscow',
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+    },
+    houseSystem: 'wholeSign',
+    zodiac: 'tropical',
+  });
+
+  assert.equal(view.hidden, false);
+  assert.equal(view.title, 'Натальные аспекты');
+  assert.equal(view.status, 'Пока недоступны.');
+  assert.equal(view.explanation, 'Сначала нужен расчет натальных планет.');
+  assert.equal(view.summary, '');
+  assert.equal(view.canToggleAspects, false);
+  assert.deepEqual(view.aspects, []);
+  assert.deepEqual(view.limitations, []);
 });

@@ -190,6 +190,7 @@ Responsibilities:
 - handles inline profile creation, editing, and deletion through `src/profileStorage.js`
 - handles local profile export/import actions through `src/profileImportExport.js`
 - renders the read-only natal planets block inside `Мои карты` through `src/profileUi.js` when profile UTC readiness and provider output are ready
+- renders the collapsible natal aspects block inside `Мои карты` through `src/profileUi.js` and `src/natalAspectsForProfile.js` when natal planets are ready
 - renders the compact `Лично для меня` dashboard block through `src/personalContext.js`, `src/personalRecommendations.js`, and `src/profileUi.js`
 - passes safe profile summary state into the hidden debug panel
 
@@ -476,6 +477,21 @@ Current responsibilities:
 - expose Sprint 8 limitation copy that natal aspects are not transits and that ASC / MC, house and point aspects are separate future work.
 
 This module does not import or call `src/natalAspectEngine.js`, providers, profiles, localStorage, DOM or UI code. It does not calculate aspects, longitudes, orbs, houses, ASC / MC, transits, interpretations or ritual scoring.
+
+## `src/natalAspectsForProfile.js`
+
+Builds the safe read-only natal aspects view model for an active saved profile.
+
+Current responsibilities:
+
+- call `src/natalPlanetsForProfile.js` and require ready natal planet output first;
+- call `src/natalAspectEngine.js` only with already calculated natal planet positions;
+- format aspect output through `src/natalAspectDisplay.js`;
+- build collapsed-section summary through `summarizeNatalAspects()`;
+- return `incomplete` without aspects when natal planets are not ready;
+- expose only formatted aspect text, summary counts and safe limitations to `src/profileUi.js`.
+
+This module does not read localStorage, does not render DOM, does not send birth data externally, does not call providers directly, and does not calculate houses, ASC / MC, transits, fixed stars, special points, interpretations or ritual scoring.
 
 ## `src/natalPlanetsDebug.js`
 
@@ -841,7 +857,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v67
+lunar-calendar-v69
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -934,9 +950,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 33. `src/natalAspectDisplay.js` formats already-calculated natal aspects into safe compact display objects and summary counts without calculating aspects or calling providers / profiles / UI code.
 
-34. `src/natalPlanetsDebug.js` converts active-profile natal planets UI state into a sanitized debug summary with status/counts/capabilities only.
+34. `src/natalAspectsForProfile.js` connects ready natal planet output to the natal aspect engine and aspect display helper for the read-only collapsible `Мои карты` natal aspects section; it fails closed without aspects when natal planets are incomplete.
 
-35. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, provider validation summary and natal planets UI summary without birth details.
+35. `src/natalPlanetsDebug.js` converts active-profile natal planets UI state into a sanitized debug summary with status/counts/capabilities only.
+
+36. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, provider validation summary and natal planets UI summary without birth details.
 
 36. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
@@ -1290,7 +1308,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v67
+lunar-calendar-v69
 ```
 
 Important operational rule:
@@ -1591,7 +1609,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v67
+lunar-calendar-v69
 ```
 
 If this value changes in `sw.js`, update this section.

@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-05-23 — Complete Task 8.5 natal aspects collapsible UI
+
+- Added `src/natalAspectsForProfile.js`.
+- Added `test/natalAspectsForProfile.test.js`.
+- Added a collapsible `Натальные аспекты` section inside `Мои карты`, directly under the existing `Натальные планеты` section.
+- Aspect UI uses the existing safe data flow: natal planets readiness/provider output → `calculateNatalAspects()` → `formatNatalAspectList()` / `summarizeNatalAspects()`.
+- Ready profiles show only the summary while collapsed and formatted aspect rows after explicit expansion.
+- Not-ready profiles show fallback copy: `Пока недоступны.` / `Сначала нужен расчет натальных планет.`
+- The section resets collapsed state on profile changes / `Общий день` and does not hide `+ Добавить профиль` or open edit mode automatically.
+- UI does not show raw birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes, raw aspect angle, `allowedOrb`, technical source, houses, ASC / MC, transits or interpretations.
+- PWA cache updated to `lunar-calendar-v69`.
+- Aspect engine, provider calculations, package files, ephemeris data, houses, ASC / MC, transits and interpretations were not changed.
+- Task 8.6 — Natal Aspects Debug is next, but was not started.
+
 ## 2026-05-23 — Complete Task 8.4 natal aspect display helper
 
 - Added pure `src/natalAspectDisplay.js`.

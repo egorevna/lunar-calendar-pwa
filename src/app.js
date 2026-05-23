@@ -66,6 +66,7 @@ import {
   updateProfile,
 } from './profileStorage.js';
 import {
+  describeNatalAspectsBlock,
   describeNatalPlanetsReadinessBlock,
   describeProfileFormMode,
   describeProfileFormValues,
@@ -77,6 +78,7 @@ import {
 let selectedDashboardMode = DEFAULT_DASHBOARD_MODE;
 let editingProfileId = null;
 let expandedNatalPlanetsProfileId = null;
+let expandedNatalAspectsProfileId = null;
 
 const DELETE_PROFILE_CONFIRMATION = 'Удалить профиль? Это действие нельзя отменить.';
 
@@ -140,6 +142,15 @@ const elements = {
   natalPlanetsReadinessMissingTitle: document.querySelector('[data-natal-planets-readiness-missing-title]'),
   natalPlanetsReadinessMissingList: document.querySelector('[data-natal-planets-readiness-missing-list]'),
   natalPlanetsReadinessLimitations: document.querySelector('[data-natal-planets-readiness-limitations]'),
+  natalAspects: document.querySelector('[data-natal-aspects]'),
+  natalAspectsTitle: document.querySelector('[data-natal-aspects-title]'),
+  natalAspectsStatus: document.querySelector('[data-natal-aspects-status]'),
+  natalAspectsExplanation: document.querySelector('[data-natal-aspects-explanation]'),
+  natalAspectsDisclosure: document.querySelector('[data-natal-aspects-disclosure]'),
+  natalAspectsSummary: document.querySelector('[data-natal-aspects-summary]'),
+  natalAspectsToggle: document.querySelector('[data-natal-aspects-toggle]'),
+  natalAspectsList: document.querySelector('[data-natal-aspects-list]'),
+  natalAspectsLimitations: document.querySelector('[data-natal-aspects-limitations]'),
   personalContextCard: document.querySelector('[data-personal-context-card]'),
   personalContextTitle: document.querySelector('[data-personal-context-title]'),
   personalContextSummary: document.querySelector('[data-personal-context-summary]'),
@@ -354,6 +365,7 @@ function renderStoredProfilesShell() {
 
   renderProfilesShell(describeProfilesShell(profiles, activeProfileId));
   renderNatalPlanetsReadinessBlock(describeNatalPlanetsReadinessBlock(activeProfile));
+  renderNatalAspectsBlock(describeNatalAspectsBlock(activeProfile));
   renderPersonalContextBlock(describePersonalContextBlock(createPersonalContext(activeProfile)));
 }
 
@@ -381,6 +393,30 @@ function renderNatalPlanetsReadinessBlock(view) {
   elements.natalPlanetsReadinessMissingTitle.textContent = view.missingTitle;
   renderSimpleList(elements.natalPlanetsReadinessMissingList, view.missingFields);
   renderSimpleList(elements.natalPlanetsReadinessLimitations, view.limitations);
+}
+
+function renderNatalAspectsBlock(view) {
+  const isExpanded = view.canToggleAspects
+    && Boolean(view.profileId)
+    && expandedNatalAspectsProfileId === view.profileId;
+
+  elements.natalAspects.hidden = view.hidden;
+  elements.natalAspectsTitle.textContent = view.title;
+  elements.natalAspectsStatus.textContent = view.status;
+  elements.natalAspectsStatus.hidden = !view.status;
+  elements.natalAspectsExplanation.textContent = view.explanation;
+  elements.natalAspectsExplanation.hidden = !view.explanation;
+  elements.natalAspectsDisclosure.hidden = !view.summary;
+  elements.natalAspectsSummary.textContent = view.summary;
+  elements.natalAspectsSummary.hidden = !view.summary;
+  elements.natalAspectsToggle.hidden = !view.canToggleAspects;
+  elements.natalAspectsToggle.textContent = isExpanded ? 'Скрыть' : 'Показать';
+  elements.natalAspectsToggle.setAttribute('aria-expanded', String(isExpanded));
+  elements.natalAspectsToggle.dataset.profileId = view.canToggleAspects ? view.profileId : '';
+  renderSimpleList(elements.natalAspectsList, view.aspects);
+  elements.natalAspectsList.hidden = !isExpanded;
+  renderSimpleList(elements.natalAspectsLimitations, view.limitations);
+  elements.natalAspectsLimitations.hidden = view.limitations.length === 0;
 }
 
 function renderPersonalContextBlock(view) {
@@ -548,8 +584,9 @@ function updateBirthTimeState() {
   if (isUnknown) birthTime.value = '';
 }
 
-function resetNatalPlanetsDisclosure() {
+function resetNatalProfileDisclosures() {
   expandedNatalPlanetsProfileId = null;
+  expandedNatalAspectsProfileId = null;
 }
 
 function handleProfileFormSubmit(event) {
@@ -577,6 +614,7 @@ function handleProfileDelete() {
   if (!window.confirm(DELETE_PROFILE_CONFIRMATION)) return;
 
   deleteProfile(editingProfileId);
+  resetNatalProfileDisclosures();
   setProfileFormOpen(false);
   renderStoredProfilesShell();
 }
@@ -696,7 +734,7 @@ elements.modeSelector.addEventListener('click', (event) => {
 elements.profilesToggle.addEventListener('click', () => {
   const shouldOpen = elements.profilesPanel.hidden;
   if (shouldOpen) {
-    resetNatalPlanetsDisclosure();
+    resetNatalProfileDisclosures();
     setProfileFormOpen(false);
   }
   elements.profilesPanel.hidden = !shouldOpen;
@@ -718,7 +756,7 @@ elements.profilesList.addEventListener('click', (event) => {
     const profileId = selectButton.dataset.profileSelect || null;
     const result = setActiveProfileId(profileId);
     if (result.ok) {
-      resetNatalPlanetsDisclosure();
+      resetNatalProfileDisclosures();
       setProfileFormOpen(false);
       closeProfilesPanel();
       renderStoredProfilesShell();
@@ -745,6 +783,15 @@ elements.natalPlanetsToggle.addEventListener('click', () => {
 
   const isExpanded = expandedNatalPlanetsProfileId === profileId;
   expandedNatalPlanetsProfileId = isExpanded ? null : profileId;
+  renderStoredProfilesShell();
+});
+
+elements.natalAspectsToggle.addEventListener('click', () => {
+  const profileId = elements.natalAspectsToggle.dataset.profileId || null;
+  if (!profileId) return;
+
+  const isExpanded = expandedNatalAspectsProfileId === profileId;
+  expandedNatalAspectsProfileId = isExpanded ? null : profileId;
   renderStoredProfilesShell();
 });
 

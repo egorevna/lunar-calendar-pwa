@@ -173,7 +173,23 @@ test('summarizeNatalAspects counts conjunctions separately', () => {
   assert.equal(summary.tense, 0);
   assert.equal(summary.harmonious, 0);
   assert.equal(summary.conjunctions, 1);
-  assert.equal(summary.text, '1 аспект найден · 1 соединение');
+  assert.equal(summary.text, '1 аспект · 1 соед.');
+});
+
+test('summarizeNatalAspects uses compact collapsed UI text', () => {
+  const summary = summarizeNatalAspects([
+    ...Array.from({ length: 3 }, () => aspect({ aspect: { key: 'square', ru: 'квадрат', symbol: '□' } })),
+    ...Array.from({ length: 5 }, () => aspect({ aspect: { key: 'trine', ru: 'трин', symbol: '△' } })),
+    ...Array.from({ length: 4 }, () => aspect({ aspect: { key: 'conjunction', ru: 'соединение', symbol: '☌' } })),
+  ]);
+
+  assert.equal(summary.total, 12);
+  assert.equal(summary.tense, 3);
+  assert.equal(summary.harmonious, 5);
+  assert.equal(summary.conjunctions, 4);
+  assert.equal(summary.text, '12 аспектов · 3 напряж. · 5 гармонич. · 4 соед.');
+  assert.equal(summary.text.includes('найдено'), false);
+  assert.equal(summary.text.includes('напряженных'), false);
 });
 
 test('summarizeNatalAspects returns empty-state text', () => {

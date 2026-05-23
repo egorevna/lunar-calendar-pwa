@@ -65,15 +65,15 @@ export function summarizeNatalAspects(aspects) {
   const details = [];
 
   if (tense > 0) {
-    details.push(`${tense} ${pluralize(tense, 'напряженный', 'напряженных', 'напряженных')}`);
+    details.push(`${tense} напряж.`);
   }
 
   if (harmonious > 0) {
-    details.push(`${harmonious} ${pluralize(harmonious, 'гармоничный', 'гармоничных', 'гармоничных')}`);
+    details.push(`${harmonious} гармонич.`);
   }
 
   if (conjunctions > 0) {
-    details.push(`${conjunctions} ${pluralize(conjunctions, 'соединение', 'соединения', 'соединений')}`);
+    details.push(`${conjunctions} соед.`);
   }
 
   return {
@@ -82,7 +82,7 @@ export function summarizeNatalAspects(aspects) {
     harmonious,
     conjunctions,
     text: [
-      `${total} ${pluralize(total, 'аспект найден', 'аспекта найдено', 'аспектов найдено')}`,
+      `${total} ${pluralize(total, 'аспект', 'аспекта', 'аспектов')}`,
       ...details,
     ].join(' · '),
   };

@@ -1936,11 +1936,11 @@ Create a pure display helper for already calculated natal aspects.
 - Helper does not import or call the aspect engine, providers, profiles, localStorage, DOM or UI code.
 - UI, provider calculations, package files, houses, ASC / MC, transits and interpretations were not changed.
 
-# Active Task
+# Completed Task
 
 ## Task 8.5 — Natal Aspects Collapsible UI
 
-Status: not started
+Status: done
 
 ### Goal
 
@@ -1953,9 +1953,22 @@ Add a collapsible natal aspects section inside `Мои карты` using already
 - No transits, houses, ASC / MC or interpretations are shown.
 - Tests pass.
 
+### Result
+
+- Added `src/natalAspectsForProfile.js`.
+- Added `test/natalAspectsForProfile.test.js`.
+- Added a collapsible `Натальные аспекты` section inside `Мои карты`, placed under the existing `Натальные планеты` section.
+- Aspect UI uses the existing safe chain: `getNatalPlanetsForProfile()` → `calculateNatalAspects()` → `formatNatalAspectList()` / `summarizeNatalAspects()`.
+- Section is collapsed by default, resets with profile changes / `Общий день`, and does not hide `+ Добавить профиль` or open edit mode automatically.
+- Not-ready profiles show fallback copy: `Пока недоступны.` / `Сначала нужен расчет натальных планет.`
+- Ready profiles show only summary in collapsed state and formatted aspect rows after explicit expansion.
+- UI does not show raw birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes, raw aspect angle, `allowedOrb`, technical source, houses, ASC / MC, transits or interpretations.
+- PWA cache updated to `lunar-calendar-v69`.
+- Provider calculations, aspect engine, package files, ephemeris data, transits, houses, ASC / MC and interpretations were not changed.
+
 # Sprint 8 Backlog
 
-- Task 8.6 — Natal Aspects Debug.
+- Active next: Task 8.6 — Natal Aspects Debug.
 - Task 8.7 — Sprint 8 Hardening.
 
 # Security Backlog

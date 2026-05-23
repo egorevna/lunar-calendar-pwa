@@ -4,7 +4,7 @@ import { getNatalProviderValidationSummary } from './natalProviderValidationSumm
 import { getPlanetaryProviderCapabilities } from './planetaryPositionProvider.js';
 import { formatAspect, formatPlanet } from './vocDisplay.js';
 
-export const APP_CACHE_VERSION = 'lunar-calendar-v67';
+export const APP_CACHE_VERSION = 'lunar-calendar-v69';
 
 export function isDebugMode(search = window.location.search) {
   return new URLSearchParams(search).get('debug') === '1';
