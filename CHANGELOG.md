@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-05-22 — Complete Task 8.2 natal aspect engine
+
+- Added pure `src/natalAspectEngine.js`.
+- Added `test/natalAspectEngine.test.js`.
+- Engine calculates Sprint 8 major natal aspects between passed-in natal planet objects only.
+- Implemented explicit orb policy from `NATAL_ASPECTS_STRATEGY.md`: `finalAllowedOrb = min(aspectBaseOrb, bodyPairOrb)`.
+- Implemented body-pair caps, strength bands, canonical pair ordering, duplicate prevention, same-body filtering, invalid-planet filtering, wrap-around handling and aspect sorting.
+- Applying / separating remain `null`.
+- The engine does not import providers, `astronomy-engine`, Luxon, profile storage, localStorage, DOM or UI modules.
+- UI, `src/app.js`, `index.html`, `sw.js`, package files, provider calculations, houses, ASC / MC, transits, fixed stars and interpretations were not changed.
+- Task 8.3 — Natal Aspect Validation / Fixtures is next, but was not started.
+
 ## 2026-05-22 — Complete Task 8.1 natal aspects strategy
 
 - Added `NATAL_ASPECTS_STRATEGY.md`.

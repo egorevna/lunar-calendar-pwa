@@ -1845,11 +1845,11 @@ NATAL_ASPECTS_STRATEGY.md
 - Defined duplicate pair rules, canonical planet order, sorting rules, display rules, privacy boundaries and validation requirements.
 - Code, UI, package files, provider calculations, houses, ASC / MC, transits, fixed stars and interpretation engine were not changed.
 
-# Active Task
+# Completed Task
 
 ## Task 8.2 — Natal Aspect Engine
 
-Status: not started
+Status: done
 
 ### Goal
 
@@ -1866,9 +1866,39 @@ Create a pure engine for aspects between validated natal planet positions.
 - No houses / ASC / MC.
 - Tests pass.
 
+### Result
+
+- Added `src/natalAspectEngine.js`.
+- Added `test/natalAspectEngine.test.js`.
+- Engine calculates only Sprint 8 major natal aspects between passed-in natal planet objects.
+- Implemented explicit orb policy from `NATAL_ASPECTS_STRATEGY.md`: `finalAllowedOrb = min(aspectBaseOrb, bodyPairOrb)`.
+- Implemented body-pair caps for luminaries, personal planets, social / outer involvement, and outer-only pairs.
+- Implemented strength bands: `exact`, `strong`, `medium`, `weak`.
+- Implemented canonical duplicate prevention and same-body / invalid-planet filtering.
+- Applying / separating remain `null`.
+- Engine is pure: it does not import providers, Luxon, profiles, localStorage, DOM or UI modules.
+- UI, provider calculations, package files, houses, ASC / MC, transits and interpretations were not changed.
+
+# Active Task
+
+## Task 8.3 — Natal Aspect Validation / Fixtures
+
+Status: not started
+
+### Goal
+
+Validate natal aspect engine behavior with deterministic fixtures and boundary cases.
+
+### Acceptance Criteria
+
+- Deterministic fixtures exist.
+- Exact aspect and orb boundary cases are covered.
+- Wrap-around is tested.
+- No private user birth data is used.
+- Tests pass.
+
 # Sprint 8 Backlog
 
-- Task 8.3 — Natal Aspect Validation / Fixtures.
 - Task 8.4 — Natal Aspect Display Helper.
 - Task 8.5 — Natal Aspects Collapsible UI.
 - Task 8.6 — Natal Aspects Debug.
