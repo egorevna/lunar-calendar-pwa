@@ -478,3 +478,60 @@ If natal planets are not ready:
 Натальные аспекты пока недоступны.
 Сначала нужен расчет натальных планет.
 ```
+
+---
+
+# Sprint 9 UI Rules Addendum
+
+Sprint 9 may add essential dignities only as a profile/natal section inside `Мои карты`.
+
+## Essential Dignities UI
+
+Essential dignities must be collapsible by default.
+
+Collapsed state should show:
+
+```txt
+Достоинства планет
+Сильные: Марс, Венера · слабые: Сатурн
+[Показать]
+```
+
+Expanded state may show compact rows:
+
+```txt
+Марс в Овне — обитель
+Венера в Рыбах — экзальтация
+Сатурн в Раке — изгнание
+```
+
+## Essential Dignity Section Rules
+
+- collapsed by default;
+- summary first;
+- full list only after explicit click;
+- reset collapsed state when the active profile changes;
+- no long interpretations in Sprint 9;
+- no terms / decans / degree rulers yet;
+- no fixed stars, houses, ASC / MC or transits;
+- no raw birth data;
+- no raw longitude values;
+- no chart wheel.
+
+## Empty State
+
+If no dignity / debility flags are found:
+
+```txt
+Достоинства планет
+Ярко выраженных базовых достоинств или слабостей не найдено.
+```
+
+## Not Ready State
+
+If natal planets are not ready:
+
+```txt
+Достоинства планет пока недоступны.
+Сначала нужен расчет натальных планет.
+```

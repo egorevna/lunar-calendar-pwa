@@ -595,10 +595,10 @@ Sprint 6 — Real Natal Provider Selection / Fixture Validation
 Активный спринт:
 
 ```txt
-Sprint 9 — Essential Dignities: domicile, exile, exaltation, fall
+Sprint 9 — Essential Dignities Foundation
 ```
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7 и Sprint 8 завершены. Sprint 9 еще не начат.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7 и Sprint 8 завершены. Sprint 9 активен.
 
 Результат Sprint 8:
 
@@ -631,8 +631,17 @@ Task 8.7 — Sprint 8 Hardening
 Текущий фокус:
 
 ```txt
-Sprint 9 planning — not started
+Task 9.1 — Essential Dignities Strategy / Source Decision
 ```
+
+Цель Sprint 9:
+
+- добавить foundation для basic sign-based essential dignities natal planets;
+- начать с source decision и strategy в Task 9.1;
+- работать только с domicile / rulership, exile / detriment, exaltation и fall;
+- не добавлять terms, decans, degree rulers, fixed stars, houses, ASC / MC, transits, interpretations или ritual scoring.
+
+Task 9.1 должна создать `ESSENTIAL_DIGNITIES_STRATEGY.md` и зафиксировать source system, Vronsky/classical boundary, exaltation degree policy, optional score model и UI labels. Код, UI и dataset в Task 9.1 не создавать.
 
 Результат Task 8.1:
 
@@ -718,7 +727,7 @@ Task 8.7 выполнена как финальный hardening Sprint 8.
 - подтверждено, что runtime imports используют tracked `src/vendor/luxon.mjs` и `src/vendor/astronomy-engine.mjs`, а PWA cache остается `lunar-calendar-v70`;
 - package files, dependencies, provider calculations, ephemeris data и generator не менялись.
 
-Sprint 8 завершен. Следующий этап — подготовка Sprint 9, Essential Dignities: domicile, exile, exaltation, fall. Sprint 9 не начинать без отдельной команды пользователя.
+Sprint 8 завершен. Следующий этап — Sprint 9, Essential Dignities Foundation. Активная задача — Task 9.1, Essential Dignities Strategy / Source Decision.
 
 Результат Task 7.1:
 
@@ -795,10 +804,10 @@ Sprint 8 завершен. Следующий этап — подготовка 
 Текущий следующий шаг:
 
 ```txt
-Sprint 9 planning — Essential Dignities
+Task 9.1 — Essential Dignities Strategy / Source Decision
 ```
 
-Sprint 8 завершен. Task 8.1, Task 8.2, Task 8.3, Task 8.4, Task 8.5, Task 8.6 и Task 8.7 завершены. Sprint 9 еще не начинался.
+Sprint 8 завершен. Task 8.1, Task 8.2, Task 8.3, Task 8.4, Task 8.5, Task 8.6 и Task 8.7 завершены. Sprint 9 активен, Task 9.1 еще не начиналась.
 
 Ниже сохраняется краткая история предыдущего Sprint 5 и результаты текущего Sprint 6.
 
@@ -2066,16 +2075,16 @@ lunar-calendar-v70
 Сейчас следующий конкретный шаг:
 
 ```txt
-Sprint 9 planning — Essential Dignities.
+Task 9.1 — Essential Dignities Strategy / Source Decision.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Не начинать Sprint 9 без отдельной команды пользователя.
+2. Работать только над Task 9.1 после отдельной команды пользователя.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
-5. Не делать натальную карту, персональные транзиты, дома, ASC/MC, интерпретации аспектов или фейковые личные расчеты.
+5. Не делать dignity engine, terms/decans/degree rulers, натальную карту, персональные транзиты, дома, ASC/MC, интерпретации аспектов или фейковые личные расчеты.
 6. После реализации обновить документацию и запустить тесты.
 
 ---
@@ -2088,4 +2097,4 @@ Sprint 9 planning — Essential Dignities.
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7 и Sprint 8 завершены. Sprint 7 добавил read-only natal planets panel внутри `Мои карты`: planet values показываются только для активного сохраненного профиля при `canConvertToUtc: true` и ready provider output, форматируются через `src/natalPlanetDisplay.js`, а missing coordinates не блокируют список планет. `Общий день`, unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap и nonexistent DST gap не показывают planet list. Safe `Natal Planets UI Debug` доступен только через `?debug=1` и показывает status/counts/capabilities без birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes, speed values or full planet list. Houses / ASC / MC / transits, chart wheel и personal ritual scoring остаются not supported. Sprint 8 — Natal Aspects Foundation завершен: Task 8.1 создала `NATAL_ASPECTS_STRATEGY.md`, Task 8.2 добавила pure `src/natalAspectEngine.js`, Task 8.3 добавила synthetic/manual fixture validation layer, Task 8.4 добавила pure `src/natalAspectDisplay.js`, Task 8.5 добавила collapsible `Натальные аспекты` section внутри `Мои карты`, Task 8.6 добавила safe `Natal Aspects UI Debug`, а Task 8.7 завершила hardening. Следующий этап — Sprint 9, Essential Dignities, но он не начинался.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7 и Sprint 8 завершены. Sprint 7 добавил read-only natal planets panel внутри `Мои карты`: planet values показываются только для активного сохраненного профиля при `canConvertToUtc: true` и ready provider output, форматируются через `src/natalPlanetDisplay.js`, а missing coordinates не блокируют список планет. `Общий день`, unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap и nonexistent DST gap не показывают planet list. Safe `Natal Planets UI Debug` доступен только через `?debug=1` и показывает status/counts/capabilities без birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes, speed values or full planet list. Houses / ASC / MC / transits, chart wheel и personal ritual scoring остаются not supported. Sprint 8 — Natal Aspects Foundation завершен: Task 8.1 создала `NATAL_ASPECTS_STRATEGY.md`, Task 8.2 добавила pure `src/natalAspectEngine.js`, Task 8.3 добавила synthetic/manual fixture validation layer, Task 8.4 добавила pure `src/natalAspectDisplay.js`, Task 8.5 добавила collapsible `Натальные аспекты` section внутри `Мои карты`, Task 8.6 добавила safe `Natal Aspects UI Debug`, а Task 8.7 завершила hardening. Sprint 9 — Essential Dignities Foundation активен; следующий шаг — Task 9.1, Essential Dignities Strategy / Source Decision.

@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-23 — Prepare Sprint 9 documentation
+
+- Sprint 1–8 are completed; active sprint is now Sprint 9 — Essential Dignities Foundation.
+- `TODO.md` lists Task 9.1 — Essential Dignities Strategy / Source Decision as the active task and Task 9.2–9.8 as the Sprint 9 backlog.
+- Added Sprint 9 astrology rules for essential dignity as a lookup layer over already-calculated natal planet signs.
+- Added Sprint 9 UI rules for a collapsible `Достоинства планет` section inside `Мои карты`.
+- Added Sprint 9 privacy rules for essential dignity UI and debug output.
+- No app code, `src/`, `scripts/`, `index.html`, `sw.js`, package files, dignity engine, terms / decans / degree rulers, provider calculations, houses, ASC / MC or transits were changed.
+
 ## 2026-05-23 — Complete Sprint 8 hardening
 
 - Completed Task 8.7 and closed Sprint 8 — Natal Aspects Foundation.

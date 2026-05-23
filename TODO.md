@@ -2022,13 +2022,81 @@ Close Sprint 8 with a final audit of natal aspect calculation, fixtures, display
 
 Sprint 8 is completed.
 
-# Next Stage
+# Current Active Sprint
 
-## Sprint 9 — Essential Dignities: domicile, exile, exaltation, fall
+## Sprint 9 — Essential Dignities Foundation
+
+Status: active
+
+### Goal
+
+Add basic sign-based essential dignities for natal planets:
+
+- domicile / rulership;
+- exile / detriment;
+- exaltation;
+- fall.
+
+### Important Boundary
+
+Sprint 9 covers basic sign-based essential dignities only.
+
+Do not implement:
+
+- terms;
+- decans;
+- degree rulers;
+- fixed stars;
+- houses / ASC / MC;
+- transits;
+- interpretations;
+- ritual scoring.
+
+# Active Task
+
+## Task 9.1 — Essential Dignities Strategy / Source Decision
 
 Status: not started
 
-Do not start Sprint 9 until the user explicitly provides the next task.
+### Goal
+
+Define source system and rules for domicile, detriment, exaltation, and fall.
+
+### Deliverable
+
+Create:
+
+```txt
+ESSENTIAL_DIGNITIES_STRATEGY.md
+```
+
+### Must Decide
+
+- source system for domicile / detriment / exaltation / fall;
+- whether to use Vronsky table values now or later;
+- whether exaltation degrees are used in Sprint 9;
+- whether scoring is included in MVP;
+- how to label dignity / debility in UI;
+- what remains deferred to Sprint 10.
+
+### Acceptance Criteria
+
+- `ESSENTIAL_DIGNITIES_STRATEGY.md` exists.
+- Source system is documented.
+- Score model is documented or deferred.
+- No code changes.
+- No UI changes.
+- Task 9.2 remains next.
+
+# Sprint 9 Backlog
+
+- Task 9.2 — Essential Dignity Data Model / Dataset.
+- Task 9.3 — Essential Dignity Lookup Engine.
+- Task 9.4 — Essential Dignity Validation / Fixtures.
+- Task 9.5 — Essential Dignity Display Helper.
+- Task 9.6 — Essential Dignities Collapsible UI.
+- Task 9.7 — Essential Dignities Debug.
+- Task 9.8 — Sprint 9 Hardening.
 
 # Security Backlog
 

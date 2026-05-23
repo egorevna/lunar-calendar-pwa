@@ -449,3 +449,39 @@ Debug may show:
 - unsupported feature labels.
 
 Debug must not dump full profile data, raw birth data, raw planet longitude values, raw speed values, houses, ASC / MC values, transits, aspects to unsupported points, or private fixture data.
+
+---
+
+# Sprint 9 Privacy Rules Addendum
+
+Sprint 9 essential dignities are derived from natal planet sign placement.
+
+## Essential Dignities Privacy
+
+Do not show in essential dignities UI or debug:
+
+- birthDate;
+- birthTime;
+- utcDateTime;
+- raw timezone;
+- raw birthPlace;
+- raw currentPlace;
+- coordinates;
+- full profile JSON;
+- raw longitude values.
+
+Allowed user-facing essential dignity data:
+
+- planet names;
+- sign names;
+- dignity / debility labels;
+- optional score category, only if documented and calculated.
+
+Debug may show:
+
+- dignity engine status;
+- rule source;
+- count of dignity / debility flags;
+- unsupported feature labels.
+
+Debug must not dump full profile data.

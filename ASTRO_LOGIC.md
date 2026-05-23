@@ -751,3 +751,54 @@ These remain unsupported unless a later explicit task says otherwise:
 - applying / separating unless explicitly validated;
 - interpretation engine;
 - personal ritual scoring.
+
+---
+
+# Sprint 9 Essential Dignities Logic Addendum
+
+Sprint 9 covers basic sign-based essential dignities for natal planets.
+
+## Essential Dignity Rule
+
+Essential dignity is a lookup layer applied to already-calculated planet positions and sign placement.
+
+It must not calculate coordinates.
+
+Do not calculate natal planet positions from dignity tables, and do not mix dignity systems silently.
+
+## Sprint 9 Scope
+
+Allowed in Sprint 9:
+
+- domicile / rulership;
+- detriment / exile;
+- exaltation;
+- fall.
+
+Not allowed in Sprint 9:
+
+- terms;
+- decans;
+- degree rulers;
+- fixed stars;
+- houses;
+- ASC / MC;
+- transits;
+- interpretations;
+- ritual scoring.
+
+## Source Rule
+
+The dignity dataset must name its source.
+
+If Vronsky-specific values are used, mark them as such.
+
+If classical / traditional values are used, mark them as such.
+
+Do not combine source systems without an explicit strategy decision.
+
+## Score Rule
+
+Any dignity score must be explicit, simple and adjustable.
+
+Do not present score as absolute truth or final interpretation.
