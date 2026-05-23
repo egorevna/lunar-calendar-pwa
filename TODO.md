@@ -2158,11 +2158,11 @@ Task 9.4 must not add UI, debug output, terms / decans / degree rulers, Vronsky 
 - No UI changes.
 - Task 9.5 remains next.
 
-# Active Task
+# Completed Task
 
 ## Task 9.5 — Essential Dignity Display Helper
 
-Status: not started
+Status: done
 
 ### Goal
 
@@ -2172,9 +2172,31 @@ Create a pure display helper for already evaluated essential dignity results.
 
 Task 9.5 must not add UI, debug output, lookup rules, terms / decans / degree rulers, Vronsky degree tables, houses, ASC / MC, transits, interpretations or ritual scoring.
 
+### Acceptance Criteria
+
+- `src/essentialDignityDisplay.js` exists.
+- `test/essentialDignityDisplay.test.js` covers formatting, summary, limitations, invalid input and source-import boundaries.
+- Helper formats already evaluated dignity results only.
+- Helper does not import or call lookup engine, provider modules, profile storage, DOM or UI.
+- No UI changes.
+- Task 9.6 remains next.
+
+# Active Task
+
+## Task 9.6 — Essential Dignities Collapsible UI
+
+Status: not started
+
+### Goal
+
+Add a collapsible essential dignities section inside `Мои карты` using the existing lookup and display layers.
+
+### Important Boundary
+
+Task 9.6 must not add new dignity rules, terms / decans / degree rulers, Vronsky degree tables, houses, ASC / MC, transits, interpretations or ritual scoring.
+
 # Sprint 9 Backlog
 
-- Task 9.6 — Essential Dignities Collapsible UI.
 - Task 9.7 — Essential Dignities Debug.
 - Task 9.8 — Sprint 9 Hardening.
 

@@ -523,6 +523,22 @@ Current responsibilities:
 
 This module does not call providers, does not calculate planet coordinates, does not read profiles, localStorage or DOM, does not format UI rows, and does not include terms / decans / degree rulers, exact exaltation degree values, Vronsky rows, fixed stars, houses, ASC / MC, transits, interpretations or ritual scoring.
 
+## `src/essentialDignityDisplay.js`
+
+Defines pure display helpers for already-evaluated essential dignity results.
+
+Current responsibilities:
+
+- validate whether a passed essential dignity result is safe to display;
+- format planet label, sign label and dignity labels into compact user-facing copy such as `Марс в Овне — обитель`;
+- format multiple flags such as `Меркурий в Деве — обитель, экзальтация`;
+- keep Uranus, Neptune and Pluto modern rulership labels as separate label-only display text;
+- format neutral placements as `нейтрально`;
+- expose score text, display type and compact summary counts for future collapsed UI;
+- expose Sprint 9 limitation copy for deferred terms, decans, degree rulers and Vronsky tables.
+
+This module does not import or call `src/essentialDignities.js`, providers, profiles, localStorage, DOM or UI code. It does not calculate dignity flags, signs, coordinates, terms / decans / degree rulers, exact exaltation degrees, Vronsky rows, houses, ASC / MC, transits, interpretations or ritual scoring.
+
 ## `src/natalPlanetsDebug.js`
 
 Builds the safe debug summary for the read-only natal planets UI state.

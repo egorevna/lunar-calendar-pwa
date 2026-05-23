@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-23 — Complete Task 9.5 essential dignity display helper
+
+- Added pure `src/essentialDignityDisplay.js`.
+- Added `test/essentialDignityDisplay.test.js`.
+- Helper formats already evaluated essential dignity results into compact user-facing copy such as `Марс в Овне — обитель`.
+- Supports domicile, exaltation, detriment, fall, multiple flags, modern rulership label-only, neutral states, score text, display type and collapsed-section summary counts.
+- Added display limitations for deferred terms, decans, degree rulers and Vronsky tables.
+- Helper does not import or call the lookup engine, providers, profile storage, localStorage, DOM or UI code.
+- UI, lookup engine, provider calculations, package files, `index.html`, `src/app.js`, `sw.js`, terms / decans / degree rulers, Vronsky rows, houses, ASC / MC, transits, interpretations and ritual scoring were not changed.
+
 ## 2026-05-23 — Complete Task 9.4 essential dignity fixture validation
 
 - Added `test/fixtures/essentialDignityFixtures.js`.
