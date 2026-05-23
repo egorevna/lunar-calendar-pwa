@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-23 — Complete Task 10.4 Terms lookup engine / fixtures
+
+- Added pure `src/terms.js`.
+- Implemented Vronsky Table 5 terms lookup by `signKey + degreeWithinSign` over the verified `src/termsData.js` rows.
+- Added natal planet input lookup with `sign + degree/minutes` preference and longitude fallback through `src/astroMath.js` only when needed.
+- Kept lookup intervals half-open as `[startDegree, normalizedEndExclusive)` and preserved source `printedEndDegree` in output.
+- Covered final printed `29°` rows for Aries / Овен, Taurus / Телец, Libra / Весы and Scorpio / Скорпион by using `normalizedEndExclusive: 30` for lookup.
+- Added manual fixtures in `test/fixtures/termsFixtures.js` and validation tests in `test/termsFixtures.test.js`, `test/terms.test.js` and `test/termsValidation.test.js`.
+- No terms UI, display helper, decans, degree rulers, other Vronsky tables, provider calculations, package files, app shell or PWA cache changes were added.
+- Task 10.5 — Decans Source Decision / Dataset is next, but was not started.
+
 ## 2026-05-23 — Complete Task 10.3c Terms dataset from verified Table 5 rows
 
 - Added `src/termsData.js`.

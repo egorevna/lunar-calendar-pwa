@@ -916,6 +916,28 @@ Degree rulers are deferred until Table 6 / Table 7 source screenshots or verifie
 
 Actual Vronsky screenshot/table files are not currently present in the repository, so no dataset may be created from memory.
 
+## Task 10.4 Terms Lookup Policy
+
+Terms lookup uses only the verified Vronsky Table 5 rows from `src/termsData.js`.
+
+Lookup intervals are half-open:
+
+```txt
+[startDegree, normalizedEndExclusive)
+```
+
+The degree inside a sign must satisfy:
+
+```txt
+0 <= degreeWithinSign < 30
+```
+
+Exact start boundaries belong to the interval that starts there. Exact end boundaries belong to the next interval. `30°` is invalid inside one sign and should be handled upstream as the next sign if needed.
+
+Rows printed with final `29°` endings keep `printedEndDegree: 29` in output, but use `normalizedEndExclusive: 30` for lookup coverage. This is a code lookup normalization, not a change to the source table.
+
+Planet input may use already-calculated `sign.key`, `degree` and `minutes`, or fall back to longitude-derived sign/degree through `src/astroMath.js`. The terms lookup engine must not call providers, read profiles, calculate planet positions, render UI, or include decans / degree rulers / other Vronsky tables / interpretations.
+
 ## Deferred Features
 
 Sprint 10 planning does not activate:

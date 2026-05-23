@@ -2434,25 +2434,37 @@ Completion:
 - Added `test/termsData.test.js` covering row count, sign coverage, verified-only status, interval coverage, final `29°` normalization, allowed rulers, deferred features, read-only boundaries and strict exclusions.
 - No lookup engine, UI, decans, degree rulers or other Vronsky tables were added.
 
-# Active Task
+# Completed Task
 
 ## Task 10.4 — Terms Lookup Engine / Fixtures
 
-Status: active
+Status: done
 
 Goal:
 
 Create pure lookup engine for terms with boundary fixtures.
 
-# Sprint 10 Backlog
+Completion:
+
+- Added pure lookup module `src/terms.js`.
+- Added manual fixture data in `test/fixtures/termsFixtures.js`.
+- Added `test/termsFixtures.test.js`, `test/terms.test.js` and `test/termsValidation.test.js`.
+- Lookup uses the verified `src/termsData.js` rows and the half-open interval policy `[startDegree, normalizedEndExclusive)`.
+- Final printed `29°` rows use `normalizedEndExclusive: 30` for lookup while preserving `printedEndDegree: 29` in output.
+- Planet input can resolve from `sign + degree/minutes` or fall back to valid longitude through `src/astroMath.js`.
+- No UI, display helper, decans, degree rulers or other Vronsky tables were added.
+
+# Active Task
 
 ## Task 10.5 — Decans Source Decision / Dataset
 
-Status: not started
+Status: active
 
 Goal:
 
 Choose decan system and create dataset only if source is verified.
+
+# Sprint 10 Backlog
 
 ## Task 10.6 — Decans Lookup Engine / Fixtures
 
