@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-23 — Complete Task 10.3a Table 5 transcription draft
+
+- Created `TERMS_TABLE_5_TRANSCRIPTION_DRAFT.md`.
+- Added non-active draft transcription for Vronsky Table 5 — Terms from user-provided draft and source image `table5.png`.
+- Captured 60 draft rows across 12 zodiac signs.
+- Marked every row as `needsReview`; no row was marked `verified`.
+- Added needs-review questions for final intervals ending at `29°`, full `0–30` coverage, gaps/overlaps, values and ruler checks.
+- No active JS dataset, `src/termsData.js`, lookup engine, tests, OCR import, UI, app code, package files or PWA cache changes were created.
+- Task 10.3b — Terms Table Manual Verification is next, but was not started.
+
 ## 2026-05-23 — Complete Task 10.2 Vronsky dataset entry policy
 
 - Created `VRONSKY_DATASET_ENTRY_POLICY.md`.

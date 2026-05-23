@@ -2343,9 +2343,59 @@ Result:
 - Confirmed Table 6 and Table 7 are separate source systems.
 - No dataset, lookup engine, OCR import, UI or app code was created.
 
+# Completed Task
+
+## Task 10.3a — Terms Table 5 Transcription Draft
+
+Status: done
+
+Goal:
+
+Create a non-active draft transcription document for Vronsky Table 5 — Terms.
+
+Acceptance criteria:
+
+- `TERMS_TABLE_5_TRANSCRIPTION_DRAFT.md` exists.
+- Source image `table5.png` is recorded as the source reference.
+- User-provided transcription is captured as draft rows.
+- Every row is marked `needsReview`.
+- Nothing is marked `verified`.
+- Questions about final ranges ending at `29°` are recorded.
+- No active JS dataset is created.
+- No lookup engine is created.
+- No app code is changed.
+
+Result:
+
+- Created `TERMS_TABLE_5_TRANSCRIPTION_DRAFT.md`.
+- Transcribed 60 draft rows across 12 zodiac signs.
+- Marked every row as `needsReview`.
+- Recorded manual verification questions for range endings, gaps/overlaps, values and ruler checks.
+- No active dataset, lookup engine, OCR import, UI or app code was created.
+
 # Active Task
 
-## Task 10.3 — Terms Dataset
+## Task 10.3b — Terms Table Manual Verification
+
+Status: not started
+
+Goal:
+
+Manually verify Table 5 draft rows against `table5.png` before any active dataset is created.
+
+Acceptance criteria:
+
+- All start/end degrees are checked against the source image.
+- All rulers are checked against the source image.
+- All values are checked against the source image.
+- Rows ending at `29°` are explicitly resolved.
+- Gaps and overlaps are checked for every sign.
+- Verified rows and unclear rows are separated.
+- No active JS dataset is created until verification is complete.
+
+# Sprint 10 Backlog
+
+## Task 10.3c — Terms Dataset
 
 Status: not started
 
@@ -2355,7 +2405,7 @@ Create verified structured terms dataset only after source policy and manual ver
 
 Acceptance criteria:
 
-- Table 5 source material is available or the task stops and requests it.
+- Table 5 source material is available and manually verified.
 - Dataset is source-tracked.
 - Dataset metadata and row metadata are present.
 - Only verified rows can be active.
@@ -2364,7 +2414,6 @@ Acceptance criteria:
 - No OCR-only rows are active.
 - Tests pass.
 
-# Sprint 10 Backlog
 
 ## Task 10.4 — Terms Lookup Engine / Fixtures
 
