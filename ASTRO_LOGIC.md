@@ -797,8 +797,31 @@ If classical / traditional values are used, mark them as such.
 
 Do not combine source systems without an explicit strategy decision.
 
+## Selected Sprint 9 Dignity Policy
+
+Sprint 9 uses classical / traditional domicile, detriment, exaltation and fall as the main scoring baseline for Sun, Moon, Mercury, Venus, Mars, Jupiter and Saturn.
+
+Uranus, Neptune and Pluto may receive separate modern rulership labels only:
+
+- Uranus in Aquarius;
+- Neptune in Pisces;
+- Pluto in Scorpio.
+
+These modern rulership labels do not change the classical score.
+
+Vronsky-specific tables, terms, decans, degree rulers and exact exaltation degree scoring are deferred until manual source verification and dedicated dataset work.
+
 ## Score Rule
 
 Any dignity score must be explicit, simple and adjustable.
 
 Do not present score as absolute truth or final interpretation.
+
+Sprint 9 helper scoring policy:
+
+- domicile / rulership: +5;
+- exaltation: +4;
+- detriment / exile: -5;
+- fall: -4;
+- neutral: 0;
+- modern rulership: label-only, no classical score.

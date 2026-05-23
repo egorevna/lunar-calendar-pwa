@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-23 — Complete Task 9.1 essential dignities strategy
+
+- Created `ESSENTIAL_DIGNITIES_STRATEGY.md`.
+- Selected classical / traditional domicile, detriment, exaltation and fall as the Sprint 9 scoring baseline for the seven traditional planets.
+- Decided that Uranus, Neptune and Pluto may receive separate modern rulership labels only, without changing the classical score.
+- Deferred Vronsky-specific tables, terms / decans / degree rulers and exact exaltation degree scoring until manual source verification and later dataset work.
+- Proposed explicit helper scoring: domicile +5, exaltation +4, detriment / exile -5, fall -4, neutral 0.
+- No app code, `src/`, `index.html`, `sw.js`, package files, dataset, dignity engine, UI, houses, ASC / MC, transits, interpretations or ritual scoring were changed.
+
 ## 2026-05-23 — Prepare Sprint 9 documentation
 
 - Sprint 1–8 are completed; active sprint is now Sprint 9 — Essential Dignities Foundation.

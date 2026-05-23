@@ -2052,11 +2052,11 @@ Do not implement:
 - interpretations;
 - ritual scoring.
 
-# Active Task
+# Sprint 9 Completed Tasks
 
 ## Task 9.1 — Essential Dignities Strategy / Source Decision
 
-Status: not started
+Status: done
 
 ### Goal
 
@@ -2088,9 +2088,24 @@ ESSENTIAL_DIGNITIES_STRATEGY.md
 - No UI changes.
 - Task 9.2 remains next.
 
+# Active Task
+
+## Task 9.2 — Essential Dignity Data Model / Dataset
+
+Status: not started
+
+### Goal
+
+Create the source-tracked essential dignity dataset according to `ESSENTIAL_DIGNITIES_STRATEGY.md`.
+
+### Important Boundary
+
+Task 9.2 must create data/model foundations only.
+
+Do not create the lookup engine, UI, debug layer, terms / decans / degree rulers, Vronsky degree tables, houses, ASC / MC, transits, interpretations or ritual scoring.
+
 # Sprint 9 Backlog
 
-- Task 9.2 — Essential Dignity Data Model / Dataset.
 - Task 9.3 — Essential Dignity Lookup Engine.
 - Task 9.4 — Essential Dignity Validation / Fixtures.
 - Task 9.5 — Essential Dignity Display Helper.
