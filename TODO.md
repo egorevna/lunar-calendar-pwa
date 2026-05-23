@@ -1995,9 +1995,40 @@ Add a safe debug/status layer for the natal aspects UI without exposing raw prof
 - PWA cache updated to `lunar-calendar-v70`.
 - User-facing natal aspects UI, aspect engine, provider calculations, package files, ephemeris data, houses, ASC / MC, transits and interpretations were not changed.
 
-# Sprint 8 Backlog
+# Completed Task
 
-- Active next: Task 8.7 — Sprint 8 Hardening.
+## Task 8.7 — Sprint 8 Hardening
+
+Status: done
+
+### Goal
+
+Close Sprint 8 with a final audit of natal aspect calculation, fixtures, display, UI, debug, privacy, runtime and documentation boundaries.
+
+### Result
+
+- Completed Sprint 8 hardening audit.
+- Confirmed Task 8.1–8.6 are closed.
+- Confirmed natal aspects are calculated only for an active saved profile after natal planets are ready and only through the Sprint 8 major-aspect engine / explicit orb policy.
+- Confirmed `Общий день`, incomplete natal planets, failed UTC conversion, unknown birth time, missing / invalid timezone and DST ambiguous / nonexistent fail-closed cases do not show natal aspects.
+- Confirmed aspect engine remains pure, major-only, duplicate-safe, wrap-around safe, `NaN`-safe and leaves applying / separating as `null`.
+- Confirmed fixtures are synthetic/manual, contain no private profile data and do not generate expected values from the engine under test.
+- Confirmed display and UI do not show raw birth data, raw planet longitudes, raw aspect angles, `allowedOrb`, transits, houses, ASC / MC or interpretations.
+- Confirmed `Natal Aspects UI Debug` is available only under `?debug=1` and exposes only safe summary/status/counts.
+- Confirmed runtime imports use tracked vendor assets and PWA cache remains current.
+- Package files, dependencies, provider calculations, ephemeris data and generator were not changed.
+
+# Sprint 8 Status
+
+Sprint 8 is completed.
+
+# Next Stage
+
+## Sprint 9 — Essential Dignities: domicile, exile, exaltation, fall
+
+Status: not started
+
+Do not start Sprint 9 until the user explicitly provides the next task.
 
 # Security Backlog
 
@@ -2013,6 +2044,16 @@ Description:
 - Check impact on `scripts/generate-ephemeris.cjs`.
 
 This is a future security follow-up and must not be handled as part of Task 6.5.
+
+## Desktop/responsive layout rule documentation
+
+Status: not started
+
+Description:
+
+- Add explicit future documentation for desktop / responsive layout rules.
+- Keep large profile and natal sections scannable on wider screens.
+- Do not implement layout changes without a separate active task.
 
 # Do Not Do Now
 

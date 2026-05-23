@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-05-23 — Complete Sprint 8 hardening
+
+- Completed Task 8.7 and closed Sprint 8 — Natal Aspects Foundation.
+- Audited Task 8.1–8.6 results: strategy / orb rules, pure aspect engine, synthetic fixture validation, display helper, collapsible `Мои карты` UI and safe debug.
+- Confirmed natal aspects are calculated only between validated natal planets for an active saved profile after safe natal planet readiness.
+- Confirmed the active Sprint 8 aspect set remains major-only: conjunction, sextile, square, trine and opposition.
+- Confirmed `Общий день`, not-ready natal planets, failed UTC conversion, unknown birth time, missing / invalid timezone and DST ambiguous / nonexistent fail-closed states do not show natal aspects.
+- Confirmed fixtures are synthetic/manual, contain no private user data and do not generate expected values from the engine under test.
+- Confirmed UI and debug do not expose raw birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes/speeds, raw aspect angles, `allowedOrb`, full profile JSON or full active-profile aspect dumps.
+- Confirmed transits, houses, ASC / MC, fixed stars, Lilith / Selena / Nodes, Arabic Parts, midpoints / antiscia, interpretations and ritual scoring remain not supported.
+- Runtime imports still use tracked vendor assets, PWA cache remains `lunar-calendar-v70`, and package files / dependencies / provider calculations / ephemeris data were not changed.
+- Sprint 9 — Essential Dignities is the next stage, but was not started.
+
 ## 2026-05-23 — Complete Task 8.6 natal aspects debug
 
 - Added `src/natalAspectsDebug.js`.
