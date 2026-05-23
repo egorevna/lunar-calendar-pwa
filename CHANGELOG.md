@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-23 — Complete Task 10.1 terms / decans / degree rulers strategy
+
+- Created `TERMS_DECANS_DEGREE_RULERS_STRATEGY.md`.
+- Selected terms as the first Sprint 10 implementation target, with Vronsky Table 5 as the source only after manual verification.
+- Decided that decans require a separate source decision and must not mix Chaldean / Star of the Magi, triplicity / trigon or Vronsky-specific systems.
+- Decided that degree rulers are deferred until Table 6 / Table 7 source screenshots or verified rows are available, and that those tables must remain separate source systems.
+- Confirmed no Vronsky screenshot/table files are currently present in the repository; actual dataset entry requires uploaded source material or manual transcription later.
+- Reinforced the no blind OCR rule: OCR may assist transcription only before manual verification.
+- No app code, `src/`, `scripts/`, `index.html`, `sw.js`, package files, datasets, lookup engines, OCR imports, terms / decans / degree ruler data, houses, ASC / MC, transits or interpretations were changed.
+- Task 10.2 — Vronsky Dataset Entry Policy is next, but was not started.
+
 ## 2026-05-23 — Prepare Sprint 10 documentation
 
 - Sprint 1–9 are completed; active sprint is now Sprint 10 — Terms / Decans / Degree Rulers.

@@ -2269,11 +2269,11 @@ Do not OCR-import dense screenshots blindly.
 
 Do not implement fixed stars, houses / ASC / MC, transits, interpretations or ritual scoring.
 
-# Active Task
+# Completed Task
 
 ## Task 10.1 — Terms / Decans / Degree Rulers Strategy and Source Audit
 
-Status: not started
+Status: done
 
 ### Goal
 
@@ -2306,7 +2306,16 @@ TERMS_DECANS_DEGREE_RULERS_STRATEGY.md
 - No dataset created.
 - Task 10.2 remains next.
 
-# Sprint 10 Backlog
+### Result
+
+- Created `TERMS_DECANS_DEGREE_RULERS_STRATEGY.md`.
+- Selected terms as the first implementation target, using Vronsky Table 5 only after manual verification.
+- Deferred decans until a source system is selected and verified.
+- Deferred degree rulers until Table 6 / Table 7 source rows are manually verified.
+- Confirmed no Vronsky screenshot files are currently present in the repository.
+- No code, datasets, OCR import, lookup engine or UI were created.
+
+# Active Task
 
 ## Task 10.2 — Vronsky Dataset Entry Policy
 
@@ -2315,6 +2324,17 @@ Status: not started
 Goal:
 
 Define how screenshot/table data is converted into structured datasets safely.
+
+Acceptance criteria:
+
+- no blind OCR;
+- source references required;
+- manual verification required;
+- boundary tests required;
+- dataset metadata required;
+- Task 10.3 remains next.
+
+# Sprint 10 Backlog
 
 ## Task 10.3 — Terms Dataset
 

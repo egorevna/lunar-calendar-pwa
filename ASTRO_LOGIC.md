@@ -893,6 +893,16 @@ The final interval ends at `30°`.
 
 Tests must cover sign start, every boundary, the last degree before sign end, invalid sign/degree input, and no `NaN`.
 
+## Task 10.1 Selected Policy
+
+Terms are the first Sprint 10 implementation target, but only from Vronsky Table 5 after manual verification.
+
+Decans require a separate source decision before any dataset is created. Chaldean / Star of the Magi, trigon / triplicity and Vronsky-specific decan systems must not be mixed silently.
+
+Degree rulers are deferred until Table 6 / Table 7 source screenshots or verified rows are available. Table 6 and Table 7 are separate source systems.
+
+Actual Vronsky screenshot/table files are not currently present in the repository, so no dataset may be created from memory.
+
 ## Deferred Features
 
 Sprint 10 planning does not activate:
