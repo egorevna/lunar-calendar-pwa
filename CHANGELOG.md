@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-05-23 — Complete Task 8.4 natal aspect display helper
+
+- Added pure `src/natalAspectDisplay.js`.
+- Added `test/natalAspectDisplay.test.js`.
+- Helper formats already calculated natal aspect objects into compact user-facing copy such as `Солнце □ Луна · орб 2°15′`.
+- Added formatting for single aspects, aspect lists, summary counts, display limitations and displayability checks.
+- Summary counts `square` / `opposition` as tense, `trine` / `sextile` as harmonious, and `conjunction` separately.
+- Invalid / incomplete aspects are filtered safely without `NaN`, `undefined`, raw technical fields or private profile data.
+- Helper does not import or call the aspect engine, providers, profiles, localStorage, DOM or UI code.
+- UI, `src/app.js`, `index.html`, `sw.js`, package files, provider calculations, houses, ASC / MC, transits and interpretations were not changed.
+- Task 8.5 — Natal Aspects Collapsible UI is next, but was not started.
+
 ## 2026-05-23 — Complete Task 8.3 natal aspect fixture validation
 
 - Added `test/fixtures/natalAspectFixtures.js` with synthetic/manual natal aspect fixtures.

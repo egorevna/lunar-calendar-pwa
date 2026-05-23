@@ -463,6 +463,20 @@ Current responsibilities:
 
 This module does not call providers, does not import `astronomy-engine` or Luxon, does not read profiles or localStorage, does not render DOM, does not interpret aspects, and does not calculate houses, ASC / MC, transits, fixed stars, special points or ritual scoring.
 
+## `src/natalAspectDisplay.js`
+
+Defines pure display helpers for already-calculated natal aspect objects.
+
+Current responsibilities:
+
+- validate whether a passed natal aspect object is safe to display;
+- format body labels, aspect symbol / name and orb text into compact user-facing copy such as `Солнце □ Луна · орб 2°15′`;
+- format lists by filtering invalid / incomplete aspect objects;
+- build collapsed-section summary counts for total, tense, harmonious and conjunction aspects;
+- expose Sprint 8 limitation copy that natal aspects are not transits and that ASC / MC, house and point aspects are separate future work.
+
+This module does not import or call `src/natalAspectEngine.js`, providers, profiles, localStorage, DOM or UI code. It does not calculate aspects, longitudes, orbs, houses, ASC / MC, transits, interpretations or ritual scoring.
+
 ## `src/natalPlanetsDebug.js`
 
 Builds the safe debug summary for the read-only natal planets UI state.
@@ -918,11 +932,13 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 32. `src/natalAspectEngine.js` calculates pure natal aspects between supplied natal planet positions using the Sprint 8 major aspect set and explicit orb policy; it does not call providers, profiles, UI code, transits, houses or ASC / MC.
 
-33. `src/natalPlanetsDebug.js` converts active-profile natal planets UI state into a sanitized debug summary with status/counts/capabilities only.
+33. `src/natalAspectDisplay.js` formats already-calculated natal aspects into safe compact display objects and summary counts without calculating aspects or calling providers / profiles / UI code.
 
-34. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, provider validation summary and natal planets UI summary without birth details.
+34. `src/natalPlanetsDebug.js` converts active-profile natal planets UI state into a sanitized debug summary with status/counts/capabilities only.
 
-35. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
+35. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, provider validation summary and natal planets UI summary without birth details.
+
+36. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 
