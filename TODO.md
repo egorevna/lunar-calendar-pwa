@@ -2847,11 +2847,38 @@ Result:
 
 ## Task 10.12 — Sprint 10 Hardening
 
-Status: active
+Status: done
 
 Goal:
 
 Finalize Sprint 10.
+
+Result:
+
+- Completed final Sprint 10 hardening audit for Terms / Decans / Degree Rulers.
+- Confirmed source separation for Table 5 terms, Decans Star of the Magi, Table 6 / Star of the Magi degree rulers and Table 7 / Vronsky degree rulers.
+- Confirmed dataset / lookup / display / profile helper / UI / debug boundaries remain separate.
+- Confirmed user-facing UI and `?debug=1` detailed dignity debug do not expose raw birth data, raw coordinates, raw planet longitudes, source tokens, source keys/source systems or full tables.
+- Confirmed `Термы, деканы и градусы` remains collapsed by default inside `Мои карты`, after `Достоинства планет`, with human-readable source labels and no interpretations.
+- No source datasets, lookup engines, provider calculations, UI behavior, package files or PWA cache were changed during hardening.
+- Sprint 10 is closed.
+- Next work is Sprint 11 planning / Houses / ASC / MC; Sprint 11 was not started.
+
+# Next Sprint
+
+## Sprint 11 Planning — Houses / ASC / MC
+
+Status: not started
+
+Goal:
+
+Plan the next sprint around houses / Ascendant / MC readiness before any implementation.
+
+Rules:
+
+- Do not start Sprint 11 without explicit user approval.
+- Do not calculate houses / ASC / MC until source, provider and test policy are defined.
+- Do not add fixed stars, transits, interpretations or ritual scoring as part of Sprint 10.
 
 # Security Backlog
 

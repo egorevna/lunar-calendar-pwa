@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-05-24 — Complete Task 10.12 Sprint 10 hardening
+
+- Completed final hardening audit for Sprint 10 — Terms / Decans / Degree Rulers.
+- Confirmed source separation across Table 5 terms, Decans Star of the Magi, Table 6 / Star of the Magi degree rulers and Table 7 / Vronsky degree rulers.
+- Confirmed dataset modules store data, lookup engines perform lookup only, display/profile helpers format and compose ready results, UI renders safe user-facing text and debug exposes status/counts only.
+- Confirmed Table 7 keeps its separate multi-ruler row model with source tokens, per-ruler retrograde markers, outer planets, Chiron and Proserpina support.
+- Confirmed user-facing UI and `?debug=1` detailed dignity debug do not expose raw birth data, raw coordinates, raw planet longitudes, source tokens, source keys/source systems or full tables.
+- Confirmed `Термы, деканы и градусы` remains collapsed by default inside `Мои карты`, after `Достоинства планет`, with short human-readable source labels and no interpretations.
+- No code fixes were required; only status documentation was updated.
+- No datasets, lookup engines, provider calculations, package files, PWA cache, `src/ephemeris-data.js`, houses / ASC / MC, fixed stars, transits, interpretations or ritual scoring were changed.
+- Sprint 10 is closed. Next work is Sprint 11 planning / Houses / ASC / MC, but Sprint 11 was not started.
+
 ## 2026-05-24 — Complete Task 10.11 detailed dignities debug
 
 - Added `src/detailedDignitiesDebug.js`.
