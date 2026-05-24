@@ -2642,19 +2642,33 @@ Completion:
 - Added manual fixtures and validation tests in `test/fixtures/degreeRulersStarOfMagiFixtures.js`, `test/degreeRulersStarOfMagiFixtures.test.js`, `test/degreeRulersStarOfMagi.test.js` and `test/degreeRulersStarOfMagiValidation.test.js`.
 - Did not change the active dataset, UI, app shell, Table 7 / Vronsky degree rulers, package files or PWA cache.
 
-# Active Task
+# Completed Task
 
 ## Task 10.9 — Terms / Decans / Degree Rulers Display Helper
 
-Status: active
+Status: done
 
 Goal:
 
 Create display formatter for verified lookup results.
 
+Completion:
+
+- Added `src/detailedDignityDisplay.js`.
+- Implemented pure formatting for already-computed term, decan and degree-ruler lookup results.
+- Added compact user-facing text:
+  - `Марс — терм Сатурна · +1`;
+  - `Марс — 3-й декан · Венера`;
+  - `Марс — 25-й градус · Сатурн`.
+- Added safe list formatting, dispatcher, summary counts and display limitations.
+- Added `test/detailedDignityDisplay.test.js`.
+- Did not call lookup engines, change datasets, create UI, add Table 7 / Vronsky degree rulers, change package files or PWA cache.
+
+# Active Task
+
 ## Task 10.10 — Terms / Decans / Degree Rulers Collapsible UI
 
-Status: not started
+Status: active
 
 Goal:
 

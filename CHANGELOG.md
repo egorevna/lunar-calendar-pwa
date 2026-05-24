@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-24 — Complete Task 10.9 detailed dignity display helper
+
+- Added `src/detailedDignityDisplay.js`.
+- Implemented pure formatting for already-computed term, decan and degree-ruler lookup results.
+- Added compact user-facing display strings for terms, decans and degree rulers without interpretations.
+- Added safe list formatting, dispatcher, summary counts and display limitations.
+- Added `test/detailedDignityDisplay.test.js`.
+- Kept the helper independent from lookup engines, datasets, providers, profile storage, DOM, UI and app shell.
+- Table 7 / Vronsky degree rulers, Trigon/Vronsky decans, fixed stars, houses, ASC / MC, transits, interpretations, package files and PWA cache were not changed.
+- Task 10.10 — Terms / Decans / Degree Rulers Collapsible UI is next, but was not started.
+
 ## 2026-05-24 — Complete Task 10.8 degree rulers Table 6 lookup engine
 
 - Added `src/degreeRulersStarOfMagi.js`.
