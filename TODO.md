@@ -2793,15 +2793,23 @@ Completion:
 
 ## Task 10.9b — Update Detailed Dignity Display Helper for Table 7
 
-Status: active
+Status: done
 
 Goal:
 
 Update display formatting for Table 7 multi-ruler results if the verified Table 7 lookup output requires it.
 
+Result:
+
+- Added Table 7 / Vronsky degree ruler display formatting for multi-ruler lookup results.
+- Preserved Table 6 / Star of the Magi degree ruler formatting separately.
+- Display output now supports per-ruler retrograde marker `R`, outer planets, Chiron and Proserpina labels.
+- Updated detailed dignity summary counts to include `vronskyDegreeRulers`.
+- Did not change lookup engines, datasets, UI, app shell, package files or PWA cache.
+
 ## Task 10.10 — Terms / Decans / Degree Rulers Collapsible UI
 
-Status: not started
+Status: active
 
 Goal:
 

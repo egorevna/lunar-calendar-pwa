@@ -618,12 +618,14 @@ Current responsibilities:
 - format already-computed term lookup results into compact display rows;
 - format already-computed Star of the Magi decan lookup results into compact display rows;
 - format already-computed Table 6 / Star of the Magi degree-ruler lookup results into compact display rows;
+- format already-computed Table 7 / Vronsky degree-ruler lookup results into compact display rows;
+- preserve Table 7 multi-ruler display, outer planet labels, Chiron, Proserpina and per-ruler `R` markers in user-facing text;
 - dispatch mixed ready lookup results to the correct formatter;
 - filter invalid / incomplete results safely;
-- build safe summary counts for terms, decans and degree rulers;
-- expose short display limitations for Table 7 display support and interpretations being deferred.
+- build safe summary counts for terms, decans, Table 6 degree rulers and Table 7 Vronsky degree rulers;
+- expose short display limitations for Table 6 / Table 7 source separation and interpretations being deferred.
 
-This module does not import or call lookup engines, does not read datasets directly, does not calculate coordinates, signs, terms, decans or degree rulers, does not read profiles, localStorage or DOM, and does not include Table 7 / Vronsky degree ruler rows, Trigon/Vronsky decans, fixed stars, houses, ASC / MC, transits, interpretations or ritual scoring.
+This module does not import or call lookup engines, does not read datasets directly, does not calculate coordinates, signs, terms, decans or degree rulers, does not read profiles, localStorage or DOM, and does not include Table 6 or Table 7 source rows, Trigon/Vronsky decans, fixed stars, houses, ASC / MC, transits, interpretations or ritual scoring.
 
 ## `src/terms.js`
 

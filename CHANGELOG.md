@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-05-24 — Complete Task 10.9b Table 7 detailed dignity display update
+
+- Updated `src/detailedDignityDisplay.js`.
+- Added pure formatting for already-computed Table 7 / Vronsky degree ruler lookup results.
+- Supported `degreeRulers[]` and `rulers[]` result shapes with multiple rulers, outer planets, Chiron, Proserpina and per-ruler retrograde display as `R`.
+- Kept user-facing Table 7 source label explicit as `Таблица 7 / Вронский`.
+- Preserved existing Terms, Decans and Table 6 / Star of the Magi degree-ruler display formats.
+- Updated detailed dignity summary counts to include `vronskyDegreeRulers`.
+- Updated `test/detailedDignityDisplay.test.js`.
+- No UI, app shell, lookup engine, dataset, provider, package file or PWA cache changes were added.
+- Task 10.10 — Terms / Decans / Degree Rulers Collapsible UI is next, but was not started.
+
 ## 2026-05-24 — Complete Task 10.8f Table 7 Vronsky degree rulers lookup engine
 
 - Added `src/degreeRulersVronsky.js`.

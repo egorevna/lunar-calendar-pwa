@@ -8,6 +8,7 @@ import {
   formatDetailedDignityList,
   formatDetailedDignityResult,
   formatTermResult,
+  formatVronskyDegreeRulersResult,
   getDetailedDignityDisplayLimitations,
   isDisplayableDetailedDignityItem,
   summarizeDetailedDignities,
@@ -79,6 +80,36 @@ function readyDegreeRuler(overrides = {}) {
   };
 }
 
+function readyVronskyDegreeRulers(overrides = {}) {
+  return {
+    status: 'ready',
+    planetKey: 'mars',
+    planetLabel: 'Марс',
+    sign: 'aries',
+    signRu: 'Овен',
+    degreeWithinSign: 0.5,
+    degreeIndex: 0,
+    sourceTokens: ['Mars', 'Pluto R'],
+    degreeRulers: [
+      {
+        key: 'mars',
+        rulerRu: 'Марс',
+        retrograde: false,
+        sourceToken: 'Mars',
+      },
+      {
+        key: 'pluto',
+        rulerRu: 'Плутон',
+        retrograde: true,
+        sourceToken: 'Pluto R',
+      },
+    ],
+    source: 'degree-rulers-vronsky-table-7',
+    sourceSystem: 'vronsky-degree-rulers',
+    ...overrides,
+  };
+}
+
 test('formatTermResult formats ready term result', () => {
   assert.deepEqual(formatTermResult(readyTerm()), {
     type: 'term',
@@ -133,10 +164,77 @@ test('formatDegreeRulerResult formats ready degree ruler result', () => {
   });
 });
 
+test('formatVronskyDegreeRulersResult formats single-ruler Table 7 result', () => {
+  assert.deepEqual(formatVronskyDegreeRulersResult(readyVronskyDegreeRulers({
+    degreeIndex: 1,
+    degreeRulers: [
+      {
+        key: 'sun',
+        rulerRu: 'Солнце',
+        retrograde: false,
+        sourceToken: 'Sun',
+      },
+    ],
+  })), {
+    type: 'vronskyDegreeRulers',
+    title: 'Управители градуса по Вронскому',
+    planet: 'Марс',
+    text: 'Марс — 1-й градус · Солнце',
+    detail: 'Овен',
+    source: 'Таблица 7 / Вронский',
+  });
+});
+
+test('formatVronskyDegreeRulersResult formats multi-ruler Table 7 result', () => {
+  assert.deepEqual(formatVronskyDegreeRulersResult(readyVronskyDegreeRulers()), {
+    type: 'vronskyDegreeRulers',
+    title: 'Управители градуса по Вронскому',
+    planet: 'Марс',
+    text: 'Марс — 0-й градус · Марс, Плутон R',
+    detail: 'Овен',
+    source: 'Таблица 7 / Вронский',
+  });
+});
+
+test('formatVronskyDegreeRulersResult preserves retrograde marker as R', () => {
+  const formatted = formatVronskyDegreeRulersResult(readyVronskyDegreeRulers());
+
+  assert.equal(formatted?.text.includes('Плутон R'), true);
+  assert.equal(formatted?.text.includes('Pluto R'), false);
+});
+
+test('formatVronskyDegreeRulersResult supports outer planets Chiron and Proserpina', () => {
+  const formatted = formatVronskyDegreeRulersResult(readyVronskyDegreeRulers({
+    degreeIndex: 2,
+    rulers: [
+      { key: 'uranus', retrograde: false, sourceToken: 'Uranus' },
+      { key: 'neptune', retrograde: true, sourceToken: 'Neptune R' },
+      { key: 'chiron', retrograde: true, sourceToken: 'Chiron R' },
+      { key: 'proserpina', retrograde: false, sourceToken: 'Proserpina' },
+    ],
+    degreeRulers: undefined,
+    source: {
+      sourceKey: 'degree-rulers-vronsky-table-7',
+      sourceSystem: 'vronsky-degree-rulers',
+    },
+  }));
+
+  assert.equal(formatted?.text, 'Марс — 2-й градус · Уран, Нептун R, Хирон R, Прозерпина');
+});
+
 test('dispatcher formats term decan and degree ruler results', () => {
   assert.equal(formatDetailedDignityResult(readyTerm())?.type, 'term');
   assert.equal(formatDetailedDignityResult(readyDecan())?.type, 'decan');
   assert.equal(formatDetailedDignityResult(readyDegreeRuler())?.type, 'degreeRuler');
+});
+
+test('dispatcher detects Table 7 Vronsky result', () => {
+  assert.equal(formatDetailedDignityResult(readyVronskyDegreeRulers())?.type, 'vronskyDegreeRulers');
+});
+
+test('dispatcher does not confuse Table 7 result with Table 6 result', () => {
+  assert.equal(formatDetailedDignityResult(readyDegreeRuler())?.source, 'Таблица 6 / Звезда Магов');
+  assert.equal(formatDetailedDignityResult(readyVronskyDegreeRulers())?.source, 'Таблица 7 / Вронский');
 });
 
 test('invalid or incomplete result returns null', () => {
@@ -144,6 +242,7 @@ test('invalid or incomplete result returns null', () => {
   assert.equal(formatTermResult({ ...readyTerm(), status: 'invalid' }), null);
   assert.equal(formatDecanResult({ ...readyDecan(), planetLabel: '' }), null);
   assert.equal(formatDegreeRulerResult({ ...readyDegreeRuler(), degreeIndex: Number.NaN }), null);
+  assert.equal(formatVronskyDegreeRulersResult({ ...readyVronskyDegreeRulers(), degreeRulers: [] }), null);
   assert.equal(formatDetailedDignityResult({ status: 'ready' }), null);
 });
 
@@ -153,19 +252,26 @@ test('formatDetailedDignityList filters invalid items', () => {
     null,
     { ...readyDecan(), status: 'invalid' },
     readyDegreeRuler(),
+    readyVronskyDegreeRulers(),
   ]);
 
-  assert.deepEqual(result.map((item) => item.type), ['term', 'degreeRuler']);
+  assert.deepEqual(result.map((item) => item.type), ['term', 'degreeRuler', 'vronskyDegreeRulers']);
 });
 
 test('summary counts terms decans and degree rulers', () => {
-  const items = formatDetailedDignityList([readyTerm(), readyDecan(), readyDegreeRuler()]);
+  const items = formatDetailedDignityList([
+    readyTerm(),
+    readyDecan(),
+    readyDegreeRuler(),
+    readyVronskyDegreeRulers(),
+  ]);
 
   assert.deepEqual(summarizeDetailedDignities(items), {
-    total: 3,
+    total: 4,
     terms: 1,
     decans: 1,
     degreeRulers: 1,
+    vronskyDegreeRulers: 1,
     text: 'Термы, деканы и управители градусов рассчитаны',
   });
 });
@@ -178,21 +284,28 @@ test('summary handles partially available layers', () => {
     terms: 1,
     decans: 1,
     degreeRulers: 0,
+    vronskyDegreeRulers: 0,
     text: 'Термы и деканы рассчитаны · управители градусов недоступны',
   });
 });
 
-test('limitations mention Table 7 not used', () => {
+test('limitations mention Table 6 and Table 7 are separate systems', () => {
   const limitations = getDetailedDignityDisplayLimitations();
 
   assert.equal(Array.isArray(limitations), true);
-  assert.equal(limitations.some((item) => item.includes('Таблица 7') && item.includes('не используется')), true);
+  assert.equal(limitations.some((item) => item.includes('Table 6') && item.includes('Table 7') && item.includes('разные системы')), true);
 });
 
 test('output contains no NaN or undefined', () => {
   const output = [
     ...formatDetailedDignityList([readyTerm(), readyDecan(), readyDegreeRuler()]),
-    summarizeDetailedDignities(formatDetailedDignityList([readyTerm(), readyDecan(), readyDegreeRuler()])),
+    formatVronskyDegreeRulersResult(readyVronskyDegreeRulers()),
+    summarizeDetailedDignities(formatDetailedDignityList([
+      readyTerm(),
+      readyDecan(),
+      readyDegreeRuler(),
+      readyVronskyDegreeRulers(),
+    ])),
   ];
   const text = JSON.stringify(output);
 
@@ -206,6 +319,13 @@ test('output contains no private data raw longitude or profile JSON', () => {
       birthDate: '1990-01-01',
       birthTime: '12:00',
       longitude: 25.5,
+      coordinates: { latitude: 1, longitude: 2 },
+      profileJson: { name: 'Егор' },
+    }),
+    readyVronskyDegreeRulers({
+      longitude: 0.5,
+      birthDate: '1990-01-01',
+      birthTime: '12:00',
       coordinates: { latitude: 1, longitude: 2 },
       profileJson: { name: 'Егор' },
     }),
@@ -227,7 +347,12 @@ test('output contains no private data raw longitude or profile JSON', () => {
 });
 
 test('output contains no interpretation or fatalistic words', () => {
-  const text = JSON.stringify(formatDetailedDignityList([readyTerm(), readyDecan(), readyDegreeRuler()]));
+  const text = JSON.stringify(formatDetailedDignityList([
+    readyTerm(),
+    readyDecan(),
+    readyDegreeRuler(),
+    readyVronskyDegreeRulers(),
+  ]));
 
   for (const forbidden of [
     'плохой',
@@ -242,11 +367,20 @@ test('output contains no interpretation or fatalistic words', () => {
   }
 });
 
-test('output does not activate Table 7 deferred source', () => {
+test('Table 6 output does not activate Table 7 source', () => {
   const text = JSON.stringify(formatDetailedDignityList([readyDegreeRuler()]));
 
   assert.equal(text.includes('Table 7'), false);
   assert.equal(text.includes('Таблица 7'), false);
+  assert.equal(text.includes('vronsky-degree-rulers'), false);
+});
+
+test('Table 7 output does not expose technical source tokens or source keys', () => {
+  const text = JSON.stringify(formatDetailedDignityList([readyVronskyDegreeRulers()]));
+
+  assert.equal(text.includes('Mars'), false);
+  assert.equal(text.includes('Pluto R'), false);
+  assert.equal(text.includes('degree-rulers-vronsky-table-7'), false);
   assert.equal(text.includes('vronsky-degree-rulers'), false);
 });
 
@@ -263,9 +397,15 @@ test('helper does not import lookup engines provider modules profileStorage or a
     './terms.js',
     './decans.js',
     './degreeRulersStarOfMagi.js',
+    './degreeRulersVronsky.js',
+    './termsData.js',
+    './decansData.js',
+    './degreeRulersStarOfMagiData.js',
+    './degreeRulersVronskyData.js',
     'lookupTerm',
     'lookupDecan',
     'lookupDegreeRuler',
+    'lookupVronskyDegreeRulers',
     'astronomyEngineProvider',
     'profileStorage',
     'provider',
