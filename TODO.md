@@ -2568,7 +2568,7 @@ Completion:
 - Deferred Table 7 to a separate later workflow.
 - Did not create active degree rulers dataset, lookup engine, OCR import, UI, tests, `src/` changes or package changes.
 
-# Active Task
+# Completed Task
 
 ## Task 10.7b — Degree Rulers Table 6 Star of the Magi Transcription Draft
 
@@ -2590,11 +2590,29 @@ Completion:
 
 ## Task 10.7c — Degree Rulers Table 6 Manual Verification
 
-Status: active
+Status: done
 
 Goal:
 
 Verify the Table 6 draft rows against `table6.jpg` before active dataset creation.
+
+Completion:
+
+- Created `DEGREE_RULERS_TABLE_6_VERIFICATION_REPORT.md`.
+- Checked 360 rows across 12 signs x 30 degrees against `table6.jpg`.
+- Marked 360 rows as `match`, with 0 unclear and 0 mismatched rows.
+- Confirmed Table 6 / Star of the Magi source separation from Table 7 / Vronsky degree rulers.
+- Did not create active degree rulers dataset, lookup engine, OCR import, UI, tests, `src/` changes, Table 7 rows or package changes.
+
+# Active Task
+
+## Task 10.7d — Degree Rulers Table 6 Dataset from Verified Rows
+
+Status: active
+
+Goal:
+
+Create active structured dataset from the verified Table 6 rows only after manual verification.
 
 ## Task 10.8 — Degree Rulers Lookup Engine / Fixtures
 
