@@ -2572,11 +2572,29 @@ Completion:
 
 ## Task 10.7b — Degree Rulers Table 6 Star of the Magi Transcription Draft
 
-Status: active
+Status: done
 
 Goal:
 
 Create a non-active draft transcription of Table 6 only from source image material.
+
+Completion:
+
+- Created `DEGREE_RULERS_TABLE_6_TRANSCRIPTION_DRAFT.md`.
+- Transcribed 360 draft rows across 12 signs x 30 degrees from `table6.jpg`.
+- Marked every row `needsReview`; no row was marked `verified`.
+- Kept the draft limited to Table 6 / Star of the Magi and septener planets only.
+- Did not create active degree rulers dataset, lookup engine, OCR import, UI, tests, `src/` changes, Table 7 rows or package changes.
+
+# Active Task
+
+## Task 10.7c — Degree Rulers Table 6 Manual Verification
+
+Status: active
+
+Goal:
+
+Verify the Table 6 draft rows against `table6.jpg` before active dataset creation.
 
 ## Task 10.8 — Degree Rulers Lookup Engine / Fixtures
 

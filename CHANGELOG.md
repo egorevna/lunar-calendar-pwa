@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-24 — Complete Task 10.7b degree rulers Table 6 transcription draft
+
+- Created `DEGREE_RULERS_TABLE_6_TRANSCRIPTION_DRAFT.md`.
+- Added non-active draft transcription of Table 6, `Управление градусами по Звезде Магов`.
+- Captured 360 draft rows across 12 zodiac signs and 30 degree rows per sign.
+- Marked every row `needsReview`; no row was marked `verified`.
+- Kept the draft limited to Table 6 / Star of the Magi and septener planets only.
+- Did not use Table 7 or add Vronsky degree ruler rows.
+- No active degree rulers dataset, lookup engine, OCR import, UI, tests, `src/`, package files, app shell or PWA cache changes were added.
+- Task 10.7c — Degree Rulers Table 6 Manual Verification is next, but was not started.
+
 ## 2026-05-24 — Complete Task 10.7a degree rulers source decision
 
 - Created `DEGREE_RULERS_SOURCE_DECISION.md`.
