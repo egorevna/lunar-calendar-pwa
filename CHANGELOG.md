@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-24 — Complete Task 10.5 decans source decision
+
+- Created `DECANS_SOURCE_DECISION.md`.
+- Reviewed uploaded PDF `4148867_vvedenie_v_astrologiyu.pdf` around Star of the Magi, decan rulership, trigon rulership, Figure 4.7 and Figure 4.8.
+- Confirmed Vronsky presents two decan systems: Star of the Magi / Egyptian tradition and Trigon / Triplicity.
+- Selected Star of the Magi / Egyptian tradition as the first candidate for later decan transcription and manual verification.
+- Deferred Trigon / Vronsky decans because they can include multiple active rulers and retrograde outer planets.
+- Confirmed no active decans dataset can be created yet because no 36-row transcription and verification report exists.
+- No code, `src/`, tests, active dataset, lookup engine, OCR import, UI, package files, app shell or PWA cache changes were added.
+- Task 10.5b — Decans Star of the Magi Transcription Draft is next, but was not started.
+
 ## 2026-05-23 — Complete Task 10.4 Terms lookup engine / fixtures
 
 - Added pure `src/terms.js`.

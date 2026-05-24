@@ -2454,17 +2454,54 @@ Completion:
 - Planet input can resolve from `sign + degree/minutes` or fall back to valid longitude through `src/astroMath.js`.
 - No UI, display helper, decans, degree rulers or other Vronsky tables were added.
 
-# Active Task
+# Completed Task
 
 ## Task 10.5 — Decans Source Decision / Dataset
 
-Status: active
+Status: done
 
 Goal:
 
 Choose decan system and create dataset only if source is verified.
 
+Completion:
+
+- Created `DECANS_SOURCE_DECISION.md`.
+- Reviewed uploaded PDF `4148867_vvedenie_v_astrologiyu.pdf` for Star of the Magi, trigon decans, Figure 4.7 and Figure 4.8.
+- Confirmed Vronsky presents two decan systems: Star of the Magi / Egyptian tradition and Trigon / Triplicity.
+- Confirmed Star of the Magi uses septener planets only, while Trigon / Vronsky can include active planets including retrograde outer planets.
+- Selected Star of the Magi / Egyptian tradition as the first candidate for later transcription and verification.
+- Deferred Trigon / Vronsky decans until separate source handling is specified.
+- Did not create an active decans dataset because no 36-row transcription and verification report exists yet.
+- No code, `src/`, tests, UI, lookup engine, OCR import or package files were changed.
+
+# Active Task
+
+## Task 10.5b — Decans Star of the Magi Transcription Draft
+
+Status: active
+
+Goal:
+
+Create a non-active draft transcription of the Star of the Magi decan rows from the verified source figure.
+
 # Sprint 10 Backlog
+
+## Task 10.5c — Decans Star of the Magi Manual Verification
+
+Status: not started
+
+Goal:
+
+Verify the decan draft rows against the source figure before active dataset creation.
+
+## Task 10.5d — Decans Dataset from Verified Rows
+
+Status: not started
+
+Goal:
+
+Create active decans dataset only from manually verified Star of the Magi rows.
 
 ## Task 10.6 — Decans Lookup Engine / Fixtures
 

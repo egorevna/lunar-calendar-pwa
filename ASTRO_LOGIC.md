@@ -938,6 +938,28 @@ Rows printed with final `29°` endings keep `printedEndDegree: 29` in output, bu
 
 Planet input may use already-calculated `sign.key`, `degree` and `minutes`, or fall back to longitude-derived sign/degree through `src/astroMath.js`. The terms lookup engine must not call providers, read profiles, calculate planet positions, render UI, or include decans / degree rulers / other Vronsky tables / interpretations.
 
+## Task 10.5 Decans Source Policy
+
+Decans have two separate source systems in the reviewed Vronsky PDF:
+
+- Star of the Magi / Egyptian tradition;
+- Trigon / Triplicity system.
+
+These systems must not be mixed silently.
+
+Future datasets must use separate source keys:
+
+```txt
+decans-star-of-magi
+decans-trigon-vronsky
+```
+
+Star of the Magi is the first dataset candidate, but only after non-active transcription and manual verification of the source figure.
+
+Trigon / Vronsky decans remain deferred because they may include multiple active rulers and retrograde outer planets.
+
+No active decans dataset, lookup engine, UI or debug is allowed until source rows are manually verified.
+
 ## Deferred Features
 
 Sprint 10 planning does not activate:
