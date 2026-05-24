@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lunar-calendar-v76';
+const CACHE_NAME = 'lunar-calendar-v77';
 const ASSETS = [
   './',
   'index.html',
@@ -35,6 +35,7 @@ const ASSETS = [
   'src/essentialDignities.js',
   'src/essentialDignitiesData.js',
   'src/detailedDignitiesForProfile.js',
+  'src/detailedDignitiesDebug.js',
   'src/detailedDignityDisplay.js',
   'src/terms.js',
   'src/termsData.js',

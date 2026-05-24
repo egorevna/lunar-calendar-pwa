@@ -2830,15 +2830,24 @@ Result:
 
 ## Task 10.11 — Terms / Decans / Degree Rulers Debug
 
-Status: active
+Status: done
 
 Goal:
 
 Add safe debug/status for detailed dignity lookup layers.
 
+Result:
+
+- Added `src/detailedDignitiesDebug.js` as a safe status/counts/capabilities helper for the existing detailed dignity UI.
+- Wired `Detailed Dignities UI Debug` into `?debug=1` through `src/debugPanel.js`.
+- Debug output shows active-profile id/name only, panel readiness, collapsed state, counts for terms / decans / Table 6 / Table 7, source labels, capabilities and privacy flags.
+- Debug output does not expose birth data, raw coordinates, raw planet longitudes, source tokens, source keys/source systems, full tables, interpretations, houses / ASC / MC, transits or fixed stars.
+- Updated PWA cache to include the new debug module.
+- Did not change datasets, lookup engines, provider calculations, normal UI behavior or package files.
+
 ## Task 10.12 — Sprint 10 Hardening
 
-Status: not started
+Status: active
 
 Goal:
 

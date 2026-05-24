@@ -514,6 +514,176 @@ test('debug panel shows hidden essential dignities UI status for general day', (
   assert.equal(text.includes('natalPlanetsReady: no'), true);
 });
 
+test('debug panel shows safe detailed dignities UI status for ready profile', () => {
+  const text = describeDebugPanel({
+    now: new Date('2026-05-15T00:40:00+03:00'),
+    detailedDignitiesUiDebug: {
+      section: 'Detailed Dignities UI Debug',
+      enabled: true,
+      activeProfile: {
+        hasProfile: true,
+        id: 'profile-egor',
+        name: 'Егор',
+      },
+      panelStatus: 'ready',
+      reason: 'Термы, деканы и градусы доступны в панели «Мои карты».',
+      natalPlanetsReady: true,
+      userFacingBlock: true,
+      location: 'My Cards',
+      collapsedDefault: true,
+      collapsedState: true,
+      counts: {
+        planetGroups: 10,
+        totalItems: 40,
+        terms: 10,
+        decans: 10,
+        degreeRulersTable6: 10,
+        degreeRulersTable7: 10,
+      },
+      sources: {
+        terms: 'Вронский, термы',
+        decans: 'Звезда Магов',
+        degreeRulersTable6: 'Звезда Магов',
+        degreeRulersTable7: 'Вронский',
+      },
+      capabilities: {
+        terms: true,
+        decans: true,
+        degreeRulersTable6: true,
+        degreeRulersTable7: true,
+        table6Table7Separated: true,
+        interpretations: false,
+        fixedStars: false,
+        houses: false,
+        ascMc: false,
+        transits: false,
+      },
+      privacy: {
+        rawBirthDataExposed: false,
+        rawCoordinatesExposed: false,
+        rawLongitudesExposed: false,
+        rawSourceTokensExposed: false,
+        rawSourceKeysExposed: false,
+        fullTablesExposed: false,
+      },
+    },
+  });
+  const detailedSection = text
+    .split('\n\n')
+    .find((section) => section.startsWith('## Detailed Dignities UI Debug'));
+
+  assert.equal(text.includes('Detailed Dignities UI Debug'), true);
+  assert.equal(detailedSection.includes('activeProfileId: profile-egor'), true);
+  assert.equal(detailedSection.includes('activeProfileName: Егор'), true);
+  assert.equal(detailedSection.includes('hasActiveProfile: yes'), true);
+  assert.equal(detailedSection.includes('panelStatus: ready'), true);
+  assert.equal(detailedSection.includes('userFacingDetailedDignities: enabled'), true);
+  assert.equal(detailedSection.includes('natalPlanetsReady: yes'), true);
+  assert.equal(detailedSection.includes('userFacingBlock: yes'), true);
+  assert.equal(detailedSection.includes('location: My Cards'), true);
+  assert.equal(detailedSection.includes('collapsedDefault: yes'), true);
+  assert.equal(detailedSection.includes('collapsedState: yes'), true);
+  assert.equal(detailedSection.includes('planetGroups: 10'), true);
+  assert.equal(detailedSection.includes('totalItems: 40'), true);
+  assert.equal(detailedSection.includes('terms: 10'), true);
+  assert.equal(detailedSection.includes('decans: 10'), true);
+  assert.equal(detailedSection.includes('degreeRulersTable6: 10'), true);
+  assert.equal(detailedSection.includes('degreeRulersTable7: 10'), true);
+  assert.equal(detailedSection.includes('termsSource: Вронский, термы'), true);
+  assert.equal(detailedSection.includes('decansSource: Звезда Магов'), true);
+  assert.equal(detailedSection.includes('degreeRulersTable6Source: Звезда Магов'), true);
+  assert.equal(detailedSection.includes('degreeRulersTable7Source: Вронский'), true);
+  assert.equal(detailedSection.includes('table6Table7Separated: yes'), true);
+  assert.equal(detailedSection.includes('interpretations: no'), true);
+  assert.equal(detailedSection.includes('fixedStars: no'), true);
+  assert.equal(detailedSection.includes('houses: no'), true);
+  assert.equal(detailedSection.includes('ascMc: no'), true);
+  assert.equal(detailedSection.includes('transits: no'), true);
+  assert.equal(detailedSection.includes('rawBirthDataExposed: no'), true);
+  assert.equal(detailedSection.includes('rawCoordinatesExposed: no'), true);
+  assert.equal(detailedSection.includes('rawLongitudesExposed: no'), true);
+  assert.equal(detailedSection.includes('rawSourceTokensExposed: no'), true);
+  assert.equal(detailedSection.includes('rawSourceKeysExposed: no'), true);
+  assert.equal(detailedSection.includes('fullTablesExposed: no'), true);
+  assert.equal(detailedSection.includes('birthDate'), false);
+  assert.equal(detailedSection.includes('birthTime'), false);
+  assert.equal(detailedSection.includes('utcDateTime'), false);
+  assert.equal(detailedSection.includes('Europe/Moscow'), false);
+  assert.equal(detailedSection.includes('latitude'), false);
+  assert.equal(detailedSection.includes('longitude'), false);
+  assert.equal(detailedSection.includes('coordinates'), false);
+  assert.equal(detailedSection.includes('sourceTokens'), false);
+  assert.equal(detailedSection.includes('sourceKey'), false);
+  assert.equal(detailedSection.includes('sourceSystem'), false);
+  assert.equal(detailedSection.includes('Марс, Плутон R'), false);
+});
+
+test('debug panel shows hidden detailed dignities UI status for general day', () => {
+  const text = describeDebugPanel({
+    now: new Date('2026-05-15T00:40:00+03:00'),
+    detailedDignitiesUiDebug: {
+      section: 'Detailed Dignities UI Debug',
+      enabled: false,
+      activeProfile: {
+        hasProfile: false,
+        id: null,
+        name: 'Общий день',
+      },
+      panelStatus: 'hidden',
+      reason: 'Общий день не является персональным профилем.',
+      natalPlanetsReady: false,
+      userFacingBlock: false,
+      location: 'My Cards',
+      collapsedDefault: true,
+      collapsedState: true,
+      counts: {
+        planetGroups: 0,
+        totalItems: 0,
+        terms: 0,
+        decans: 0,
+        degreeRulersTable6: 0,
+        degreeRulersTable7: 0,
+      },
+      sources: {
+        terms: 'Вронский, термы',
+        decans: 'Звезда Магов',
+        degreeRulersTable6: 'Звезда Магов',
+        degreeRulersTable7: 'Вронский',
+      },
+      capabilities: {
+        terms: true,
+        decans: true,
+        degreeRulersTable6: true,
+        degreeRulersTable7: true,
+        table6Table7Separated: true,
+        interpretations: false,
+        fixedStars: false,
+        houses: false,
+        ascMc: false,
+        transits: false,
+      },
+      privacy: {
+        rawBirthDataExposed: false,
+        rawCoordinatesExposed: false,
+        rawLongitudesExposed: false,
+        rawSourceTokensExposed: false,
+        rawSourceKeysExposed: false,
+        fullTablesExposed: false,
+      },
+    },
+  });
+
+  assert.equal(text.includes('Detailed Dignities UI Debug'), true);
+  assert.equal(text.includes('activeProfileId: null'), true);
+  assert.equal(text.includes('activeProfileName: Общий день'), true);
+  assert.equal(text.includes('hasActiveProfile: no'), true);
+  assert.equal(text.includes('panelStatus: hidden'), true);
+  assert.equal(text.includes('userFacingDetailedDignities: disabled'), true);
+  assert.equal(text.includes('reason: Общий день не является персональным профилем.'), true);
+  assert.equal(text.includes('natalPlanetsReady: no'), true);
+  assert.equal(text.includes('totalItems: 0'), true);
+});
+
 test('debug panel shows no-window fallback state and rejected candidates', () => {
   const text = describeDebugPanel({
     now: new Date('2026-05-15T00:40:00+03:00'),
@@ -549,6 +719,7 @@ test('ordinary markup does not contain provider validation debug details', () =>
   assert.equal(markup.includes('Natal Planets UI Debug'), false);
   assert.equal(markup.includes('Natal Aspects UI Debug'), false);
   assert.equal(markup.includes('Essential Dignities UI Debug'), false);
+  assert.equal(markup.includes('Detailed Dignities UI Debug'), false);
   assert.equal(markup.includes('longitudeValidation: passed'), false);
   assert.equal(markup.includes('speedValidation: passed'), false);
   assert.equal(markup.includes('retrogradeValidation: passed'), false);

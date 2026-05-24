@@ -724,6 +724,20 @@ Current responsibilities:
 
 This module does not read localStorage, does not render DOM, does not call providers directly, does not calculate planetary positions, does not expose raw birth data, source tokens, technical source keys, raw longitude or coordinates, and does not include houses, ASC / MC, transits, fixed stars, interpretations or ritual scoring.
 
+## `src/detailedDignitiesDebug.js`
+
+Builds the safe debug summary for the read-only detailed dignity UI state.
+
+Current responsibilities:
+
+- read the active profile only for `?debug=1` debug output;
+- summarize panel status, user-facing enabled / disabled state, natal planets readiness, collapsed default/state and `Мои карты` location;
+- count planet groups and formatted rows for terms, decans, Table 6 / Star of the Magi degree rulers and Table 7 / Vronsky degree rulers;
+- expose only human-readable source labels: `Вронский, термы`, `Звезда Магов` and `Вронский`;
+- expose capability flags that terms, decans, Table 6 and Table 7 are available, Table 6 / Table 7 are separated, and interpretations, fixed stars, houses, ASC / MC and transits are not supported.
+
+This helper does not return raw birth date, birth time, UTC datetime, timezone values, place objects, coordinates, raw planet longitudes, source tokens, source keys/source systems, full profile JSON, full Table 5 / Table 6 / Table 7 rows or interpretation text.
+
 ## `src/natalPlanetsDebug.js`
 
 Builds the safe debug summary for the read-only natal planets UI state.
@@ -879,10 +893,10 @@ Current behavior:
 
 - reads `debug=1` from URL query parameters;
 - returns hidden-panel text for calculation verification;
-- includes calculated time, `debugDate` status, Moscow day system, Moon sign, VOC, Moon aspects, indicators, safe profile debug state, safe personal debug state, safe natal-engine/provider debug state, safe natal planets UI debug state, best-window debug reasoning, ephemeris range/source, and cache version;
+- includes calculated time, `debugDate` status, Moscow day system, Moon sign, VOC, Moon aspects, indicators, safe profile debug state, safe personal debug state, safe natal-engine/provider debug state, safe natal planets UI debug state, safe natal aspects UI debug state, safe essential dignities UI debug state, safe detailed dignities UI debug state, best-window debug reasoning, ephemeris range/source, and cache version;
 - allows technical timestamps with seconds because this is debug-only.
 
-The debug panel does not store data and does not expose birth data, raw place objects, raw coordinates, exact birth timezone values or full profile data.
+The debug panel does not store data and does not expose birth data, raw place objects, raw coordinates, exact birth timezone values, raw planet longitudes, source tokens, source keys/source systems, full tables or full profile data.
 
 ## `src/dashboardModes.js`
 
@@ -1116,7 +1130,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v76
+lunar-calendar-v77
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -1243,9 +1257,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 50. `src/essentialDignitiesDebug.js` converts active-profile essential dignities UI state into a sanitized debug summary with status/counts/source policy/deferred capability labels only.
 
-51. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, provider validation summary, natal planets UI summary, natal aspects UI summary and essential dignities UI summary without birth details.
+51. `src/detailedDignitiesDebug.js` converts active-profile detailed dignity UI state into a sanitized debug summary with status/counts/source labels/capability and privacy flags only.
 
-50. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
+52. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, provider validation summary, natal planets UI summary, natal aspects UI summary, essential dignities UI summary and detailed dignities UI summary without birth details.
+
+53. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 
@@ -1902,7 +1918,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v76
+lunar-calendar-v77
 ```
 
 If this value changes in `sw.js`, update this section.

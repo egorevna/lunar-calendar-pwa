@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-24 — Complete Task 10.11 detailed dignities debug
+
+- Added `src/detailedDignitiesDebug.js`.
+- Added safe `Detailed Dignities UI Debug` output behind `?debug=1`.
+- Debug now reports detailed dignity panel readiness, collapsed state, counts for terms / decans / Table 6 / Table 7, human-readable source labels, capabilities and privacy flags.
+- Kept debug output limited to status/counts: no birth data, raw coordinates, raw planet longitudes, source tokens, source keys/source systems or full Table 5 / Table 6 / Table 7 rows are exposed.
+- Updated `src/debugPanel.js`, `test/detailedDignitiesDebug.test.js` and `test/debugPanel.test.js`.
+- Updated PWA cache to `lunar-calendar-v77` and cached the new debug module.
+- No datasets, lookup engines, provider calculations, normal UI behavior, package files, `src/ephemeris-data.js`, interpretations, houses / ASC / MC, transits or fixed stars were changed.
+- Task 10.12 — Sprint 10 Hardening is next, but was not started.
+
 ## 2026-05-24 — Polish Task 10.10 detailed dignity source labels
 
 - Made expanded detailed dignity source labels consistent across terms, decans, Table 6 and Table 7.

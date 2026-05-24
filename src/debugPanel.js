@@ -1,4 +1,5 @@
 import { getNatalEngineCapabilities } from './natalEngine.js';
+import { createDetailedDignitiesDebugSummaryFromStorage } from './detailedDignitiesDebug.js';
 import { createEssentialDignitiesDebugSummaryFromStorage } from './essentialDignitiesDebug.js';
 import { createNatalAspectsDebugSummaryFromStorage } from './natalAspectsDebug.js';
 import { createNatalPlanetsDebugSummaryFromStorage } from './natalPlanetsDebug.js';
@@ -6,7 +7,7 @@ import { getNatalProviderValidationSummary } from './natalProviderValidationSumm
 import { getPlanetaryProviderCapabilities } from './planetaryPositionProvider.js';
 import { formatAspect, formatPlanet } from './vocDisplay.js';
 
-export const APP_CACHE_VERSION = 'lunar-calendar-v72';
+export const APP_CACHE_VERSION = 'lunar-calendar-v77';
 
 export function isDebugMode(search = window.location.search) {
   return new URLSearchParams(search).get('debug') === '1';
@@ -29,6 +30,7 @@ export function describeDebugPanel(context = {}) {
     natalPlanetsUiDebug,
     natalAspectsUiDebug,
     essentialDignitiesUiDebug,
+    detailedDignitiesUiDebug,
   } = context;
 
   return [
@@ -84,6 +86,9 @@ export function describeDebugPanel(context = {}) {
     formatNatalAspectsUiDebug(natalAspectsUiDebug ?? createNatalAspectsDebugSummaryFromStorage()),
     formatEssentialDignitiesUiDebug(
       essentialDignitiesUiDebug ?? createEssentialDignitiesDebugSummaryFromStorage(),
+    ),
+    formatDetailedDignitiesUiDebug(
+      detailedDignitiesUiDebug ?? createDetailedDignitiesDebugSummaryFromStorage(),
     ),
     formatBestWindowsDebug(bestWindowsDebug),
   ].filter(Boolean).join('\n\n');
@@ -376,6 +381,56 @@ function formatEssentialDignitiesUiDebug(debug) {
     `interpretations: ${stillNotSupported.interpretations ?? 'notSupported'}`,
     `missingFields: ${formatList(debug.missingFields)}`,
     `warnings: ${formatList(debug.warnings)}`,
+  ]);
+}
+
+function formatDetailedDignitiesUiDebug(debug) {
+  if (!debug) return '';
+
+  const activeProfile = debug.activeProfile ?? {};
+  const counts = debug.counts ?? {};
+  const sources = debug.sources ?? {};
+  const capabilities = debug.capabilities ?? {};
+  const privacy = debug.privacy ?? {};
+
+  return formatSection(debug.section ?? 'Detailed Dignities UI Debug', [
+    `activeProfileId: ${activeProfile.id ?? 'null'}`,
+    `activeProfileName: ${activeProfile.name ?? 'Общий день'}`,
+    `hasActiveProfile: ${formatDebugBoolean(activeProfile.hasProfile)}`,
+    `panelStatus: ${debug.panelStatus ?? 'hidden'}`,
+    `userFacingDetailedDignities: ${debug.enabled ? 'enabled' : 'disabled'}`,
+    `reason: ${debug.reason ?? 'нет данных'}`,
+    `natalPlanetsReady: ${formatDebugBoolean(debug.natalPlanetsReady)}`,
+    `userFacingBlock: ${formatDebugBoolean(debug.userFacingBlock)}`,
+    `location: ${debug.location ?? 'My Cards'}`,
+    `collapsedDefault: ${formatDebugBoolean(debug.collapsedDefault)}`,
+    `collapsedState: ${formatDebugBoolean(debug.collapsedState)}`,
+    `planetGroups: ${counts.planetGroups ?? 0}`,
+    `totalItems: ${counts.totalItems ?? 0}`,
+    `terms: ${counts.terms ?? 0}`,
+    `decans: ${counts.decans ?? 0}`,
+    `degreeRulersTable6: ${counts.degreeRulersTable6 ?? 0}`,
+    `degreeRulersTable7: ${counts.degreeRulersTable7 ?? 0}`,
+    `termsSource: ${sources.terms ?? 'Вронский, термы'}`,
+    `decansSource: ${sources.decans ?? 'Звезда Магов'}`,
+    `degreeRulersTable6Source: ${sources.degreeRulersTable6 ?? 'Звезда Магов'}`,
+    `degreeRulersTable7Source: ${sources.degreeRulersTable7 ?? 'Вронский'}`,
+    `termsCapability: ${formatDebugBoolean(capabilities.terms)}`,
+    `decansCapability: ${formatDebugBoolean(capabilities.decans)}`,
+    `degreeRulersTable6Capability: ${formatDebugBoolean(capabilities.degreeRulersTable6)}`,
+    `degreeRulersTable7Capability: ${formatDebugBoolean(capabilities.degreeRulersTable7)}`,
+    `table6Table7Separated: ${formatDebugBoolean(capabilities.table6Table7Separated)}`,
+    `interpretations: ${formatDebugBoolean(capabilities.interpretations)}`,
+    `fixedStars: ${formatDebugBoolean(capabilities.fixedStars)}`,
+    `houses: ${formatDebugBoolean(capabilities.houses)}`,
+    `ascMc: ${formatDebugBoolean(capabilities.ascMc)}`,
+    `transits: ${formatDebugBoolean(capabilities.transits)}`,
+    `rawBirthDataExposed: ${formatDebugBoolean(privacy.rawBirthDataExposed)}`,
+    `rawCoordinatesExposed: ${formatDebugBoolean(privacy.rawCoordinatesExposed)}`,
+    `rawLongitudesExposed: ${formatDebugBoolean(privacy.rawLongitudesExposed)}`,
+    `rawSourceTokensExposed: ${formatDebugBoolean(privacy.rawSourceTokensExposed)}`,
+    `rawSourceKeysExposed: ${formatDebugBoolean(privacy.rawSourceKeysExposed)}`,
+    `fullTablesExposed: ${formatDebugBoolean(privacy.fullTablesExposed)}`,
   ]);
 }
 
