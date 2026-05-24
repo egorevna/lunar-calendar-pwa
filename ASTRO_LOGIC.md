@@ -1022,7 +1022,7 @@ degree-rulers-vronsky-table-7
 
 Table 6 / Star of the Magi is the first dataset candidate, but only after non-active transcription and manual verification of all rows.
 
-Table 7 / Vronsky remains deferred to a separate workflow.
+Table 7 / Vronsky must use a separate workflow. Task 10.8b later moved that workflow into Sprint 10 before UI/debug/hardening.
 
 Recommended future degree-index policy:
 
@@ -1092,6 +1092,28 @@ The engine may resolve already-calculated natal planet objects through `sign.key
 The engine must not call providers, calculate planetary coordinates, read profiles, render UI, use Table 7 / Vronsky degree rulers, add retrograde markers, add multiple rulers, or include interpretations.
 
 No degree-ruler UI or debug is allowed until a later active task explicitly requests it.
+
+## Task 10.8b Table 7 Vronsky Degree Rulers Audit Policy
+
+Table 7 — `Управление градусами (по С. Вронскому)` belongs to Sprint 10 as a degree-ruler source system, but it remains separate from Table 6 / Star of the Magi.
+
+Table 7 source policy:
+
+- source key: `degree-rulers-vronsky-table-7`;
+- source system: Vronsky degree rulers;
+- do not mix with `degree-rulers-star-of-magi-table-6`;
+- do not reuse the single-ruler Table 6 data shape.
+
+Table 7 may require support for:
+
+- multiple ruler tokens in one degree cell;
+- retrograde markers;
+- outer-planet glyphs;
+- row-level `sourceToken` values for manual review.
+
+Future Table 7 rows should use a multi-ruler shape such as `rulers[]` instead of a single `ruler` field. No active Table 7 dataset, lookup engine, UI or debug may be created until the Table 7 draft transcription and manual verification tasks are complete.
+
+Houses / ASC / MC remain Sprint 11 and are not part of the Table 7 flow.
 
 ## Deferred Features
 

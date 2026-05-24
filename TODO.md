@@ -2267,6 +2267,10 @@ Sprint 10 handles source-tracked lookup datasets and lookup logic, not coordinat
 
 Do not OCR-import dense screenshots blindly.
 
+Table 7 / Vronsky degree rulers are part of Sprint 10, but require a separate transcription / verification / dataset / lookup flow before UI.
+
+Table 6 and Table 7 degree-ruler systems must not be mixed.
+
 Do not implement fixed stars, houses / ASC / MC, transits, interpretations or ritual scoring.
 
 # Completed Task
@@ -2586,7 +2590,7 @@ Completion:
 - Kept the draft limited to Table 6 / Star of the Magi and septener planets only.
 - Did not create active degree rulers dataset, lookup engine, OCR import, UI, tests, `src/` changes, Table 7 rows or package changes.
 
-# Active Task
+# Completed Task
 
 ## Task 10.7c — Degree Rulers Table 6 Manual Verification
 
@@ -2664,11 +2668,70 @@ Completion:
 - Added `test/detailedDignityDisplay.test.js`.
 - Did not call lookup engines, change datasets, create UI, add Table 7 / Vronsky degree rulers, change package files or PWA cache.
 
+# Completed Task
+
+## Task 10.8b — Table 7 Vronsky Degree Rulers Source / Complexity Audit
+
+Status: done
+
+Goal:
+
+Audit Table 7 / Vronsky degree rulers before any transcription, dataset or lookup implementation.
+
+Completion:
+
+- Created `DEGREE_RULERS_TABLE_7_COMPLEXITY_AUDIT.md`.
+- Confirmed Table 7 — `Управление градусами (по С. Вронскому)` belongs to Sprint 10 as a degree-ruler source system.
+- Confirmed Table 7 remains separate from Table 6 / Star of the Magi degree rulers.
+- Recorded that Table 7 is more complex than Table 6 and likely requires multi-ruler rows, source tokens, retrograde marker support and outer-planet handling.
+- Confirmed no active Table 7 dataset, lookup engine, OCR import, UI, tests, `src/` changes or package changes were created.
+- Replanned remaining Sprint 10 tasks so Table 7 flow happens before UI/debug/hardening.
+
 # Active Task
+
+## Task 10.8c — Table 7 Vronsky Degree Rulers Transcription Draft
+
+Status: active
+
+Goal:
+
+Create a non-active draft transcription of Table 7 rows from `table7.jpg`.
+
+## Task 10.8d — Table 7 Vronsky Degree Rulers Manual Verification
+
+Status: not started
+
+Goal:
+
+Verify all Table 7 draft rows, including multiple rulers, retrograde markers and source tokens.
+
+## Task 10.8e — Table 7 Vronsky Degree Rulers Dataset
+
+Status: not started
+
+Goal:
+
+Create an active Table 7 dataset only after manual verification.
+
+## Task 10.8f — Table 7 Vronsky Degree Rulers Lookup Engine / Fixtures
+
+Status: not started
+
+Goal:
+
+Create pure lookup engine and fixtures for verified Table 7 degree rulers.
+
+## Task 10.9b — Update Detailed Dignity Display Helper for Table 7
+
+Status: not started
+
+Goal:
+
+Update display formatting for Table 7 multi-ruler results if the verified Table 7 lookup output requires it.
 
 ## Task 10.10 — Terms / Decans / Degree Rulers Collapsible UI
 
-Status: active
+Status: not started
 
 Goal:
 

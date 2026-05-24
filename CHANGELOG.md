@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-05-24 — Complete Task 10.8b Table 7 complexity audit
+
+- Created `DEGREE_RULERS_TABLE_7_COMPLEXITY_AUDIT.md`.
+- Confirmed Table 7 — `Управление градусами (по С. Вронскому)` belongs to Sprint 10 as a separate Vronsky degree-ruler source system.
+- Confirmed Table 7 must not be mixed with the implemented Table 6 / Star of the Magi dataset and lookup.
+- Documented that Table 7 is more complex than Table 6 because cells may contain multiple rulers, retrograde markers, outer planets and source tokens.
+- Proposed a future Table 7 data shape with `rulers[]`, `retrograde` and `sourceToken`, without creating code.
+- Replanned remaining Sprint 10 tasks so Table 7 transcription, verification, dataset and lookup happen before UI/debug/hardening.
+- Kept Houses / ASC / MC in Sprint 11.
+- No app code, `src/`, tests, active dataset, lookup engine, UI, package files or PWA cache changes were added.
+- Task 10.8c — Table 7 Vronsky Degree Rulers Transcription Draft is next, but was not started.
+
 ## 2026-05-24 — Complete Task 10.9 detailed dignity display helper
 
 - Added `src/detailedDignityDisplay.js`.
