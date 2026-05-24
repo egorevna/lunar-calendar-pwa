@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-24 — Complete Task 10.7d degree rulers Table 6 dataset
+
+- Added `src/degreeRulersStarOfMagiData.js`.
+- Created active source-tracked Table 6 / Star of the Magi degree rulers dataset from 360 verified rows.
+- Stored Table 6 source metadata, verification report reference, transcription draft reference, source system and active row count.
+- Added integer degree policy for dataset rows: valid degree indexes `0` through `29`; future lookup remains `degreeIndex = floor(degreeWithinSign)` for `0 <= degreeWithinSign < 30`.
+- Kept the dataset limited to septener planets only and excluded Uranus / Neptune / Pluto, retrograde markers, multiple rulers and Table 7 / Vronsky degree ruler rows.
+- Added `test/degreeRulersStarOfMagiData.test.js`.
+- No lookup engine, UI, display helper, Table 7 rows, provider calculations, package files, app shell or PWA cache changes were added.
+- Task 10.8 — Degree Rulers Lookup Engine / Fixtures is next, but was not started.
+
 ## 2026-05-24 — Complete Task 10.7c degree rulers Table 6 manual verification
 
 - Created `DEGREE_RULERS_TABLE_6_VERIFICATION_REPORT.md`.

@@ -1033,6 +1033,36 @@ valid only when 0 <= degreeWithinSign < 30
 
 This policy must be confirmed before a lookup engine is implemented.
 
+## Task 10.7d Table 6 Degree Rulers Dataset Policy
+
+The active degree-ruler dataset added in Task 10.7d uses only verified Table 6 / Star of the Magi rows from `src/degreeRulersStarOfMagiData.js`.
+
+Dataset source system:
+
+```txt
+star-of-magi-degree-rulers
+```
+
+The dataset stores 360 rows:
+
+```txt
+12 signs x 30 integer degrees
+```
+
+Allowed rulers are septener planets only:
+
+- Sun;
+- Moon;
+- Mercury;
+- Venus;
+- Mars;
+- Jupiter;
+- Saturn.
+
+Table 7 / Vronsky degree rulers remain deferred and must not be mixed with Table 6 rows.
+
+Dataset-level degree indexes are integers `0` through `29`. Fractional `degreeWithinSign` lookup is not implemented in this dataset module and belongs to the future lookup engine task.
+
 No active degree-ruler dataset, lookup engine, UI or debug is allowed until source rows are manually transcribed, verified and approved.
 
 ## Deferred Features

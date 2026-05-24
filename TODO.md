@@ -2608,15 +2608,25 @@ Completion:
 
 ## Task 10.7d — Degree Rulers Table 6 Dataset from Verified Rows
 
-Status: active
+Status: done
 
 Goal:
 
 Create active structured dataset from the verified Table 6 rows only after manual verification.
 
+Completion:
+
+- Added `src/degreeRulersStarOfMagiData.js`.
+- Created active source-tracked Table 6 / Star of the Magi degree rulers dataset from 360 verified rows.
+- Kept the dataset limited to Table 6 / Star of the Magi, septener planets only and integer degrees 0 through 29.
+- Added `test/degreeRulersStarOfMagiData.test.js` covering metadata, row count, sign and degree coverage, verified-only rows, septener-only rulers, deferred systems/features, read-only boundaries, sample rows and strict exclusions.
+- Did not create lookup engine, UI, display helper, Table 7 / Vronsky degree rulers, OCR import, package changes or PWA cache changes.
+
+# Active Task
+
 ## Task 10.8 — Degree Rulers Lookup Engine / Fixtures
 
-Status: not started
+Status: active
 
 Goal:
 
