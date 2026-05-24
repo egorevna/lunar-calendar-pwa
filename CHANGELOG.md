@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-24 — Complete Task 10.5c decans Star of the Magi manual verification
+
+- Created `DECANS_STAR_OF_MAGI_VERIFICATION_REPORT.md`.
+- Verified `DECANS_STAR_OF_MAGI_TRANSCRIPTION_DRAFT.md` against `fig_4_7_decans_star_of_magi.png` and the control table.
+- Checked 36 rows across 12 zodiac signs: 36 match, 0 unclear, 0 mismatch.
+- Confirmed the verified draft rows stay limited to Star of the Magi / Egyptian tradition and septener planets only.
+- Confirmed no Trigon/Vronsky rows, Uranus / Neptune / Pluto, active decans dataset, `src/decansData.js`, lookup engine, tests, OCR import, UI, app code, package files or PWA cache changes were created.
+- Task 10.5d — Decans Star of the Magi Dataset from Verified Rows is next, but was not started.
+
 ## 2026-05-24 — Complete Task 10.5b decans Star of the Magi transcription draft
 
 - Created `DECANS_STAR_OF_MAGI_TRANSCRIPTION_DRAFT.md`.

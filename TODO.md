@@ -2493,25 +2493,35 @@ Completion:
 - Kept the draft limited to Star of the Magi / Egyptian tradition and septener planets only.
 - Did not create active decans dataset, lookup engine, UI, OCR import or app code changes.
 
-# Active Task
+# Completed Task
 
 ## Task 10.5c — Decans Star of the Magi Manual Verification
 
-Status: active
+Status: done
 
 Goal:
 
 Verify the decan draft rows against the source figure before active dataset creation.
 
-# Sprint 10 Backlog
+Completion:
 
-## Task 10.5d — Decans Dataset from Verified Rows
+- Created `DECANS_STAR_OF_MAGI_VERIFICATION_REPORT.md`.
+- Checked 36 Star of the Magi decan rows against `fig_4_7_decans_star_of_magi.png` and the control table.
+- Source check counts: 36 match, 0 unclear, 0 mismatch.
+- Confirmed rows remain Star of the Magi / Egyptian tradition only and use septener planets only.
+- Confirmed active decans dataset, lookup engine, UI, OCR import, `src/` changes and tests were not created.
 
-Status: not started
+# Active Task
+
+## Task 10.5d — Decans Star of the Magi Dataset from Verified Rows
+
+Status: active
 
 Goal:
 
 Create active decans dataset only from manually verified Star of the Magi rows.
+
+# Sprint 10 Backlog
 
 ## Task 10.6 — Decans Lookup Engine / Fixtures
 
