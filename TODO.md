@@ -2707,19 +2707,51 @@ Completion:
 - Kept the draft limited to Table 7 / Vronsky degree rulers and did not use Table 6.
 - Did not create active dataset, lookup engine, OCR import, UI, tests, `src/` changes or package changes.
 
-# Active Task
+# Completed Task
 
 ## Task 10.8d — Table 7 Vronsky Degree Rulers Manual Verification
 
-Status: active
+Status: done
 
 Goal:
 
 Verify all Table 7 draft rows, including multiple rulers, retrograde markers and source tokens.
 
+Completion:
+
+- Created `DEGREE_RULERS_TABLE_7_VERIFICATION_REPORT.md`.
+- Checked all 360 Table 7 draft rows against `table7.jpg`.
+- Recorded 262 match, 98 unclear and 0 mismatch.
+- Kept all Table 7 rows inactive; active dataset was not created.
+- Confirmed remaining unclear glyphs block Task 10.8e until a separate resolution step.
+- Did not use Table 6, create lookup engine, add OCR import, change `src/`, tests, UI or package files.
+
+# Completed Task
+
+## Task 10.8d-fix — Table 7 Tome 2 Cross-Reference Verification
+
+Status: done
+
+Goal:
+
+Use Vronsky Tome 2 / `Градусология` as a textual cross-reference for Table 7 `Управитель` / `Управители` rows before any active Vronsky degree rulers dataset is created.
+
+Completion:
+
+- Created `DEGREE_RULERS_TABLE_7_TOME2_CROSS_REFERENCE.md`.
+- Used Vronsky Tome 2 / `Градусология` only as textual cross-reference for `Управитель` / `Управители` lines.
+- Cross-referenced all 360 Table 7 rows against Tome 2.
+- Resolved all 98 previously unclear rows.
+- Applied 6 additional parsed-ruler corrections from Tome 2.
+- Remaining unclear rows: 0; mismatch rows: 0.
+- Kept every draft row `needsReview`; active dataset was not created.
+- Did not use Table 6, create lookup engine, add OCR import, change `src/`, tests, UI or package files.
+
+# Active Task
+
 ## Task 10.8e — Table 7 Vronsky Degree Rulers Dataset
 
-Status: not started
+Status: active
 
 Goal:
 

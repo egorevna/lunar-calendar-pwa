@@ -1,5 +1,28 @@
 # Changelog
 
+## 2026-05-24 — Complete Task 10.8d-fix Table 7 Tome 2 cross-reference
+
+- Created `DEGREE_RULERS_TABLE_7_TOME2_CROSS_REFERENCE.md`.
+- Used Vronsky Tome 2 / `Градусология` only as a textual cross-reference for Table 7 `Управитель` / `Управители` lines.
+- Cross-referenced all 360 Table 7 rows against Tome 2.
+- Resolved all 98 previously unclear Table 7 rows and applied 6 additional parsed-ruler corrections from Tome 2.
+- Updated `DEGREE_RULERS_TABLE_7_TRANSCRIPTION_DRAFT.md` and `DEGREE_RULERS_TABLE_7_VERIFICATION_REPORT.md`; remaining unclear rows: 0, mismatch rows: 0.
+- Kept every draft row `needsReview`; no active Table 7 dataset was created.
+- Confirmed node-like glyphs resolve as Chiron / Хирон where Tome 2 says `Хирон`, Gemini-like glyphs resolve as Proserpina / Прозерпина where Tome 2 says `Прозерпина`, and retrograde markers are assigned from Tome 2 wording.
+- No app code, `src/`, tests, lookup engine, OCR import, UI, package files or PWA cache changes were added.
+- Task 10.8e — Table 7 Vronsky Degree Rulers Dataset is next, but was not started.
+
+## 2026-05-24 — Complete Task 10.8d Table 7 verification report
+
+- Created `DEGREE_RULERS_TABLE_7_VERIFICATION_REPORT.md`.
+- Verified `DEGREE_RULERS_TABLE_7_TRANSCRIPTION_DRAFT.md` against `table7.jpg` at row level.
+- Checked 360 rows across 12 zodiac signs and 30 degree rows per sign.
+- Recorded 262 match, original unclear 98, resolved unclear 0, remaining unclear 98 and 0 mismatch.
+- Kept all Table 7 rows inactive and blocked active dataset creation until unclear source tokens are resolved.
+- Confirmed Table 7 / Vronsky degree rulers remain separate from Table 6 / Star of the Magi degree rulers.
+- No active dataset, lookup engine, OCR import, UI, tests, `src/`, package files or PWA cache changes were added.
+- Task 10.8d-fix — Resolve unclear/mismatched Table 7 rows is next, but was not started.
+
 ## 2026-05-24 — Complete Task 10.8c Table 7 transcription draft
 
 - Created `DEGREE_RULERS_TABLE_7_TRANSCRIPTION_DRAFT.md`.
