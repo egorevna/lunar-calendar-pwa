@@ -1145,6 +1145,43 @@ Degree policy:
 
 This dataset does not perform lookup, call providers, calculate planetary coordinates, render UI, include fixed stars or include interpretations.
 
+## Task 10.8f Table 7 Vronsky Degree Rulers Lookup Policy
+
+The active Table 7 lookup engine added in Task 10.8f uses only `src/degreeRulersVronskyData.js`.
+
+Source policy:
+
+- source key: `degree-rulers-vronsky-table-7`;
+- source system: `vronsky-degree-rulers`;
+- Table 6 / Star of the Magi degree rulers remain a separate source system and must not be mixed into Table 7 output;
+- output must preserve `sourceTokens[]` and structured `rulers[]`.
+
+Lookup policy:
+
+- lookup accepts sign + degree within sign;
+- valid degree range is `0 <= degreeWithinSign < 30`;
+- lookup uses `degreeIndex = floor(degreeWithinSign)`;
+- `0°` through `0.999°` use degree index `0`;
+- `1°` through `1.999°` use degree index `1`;
+- `29°` through `29.999°` use degree index `29`;
+- `30°` remains invalid inside one sign and should be handled upstream as the next sign.
+
+Planet input policy:
+
+- the engine may resolve already-calculated natal planet objects through `sign.key + degree/minutes`;
+- if minutes are missing and degree is valid, minutes are treated as `0`;
+- if sign/degree fields are insufficient and longitude is already present on the planet object, the engine may use `src/astroMath.js` to derive sign and degree within sign;
+- the engine must not call providers or calculate planetary coordinates.
+
+Summary policy:
+
+- `byRuler` counts ruler occurrences, not rows;
+- `multiRuler` counts rows where `rulers.length > 1`;
+- `retrograde` counts ruler entries with `retrograde: true`;
+- `outerPlanet` counts ruler entries where key is `uranus`, `neptune` or `pluto`.
+
+This lookup engine does not render UI, format display rows, include fixed stars, houses / ASC / MC, transits, interpretations or ritual scoring.
+
 ## Deferred Features
 
 Sprint 10 planning does not activate:

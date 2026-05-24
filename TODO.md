@@ -2767,19 +2767,33 @@ Completion:
 - Added `test/degreeRulersVronskyData.test.js`.
 - Did not create lookup engine, UI, display helper changes, Table 6 rows, OCR import, package changes or PWA cache changes.
 
-# Active Task
+# Completed Task
 
 ## Task 10.8f — Table 7 Vronsky Degree Rulers Lookup Engine / Fixtures
 
-Status: active
+Status: done
 
 Goal:
 
 Create pure lookup engine and fixtures for verified Table 7 degree rulers.
 
+Completion:
+
+- Added `src/degreeRulersVronsky.js`.
+- Implemented pure lookup over the verified Table 7 / Vronsky degree rulers dataset.
+- Added boundary policy in code: `degreeIndex = floor(degreeWithinSign)` for valid `0 <= degreeWithinSign < 30`; `30°` stays invalid inside one sign.
+- Preserved `sourceTokens[]`, `rulers[]`, multiple rulers and per-ruler `retrograde` values in lookup output.
+- Added already-calculated natal planet input support with `sign.key + degree/minutes`, sign + degree only and safe longitude fallback through `src/astroMath.js`.
+- Added summary counts by ruler occurrence, multi-ruler rows, retrograde ruler entries and outer-planet ruler entries.
+- Added manual fixture and validation coverage in `test/fixtures/degreeRulersVronskyFixtures.js`, `test/degreeRulersVronskyFixtures.test.js`, `test/degreeRulersVronsky.test.js` and `test/degreeRulersVronskyValidation.test.js`.
+- Kept Table 7 separate from Table 6 / Star of the Magi degree rulers.
+- Did not change datasets, UI, display helper, package files or PWA cache.
+
+# Active Task
+
 ## Task 10.9b — Update Detailed Dignity Display Helper for Table 7
 
-Status: not started
+Status: active
 
 Goal:
 
