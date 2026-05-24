@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-24 — Complete Task 10.5b decans Star of the Magi transcription draft
+
+- Created `DECANS_STAR_OF_MAGI_TRANSCRIPTION_DRAFT.md`.
+- Added non-active draft transcription of Figure 4.7, `Схема управления деканатами по звезде Магов (египетская традиция)`.
+- Captured 36 draft rows across 12 zodiac signs with `[0, 10)`, `[10, 20)` and `[20, 30)` boundaries.
+- Marked every row `needsReview`; no row was marked `verified`.
+- Kept the draft limited to the Star of the Magi / Egyptian tradition and septener planets only.
+- No active decans dataset, `src/decansData.js`, lookup engine, tests, OCR import, UI, app code, package files or PWA cache changes were created.
+- Task 10.5c — Decans Star of the Magi Manual Verification is next, but was not started.
+
 ## 2026-05-24 — Complete Task 10.5 decans source decision
 
 - Created `DECANS_SOURCE_DECISION.md`.

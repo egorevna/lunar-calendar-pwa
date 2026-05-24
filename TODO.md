@@ -2475,25 +2475,35 @@ Completion:
 - Did not create an active decans dataset because no 36-row transcription and verification report exists yet.
 - No code, `src/`, tests, UI, lookup engine, OCR import or package files were changed.
 
-# Active Task
+# Completed Task
 
 ## Task 10.5b — Decans Star of the Magi Transcription Draft
 
-Status: active
+Status: done
 
 Goal:
 
 Create a non-active draft transcription of the Star of the Magi decan rows from the verified source figure.
 
-# Sprint 10 Backlog
+Completion:
+
+- Created `DECANS_STAR_OF_MAGI_TRANSCRIPTION_DRAFT.md`.
+- Transcribed 36 draft decan rows across 12 zodiac signs from `fig_4_7_decans_star_of_magi.png`.
+- Kept every row `needsReview`.
+- Kept the draft limited to Star of the Magi / Egyptian tradition and septener planets only.
+- Did not create active decans dataset, lookup engine, UI, OCR import or app code changes.
+
+# Active Task
 
 ## Task 10.5c — Decans Star of the Magi Manual Verification
 
-Status: not started
+Status: active
 
 Goal:
 
 Verify the decan draft rows against the source figure before active dataset creation.
+
+# Sprint 10 Backlog
 
 ## Task 10.5d — Decans Dataset from Verified Rows
 
