@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-24 — Complete Task 10.8 degree rulers Table 6 lookup engine
+
+- Added `src/degreeRulersStarOfMagi.js`.
+- Implemented pure lookup over the verified Table 6 / Star of the Magi degree rulers dataset.
+- Added boundary policy in code: `degreeIndex = floor(degreeWithinSign)` for valid `0 <= degreeWithinSign < 30`; `30°` stays invalid inside one sign.
+- Added already-calculated natal planet input support with `sign.key + degree/minutes`, sign + degree only and safe longitude fallback through `src/astroMath.js`.
+- Added safe array evaluation, summary counts by ruler and engine capability flags.
+- Added manual fixture and validation coverage in `test/fixtures/degreeRulersStarOfMagiFixtures.js`, `test/degreeRulersStarOfMagiFixtures.test.js`, `test/degreeRulersStarOfMagi.test.js` and `test/degreeRulersStarOfMagiValidation.test.js`.
+- Kept source separation: Table 7 / Vronsky degree rulers, retrograde markers, multiple rulers, UI, display helper, provider calculations, package files, app shell and PWA cache were not changed.
+- Task 10.9 — Terms / Decans / Degree Rulers Display Helper is next, but was not started.
+
 ## 2026-05-24 — Complete Task 10.7d degree rulers Table 6 dataset
 
 - Added `src/degreeRulersStarOfMagiData.js`.

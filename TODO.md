@@ -2604,7 +2604,7 @@ Completion:
 - Confirmed Table 6 / Star of the Magi source separation from Table 7 / Vronsky degree rulers.
 - Did not create active degree rulers dataset, lookup engine, OCR import, UI, tests, `src/` changes, Table 7 rows or package changes.
 
-# Active Task
+# Completed Task
 
 ## Task 10.7d — Degree Rulers Table 6 Dataset from Verified Rows
 
@@ -2622,19 +2622,31 @@ Completion:
 - Added `test/degreeRulersStarOfMagiData.test.js` covering metadata, row count, sign and degree coverage, verified-only rows, septener-only rulers, deferred systems/features, read-only boundaries, sample rows and strict exclusions.
 - Did not create lookup engine, UI, display helper, Table 7 / Vronsky degree rulers, OCR import, package changes or PWA cache changes.
 
-# Active Task
+# Completed Task
 
 ## Task 10.8 — Degree Rulers Lookup Engine / Fixtures
 
-Status: active
+Status: done
 
 Goal:
 
 Create pure lookup engine for degree rulers if dataset is ready.
 
+Completion:
+
+- Added `src/degreeRulersStarOfMagi.js`.
+- Implemented pure Table 6 / Star of the Magi degree ruler lookup by `signKey + degreeWithinSign`.
+- Implemented `degreeIndex = floor(degreeWithinSign)` for valid `0 <= degreeWithinSign < 30` inputs; `30°` remains invalid inside one sign.
+- Added already-calculated natal planet input support with `sign.key + degree/minutes`, sign + degree only and safe longitude fallback through `src/astroMath.js`.
+- Added safe array evaluation, summary counts by ruler and capability flags.
+- Added manual fixtures and validation tests in `test/fixtures/degreeRulersStarOfMagiFixtures.js`, `test/degreeRulersStarOfMagiFixtures.test.js`, `test/degreeRulersStarOfMagi.test.js` and `test/degreeRulersStarOfMagiValidation.test.js`.
+- Did not change the active dataset, UI, app shell, Table 7 / Vronsky degree rulers, package files or PWA cache.
+
+# Active Task
+
 ## Task 10.9 — Terms / Decans / Degree Rulers Display Helper
 
-Status: not started
+Status: active
 
 Goal:
 

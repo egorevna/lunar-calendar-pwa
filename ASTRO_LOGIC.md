@@ -1031,7 +1031,7 @@ degreeIndex = floor(degreeWithinSign)
 valid only when 0 <= degreeWithinSign < 30
 ```
 
-This policy must be confirmed before a lookup engine is implemented.
+This policy is implemented by the Task 10.8 lookup engine.
 
 ## Task 10.7d Table 6 Degree Rulers Dataset Policy
 
@@ -1061,9 +1061,37 @@ Allowed rulers are septener planets only:
 
 Table 7 / Vronsky degree rulers remain deferred and must not be mixed with Table 6 rows.
 
-Dataset-level degree indexes are integers `0` through `29`. Fractional `degreeWithinSign` lookup is not implemented in this dataset module and belongs to the future lookup engine task.
+Dataset-level degree indexes are integers `0` through `29`. Fractional `degreeWithinSign` lookup is implemented separately in the Task 10.8 lookup engine.
 
-No active degree-ruler dataset, lookup engine, UI or debug is allowed until source rows are manually transcribed, verified and approved.
+## Task 10.8 Table 6 Degree Rulers Lookup Policy
+
+The active degree-ruler lookup engine added in Task 10.8 uses only verified Table 6 / Star of the Magi rows from `src/degreeRulersStarOfMagiData.js`.
+
+Lookup source system:
+
+```txt
+star-of-magi-degree-rulers
+```
+
+Lookup rule:
+
+```txt
+degreeIndex = floor(degreeWithinSign)
+valid only when 0 <= degreeWithinSign < 30
+```
+
+Boundary behavior:
+
+- `0°` through `0.999°` use degree index `0`;
+- `1°` through `1.999°` use degree index `1`;
+- `29°` through `29.999°` use degree index `29`;
+- `30°` is invalid inside one sign and must be handled upstream as the next sign.
+
+The engine may resolve already-calculated natal planet objects through `sign.key + degree/minutes`; if minutes are missing, they are treated as `0`. If sign/degree fields are insufficient and longitude is already present on the planet object, the engine may use `src/astroMath.js` to derive sign and degree within sign.
+
+The engine must not call providers, calculate planetary coordinates, read profiles, render UI, use Table 7 / Vronsky degree rulers, add retrograde markers, add multiple rulers, or include interpretations.
+
+No degree-ruler UI or debug is allowed until a later active task explicitly requests it.
 
 ## Deferred Features
 
