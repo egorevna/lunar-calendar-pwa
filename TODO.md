@@ -2687,19 +2687,31 @@ Completion:
 - Confirmed no active Table 7 dataset, lookup engine, OCR import, UI, tests, `src/` changes or package changes were created.
 - Replanned remaining Sprint 10 tasks so Table 7 flow happens before UI/debug/hardening.
 
-# Active Task
+# Completed Task
 
 ## Task 10.8c — Table 7 Vronsky Degree Rulers Transcription Draft
 
-Status: active
+Status: done
 
 Goal:
 
 Create a non-active draft transcription of Table 7 rows from `table7.jpg`.
 
+Completion:
+
+- Created `DEGREE_RULERS_TABLE_7_TRANSCRIPTION_DRAFT.md`.
+- Transcribed 360 draft rows across 12 signs x 30 degree rows from `table7.jpg`.
+- Kept every row `needsReview`; no row was marked `verified`.
+- Preserved visible source tokens and parsed candidate rulers only where symbols were clear enough.
+- Marked 98 rows `unclear` where node-like or Gemini-like glyphs require manual verification.
+- Kept the draft limited to Table 7 / Vronsky degree rulers and did not use Table 6.
+- Did not create active dataset, lookup engine, OCR import, UI, tests, `src/` changes or package changes.
+
+# Active Task
+
 ## Task 10.8d — Table 7 Vronsky Degree Rulers Manual Verification
 
-Status: not started
+Status: active
 
 Goal:
 

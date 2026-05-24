@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-05-24 — Complete Task 10.8c Table 7 transcription draft
+
+- Created `DEGREE_RULERS_TABLE_7_TRANSCRIPTION_DRAFT.md`.
+- Added a non-active draft transcription of Table 7, `Управление градусами (по С. Вронскому)`.
+- Captured 360 draft rows across 12 zodiac signs and 30 degree rows per sign.
+- Marked every row `needsReview`; no row was marked `verified`.
+- Preserved visible source tokens and parsed candidate rulers only when symbols were clear enough.
+- Marked 98 rows `unclear` where node-like or Gemini-like glyphs require manual verification.
+- Kept the draft limited to Table 7 / Vronsky degree rulers and did not use Table 6.
+- No active dataset, lookup engine, OCR import, UI, tests, `src/`, package files or PWA cache changes were added.
+- Task 10.8d — Table 7 Vronsky Degree Rulers Manual Verification is next, but was not started.
+
 ## 2026-05-24 — Complete Task 10.8b Table 7 complexity audit
 
 - Created `DEGREE_RULERS_TABLE_7_COMPLEXITY_AUDIT.md`.

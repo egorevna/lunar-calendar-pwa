@@ -603,10 +603,10 @@ Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7, Sprint 8 �
 Текущий фокус:
 
 ```txt
-Task 10.8c — Table 7 Vronsky Degree Rulers Transcription Draft
+Task 10.8d — Table 7 Vronsky Degree Rulers Manual Verification
 ```
 
-Sprint 10 активен. Task 10.1 завершила strategy / source audit. Task 10.2 создала policy для safe Vronsky dataset entry. Task 10.3a создала non-active Table 5 transcription draft. Task 10.3b сверила draft against source image. Task 10.3c создала active source-tracked Terms dataset from verified Table 5 rows. Task 10.4 добавила pure Terms lookup engine and manual fixture validation. Task 10.5 зафиксировала decans source decision and deferred active dataset until transcription/manual verification. Task 10.5b создала non-active Star of the Magi decans transcription draft. Task 10.5c создала verification report: 36 match, 0 unclear, 0 mismatch. Task 10.5d создала active source-tracked Decans Star of the Magi dataset from verified rows. Task 10.6 добавила pure Decans Star of the Magi lookup engine and manual fixture validation. Task 10.7a зафиксировала degree rulers source decision and deferred active dataset until transcription/manual verification. Task 10.7b создала non-active Table 6 Star of the Magi degree rulers transcription draft with 360 `needsReview` rows. Task 10.7c создала Table 6 verification report: 360 match, 0 unclear, 0 mismatch. Task 10.7d создала active source-tracked Degree Rulers Table 6 / Star of the Magi dataset from verified rows. Task 10.8 добавила pure Degree Rulers Table 6 / Star of the Magi lookup engine and manual fixture validation. Task 10.9 добавила pure detailed dignity display helper for already-computed terms / decans / degree ruler lookup results. Task 10.8b зафиксировала, что Table 7 / Vronsky degree rulers belongs to Sprint 10 and requires separate multi-ruler transcription / verification / dataset / lookup flow before UI. UI для terms / decans / degree rulers еще не создавался.
+Sprint 10 активен. Task 10.1 завершила strategy / source audit. Task 10.2 создала policy для safe Vronsky dataset entry. Task 10.3a создала non-active Table 5 transcription draft. Task 10.3b сверила draft against source image. Task 10.3c создала active source-tracked Terms dataset from verified Table 5 rows. Task 10.4 добавила pure Terms lookup engine and manual fixture validation. Task 10.5 зафиксировала decans source decision and deferred active dataset until transcription/manual verification. Task 10.5b создала non-active Star of the Magi decans transcription draft. Task 10.5c создала verification report: 36 match, 0 unclear, 0 mismatch. Task 10.5d создала active source-tracked Decans Star of the Magi dataset from verified rows. Task 10.6 добавила pure Decans Star of the Magi lookup engine and manual fixture validation. Task 10.7a зафиксировала degree rulers source decision and deferred active dataset until transcription/manual verification. Task 10.7b создала non-active Table 6 Star of the Magi degree rulers transcription draft with 360 `needsReview` rows. Task 10.7c создала Table 6 verification report: 360 match, 0 unclear, 0 mismatch. Task 10.7d создала active source-tracked Degree Rulers Table 6 / Star of the Magi dataset from verified rows. Task 10.8 добавила pure Degree Rulers Table 6 / Star of the Magi lookup engine and manual fixture validation. Task 10.9 добавила pure detailed dignity display helper for already-computed terms / decans / degree ruler lookup results. Task 10.8b зафиксировала, что Table 7 / Vronsky degree rulers belongs to Sprint 10 and requires separate multi-ruler transcription / verification / dataset / lookup flow before UI. Task 10.8c создала non-active Table 7 transcription draft with 360 `needsReview` rows and 98 unclear rows. UI для terms / decans / degree rulers еще не создавался.
 
 Результат Sprint 8:
 
@@ -660,12 +660,13 @@ Task 10.7d — Degree Rulers Table 6 Dataset from Verified Rows
 Task 10.8 — Degree Rulers Lookup Engine / Fixtures
 Task 10.9 — Terms / Decans / Degree Rulers Display Helper
 Task 10.8b — Table 7 Vronsky Degree Rulers Source / Complexity Audit
+Task 10.8c — Table 7 Vronsky Degree Rulers Transcription Draft
 ```
 
 Текущий фокус:
 
 ```txt
-Task 10.8c — Table 7 Vronsky Degree Rulers Transcription Draft
+Task 10.8d — Table 7 Vronsky Degree Rulers Manual Verification
 ```
 
 Цель Sprint 9:
@@ -785,7 +786,8 @@ Sprint 10 planning подготовлен:
 - Task 10.8 завершена: создан `src/degreeRulersStarOfMagi.js` pure Degree Rulers Table 6 / Star of the Magi lookup engine and fixture validation;
 - Task 10.9 завершена: создан `src/detailedDignityDisplay.js` pure display helper for already-computed terms / decans / degree ruler lookup results;
 - Task 10.8b завершена: создан `DEGREE_RULERS_TABLE_7_COMPLEXITY_AUDIT.md`, Table 7 включена в Sprint 10 as separate Vronsky degree-ruler source flow;
-- активная задача — Task 10.8c, Table 7 Vronsky Degree Rulers Transcription Draft;
+- Task 10.8c завершена: создан `DEGREE_RULERS_TABLE_7_TRANSCRIPTION_DRAFT.md` with 360 non-active `needsReview` rows and 98 unclear rows;
+- активная задача — Task 10.8d, Table 7 Vronsky Degree Rulers Manual Verification;
 - Sprint 10 должен работать только с source-tracked lookup layers after validated natal planet coordinates;
 - dense Vronsky screenshots must not be OCR-imported blindly;
 - fixed stars, houses, ASC / MC, transits, interpretations и ritual scoring остаются out of scope; Houses / ASC / MC remain Sprint 11.
@@ -828,6 +830,19 @@ Sprint 10 planning подготовлен:
 - Table 7 flow inserted before UI/debug/hardening: Task 10.8c, 10.8d, 10.8e, 10.8f and possible 10.9b;
 - Houses / ASC / MC remain Sprint 11;
 - next task is Task 10.8c — Table 7 Vronsky Degree Rulers Transcription Draft.
+
+Результат Task 10.8c:
+
+- создан `DEGREE_RULERS_TABLE_7_TRANSCRIPTION_DRAFT.md`;
+- перенесено 360 draft rows across 12 signs x 30 degree rows from `table7.jpg`;
+- все rows остаются `needsReview`; no row is `verified`;
+- source tokens preserved as visible draft text, parsed rulers added only where symbols were clear enough;
+- unclear rows: 98, mostly node-like or Gemini-like glyphs that require manual verification;
+- Table 7 remains separate from Table 6 / Star of the Magi degree rulers;
+- active Table 7 dataset еще не создан;
+- lookup engine еще не создан;
+- OCR import, UI, tests, `src/`, package files and `sw.js` were not changed;
+- next task is Task 10.8d — Table 7 Vronsky Degree Rulers Manual Verification.
 
 Результат Task 10.1:
 
@@ -1154,10 +1169,10 @@ Sprint 8 завершен. Следующий этап — Sprint 9, Essential D
 Текущий следующий шаг:
 
 ```txt
-Task 10.8c — Table 7 Vronsky Degree Rulers Transcription Draft
+Task 10.8d — Table 7 Vronsky Degree Rulers Manual Verification
 ```
 
-Sprint 8 завершен. Task 8.1, Task 8.2, Task 8.3, Task 8.4, Task 8.5, Task 8.6 и Task 8.7 завершены. Sprint 9 завершен: Task 9.1, Task 9.2, Task 9.3, Task 9.4, Task 9.5, Task 9.6, Task 9.7 и Task 9.8 закрыты. Sprint 10 активен; Task 10.1, Task 10.2, Task 10.3a, Task 10.3b, Task 10.3c, Task 10.4, Task 10.5, Task 10.5b, Task 10.5c, Task 10.5d, Task 10.6, Task 10.7a, Task 10.7b, Task 10.7c, Task 10.7d, Task 10.8, Task 10.9 и Task 10.8b закрыты; текущая задача — Task 10.8c. Task 10.10 / 10.11 / 10.12 идут после Table 7 flow.
+Sprint 8 завершен. Task 8.1, Task 8.2, Task 8.3, Task 8.4, Task 8.5, Task 8.6 и Task 8.7 завершены. Sprint 9 завершен: Task 9.1, Task 9.2, Task 9.3, Task 9.4, Task 9.5, Task 9.6, Task 9.7 и Task 9.8 закрыты. Sprint 10 активен; Task 10.1, Task 10.2, Task 10.3a, Task 10.3b, Task 10.3c, Task 10.4, Task 10.5, Task 10.5b, Task 10.5c, Task 10.5d, Task 10.6, Task 10.7a, Task 10.7b, Task 10.7c, Task 10.7d, Task 10.8, Task 10.9, Task 10.8b и Task 10.8c закрыты; текущая задача — Task 10.8d. Task 10.10 / 10.11 / 10.12 идут после Table 7 flow.
 
 Ниже сохраняется краткая история предыдущего Sprint 5 и результаты текущего Sprint 6.
 
@@ -2425,16 +2440,16 @@ lunar-calendar-v72
 Сейчас следующий конкретный шаг:
 
 ```txt
-Task 10.8c — Table 7 Vronsky Degree Rulers Transcription Draft.
+Task 10.8d — Table 7 Vronsky Degree Rulers Manual Verification.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Работать только над Task 10.8c после отдельной команды пользователя.
+2. Работать только над Task 10.8d после отдельной команды пользователя.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
-5. В Task 10.8c создавать только non-active Table 7 transcription draft; не создавать active dataset, lookup engine, UI, Table 6 changes, houses / ASC / MC, interpretations или OCR-only rows.
+5. В Task 10.8d создавать только Table 7 verification report; не создавать active dataset, lookup engine, UI, Table 6 changes, houses / ASC / MC, interpretations или OCR-only rows.
 6. После реализации обновить документацию и выполнить проверки, требуемые задачей.
 
 ---
@@ -2447,4 +2462,4 @@ Task 10.8c — Table 7 Vronsky Degree Rulers Transcription Draft.
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7 и Sprint 8 завершены. Sprint 7 добавил read-only natal planets panel внутри `Мои карты`: planet values показываются только для активного сохраненного профиля при `canConvertToUtc: true` и ready provider output, форматируются через `src/natalPlanetDisplay.js`, а missing coordinates не блокируют список планет. `Общий день`, unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap и nonexistent DST gap не показывают planet list. Safe `Natal Planets UI Debug` доступен только через `?debug=1` и показывает status/counts/capabilities без birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes, speed values or full planet list. Houses / ASC / MC / transits, chart wheel и personal ritual scoring остаются not supported. Sprint 8 — Natal Aspects Foundation завершен: Task 8.1 создала `NATAL_ASPECTS_STRATEGY.md`, Task 8.2 добавила pure `src/natalAspectEngine.js`, Task 8.3 добавила synthetic/manual fixture validation layer, Task 8.4 добавила pure `src/natalAspectDisplay.js`, Task 8.5 добавила collapsible `Натальные аспекты` section внутри `Мои карты`, Task 8.6 добавила safe `Natal Aspects UI Debug`, а Task 8.7 завершила hardening. Sprint 9 — Essential Dignities Foundation завершен: Task 9.1 создала `ESSENTIAL_DIGNITIES_STRATEGY.md`, Task 9.2 добавила source-tracked `src/essentialDignitiesData.js`, Task 9.3 добавила pure lookup engine, Task 9.4 добавила synthetic/manual fixture validation, Task 9.5 добавила pure display helper, Task 9.6 добавила collapsible `Достоинства планет` section внутри `Мои карты`, Task 9.7 добавила safe `Essential Dignities UI Debug`, а Task 9.8 завершила hardening. Sprint 10 — Terms / Decans / Degree Rulers активен; Task 10.1, Task 10.2, Task 10.3a, Task 10.3b, Task 10.3c, Task 10.4, Task 10.5, Task 10.5b, Task 10.5c, Task 10.5d, Task 10.6, Task 10.7a, Task 10.7b, Task 10.7c, Task 10.7d, Task 10.8, Task 10.9 и Task 10.8b закрыты; текущая задача — Task 10.8c, Table 7 Vronsky Degree Rulers Transcription Draft. Sprint 10 code now includes the verified `src/termsData.js` dataset, pure `src/terms.js` lookup engine, verified `src/decansData.js` dataset, pure `src/decans.js` lookup engine, verified `src/degreeRulersStarOfMagiData.js` dataset, pure `src/degreeRulersStarOfMagi.js` lookup engine and pure `src/detailedDignityDisplay.js` display helper; Table 7 active dataset / lookup and detailed dignity UI still have not started.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7 и Sprint 8 завершены. Sprint 7 добавил read-only natal planets panel внутри `Мои карты`: planet values показываются только для активного сохраненного профиля при `canConvertToUtc: true` и ready provider output, форматируются через `src/natalPlanetDisplay.js`, а missing coordinates не блокируют список планет. `Общий день`, unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap и nonexistent DST gap не показывают planet list. Safe `Natal Planets UI Debug` доступен только через `?debug=1` и показывает status/counts/capabilities без birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes, speed values or full planet list. Houses / ASC / MC / transits, chart wheel и personal ritual scoring остаются not supported. Sprint 8 — Natal Aspects Foundation завершен: Task 8.1 создала `NATAL_ASPECTS_STRATEGY.md`, Task 8.2 добавила pure `src/natalAspectEngine.js`, Task 8.3 добавила synthetic/manual fixture validation layer, Task 8.4 добавила pure `src/natalAspectDisplay.js`, Task 8.5 добавила collapsible `Натальные аспекты` section внутри `Мои карты`, Task 8.6 добавила safe `Natal Aspects UI Debug`, а Task 8.7 завершила hardening. Sprint 9 — Essential Dignities Foundation завершен: Task 9.1 создала `ESSENTIAL_DIGNITIES_STRATEGY.md`, Task 9.2 добавила source-tracked `src/essentialDignitiesData.js`, Task 9.3 добавила pure lookup engine, Task 9.4 добавила synthetic/manual fixture validation, Task 9.5 добавила pure display helper, Task 9.6 добавила collapsible `Достоинства планет` section внутри `Мои карты`, Task 9.7 добавила safe `Essential Dignities UI Debug`, а Task 9.8 завершила hardening. Sprint 10 — Terms / Decans / Degree Rulers активен; Task 10.1, Task 10.2, Task 10.3a, Task 10.3b, Task 10.3c, Task 10.4, Task 10.5, Task 10.5b, Task 10.5c, Task 10.5d, Task 10.6, Task 10.7a, Task 10.7b, Task 10.7c, Task 10.7d, Task 10.8, Task 10.9, Task 10.8b и Task 10.8c закрыты; текущая задача — Task 10.8d, Table 7 Vronsky Degree Rulers Manual Verification. Sprint 10 code now includes the verified `src/termsData.js` dataset, pure `src/terms.js` lookup engine, verified `src/decansData.js` dataset, pure `src/decans.js` lookup engine, verified `src/degreeRulersStarOfMagiData.js` dataset, pure `src/degreeRulersStarOfMagi.js` lookup engine and pure `src/detailedDignityDisplay.js` display helper; Table 7 active dataset / lookup and detailed dignity UI still have not started.
