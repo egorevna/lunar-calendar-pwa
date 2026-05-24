@@ -2549,15 +2549,34 @@ Completion:
 - Added manual fixtures in `test/fixtures/decansFixtures.js` and validation tests in `test/decansFixtures.test.js`, `test/decans.test.js` and `test/decansValidation.test.js`.
 - Did not change the decans dataset, create UI, create display helpers, add Trigon/Vronsky decans, degree rulers or other source systems.
 
+# Completed Task
+
+## Task 10.7a — Degree Rulers Source Decision
+
+Status: done
+
+Goal:
+
+Create source decision and dataset readiness audit for degree rulers.
+
+Completion:
+
+- Created `DEGREE_RULERS_SOURCE_DECISION.md`.
+- Confirmed PDF source locations for Table 6 and Table 7.
+- Confirmed Table 6 — Star of the Magi degree rulers and Table 7 — Vronsky degree rulers are separate source systems.
+- Selected Table 6 as the first candidate only after draft transcription and manual verification.
+- Deferred Table 7 to a separate later workflow.
+- Did not create active degree rulers dataset, lookup engine, OCR import, UI, tests, `src/` changes or package changes.
+
 # Active Task
 
-## Task 10.7 — Degree Rulers Source Decision / Dataset
+## Task 10.7b — Degree Rulers Table 6 Star of the Magi Transcription Draft
 
 Status: active
 
 Goal:
 
-Create source decision and dataset for degree rulers only if manually verified.
+Create a non-active draft transcription of Table 6 only from source image material.
 
 ## Task 10.8 — Degree Rulers Lookup Engine / Fixtures
 

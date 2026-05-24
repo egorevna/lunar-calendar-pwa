@@ -1004,6 +1004,37 @@ Exact start boundaries belong to the interval that starts there. Exact end bound
 
 Planet input may use already-calculated `sign.key`, `degree` and `minutes`, or fall back to longitude-derived sign/degree through `src/astroMath.js`. The decans lookup engine must not call providers, read profiles, calculate planet positions, render UI, or include Trigon / Vronsky decans, degree rulers, fixed stars, houses, ASC / MC, transits, interpretations or ritual scoring.
 
+## Task 10.7a Degree Rulers Source Policy
+
+Degree rulers have two separate source systems in the reviewed Vronsky PDF and uploaded source images:
+
+- Table 6 — `Управление градусами по Звезде Магов`;
+- Table 7 — `Управление градусами (по С. Вронскому)`.
+
+These systems must not be mixed silently.
+
+Future datasets must use separate source keys:
+
+```txt
+degree-rulers-star-of-magi-table-6
+degree-rulers-vronsky-table-7
+```
+
+Table 6 / Star of the Magi is the first dataset candidate, but only after non-active transcription and manual verification of all rows.
+
+Table 7 / Vronsky remains deferred to a separate workflow.
+
+Recommended future degree-index policy:
+
+```txt
+degreeIndex = floor(degreeWithinSign)
+valid only when 0 <= degreeWithinSign < 30
+```
+
+This policy must be confirmed before a lookup engine is implemented.
+
+No active degree-ruler dataset, lookup engine, UI or debug is allowed until source rows are manually transcribed, verified and approved.
+
 ## Deferred Features
 
 Sprint 10 planning does not activate:

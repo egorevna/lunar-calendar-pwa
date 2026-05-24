@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-24 — Complete Task 10.7a degree rulers source decision
+
+- Created `DEGREE_RULERS_SOURCE_DECISION.md`.
+- Reviewed PDF source locations for degree rulers: PDF page 75 Star of the Magi context, PDF page 76 two degree-ruler systems, PDF page 99 Table 6, and PDF page 100 Table 7.
+- Confirmed uploaded source images `table6.jpg` and `table7.jpg` are available.
+- Confirmed Table 6 — Star of the Magi degree rulers and Table 7 — Vronsky degree rulers are separate source systems and must not be mixed.
+- Selected Table 6 as the first candidate only after draft transcription and manual verification.
+- Deferred Table 7 to a separate later workflow.
+- No active degree rulers dataset, lookup engine, OCR import, UI, tests, `src/`, package files, app shell or PWA cache changes were added.
+- Task 10.7b — Degree Rulers Table 6 Star of the Magi Transcription Draft is next, but was not started.
+
 ## 2026-05-24 — Complete Task 10.6 decans lookup engine / fixtures
 
 - Added pure `src/decans.js`.
