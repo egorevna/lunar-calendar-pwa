@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-24 — Complete Task 10.8e Table 7 Vronsky degree rulers dataset
+
+- Added `src/degreeRulersVronskyData.js`.
+- Created active source-tracked Table 7 / Vronsky degree rulers dataset from 360 verified and Tome 2 cross-referenced rows.
+- Preserved `sourceTokens` and `rulers[]` per row so multiple rulers, retrograde markers, outer planets, Chiron and Proserpina remain explicit.
+- Stored Table 7 source metadata, verification report reference, transcription draft reference, Tome 2 cross-reference reference, integer degree policy and row model policy.
+- Kept Table 7 separate from Table 6 / Star of the Magi degree rulers and did not use Table 6 as source.
+- Added `test/degreeRulersVronskyData.test.js`.
+- No lookup engine, UI, display helper changes, provider calculations, package files, app shell or PWA cache changes were added.
+- Task 10.8f — Table 7 Vronsky Degree Rulers Lookup Engine / Fixtures is next, but was not started.
+
 ## 2026-05-24 — Complete Task 10.8d-fix Table 7 Tome 2 cross-reference
 
 - Created `DEGREE_RULERS_TABLE_7_TOME2_CROSS_REFERENCE.md`.

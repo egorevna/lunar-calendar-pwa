@@ -553,6 +553,24 @@ Current responsibilities:
 
 This module does not perform degree lookup, does not read natal planets, profiles, localStorage or DOM, does not call providers, and does not include Table 7 / Vronsky degree ruler rows, decans, terms mutations, fixed stars, houses, ASC / MC, transits, interpretations or ritual scoring.
 
+## `src/degreeRulersVronskyData.js`
+
+Defines the source-tracked Sprint 10 Degree Rulers Table 7 / Vronsky dataset.
+
+Current responsibilities:
+
+- expose verified Table 7 source metadata;
+- store 360 verified degree-ruler rows across 12 zodiac signs;
+- keep the dataset limited to the Vronsky Table 7 degree-ruler source system;
+- preserve `sourceTokens` for row-level review;
+- preserve `rulers[]` so multiple rulers stay structured;
+- store per-ruler `retrograde` markers;
+- support classical planets, outer planets, Chiron and Proserpina as verified Table 7 rulers;
+- store integer degree indexes `0` through `29`;
+- expose dataset, source, deferred systems, deferred features, row model, sign-row and validation helpers for future lookup work.
+
+This module does not perform degree lookup, does not read natal planets, profiles, localStorage or DOM, does not call providers, and does not include Table 6 / Star of the Magi rows, fixed stars, houses, ASC / MC, transits, interpretations or ritual scoring.
+
 ## `src/degreeRulersStarOfMagi.js`
 
 Defines the pure Sprint 10 Degree Rulers Table 6 / Star of the Magi lookup engine.
@@ -1161,17 +1179,19 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 38. `src/degreeRulersStarOfMagiData.js` defines the source-tracked Sprint 10 Degree Rulers Table 6 / Star of the Magi dataset with 360 verified rows, integer degree indexes, septener-only rulers and deferred system / feature metadata; it does not perform degree lookup or render UI.
 
-39. `src/terms.js` performs pure Sprint 10 terms lookup over the verified Vronsky Table 5 dataset by sign and degree, supports already-calculated natal planet objects, preserves printed ranges in output, and does not render UI.
+39. `src/degreeRulersVronskyData.js` defines the source-tracked Sprint 10 Degree Rulers Table 7 / Vronsky dataset with 360 verified rows, source tokens, structured `rulers[]`, per-ruler retrograde markers, outer planets, Chiron and Proserpina; it does not perform degree lookup or render UI.
 
-40. `src/decans.js` performs pure Sprint 10 Star of the Magi decans lookup over the verified Figure 4.7 dataset by sign and degree, supports already-calculated natal planet objects, preserves source system metadata in output, and does not render UI.
+40. `src/terms.js` performs pure Sprint 10 terms lookup over the verified Vronsky Table 5 dataset by sign and degree, supports already-calculated natal planet objects, preserves printed ranges in output, and does not render UI.
 
-41. `src/degreeRulersStarOfMagi.js` performs pure Sprint 10 Degree Rulers Table 6 / Star of the Magi lookup over the verified dataset by sign and degree, uses `degreeIndex = floor(degreeWithinSign)` for `0 <= degreeWithinSign < 30`, supports already-calculated natal planet objects, preserves source system metadata in output, and does not render UI.
+41. `src/decans.js` performs pure Sprint 10 Star of the Magi decans lookup over the verified Figure 4.7 dataset by sign and degree, supports already-calculated natal planet objects, preserves source system metadata in output, and does not render UI.
 
-42. `src/detailedDignityDisplay.js` formats already-computed Sprint 10 term, decan and degree-ruler lookup results into compact display rows and summary counts without calling lookup engines or rendering UI.
+42. `src/degreeRulersStarOfMagi.js` performs pure Sprint 10 Degree Rulers Table 6 / Star of the Magi lookup over the verified dataset by sign and degree, uses `degreeIndex = floor(degreeWithinSign)` for `0 <= degreeWithinSign < 30`, supports already-calculated natal planet objects, preserves source system metadata in output, and does not render UI.
 
-43. `src/essentialDignities.js` evaluates already-calculated natal planet objects against the Sprint 9 essential dignity dataset and returns flags, additive score, labels and safe summary counts without calling providers or rendering UI.
+43. `src/detailedDignityDisplay.js` formats already-computed Sprint 10 term, decan and degree-ruler lookup results into compact display rows and summary counts without calling lookup engines or rendering UI.
 
-44. `src/essentialDignityDisplay.js` formats already-evaluated essential dignity results into compact user-facing rows and summary counts without calling the lookup engine or rendering UI.
+44. `src/essentialDignities.js` evaluates already-calculated natal planet objects against the Sprint 9 essential dignity dataset and returns flags, additive score, labels and safe summary counts without calling providers or rendering UI.
+
+45. `src/essentialDignityDisplay.js` formats already-evaluated essential dignity results into compact user-facing rows and summary counts without calling the lookup engine or rendering UI.
 
 45. `src/essentialDignitiesForProfile.js` connects ready natal planet output to the essential dignity lookup and display helpers for the read-only collapsible `Мои карты` dignity section; it fails closed without dignity rows when natal planets are incomplete.
 

@@ -1115,6 +1115,36 @@ Future Table 7 rows should use a multi-ruler shape such as `rulers[]` instead of
 
 Houses / ASC / MC remain Sprint 11 and are not part of the Table 7 flow.
 
+## Task 10.8e Table 7 Vronsky Degree Rulers Dataset Policy
+
+The active Table 7 dataset added in Task 10.8e uses only verified Table 7 / Vronsky degree ruler rows from `src/degreeRulersVronskyData.js`.
+
+Source policy:
+
+- source key: `degree-rulers-vronsky-table-7`;
+- source system: `vronsky-degree-rulers`;
+- source table: `Table 7`;
+- Tome 2 / `Градусология` is used only as textual cross-reference for `Управитель` / `Управители` lines;
+- Table 6 / Star of the Magi degree rulers remain a separate source system and must not be mixed into Table 7.
+
+Row model:
+
+- each row stores integer degree index `0` through `29`;
+- each row preserves `sourceTokens`;
+- each row stores `rulers[]`;
+- each ruler stores `key`, `rulerRu`, `retrograde` and `sourceToken`;
+- multiple rulers are kept as arrays;
+- retrograde is per ruler;
+- outer planets, Chiron and Proserpina are allowed only because they are verified Table 7 rulers.
+
+Degree policy:
+
+- dataset uses integer degree indexes only;
+- future lookup should use `degreeIndex = floor(degreeWithinSign)` for `0 <= degreeWithinSign < 30`;
+- `30°` remains invalid inside one sign and should be handled upstream as the next sign.
+
+This dataset does not perform lookup, call providers, calculate planetary coordinates, render UI, include fixed stars or include interpretations.
+
 ## Deferred Features
 
 Sprint 10 planning does not activate:

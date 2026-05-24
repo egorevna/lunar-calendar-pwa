@@ -2747,19 +2747,31 @@ Completion:
 - Kept every draft row `needsReview`; active dataset was not created.
 - Did not use Table 6, create lookup engine, add OCR import, change `src/`, tests, UI or package files.
 
-# Active Task
+# Completed Task
 
 ## Task 10.8e — Table 7 Vronsky Degree Rulers Dataset
 
-Status: active
+Status: done
 
 Goal:
 
 Create an active Table 7 dataset only after manual verification.
 
+Completion:
+
+- Added `src/degreeRulersVronskyData.js`.
+- Created active source-tracked Table 7 / Vronsky degree rulers dataset from 360 verified and Tome 2 cross-referenced rows.
+- Kept Table 7 separate from Table 6 / Star of the Magi degree rulers.
+- Stored `sourceTokens` and `rulers[]` per row so multiple rulers, retrograde markers, outer planets, Chiron and Proserpina remain explicit.
+- Added dataset metadata, integer degree policy and row model policy.
+- Added `test/degreeRulersVronskyData.test.js`.
+- Did not create lookup engine, UI, display helper changes, Table 6 rows, OCR import, package changes or PWA cache changes.
+
+# Active Task
+
 ## Task 10.8f — Table 7 Vronsky Degree Rulers Lookup Engine / Fixtures
 
-Status: not started
+Status: active
 
 Goal:
 
