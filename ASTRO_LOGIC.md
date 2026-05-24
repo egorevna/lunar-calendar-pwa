@@ -984,6 +984,26 @@ Trigon / Vronsky decans remain deferred and must use a separate source system if
 
 The dataset does not perform lookup by degree and does not include degree rulers, fixed stars, houses, ASC / MC, transits, interpretations or ritual scoring.
 
+## Task 10.6 Star of the Magi Decans Lookup Policy
+
+Decans lookup uses only the verified Figure 4.7 Star of the Magi / Egyptian tradition rows from `src/decansData.js`.
+
+Lookup intervals are half-open:
+
+```txt
+[startDegree, endDegreeExclusive)
+```
+
+The degree inside a sign must satisfy:
+
+```txt
+0 <= degreeWithinSign < 30
+```
+
+Exact start boundaries belong to the interval that starts there. Exact end boundaries belong to the next interval. `30°` is invalid inside one sign and should be handled upstream as the next sign if needed.
+
+Planet input may use already-calculated `sign.key`, `degree` and `minutes`, or fall back to longitude-derived sign/degree through `src/astroMath.js`. The decans lookup engine must not call providers, read profiles, calculate planet positions, render UI, or include Trigon / Vronsky decans, degree rulers, fixed stars, houses, ASC / MC, transits, interpretations or ritual scoring.
+
 ## Deferred Features
 
 Sprint 10 planning does not activate:

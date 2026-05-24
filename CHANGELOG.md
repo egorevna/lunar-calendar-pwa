@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-24 — Complete Task 10.6 decans lookup engine / fixtures
+
+- Added pure `src/decans.js`.
+- Implemented Star of the Magi / Egyptian tradition decan lookup by `signKey + degreeWithinSign` over the verified `src/decansData.js` rows.
+- Added natal planet input lookup with `sign + degree/minutes` preference and longitude fallback through `src/astroMath.js` only when needed.
+- Kept decan lookup intervals half-open: `[0, 10)`, `[10, 20)`, `[20, 30)`, with `30°` invalid inside one sign.
+- Added manual fixtures in `test/fixtures/decansFixtures.js` and validation tests in `test/decansFixtures.test.js`, `test/decans.test.js` and `test/decansValidation.test.js`.
+- No decans dataset changes, UI, display helper, Trigon/Vronsky decans, degree rulers, provider calculations, package files, app shell or PWA cache changes were added.
+- Task 10.7 — Degree Rulers Source Decision / Dataset is next, but was not started.
+
 ## 2026-05-24 — Complete Task 10.5d decans Star of the Magi dataset
 
 - Added `src/decansData.js`.

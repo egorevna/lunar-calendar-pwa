@@ -2530,21 +2530,30 @@ Completion:
 - Added `test/decansData.test.js` covering source metadata, row count, sign coverage, intervals, verified-only rows, septener-only rulers, deferred systems/features, read-only boundaries and strict exclusions.
 - Did not create decans lookup engine, UI, display helper, Trigon/Vronsky decans, degree rulers or other source systems.
 
-# Active Task
+# Completed Task
 
 ## Task 10.6 — Decans Lookup Engine / Fixtures
 
-Status: active
+Status: done
 
 Goal:
 
 Create pure lookup engine for decans if dataset is ready.
 
-# Sprint 10 Backlog
+Completion:
+
+- Added pure `src/decans.js`.
+- Implemented Star of the Magi / Egyptian tradition decan lookup by `signKey + degreeWithinSign` over the verified `src/decansData.js` rows.
+- Added natal planet input lookup with `sign + degree/minutes` preference and longitude fallback through `src/astroMath.js` only when needed.
+- Kept lookup intervals half-open as `[startDegree, endDegreeExclusive)`, with `30°` invalid inside one sign.
+- Added manual fixtures in `test/fixtures/decansFixtures.js` and validation tests in `test/decansFixtures.test.js`, `test/decans.test.js` and `test/decansValidation.test.js`.
+- Did not change the decans dataset, create UI, create display helpers, add Trigon/Vronsky decans, degree rulers or other source systems.
+
+# Active Task
 
 ## Task 10.7 — Degree Rulers Source Decision / Dataset
 
-Status: not started
+Status: active
 
 Goal:
 
