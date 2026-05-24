@@ -4,6 +4,7 @@ import test from 'node:test';
 
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const appJs = readFileSync(new URL('../src/app.js', import.meta.url), 'utf8');
+const stylesCss = readFileSync(new URL('../src/styles.css', import.meta.url), 'utf8');
 
 test('home screen does not render inactive chrome or decorative Moon image', () => {
   assert.equal(html.includes('class="top-bar"'), false);
@@ -96,6 +97,9 @@ test('home screen renders profile shell', () => {
   assert.equal(html.includes('data-essential-dignities'), true);
   assert.equal(html.includes('data-essential-dignities-title'), true);
   assert.equal(html.includes('Достоинства планет'), true);
+  assert.equal(html.includes('data-detailed-dignities'), true);
+  assert.equal(html.includes('data-detailed-dignities-title'), true);
+  assert.equal(html.includes('Термы, деканы и градусы'), true);
   assert.equal(html.includes('Добавление профиля — следующий шаг.'), false);
   assert.equal(html.includes('Натальная карта'), false);
   assert.equal(html.includes('Персональные транзиты'), false);
@@ -159,6 +163,39 @@ test('essential dignities shell stays inside profiles panel and has no static di
   assert.equal(dignitiesHtml.includes('degreeRulers'), false);
   assert.equal(dignitiesHtml.includes('Vronsky'), false);
   assert.equal(dignitiesHtml.includes('interpretation'), false);
+});
+
+test('detailed dignities shell stays inside profiles panel after essential dignities and has no static values', () => {
+  const panelStart = html.indexOf('data-profiles-panel');
+  const panelEnd = html.indexOf('class="glass-card mode-selector"');
+  const panelHtml = html.slice(panelStart, panelEnd);
+  const essentialStart = html.indexOf('data-essential-dignities');
+  const detailedStart = html.indexOf('data-detailed-dignities');
+  const addButtonStart = html.indexOf('class="profile-create-actions"');
+  const detailedHtml = html.slice(detailedStart, addButtonStart);
+
+  assert.equal(panelStart >= 0, true);
+  assert.equal(detailedStart > essentialStart, true);
+  assert.equal(detailedStart < panelEnd, true);
+  assert.equal(detailedStart < addButtonStart, true);
+  assert.equal(panelHtml.includes('data-detailed-dignities hidden'), true);
+  assert.equal(detailedHtml.includes('data-detailed-dignities-summary'), true);
+  assert.equal(detailedHtml.includes('data-detailed-dignities-toggle'), true);
+  assert.equal(detailedHtml.includes('data-detailed-dignities-groups'), true);
+  assert.equal(detailedHtml.includes('data-detailed-dignities-groups hidden'), true);
+  assert.equal(detailedHtml.includes('Солнце — терм'), false);
+  assert.equal(detailedHtml.includes('Марс — 0-й градус'), false);
+  assert.equal(detailedHtml.includes('birthDate'), false);
+  assert.equal(detailedHtml.includes('birthTime'), false);
+  assert.equal(detailedHtml.includes('utcDateTime'), false);
+  assert.equal(detailedHtml.includes('latitude'), false);
+  assert.equal(detailedHtml.includes('longitude'), false);
+  assert.equal(detailedHtml.includes('sourceTokens'), false);
+  assert.equal(detailedHtml.includes('sourceKey'), false);
+  assert.equal(detailedHtml.includes('fixedStars'), false);
+  assert.equal(detailedHtml.includes('houses'), false);
+  assert.equal(detailedHtml.includes('transits'), false);
+  assert.equal(detailedHtml.includes('interpretation'), false);
 });
 
 test('natal planets shell stays inside profiles panel and has no static planet values', () => {
@@ -328,6 +365,25 @@ test('essential dignities list is collapsible and resets on profile changes', ()
   assert.equal(appJs.includes('elements.essentialDignitiesList.hidden = !isExpanded;'), true);
   assert.equal(appJs.includes('expandedEssentialDignitiesProfileId = isExpanded ? null : profileId;'), true);
   assert.equal(appJs.includes('expandedEssentialDignitiesProfileId = null;'), true);
+});
+
+test('detailed dignities list is collapsible without ready summary duplication', () => {
+  assert.equal(appJs.includes('let expandedDetailedDignitiesProfileId = null;'), true);
+  assert.equal(appJs.includes('const isExpanded = view.canToggleDetailedDignities'), true);
+  assert.equal(appJs.includes('elements.detailedDignitiesDisclosure.hidden = !view.canToggleDetailedDignities;'), true);
+  assert.equal(appJs.includes('elements.detailedDignitiesSummary.hidden = true;'), true);
+  assert.equal(appJs.includes("elements.detailedDignitiesToggle.textContent = isExpanded ? 'Скрыть' : 'Показать';"), true);
+  assert.equal(appJs.includes('elements.detailedDignitiesGroups.hidden = !isExpanded;'), true);
+  assert.equal(appJs.includes('expandedDetailedDignitiesProfileId = isExpanded ? null : profileId;'), true);
+  assert.equal(appJs.includes('expandedDetailedDignitiesProfileId = null;'), true);
+});
+
+test('detailed dignities header keeps toggle aligned with title without summary row', () => {
+  assert.equal(stylesCss.includes('.detailed-dignities-readiness {\n  grid-template-columns: minmax(0, 1fr) auto;'), true);
+  assert.equal(stylesCss.includes('.detailed-dignities-readiness > h3 {\n  grid-column: 1;\n  grid-row: 1;'), true);
+  assert.equal(stylesCss.includes('.detailed-dignities-disclosure {\n  grid-column: 2;\n  grid-row: 1;'), true);
+  assert.equal(stylesCss.includes('  justify-self: end;\n  align-self: center;'), true);
+  assert.equal(stylesCss.includes('.detailed-dignities-readiness > .detailed-dignities-status,\n.detailed-dignities-readiness > [data-detailed-dignities-explanation],\n.detailed-dignities-readiness > .detailed-dignities-groups,\n.detailed-dignities-readiness > .detailed-dignities-limitations {\n  grid-column: 1 / -1;'), true);
 });
 
 test('home screen renders hidden warnings card shell', () => {

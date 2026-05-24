@@ -66,6 +66,7 @@ import {
   updateProfile,
 } from './profileStorage.js';
 import {
+  describeDetailedDignitiesBlock,
   describeEssentialDignitiesBlock,
   describeNatalAspectsBlock,
   describeNatalPlanetsReadinessBlock,
@@ -81,6 +82,7 @@ let editingProfileId = null;
 let expandedNatalPlanetsProfileId = null;
 let expandedNatalAspectsProfileId = null;
 let expandedEssentialDignitiesProfileId = null;
+let expandedDetailedDignitiesProfileId = null;
 
 const DELETE_PROFILE_CONFIRMATION = 'Удалить профиль? Это действие нельзя отменить.';
 
@@ -162,6 +164,15 @@ const elements = {
   essentialDignitiesToggle: document.querySelector('[data-essential-dignities-toggle]'),
   essentialDignitiesList: document.querySelector('[data-essential-dignities-list]'),
   essentialDignitiesLimitations: document.querySelector('[data-essential-dignities-limitations]'),
+  detailedDignities: document.querySelector('[data-detailed-dignities]'),
+  detailedDignitiesTitle: document.querySelector('[data-detailed-dignities-title]'),
+  detailedDignitiesStatus: document.querySelector('[data-detailed-dignities-status]'),
+  detailedDignitiesExplanation: document.querySelector('[data-detailed-dignities-explanation]'),
+  detailedDignitiesDisclosure: document.querySelector('[data-detailed-dignities-disclosure]'),
+  detailedDignitiesSummary: document.querySelector('[data-detailed-dignities-summary]'),
+  detailedDignitiesToggle: document.querySelector('[data-detailed-dignities-toggle]'),
+  detailedDignitiesGroups: document.querySelector('[data-detailed-dignities-groups]'),
+  detailedDignitiesLimitations: document.querySelector('[data-detailed-dignities-limitations]'),
   personalContextCard: document.querySelector('[data-personal-context-card]'),
   personalContextTitle: document.querySelector('[data-personal-context-title]'),
   personalContextSummary: document.querySelector('[data-personal-context-summary]'),
@@ -378,6 +389,7 @@ function renderStoredProfilesShell() {
   renderNatalPlanetsReadinessBlock(describeNatalPlanetsReadinessBlock(activeProfile));
   renderNatalAspectsBlock(describeNatalAspectsBlock(activeProfile));
   renderEssentialDignitiesBlock(describeEssentialDignitiesBlock(activeProfile));
+  renderDetailedDignitiesBlock(describeDetailedDignitiesBlock(activeProfile));
   renderPersonalContextBlock(describePersonalContextBlock(createPersonalContext(activeProfile)));
 }
 
@@ -453,6 +465,30 @@ function renderEssentialDignitiesBlock(view) {
   elements.essentialDignitiesList.hidden = !isExpanded;
   renderSimpleList(elements.essentialDignitiesLimitations, view.limitations);
   elements.essentialDignitiesLimitations.hidden = view.limitations.length === 0;
+}
+
+function renderDetailedDignitiesBlock(view) {
+  const isExpanded = view.canToggleDetailedDignities
+    && Boolean(view.profileId)
+    && expandedDetailedDignitiesProfileId === view.profileId;
+
+  elements.detailedDignities.hidden = view.hidden;
+  elements.detailedDignitiesTitle.textContent = view.title;
+  elements.detailedDignitiesStatus.textContent = view.status;
+  elements.detailedDignitiesStatus.hidden = !view.status;
+  elements.detailedDignitiesExplanation.textContent = view.explanation;
+  elements.detailedDignitiesExplanation.hidden = !view.explanation;
+  elements.detailedDignitiesDisclosure.hidden = !view.canToggleDetailedDignities;
+  elements.detailedDignitiesSummary.textContent = view.summary;
+  elements.detailedDignitiesSummary.hidden = true;
+  elements.detailedDignitiesToggle.hidden = !view.canToggleDetailedDignities;
+  elements.detailedDignitiesToggle.textContent = isExpanded ? 'Скрыть' : 'Показать';
+  elements.detailedDignitiesToggle.setAttribute('aria-expanded', String(isExpanded));
+  elements.detailedDignitiesToggle.dataset.profileId = view.canToggleDetailedDignities ? view.profileId : '';
+  renderDetailedDignityGroups(elements.detailedDignitiesGroups, view.groups);
+  elements.detailedDignitiesGroups.hidden = !isExpanded;
+  renderSimpleList(elements.detailedDignitiesLimitations, view.limitations);
+  elements.detailedDignitiesLimitations.hidden = view.limitations.length === 0;
 }
 
 function renderPersonalContextBlock(view) {
@@ -624,6 +660,7 @@ function resetNatalProfileDisclosures() {
   expandedNatalPlanetsProfileId = null;
   expandedNatalAspectsProfileId = null;
   expandedEssentialDignitiesProfileId = null;
+  expandedDetailedDignitiesProfileId = null;
 }
 
 function handleProfileFormSubmit(event) {
@@ -740,6 +777,40 @@ function renderSimpleList(element, items) {
   }));
 }
 
+function renderDetailedDignityGroups(element, groups = []) {
+  element.replaceChildren(...groups.map((group) => {
+    const groupElement = document.createElement('section');
+    groupElement.className = 'detailed-dignity-group';
+
+    const title = document.createElement('h4');
+    title.textContent = group.planetLabel;
+    groupElement.append(title);
+
+    const list = document.createElement('ul');
+    list.replaceChildren(...group.items.map((item) => {
+      const row = document.createElement('li');
+
+      const text = document.createElement('span');
+      text.className = 'detailed-dignity-text';
+      text.textContent = item.text;
+      row.append(text);
+
+      const detail = [item.detail, item.source].filter(Boolean).join(' · ');
+      if (detail) {
+        const meta = document.createElement('small');
+        meta.className = 'detailed-dignity-detail';
+        meta.textContent = detail;
+        row.append(meta);
+      }
+
+      return row;
+    }));
+    groupElement.append(list);
+
+    return groupElement;
+  }));
+}
+
 function renderVocAspect(voc) {
   const lines = describeVocAspect(voc).split('\n').filter(Boolean);
   elements.vocAspect.replaceChildren(...lines.map((text, index) => {
@@ -838,6 +909,15 @@ elements.essentialDignitiesToggle.addEventListener('click', () => {
 
   const isExpanded = expandedEssentialDignitiesProfileId === profileId;
   expandedEssentialDignitiesProfileId = isExpanded ? null : profileId;
+  renderStoredProfilesShell();
+});
+
+elements.detailedDignitiesToggle.addEventListener('click', () => {
+  const profileId = elements.detailedDignitiesToggle.dataset.profileId || null;
+  if (!profileId) return;
+
+  const isExpanded = expandedDetailedDignitiesProfileId === profileId;
+  expandedDetailedDignitiesProfileId = isExpanded ? null : profileId;
   renderStoredProfilesShell();
 });
 

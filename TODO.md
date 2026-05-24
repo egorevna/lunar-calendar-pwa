@@ -2809,15 +2809,28 @@ Result:
 
 ## Task 10.10 — Terms / Decans / Degree Rulers Collapsible UI
 
-Status: active
+Status: done
 
 Goal:
 
 Add collapsible section inside `Мои карты` only for implemented and verified layers.
 
+Result:
+
+- Added pure `src/detailedDignitiesForProfile.js` profile helper over existing natal planet readiness and lookup/display layers.
+- Added collapsed-by-default `Термы, деканы и градусы` block inside `Мои карты` after `Достоинства планет`.
+- Display now groups term, decan, Table 6 / Star of the Magi degree ruler and Table 7 / Vronsky degree ruler rows by natal planet.
+- Kept Table 6 and Table 7 visibly separated by user-facing source labels.
+- Post-task UI-copy polish removed the duplicated ready summary line and simplified expanded source labels to `Звезда Магов` / `Вронский` while keeping Table 6 and Table 7 visually distinct.
+- Post-task UI layout fix aligned the `Показать` / `Скрыть` toggle with the `Термы, деканы и градусы` title without restoring the duplicated summary line.
+- Post-task UI-copy consistency fix made term detail/source labels match the same short human-readable style: `Вронский, термы`, `Звезда Магов`, `Вронский`.
+- Added safe fallback for `Общий день` / profiles without ready natal planets.
+- Updated PWA cache to include the new helper and detailed dignity modules.
+- Did not change datasets, lookup engines, provider calculations, package files or interpretations.
+
 ## Task 10.11 — Terms / Decans / Degree Rulers Debug
 
-Status: not started
+Status: active
 
 Goal:
 

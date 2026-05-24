@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import {
+  describeDetailedDignitiesBlock,
   describeEssentialDignitiesBlock,
   describeNatalAspectsBlock,
   describeNatalPlanetsReadinessBlock,
@@ -588,4 +589,63 @@ test('essential dignities block shows empty state when no dignity rows are displ
   assert.equal(view.summary, 'Ярко выраженных базовых достоинств или слабостей не найдено.');
   assert.equal(view.canToggleDignities, false);
   assert.deepEqual(view.dignities, []);
+});
+
+test('detailed dignities block shows fallback for general day', () => {
+  const view = describeDetailedDignitiesBlock(null);
+
+  assert.equal(view.hidden, false);
+  assert.equal(view.title, 'Термы, деканы и градусы');
+  assert.equal(view.status, 'Пока недоступны.');
+  assert.equal(view.explanation, 'Сначала нужен расчет натальных планет.');
+  assert.equal(view.summary, 'Пока недоступны.');
+  assert.equal(view.canToggleDetailedDignities, false);
+  assert.deepEqual(view.groups, []);
+});
+
+test('detailed dignities block shows grouped rows for UTC-ready active profile', () => {
+  const view = describeDetailedDignitiesBlock({
+    id: 'profile-egor',
+    name: 'Егор',
+    birthDate: '1990-05-12',
+    birthTime: '14:30',
+    birthTimeAccuracy: 'exact',
+    birthPlace: {
+      city: 'Москва',
+      country: 'Россия',
+      latitude: null,
+      longitude: null,
+      timezone: 'Europe/Moscow',
+    },
+    currentPlace: {
+      mode: 'moscow',
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+    },
+    houseSystem: 'wholeSign',
+    zodiac: 'tropical',
+  });
+  const text = JSON.stringify(view);
+
+  assert.equal(view.hidden, false);
+  assert.equal(view.title, 'Термы, деканы и градусы');
+  assert.equal(view.status, '');
+  assert.equal(view.explanation, '');
+  assert.equal(view.summary, '');
+  assert.equal(view.canToggleDetailedDignities, true);
+  assert.equal(view.groups.length, 10);
+  assert.equal(view.groups.every((group) => group.items.length === 4), true);
+  assert.equal(text.includes('Таблица 5'), false);
+  assert.equal(text.includes('Вронский, термы'), true);
+  assert.equal(text.includes('Таблица 6 / Звезда Магов'), false);
+  assert.equal(text.includes('Звезда Магов'), true);
+  assert.equal(text.includes('Таблица 7 / Вронский'), false);
+  assert.equal(text.includes('Вронский'), true);
+  assert.equal(text.includes('sourceTokens'), false);
+  assert.equal(text.includes('sourceKey'), false);
+  assert.equal(text.includes('birthDate'), false);
+  assert.equal(text.includes('birthTime'), false);
+  assert.equal(text.includes('longitude'), false);
+  assert.equal(text.includes('interpretation'), false);
 });

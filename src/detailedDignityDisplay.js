@@ -1,7 +1,6 @@
 const DETAILED_DIGNITY_DISPLAY_LIMITATIONS = Object.freeze([
-  'Термы, деканы и управители градусов — это lookup-слои по знаку и градусу.',
-  'Table 6 и Table 7 — разные системы управителей градусов.',
-  'Интерпретации будут добавлены отдельно.',
+  'Таблица 6 и Таблица 7 — разные системы управителей градусов.',
+  'Интерпретации здесь не выводятся.',
 ]);
 
 const SUPPORTED_TYPES = Object.freeze(['term', 'decan', 'degreeRuler', 'vronskyDegreeRulers']);
@@ -89,7 +88,7 @@ export function formatTermResult(result) {
     planet,
     text: `${planet} — терм ${formatTermRulerGenitive(ruler)} · ${formatSignedValue(value)}`,
     detail: `${sign} ${range.startDegree}°–${range.printedEndDegree}°`,
-    source: 'Таблица 5',
+    source: 'Вронский, термы',
   });
 }
 
@@ -138,7 +137,7 @@ export function formatDegreeRulerResult(result) {
     planet,
     text: `${planet} — ${degreeIndex}-й градус · ${ruler}`,
     detail: sign,
-    source: 'Таблица 6 / Звезда Магов',
+    source: 'Звезда Магов',
   });
 }
 
@@ -162,7 +161,7 @@ export function formatVronskyDegreeRulersResult(result) {
     planet,
     text: `${planet} — ${degreeIndex}-й градус · ${rulers.map(formatVronskyRulerDisplay).join(', ')}`,
     detail: sign,
-    source: 'Таблица 7 / Вронский',
+    source: 'Вронский',
   });
 }
 

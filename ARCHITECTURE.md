@@ -191,6 +191,8 @@ Responsibilities:
 - handles local profile export/import actions through `src/profileImportExport.js`
 - renders the read-only natal planets block inside `Мои карты` through `src/profileUi.js` when profile UTC readiness and provider output are ready
 - renders the collapsible natal aspects block inside `Мои карты` through `src/profileUi.js` and `src/natalAspectsForProfile.js` when natal planets are ready
+- renders the collapsible essential dignities block inside `Мои карты` through `src/profileUi.js` and `src/essentialDignitiesForProfile.js` when natal planets are ready
+- renders the collapsible `Термы, деканы и градусы` block inside `Мои карты` through `src/profileUi.js` and `src/detailedDignitiesForProfile.js` when natal planets are ready
 - renders the compact `Лично для меня` dashboard block through `src/personalContext.js`, `src/personalRecommendations.js`, and `src/profileUi.js`
 - passes safe profile summary state into the hidden debug panel
 
@@ -707,6 +709,21 @@ Current responsibilities:
 
 This module does not read localStorage, does not render DOM, does not send birth data externally, does not call providers directly, and does not calculate terms / decans / degree rulers, Vronsky rows, houses, ASC / MC, transits, fixed stars, interpretations or ritual scoring.
 
+## `src/detailedDignitiesForProfile.js`
+
+Builds the safe read-only detailed dignity view model for an active saved profile.
+
+Current responsibilities:
+
+- call `src/natalPlanetsForProfile.js` and require ready natal planet output first;
+- evaluate already calculated natal planet positions through the existing Terms, Decans, Table 6 / Star of the Magi degree-ruler and Table 7 / Vronsky degree-ruler lookup engines;
+- format all lookup output through `src/detailedDignityDisplay.js`;
+- group display rows by natal planet for the collapsible `Термы, деканы и градусы` section inside `Мои карты`;
+- return a safe fallback for `Общий день` or profiles without ready natal planets;
+- expose only formatted text, detail/source labels, grouped rows, summary and limitations to `src/profileUi.js`.
+
+This module does not read localStorage, does not render DOM, does not call providers directly, does not calculate planetary positions, does not expose raw birth data, source tokens, technical source keys, raw longitude or coordinates, and does not include houses, ASC / MC, transits, fixed stars, interpretations or ritual scoring.
+
 ## `src/natalPlanetsDebug.js`
 
 Builds the safe debug summary for the read-only natal planets UI state.
@@ -982,6 +999,7 @@ Current responsibilities:
 - map profile validation errors into short Russian UI messages;
 - format the readiness-only `Натальные планеты` block inside `Мои карты` using `src/birthDateTime.js`;
 - translate natal readiness missing fields into human-readable labels without raw birth data or technical keys;
+- format the collapsible `Натальные аспекты`, `Достоинства планет` and `Термы, деканы и градусы` block view models from their profile helpers;
 - format the compact `Лично для меня` dashboard block from `src/personalContext.js`;
 - include safe personal recommendation sections from `src/personalRecommendations.js`;
 - translate missing personal profile fields into human-readable Russian copy without rendering technical keys.
@@ -1098,7 +1116,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v72
+lunar-calendar-v76
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -1884,7 +1902,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v72
+lunar-calendar-v76
 ```
 
 If this value changes in `sw.js`, update this section.

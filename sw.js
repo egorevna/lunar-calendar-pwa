@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lunar-calendar-v72';
+const CACHE_NAME = 'lunar-calendar-v76';
 const ASSETS = [
   './',
   'index.html',
@@ -34,6 +34,16 @@ const ASSETS = [
   'src/essentialDignityDisplay.js',
   'src/essentialDignities.js',
   'src/essentialDignitiesData.js',
+  'src/detailedDignitiesForProfile.js',
+  'src/detailedDignityDisplay.js',
+  'src/terms.js',
+  'src/termsData.js',
+  'src/decans.js',
+  'src/decansData.js',
+  'src/degreeRulersStarOfMagi.js',
+  'src/degreeRulersStarOfMagiData.js',
+  'src/degreeRulersVronsky.js',
+  'src/degreeRulersVronskyData.js',
   'src/astroMath.js',
   'src/natalChartModel.js',
   'src/natalEngine.js',

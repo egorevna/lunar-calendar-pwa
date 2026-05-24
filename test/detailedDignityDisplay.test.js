@@ -117,7 +117,7 @@ test('formatTermResult formats ready term result', () => {
     planet: 'Марс',
     text: 'Марс — терм Сатурна · +1',
     detail: 'Овен 25°–29°',
-    source: 'Таблица 5',
+    source: 'Вронский, термы',
   });
 });
 
@@ -160,7 +160,7 @@ test('formatDegreeRulerResult formats ready degree ruler result', () => {
     planet: 'Марс',
     text: 'Марс — 25-й градус · Сатурн',
     detail: 'Овен',
-    source: 'Таблица 6 / Звезда Магов',
+    source: 'Звезда Магов',
   });
 });
 
@@ -181,7 +181,7 @@ test('formatVronskyDegreeRulersResult formats single-ruler Table 7 result', () =
     planet: 'Марс',
     text: 'Марс — 1-й градус · Солнце',
     detail: 'Овен',
-    source: 'Таблица 7 / Вронский',
+    source: 'Вронский',
   });
 });
 
@@ -192,7 +192,7 @@ test('formatVronskyDegreeRulersResult formats multi-ruler Table 7 result', () =>
     planet: 'Марс',
     text: 'Марс — 0-й градус · Марс, Плутон R',
     detail: 'Овен',
-    source: 'Таблица 7 / Вронский',
+    source: 'Вронский',
   });
 });
 
@@ -233,8 +233,8 @@ test('dispatcher detects Table 7 Vronsky result', () => {
 });
 
 test('dispatcher does not confuse Table 7 result with Table 6 result', () => {
-  assert.equal(formatDetailedDignityResult(readyDegreeRuler())?.source, 'Таблица 6 / Звезда Магов');
-  assert.equal(formatDetailedDignityResult(readyVronskyDegreeRulers())?.source, 'Таблица 7 / Вронский');
+  assert.equal(formatDetailedDignityResult(readyDegreeRuler())?.source, 'Звезда Магов');
+  assert.equal(formatDetailedDignityResult(readyVronskyDegreeRulers())?.source, 'Вронский');
 });
 
 test('invalid or incomplete result returns null', () => {
@@ -293,7 +293,7 @@ test('limitations mention Table 6 and Table 7 are separate systems', () => {
   const limitations = getDetailedDignityDisplayLimitations();
 
   assert.equal(Array.isArray(limitations), true);
-  assert.equal(limitations.some((item) => item.includes('Table 6') && item.includes('Table 7') && item.includes('разные системы')), true);
+  assert.equal(limitations.some((item) => item.includes('Таблица 6') && item.includes('Таблица 7') && item.includes('разные системы')), true);
 });
 
 test('output contains no NaN or undefined', () => {

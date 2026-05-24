@@ -401,7 +401,8 @@ button {
 
 .natal-planets-readiness,
 .natal-aspects-readiness,
-.essential-dignities-readiness {
+.essential-dignities-readiness,
+.detailed-dignities-readiness {
   display: grid;
   gap: 8px;
   margin-top: 14px;
@@ -411,14 +412,39 @@ button {
 
 .natal-planets-readiness[hidden],
 .natal-aspects-readiness[hidden],
-.essential-dignities-readiness[hidden] {
+.essential-dignities-readiness[hidden],
+.detailed-dignities-readiness[hidden] {
   display: none;
+}
+
+.detailed-dignities-readiness {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.detailed-dignities-readiness > h3 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.detailed-dignities-disclosure {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  align-self: center;
+}
+
+.detailed-dignities-readiness > .detailed-dignities-status,
+.detailed-dignities-readiness > [data-detailed-dignities-explanation],
+.detailed-dignities-readiness > .detailed-dignities-groups,
+.detailed-dignities-readiness > .detailed-dignities-limitations {
+  grid-column: 1 / -1;
 }
 
 .natal-planets-readiness h3,
 .natal-planets-readiness h4,
 .natal-aspects-readiness h3,
-.essential-dignities-readiness h3 {
+.essential-dignities-readiness h3,
+.detailed-dignities-readiness h3 {
   margin: 0;
   color: rgba(255, 248, 239, 0.84);
   font-size: clamp(15px, 4vw, 18px);
@@ -432,7 +458,8 @@ button {
 
 .natal-planets-readiness p,
 .natal-aspects-readiness p,
-.essential-dignities-readiness p {
+.essential-dignities-readiness p,
+.detailed-dignities-readiness p {
   margin: 0;
   color: var(--muted);
   font-size: clamp(13px, 3.5vw, 16px);
@@ -441,14 +468,16 @@ button {
 
 .natal-planets-readiness .natal-planets-status,
 .natal-aspects-readiness .natal-aspects-status,
-.essential-dignities-readiness .essential-dignities-status {
+.essential-dignities-readiness .essential-dignities-status,
+.detailed-dignities-readiness .detailed-dignities-status {
   color: rgba(255, 248, 239, 0.82);
   font-weight: 700;
 }
 
 .natal-planets-disclosure,
 .natal-aspects-disclosure,
-.essential-dignities-disclosure {
+.essential-dignities-disclosure,
+.detailed-dignities-disclosure {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -457,20 +486,23 @@ button {
 
 .natal-planets-disclosure[hidden],
 .natal-aspects-disclosure[hidden],
-.essential-dignities-disclosure[hidden] {
+.essential-dignities-disclosure[hidden],
+.detailed-dignities-disclosure[hidden] {
   display: none;
 }
 
 .natal-planets-readiness .natal-planets-summary,
 .natal-aspects-readiness .natal-aspects-summary,
-.essential-dignities-readiness .essential-dignities-summary {
+.essential-dignities-readiness .essential-dignities-summary,
+.detailed-dignities-readiness .detailed-dignities-summary {
   color: rgba(255, 248, 239, 0.82);
   font-weight: 700;
 }
 
 .natal-planets-toggle,
 .natal-aspects-toggle,
-.essential-dignities-toggle {
+.essential-dignities-toggle,
+.detailed-dignities-toggle {
   flex: 0 0 auto;
   border: 1px solid rgba(231, 199, 126, 0.42);
   border-radius: 8px;
@@ -483,7 +515,8 @@ button {
 
 .natal-planets-toggle[hidden],
 .natal-aspects-toggle[hidden],
-.essential-dignities-toggle[hidden] {
+.essential-dignities-toggle[hidden],
+.detailed-dignities-toggle[hidden] {
   display: none;
 }
 
@@ -502,7 +535,8 @@ button {
 .natal-aspects-list,
 .natal-aspects-limitations,
 .essential-dignities-list,
-.essential-dignities-limitations {
+.essential-dignities-limitations,
+.detailed-dignities-limitations {
   display: grid;
   gap: 7px;
   margin: 0;
@@ -514,7 +548,9 @@ button {
 .natal-aspects-list[hidden],
 .natal-aspects-limitations[hidden],
 .essential-dignities-list[hidden],
-.essential-dignities-limitations[hidden] {
+.essential-dignities-limitations[hidden],
+.detailed-dignities-groups[hidden],
+.detailed-dignities-limitations[hidden] {
   display: none;
 }
 
@@ -524,7 +560,8 @@ button {
 .natal-aspects-list li,
 .natal-aspects-limitations li,
 .essential-dignities-list li,
-.essential-dignities-limitations li {
+.essential-dignities-limitations li,
+.detailed-dignities-limitations li {
   color: var(--muted);
   font-size: clamp(13px, 3.5vw, 16px);
   line-height: 1.28;
@@ -543,10 +580,61 @@ button {
   font-weight: 600;
 }
 
+.detailed-dignities-groups {
+  display: grid;
+  gap: 12px;
+}
+
+.detailed-dignity-group {
+  display: grid;
+  gap: 7px;
+}
+
+.detailed-dignity-group h4 {
+  margin: 0;
+  color: rgba(255, 248, 239, 0.72);
+  font-size: clamp(13px, 3.5vw, 16px);
+  line-height: 1.2;
+}
+
+.detailed-dignity-group ul {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.detailed-dignity-group li {
+  display: grid;
+  gap: 3px;
+  padding: 8px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.detailed-dignity-group li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.detailed-dignity-text {
+  color: rgba(255, 248, 239, 0.84);
+  font-size: clamp(13px, 3.5vw, 16px);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.detailed-dignity-detail {
+  color: var(--muted);
+  font-size: clamp(12px, 3.2vw, 14px);
+  line-height: 1.25;
+}
+
 .natal-planets-missing li::before,
 .natal-planets-limitations li::before,
 .natal-aspects-limitations li::before,
-.essential-dignities-limitations li::before {
+.essential-dignities-limitations li::before,
+.detailed-dignities-limitations li::before {
   content: "";
   display: inline-block;
   width: 5px;

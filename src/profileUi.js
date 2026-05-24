@@ -1,6 +1,7 @@
 import { getNatalPlanetsForProfile } from './natalPlanetsForProfile.js';
 import { getNatalAspectsForProfile } from './natalAspectsForProfile.js';
 import { getEssentialDignitiesForProfile } from './essentialDignitiesForProfile.js';
+import { getDetailedDignitiesForProfile } from './detailedDignitiesForProfile.js';
 import { getPersonalRecommendations } from './personalRecommendations.js';
 
 export const GENERAL_PROFILE_LABEL = 'Общий день';
@@ -26,6 +27,9 @@ const ESSENTIAL_DIGNITIES_STATUS = 'Пока недоступны.';
 const ESSENTIAL_DIGNITIES_EXPLANATION = 'Сначала нужен расчет натальных планет.';
 const ESSENTIAL_DIGNITIES_READY_LIMITATION =
   'Это базовые достоинства по знаку, без термов, деканов и управителей градусов.';
+const DETAILED_DIGNITIES_TITLE = 'Термы, деканы и градусы';
+const DETAILED_DIGNITIES_STATUS = 'Пока недоступны.';
+const DETAILED_DIGNITIES_EXPLANATION = 'Сначала нужен расчет натальных планет.';
 
 const MISSING_FIELD_LABELS = {
   birthDate: 'дата рождения',
@@ -258,6 +262,54 @@ export function describeEssentialDignitiesBlock(profile = null) {
     canToggleDignities: hasDignities,
     dignities: hasDignities ? formattedDignities.map((dignity) => dignity.text) : [],
     limitations: hasDignities ? [ESSENTIAL_DIGNITIES_READY_LIMITATION] : [],
+  };
+}
+
+export function describeDetailedDignitiesBlock(profile = null) {
+  const detailedDignities = getDetailedDignitiesForProfile(profile);
+  const groups = Array.isArray(detailedDignities.groups) ? detailedDignities.groups : [];
+  const hasGroups = detailedDignities.status === 'ready' && groups.length > 0;
+  const isReady = detailedDignities.status === 'ready';
+
+  return {
+    hidden: false,
+    title: DETAILED_DIGNITIES_TITLE,
+    status: isReady ? '' : DETAILED_DIGNITIES_STATUS,
+    explanation: isReady ? '' : DETAILED_DIGNITIES_EXPLANATION,
+    profileId: profileId(profile),
+    summary: detailedDignities.summary,
+    canToggleDetailedDignities: hasGroups,
+    groups: hasGroups ? groups.map(toDetailedDignityGroupView) : [],
+    limitations: isReady ? detailedDignities.limitations : [],
+  };
+}
+
+function toDetailedDignityGroupView(group) {
+  return {
+    planetKey: cleanText(group.planetKey),
+    planetLabel: cleanText(group.planetLabel),
+    items: Array.isArray(group.items)
+      ? group.items.map(toDetailedDignityItemView).filter(Boolean)
+      : [],
+  };
+}
+
+function toDetailedDignityItemView(item) {
+  if (!item || typeof item !== 'object') {
+    return null;
+  }
+
+  const text = cleanText(item.text);
+
+  if (!text) {
+    return null;
+  }
+
+  return {
+    type: cleanText(item.type),
+    text,
+    detail: cleanText(item.detail),
+    source: cleanText(item.source),
   };
 }
 

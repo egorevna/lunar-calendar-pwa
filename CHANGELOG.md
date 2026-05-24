@@ -1,5 +1,46 @@
 # Changelog
 
+## 2026-05-24 — Polish Task 10.10 detailed dignity source labels
+
+- Made expanded detailed dignity source labels consistent across terms, decans, Table 6 and Table 7.
+- Terms now show `Вронский, термы` in the detail/source line instead of hiding the source label.
+- Kept decans and Table 6 as `Звезда Магов`, and Table 7 as `Вронский`.
+- Kept technical table numbers, source keys, source systems and source tokens out of ordinary UI output.
+- Updated PWA cache to `lunar-calendar-v76`.
+- No datasets, lookup engines, provider calculations, package files, `src/ephemeris-data.js`, interpretations, houses / ASC / MC, transits or fixed stars were changed.
+- Task 10.11 was not started.
+
+## 2026-05-24 — Fix Task 10.10 detailed dignity header alignment
+
+- Aligned the `Показать` / `Скрыть` toggle to the right of the `Термы, деканы и градусы` title after the ready summary line was removed.
+- Kept the duplicated summary line removed.
+- Left detailed dignity limitations below the header.
+- Updated PWA cache to `lunar-calendar-v75`.
+- No datasets, lookup engines, provider calculations, package files, `src/ephemeris-data.js`, interpretations, houses / ASC / MC, transits or fixed stars were changed.
+- Task 10.11 was not started.
+
+## 2026-05-24 — Polish Task 10.10 detailed dignity UI copy
+
+- Removed the duplicated ready summary line under `Термы, деканы и градусы`.
+- Kept the ready header compact with only the title and `Показать` / `Скрыть` toggle.
+- Simplified expanded source labels: terms show only sign/range, Table 6 degree rulers show `Звезда Магов`, and Table 7 degree rulers show `Вронский`.
+- Kept Table 6 and Table 7 visually distinct without exposing technical source keys, source systems or source tokens.
+- Updated compact limitations copy for detailed dignity display.
+- Updated PWA cache to `lunar-calendar-v74`.
+- No datasets, lookup engines, provider calculations, package files, `src/ephemeris-data.js`, interpretations, houses / ASC / MC, transits or fixed stars were changed.
+- Task 10.11 was not started.
+
+## 2026-05-24 — Complete Task 10.10 detailed dignity collapsible UI
+
+- Added pure `src/detailedDignitiesForProfile.js` helper for ready-profile terms, decans, Table 6 degree rulers and Table 7 Vronsky degree rulers.
+- Added collapsed-by-default `Термы, деканы и градусы` block inside `Мои карты` after `Достоинства планет`.
+- Grouped expanded rows by natal planet and kept user-facing source labels separate: `Таблица 5`, `Звезда Магов`, `Таблица 6 / Звезда Магов`, `Таблица 7 / Вронский`.
+- Added safe fallback for `Общий день` / profiles without ready natal planets.
+- Updated `src/profileUi.js`, `src/app.js`, `index.html`, `src/styles.css`, `sw.js` and UI/helper tests.
+- Updated PWA cache to `lunar-calendar-v73` and cached the detailed dignity modules.
+- No datasets, lookup engines, provider calculations, package files, `src/ephemeris-data.js`, interpretations, houses / ASC / MC, transits or fixed stars were changed.
+- Task 10.11 — Terms / Decans / Degree Rulers Debug is next, but was not started.
+
 ## 2026-05-24 — Complete Task 10.9b Table 7 detailed dignity display update
 
 - Updated `src/detailedDignityDisplay.js`.
