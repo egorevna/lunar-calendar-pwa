@@ -2511,25 +2511,36 @@ Completion:
 - Confirmed rows remain Star of the Magi / Egyptian tradition only and use septener planets only.
 - Confirmed active decans dataset, lookup engine, UI, OCR import, `src/` changes and tests were not created.
 
-# Active Task
+# Completed Task
 
 ## Task 10.5d — Decans Star of the Magi Dataset from Verified Rows
 
-Status: active
+Status: done
 
 Goal:
 
 Create active decans dataset only from manually verified Star of the Magi rows.
 
-# Sprint 10 Backlog
+Completion:
+
+- Added `src/decansData.js`.
+- Created active source-tracked Star of the Magi / Egyptian tradition decans dataset from 36 verified rows.
+- Stored Fig. 4.7 source metadata, verification report reference, transcription draft reference and interval policy `[0,10)`, `[10,20)`, `[20,30)`.
+- Kept the dataset septener-only: Sun, Moon, Mercury, Venus, Mars, Jupiter and Saturn.
+- Added `test/decansData.test.js` covering source metadata, row count, sign coverage, intervals, verified-only rows, septener-only rulers, deferred systems/features, read-only boundaries and strict exclusions.
+- Did not create decans lookup engine, UI, display helper, Trigon/Vronsky decans, degree rulers or other source systems.
+
+# Active Task
 
 ## Task 10.6 — Decans Lookup Engine / Fixtures
 
-Status: not started
+Status: active
 
 Goal:
 
 Create pure lookup engine for decans if dataset is ready.
+
+# Sprint 10 Backlog
 
 ## Task 10.7 — Degree Rulers Source Decision / Dataset
 

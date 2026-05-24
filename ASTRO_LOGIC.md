@@ -958,7 +958,31 @@ Star of the Magi is the first dataset candidate, but only after non-active trans
 
 Trigon / Vronsky decans remain deferred because they may include multiple active rulers and retrograde outer planets.
 
-No active decans dataset, lookup engine, UI or debug is allowed until source rows are manually verified.
+No active decans lookup engine, UI or debug is allowed until source rows are manually verified and an active dataset exists.
+
+## Task 10.5d Star of the Magi Decans Dataset Policy
+
+The active Star of the Magi / Egyptian tradition decans dataset uses only the manually verified Figure 4.7 rows.
+
+It stores 36 rows:
+
+- 12 signs;
+- 3 decans per sign;
+- septener planets only: Sun, Moon, Mercury, Venus, Mars, Jupiter and Saturn.
+
+The interval policy is:
+
+```txt
+[0, 10)
+[10, 20)
+[20, 30)
+```
+
+The source system is `star-of-magi-egyptian-tradition`.
+
+Trigon / Vronsky decans remain deferred and must use a separate source system if implemented later.
+
+The dataset does not perform lookup by degree and does not include degree rulers, fixed stars, houses, ASC / MC, transits, interpretations or ritual scoring.
 
 ## Deferred Features
 

@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-24 — Complete Task 10.5d decans Star of the Magi dataset
+
+- Added `src/decansData.js`.
+- Created active source-tracked Decans Star of the Magi / Egyptian tradition dataset from 36 manually verified rows.
+- Stored Fig. 4.7 source metadata, verification report reference, transcription draft reference, source system and active row count.
+- Added half-open interval policy: decan 1 `[0, 10)`, decan 2 `[10, 20)`, decan 3 `[20, 30)`.
+- Kept the dataset septener-only and excluded Uranus / Neptune / Pluto, Trigon/Vronsky decans, degree rulers, fixed stars, houses, ASC / MC, transits, interpretations and ritual scoring.
+- Added `test/decansData.test.js`.
+- No decans lookup engine, UI, display helper, provider calculations, package files, app shell or PWA cache changes were added.
+- Task 10.6 — Decans Lookup Engine / Fixtures is next, but was not started.
+
 ## 2026-05-24 — Complete Task 10.5c decans Star of the Magi manual verification
 
 - Created `DECANS_STAR_OF_MAGI_VERIFICATION_REPORT.md`.
