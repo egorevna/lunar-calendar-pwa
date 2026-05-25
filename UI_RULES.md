@@ -610,3 +610,18 @@ Helper copy:
 ```
 
 The app must not auto-fill coordinates from city, country, timezone, current location or hardcoded city mappings. Coordinates are allowed in the edit form only; calculated Houses / ASC / MC output must continue to show formatted angles, houses and safe fallback messages rather than raw coordinates.
+
+## Houses / ASC / MC Block
+
+The `Дома и углы карты` block belongs inside `Мои карты` after `Термы, деканы и градусы`.
+
+Rules:
+
+- collapsed by default;
+- header shows only the title and `Показать` / `Скрыть` action;
+- ready state shows selected house system, ASC / MC / DSC / IC, houses and planet-to-house rows;
+- fallback state shows `Пока недоступно.` once, then one safe reason message and non-duplicated limitations;
+- no interpretations, ritual advice, fatalistic copy, fixed stars, transits, Pars Fortuna or Arabic Parts;
+- calculated output must not show raw birth date, birth time, UTC, timezone value, raw coordinates, raw profile JSON, raw planet longitude or raw cusp longitude.
+
+`?debug=1` may include `Houses / ASC / MC UI Debug`, but only as safe status/counts/capabilities/privacy flags. It must not change normal UI behavior.

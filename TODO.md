@@ -3226,17 +3226,48 @@ Result:
 - Bumped PWA cache to `lunar-calendar-v85` and cached `src/housesDebug.js`.
 - No calculation engines, selected-system router, planet-in-house assignment, provider calculations, package files or generic `src/houses.js` / `src/houseSystems.js` were changed.
 
-Next active task:
+Follow-up:
 
-- Task 11.10 — Sprint 11 Hardening.
-
-Do not start Task 11.10 until explicitly requested.
+- Task 11.10 — Sprint 11 Hardening is now done.
 
 ## Later Sprint 11 Tasks
 
-Status: not started
+Status: done
 
-- Task 11.10 — Sprint 11 Hardening.
+## Task 11.10 — Sprint 11 Hardening
+
+Status: done
+
+Goal:
+
+Final audit / hardening for Sprint 11 Houses / ASC / MC.
+
+Result:
+
+- Rechecked guardrails, house-system separation, Placidus benchmarks, coordinate/profile shape, architecture boundaries, privacy, UI/debug and PWA cache.
+- Confirmed no code fix was needed during hardening.
+- Confirmed user-facing Houses / ASC / MC requires exact birth time and valid birth coordinates.
+- Confirmed Whole Sign, Equal House and Placidus remain separate engines routed by selected `profile.houseSystem`.
+- Confirmed Placidus stays benchmark-validated, does not fallback to Equal House / Whole Sign and has high-latitude unsupported behavior.
+- Confirmed manual `birthPlace.coordinates` shape is supported, no geocoding / browser location / Moscow auto-fill was added.
+- Confirmed UI/debug do not expose raw birth data, UTC, raw coordinates, full profile JSON or full house/cusp/assignment dumps.
+- Confirmed PWA cache is `lunar-calendar-v85`.
+
+Sprint 11 status:
+
+- Sprint 11 — Houses / ASC / MC is closed.
+
+Next active task:
+
+- Sprint 12 planning — House Cusps + Pars Fortuna + Basic Arabic Parts.
+
+Do not start Sprint 12 until explicitly requested.
+
+# Next Sprint
+
+## Sprint 12 planning — House Cusps + Pars Fortuna + Basic Arabic Parts
+
+Status: not started
 
 # Security Backlog
 

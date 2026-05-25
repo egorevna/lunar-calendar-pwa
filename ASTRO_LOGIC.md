@@ -521,6 +521,15 @@ If timezone is missing:
 
 Sprint 11 must not fake ASC / MC / houses.
 
+Final Sprint 11 status:
+
+- `whole-sign`, `equal-house` and `placidus` are implemented as separate calculation engines;
+- selected-system routing uses `profile.houseSystem` and does not silently fallback between systems;
+- Placidus is active through the benchmark-validated local engine and returns explicit unsupported status for high-latitude / circumpolar cases;
+- planet-in-house assignment is available for the selected ready house result;
+- display, UI and debug layers format ready results only and do not change calculation policy;
+- Sprint 11 does not add interpretations, transits, fixed stars, Pars Fortuna, Arabic Parts or ritual scoring.
+
 Required for user-facing ASC / MC / houses:
 
 - exact birth time;

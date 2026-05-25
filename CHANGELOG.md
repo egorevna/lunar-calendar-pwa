@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-25 — Complete Task 11.10 Sprint 11 Hardening
+
+- Completed final Sprint 11 audit / hardening for Houses / ASC / MC.
+- Rechecked guardrails, house-system separation, Placidus benchmark validation, coordinate/profile shape, architecture boundaries, privacy, UI/debug behavior and PWA cache.
+- Confirmed no code fixes were needed during hardening.
+- Confirmed PWA cache remains `lunar-calendar-v85`.
+- No calculation engines, selected-system router, planet-in-house assignment, provider calculations, package files, interpretations, Pars Fortuna / Arabic Parts, fixed stars, transits or generic `src/houses.js` / `src/houseSystems.js` were changed.
+- Sprint 11 is closed. Next active work is Sprint 12 planning — House Cusps + Pars Fortuna + Basic Arabic Parts, but Sprint 12 was not started.
+
 ## 2026-05-25 — Complete Task 11.9 Houses / ASC / MC Debug
 
 - Added pure `src/housesDebug.js` safe status helper.
