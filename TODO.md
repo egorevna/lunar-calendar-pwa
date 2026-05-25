@@ -3027,6 +3027,26 @@ Result:
 - Validation status records `validated: false`, `implementationReady: false`, `benchmarkFixtures: false` and `reason: "missingBenchmarkFixtures"`.
 - Confirmed no fake Placidus cusps, no Equal House fallback, no Whole Sign fallback, no generic router, no quadrant cusps, no planet-in-house assignment, no UI, no provider changes and no package changes were added.
 
+## Task 11.4d2 — Placidus Calculation Activation / Benchmarks
+
+Status: done
+
+Goal:
+
+Activate real Placidus calculation only if a safe local implementation path and benchmark fixtures are available. If not available, keep Task 11.4e blocked.
+
+Result:
+
+- Added static benchmark fixtures in `test/fixtures/placidusFixtures.js`.
+- Updated `src/placidusHouses.js` from validation gate to browser-safe pure Placidus calculation engine.
+- Added local Placidus semi-arc cusp calculation validated against 5 static `local-swisseph-swe_houses-benchmark` fixtures.
+- Added high-latitude unsupported behavior with `status: "unsupported"` / `reason: "placidusUnsupportedAtLatitude"`.
+- Updated `test/placidusHouses.test.js` to validate benchmark matching, ASC/MC cusp alignment, opposite cusps, no Equal House fallback, no Whole Sign fallback, profile guardrails and privacy.
+- Updated `src/ascMc.js` only to export existing sidereal time and mean-obliquity helper functions for the Placidus engine.
+- Placidus validation status is now `validated: true`, `implementationReady: true`, `benchmarkFixtures: true`, `benchmarkFixtureCount: 5`, `toleranceDegrees: 0.05`.
+- Hardening confirms benchmark expected values are static finite numbers and `swisseph` remains dev-only / outside app runtime imports.
+- Confirmed no runtime `swisseph` import, no package changes, no generic router, no planet-in-house assignment, no UI and no provider changes were added.
+
 ## Task 11.4e — House System Resolver / Selected System Router
 
 Status: active

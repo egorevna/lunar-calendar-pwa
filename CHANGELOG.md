@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-05-25 — Complete Task 11.4d2 Placidus calculation activation
+
+- Added static benchmark fixtures in `test/fixtures/placidusFixtures.js`.
+- Activated `src/placidusHouses.js` as a browser-safe pure Placidus calculation engine validated against 5 static `local-swisseph-swe_houses-benchmark` fixtures.
+- Implemented local Placidus semi-arc cusp calculation with benchmark tolerance `0.05°`, ASC / MC alignment checks, opposite cusp checks, no Equal House fallback and no Whole Sign fallback.
+- Added high-latitude / circumpolar fail-closed behavior with `status: "unsupported"` / `reason: "placidusUnsupportedAtLatitude"`.
+- Hardened tests to confirm static finite fixture values, no runtime `swisseph` import, no Whole Sign / Equal House imports and dev-only `swisseph` package metadata.
+- Exported existing sidereal time and mean-obliquity helpers from `src/ascMc.js` for validated house-system engines without changing provider calculations.
+- `swisseph` remains a local benchmark oracle only; it is not imported into app runtime modules or bundled into the PWA. The package is private/local, and future public or commercial distribution requires license review.
+- No fake Placidus, generic house-system router, planet-in-house assignment, UI, PWA cache, provider calculations, package files or generated ephemeris data were added.
+- Next active task is Task 11.4e — House System Resolver / Selected System Router, but it was not started.
+
 ## 2026-05-25 — Complete Task 11.4d Placidus integration gate
 
 - Added pure `src/placidusHouses.js`.

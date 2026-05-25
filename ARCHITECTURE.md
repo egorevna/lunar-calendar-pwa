@@ -399,6 +399,7 @@ Current responsibilities:
 - use `src/birthDateTime.js` to resolve a validated UTC birth moment for profile-based calculation;
 - calculate local sidereal time through tracked `src/vendor/astronomy-engine.mjs` `SiderealTime()`;
 - calculate mean obliquity with an internal documented approximation;
+- expose sidereal time and mean-obliquity helpers for validated house-system engines;
 - calculate ASC and MC with deterministic vector geometry;
 - derive DSC and IC by adding 180 degrees and normalizing to the zodiac circle;
 - format ASC / MC / DSC / IC as zodiac sign, degree, minutes and safe text.
@@ -437,17 +438,20 @@ This module does not implement Whole Sign, Placidus, quadrant cusps, a generic h
 
 ## `src/placidusHouses.js`
 
-Defines the Sprint 11 pure Placidus integration / validation gate.
+Defines the Sprint 11 pure Placidus houses engine.
 
 Current responsibilities:
 
 - recognize Placidus as a separate `placidus` house system;
-- expose Placidus validation status and capabilities;
-- return explicit unsupported status while no validated Placidus implementation and benchmark fixtures are available;
-- respect profile-level `houseSystem` selection for the Placidus path: Placidus aliases check guardrails, Whole Sign / Equal House aliases return explicit selected-system unsupported status;
-- use `src/housesInputGuardrails.js` for selected-Placidus profile readiness before returning unsupported validation status.
+- expose Placidus validation status and capabilities with benchmark-backed readiness;
+- calculate 12 Placidus cusps and house spans from normalized UTC/date and coordinates;
+- use ASC / MC sidereal time and mean-obliquity helpers from `src/ascMc.js`;
+- validate the browser-safe local calculation against 5 static `local-swisseph-swe_houses-benchmark` fixtures with `0.05°` tolerance;
+- return explicit unsupported status for high-latitude / circumpolar cases where Placidus cannot be safely calculated;
+- respect profile-level `houseSystem` selection for the Placidus path: Placidus aliases check guardrails and calculate when ready, Whole Sign / Equal House aliases return explicit selected-system unsupported status;
+- use `src/housesInputGuardrails.js` for selected-Placidus profile readiness.
 
-This module does not calculate Placidus cusps, implement Whole Sign, implement Equal House, import `swisseph`, import provider modules, implement a generic house-system router, create quadrant cusps, assign planets to houses, render UI, read localStorage, mutate profiles, or expose raw birth data / raw birth coordinates. Placidus remains recognized but not calculation-ready until a validated dependency / implementation path and benchmark fixtures are approved.
+This module does not implement Whole Sign, implement Equal House, import `swisseph`, import provider modules, implement a generic house-system router, assign planets to houses, render UI, read localStorage, mutate profiles, or expose raw birth data / raw birth coordinates. `swisseph` is used only outside app runtime as the static benchmark oracle.
 
 ## `src/planetaryPositionProvider.js`
 
@@ -1290,7 +1294,7 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 29. `src/equalHouseHouses.js` calculates pure Equal House / Равнодомная cusps and house spans from an exact ASC longitude, keeps `houseSystem: "equal-house"` explicit, respects profile `houseSystem` selection for the Equal House path, and does not implement Whole Sign, Placidus, quadrant cusps, a generic router or planet-in-house assignment.
 
-30. `src/placidusHouses.js` recognizes Placidus as a separate house system, exposes validation status, and returns explicit unsupported behavior until a validated Placidus implementation and benchmark fixtures exist; it does not calculate cusps, fallback to Whole Sign / Equal House, implement a generic router or assign planets to houses.
+30. `src/placidusHouses.js` calculates pure Placidus cusps and house spans with static benchmark-backed validation, returns explicit unsupported behavior for high-latitude / circumpolar cases, and does not fallback to Whole Sign / Equal House, import runtime `swisseph`, implement a generic router or assign planets to houses.
 
 31. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
 

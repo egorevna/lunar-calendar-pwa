@@ -548,8 +548,8 @@ House systems policy:
 - Whole Sign is sign-based: House 1 = ASC sign, each house = full zodiac sign;
 - Equal House is exact-ASC-longitude based: cusp 1 = ASC longitude, cusp N = `normalize(ASC longitude + (N - 1) * 30°)`;
 - Placidus is quadrant-cusp based and anchored by ASC/MC;
-- Placidus must be validated before active support and must not silently fallback to Equal House or Whole Sign;
-- if Placidus is selected before validated support exists, return explicit `status: "unsupported"` with `reason: "placidusNotValidated"`;
+- Placidus is active only through the validated `placidus` engine and must not silently fallback to Equal House or Whole Sign;
+- if Placidus cannot be calculated for unsupported / high-latitude / circumpolar cases, return explicit `status: "unsupported"` with `reason: "placidusUnsupportedAtLatitude"`;
 - Equal House must not silently fallback to Whole Sign;
 - 0° Aries is the zodiac longitude coordinate reference for all systems;
 - 0° Aries is not the Placidus house anchor;
@@ -559,7 +559,7 @@ House systems policy:
 - do not call Equal House `Placidus`;
 - do not approximate Placidus with Equal House or Whole Sign;
 - always expose the `houseSystem` label when houses are displayed or debugged;
-- Placidus / quadrant cusps are deferred unless separately verified.
+- Placidus / quadrant cusps must remain isolated to the validated Placidus engine.
 
 ASC / MC calculation policy:
 
@@ -600,7 +600,7 @@ Equal House boundary policy:
 Placidus boundary policy:
 
 - Placidus uses quadrant cusps;
-- Sprint 11 Task 11.4d recognizes Placidus through `src/placidusHouses.js` as a validation-gated integration module, not an active cusp calculator;
+- Sprint 11 Task 11.4d2 activates Placidus through `src/placidusHouses.js` as a browser-safe local calculation engine;
 - ASC = cusp 1;
 - MC = cusp 10;
 - planet-in-house requires longitude comparison against Placidus cusps;
@@ -609,10 +609,13 @@ Placidus boundary policy:
 - Placidus does not start from 0° Aries as house anchor;
 - Placidus must not be approximated by Equal House or Whole Sign;
 - current local `astronomy-engine` / vendor runtime does not provide a ready Placidus / house-cusp API;
-- local `swisseph.swe_houses` is only a candidate dev dependency path and is not active without trusted benchmark fixtures;
-- until a validated path and benchmark fixtures are approved, Placidus returns explicit `status: "unsupported"` with `reason: "placidusNotValidated"`;
-- current validation status is `validated: false`, `implementationReady: false`, `benchmarkFixtures: false` and `reason: "missingBenchmarkFixtures"`;
-- future Placidus readiness requires benchmark fixtures and high-latitude / circumpolar unsupported tests before active calculation.
+- local `swisseph.swe_houses` is used only as the static benchmark oracle and is not imported or bundled in app runtime modules;
+- the current package is private/local; future public or commercial distribution requires a Swiss Ephemeris / `swisseph` license review before relying on that benchmark path;
+- Placidus calculation uses a local semi-arc cusp method validated against 5 static `local-swisseph-swe_houses-benchmark` fixtures;
+- benchmark tolerance is `0.05°`;
+- current validation status is `validated: true`, `implementationReady: true`, `benchmarkFixtures: true`, `benchmarkFixtureCount: 5` and `reason: null`;
+- high-latitude / circumpolar unsupported cases return explicit `status: "unsupported"` with `reason: "placidusUnsupportedAtLatitude"`;
+- profile-level Placidus calculation still requires exact birth time, timezone and birth coordinates through Sprint 11 guardrails.
 
 Deferred:
 

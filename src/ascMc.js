@@ -331,13 +331,13 @@ function dot(a, b) {
   return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 }
 
-function calculateLocalSiderealDegrees(date, longitude) {
+export function calculateLocalSiderealDegrees(date, longitude) {
   const siderealHours = Astronomy.SiderealTime(date);
 
   return normalizeDegrees((siderealHours * SIDEREAL_HOURS_TO_DEGREES) + longitude);
 }
 
-function calculateMeanObliquityDegrees(date) {
+export function calculateMeanObliquityDegrees(date) {
   const julianDate = toJulianDate(date);
   const t = (julianDate - J2000_JULIAN_DATE) / CENTURY_DAYS;
   const arcSeconds = 84381.448

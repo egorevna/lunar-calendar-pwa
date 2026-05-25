@@ -246,7 +246,17 @@ Current local dependency audit result for Task 11.4a:
 - `luxon` is available for validated time conversion through existing project helpers.
 - `src/astroMath.js` provides zodiac sign, degree and normalization utilities.
 - No ready Placidus / house-cusp API was found in current local dependency or vendor files.
-- Therefore Placidus requires separate validated integration before it can become active.
+- Therefore Placidus required separate validated integration before it could become active.
+
+Task 11.4d2 activation result:
+
+- local `swisseph.swe_houses` is available only as a Node/dev benchmark oracle and is not imported into app runtime modules;
+- static benchmark fixtures were generated from synthetic/public cases;
+- `src/placidusHouses.js` now uses a browser-safe local Placidus semi-arc calculation validated against 5 static benchmark fixtures;
+- benchmark tolerance is `0.05°`;
+- current project/package is private/local; any future public or commercial distribution must review Swiss Ephemeris / `swisseph` licensing before relying on that benchmark path;
+- unsupported / high-latitude / circumpolar cases still return explicit `status: "unsupported"` with `reason: "placidusUnsupportedAtLatitude"`;
+- Placidus still never falls back to Equal House or Whole Sign.
 
 ## ASC / MC Policy
 
@@ -534,7 +544,7 @@ Deferred until later tasks/sprints:
 - Whole Sign is the first implementation target.
 - Equal House follows Whole Sign as the second implementation target.
 - Placidus requires a validated dependency / calculation path and benchmark fixtures.
-- If no validated Placidus path is found, Placidus remains explicit unsupported / deferred.
+- Task 11.4d2 activated Placidus through static benchmark-backed validation.
 - 0° Aries is the shared zodiac longitude reference, not a Placidus house anchor.
 - Whole Sign is sign-based.
 - Equal House is exact-ASC-longitude based.

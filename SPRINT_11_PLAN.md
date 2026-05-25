@@ -129,7 +129,7 @@ equal-house
 placidus
 ```
 
-Placidus implementation requires a separate dependency / calculation audit and benchmark validation. If no validated path is found, Placidus must remain explicit `unsupported` / deferred instead of being silently replaced.
+Placidus implementation requires a separate dependency / calculation audit and benchmark validation. Task 11.4d2 activated Placidus through a browser-safe local calculation validated against static benchmark fixtures. If a future selected Placidus input is unsupported, it must remain explicit `unsupported` instead of being silently replaced.
 
 ## Profile House System Selection Policy
 
@@ -151,8 +151,8 @@ Selected system behavior:
 
 - `whole-sign` uses the Whole Sign engine;
 - `equal-house` uses the Equal House / Равнодомная engine;
-- `placidus` uses the Placidus engine only when Placidus is validated and supported;
-- if the user selected Placidus but Placidus is not yet validated / supported, return `status: "unsupported"` with `reason: "placidusNotValidated"`;
+- `placidus` uses the validated Placidus engine;
+- if the user selected Placidus but the input is unsupported, return explicit `status: "unsupported"` with a safe reason such as `placidusUnsupportedAtLatitude`;
 - never silently fallback from Placidus to Whole Sign;
 - never silently fallback from Placidus to Equal House;
 - never silently fallback from Equal House to Whole Sign.
@@ -299,6 +299,21 @@ Responsibilities:
 
 No UI.
 
+### Task 11.4d2 — Placidus Calculation Activation / Benchmarks
+
+Activation pass for real Placidus after Task 11.4d validation gate.
+
+Responsibilities:
+
+- use local dependency audit results safely;
+- use `swisseph.swe_houses` only as a local static benchmark oracle, not as app runtime;
+- commit static benchmark fixtures;
+- activate only a browser-safe local Placidus implementation validated against fixtures;
+- keep unsupported / high-latitude / circumpolar cases explicit;
+- never silently fallback to Equal House or Whole Sign.
+
+No UI.
+
 ### Task 11.4e — House System Resolver / Selected System Router
 
 System-aware router for the selected profile or explicit house system.
@@ -330,8 +345,8 @@ Coverage:
 - DSC/IC wrap-around;
 - Whole Sign house sequence;
 - Equal House cusp sequence and wrap-around;
-- Placidus ready fixtures only if validated;
-- Placidus unsupported fixtures if deferred;
+- Placidus ready fixtures from Task 11.4d2 static benchmarks;
+- Placidus unsupported / high-latitude fixtures;
 - no NaN;
 - no raw birth data.
 
