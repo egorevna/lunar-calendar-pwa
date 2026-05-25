@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-25 — Complete Task 11.4c Equal House houses engine
+
+- Added pure `src/equalHouseHouses.js`.
+- Added `test/equalHouseHouses.test.js`.
+- Implemented Equal House / Равнодомная only: cusp 1 is the exact ASC longitude and cusps 2–12 advance by 30 degrees with zodiac wrap-around.
+- Added Equal House house spans with `nextCuspLongitude` and wrap flags for future validation / planet-in-house work.
+- Added profile-level guard for current `houseSystem` values: `equal`, `equal-house` and `equalHouse` can calculate; `wholeSign`, `whole-sign`, `placidus` and missing selection return explicit unsupported status in this engine.
+- Updated `TODO.md`, `PROJECT_STATE.md`, `ARCHITECTURE.md` and `ASTRO_LOGIC.md`.
+- No Whole Sign changes, Placidus, quadrant cusps, generic selected-system router, planet-in-house assignment, UI, PWA cache, provider calculations, package files or generated ephemeris data were added.
+- Next active task is Task 11.4d — Placidus Engine / Validated Integration, but it was not started.
+
 ## 2026-05-25 — Complete Task 11.4b Whole Sign houses engine
 
 - Added pure `src/wholeSignHouses.js`.

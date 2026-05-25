@@ -587,11 +587,15 @@ Whole Sign boundary policy:
 Equal House boundary policy:
 
 - cusp 1 = exact ASC longitude;
+- Sprint 11 Task 11.4c implements this as the pure `equal-house` / Равнодомная engine;
 - cusp N = `normalize(ASC longitude + (N - 1) * 30°)`;
 - cusp labels should include zodiac sign + degree;
+- MC remains independent angle;
+- MC is not necessarily the 10th house cusp in Equal House;
 - planet-in-house requires longitude comparison across wrapped cusps;
 - Equal House is not sign-only and is not Placidus;
 - Equal House does not start at 0° Aries unless ASC itself is exactly 0° Aries.
+- Whole Sign and Placidus remain separate modules and must not be calculated by the Equal House engine.
 
 Placidus boundary policy:
 

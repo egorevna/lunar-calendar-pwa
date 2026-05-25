@@ -2992,17 +2992,25 @@ Result:
 
 ## Task 11.4c — Equal House Engine
 
-Status: active
+Status: done
 
 Goal:
 
 Create the pure Equal House engine as a separate system after Whole Sign.
 
-Do not start Task 11.4c until explicitly requested.
+Result:
+
+- Added pure `src/equalHouseHouses.js`.
+- Added `test/equalHouseHouses.test.js`.
+- Implemented Equal House / Равнодомная only: cusp 1 = exact ASC longitude and each next cusp = +30° with zodiac wrap-around.
+- Added Equal House house spans from the 12 cusps, including `nextCuspLongitude` and wrap flags for future selected-system validation.
+- Added profile-level guard that respects selected `houseSystem`: `equal` / `equal-house` / `equalHouse` can calculate, while `wholeSign`, `whole-sign`, `placidus` and missing selection return explicit unsupported status instead of silently falling back.
+- Confirmed the module does not implement Whole Sign, Placidus, quadrant cusps, planet-in-house assignment, a generic router, UI or provider calculations.
+- No `src/houses.js`, `src/houseSystems.js`, app wiring, UI, PWA cache, package files or generated ephemeris data were changed.
 
 ## Task 11.4d — Placidus Engine / Validated Integration
 
-Status: not started
+Status: active
 
 Goal:
 
