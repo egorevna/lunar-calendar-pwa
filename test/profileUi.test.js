@@ -4,6 +4,7 @@ import test from 'node:test';
 import {
   describeDetailedDignitiesBlock,
   describeEssentialDignitiesBlock,
+  describeHousesBlock,
   describeNatalAspectsBlock,
   describeNatalPlanetsReadinessBlock,
   describePersonalContextBlock,
@@ -90,6 +91,10 @@ test('profile UI returns form values for editing', () => {
     birthPlace: {
       city: 'Москва',
       country: 'Россия',
+      coordinates: {
+        latitude: 55.7558,
+        longitude: 37.6173,
+      },
       timezone: 'Europe/Moscow',
     },
     houseSystem: 'placidus',
@@ -103,6 +108,8 @@ test('profile UI returns form values for editing', () => {
   assert.equal(values.birthCity, 'Москва');
   assert.equal(values.birthCountry, 'Россия');
   assert.equal(values.birthTimezone, 'Europe/Moscow');
+  assert.equal(values.birthLatitude, '55.7558');
+  assert.equal(values.birthLongitude, '37.6173');
   assert.equal(values.houseSystem, 'placidus');
   assert.equal(values.zodiac, 'tropical');
 });
@@ -115,6 +122,8 @@ test('profile UI returns safe default form values for creation', () => {
   assert.equal(values.birthTime, '');
   assert.equal(values.birthTimeAccuracy, 'exact');
   assert.equal(values.birthTimezone, 'Europe/Moscow');
+  assert.equal(values.birthLatitude, '');
+  assert.equal(values.birthLongitude, '');
   assert.equal(values.houseSystem, 'wholeSign');
   assert.equal(values.zodiac, 'tropical');
 });
@@ -126,6 +135,9 @@ test('profile UI describes validation errors in short Russian copy', () => {
     'birthTime must use HH:mm',
     'birthPlace.city is required',
     'birthPlace.country is required',
+    'birthPlace.coordinates pair is incomplete',
+    'birthPlace.coordinates.latitude is out of range',
+    'birthPlace.coordinates.longitude is out of range',
   ]);
 
   assert.deepEqual(errors, [
@@ -134,6 +146,9 @@ test('profile UI describes validation errors in short Russian copy', () => {
     'Укажите время рождения в формате HH:mm.',
     'Укажите город рождения.',
     'Укажите страну рождения.',
+    'Заполните широту и долготу вместе или оставьте оба поля пустыми.',
+    'Укажите широту от -90 до 90.',
+    'Укажите долготу от -180 до 180.',
   ]);
 });
 
@@ -647,5 +662,99 @@ test('detailed dignities block shows grouped rows for UTC-ready active profile',
   assert.equal(text.includes('birthDate'), false);
   assert.equal(text.includes('birthTime'), false);
   assert.equal(text.includes('longitude'), false);
+  assert.equal(text.includes('interpretation'), false);
+});
+
+test('houses block returns safe fallback for general day and incomplete profile', () => {
+  const general = describeHousesBlock(null);
+  const fallback = describeHousesBlock({
+    id: 'profile-egor',
+    name: 'Егор',
+    birthDate: '1990-05-12',
+    birthTime: '',
+    birthTimeAccuracy: 'unknown',
+    birthPlace: {
+      city: 'Москва',
+      country: 'Россия',
+      latitude: null,
+      longitude: null,
+      timezone: 'Europe/Moscow',
+    },
+    currentPlace: {
+      mode: 'moscow',
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+    },
+    houseSystem: 'wholeSign',
+    zodiac: 'tropical',
+  });
+  const text = JSON.stringify(fallback);
+
+  assert.equal(general.hidden, false);
+  assert.equal(general.title, 'Дома и углы карты');
+  assert.equal(general.status, 'Пока недоступно.');
+  assert.equal(general.summary, 'Пока недоступно.');
+  assert.equal(general.canToggleHouses, true);
+  assert.equal(fallback.hidden, false);
+  assert.equal(fallback.title, 'Дома и углы карты');
+  assert.equal(fallback.status, 'Пока недоступно.');
+  assert.equal(fallback.summary, 'Пока недоступно.');
+  assert.equal(fallback.canToggleHouses, true);
+  assert.deepEqual(fallback.angles, []);
+  assert.deepEqual(fallback.houses, []);
+  assert.deepEqual(fallback.planetAssignments, []);
+  assert.equal(text.includes('birthDate'), false);
+  assert.equal(text.includes('birthTime'), false);
+  assert.equal(text.includes('Europe/Moscow'), false);
+  assert.equal(text.includes('latitude'), false);
+  assert.equal(text.includes('longitude'), false);
+});
+
+test('houses block shows ready rows for selected house system without sensitive data', () => {
+  const view = describeHousesBlock({
+    id: 'profile-egor',
+    name: 'Егор',
+    birthDate: '1990-05-12',
+    birthTime: '14:30',
+    birthTimeAccuracy: 'exact',
+    birthPlace: {
+      city: 'Москва',
+      country: 'Россия',
+      latitude: 55.7558,
+      longitude: 37.6173,
+      timezone: 'Europe/Moscow',
+    },
+    currentPlace: {
+      mode: 'moscow',
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+    },
+    houseSystem: 'placidus',
+    zodiac: 'tropical',
+  });
+  const text = JSON.stringify(view);
+
+  assert.equal(view.hidden, false);
+  assert.equal(view.title, 'Дома и углы карты');
+  assert.equal(view.status, '');
+  assert.equal(view.explanation, '');
+  assert.equal(view.summary, 'Система домов: Placidus');
+  assert.equal(view.houseSystem, 'placidus');
+  assert.equal(view.canToggleHouses, true);
+  assert.equal(view.angles.length, 4);
+  assert.equal(view.houses.length, 12);
+  assert.equal(view.planetAssignments.length, 10);
+  assert.equal(view.angles.some((item) => item.startsWith('ASC — ')), true);
+  assert.equal(view.houses[0].startsWith('1 дом — '), true);
+  assert.equal(view.planetAssignments.some((item) => item.startsWith('Солнце — ')), true);
+  assert.equal(text.includes('1990-05-12'), false);
+  assert.equal(text.includes('14:30'), false);
+  assert.equal(text.includes('Europe/Moscow'), false);
+  assert.equal(text.includes('latitude'), false);
+  assert.equal(text.includes('longitude'), false);
+  assert.equal(text.includes('coordinates'), false);
+  assert.equal(text.includes('planetLongitude'), false);
   assert.equal(text.includes('interpretation'), false);
 });

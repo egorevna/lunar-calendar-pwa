@@ -2,6 +2,7 @@ import { getNatalPlanetsForProfile } from './natalPlanetsForProfile.js';
 import { getNatalAspectsForProfile } from './natalAspectsForProfile.js';
 import { getEssentialDignitiesForProfile } from './essentialDignitiesForProfile.js';
 import { getDetailedDignitiesForProfile } from './detailedDignitiesForProfile.js';
+import { getHousesForProfile } from './housesForProfile.js';
 import { getPersonalRecommendations } from './personalRecommendations.js';
 
 export const GENERAL_PROFILE_LABEL = 'Общий день';
@@ -30,6 +31,8 @@ const ESSENTIAL_DIGNITIES_READY_LIMITATION =
 const DETAILED_DIGNITIES_TITLE = 'Термы, деканы и градусы';
 const DETAILED_DIGNITIES_STATUS = 'Пока недоступны.';
 const DETAILED_DIGNITIES_EXPLANATION = 'Сначала нужен расчет натальных планет.';
+const HOUSES_TITLE = 'Дома и углы карты';
+const HOUSES_STATUS = 'Пока недоступно.';
 
 const MISSING_FIELD_LABELS = {
   birthDate: 'дата рождения',
@@ -54,6 +57,10 @@ const ERROR_MESSAGES = {
   'zodiac is unsupported': 'Выберите зодиак.',
   'birthPlace.city is required': 'Укажите город рождения.',
   'birthPlace.country is required': 'Укажите страну рождения.',
+  'birthPlace.coordinates pair is incomplete':
+    'Заполните широту и долготу вместе или оставьте оба поля пустыми.',
+  'birthPlace.coordinates.latitude is out of range': 'Укажите широту от -90 до 90.',
+  'birthPlace.coordinates.longitude is out of range': 'Укажите долготу от -180 до 180.',
   'currentPlace.mode is unsupported': 'Выберите текущее место расчета.',
   'currentPlace.timezone is required': 'Укажите timezone текущего места.',
 };
@@ -64,6 +71,34 @@ function profileName(profile) {
 
 function profileId(profile) {
   return typeof profile?.id === 'string' && profile.id.trim() ? profile.id.trim() : '';
+}
+
+function coordinateFormValue(value) {
+  return Number.isFinite(value) ? String(value) : '';
+}
+
+function getBirthCoordinateValues(profile = {}) {
+  const birthPlace = profile.birthPlace && typeof profile.birthPlace === 'object'
+    ? profile.birthPlace
+    : {};
+  const coordinates = birthPlace.coordinates && typeof birthPlace.coordinates === 'object'
+    ? birthPlace.coordinates
+    : {};
+  const latitude = Number.isFinite(coordinates.latitude)
+    ? coordinates.latitude
+    : Number.isFinite(coordinates.lat)
+      ? coordinates.lat
+      : birthPlace.latitude;
+  const longitude = Number.isFinite(coordinates.longitude)
+    ? coordinates.longitude
+    : Number.isFinite(coordinates.lng)
+      ? coordinates.lng
+      : birthPlace.longitude;
+
+  return {
+    latitude: coordinateFormValue(latitude),
+    longitude: coordinateFormValue(longitude),
+  };
 }
 
 export function describeProfilesShell(profiles = [], activeProfileId = null) {
@@ -116,6 +151,8 @@ export function describeProfileFormMode(mode = 'create') {
 }
 
 export function describeProfileFormValues(profile = {}) {
+  const birthCoordinates = getBirthCoordinateValues(profile);
+
   return {
     name: profileName(profile),
     birthDate: typeof profile.birthDate === 'string' ? profile.birthDate.trim() : '',
@@ -131,6 +168,8 @@ export function describeProfileFormValues(profile = {}) {
       typeof profile.birthPlace?.timezone === 'string' && profile.birthPlace.timezone.trim()
         ? profile.birthPlace.timezone.trim()
         : 'Europe/Moscow',
+    birthLatitude: birthCoordinates.latitude,
+    birthLongitude: birthCoordinates.longitude,
     houseSystem: typeof profile.houseSystem === 'string' ? profile.houseSystem.trim() : 'wholeSign',
     zodiac: typeof profile.zodiac === 'string' ? profile.zodiac.trim() : 'tropical',
   };
@@ -284,6 +323,32 @@ export function describeDetailedDignitiesBlock(profile = null) {
   };
 }
 
+export function describeHousesBlock(profile = null) {
+  const houses = getHousesForProfile(profile);
+  const isReady = houses.status === 'ready' && houses.ready === true;
+  const houseSystemSummary = isReady
+    ? `Система домов: ${cleanText(houses.houseSystemLabel) || cleanText(houses.houseSystem) || 'неизвестно'}`
+    : HOUSES_STATUS;
+
+  return {
+    hidden: false,
+    title: HOUSES_TITLE,
+    status: isReady ? '' : HOUSES_STATUS,
+    explanation: isReady ? '' : cleanText(houses.message),
+    profileId: profileId(profile) || 'general',
+    summary: houseSystemSummary,
+    houseSystem: cleanText(houses.houseSystem),
+    houseSystemLabel: cleanText(houses.houseSystemLabel),
+    canToggleHouses: true,
+    angles: toDisplayTextList(houses.angles),
+    houses: toDisplayTextList(houses.houses),
+    planetAssignments: toDisplayTextList(houses.planetAssignments),
+    limitations: Array.isArray(houses.limitations)
+      ? houses.limitations.map(cleanText).filter(Boolean)
+      : [],
+  };
+}
+
 function toDetailedDignityGroupView(group) {
   return {
     planetKey: cleanText(group.planetKey),
@@ -353,6 +418,12 @@ function section(title, items = []) {
 
 function cleanText(value) {
   return typeof value === 'string' ? value.trim() : '';
+}
+
+function toDisplayTextList(items = []) {
+  return Array.isArray(items)
+    ? items.map((item) => cleanText(item?.text)).filter(Boolean)
+    : [];
 }
 
 function unique(items) {

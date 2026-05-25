@@ -591,3 +591,22 @@ If a layer is not verified:
 ```txt
 Деканы будут добавлены после проверки таблицы источника.
 ```
+
+---
+
+# Sprint 11 UI Rules Addendum
+
+## Manual Birth Place Coordinates
+
+Profile edit/create forms may show manual coordinate fields for Houses / ASC / MC readiness:
+
+- `Широта места рождения`
+- `Долгота места рождения`
+
+Helper copy:
+
+```txt
+Для обычного режима достаточно координат города. Координаты роддома не обязательны.
+```
+
+The app must not auto-fill coordinates from city, country, timezone, current location or hardcoded city mappings. Coordinates are allowed in the edit form only; calculated Houses / ASC / MC output must continue to show formatted angles, houses and safe fallback messages rather than raw coordinates.

@@ -68,6 +68,7 @@ import {
 import {
   describeDetailedDignitiesBlock,
   describeEssentialDignitiesBlock,
+  describeHousesBlock,
   describeNatalAspectsBlock,
   describeNatalPlanetsReadinessBlock,
   describeProfileFormMode,
@@ -83,6 +84,7 @@ let expandedNatalPlanetsProfileId = null;
 let expandedNatalAspectsProfileId = null;
 let expandedEssentialDignitiesProfileId = null;
 let expandedDetailedDignitiesProfileId = null;
+let expandedHousesProfileId = null;
 
 const DELETE_PROFILE_CONFIRMATION = 'Удалить профиль? Это действие нельзя отменить.';
 
@@ -173,6 +175,21 @@ const elements = {
   detailedDignitiesToggle: document.querySelector('[data-detailed-dignities-toggle]'),
   detailedDignitiesGroups: document.querySelector('[data-detailed-dignities-groups]'),
   detailedDignitiesLimitations: document.querySelector('[data-detailed-dignities-limitations]'),
+  houses: document.querySelector('[data-houses-readiness]'),
+  housesTitle: document.querySelector('[data-houses-title]'),
+  housesStatus: document.querySelector('[data-houses-status]'),
+  housesExplanation: document.querySelector('[data-houses-explanation]'),
+  housesDisclosure: document.querySelector('[data-houses-disclosure]'),
+  housesSummary: document.querySelector('[data-houses-summary]'),
+  housesToggle: document.querySelector('[data-houses-toggle]'),
+  housesContent: document.querySelector('[data-houses-content]'),
+  housesMessage: document.querySelector('[data-houses-message]'),
+  housesAngles: document.querySelector('[data-houses-angles]'),
+  housesListTitle: document.querySelector('[data-houses-list-title]'),
+  housesList: document.querySelector('[data-houses-list]'),
+  housesPlanetAssignmentsTitle: document.querySelector('[data-houses-planet-assignments-title]'),
+  housesPlanetAssignments: document.querySelector('[data-houses-planet-assignments]'),
+  housesLimitations: document.querySelector('[data-houses-limitations]'),
   personalContextCard: document.querySelector('[data-personal-context-card]'),
   personalContextTitle: document.querySelector('[data-personal-context-title]'),
   personalContextSummary: document.querySelector('[data-personal-context-summary]'),
@@ -390,6 +407,7 @@ function renderStoredProfilesShell() {
   renderNatalAspectsBlock(describeNatalAspectsBlock(activeProfile));
   renderEssentialDignitiesBlock(describeEssentialDignitiesBlock(activeProfile));
   renderDetailedDignitiesBlock(describeDetailedDignitiesBlock(activeProfile));
+  renderHousesBlock(describeHousesBlock(activeProfile));
   renderPersonalContextBlock(describePersonalContextBlock(createPersonalContext(activeProfile)));
 }
 
@@ -491,6 +509,39 @@ function renderDetailedDignitiesBlock(view) {
   elements.detailedDignitiesLimitations.hidden = view.limitations.length === 0;
 }
 
+function renderHousesBlock(view) {
+  const isExpanded = view.canToggleHouses
+    && Boolean(view.profileId)
+    && expandedHousesProfileId === view.profileId;
+
+  elements.houses.hidden = view.hidden;
+  elements.housesTitle.textContent = view.title;
+  elements.housesStatus.textContent = view.status || view.summary;
+  elements.housesStatus.hidden = !(view.status || view.summary);
+  elements.housesExplanation.textContent = view.explanation;
+  elements.housesExplanation.hidden = !view.explanation;
+  elements.housesDisclosure.hidden = !view.canToggleHouses;
+  elements.housesSummary.textContent = view.summary;
+  elements.housesSummary.hidden = true;
+  elements.housesToggle.hidden = !view.canToggleHouses;
+  elements.housesToggle.textContent = isExpanded ? 'Скрыть' : 'Показать';
+  elements.housesToggle.setAttribute('aria-expanded', String(isExpanded));
+  elements.housesToggle.dataset.profileId = view.canToggleHouses ? view.profileId : '';
+  elements.housesContent.hidden = !isExpanded;
+  elements.housesMessage.textContent = '';
+  elements.housesMessage.hidden = true;
+  renderSimpleList(elements.housesAngles, view.angles);
+  elements.housesAngles.hidden = !isExpanded || view.angles.length === 0;
+  elements.housesListTitle.hidden = !isExpanded || view.houses.length === 0;
+  renderSimpleList(elements.housesList, view.houses);
+  elements.housesList.hidden = !isExpanded || view.houses.length === 0;
+  elements.housesPlanetAssignmentsTitle.hidden = !isExpanded || view.planetAssignments.length === 0;
+  renderSimpleList(elements.housesPlanetAssignments, view.planetAssignments);
+  elements.housesPlanetAssignments.hidden = !isExpanded || view.planetAssignments.length === 0;
+  renderSimpleList(elements.housesLimitations, view.limitations);
+  elements.housesLimitations.hidden = !isExpanded || view.limitations.length === 0;
+}
+
 function renderPersonalContextBlock(view) {
   elements.personalContextCard.hidden = view.hidden;
   elements.personalContextTitle.textContent = view.title;
@@ -583,6 +634,7 @@ function profileFromForm(form, baseProfile = createProfileDraft()) {
       city: String(data.get('birthCity') ?? ''),
       country: String(data.get('birthCountry') ?? ''),
       timezone: String(data.get('birthTimezone') ?? ''),
+      coordinates: buildBirthCoordinates(data),
     },
     currentPlace: {
       ...baseProfile.currentPlace,
@@ -594,6 +646,29 @@ function profileFromForm(form, baseProfile = createProfileDraft()) {
     houseSystem: String(data.get('houseSystem') ?? 'wholeSign'),
     zodiac: String(data.get('zodiac') ?? 'tropical'),
   };
+}
+
+function parseOptionalCoordinate(value) {
+  const text = String(value ?? '').trim();
+
+  if (!text) {
+    return undefined;
+  }
+
+  const coordinate = Number(text);
+
+  return Number.isFinite(coordinate) ? coordinate : Number.NaN;
+}
+
+function buildBirthCoordinates(data) {
+  const latitude = parseOptionalCoordinate(data.get('birthLatitude'));
+  const longitude = parseOptionalCoordinate(data.get('birthLongitude'));
+
+  if (latitude === undefined && longitude === undefined) {
+    return undefined;
+  }
+
+  return { latitude, longitude };
 }
 
 function setProfileFormOpen(isOpen, profile = null) {
@@ -627,6 +702,8 @@ function fillProfileForm(profile = null) {
   elements.profileForm.elements.birthCity.value = values.birthCity;
   elements.profileForm.elements.birthCountry.value = values.birthCountry;
   elements.profileForm.elements.birthTimezone.value = values.birthTimezone;
+  elements.profileForm.elements.birthLatitude.value = values.birthLatitude;
+  elements.profileForm.elements.birthLongitude.value = values.birthLongitude;
   elements.profileForm.elements.houseSystem.value = values.houseSystem;
   elements.profileForm.elements.zodiac.value = values.zodiac;
   updateBirthTimeState();
@@ -661,6 +738,7 @@ function resetNatalProfileDisclosures() {
   expandedNatalAspectsProfileId = null;
   expandedEssentialDignitiesProfileId = null;
   expandedDetailedDignitiesProfileId = null;
+  expandedHousesProfileId = null;
 }
 
 function handleProfileFormSubmit(event) {
@@ -918,6 +996,15 @@ elements.detailedDignitiesToggle.addEventListener('click', () => {
 
   const isExpanded = expandedDetailedDignitiesProfileId === profileId;
   expandedDetailedDignitiesProfileId = isExpanded ? null : profileId;
+  renderStoredProfilesShell();
+});
+
+elements.housesToggle.addEventListener('click', () => {
+  const profileId = elements.housesToggle.dataset.profileId || null;
+  if (!profileId) return;
+
+  const isExpanded = expandedHousesProfileId === profileId;
+  expandedHousesProfileId = isExpanded ? null : profileId;
   renderStoredProfilesShell();
 });
 

@@ -402,7 +402,8 @@ button {
 .natal-planets-readiness,
 .natal-aspects-readiness,
 .essential-dignities-readiness,
-.detailed-dignities-readiness {
+.detailed-dignities-readiness,
+.houses-readiness {
   display: grid;
   gap: 8px;
   margin-top: 14px;
@@ -413,20 +414,24 @@ button {
 .natal-planets-readiness[hidden],
 .natal-aspects-readiness[hidden],
 .essential-dignities-readiness[hidden],
-.detailed-dignities-readiness[hidden] {
+.detailed-dignities-readiness[hidden],
+.houses-readiness[hidden] {
   display: none;
 }
 
-.detailed-dignities-readiness {
+.detailed-dignities-readiness,
+.houses-readiness {
   grid-template-columns: minmax(0, 1fr) auto;
 }
 
-.detailed-dignities-readiness > h3 {
+.detailed-dignities-readiness > h3,
+.houses-readiness > h3 {
   grid-column: 1;
   grid-row: 1;
 }
 
-.detailed-dignities-disclosure {
+.detailed-dignities-disclosure,
+.houses-disclosure {
   grid-column: 2;
   grid-row: 1;
   justify-self: end;
@@ -436,7 +441,10 @@ button {
 .detailed-dignities-readiness > .detailed-dignities-status,
 .detailed-dignities-readiness > [data-detailed-dignities-explanation],
 .detailed-dignities-readiness > .detailed-dignities-groups,
-.detailed-dignities-readiness > .detailed-dignities-limitations {
+.detailed-dignities-readiness > .detailed-dignities-limitations,
+.houses-readiness > .houses-status,
+.houses-readiness > [data-houses-explanation],
+.houses-readiness > .houses-content {
   grid-column: 1 / -1;
 }
 
@@ -444,7 +452,9 @@ button {
 .natal-planets-readiness h4,
 .natal-aspects-readiness h3,
 .essential-dignities-readiness h3,
-.detailed-dignities-readiness h3 {
+.detailed-dignities-readiness h3,
+.houses-readiness h3,
+.houses-readiness h4 {
   margin: 0;
   color: rgba(255, 248, 239, 0.84);
   font-size: clamp(15px, 4vw, 18px);
@@ -459,7 +469,8 @@ button {
 .natal-planets-readiness p,
 .natal-aspects-readiness p,
 .essential-dignities-readiness p,
-.detailed-dignities-readiness p {
+.detailed-dignities-readiness p,
+.houses-readiness p {
   margin: 0;
   color: var(--muted);
   font-size: clamp(13px, 3.5vw, 16px);
@@ -469,7 +480,8 @@ button {
 .natal-planets-readiness .natal-planets-status,
 .natal-aspects-readiness .natal-aspects-status,
 .essential-dignities-readiness .essential-dignities-status,
-.detailed-dignities-readiness .detailed-dignities-status {
+.detailed-dignities-readiness .detailed-dignities-status,
+.houses-readiness .houses-status {
   color: rgba(255, 248, 239, 0.82);
   font-weight: 700;
 }
@@ -477,7 +489,8 @@ button {
 .natal-planets-disclosure,
 .natal-aspects-disclosure,
 .essential-dignities-disclosure,
-.detailed-dignities-disclosure {
+.detailed-dignities-disclosure,
+.houses-disclosure {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -487,14 +500,17 @@ button {
 .natal-planets-disclosure[hidden],
 .natal-aspects-disclosure[hidden],
 .essential-dignities-disclosure[hidden],
-.detailed-dignities-disclosure[hidden] {
+.detailed-dignities-disclosure[hidden],
+.houses-disclosure[hidden],
+.houses-content[hidden] {
   display: none;
 }
 
 .natal-planets-readiness .natal-planets-summary,
 .natal-aspects-readiness .natal-aspects-summary,
 .essential-dignities-readiness .essential-dignities-summary,
-.detailed-dignities-readiness .detailed-dignities-summary {
+.detailed-dignities-readiness .detailed-dignities-summary,
+.houses-readiness .houses-summary {
   color: rgba(255, 248, 239, 0.82);
   font-weight: 700;
 }
@@ -502,7 +518,8 @@ button {
 .natal-planets-toggle,
 .natal-aspects-toggle,
 .essential-dignities-toggle,
-.detailed-dignities-toggle {
+.detailed-dignities-toggle,
+.houses-toggle {
   flex: 0 0 auto;
   border: 1px solid rgba(231, 199, 126, 0.42);
   border-radius: 8px;
@@ -516,7 +533,8 @@ button {
 .natal-planets-toggle[hidden],
 .natal-aspects-toggle[hidden],
 .essential-dignities-toggle[hidden],
-.detailed-dignities-toggle[hidden] {
+.detailed-dignities-toggle[hidden],
+.houses-toggle[hidden] {
   display: none;
 }
 
@@ -536,7 +554,12 @@ button {
 .natal-aspects-limitations,
 .essential-dignities-list,
 .essential-dignities-limitations,
-.detailed-dignities-limitations {
+.detailed-dignities-limitations,
+.houses-content,
+.houses-angles,
+.houses-list,
+.houses-planet-assignments,
+.houses-limitations {
   display: grid;
   gap: 7px;
   margin: 0;
@@ -550,7 +573,11 @@ button {
 .essential-dignities-list[hidden],
 .essential-dignities-limitations[hidden],
 .detailed-dignities-groups[hidden],
-.detailed-dignities-limitations[hidden] {
+.detailed-dignities-limitations[hidden],
+.houses-angles[hidden],
+.houses-list[hidden],
+.houses-planet-assignments[hidden],
+.houses-limitations[hidden] {
   display: none;
 }
 
@@ -561,7 +588,11 @@ button {
 .natal-aspects-limitations li,
 .essential-dignities-list li,
 .essential-dignities-limitations li,
-.detailed-dignities-limitations li {
+.detailed-dignities-limitations li,
+.houses-angles li,
+.houses-list li,
+.houses-planet-assignments li,
+.houses-limitations li {
   color: var(--muted);
   font-size: clamp(13px, 3.5vw, 16px);
   line-height: 1.28;
@@ -569,15 +600,29 @@ button {
 
 .natal-planets-list li,
 .natal-aspects-list li,
-.essential-dignities-list li {
+.essential-dignities-list li,
+.houses-angles li,
+.houses-list li,
+.houses-planet-assignments li {
   color: rgba(255, 248, 239, 0.86);
   font-weight: 700;
 }
 
 .natal-aspects-list li,
-.essential-dignities-list li {
+.essential-dignities-list li,
+.houses-list li,
+.houses-planet-assignments li {
   color: rgba(255, 248, 239, 0.8);
   font-weight: 600;
+}
+
+.houses-content {
+  padding-top: 2px;
+}
+
+.houses-readiness h4 {
+  color: rgba(255, 248, 239, 0.68);
+  font-size: clamp(13px, 3.5vw, 16px);
 }
 
 .detailed-dignities-groups {
@@ -634,7 +679,8 @@ button {
 .natal-planets-limitations li::before,
 .natal-aspects-limitations li::before,
 .essential-dignities-limitations li::before,
-.detailed-dignities-limitations li::before {
+.detailed-dignities-limitations li::before,
+.houses-limitations li::before {
   content: "";
   display: inline-block;
   width: 5px;
@@ -679,13 +725,20 @@ button {
   gap: 10px;
 }
 
-.profile-form label {
+.profile-form label,
+.profile-form-coordinates {
   display: grid;
   gap: 5px;
   color: var(--muted);
   font-size: clamp(13px, 3.5vw, 16px);
   font-weight: 700;
   line-height: 1.15;
+}
+
+.profile-form-coordinates {
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.28;
 }
 
 .profile-form input,

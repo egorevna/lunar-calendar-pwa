@@ -100,6 +100,9 @@ test('home screen renders profile shell', () => {
   assert.equal(html.includes('data-detailed-dignities'), true);
   assert.equal(html.includes('data-detailed-dignities-title'), true);
   assert.equal(html.includes('Термы, деканы и градусы'), true);
+  assert.equal(html.includes('data-houses-readiness'), true);
+  assert.equal(html.includes('data-houses-title'), true);
+  assert.equal(html.includes('Дома и углы карты'), true);
   assert.equal(html.includes('Добавление профиля — следующий шаг.'), false);
   assert.equal(html.includes('Натальная карта'), false);
   assert.equal(html.includes('Персональные транзиты'), false);
@@ -171,13 +174,15 @@ test('detailed dignities shell stays inside profiles panel after essential digni
   const panelHtml = html.slice(panelStart, panelEnd);
   const essentialStart = html.indexOf('data-essential-dignities');
   const detailedStart = html.indexOf('data-detailed-dignities');
+  const housesStart = html.indexOf('class="houses-readiness"');
   const addButtonStart = html.indexOf('class="profile-create-actions"');
-  const detailedHtml = html.slice(detailedStart, addButtonStart);
+  const detailedHtml = html.slice(detailedStart, housesStart);
 
   assert.equal(panelStart >= 0, true);
   assert.equal(detailedStart > essentialStart, true);
   assert.equal(detailedStart < panelEnd, true);
-  assert.equal(detailedStart < addButtonStart, true);
+  assert.equal(detailedStart < housesStart, true);
+  assert.equal(housesStart < addButtonStart, true);
   assert.equal(panelHtml.includes('data-detailed-dignities hidden'), true);
   assert.equal(detailedHtml.includes('data-detailed-dignities-summary'), true);
   assert.equal(detailedHtml.includes('data-detailed-dignities-toggle'), true);
@@ -196,6 +201,53 @@ test('detailed dignities shell stays inside profiles panel after essential digni
   assert.equal(detailedHtml.includes('houses'), false);
   assert.equal(detailedHtml.includes('transits'), false);
   assert.equal(detailedHtml.includes('interpretation'), false);
+});
+
+test('houses shell stays inside profiles panel after detailed dignities and has no static values', () => {
+  const panelStart = html.indexOf('data-profiles-panel');
+  const panelEnd = html.indexOf('class="glass-card mode-selector"');
+  const panelHtml = html.slice(panelStart, panelEnd);
+  const detailedStart = html.indexOf('data-detailed-dignities');
+  const housesStart = html.indexOf('data-houses-readiness');
+  const addButtonStart = html.indexOf('class="profile-create-actions"');
+  const housesHtml = html.slice(housesStart, addButtonStart);
+
+  assert.equal(panelStart >= 0, true);
+  assert.equal(housesStart > detailedStart, true);
+  assert.equal(housesStart < panelEnd, true);
+  assert.equal(housesStart < addButtonStart, true);
+  assert.equal(panelHtml.includes('data-houses-readiness hidden'), true);
+  assert.equal(housesHtml.includes('data-houses-summary'), true);
+  assert.equal(housesHtml.includes('data-houses-toggle'), true);
+  assert.equal(housesHtml.includes('data-houses-angles'), true);
+  assert.equal(housesHtml.includes('data-houses-list'), true);
+  assert.equal(housesHtml.includes('data-houses-planet-assignments'), true);
+  assert.equal(housesHtml.includes('data-houses-list hidden'), true);
+  assert.equal(housesHtml.includes('data-houses-planet-assignments hidden'), true);
+  assert.equal(housesHtml.includes('ASC — Овен'), false);
+  assert.equal(housesHtml.includes('Солнце — 9 дом'), false);
+  assert.equal(housesHtml.includes('birthDate'), false);
+  assert.equal(housesHtml.includes('birthTime'), false);
+  assert.equal(housesHtml.includes('utcDateTime'), false);
+  assert.equal(housesHtml.includes('latitude'), false);
+  assert.equal(housesHtml.includes('longitude'), false);
+  assert.equal(housesHtml.includes('coordinates'), false);
+  assert.equal(housesHtml.includes('transits'), false);
+  assert.equal(housesHtml.includes('fixedStars'), false);
+  assert.equal(housesHtml.includes('Pars Fortuna'), false);
+  assert.equal(housesHtml.includes('interpretation'), false);
+});
+
+test('houses block is collapsible and resets on profile changes', () => {
+  assert.equal(appJs.includes('let expandedHousesProfileId = null;'), true);
+  assert.equal(appJs.includes('const isExpanded = view.canToggleHouses'), true);
+  assert.equal(appJs.includes("elements.housesToggle.textContent = isExpanded ? 'Скрыть' : 'Показать';"), true);
+  assert.equal(appJs.includes('elements.housesStatus.textContent = view.status || view.summary;'), true);
+  assert.equal(appJs.includes('elements.housesSummary.hidden = true;'), true);
+  assert.equal(appJs.includes('elements.housesMessage.textContent = view.explanation;'), false);
+  assert.equal(appJs.includes('elements.housesList.hidden = !isExpanded || view.houses.length === 0;'), true);
+  assert.equal(appJs.includes('expandedHousesProfileId = isExpanded ? null : profileId;'), true);
+  assert.equal(appJs.includes('expandedHousesProfileId = null;'), true);
 });
 
 test('natal planets shell stays inside profiles panel and has no static planet values', () => {
@@ -261,6 +313,12 @@ test('home screen renders create profile form shell', () => {
   assert.equal(html.includes('name="birthCity"'), true);
   assert.equal(html.includes('name="birthCountry"'), true);
   assert.equal(html.includes('name="birthTimezone"'), true);
+  assert.equal(html.includes('name="birthLatitude"'), true);
+  assert.equal(html.includes('name="birthLongitude"'), true);
+  assert.equal(html.includes('Широта места рождения'), true);
+  assert.equal(html.includes('Долгота места рождения'), true);
+  assert.equal(html.includes('Для обычного режима достаточно координат города.'), true);
+  assert.equal(html.includes('Координаты роддома не обязательны.'), true);
   assert.equal(html.includes('name="houseSystem"'), true);
   assert.equal(html.includes('value="wholeSign"'), true);
   assert.equal(html.includes('value="placidus"'), true);
@@ -277,6 +335,12 @@ test('home screen renders create profile form shell', () => {
   assert.equal(html.includes('Транзиты'), false);
   assert.equal(html.includes('ASC'), false);
   assert.equal(html.includes('MC'), false);
+  assert.equal(appJs.includes('coordinates: buildBirthCoordinates(data)'), true);
+  assert.equal(appJs.includes('navigator.geolocation'), false);
+  assert.equal(appJs.includes('fetch('), false);
+  assert.equal(appJs.includes('geocode'), false);
+  assert.equal(appJs.includes('55.7558'), false);
+  assert.equal(appJs.includes('37.6173'), false);
 });
 
 test('home screen renders profile import and export controls without personal astrology UI', () => {
@@ -379,11 +443,11 @@ test('detailed dignities list is collapsible without ready summary duplication',
 });
 
 test('detailed dignities header keeps toggle aligned with title without summary row', () => {
-  assert.equal(stylesCss.includes('.detailed-dignities-readiness {\n  grid-template-columns: minmax(0, 1fr) auto;'), true);
-  assert.equal(stylesCss.includes('.detailed-dignities-readiness > h3 {\n  grid-column: 1;\n  grid-row: 1;'), true);
-  assert.equal(stylesCss.includes('.detailed-dignities-disclosure {\n  grid-column: 2;\n  grid-row: 1;'), true);
+  assert.equal(stylesCss.includes('.detailed-dignities-readiness,\n.houses-readiness {\n  grid-template-columns: minmax(0, 1fr) auto;'), true);
+  assert.equal(stylesCss.includes('.detailed-dignities-readiness > h3,\n.houses-readiness > h3 {\n  grid-column: 1;\n  grid-row: 1;'), true);
+  assert.equal(stylesCss.includes('.detailed-dignities-disclosure,\n.houses-disclosure {\n  grid-column: 2;\n  grid-row: 1;'), true);
   assert.equal(stylesCss.includes('  justify-self: end;\n  align-self: center;'), true);
-  assert.equal(stylesCss.includes('.detailed-dignities-readiness > .detailed-dignities-status,\n.detailed-dignities-readiness > [data-detailed-dignities-explanation],\n.detailed-dignities-readiness > .detailed-dignities-groups,\n.detailed-dignities-readiness > .detailed-dignities-limitations {\n  grid-column: 1 / -1;'), true);
+  assert.equal(stylesCss.includes('.detailed-dignities-readiness > .detailed-dignities-status,\n.detailed-dignities-readiness > [data-detailed-dignities-explanation],\n.detailed-dignities-readiness > .detailed-dignities-groups,\n.detailed-dignities-readiness > .detailed-dignities-limitations,\n.houses-readiness > .houses-status,\n.houses-readiness > [data-houses-explanation],\n.houses-readiness > .houses-content {\n  grid-column: 1 / -1;'), true);
 });
 
 test('home screen renders hidden warnings card shell', () => {

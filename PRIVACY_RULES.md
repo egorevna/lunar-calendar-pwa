@@ -529,3 +529,13 @@ Debug must not dump:
 - raw planet longitudes;
 - full unverified table data;
 - OCR-only rows.
+
+---
+
+# Sprint 11 Privacy Rules Addendum
+
+Sprint 11 Houses / ASC / MC may require birth place coordinates. These coordinates are sensitive profile data and remain local-first.
+
+Manual birth place coordinates may appear in the profile edit/create form so the user can enter or correct them. They must not be shown in calculated Houses / ASC / MC user-facing output, debug raw dumps, provider payloads, or full profile JSON displays.
+
+Do not send birth place text, timezone or coordinates to external geocoding APIs. Do not request browser location permission, infer coordinates from timezone/country/city, or auto-fill hardcoded city coordinates.

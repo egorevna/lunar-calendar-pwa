@@ -18,8 +18,10 @@ const validInput = {
   birthPlace: {
     city: 'Москва',
     country: 'Россия',
-    latitude: 55.7558,
-    longitude: 37.6173,
+    coordinates: {
+      latitude: 55.7558,
+      longitude: 37.6173,
+    },
     timezone: 'Europe/Moscow',
   },
   currentPlace: {
@@ -49,6 +51,7 @@ test('createProfileDraft returns safe defaults', () => {
   assert.equal(draft.currentPlace.city, 'Москва');
   assert.equal(draft.currentPlace.country, 'Россия');
   assert.equal(draft.currentPlace.timezone, 'Europe/Moscow');
+  assert.equal(draft.birthPlace.coordinates, undefined);
   assert.equal(typeof draft.id, 'string');
   assert.notEqual(draft.id, '');
 });
@@ -75,6 +78,10 @@ test('normalizeProfile trims user strings', () => {
     birthPlace: {
       city: ' Москва ',
       country: ' Россия ',
+      coordinates: {
+        latitude: 55.7558,
+        longitude: 37.6173,
+      },
       timezone: ' Europe/Moscow ',
     },
     currentPlace: {
@@ -90,8 +97,49 @@ test('normalizeProfile trims user strings', () => {
   assert.equal(profile.birthTime, '08:45');
   assert.equal(profile.birthPlace.city, 'Москва');
   assert.equal(profile.birthPlace.country, 'Россия');
+  assert.deepEqual(profile.birthPlace.coordinates, {
+    latitude: 55.7558,
+    longitude: 37.6173,
+  });
   assert.equal(profile.birthPlace.timezone, 'Europe/Moscow');
   assert.equal(profile.currentPlace.city, 'Санкт-Петербург');
+});
+
+test('normalizeProfile preserves valid birth place coordinates and omits empty coordinate pairs', () => {
+  const nested = normalizeProfile(validInput);
+  const legacyTopLevel = normalizeProfile({
+    ...validInput,
+    birthPlace: {
+      city: 'Москва',
+      country: 'Россия',
+      latitude: 55.7558,
+      longitude: 37.6173,
+      timezone: 'Europe/Moscow',
+    },
+  });
+  const empty = normalizeProfile({
+    ...validInput,
+    birthPlace: {
+      city: 'Москва',
+      country: 'Россия',
+      coordinates: {
+        latitude: null,
+        longitude: null,
+      },
+      timezone: 'Europe/Moscow',
+    },
+  });
+
+  assert.deepEqual(nested.birthPlace.coordinates, {
+    latitude: 55.7558,
+    longitude: 37.6173,
+  });
+  assert.deepEqual(legacyTopLevel.birthPlace.coordinates, {
+    latitude: 55.7558,
+    longitude: 37.6173,
+  });
+  assert.equal(empty.birthPlace.coordinates, undefined);
+  assert.equal(JSON.stringify(empty).includes('NaN'), false);
 });
 
 test('validateProfile accepts a valid profile', () => {
@@ -164,6 +212,53 @@ test('validateProfile rejects empty birthPlace city or country', () => {
   assert.equal(missingCity.errors.includes('birthPlace.city is required'), true);
   assert.equal(missingCountry.valid, false);
   assert.equal(missingCountry.errors.includes('birthPlace.country is required'), true);
+});
+
+test('validateProfile accepts decimal coordinates and rejects incomplete or out-of-range coordinates', () => {
+  const valid = validateProfile(validInput);
+  const missingLongitude = validateProfile({
+    ...validInput,
+    birthPlace: {
+      ...validInput.birthPlace,
+      coordinates: { latitude: 55.7558 },
+    },
+  });
+  const latitudeTooLow = validateProfile({
+    ...validInput,
+    birthPlace: {
+      ...validInput.birthPlace,
+      coordinates: { latitude: -90.1, longitude: 37.6173 },
+    },
+  });
+  const latitudeTooHigh = validateProfile({
+    ...validInput,
+    birthPlace: {
+      ...validInput.birthPlace,
+      coordinates: { latitude: 90.1, longitude: 37.6173 },
+    },
+  });
+  const longitudeTooLow = validateProfile({
+    ...validInput,
+    birthPlace: {
+      ...validInput.birthPlace,
+      coordinates: { latitude: 55.7558, longitude: -180.1 },
+    },
+  });
+  const longitudeTooHigh = validateProfile({
+    ...validInput,
+    birthPlace: {
+      ...validInput.birthPlace,
+      coordinates: { latitude: 55.7558, longitude: 180.1 },
+    },
+  });
+
+  assert.equal(valid.valid, true);
+  assert.equal(missingLongitude.valid, false);
+  assert.equal(missingLongitude.errors.includes('birthPlace.coordinates pair is incomplete'), true);
+  assert.equal(latitudeTooLow.errors.includes('birthPlace.coordinates.latitude is out of range'), true);
+  assert.equal(latitudeTooHigh.errors.includes('birthPlace.coordinates.latitude is out of range'), true);
+  assert.equal(longitudeTooLow.errors.includes('birthPlace.coordinates.longitude is out of range'), true);
+  assert.equal(longitudeTooHigh.errors.includes('birthPlace.coordinates.longitude is out of range'), true);
 });
 
 test('validateProfile rejects unsupported currentPlace mode or empty custom timezone', () => {

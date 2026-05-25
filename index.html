@@ -155,6 +155,31 @@
               <div class="detailed-dignities-groups" data-detailed-dignities-groups hidden></div>
               <ul class="detailed-dignities-limitations" data-detailed-dignities-limitations></ul>
             </section>
+            <section class="houses-readiness" data-houses-readiness hidden>
+              <h3 data-houses-title>Дома и углы карты</h3>
+              <p class="houses-status" data-houses-status></p>
+              <p data-houses-explanation></p>
+              <div class="houses-disclosure" data-houses-disclosure hidden>
+                <p class="houses-summary" data-houses-summary></p>
+                <button
+                  type="button"
+                  class="houses-toggle"
+                  data-houses-toggle
+                  aria-expanded="false"
+                >
+                  Показать
+                </button>
+              </div>
+              <div class="houses-content" data-houses-content hidden>
+                <p class="houses-message" data-houses-message hidden></p>
+                <ul class="houses-angles" data-houses-angles hidden></ul>
+                <h4 data-houses-list-title hidden>Дома:</h4>
+                <ul class="houses-list" data-houses-list hidden></ul>
+                <h4 data-houses-planet-assignments-title hidden>Планеты по домам:</h4>
+                <ul class="houses-planet-assignments" data-houses-planet-assignments hidden></ul>
+                <ul class="houses-limitations" data-houses-limitations hidden></ul>
+              </div>
+            </section>
             <div class="profile-create-actions">
               <button type="button" class="profile-add-button" data-profile-add>
                 + Добавить профиль
@@ -196,6 +221,17 @@
                   Timezone рождения
                   <input type="text" name="birthTimezone" value="Europe/Moscow" required>
                 </label>
+                <label>
+                  Широта места рождения
+                  <input type="number" name="birthLatitude" step="any" min="-90" max="90" inputmode="decimal" placeholder="55.7558">
+                </label>
+                <label>
+                  Долгота места рождения
+                  <input type="number" name="birthLongitude" step="any" min="-180" max="180" inputmode="decimal" placeholder="37.6173">
+                </label>
+                <p class="profile-form-coordinates">
+                  Для обычного режима достаточно координат города. Координаты роддома не обязательны.
+                </p>
                 <label>
                   Система домов
                   <select name="houseSystem">
