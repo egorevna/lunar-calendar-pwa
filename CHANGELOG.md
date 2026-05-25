@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-25 — Complete Task 11.7 Houses / ASC / MC display helper
+
+- Added pure `src/housesDisplay.js`.
+- Added `test/housesDisplay.test.js`.
+- Implemented safe display formatting for ASC / MC / DSC / IC, house-system labels, Whole Sign house rows, Equal House / Placidus cusp house rows and planet-in-house assignments.
+- Added safe not-ready / unsupported fallback formatting and display summaries for the future `Дома и углы карты` UI block.
+- Kept the layer display-only: no house calculations, no selected-system routing, no planet-in-house assignment, no UI, no provider calls, no interpretations and no package changes.
+- Next active task is Task 11.8 — Houses / ASC / MC Collapsible UI, but it was not started.
+
 ## 2026-05-25 — Complete Task 11.6 Planet-in-House assignment
 
 - Added pure `src/planetInHouses.js`.

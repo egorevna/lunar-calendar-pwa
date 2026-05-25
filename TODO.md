@@ -3114,17 +3114,34 @@ Result:
 - Invalid planet entries return safe per-planet invalid assignments without crashing or mutating inputs.
 - Confirmed no new house calculation engine, generic `src/houses.js` / `src/houseSystems.js`, UI, display helper, interpretations, provider changes, package changes or PWA cache changes were added.
 
+## Task 11.7 — Houses / ASC / MC Display Helper
+
+Status: done
+
+Goal:
+
+Add a pure display helper for ready Houses / ASC / MC / planet-in-house results without adding UI, calculations, routing, provider calls or interpretations.
+
+Result:
+
+- Added pure `src/housesDisplay.js`.
+- Added `test/housesDisplay.test.js`.
+- Formatted ASC / MC / DSC / IC angles, house-system labels, house rows and planet-in-house rows into safe user-facing text.
+- Added safe not-ready / unsupported fallback formatting for future UI.
+- Added display summaries and limitations for the future `Дома и углы карты` block.
+- Confirmed the helper does not calculate houses, route selected systems, assign planets to houses, import calculation engines, import providers, read DOM/localStorage or expose raw birth data / raw coordinates.
+- No UI, app wiring, provider changes, package changes or PWA cache changes were added.
+
 Next active task:
 
-- Task 11.7 — Houses / ASC / MC Display Helper.
+- Task 11.8 — Houses / ASC / MC Collapsible UI.
 
-Do not start Task 11.7 until explicitly requested.
+Do not start Task 11.8 until explicitly requested.
 
 ## Later Sprint 11 Tasks
 
 Status: not started
 
-- Task 11.7 — Houses / ASC / MC Display Helper.
 - Task 11.8 — Houses / ASC / MC Collapsible UI.
 - Task 11.9 — Houses / ASC / MC Debug.
 - Task 11.10 — Sprint 11 Hardening.

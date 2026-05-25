@@ -485,6 +485,21 @@ Current responsibilities:
 
 This module does not calculate houses directly, calculate ASC / MC, calculate planet positions directly, call provider modules directly, create a generic house router, render UI, read localStorage, mutate profiles / planets / house results, expose raw birth data / raw birth coordinates, or add interpretations.
 
+## `src/housesDisplay.js`
+
+Defines the Sprint 11 pure Houses / ASC / MC display helper.
+
+Current responsibilities:
+
+- format already-ready ASC / MC / DSC / IC angles into safe user-facing rows;
+- format the selected house-system label;
+- format Whole Sign house sign rows and Equal House / Placidus cusp house rows from already-ready house results;
+- format ready planet-in-house assignments into compact display rows;
+- format safe not-ready / unsupported fallback states for future UI;
+- summarize display readiness and expose display limitations.
+
+This module does not calculate houses, calculate ASC / MC, route selected house systems, assign planets to houses, call provider modules, import calculation engines, render UI, read localStorage, mutate inputs, expose raw birth data / raw birth coordinates, expose raw planet longitude, or add interpretations.
+
 ## `src/planetaryPositionProvider.js`
 
 Defines the future planetary position provider contract.
@@ -1332,9 +1347,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 32. `src/planetInHouses.js` assigns ready natal planets to houses for the selected house system, using sign-distance for Whole Sign and ready cusp spans for Equal House / Placidus. It does not calculate houses, ASC / MC, planets, UI or interpretations.
 
-33. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+33. `src/housesDisplay.js` formats ready Houses / ASC / MC / planet-in-house results into safe display rows and fallback states. It does not calculate houses, route selected systems, assign planets, render UI or add interpretations.
 
-34. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+34. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+
+35. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
 
 35. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
 
