@@ -2974,17 +2974,25 @@ Result:
 
 ## Task 11.4b — Whole Sign Houses Engine
 
-Status: active
+Status: done
 
 Goal:
 
 Create the pure Whole Sign houses engine after ASC / MC angles are available.
 
-Do not start Task 11.4b until explicitly requested.
+Result:
+
+- Added pure `src/wholeSignHouses.js`.
+- Added `test/wholeSignHouses.test.js`.
+- Implemented Whole Sign houses only: House 1 = ASC sign, then zodiac signs in order with wrap-around.
+- Added profile-level guard that respects selected `houseSystem`: `wholeSign` / `whole-sign` can calculate, while `equal`, `equal-house` and `placidus` return explicit unsupported status instead of silently falling back.
+- Added sign-to-house primitives for future Task 11.6 without accepting planet objects or assigning planets to houses.
+- Confirmed the module does not implement Equal House, Placidus, quadrant cusps, planet-in-house assignment, UI or provider calculations.
+- No `src/houses.js`, `src/houseSystems.js`, app wiring, UI, PWA cache, package files or generated ephemeris data were changed.
 
 ## Task 11.4c — Equal House Engine
 
-Status: not started
+Status: active
 
 Goal:
 

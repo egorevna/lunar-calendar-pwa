@@ -575,11 +575,14 @@ ASC / MC calculation policy:
 Whole Sign boundary policy:
 
 - House 1 = ASC sign;
+- Sprint 11 Task 11.4b implements this as the pure `whole-sign` engine;
 - planet-in-house depends on sign relative to ASC sign;
 - planet degree is not needed for house number;
 - MC remains independent angle;
+- MC is not necessarily the 10th house cusp in Whole Sign;
 - Whole Sign does not use exact ASC degree as cusp 1;
 - Whole Sign does not start at 0° Aries unless ASC sign is Aries and the relevant sign boundary is Aries 0°.
+- Equal House and Placidus remain separate later modules and must not be calculated by the Whole Sign engine.
 
 Equal House boundary policy:
 

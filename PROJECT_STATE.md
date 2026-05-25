@@ -603,10 +603,10 @@ Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7, Sprint 8, 
 Текущий фокус:
 
 ```txt
-Task 11.4b — Whole Sign Houses Engine
+Task 11.4c — Equal House Engine
 ```
 
-Sprint 10 закрыт. Sprint 11 — Houses / ASC / MC активен. Task 11.1 добавила `SPRINT_11_PLAN.md` и `HOUSES_ASC_MC_STRATEGY.md`; они фиксируют расчетную стратегию, guardrails и порядок задач Sprint 11. Task 11.2 добавила pure `src/housesInputGuardrails.js` readiness / guardrails layer and `test/housesInputGuardrails.test.js`. Task 11.3 добавила pure `src/ascMc.js` ASC / MC calculation engine and `test/ascMc.test.js`. Task 11.4a обновила house systems strategy / dependency audit как docs-only. Houses, house cusps and planet-in-house calculations are still not implemented. Следующая активная задача: Task 11.4b — Whole Sign Houses Engine. Task 11.4b еще не начиналась.
+Sprint 10 закрыт. Sprint 11 — Houses / ASC / MC активен. Task 11.1 добавила `SPRINT_11_PLAN.md` и `HOUSES_ASC_MC_STRATEGY.md`; они фиксируют расчетную стратегию, guardrails и порядок задач Sprint 11. Task 11.2 добавила pure `src/housesInputGuardrails.js` readiness / guardrails layer and `test/housesInputGuardrails.test.js`. Task 11.3 добавила pure `src/ascMc.js` ASC / MC calculation engine and `test/ascMc.test.js`. Task 11.4a обновила house systems strategy / dependency audit как docs-only. Task 11.4b добавила pure `src/wholeSignHouses.js` Whole Sign houses engine and `test/wholeSignHouses.test.js`. Equal House, Placidus, general house-system resolver/router, quadrant cusps and planet-in-house calculations are still not implemented. Следующая активная задача: Task 11.4c — Equal House Engine. Task 11.4c еще не начиналась.
 
 Guardrails Sprint 11:
 
@@ -673,6 +673,15 @@ Task 11.4a result:
 - profile-level `houseSystem` selection policy was documented: current values `wholeSign`, `equal` and `placidus` must be normalized into canonical engine keys without silently overriding the user's saved selection;
 - Task 11.4e — House System Resolver / Selected System Router was inserted after the individual house engines;
 - no house engine, `src/houses.js`, `src/houseSystems.js`, tests, UI, provider calculations, PWA cache or package files were changed.
+
+Task 11.4b result:
+
+- pure Whole Sign houses engine added in `src/wholeSignHouses.js`;
+- `test/wholeSignHouses.test.js` added;
+- Whole Sign builds 12 houses from ASC sign with zodiac wrap-around;
+- output uses `houseSystem: "whole-sign"` and `houseSystemLabel: "Whole Sign"`;
+- profile-level path respects current `houseSystem`: `wholeSign` / `whole-sign` can calculate, while `equal`, `equal-house` and `placidus` return explicit unsupported status for this engine;
+- Equal House, Placidus, quadrant cusps, generic selected-system router, planet-in-house assignment, UI, provider calculations, `src/houses.js`, `src/houseSystems.js`, PWA cache and package files were not added or changed.
 
 Результат Sprint 8:
 
@@ -873,7 +882,8 @@ Sprint 10 planning подготовлен:
 - Task 11.2 завершена: добавлен pure `src/housesInputGuardrails.js` readiness / guardrails layer and tests; ASC / MC / houses calculations were not added;
 - Task 11.3 завершена: добавлен pure `src/ascMc.js` ASC / MC calculation engine and tests; houses, house cusps and planet-in-house calculations were not added;
 - Task 11.4a завершена: docs-only House Systems Strategy / Dependency Audit; Sprint 11 now targets Whole Sign, Equal House and Placidus as separate systems;
-- активная задача — Task 11.4b, Whole Sign Houses Engine;
+- Task 11.4b завершена: добавлен pure Whole Sign houses engine `src/wholeSignHouses.js`; Equal House, Placidus, generic router and planet-in-house assignment still not implemented;
+- активная задача — Task 11.4c, Equal House Engine;
 - Sprint 10 должен работать только с source-tracked lookup layers after validated natal planet coordinates;
 - dense Vronsky screenshots must not be OCR-imported blindly;
 - fixed stars, houses, ASC / MC, transits, interpretations и ritual scoring остаются out of scope; Houses / ASC / MC remain Sprint 11.
@@ -1348,10 +1358,10 @@ Sprint 8 завершен. Следующий этап — Sprint 9, Essential D
 Текущий следующий шаг:
 
 ```txt
-Task 11.4b — Whole Sign Houses Engine
+Task 11.4c — Equal House Engine
 ```
 
-Sprint 8 завершен. Task 8.1, Task 8.2, Task 8.3, Task 8.4, Task 8.5, Task 8.6 и Task 8.7 завершены. Sprint 9 завершен: Task 9.1, Task 9.2, Task 9.3, Task 9.4, Task 9.5, Task 9.6, Task 9.7 и Task 9.8 закрыты. Sprint 10 закрыт: Task 10.1, Task 10.2, Task 10.3a, Task 10.3b, Task 10.3c, Task 10.4, Task 10.5, Task 10.5b, Task 10.5c, Task 10.5d, Task 10.6, Task 10.7a, Task 10.7b, Task 10.7c, Task 10.7d, Task 10.8, Task 10.9, Task 10.8b, Task 10.8c, Task 10.8d, Task 10.8d-fix, Task 10.8e, Task 10.8f, Task 10.9b, Task 10.10, Task 10.11 и Task 10.12 закрыты. Sprint 11 активен: Task 11.1 закрыла Houses / ASC / MC strategy docs, Task 11.2 добавила Birth Input / Coordinates Guardrails, Task 11.3 добавила ASC / MC Calculation Engine, Task 11.4a закрыла House Systems Strategy / Dependency Audit. Следующая активная задача — Task 11.4b, Whole Sign Houses Engine.
+Sprint 8 завершен. Task 8.1, Task 8.2, Task 8.3, Task 8.4, Task 8.5, Task 8.6 и Task 8.7 завершены. Sprint 9 завершен: Task 9.1, Task 9.2, Task 9.3, Task 9.4, Task 9.5, Task 9.6, Task 9.7 и Task 9.8 закрыты. Sprint 10 закрыт: Task 10.1, Task 10.2, Task 10.3a, Task 10.3b, Task 10.3c, Task 10.4, Task 10.5, Task 10.5b, Task 10.5c, Task 10.5d, Task 10.6, Task 10.7a, Task 10.7b, Task 10.7c, Task 10.7d, Task 10.8, Task 10.9, Task 10.8b, Task 10.8c, Task 10.8d, Task 10.8d-fix, Task 10.8e, Task 10.8f, Task 10.9b, Task 10.10, Task 10.11 и Task 10.12 закрыты. Sprint 11 активен: Task 11.1 закрыла Houses / ASC / MC strategy docs, Task 11.2 добавила Birth Input / Coordinates Guardrails, Task 11.3 добавила ASC / MC Calculation Engine, Task 11.4a закрыла House Systems Strategy / Dependency Audit, Task 11.4b добавила Whole Sign Houses Engine. Следующая активная задача — Task 11.4c, Equal House Engine.
 
 Ниже сохраняется краткая история предыдущего Sprint 5 и результаты текущего Sprint 6.
 
@@ -2619,16 +2629,16 @@ lunar-calendar-v72
 Сейчас следующий конкретный шаг:
 
 ```txt
-Task 11.4b — Whole Sign Houses Engine.
+Task 11.4c — Equal House Engine.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Работать только над Task 11.4b после отдельной команды пользователя.
+2. Работать только над Task 11.4c после отдельной команды пользователя.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
-5. В Task 11.4b добавить только pure Whole Sign houses engine; не добавлять Equal House, Placidus, UI, interpretations, transits, fixed stars или ritual scoring.
+5. В Task 11.4c добавить только pure Equal House engine; не добавлять Placidus, generic router, UI, interpretations, transits, fixed stars или ritual scoring.
 6. После реализации обновить документацию и выполнить проверки, требуемые задачей.
 
 ---
@@ -2641,4 +2651,4 @@ Task 11.4b — Whole Sign Houses Engine.
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7 и Sprint 8 завершены. Sprint 7 добавил read-only natal planets panel внутри `Мои карты`: planet values показываются только для активного сохраненного профиля при `canConvertToUtc: true` и ready provider output, форматируются через `src/natalPlanetDisplay.js`, а missing coordinates не блокируют список планет. `Общий день`, unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap и nonexistent DST gap не показывают planet list. Safe `Natal Planets UI Debug` доступен только через `?debug=1` и показывает status/counts/capabilities без birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes, speed values or full planet list. Houses / ASC / MC / transits, chart wheel и personal ritual scoring остаются not supported. Sprint 8 — Natal Aspects Foundation завершен: Task 8.1 создала `NATAL_ASPECTS_STRATEGY.md`, Task 8.2 добавила pure `src/natalAspectEngine.js`, Task 8.3 добавила synthetic/manual fixture validation layer, Task 8.4 добавила pure `src/natalAspectDisplay.js`, Task 8.5 добавила collapsible `Натальные аспекты` section внутри `Мои карты`, Task 8.6 добавила safe `Natal Aspects UI Debug`, а Task 8.7 завершила hardening. Sprint 9 — Essential Dignities Foundation завершен: Task 9.1 создала `ESSENTIAL_DIGNITIES_STRATEGY.md`, Task 9.2 добавила source-tracked `src/essentialDignitiesData.js`, Task 9.3 добавила pure lookup engine, Task 9.4 добавила synthetic/manual fixture validation, Task 9.5 добавила pure display helper, Task 9.6 добавила collapsible `Достоинства планет` section внутри `Мои карты`, Task 9.7 добавила safe `Essential Dignities UI Debug`, а Task 9.8 завершила hardening. Sprint 10 — Terms / Decans / Degree Rulers закрыт: Task 10.1, Task 10.2, Task 10.3a, Task 10.3b, Task 10.3c, Task 10.4, Task 10.5, Task 10.5b, Task 10.5c, Task 10.5d, Task 10.6, Task 10.7a, Task 10.7b, Task 10.7c, Task 10.7d, Task 10.8, Task 10.9, Task 10.8b, Task 10.8c, Task 10.8d, Task 10.8d-fix, Task 10.8e, Task 10.8f, Task 10.9b, Task 10.10, Task 10.11 и Task 10.12 закрыты. Sprint 10 code includes verified `src/termsData.js` + pure `src/terms.js`, verified `src/decansData.js` + pure `src/decans.js`, verified `src/degreeRulersStarOfMagiData.js` + pure `src/degreeRulersStarOfMagi.js`, verified Table 7 `src/degreeRulersVronskyData.js` + pure `src/degreeRulersVronsky.js`, `src/detailedDignityDisplay.js`, `src/detailedDignitiesForProfile.js`, collapsed `Термы, деканы и градусы` UI in `Мои карты`, and safe `Detailed Dignities UI Debug` in `?debug=1`. Sprint 11 активен: Task 11.1 закрыла Houses / ASC / MC strategy docs, Task 11.2 добавила Birth Input / Coordinates Guardrails, Task 11.3 добавила ASC / MC Calculation Engine, Task 11.4a закрыла House Systems Strategy / Dependency Audit; следующая активная задача — Task 11.4b, Whole Sign Houses Engine.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7 и Sprint 8 завершены. Sprint 7 добавил read-only natal planets panel внутри `Мои карты`: planet values показываются только для активного сохраненного профиля при `canConvertToUtc: true` и ready provider output, форматируются через `src/natalPlanetDisplay.js`, а missing coordinates не блокируют список планет. `Общий день`, unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap и nonexistent DST gap не показывают planet list. Safe `Natal Planets UI Debug` доступен только через `?debug=1` и показывает status/counts/capabilities без birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes, speed values or full planet list. Houses / ASC / MC / transits, chart wheel и personal ritual scoring остаются not supported. Sprint 8 — Natal Aspects Foundation завершен: Task 8.1 создала `NATAL_ASPECTS_STRATEGY.md`, Task 8.2 добавила pure `src/natalAspectEngine.js`, Task 8.3 добавила synthetic/manual fixture validation layer, Task 8.4 добавила pure `src/natalAspectDisplay.js`, Task 8.5 добавила collapsible `Натальные аспекты` section внутри `Мои карты`, Task 8.6 добавила safe `Natal Aspects UI Debug`, а Task 8.7 завершила hardening. Sprint 9 — Essential Dignities Foundation завершен: Task 9.1 создала `ESSENTIAL_DIGNITIES_STRATEGY.md`, Task 9.2 добавила source-tracked `src/essentialDignitiesData.js`, Task 9.3 добавила pure lookup engine, Task 9.4 добавила synthetic/manual fixture validation, Task 9.5 добавила pure display helper, Task 9.6 добавила collapsible `Достоинства планет` section внутри `Мои карты`, Task 9.7 добавила safe `Essential Dignities UI Debug`, а Task 9.8 завершила hardening. Sprint 10 — Terms / Decans / Degree Rulers закрыт: Task 10.1, Task 10.2, Task 10.3a, Task 10.3b, Task 10.3c, Task 10.4, Task 10.5, Task 10.5b, Task 10.5c, Task 10.5d, Task 10.6, Task 10.7a, Task 10.7b, Task 10.7c, Task 10.7d, Task 10.8, Task 10.9, Task 10.8b, Task 10.8c, Task 10.8d, Task 10.8d-fix, Task 10.8e, Task 10.8f, Task 10.9b, Task 10.10, Task 10.11 и Task 10.12 закрыты. Sprint 10 code includes verified `src/termsData.js` + pure `src/terms.js`, verified `src/decansData.js` + pure `src/decans.js`, verified `src/degreeRulersStarOfMagiData.js` + pure `src/degreeRulersStarOfMagi.js`, verified Table 7 `src/degreeRulersVronskyData.js` + pure `src/degreeRulersVronsky.js`, `src/detailedDignityDisplay.js`, `src/detailedDignitiesForProfile.js`, collapsed `Термы, деканы и градусы` UI in `Мои карты`, and safe `Detailed Dignities UI Debug` in `?debug=1`. Sprint 11 активен: Task 11.1 закрыла Houses / ASC / MC strategy docs, Task 11.2 добавила Birth Input / Coordinates Guardrails, Task 11.3 добавила ASC / MC Calculation Engine, Task 11.4a закрыла House Systems Strategy / Dependency Audit, Task 11.4b добавила Whole Sign Houses Engine; следующая активная задача — Task 11.4c, Equal House Engine.

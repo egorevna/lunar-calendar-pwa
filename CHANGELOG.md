@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-25 — Complete Task 11.4b Whole Sign houses engine
+
+- Added pure `src/wholeSignHouses.js`.
+- Added `test/wholeSignHouses.test.js`.
+- Implemented Whole Sign houses only: House 1 is the ASC sign and houses 2–12 follow zodiac order with wrap-around.
+- Added profile-level guard for current `houseSystem` values: `wholeSign` / `whole-sign` can calculate; `equal`, `equal-house` and `placidus` return explicit unsupported status in this engine.
+- Added sign-to-house primitives for future planet-in-house work without accepting planet objects or assigning planets to houses.
+- Updated `TODO.md`, `PROJECT_STATE.md`, `ARCHITECTURE.md` and `ASTRO_LOGIC.md`.
+- No Equal House, Placidus, quadrant cusps, generic selected-system router, planet-in-house assignment, UI, PWA cache, provider calculations, package files or generated ephemeris data were added.
+- Next active task is Task 11.4c — Equal House Engine, but it was not started.
+
 ## 2026-05-25 — Document profile house system selection policy
 
 - Added docs-only follow-up after Task 11.4a.
