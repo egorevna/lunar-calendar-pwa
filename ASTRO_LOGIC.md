@@ -545,6 +545,17 @@ Initial house system policy:
 - always expose the `houseSystem` label when houses are displayed or debugged;
 - Placidus / quadrant cusps are deferred unless separately verified.
 
+ASC / MC calculation policy:
+
+- validate Sprint 11 input guardrails before profile-level angle calculation;
+- resolve the birth moment to UTC through the existing birth date/time pipeline;
+- use east-positive birth longitude for local sidereal time;
+- calculate ASC / MC with vector geometry over the ecliptic / horizon / meridian intersections;
+- sidereal time source: tracked `astronomy-engine` vendor `SiderealTime()`;
+- obliquity source: internal mean-obliquity approximation until a separately validated obliquity source is approved;
+- derive DSC / IC by adding 180 degrees to ASC / MC;
+- do not calculate houses, house cusps or planet-in-house assignment in the ASC / MC module.
+
 Deferred:
 
 - Pars Fortuna / Arabic Parts remain Sprint 12;

@@ -2934,19 +2934,37 @@ Result:
 
 ## Task 11.3 — ASC / MC Calculation Engine
 
-Status: active
+Status: done
 
 Goal:
 
 Create the pure ASC / MC calculation engine after input guardrails are in place.
 
-Do not start Task 11.3 until explicitly requested.
+Result:
+
+- Added pure `src/ascMc.js`.
+- Added `test/ascMc.test.js`.
+- Implemented deterministic vector geometry for ASC / MC from local sidereal time.
+- Implemented profile-level ASC / MC readiness through `src/housesInputGuardrails.js` and UTC conversion through `src/birthDateTime.js`.
+- Used `Astronomy.SiderealTime()` from the tracked vendor runtime for sidereal time and a documented mean-obliquity approximation.
+- Derived DSC and IC from ASC and MC by adding 180 degrees.
+- Exposed capability flags with ASC / MC / DSC / IC enabled and houses, house cusps, planet-in-house, Placidus, interpretations, transits and fixed stars disabled.
+- No houses engine, house cusps, planet-in-house assignment, UI, app wiring, provider calculations, package files, PWA cache or ephemeris data were changed.
+
+## Task 11.4 — Houses Engine
+
+Status: active
+
+Goal:
+
+Create the pure Whole Sign houses engine after ASC / MC angles are available.
+
+Do not start Task 11.4 until explicitly requested.
 
 ## Later Sprint 11 Tasks
 
 Status: not started
 
-- Task 11.4 — Houses Engine.
 - Task 11.5 — Houses Validation / Fixtures.
 - Task 11.6 — Planet-in-House Assignment.
 - Task 11.7 — Houses / ASC / MC Display Helper.

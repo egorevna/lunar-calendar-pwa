@@ -388,6 +388,23 @@ Current responsibilities:
 
 This module does not calculate ASC, MC, DSC, IC, houses or planet-in-house assignments. It does not call providers, import `astronomy-engine`, read localStorage, render DOM, expose raw birth data, expose raw coordinates or mutate profiles.
 
+## `src/ascMc.js`
+
+Defines the Sprint 11 pure ASC / MC angle calculation engine.
+
+Current responsibilities:
+
+- validate normalized UTC/date input and finite birth coordinates;
+- use `src/housesInputGuardrails.js` for profile-level readiness before profile-based ASC / MC calculation;
+- use `src/birthDateTime.js` to resolve a validated UTC birth moment for profile-based calculation;
+- calculate local sidereal time through tracked `src/vendor/astronomy-engine.mjs` `SiderealTime()`;
+- calculate mean obliquity with an internal documented approximation;
+- calculate ASC and MC with deterministic vector geometry;
+- derive DSC and IC by adding 180 degrees and normalizing to the zodiac circle;
+- format ASC / MC / DSC / IC as zodiac sign, degree, minutes and safe text.
+
+This module does not calculate houses, house cusps, Placidus/quadrant cusps, planet-in-house assignments, fixed stars, transits, interpretations or ritual scoring. It does not import provider modules, read localStorage, render DOM, mutate profiles, or expose raw birth data / raw coordinates from profile-level output.
+
 ## `src/planetaryPositionProvider.js`
 
 Defines the future planetary position provider contract.
@@ -1221,61 +1238,65 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 25. `src/birthDateTime.js` prepares birth date/time/timezone readiness and converts safe local birth time to UTC ISO through `luxon`; ambiguous/nonexistent DST times and missing/invalid inputs fail closed.
 
-26. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+26. `src/housesInputGuardrails.js` defines pure readiness guardrails for future Houses / ASC / MC work, requiring exact birth time and birth coordinates without calculating angles or houses.
 
-27. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+27. `src/ascMc.js` calculates ASC / MC / DSC / IC as pure angles from validated UTC/date and coordinates, while keeping houses, house cusps and planet-in-house assignment disabled.
 
-28. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
+28. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
 
-29. `src/natalProviderValidationSummary.js` exposes a safe provider validation summary for debug/reporting without calculating planets, reading profile data, or importing the `astronomy-engine` provider module.
+29. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
 
-30. `src/natalPlanetDisplay.js` formats already-calculated natal planet positions into safe compact display objects without calling providers, profiles, localStorage or UI code.
+30. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
 
-31. `src/natalPlanetsForProfile.js` connects profile UTC readiness to the validated provider and display formatter for the read-only `Мои карты` natal planets panel; it fails closed without planets when readiness is incomplete.
+31. `src/natalProviderValidationSummary.js` exposes a safe provider validation summary for debug/reporting without calculating planets, reading profile data, or importing the `astronomy-engine` provider module.
 
-32. `src/natalAspectEngine.js` calculates pure natal aspects between supplied natal planet positions using the Sprint 8 major aspect set and explicit orb policy; it does not call providers, profiles, UI code, transits, houses or ASC / MC.
+32. `src/natalPlanetDisplay.js` formats already-calculated natal planet positions into safe compact display objects without calling providers, profiles, localStorage or UI code.
 
-33. `src/natalAspectDisplay.js` formats already-calculated natal aspects into safe compact display objects and summary counts without calculating aspects or calling providers / profiles / UI code.
+33. `src/natalPlanetsForProfile.js` connects profile UTC readiness to the validated provider and display formatter for the read-only `Мои карты` natal planets panel; it fails closed without planets when readiness is incomplete.
 
-34. `src/natalAspectsForProfile.js` connects ready natal planet output to the natal aspect engine and aspect display helper for the read-only collapsible `Мои карты` natal aspects section; it fails closed without aspects when natal planets are incomplete.
+34. `src/natalAspectEngine.js` calculates pure natal aspects between supplied natal planet positions using the Sprint 8 major aspect set and explicit orb policy; it does not call providers, profiles, UI code, transits, houses or ASC / MC.
 
-35. `src/essentialDignitiesData.js` defines the source-tracked Sprint 9 essential dignity dataset for classical basic dignity tables, label-only modern outer rulerships, score model and deferred features; it does not perform lookup or render UI.
+35. `src/natalAspectDisplay.js` formats already-calculated natal aspects into safe compact display objects and summary counts without calculating aspects or calling providers / profiles / UI code.
 
-36. `src/termsData.js` defines the source-tracked Sprint 10 Vronsky Table 5 — Terms dataset with 60 verified rows, printed ranges, normalized half-open interval boundaries and deferred feature metadata; it does not perform degree lookup or render UI.
+36. `src/natalAspectsForProfile.js` connects ready natal planet output to the natal aspect engine and aspect display helper for the read-only collapsible `Мои карты` natal aspects section; it fails closed without aspects when natal planets are incomplete.
 
-37. `src/decansData.js` defines the source-tracked Sprint 10 Decans Star of the Magi / Egyptian tradition dataset with 36 verified rows, septener-only rulers, half-open interval boundaries and deferred system / feature metadata; it does not perform degree lookup or render UI.
+37. `src/essentialDignitiesData.js` defines the source-tracked Sprint 9 essential dignity dataset for classical basic dignity tables, label-only modern outer rulerships, score model and deferred features; it does not perform lookup or render UI.
 
-38. `src/degreeRulersStarOfMagiData.js` defines the source-tracked Sprint 10 Degree Rulers Table 6 / Star of the Magi dataset with 360 verified rows, integer degree indexes, septener-only rulers and deferred system / feature metadata; it does not perform degree lookup or render UI.
+38. `src/termsData.js` defines the source-tracked Sprint 10 Vronsky Table 5 — Terms dataset with 60 verified rows, printed ranges, normalized half-open interval boundaries and deferred feature metadata; it does not perform degree lookup or render UI.
 
-39. `src/degreeRulersVronskyData.js` defines the source-tracked Sprint 10 Degree Rulers Table 7 / Vronsky dataset with 360 verified rows, source tokens, structured `rulers[]`, per-ruler retrograde markers, outer planets, Chiron and Proserpina; it does not perform degree lookup or render UI.
+39. `src/decansData.js` defines the source-tracked Sprint 10 Decans Star of the Magi / Egyptian tradition dataset with 36 verified rows, septener-only rulers, half-open interval boundaries and deferred system / feature metadata; it does not perform degree lookup or render UI.
 
-40. `src/degreeRulersVronsky.js` performs pure Sprint 10 Degree Rulers Table 7 / Vronsky lookup over the verified dataset by sign and degree, uses `degreeIndex = floor(degreeWithinSign)` for `0 <= degreeWithinSign < 30`, preserves `sourceTokens[]`, `rulers[]` and per-ruler retrograde markers, supports already-calculated natal planet objects, preserves source system metadata in output, and does not render UI.
+40. `src/degreeRulersStarOfMagiData.js` defines the source-tracked Sprint 10 Degree Rulers Table 6 / Star of the Magi dataset with 360 verified rows, integer degree indexes, septener-only rulers and deferred system / feature metadata; it does not perform degree lookup or render UI.
 
-41. `src/terms.js` performs pure Sprint 10 terms lookup over the verified Vronsky Table 5 dataset by sign and degree, supports already-calculated natal planet objects, preserves printed ranges in output, and does not render UI.
+41. `src/degreeRulersVronskyData.js` defines the source-tracked Sprint 10 Degree Rulers Table 7 / Vronsky dataset with 360 verified rows, source tokens, structured `rulers[]`, per-ruler retrograde markers, outer planets, Chiron and Proserpina; it does not perform degree lookup or render UI.
 
-42. `src/decans.js` performs pure Sprint 10 Star of the Magi decans lookup over the verified Figure 4.7 dataset by sign and degree, supports already-calculated natal planet objects, preserves source system metadata in output, and does not render UI.
+42. `src/degreeRulersVronsky.js` performs pure Sprint 10 Degree Rulers Table 7 / Vronsky lookup over the verified dataset by sign and degree, uses `degreeIndex = floor(degreeWithinSign)` for `0 <= degreeWithinSign < 30`, preserves `sourceTokens[]`, `rulers[]` and per-ruler retrograde markers, supports already-calculated natal planet objects, preserves source system metadata in output, and does not render UI.
 
-43. `src/degreeRulersStarOfMagi.js` performs pure Sprint 10 Degree Rulers Table 6 / Star of the Magi lookup over the verified dataset by sign and degree, uses `degreeIndex = floor(degreeWithinSign)` for `0 <= degreeWithinSign < 30`, supports already-calculated natal planet objects, preserves source system metadata in output, and does not render UI.
+43. `src/terms.js` performs pure Sprint 10 terms lookup over the verified Vronsky Table 5 dataset by sign and degree, supports already-calculated natal planet objects, preserves printed ranges in output, and does not render UI.
 
-44. `src/detailedDignityDisplay.js` formats already-computed Sprint 10 term, decan and degree-ruler lookup results into compact display rows and summary counts without calling lookup engines or rendering UI.
+44. `src/decans.js` performs pure Sprint 10 Star of the Magi decans lookup over the verified Figure 4.7 dataset by sign and degree, supports already-calculated natal planet objects, preserves source system metadata in output, and does not render UI.
 
-45. `src/essentialDignities.js` evaluates already-calculated natal planet objects against the Sprint 9 essential dignity dataset and returns flags, additive score, labels and safe summary counts without calling providers or rendering UI.
+45. `src/degreeRulersStarOfMagi.js` performs pure Sprint 10 Degree Rulers Table 6 / Star of the Magi lookup over the verified dataset by sign and degree, uses `degreeIndex = floor(degreeWithinSign)` for `0 <= degreeWithinSign < 30`, supports already-calculated natal planet objects, preserves source system metadata in output, and does not render UI.
 
-46. `src/essentialDignityDisplay.js` formats already-evaluated essential dignity results into compact user-facing rows and summary counts without calling the lookup engine or rendering UI.
+46. `src/detailedDignityDisplay.js` formats already-computed Sprint 10 term, decan and degree-ruler lookup results into compact display rows and summary counts without calling lookup engines or rendering UI.
 
-47. `src/essentialDignitiesForProfile.js` connects ready natal planet output to the essential dignity lookup and display helpers for the read-only collapsible `Мои карты` dignity section; it fails closed without dignity rows when natal planets are incomplete.
+47. `src/essentialDignities.js` evaluates already-calculated natal planet objects against the Sprint 9 essential dignity dataset and returns flags, additive score, labels and safe summary counts without calling providers or rendering UI.
 
-48. `src/natalPlanetsDebug.js` converts active-profile natal planets UI state into a sanitized debug summary with status/counts/capabilities only.
+48. `src/essentialDignityDisplay.js` formats already-evaluated essential dignity results into compact user-facing rows and summary counts without calling the lookup engine or rendering UI.
 
-49. `src/natalAspectsDebug.js` converts active-profile natal aspects UI state into a sanitized debug summary with status/counts/capabilities only.
+49. `src/essentialDignitiesForProfile.js` connects ready natal planet output to the essential dignity lookup and display helpers for the read-only collapsible `Мои карты` dignity section; it fails closed without dignity rows when natal planets are incomplete.
 
-50. `src/essentialDignitiesDebug.js` converts active-profile essential dignities UI state into a sanitized debug summary with status/counts/source policy/deferred capability labels only.
+50. `src/natalPlanetsDebug.js` converts active-profile natal planets UI state into a sanitized debug summary with status/counts/capabilities only.
 
-51. `src/detailedDignitiesDebug.js` converts active-profile detailed dignity UI state into a sanitized debug summary with status/counts/source labels/capability and privacy flags only.
+51. `src/natalAspectsDebug.js` converts active-profile natal aspects UI state into a sanitized debug summary with status/counts/capabilities only.
 
-52. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, provider validation summary, natal planets UI summary, natal aspects UI summary, essential dignities UI summary and detailed dignities UI summary without birth details.
+52. `src/essentialDignitiesDebug.js` converts active-profile essential dignities UI state into a sanitized debug summary with status/counts/source policy/deferred capability labels only.
 
-53. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
+53. `src/detailedDignitiesDebug.js` converts active-profile detailed dignity UI state into a sanitized debug summary with status/counts/source labels/capability and privacy flags only.
+
+54. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, provider validation summary, natal planets UI summary, natal aspects UI summary, essential dignities UI summary and detailed dignities UI summary without birth details.
+
+55. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 

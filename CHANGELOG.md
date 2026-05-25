@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-05-25 — Complete Task 11.3 ASC / MC calculation engine
+
+- Added pure `src/ascMc.js`.
+- Added `test/ascMc.test.js`.
+- Implemented ASC / MC calculation from validated UTC moment and birth coordinates using sidereal-time vector geometry.
+- Derived DSC and IC from ASC and MC by adding 180 degrees and normalizing to the zodiac circle.
+- Integrated profile-level readiness through `src/housesInputGuardrails.js` and UTC conversion through `src/birthDateTime.js`.
+- Used `Astronomy.SiderealTime()` from the tracked vendor runtime for sidereal time and an internal mean-obliquity approximation.
+- Exposed capabilities with ASC / MC / DSC / IC enabled while houses, house cusps, planet-in-house, Placidus, interpretations, transits and fixed stars remain disabled.
+- Updated `TODO.md`, `PROJECT_STATE.md`, `ARCHITECTURE.md` and `ASTRO_LOGIC.md`.
+- No houses engine, house cusps, planet-in-house assignment, UI, PWA cache, provider calculations, package files, generated ephemeris data, fixed stars, Pars Fortuna / Arabic Parts, transits, interpretations or ritual scoring were added.
+- Next active task is Task 11.4 — Houses Engine, but it was not started.
+
 ## 2026-05-25 — Complete Task 11.2 birth input and coordinates guardrails
 
 - Added pure `src/housesInputGuardrails.js`.
