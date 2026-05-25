@@ -2862,23 +2862,77 @@ Result:
 - Confirmed `Термы, деканы и градусы` remains collapsed by default inside `Мои карты`, after `Достоинства планет`, with human-readable source labels and no interpretations.
 - No source datasets, lookup engines, provider calculations, UI behavior, package files or PWA cache were changed during hardening.
 - Sprint 10 is closed.
-- Next work is Sprint 11 planning / Houses / ASC / MC; Sprint 11 was not started.
+- Next work is Sprint 11 planning / Houses / ASC / MC.
 
-# Next Sprint
+# Active Sprint
 
-## Sprint 11 Planning — Houses / ASC / MC
+## Sprint 11 — Houses / ASC / MC
 
-Status: not started
+Status: active
 
 Goal:
 
-Plan the next sprint around houses / Ascendant / MC readiness before any implementation.
+Add the personal chart grid layer after explicit readiness and calculation guardrails:
 
-Rules:
+- ASC / Ascendant / Асцендент;
+- MC / Midheaven / Медиум Цели;
+- DSC / Descendant / Десцендент;
+- IC / Imum Coeli / Надир;
+- houses / дома;
+- planet-in-house assignment.
 
-- Do not start Sprint 11 without explicit user approval.
-- Do not calculate houses / ASC / MC until source, provider and test policy are defined.
-- Do not add fixed stars, transits, interpretations or ritual scoring as part of Sprint 10.
+Sprint 11 is a calculation and structure sprint. It does not add interpretations, ritual scoring, fixed stars, personal transits, Pars Fortuna or Arabic Parts.
+
+## Task 11.1 — Houses / ASC / MC Strategy
+
+Status: done
+
+Goal:
+
+Start Sprint 11 with source/calculation policy and guardrails before implementation.
+
+Result:
+
+- Added `SPRINT_11_PLAN.md`.
+- Added `HOUSES_ASC_MC_STRATEGY.md`.
+- Confirmed exact birth time and birth place coordinates are required for user-facing ASC / MC / houses.
+- Confirmed no birth time, no coordinates, country/region-only place, city without coordinates and `Общий день` must return safe not-ready states.
+- Confirmed city-level coordinates are acceptable for normal mode and hospital-level coordinates are optional.
+- Confirmed Whole Sign is the initial safe house model unless a validated quadrant house-cusp calculation is approved.
+- Confirmed ASC / MC remain calculated angles even when Whole Sign is used for house assignment.
+- Confirmed Whole Sign must not be labeled as Placidus and `houseSystem` label is required.
+- No calculation code, `src/`, tests, UI, PWA cache, package files or ephemeris data were changed.
+
+## Task 11.2 — Birth Input / Coordinates Guardrails
+
+Status: active
+
+Goal:
+
+Create readiness logic for Houses / ASC / MC inputs before any ASC / MC or house calculation engine.
+
+Scope:
+
+- exact birth time check;
+- coordinate availability check;
+- country/region-only fallback;
+- city-without-coordinates fallback;
+- safe not-ready states.
+
+Do not calculate ASC / MC / houses in Task 11.2.
+
+## Later Sprint 11 Tasks
+
+Status: not started
+
+- Task 11.3 — ASC / MC Calculation Engine.
+- Task 11.4 — Houses Engine.
+- Task 11.5 — Houses Validation / Fixtures.
+- Task 11.6 — Planet-in-House Assignment.
+- Task 11.7 — Houses / ASC / MC Display Helper.
+- Task 11.8 — Houses / ASC / MC Collapsible UI.
+- Task 11.9 — Houses / ASC / MC Debug.
+- Task 11.10 — Sprint 11 Hardening.
 
 # Security Backlog
 

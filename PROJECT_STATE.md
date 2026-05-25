@@ -595,7 +595,7 @@ Sprint 6 — Real Natal Provider Selection / Fixture Validation
 Активный спринт:
 
 ```txt
-Sprint 11 — Houses / ASC / MC Planning
+Sprint 11 — Houses / ASC / MC
 ```
 
 Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7, Sprint 8, Sprint 9 и Sprint 10 завершены.
@@ -603,10 +603,29 @@ Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7, Sprint 8, 
 Текущий фокус:
 
 ```txt
-Sprint 11 planning / Houses / ASC / MC
+Task 11.2 — Birth Input / Coordinates Guardrails
 ```
 
-Sprint 10 закрыт. Task 10.12 завершила final hardening for Terms / Decans / Degree Rulers. В Sprint 10 добавлены verified Table 5 terms dataset + lookup, Decans Star of the Magi dataset + lookup, Table 6 / Star of the Magi degree rulers dataset + lookup, Table 7 / Vronsky degree rulers dataset + lookup, pure detailed dignity display/profile helpers, collapsed UI block `Термы, деканы и градусы` inside `Мои карты`, and safe `Detailed Dignities UI Debug` behind `?debug=1`. Hardening confirmed source separation, module boundaries, privacy exclusions, UI/debug status-only output and current PWA cache coverage. UI/debug do not expose raw birth/profile data, raw coordinates, raw planet longitudes, source tokens, source keys/source systems or full tables. Interpretations, fixed stars, houses / ASC / MC, transits and ritual scoring were not added. Next work is Sprint 11 planning / Houses / ASC / MC, but Sprint 11 has not started.
+Sprint 10 закрыт. Sprint 11 — Houses / ASC / MC начат docs-only задачей Task 11.1. В корень проекта добавлены `SPRINT_11_PLAN.md` и `HOUSES_ASC_MC_STRATEGY.md`; они фиксируют расчетную стратегию, guardrails и порядок задач Sprint 11. Task 11.1 завершена без кода. Следующая активная задача: Task 11.2 — Birth Input / Coordinates Guardrails. Task 11.2 еще не начиналась.
+
+Guardrails Sprint 11:
+
+- exact birth time + birth place coordinates are required for user-facing ASC / MC / houses;
+- no birth time = no ASC / MC / houses;
+- no coordinates = no ASC / MC / houses;
+- country / region only = not enough;
+- city without coordinates = needs city lookup or manual coordinates before calculation;
+- city-level coordinates are acceptable for normal mode;
+- hospital-level coordinates are optional.
+
+Initial house system policy:
+
+- Whole Sign is the first supported house assignment model unless current dependencies provide a separately validated quadrant house-cusp calculation;
+- ASC / MC are still calculated as angles;
+- DSC / IC are derived from ASC / MC;
+- Whole Sign must not be called `Placidus`;
+- `houseSystem` label is required in future UI/debug;
+- Placidus / quadrant cusps are deferred unless separately verified.
 
 Результат Sprint 8:
 
@@ -803,7 +822,8 @@ Sprint 10 planning подготовлен:
 - Task 10.11 завершена: добавлен safe `Detailed Dignities UI Debug` in `?debug=1` with status/counts/collapsed state/source labels/capabilities/privacy flags only;
 - Task 10.12 завершена: проведен final Sprint 10 hardening audit; source separation, architecture boundaries, privacy, UI/debug behavior and cache coverage confirmed; no code fixes were required;
 - Sprint 10 закрыт;
-- следующая активная работа — Sprint 11 planning / Houses / ASC / MC;
+- Task 11.1 завершена: добавлены `SPRINT_11_PLAN.md` и `HOUSES_ASC_MC_STRATEGY.md`, зафиксированы input guardrails and Whole Sign initial house policy;
+- активная задача — Task 11.2, Birth Input / Coordinates Guardrails;
 - Sprint 10 должен работать только с source-tracked lookup layers after validated natal planet coordinates;
 - dense Vronsky screenshots must not be OCR-imported blindly;
 - fixed stars, houses, ASC / MC, transits, interpretations и ritual scoring остаются out of scope; Houses / ASC / MC remain Sprint 11.
@@ -1278,10 +1298,10 @@ Sprint 8 завершен. Следующий этап — Sprint 9, Essential D
 Текущий следующий шаг:
 
 ```txt
-Sprint 11 planning / Houses / ASC / MC
+Task 11.2 — Birth Input / Coordinates Guardrails
 ```
 
-Sprint 8 завершен. Task 8.1, Task 8.2, Task 8.3, Task 8.4, Task 8.5, Task 8.6 и Task 8.7 завершены. Sprint 9 завершен: Task 9.1, Task 9.2, Task 9.3, Task 9.4, Task 9.5, Task 9.6, Task 9.7 и Task 9.8 закрыты. Sprint 10 закрыт: Task 10.1, Task 10.2, Task 10.3a, Task 10.3b, Task 10.3c, Task 10.4, Task 10.5, Task 10.5b, Task 10.5c, Task 10.5d, Task 10.6, Task 10.7a, Task 10.7b, Task 10.7c, Task 10.7d, Task 10.8, Task 10.9, Task 10.8b, Task 10.8c, Task 10.8d, Task 10.8d-fix, Task 10.8e, Task 10.8f, Task 10.9b, Task 10.10, Task 10.11 и Task 10.12 закрыты. Следующая активная работа — Sprint 11 planning / Houses / ASC / MC; Sprint 11 не начат.
+Sprint 8 завершен. Task 8.1, Task 8.2, Task 8.3, Task 8.4, Task 8.5, Task 8.6 и Task 8.7 завершены. Sprint 9 завершен: Task 9.1, Task 9.2, Task 9.3, Task 9.4, Task 9.5, Task 9.6, Task 9.7 и Task 9.8 закрыты. Sprint 10 закрыт: Task 10.1, Task 10.2, Task 10.3a, Task 10.3b, Task 10.3c, Task 10.4, Task 10.5, Task 10.5b, Task 10.5c, Task 10.5d, Task 10.6, Task 10.7a, Task 10.7b, Task 10.7c, Task 10.7d, Task 10.8, Task 10.9, Task 10.8b, Task 10.8c, Task 10.8d, Task 10.8d-fix, Task 10.8e, Task 10.8f, Task 10.9b, Task 10.10, Task 10.11 и Task 10.12 закрыты. Sprint 11 начат: Task 11.1 закрыла Houses / ASC / MC strategy docs. Следующая активная задача — Task 11.2, Birth Input / Coordinates Guardrails.
 
 Ниже сохраняется краткая история предыдущего Sprint 5 и результаты текущего Sprint 6.
 
@@ -2549,16 +2569,16 @@ lunar-calendar-v72
 Сейчас следующий конкретный шаг:
 
 ```txt
-Sprint 11 planning / Houses / ASC / MC.
+Task 11.2 — Birth Input / Coordinates Guardrails.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Работать только над Sprint 11 planning после отдельной команды пользователя.
+2. Работать только над Task 11.2 после отдельной команды пользователя.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
-5. В Sprint 11 planning сначала определить source/provider/test policy для houses / ASC / MC; не добавлять calculations, UI, interpretations, transits, fixed stars или ritual scoring без отдельной активной задачи.
+5. В Task 11.2 добавить только readiness / guardrails для birth input and coordinates; не добавлять ASC / MC / houses calculations, UI, interpretations, transits, fixed stars или ritual scoring.
 6. После реализации обновить документацию и выполнить проверки, требуемые задачей.
 
 ---
@@ -2571,4 +2591,4 @@ Sprint 11 planning / Houses / ASC / MC.
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7 и Sprint 8 завершены. Sprint 7 добавил read-only natal planets panel внутри `Мои карты`: planet values показываются только для активного сохраненного профиля при `canConvertToUtc: true` и ready provider output, форматируются через `src/natalPlanetDisplay.js`, а missing coordinates не блокируют список планет. `Общий день`, unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap и nonexistent DST gap не показывают planet list. Safe `Natal Planets UI Debug` доступен только через `?debug=1` и показывает status/counts/capabilities без birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes, speed values or full planet list. Houses / ASC / MC / transits, chart wheel и personal ritual scoring остаются not supported. Sprint 8 — Natal Aspects Foundation завершен: Task 8.1 создала `NATAL_ASPECTS_STRATEGY.md`, Task 8.2 добавила pure `src/natalAspectEngine.js`, Task 8.3 добавила synthetic/manual fixture validation layer, Task 8.4 добавила pure `src/natalAspectDisplay.js`, Task 8.5 добавила collapsible `Натальные аспекты` section внутри `Мои карты`, Task 8.6 добавила safe `Natal Aspects UI Debug`, а Task 8.7 завершила hardening. Sprint 9 — Essential Dignities Foundation завершен: Task 9.1 создала `ESSENTIAL_DIGNITIES_STRATEGY.md`, Task 9.2 добавила source-tracked `src/essentialDignitiesData.js`, Task 9.3 добавила pure lookup engine, Task 9.4 добавила synthetic/manual fixture validation, Task 9.5 добавила pure display helper, Task 9.6 добавила collapsible `Достоинства планет` section внутри `Мои карты`, Task 9.7 добавила safe `Essential Dignities UI Debug`, а Task 9.8 завершила hardening. Sprint 10 — Terms / Decans / Degree Rulers закрыт: Task 10.1, Task 10.2, Task 10.3a, Task 10.3b, Task 10.3c, Task 10.4, Task 10.5, Task 10.5b, Task 10.5c, Task 10.5d, Task 10.6, Task 10.7a, Task 10.7b, Task 10.7c, Task 10.7d, Task 10.8, Task 10.9, Task 10.8b, Task 10.8c, Task 10.8d, Task 10.8d-fix, Task 10.8e, Task 10.8f, Task 10.9b, Task 10.10, Task 10.11 и Task 10.12 закрыты. Sprint 10 code includes verified `src/termsData.js` + pure `src/terms.js`, verified `src/decansData.js` + pure `src/decans.js`, verified `src/degreeRulersStarOfMagiData.js` + pure `src/degreeRulersStarOfMagi.js`, verified Table 7 `src/degreeRulersVronskyData.js` + pure `src/degreeRulersVronsky.js`, `src/detailedDignityDisplay.js`, `src/detailedDignitiesForProfile.js`, collapsed `Термы, деканы и градусы` UI in `Мои карты`, and safe `Detailed Dignities UI Debug` in `?debug=1`. Следующая активная работа — Sprint 11 planning / Houses / ASC / MC; Sprint 11 не начат.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7 и Sprint 8 завершены. Sprint 7 добавил read-only natal planets panel внутри `Мои карты`: planet values показываются только для активного сохраненного профиля при `canConvertToUtc: true` и ready provider output, форматируются через `src/natalPlanetDisplay.js`, а missing coordinates не блокируют список планет. `Общий день`, unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap и nonexistent DST gap не показывают planet list. Safe `Natal Planets UI Debug` доступен только через `?debug=1` и показывает status/counts/capabilities без birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes, speed values or full planet list. Houses / ASC / MC / transits, chart wheel и personal ritual scoring остаются not supported. Sprint 8 — Natal Aspects Foundation завершен: Task 8.1 создала `NATAL_ASPECTS_STRATEGY.md`, Task 8.2 добавила pure `src/natalAspectEngine.js`, Task 8.3 добавила synthetic/manual fixture validation layer, Task 8.4 добавила pure `src/natalAspectDisplay.js`, Task 8.5 добавила collapsible `Натальные аспекты` section внутри `Мои карты`, Task 8.6 добавила safe `Natal Aspects UI Debug`, а Task 8.7 завершила hardening. Sprint 9 — Essential Dignities Foundation завершен: Task 9.1 создала `ESSENTIAL_DIGNITIES_STRATEGY.md`, Task 9.2 добавила source-tracked `src/essentialDignitiesData.js`, Task 9.3 добавила pure lookup engine, Task 9.4 добавила synthetic/manual fixture validation, Task 9.5 добавила pure display helper, Task 9.6 добавила collapsible `Достоинства планет` section внутри `Мои карты`, Task 9.7 добавила safe `Essential Dignities UI Debug`, а Task 9.8 завершила hardening. Sprint 10 — Terms / Decans / Degree Rulers закрыт: Task 10.1, Task 10.2, Task 10.3a, Task 10.3b, Task 10.3c, Task 10.4, Task 10.5, Task 10.5b, Task 10.5c, Task 10.5d, Task 10.6, Task 10.7a, Task 10.7b, Task 10.7c, Task 10.7d, Task 10.8, Task 10.9, Task 10.8b, Task 10.8c, Task 10.8d, Task 10.8d-fix, Task 10.8e, Task 10.8f, Task 10.9b, Task 10.10, Task 10.11 и Task 10.12 закрыты. Sprint 10 code includes verified `src/termsData.js` + pure `src/terms.js`, verified `src/decansData.js` + pure `src/decans.js`, verified `src/degreeRulersStarOfMagiData.js` + pure `src/degreeRulersStarOfMagi.js`, verified Table 7 `src/degreeRulersVronskyData.js` + pure `src/degreeRulersVronsky.js`, `src/detailedDignityDisplay.js`, `src/detailedDignitiesForProfile.js`, collapsed `Термы, деканы и градусы` UI in `Мои карты`, and safe `Detailed Dignities UI Debug` in `?debug=1`. Sprint 11 начат docs-only Task 11.1; следующая активная задача — Task 11.2, Birth Input / Coordinates Guardrails.

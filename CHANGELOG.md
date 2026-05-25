@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-25 — Start Sprint 11 Houses / ASC / MC strategy
+
+- Started Sprint 11 — Houses / ASC / MC with docs-only Task 11.1.
+- Added `SPRINT_11_PLAN.md` and `HOUSES_ASC_MC_STRATEGY.md` to the project root from the provided Sprint 11 planning sources.
+- Recorded Houses / ASC / MC guardrails: exact birth time and birth place coordinates are required; no birth time, no coordinates, country/region-only place, city without coordinates and `Общий день` must return safe not-ready states.
+- Recorded coordinate policy: city-level coordinates are acceptable for normal mode, hospital-level coordinates are optional.
+- Recorded initial house system policy: Whole Sign first unless a validated quadrant house-cusp calculation is separately approved; ASC / MC remain calculated angles; Whole Sign must not be labeled as Placidus.
+- Updated `TODO.md`, `PROJECT_STATE.md` and `ASTRO_LOGIC.md`.
+- No code, `src/`, tests, UI, PWA cache, package files, generated ephemeris data, ASC / MC engine, houses engine or calculations were added.
+- Next active task is Task 11.2 — Birth Input / Coordinates Guardrails, but it was not started.
+
 ## 2026-05-24 — Complete Task 10.12 Sprint 10 hardening
 
 - Completed final hardening audit for Sprint 10 — Terms / Decans / Degree Rulers.

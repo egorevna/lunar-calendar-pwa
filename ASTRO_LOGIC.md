@@ -517,6 +517,39 @@ If timezone is missing:
 
 - calculation is not ready.
 
+## Houses / ASC / MC Policy
+
+Sprint 11 must not fake ASC / MC / houses.
+
+Required for user-facing ASC / MC / houses:
+
+- exact birth time;
+- valid timezone or already validated UTC birth moment;
+- birth place coordinates.
+
+Guardrails:
+
+- no birth time = no ASC / MC / houses;
+- no coordinates = no ASC / MC / houses;
+- country / region only is not enough;
+- city without coordinates needs city lookup or manual coordinates before calculation;
+- city-level coordinates are acceptable for normal mode;
+- hospital-level coordinates are optional.
+
+Initial house system policy:
+
+- use Whole Sign first unless a validated quadrant house-cusp calculation is approved;
+- ASC / MC are still calculated as angles;
+- DSC / IC are derived from ASC / MC;
+- do not call Whole Sign `Placidus`;
+- always expose the `houseSystem` label when houses are displayed or debugged;
+- Placidus / quadrant cusps are deferred unless separately verified.
+
+Deferred:
+
+- Pars Fortuna / Arabic Parts remain Sprint 12;
+- fixed stars, personal transits, interpretations and ritual scoring remain outside Sprint 11 strategy until explicitly moved into `TODO.md`.
+
 ## Personal Transits
 
 Do not show personal transits until both natal positions and current planetary positions are reliable.
