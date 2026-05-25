@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-05-25 — Complete Task 11.6 Planet-in-House assignment
+
+- Added pure `src/planetInHouses.js`.
+- Added `test/fixtures/planetInHousesFixtures.js`.
+- Added `test/planetInHousesFixtures.test.js`.
+- Added `test/planetInHouses.test.js`.
+- Implemented planet-in-house assignment for selected house systems: Whole Sign by sign relative to ASC, Equal House and Placidus by planet longitude against ready cusp spans.
+- Added half-open boundary behavior for cusp systems: exact cusp belongs to the house starting at that cusp, including wrap-around spans across 0°.
+- Profile-level assignment uses the existing safe natal planets path and `src/houseSystemResolver.js`.
+- Kept the layer assignment-only: no new house engine, no generic `src/houses.js` / `src/houseSystems.js`, no UI, no display helper, no interpretations, no provider changes and no package changes.
+- Next active task is Task 11.7 — Houses / ASC / MC Display Helper, but it was not started.
+
 ## 2026-05-25 — Complete Task 11.5 Houses validation fixtures
 
 - Added `test/fixtures/housesValidationFixtures.js`.

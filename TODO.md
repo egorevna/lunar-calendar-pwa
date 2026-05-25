@@ -3093,17 +3093,37 @@ Result:
 - Privacy / strict exclusion tests confirm no raw profile data, provider imports, DOM/localStorage imports, generic `src/houses.js` / `src/houseSystems.js`, interpretations or planet-in-house assignment.
 - No production house calculation engine, UI, provider changes, package changes or PWA cache changes were added.
 
+## Task 11.6 — Planet-in-House Assignment for Selected House System
+
+Status: done
+
+Goal:
+
+Add a pure assignment layer that maps ready natal planets into houses for the selected house system without creating a new house engine, UI, display helper or interpretations.
+
+Result:
+
+- Added pure `src/planetInHouses.js`.
+- Added `test/fixtures/planetInHousesFixtures.js`.
+- Added `test/planetInHousesFixtures.test.js`.
+- Added `test/planetInHouses.test.js`.
+- Implemented Whole Sign assignment by planet sign relative to ASC sign.
+- Implemented Equal House and Placidus assignment by planet longitude against ready house cusp spans.
+- Added half-open boundary policy: exact cusp belongs to the house starting at that cusp; wrapping spans across 0° are supported.
+- Profile-level assignment uses the existing safe natal planets path and `src/houseSystemResolver.js` selected-system router.
+- Invalid planet entries return safe per-planet invalid assignments without crashing or mutating inputs.
+- Confirmed no new house calculation engine, generic `src/houses.js` / `src/houseSystems.js`, UI, display helper, interpretations, provider changes, package changes or PWA cache changes were added.
+
 Next active task:
 
-- Task 11.6 — Planet-in-House Assignment for Selected House System.
+- Task 11.7 — Houses / ASC / MC Display Helper.
 
-Do not start Task 11.6 until explicitly requested.
+Do not start Task 11.7 until explicitly requested.
 
 ## Later Sprint 11 Tasks
 
 Status: not started
 
-- Task 11.6 — Planet-in-House Assignment for Selected House System.
 - Task 11.7 — Houses / ASC / MC Display Helper.
 - Task 11.8 — Houses / ASC / MC Collapsible UI.
 - Task 11.9 — Houses / ASC / MC Debug.

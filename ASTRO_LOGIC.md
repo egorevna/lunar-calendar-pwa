@@ -620,6 +620,20 @@ Placidus boundary policy:
 - high-latitude / circumpolar unsupported cases return explicit `status: "unsupported"` with `reason: "placidusUnsupportedAtLatitude"`;
 - profile-level Placidus calculation still requires exact birth time, timezone and birth coordinates through Sprint 11 guardrails.
 
+Planet-in-house assignment policy:
+
+- Sprint 11 Task 11.6 implements this as the pure `src/planetInHouses.js` assignment layer;
+- assignment uses the selected house-system result and does not calculate houses itself;
+- Whole Sign assignment uses planet sign relative to ASC sign;
+- if a Whole Sign planet sign is missing but zodiac longitude is valid, sign may be derived from that longitude;
+- Equal House and Placidus assignment require planet zodiac longitude and compare it against ready house cusp spans;
+- cusp spans are half-open: `[cuspLongitude, nextCuspLongitude)`;
+- exact cusp boundary belongs to the house starting at that cusp;
+- wrapping spans across 0° use `longitude >= cuspLongitude OR longitude < nextCuspLongitude`;
+- invalid planet entries return safe invalid assignments instead of crashing or being interpreted;
+- profile-level assignment uses the safe natal planets path and selected-system router;
+- no interpretations, fixed stars, transits or ritual scoring are added by this layer.
+
 Deferred:
 
 - Pars Fortuna / Arabic Parts remain Sprint 12;

@@ -469,6 +469,22 @@ Current responsibilities:
 
 This module does not implement house calculations directly, calculate ASC / MC, calculate Placidus, calculate Equal House, calculate Whole Sign, assign planets to houses, render UI, read localStorage, import provider modules, mutate profiles or expose raw birth data / raw birth coordinates.
 
+## `src/planetInHouses.js`
+
+Defines the Sprint 11 pure planet-in-house assignment layer.
+
+Current responsibilities:
+
+- accept ready natal planet objects and a ready selected house-system result;
+- assign planets to houses for `whole-sign`, `equal-house` and `placidus`;
+- use Whole Sign sign-distance assignment from the ASC sign;
+- use ready house cusp spans for Equal House and Placidus;
+- keep cusp spans half-open: exact cusp belongs to the house starting at that cusp;
+- preserve input planet order and return safe invalid assignments for invalid planet entries;
+- expose profile-level assignment through the existing safe natal planets path and `src/houseSystemResolver.js`.
+
+This module does not calculate houses directly, calculate ASC / MC, calculate planet positions directly, call provider modules directly, create a generic house router, render UI, read localStorage, mutate profiles / planets / house results, expose raw birth data / raw birth coordinates, or add interpretations.
+
 ## `src/planetaryPositionProvider.js`
 
 Defines the future planetary position provider contract.
@@ -1314,11 +1330,13 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 31. `src/houseSystemResolver.js` normalizes the selected profile / explicit house-system value, routes to exactly one of the Whole Sign, Equal House or Placidus engines, preserves selected engine status/reason, defaults missing selection to `whole-sign`, and does not implement house calculations directly or assign planets to houses.
 
-32. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+32. `src/planetInHouses.js` assigns ready natal planets to houses for the selected house system, using sign-distance for Whole Sign and ready cusp spans for Equal House / Placidus. It does not calculate houses, ASC / MC, planets, UI or interpretations.
 
-33. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+33. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
 
-34. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
+34. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+
+35. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
 
 34. `src/natalProviderValidationSummary.js` exposes a safe provider validation summary for debug/reporting without calculating planets, reading profile data, or importing the `astronomy-engine` provider module.
 
@@ -1706,6 +1724,8 @@ Testing note:
 - `test/fixtures/natalProviderReferenceFixtures.js` contains test-only UTC reference fixtures and Swiss Ephemeris reference helpers for validating `astronomy-engine` planet longitudes without importing `swisseph` into production code.
 - `test/fixtures/housesValidationFixtures.js` contains test-only manually declared cross-system house validation fixtures for Whole Sign, Equal House and selected-system router behavior. It is not used by production code.
 - `test/housesValidation.test.js` validates Whole Sign / Equal House manual fixtures, Placidus static benchmark fixtures, router no-fallback behavior, guardrail failures, privacy exclusions and strict source boundaries without creating a new production house engine.
+- `test/fixtures/planetInHousesFixtures.js` contains test-only manually declared planet-in-house assignment fixtures for Whole Sign, Equal House, Placidus, boundary spans, selected-system behavior and privacy exclusions. It is not used by production code.
+- `test/planetInHouses.test.js` validates assignment behavior across selected house systems, half-open cusp boundaries, profile-level routing, privacy exclusions and strict source boundaries without adding UI or a new house calculation engine.
 - `NATAL_PROVIDER_VALIDATION_REPORT.md` records the provider-layer validation summary; it does not enable user-facing natal values.
 - if personal data is added later, debug output must follow `PRIVACY_RULES.md`
 
