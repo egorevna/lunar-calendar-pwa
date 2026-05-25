@@ -90,17 +90,30 @@ Policy:
 - If only country/region exists, houses are not ready.
 - Future UX may support city lookup or manual coordinate input.
 
-## Initial House System Policy
+## House Systems Scope And Default Policy
 
-Sprint 11 should start with a safe, clearly labeled house system.
+Sprint 11 targets three separate house systems:
 
-Recommended initial policy:
+1. Whole Sign / `whole-sign`;
+2. Equal House / `equal-house` / равнодомная;
+3. Placidus / `placidus`.
 
-- If no verified reliable quadrant house-cusp calculation is available in current dependencies, use Whole Sign houses as the first supported house assignment model.
-- ASC and MC are still calculated as angles.
-- Exact quadrant house cusps / Placidus-like systems should be deferred to Sprint 12 or a separately verified calculation task unless current project dependencies already provide validated house-cusp support.
-- Never label Whole Sign houses as Placidus.
-- Always expose the `houseSystem` label in UI/debug.
+System separation rules:
+
+- these systems must not be mixed;
+- every result must include a `houseSystem` label;
+- UI/debug must always show the selected house system;
+- Whole Sign must not be called Placidus;
+- Equal House must not be called Placidus;
+- Placidus must not be approximated by Equal House;
+- no system may silently fall back to another system without explicit `status` / `reason`.
+
+Default policy:
+
+- default initial UI may use Whole Sign only when the profile has no saved house system selection;
+- internal APIs should be system-aware from the beginning;
+- user-facing UI must not imply only one house system exists;
+- the existing profile-level house system selection must not be silently overridden.
 
 Initial label:
 
@@ -108,15 +121,72 @@ Initial label:
 whole-sign
 ```
 
-Future labels may include:
+Supported / target labels:
 
 ```txt
-placidus
-porphyry
+whole-sign
 equal-house
+placidus
 ```
 
-Only add future systems after separate validation.
+Placidus implementation requires a separate dependency / calculation audit and benchmark validation. If no validated path is found, Placidus must remain explicit `unsupported` / deferred instead of being silently replaced.
+
+## Profile House System Selection Policy
+
+The profile form already includes a user-facing `Система домов` field. Future house calculations must treat the saved profile-level `houseSystem` value as the source of truth.
+
+Current stored profile values:
+
+- `wholeSign` — Whole Sign;
+- `equal` — Equal House / Равнодомная;
+- `placidus` — Placidus.
+
+Future engines should normalize profile values into canonical calculation keys:
+
+- `wholeSign` -> `whole-sign`;
+- `equal` -> `equal-house`;
+- `placidus` -> `placidus`.
+
+Selected system behavior:
+
+- `whole-sign` uses the Whole Sign engine;
+- `equal-house` uses the Equal House / Равнодомная engine;
+- `placidus` uses the Placidus engine only when Placidus is validated and supported;
+- if the user selected Placidus but Placidus is not yet validated / supported, return `status: "unsupported"` with `reason: "placidusNotValidated"`;
+- never silently fallback from Placidus to Whole Sign;
+- never silently fallback from Placidus to Equal House;
+- never silently fallback from Equal House to Whole Sign.
+
+All future house calculation outputs must include `houseSystem`. User-facing UI and debug must show the selected house system in safe human-readable form.
+
+## Zodiac Longitude Reference vs House System Anchor
+
+All systems use the same zodiac longitude coordinate scale:
+
+- 0° Aries = 0° zodiac longitude;
+- planets, ASC, MC and house cusps are normalized to `0 <= longitude < 360`;
+- this coordinate reference is not the same thing as a house-system anchor.
+
+Whole Sign:
+
+- house anchor = ASC sign;
+- House 1 = the entire ASC sign;
+- the cusp-like sign boundary for House 1 is 0° of the ASC sign, not necessarily 0° Aries.
+
+Equal House / Равнодомная:
+
+- house anchor = exact ASC longitude;
+- cusp 1 = ASC longitude;
+- cusp N = `normalize(ASC longitude + (N - 1) * 30°)`;
+- this is not Placidus and does not start at 0° Aries unless ASC itself is exactly 0° Aries.
+
+Placidus:
+
+- house cusps are calculated by Placidus geometry;
+- ASC = cusp 1;
+- MC = cusp 10;
+- cusp longitudes are measured on the zodiac scale where 0° Aries = 0°;
+- 0° Aries is the coordinate reference, not the Placidus house anchor.
 
 ## Sprint Tasks
 
@@ -167,7 +237,20 @@ Responsibilities:
 
 No UI.
 
-### Task 11.4 — Houses Engine
+### Task 11.4a — House Systems Strategy / Dependency Audit
+
+Docs-only strategy update before house engine implementation.
+
+Responsibilities:
+
+- expand Sprint 11 target systems to Whole Sign, Equal House and Placidus;
+- audit current dependencies / vendor files for Placidus and house-cusp support;
+- clarify zodiac longitude reference vs house-system anchors;
+- split implementation tasks by system.
+
+No code.
+
+### Task 11.4b — Whole Sign Houses Engine
 
 Pure house system engine.
 
@@ -179,14 +262,59 @@ src/houses.js
 
 Responsibilities:
 
-- calculate selected house model;
-- start with Whole Sign unless a validated quadrant method is approved;
+- calculate Whole Sign only;
+- House 1 = ASC sign;
+- each house = one full zodiac sign;
 - return house system label;
 - return house sequence.
 
 No UI.
 
-### Task 11.5 — Houses Validation / Fixtures
+### Task 11.4c — Equal House Engine
+
+Pure Equal House engine.
+
+Responsibilities:
+
+- calculate Equal House only;
+- cusp 1 = exact ASC longitude;
+- cusp N = `normalize(ASC longitude + (N - 1) * 30°)`;
+- handle zodiac wrap-around;
+- return `houseSystem: "equal-house"`;
+- do not call Equal House Placidus.
+
+No UI.
+
+### Task 11.4d — Placidus Engine / Validated Integration
+
+Placidus implementation target only if a validated path exists.
+
+Responsibilities:
+
+- inspect verified dependency or local algorithm path;
+- require benchmark fixtures before ready support;
+- return safe unsupported state for invalid / high-latitude / circumpolar cases;
+- never silently fallback to Equal House or Whole Sign;
+- if no validated path exists, create explicit deferred / unsupported policy and tests.
+
+No UI.
+
+### Task 11.4e — House System Resolver / Selected System Router
+
+System-aware router for the selected profile or explicit house system.
+
+Responsibilities:
+
+- read selected house system from profile or explicit input;
+- normalize current profile values (`wholeSign`, `equal`, `placidus`) into canonical keys (`whole-sign`, `equal-house`, `placidus`);
+- call the correct supported engine;
+- return explicit `unsupported` for unsupported selected systems;
+- never silently fallback to another house system;
+- always include `houseSystem` in the result.
+
+No UI.
+
+### Task 11.5 — Houses Validation / Fixtures for Whole Sign / Equal House / Placidus
 
 Synthetic/manual fixtures.
 
@@ -201,18 +329,24 @@ Coverage:
 - MC near 0°/29°;
 - DSC/IC wrap-around;
 - Whole Sign house sequence;
+- Equal House cusp sequence and wrap-around;
+- Placidus ready fixtures only if validated;
+- Placidus unsupported fixtures if deferred;
 - no NaN;
 - no raw birth data.
 
 No private birth data.
 
-### Task 11.6 — Planet-in-House Assignment
+### Task 11.6 — Planet-in-House Assignment for Selected House System
 
 Assign ready natal planets to houses.
 
-For Whole Sign:
+Must handle:
 
-- determine house by planet sign relative to ASC sign;
+- Whole Sign by planet sign relative to ASC sign;
+- Equal House by longitude comparison against wrapped cusps;
+- Placidus by longitude comparison against Placidus cusps if available;
+- explicit unsupported Placidus if deferred;
 - do not mutate natal planet objects;
 - ignore invalid planets safely;
 - no interpretations.
@@ -274,6 +408,25 @@ Not allowed:
 
 Final audit.
 
+## Reasoning Requirements
+
+PRO-level reasoning is recommended / required for:
+
+- Task 11.4a;
+- Task 11.4b;
+- Task 11.4c;
+- Task 11.4d;
+- Task 11.4e;
+- Task 11.5;
+- Task 11.6.
+
+PRO-level reasoning is not required unless issues appear for:
+
+- Task 11.7;
+- Task 11.8;
+- Task 11.9;
+- Task 11.10.
+
 Check:
 
 - no fake ASC / MC / houses;
@@ -290,15 +443,16 @@ Check:
 
 PRO recommended / required:
 
-- Task 11.1 — Strategy;
-- Task 11.3 — ASC / MC engine;
-- Task 11.4 — Houses engine;
-- Task 11.5 — Validation / fixtures;
-- Task 11.6 — Planet-in-house assignment.
+- Task 11.4a — House Systems Strategy / Dependency Audit;
+- Task 11.4b — Whole Sign Houses Engine;
+- Task 11.4c — Equal House Engine;
+- Task 11.4d — Placidus Engine / Validated Integration;
+- Task 11.4e — House System Resolver / Selected System Router;
+- Task 11.5 — Houses Validation / Fixtures for Whole Sign / Equal House / Placidus;
+- Task 11.6 — Planet-in-House Assignment for Selected House System.
 
 PRO not required unless issues appear:
 
-- Task 11.2 — Guardrails;
 - Task 11.7 — Display helper;
 - Task 11.8 — UI;
 - Task 11.9 — Debug;

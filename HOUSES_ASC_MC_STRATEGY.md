@@ -116,23 +116,137 @@ Birth hospital precision is optional, not required.
 - DST/timezone ambiguity must be handled by existing birth profile validation or blocked with a clear message.
 - Do not silently correct ambiguous birth time.
 
-## Initial House System Decision
+## House Systems Scope
 
-Recommended initial policy:
+Sprint 11 targets three separate house systems:
 
-- First supported house assignment model: Whole Sign houses, unless current dependency audit finds an already validated reliable quadrant house-cusp calculation.
-- ASC and MC are still calculated as angles.
-- Whole Sign house assignment:
-  - 1st house starts from ASC sign;
-  - subsequent houses follow zodiac sign order;
-  - planet-in-house can be assigned by zodiac sign relative to ASC sign.
-- Exact quadrant cusps / Placidus-like systems are deferred unless separately verified.
-- Do not call Whole Sign “Placidus”.
-- Always expose `houseSystem` label:
-  - `whole-sign`;
-  - future: `placidus`, `porphyry`, etc.
+1. Whole Sign / `whole-sign`;
+2. Equal House / `equal-house` / равнодомная;
+3. Placidus / `placidus`.
 
-Do not implement Placidus or any quadrant system until a validated calculation method is approved.
+Rules:
+
+- these are separate systems and must not be mixed;
+- every result must include a `houseSystem` label;
+- UI/debug must always show selected house system;
+- Whole Sign must not be called Placidus;
+- Equal House must not be called Placidus;
+- Placidus must not be approximated by Equal House;
+- if Placidus cannot be validated in Sprint 11, keep it explicit `unsupported` / deferred;
+- no house system may silently fallback to another system without explicit status and reason.
+
+Default policy:
+
+- default initial UI can be Whole Sign only when the profile has no saved house system selection;
+- internal APIs should be system-aware from the beginning;
+- user-facing UI must not imply only one house system exists;
+- the existing profile-level house system selection must not be silently overridden.
+
+## Profile House System Selection Policy
+
+The current profile form already has a user-facing `Система домов` field. Future house calculations must use the saved profile-level `houseSystem` value as the source of truth.
+
+Current stored profile values:
+
+- `wholeSign` — Whole Sign;
+- `equal` — Equal House / Равнодомная;
+- `placidus` — Placidus.
+
+Canonical calculation keys for future engines:
+
+- `wholeSign` -> `whole-sign`;
+- `equal` -> `equal-house`;
+- `placidus` -> `placidus`.
+
+Selected system behavior:
+
+- `whole-sign` must call the Whole Sign engine;
+- `equal-house` must call the Equal House / Равнодомная engine;
+- `placidus` must call the Placidus engine only when Placidus is validated and supported;
+- if Placidus is selected but not yet validated / supported, return:
+
+```js
+{
+  status: "unsupported",
+  reason: "placidusNotValidated"
+}
+```
+
+- never silently fallback from Placidus to Whole Sign;
+- never silently fallback from Placidus to Equal House;
+- never silently fallback from Equal House to Whole Sign.
+
+Every future house result must include `houseSystem`. UI/debug must show the selected house system. Task 11.4e must normalize selected profile values and route to the correct supported engine.
+
+## Zodiac Longitude Reference vs House System Anchor
+
+Zodiac longitude reference:
+
+- all systems, planets, ASC, MC and cusps use the same `0°..360°` zodiac longitude scale;
+- `0° Aries = 0°` zodiac longitude;
+- all calculated points are normalized relative to `0° Aries`.
+
+Whole Sign:
+
+- house anchor = ASC sign;
+- House 1 = the whole ASC sign;
+- the cusp-like sign boundary for House 1 = 0° of the ASC sign;
+- this is not necessarily 0° Aries.
+
+Equal House / Равнодомная:
+
+- house anchor = exact ASC longitude;
+- cusp 1 = ASC longitude;
+- cusp N = `normalize(ASC longitude + (N - 1) * 30°)`;
+- this is not Placidus;
+- Equal House does not start at 0° Aries unless ASC itself is exactly 0° Aries.
+
+Placidus:
+
+- house cusps are calculated by Placidus algorithm;
+- ASC = cusp 1;
+- MC = cusp 10;
+- cusp longitudes are expressed on the shared zodiac longitude scale;
+- 0° Aries is coordinate reference only, not house anchor;
+- Placidus must not be approximated by starting houses from 0° Aries.
+
+Correct wording:
+
+```txt
+Placidus cusp longitudes are measured on the zodiac scale where 0° Aries = 0°, but Placidus cusps are calculated from time/place geometry and anchored by ASC/MC.
+```
+
+## Placidus Dependency / Validation Policy
+
+Rules:
+
+- Do not implement Placidus from memory.
+- Do not use unverified formula snippets.
+- Prefer a verified dependency or well-tested local implementation.
+- First inspect existing local dependencies / vendor files.
+- Placidus requires benchmark fixtures from trusted calculators or known examples.
+- If current dependencies cannot provide reliable Placidus, keep it deferred.
+- For unsupported latitudes / circumpolar cases, return:
+
+```js
+{
+  status: "unsupported",
+  reason: "placidusUnsupportedAtLatitude"
+}
+```
+
+- Never silently fallback from Placidus to Equal House.
+- Never silently fallback from Placidus to Whole Sign.
+- Never approximate Placidus by starting houses from 0° Aries.
+- 0° Aries is coordinate reference only, not Placidus house anchor.
+
+Current local dependency audit result for Task 11.4a:
+
+- `astronomy-engine` is available and provides sidereal time, horizontal coordinates and rotation helpers.
+- `luxon` is available for validated time conversion through existing project helpers.
+- `src/astroMath.js` provides zodiac sign, degree and normalization utilities.
+- No ready Placidus / house-cusp API was found in current local dependency or vendor files.
+- Therefore Placidus requires separate validated integration before it can become active.
 
 ## ASC / MC Policy
 
@@ -163,18 +277,18 @@ Normalize to the zodiac circle.
 
 Display as formatted zodiac positions.
 
-## House Model Policy
+## House Systems Policy
 
-For Whole Sign initial model:
+### Whole Sign
 
+- Safe first implementation.
 - House 1 = ASC sign.
-- House 2 = next zodiac sign.
-- House 3 = next zodiac sign.
-- ...
-- House 12 = previous zodiac sign.
-- Each house is sign-based.
-- House cusps as exact quadrant degrees are not claimed in Sprint 11 unless separately implemented.
-- UI must label the system clearly.
+- Each house = one full zodiac sign.
+- MC remains an angle and is not necessarily the 10th cusp.
+- No quadrant cusps are claimed.
+- House anchor = ASC sign.
+- Result longitudes/signs are still expressed on the zodiac scale where 0° Aries = 0°.
+- Whole Sign does not use exact ASC degree as cusp 1.
 
 Example:
 
@@ -198,15 +312,49 @@ House 3 = Capricorn
 House 12 = Libra
 ```
 
+### Equal House / Равнодомная
+
+- Safe second implementation.
+- House anchor = exact ASC longitude.
+- Cusp 1 = exact ASC longitude.
+- Cusp N = `normalize(ASC longitude + (N - 1) * 30°)`.
+- Wrap around 360°.
+- MC remains an angle and is not necessarily the 10th cusp.
+- This is not Placidus.
+- Cusp labels should include zodiac sign + degree.
+- Equal House is not sign-only.
+- Equal House does not start at 0° Aries unless ASC itself is exactly 0° Aries.
+- All cusp longitudes are expressed on the zodiac scale where 0° Aries = 0°.
+
+### Placidus
+
+- Third implementation target only after validation.
+- Requires dependency / calculation audit.
+- Requires benchmark fixtures.
+- Must fail safely for unsupported / high-latitude / circumpolar cases.
+- Must not be approximated by Equal House.
+- Must not silently fallback to Whole Sign.
+- House cusps are calculated by Placidus algorithm and anchored by ASC/MC, not by 0° Aries.
+- ASC = cusp 1.
+- MC = cusp 10.
+- Planet-in-house requires longitude comparison against Placidus cusps.
+- Must handle cusp wrap-around.
+- Must fail safely if cusps cannot be calculated.
+- Placidus cusps are output as zodiac longitudes measured from 0° Aries.
+
 ## Planet-in-House Assignment
 
-For Whole Sign:
+Planet-in-house assignment is a separate later task.
 
-- planet sign determines house relative to ASC sign;
-- planet degree is not needed for house number in Whole Sign;
-- invalid/unsupported planets are ignored safely;
-- natal planet objects must not be mutated;
-- no interpretations.
+Rules by system:
+
+- Whole Sign: planet sign determines house relative to ASC sign; planet degree is not needed for house number.
+- Equal House: planet-in-house requires longitude comparison across wrapped cusps.
+- Placidus: planet-in-house requires longitude comparison against Placidus cusps and must handle wrap-around.
+- Unsupported Placidus must return explicit unsupported state instead of falling back.
+- Invalid/unsupported planets are ignored safely.
+- Natal planet objects must not be mutated.
+- No interpretations.
 
 Example:
 
@@ -238,13 +386,48 @@ Tests should include:
 - ASC near 0° / 29°;
 - MC near 0° / 29°;
 - DSC / IC wrap-around;
-- Whole Sign house sequence from ASC sign;
+- Whole Sign: ASC Aries sequence;
+- Whole Sign: ASC Scorpio wrap;
+- Whole Sign: house 1 = ASC sign;
+- Whole Sign: no cusp degrees claimed;
+- Whole Sign: no Placidus label;
+- Equal House: ASC 14.5° Aries -> cusp 1 Aries 14.5°, cusp 2 Taurus 14.5°, etc.;
+- Equal House: ASC 29° Pisces wraps through Aries / Taurus / etc.;
+- Equal House: no Placidus label;
+- Equal House: cusp 1 equals exact ASC longitude;
+- Equal House: does not use 0° Aries as anchor unless ASC is exactly 0° Aries;
+- Placidus: benchmark examples required before ready;
+- Placidus: ASC must equal cusp 1;
+- Placidus: MC must equal cusp 10;
+- Placidus: cusps must be measured as zodiac longitudes from 0° Aries;
+- Placidus: 0° Aries must not be used as house anchor;
+- Placidus: unsupported / high-latitude cases return safe unsupported;
+- Placidus: no silent fallback;
 - planet-in-house assignment across zodiac wrap;
 - no NaN;
 - no undefined;
 - no raw birth data in user-facing output;
 - no provider imports in pure modules;
 - no astronomy-engine direct imports outside approved calculation module.
+
+## Reasoning Requirements
+
+PRO-level reasoning is recommended / required for:
+
+- Task 11.4a;
+- Task 11.4b;
+- Task 11.4c;
+- Task 11.4d;
+- Task 11.4e;
+- Task 11.5;
+- Task 11.6.
+
+PRO-level reasoning is not required unless issues appear for:
+
+- Task 11.7;
+- Task 11.8;
+- Task 11.9;
+- Task 11.10.
 
 ## Privacy / UI Policy
 
@@ -329,7 +512,7 @@ Debug must not show:
 
 Deferred until later tasks/sprints:
 
-- Placidus / quadrant house cusps unless separately verified;
+- Placidus / quadrant house cusps unless separately verified by Task 11.4d;
 - Pars Fortuna;
 - Arabic Parts;
 - Fixed Stars;
@@ -347,6 +530,15 @@ Deferred until later tasks/sprints:
 - Birth hospital coordinates are optional.
 - Country/region only is not enough.
 - City without coordinates is not enough.
-- Whole Sign is the initial safe house system unless dependency audit proves a validated quadrant cusp implementation is available.
+- Sprint 11 targets Whole Sign, Equal House and Placidus as separate systems.
+- Whole Sign is the first implementation target.
+- Equal House follows Whole Sign as the second implementation target.
+- Placidus requires a validated dependency / calculation path and benchmark fixtures.
+- If no validated Placidus path is found, Placidus remains explicit unsupported / deferred.
+- 0° Aries is the shared zodiac longitude reference, not a Placidus house anchor.
+- Whole Sign is sign-based.
+- Equal House is exact-ASC-longitude based.
+- Placidus is quadrant-cusp based and anchored by ASC/MC.
+- Every result must include `houseSystem`.
 - Houses / ASC / MC belong to Sprint 11.
 - Pars Fortuna / Arabic Parts remain Sprint 12.

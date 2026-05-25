@@ -536,12 +536,28 @@ Guardrails:
 - city-level coordinates are acceptable for normal mode;
 - hospital-level coordinates are optional.
 
-Initial house system policy:
+House systems policy:
 
-- use Whole Sign first unless a validated quadrant house-cusp calculation is approved;
+- Sprint 11 targets `whole-sign`, `equal-house` and `placidus` as separate systems;
+- systems must not be mixed and every result must include `houseSystem`;
+- existing profile-level `houseSystem` selection is the source of truth for future house calculations;
+- current stored profile values are `wholeSign` (Whole Sign), `equal` (Equal House / Равнодомная) and `placidus` (Placidus);
+- future engines must normalize current profile values into canonical calculation keys: `whole-sign`, `equal-house` and `placidus`;
+- default initial UI may use Whole Sign only when the profile has no saved house system selection;
+- do not silently override a user-selected house system;
+- Whole Sign is sign-based: House 1 = ASC sign, each house = full zodiac sign;
+- Equal House is exact-ASC-longitude based: cusp 1 = ASC longitude, cusp N = `normalize(ASC longitude + (N - 1) * 30°)`;
+- Placidus is quadrant-cusp based and anchored by ASC/MC;
+- Placidus must be validated before active support and must not silently fallback to Equal House or Whole Sign;
+- if Placidus is selected before validated support exists, return explicit `status: "unsupported"` with `reason: "placidusNotValidated"`;
+- Equal House must not silently fallback to Whole Sign;
+- 0° Aries is the zodiac longitude coordinate reference for all systems;
+- 0° Aries is not the Placidus house anchor;
 - ASC / MC are still calculated as angles;
 - DSC / IC are derived from ASC / MC;
 - do not call Whole Sign `Placidus`;
+- do not call Equal House `Placidus`;
+- do not approximate Placidus with Equal House or Whole Sign;
 - always expose the `houseSystem` label when houses are displayed or debugged;
 - Placidus / quadrant cusps are deferred unless separately verified.
 
@@ -555,6 +571,35 @@ ASC / MC calculation policy:
 - obliquity source: internal mean-obliquity approximation until a separately validated obliquity source is approved;
 - derive DSC / IC by adding 180 degrees to ASC / MC;
 - do not calculate houses, house cusps or planet-in-house assignment in the ASC / MC module.
+
+Whole Sign boundary policy:
+
+- House 1 = ASC sign;
+- planet-in-house depends on sign relative to ASC sign;
+- planet degree is not needed for house number;
+- MC remains independent angle;
+- Whole Sign does not use exact ASC degree as cusp 1;
+- Whole Sign does not start at 0° Aries unless ASC sign is Aries and the relevant sign boundary is Aries 0°.
+
+Equal House boundary policy:
+
+- cusp 1 = exact ASC longitude;
+- cusp N = `normalize(ASC longitude + (N - 1) * 30°)`;
+- cusp labels should include zodiac sign + degree;
+- planet-in-house requires longitude comparison across wrapped cusps;
+- Equal House is not sign-only and is not Placidus;
+- Equal House does not start at 0° Aries unless ASC itself is exactly 0° Aries.
+
+Placidus boundary policy:
+
+- Placidus uses quadrant cusps;
+- ASC = cusp 1;
+- MC = cusp 10;
+- planet-in-house requires longitude comparison against Placidus cusps;
+- unsupported / high-latitude / circumpolar cases must fail safely;
+- Placidus cusps are output as zodiac longitudes measured from 0° Aries;
+- Placidus does not start from 0° Aries as house anchor;
+- Placidus must not be approximated by Equal House or Whole Sign.
 
 Deferred:
 

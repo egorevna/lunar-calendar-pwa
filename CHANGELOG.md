@@ -1,5 +1,26 @@
 # Changelog
 
+## 2026-05-25 — Document profile house system selection policy
+
+- Added docs-only follow-up after Task 11.4a.
+- Documented existing profile field `houseSystem` and stored values `wholeSign`, `equal` and `placidus`.
+- Clarified that future house calculations must use the saved profile-level house system selection as the source of truth and normalize it to canonical keys `whole-sign`, `equal-house` and `placidus`.
+- Added Task 11.4e — House System Resolver / Selected System Router.
+- Clarified unsupported selected-system behavior: unsupported Placidus returns explicit `status: "unsupported"` / `reason: "placidusNotValidated"` and never silently falls back to Whole Sign or Equal House.
+- No code, `src/`, tests, UI, provider calculations, PWA cache, package files or generated ephemeris data were changed.
+
+## 2026-05-25 — Complete Task 11.4a house systems strategy audit
+
+- Added docs-only House Systems Strategy / Dependency Audit.
+- Sprint 11 now targets Whole Sign, Equal House and Placidus as separate house systems.
+- Clarified that 0° Aries is the shared zodiac longitude coordinate reference, not a Placidus house anchor.
+- Clarified Whole Sign as sign-based, Equal House as exact-ASC-longitude based and Placidus as quadrant-cusp based / ASC-MC anchored.
+- Recorded local dependency audit result: current `astronomy-engine` / vendor files expose sidereal, horizon and rotation helpers, but no ready Placidus / house-cusp API was found.
+- Recorded Placidus validation policy: no implementation from memory, benchmark fixtures required, no silent fallback to Equal House or Whole Sign.
+- Updated `SPRINT_11_PLAN.md`, `HOUSES_ASC_MC_STRATEGY.md`, `TODO.md`, `PROJECT_STATE.md` and `ASTRO_LOGIC.md`.
+- No code, `src/`, tests, UI, PWA cache, provider calculations, package files, generated ephemeris data, fixed stars, Pars Fortuna / Arabic Parts, transits, interpretations or ritual scoring were changed.
+- Next active task is Task 11.4b — Whole Sign Houses Engine, but it was not started.
+
 ## 2026-05-25 — Complete Task 11.3 ASC / MC calculation engine
 
 - Added pure `src/ascMc.js`.
@@ -11,7 +32,7 @@
 - Exposed capabilities with ASC / MC / DSC / IC enabled while houses, house cusps, planet-in-house, Placidus, interpretations, transits and fixed stars remain disabled.
 - Updated `TODO.md`, `PROJECT_STATE.md`, `ARCHITECTURE.md` and `ASTRO_LOGIC.md`.
 - No houses engine, house cusps, planet-in-house assignment, UI, PWA cache, provider calculations, package files, generated ephemeris data, fixed stars, Pars Fortuna / Arabic Parts, transits, interpretations or ritual scoring were added.
-- Next active task is Task 11.4 — Houses Engine, but it was not started.
+- At completion time, the next active task was the Houses Engine, but it was not started; this was later split by Task 11.4a into system-specific subtasks.
 
 ## 2026-05-25 — Complete Task 11.2 birth input and coordinates guardrails
 

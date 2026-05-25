@@ -2951,7 +2951,28 @@ Result:
 - Exposed capability flags with ASC / MC / DSC / IC enabled and houses, house cusps, planet-in-house, Placidus, interpretations, transits and fixed stars disabled.
 - No houses engine, house cusps, planet-in-house assignment, UI, app wiring, provider calculations, package files, PWA cache or ephemeris data were changed.
 
-## Task 11.4 — Houses Engine
+## Task 11.4a — House Systems Strategy / Dependency Audit
+
+Status: done
+
+Goal:
+
+Update Sprint 11 strategy before house engine implementation so house systems are separate and system-aware.
+
+Result:
+
+- Added House Systems Strategy / Dependency Audit as a docs-only inserted task.
+- Sprint 11 now targets three separate house systems: `whole-sign`, `equal-house` and `placidus`.
+- Confirmed Whole Sign is the first implementation target and Equal House follows as a separate second implementation target.
+- Confirmed Placidus requires validated dependency / calculation path and benchmark fixtures before active support.
+- Confirmed local `astronomy-engine` / vendor files expose sidereal, horizon and rotation helpers but no ready Placidus / house-cusp API.
+- Clarified that 0° Aries is the zodiac longitude reference for all systems, not the Placidus house anchor.
+- Clarified that Equal House is anchored at exact ASC longitude.
+- Added follow-up profile house system selection policy: current profile `houseSystem` values are `wholeSign`, `equal` and `placidus`, and future calculations must normalize them to canonical keys without silently overriding the saved selection.
+- Inserted Task 11.4e for selected-system routing after the individual house engines.
+- No code, `src/`, tests, UI, provider calculations, PWA cache, package files or generated ephemeris data were changed.
+
+## Task 11.4b — Whole Sign Houses Engine
 
 Status: active
 
@@ -2959,14 +2980,52 @@ Goal:
 
 Create the pure Whole Sign houses engine after ASC / MC angles are available.
 
-Do not start Task 11.4 until explicitly requested.
+Do not start Task 11.4b until explicitly requested.
+
+## Task 11.4c — Equal House Engine
+
+Status: not started
+
+Goal:
+
+Create the pure Equal House engine as a separate system after Whole Sign.
+
+Do not start Task 11.4c until explicitly requested.
+
+## Task 11.4d — Placidus Engine / Validated Integration
+
+Status: not started
+
+Goal:
+
+Implement Placidus only if a validated dependency / calculation path and benchmark fixtures exist. If no validated path exists, keep Placidus explicit unsupported / deferred with tests for unsupported behavior.
+
+Do not start Task 11.4d until explicitly requested.
+
+## Task 11.4e — House System Resolver / Selected System Router
+
+Status: not started
+
+Goal:
+
+Read the selected house system from profile or explicit input, normalize current profile values (`wholeSign`, `equal`, `placidus`) into canonical keys (`whole-sign`, `equal-house`, `placidus`), call the correct supported engine, and return explicit unsupported status for unsupported selected systems.
+
+Rules:
+
+- profile-level `houseSystem` is the source of truth for future house calculations;
+- default Whole Sign only when profile has no saved house system selection;
+- never silently fallback from Placidus to Whole Sign or Equal House;
+- never silently fallback from Equal House to Whole Sign;
+- always include `houseSystem` in the result.
+
+Do not start Task 11.4e until explicitly requested.
 
 ## Later Sprint 11 Tasks
 
 Status: not started
 
-- Task 11.5 — Houses Validation / Fixtures.
-- Task 11.6 — Planet-in-House Assignment.
+- Task 11.5 — Houses Validation / Fixtures for Whole Sign / Equal House / Placidus.
+- Task 11.6 — Planet-in-House Assignment for Selected House System.
 - Task 11.7 — Houses / ASC / MC Display Helper.
 - Task 11.8 — Houses / ASC / MC Collapsible UI.
 - Task 11.9 — Houses / ASC / MC Debug.
