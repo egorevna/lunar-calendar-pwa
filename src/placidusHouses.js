@@ -328,24 +328,26 @@ function solveZodiacArc(startLongitude, endLongitude, evaluator) {
     return null;
   }
 
-  let previousUnwrapped = startLongitude;
-  let previousValue = evaluator(normalizeDegrees(previousUnwrapped));
+  let previousUnwrapped = null;
+  let previousValue = null;
 
   for (let index = 1; index <= ROOT_SAMPLES; index += 1) {
     const currentUnwrapped = startLongitude + ((arc * index) / ROOT_SAMPLES);
     const currentValue = evaluator(normalizeDegrees(currentUnwrapped));
 
-    if (!Number.isFinite(currentValue) || !Number.isFinite(previousValue)) {
-      previousUnwrapped = currentUnwrapped;
-      previousValue = currentValue;
+    if (!Number.isFinite(currentValue)) {
       continue;
     }
 
     if (Math.abs(currentValue) < ROOT_EPSILON) {
-      return normalizeDegrees(currentUnwrapped);
+      if (index < ROOT_SAMPLES) {
+        return normalizeDegrees(currentUnwrapped);
+      }
+
+      continue;
     }
 
-    if (Math.sign(previousValue) !== Math.sign(currentValue)) {
+    if (previousValue !== null && Math.sign(previousValue) !== Math.sign(currentValue)) {
       return bisectZodiacArc(previousUnwrapped, currentUnwrapped, evaluator);
     }
 
@@ -474,10 +476,10 @@ function getProfileCoordinatePair(profile) {
   }
 
   const candidates = [
-    [birthPlace.latitude, birthPlace.longitude],
-    [birthPlace.lat, birthPlace.lng],
     [birthPlace.coordinates?.latitude, birthPlace.coordinates?.longitude],
     [birthPlace.coordinates?.lat, birthPlace.coordinates?.lng],
+    [birthPlace.latitude, birthPlace.longitude],
+    [birthPlace.lat, birthPlace.lng],
   ];
   const matchingPair = candidates.find(([latitude, longitude]) => (
     Number.isFinite(latitude) && Number.isFinite(longitude)

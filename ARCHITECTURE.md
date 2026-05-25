@@ -193,6 +193,7 @@ Responsibilities:
 - renders the collapsible natal aspects block inside `Мои карты` through `src/profileUi.js` and `src/natalAspectsForProfile.js` when natal planets are ready
 - renders the collapsible essential dignities block inside `Мои карты` through `src/profileUi.js` and `src/essentialDignitiesForProfile.js` when natal planets are ready
 - renders the collapsible `Термы, деканы и градусы` block inside `Мои карты` through `src/profileUi.js` and `src/detailedDignitiesForProfile.js` when natal planets are ready
+- renders the collapsible `Дома и углы карты` block inside `Мои карты` through `src/profileUi.js` and `src/housesForProfile.js` when house input guardrails and selected house-system calculations are ready
 - renders the compact `Лично для меня` dashboard block through `src/personalContext.js`, `src/personalRecommendations.js`, and `src/profileUi.js`
 - passes safe profile summary state into the hidden debug panel
 
@@ -496,9 +497,23 @@ Current responsibilities:
 - format Whole Sign house sign rows and Equal House / Placidus cusp house rows from already-ready house results;
 - format ready planet-in-house assignments into compact display rows;
 - format safe not-ready / unsupported fallback states for future UI;
-- summarize display readiness and expose display limitations.
+- summarize display readiness and expose display limitations;
+- for selected-system router results, use the unwrapped selected engine result as the single source for both angle rows and house rows.
 
 This module does not calculate houses, calculate ASC / MC, route selected house systems, assign planets to houses, call provider modules, import calculation engines, render UI, read localStorage, mutate inputs, expose raw birth data / raw birth coordinates, expose raw planet longitude, or add interpretations.
+
+## `src/housesForProfile.js`
+
+Defines the Sprint 11 profile-level Houses / ASC / MC view-model helper for the `Мои карты` UI block.
+
+Current responsibilities:
+
+- request the selected house-system result through `src/houseSystemResolver.js`;
+- request natal planets only when houses are ready and pass the already calculated selected house result into `src/planetInHouses.js`;
+- format the combined result through `src/housesDisplay.js`;
+- return UI-ready safe rows for selected house system, ASC / MC / DSC / IC, houses, planet assignments, fallback messages and limitations.
+
+This module does not calculate houses, calculate ASC / MC, calculate planets, call provider modules directly, render DOM, read localStorage, mutate profiles, expose raw birth data / raw birth coordinates / raw planet longitudes, or add interpretations.
 
 ## `src/planetaryPositionProvider.js`
 
@@ -1098,11 +1113,13 @@ Current responsibilities:
 - expose default profile settings for birth time accuracy, house system, zodiac, and current calculation place;
 - normalize partial profile input into a complete profile object;
 - trim user text fields;
+- normalize optional manual birth place coordinates into `birthPlace.coordinates.latitude` / `longitude`;
+- validate manual birth place coordinates as a pair with latitude `-90..90` and longitude `-180..180`;
 - reject unsupported enum values during validation;
 - validate required profile fields and return testable errors;
 - expose a boolean `isValidProfile()` wrapper.
 
-The module does not store profiles, does not use `localStorage`, does not render UI, does not call geocoding APIs, and does not calculate natal charts, houses, ASC / MC, or personal transits.
+The module does not store profiles, does not use `localStorage`, does not render UI, does not call geocoding APIs, does not infer coordinates from city/country/timezone, and does not calculate natal charts, houses, ASC / MC, or personal transits.
 
 ## `src/profileStorage.js`
 
@@ -1137,9 +1154,11 @@ Current responsibilities:
 - describe create/edit form titles and delete-button visibility;
 - convert a profile into safe form values for prefill;
 - map profile validation errors into short Russian UI messages;
+- expose manual birth place latitude / longitude form values for profile editing;
 - format the readiness-only `Натальные планеты` block inside `Мои карты` using `src/birthDateTime.js`;
 - translate natal readiness missing fields into human-readable labels without raw birth data or technical keys;
 - format the collapsible `Натальные аспекты`, `Достоинства планет` and `Термы, деканы и градусы` block view models from their profile helpers;
+- format the collapsible `Дома и углы карты` block view model from `src/housesForProfile.js`;
 - format the compact `Лично для меня` dashboard block from `src/personalContext.js`;
 - include safe personal recommendation sections from `src/personalRecommendations.js`;
 - translate missing personal profile fields into human-readable Russian copy without rendering technical keys.
@@ -1256,7 +1275,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v77
+lunar-calendar-v83
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -1349,9 +1368,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 33. `src/housesDisplay.js` formats ready Houses / ASC / MC / planet-in-house results into safe display rows and fallback states. It does not calculate houses, route selected systems, assign planets, render UI or add interpretations.
 
-34. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+34. `src/housesForProfile.js` builds the profile-level safe view model for the `Дома и углы карты` UI block by composing selected-system houses, planet-in-house assignments and display formatting. It passes the already calculated selected house result into planet-in-house assignment so the view model does not combine independent house calculations. It does not calculate houses or render UI directly.
 
-35. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+35. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+
+36. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
 
 35. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
 
@@ -1763,7 +1784,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v72
+lunar-calendar-v83
 ```
 
 Important operational rule:
@@ -2065,7 +2086,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v77
+lunar-calendar-v83
 ```
 
 If this value changes in `sw.js`, update this section.

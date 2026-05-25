@@ -84,6 +84,40 @@ test('loadProfiles returns saved normalized profiles', () => {
   assert.equal(profiles[0].name, 'Анна');
 });
 
+test('loadProfiles normalizes manual nested birth coordinates over stale legacy direct coordinates', () => {
+  clearProfileStorageForTests();
+
+  saveProfiles([{
+    ...validProfile,
+    id: 'profile-egor-moscow-placidus',
+    name: 'Egor Moscow Placidus Regression',
+    birthDate: '1981-04-16',
+    birthTime: '04:45',
+    houseSystem: 'placidus',
+    birthPlace: {
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+      latitude: 55.7558,
+      longitude: 37.53,
+      coordinates: {
+        latitude: 55.7558,
+        longitude: 37.6173,
+      },
+    },
+  }]);
+  const profile = loadProfiles()[0];
+
+  assert.equal(profile.houseSystem, 'placidus');
+  assert.equal(profile.birthPlace.timezone, 'Europe/Moscow');
+  assert.deepEqual(profile.birthPlace.coordinates, {
+    latitude: 55.7558,
+    longitude: 37.6173,
+  });
+  assert.equal(profile.birthPlace.latitude, 55.7558);
+  assert.equal(profile.birthPlace.longitude, 37.6173);
+});
+
 test('corrupted JSON does not break loadProfiles', () => {
   clearProfileStorageForTests();
   localStorage.setItem('astroPwa.profiles.v1', '{broken');

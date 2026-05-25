@@ -32,6 +32,36 @@ function normalizeCoordinate(value) {
   return Number.isFinite(value) ? value : null;
 }
 
+function hasCoordinateToken(value) {
+  return value !== undefined && value !== null && (Number.isFinite(value) || trimString(value) !== '');
+}
+
+function getBirthCoordinateInput(place) {
+  const coordinates = isPlainObject(place.coordinates) ? place.coordinates : {};
+  const nestedLatitude = coordinates.latitude ?? coordinates.lat;
+  const nestedLongitude = coordinates.longitude ?? coordinates.lng;
+  const directLatitude = place.latitude ?? place.lat;
+  const directLongitude = place.longitude ?? place.lng;
+  const hasNested = hasCoordinateToken(nestedLatitude) || hasCoordinateToken(nestedLongitude);
+
+  return {
+    latitude: hasNested ? nestedLatitude : directLatitude,
+    longitude: hasNested ? nestedLongitude : directLongitude,
+  };
+}
+
+function normalizeBirthCoordinates(place) {
+  const coordinateInput = getBirthCoordinateInput(place);
+  const latitude = normalizeCoordinate(coordinateInput.latitude);
+  const longitude = normalizeCoordinate(coordinateInput.longitude);
+
+  if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) {
+    return null;
+  }
+
+  return { latitude, longitude };
+}
+
 function normalizeEnum(value, allowedValues, fallback) {
   const normalized = trimString(value);
   return allowedValues.includes(normalized) ? normalized : fallback;
@@ -39,13 +69,17 @@ function normalizeEnum(value, allowedValues, fallback) {
 
 function normalizeBirthPlace(input) {
   const place = input && typeof input === 'object' ? input : {};
+  const coordinates = normalizeBirthCoordinates(place);
+  const latitude = coordinates ? coordinates.latitude : normalizeCoordinate(place.latitude);
+  const longitude = coordinates ? coordinates.longitude : normalizeCoordinate(place.longitude);
 
   return {
     city: trimString(place.city),
     country: trimString(place.country),
-    latitude: normalizeCoordinate(place.latitude),
-    longitude: normalizeCoordinate(place.longitude),
+    latitude,
+    longitude,
     timezone: trimString(place.timezone),
+    ...(coordinates ? { coordinates } : {}),
   };
 }
 
@@ -88,6 +122,37 @@ function isValidDateString(value) {
 
 function isValidTimeString(value) {
   return /^([01]\d|2[0-3]):[0-5]\d$/.test(trimString(value));
+}
+
+function getCoordinateValidationState(value) {
+  const empty = !hasCoordinateToken(value);
+  const number = Number.isFinite(value) ? value : null;
+
+  return { empty, number };
+}
+
+function getBirthCoordinateValidationErrors(birthPlace) {
+  const place = isPlainObject(birthPlace) ? birthPlace : {};
+  const coordinateInput = getBirthCoordinateInput(place);
+  const latitude = getCoordinateValidationState(coordinateInput.latitude);
+  const longitude = getCoordinateValidationState(coordinateInput.longitude);
+
+  if (latitude.empty && longitude.empty) {
+    return [];
+  }
+
+  if (latitude.empty || longitude.empty) {
+    return ['birthPlace.coordinates pair is incomplete'];
+  }
+
+  return [
+    !Number.isFinite(latitude.number) || latitude.number < -90 || latitude.number > 90
+      ? 'birthPlace.coordinates.latitude is out of range'
+      : null,
+    !Number.isFinite(longitude.number) || longitude.number < -180 || longitude.number > 180
+      ? 'birthPlace.coordinates.longitude is out of range'
+      : null,
+  ].filter(Boolean);
 }
 
 export function createProfileId() {
@@ -193,6 +258,8 @@ export function validateProfile(profile) {
   if (!normalized.birthPlace.country) {
     errors.push('birthPlace.country is required');
   }
+
+  errors.push(...getBirthCoordinateValidationErrors(source.birthPlace));
 
   const rawCurrentPlace = isPlainObject(source.currentPlace) ? source.currentPlace : {};
 

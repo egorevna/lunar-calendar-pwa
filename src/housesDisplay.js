@@ -155,11 +155,11 @@ export function formatHousesResult(result = null) {
   }
 
   const source = getDisplaySource(result);
-  const houseSystem = normalizeText(result.houseSystem) || normalizeText(source.houseSystem);
-  const houseSystemLabel = normalizeText(result.houseSystemLabel) || normalizeText(source.houseSystemLabel);
+  const houseSystem = normalizeText(source.houseSystem) || normalizeText(result.houseSystem);
+  const houseSystemLabel = normalizeText(source.houseSystemLabel) || normalizeText(result.houseSystemLabel);
   const houseSystemItem = formatHouseSystemLabel(houseSystem, houseSystemLabel);
-  const angles = formatHouseAngles(result.angles ?? source.angles);
-  const houses = formatHouseList(result.houses ?? source.houses);
+  const angles = formatHouseAngles(source.angles ?? result.angles);
+  const houses = formatHouseList(source.houses ?? result.houses);
 
   return safeDisplayItem({
     status: READY_STATUS,

@@ -46,6 +46,61 @@ const profileBase = Object.freeze({
   zodiac: 'tropical',
 });
 
+const moscowReadyStateRegressionProfile = Object.freeze({
+  id: 'profile-placidus-moscow-1981-regression',
+  name: 'Regression',
+  birthDate: '1981-04-16',
+  birthTime: '04:45',
+  birthTimeAccuracy: 'exact',
+  birthPlace: Object.freeze({
+    city: 'Москва',
+    country: 'Россия',
+    coordinates: Object.freeze({
+      latitude: 55.7558,
+      longitude: 37.6173,
+    }),
+    timezone: 'Europe/Moscow',
+  }),
+  currentPlace: Object.freeze({
+    mode: 'moscow',
+    city: 'Москва',
+    country: 'Россия',
+    timezone: 'Europe/Moscow',
+  }),
+  houseSystem: 'placidus',
+  zodiac: 'tropical',
+});
+
+const moscowReadyStateExpectedCusps = Object.freeze([
+  Object.freeze({ number: 1, longitude: 314.954953 }),
+  Object.freeze({ number: 2, longitude: 24.035906 }),
+  Object.freeze({ number: 3, longitude: 55.501108 }),
+  Object.freeze({ number: 4, longitude: 74.282890 }),
+  Object.freeze({ number: 5, longitude: 89.780290 }),
+  Object.freeze({ number: 6, longitude: 106.703066 }),
+  Object.freeze({ number: 7, longitude: 134.954953 }),
+  Object.freeze({ number: 8, longitude: 204.035906 }),
+  Object.freeze({ number: 9, longitude: 235.501108 }),
+  Object.freeze({ number: 10, longitude: 254.282890 }),
+  Object.freeze({ number: 11, longitude: 269.780290 }),
+  Object.freeze({ number: 12, longitude: 286.703066 }),
+]);
+
+const moscowLegacyLongitudeExpectedCusps = Object.freeze([
+  Object.freeze({ number: 1, longitude: 314.772790 }),
+  Object.freeze({ number: 2, longitude: 23.880137 }),
+  Object.freeze({ number: 3, longitude: 55.401404 }),
+  Object.freeze({ number: 4, longitude: 74.201683 }),
+  Object.freeze({ number: 5, longitude: 89.700303 }),
+  Object.freeze({ number: 6, longitude: 106.605615 }),
+  Object.freeze({ number: 7, longitude: 134.772790 }),
+  Object.freeze({ number: 8, longitude: 203.880137 }),
+  Object.freeze({ number: 9, longitude: 235.401404 }),
+  Object.freeze({ number: 10, longitude: 254.201683 }),
+  Object.freeze({ number: 11, longitude: 269.700303 }),
+  Object.freeze({ number: 12, longitude: 286.605615 }),
+]);
+
 function clone(value) {
   return JSON.parse(JSON.stringify(value));
 }
@@ -251,6 +306,75 @@ test('Placidus returns houses with wrapped spans and safe formatted cusp labels'
     assert.equal(house.text.startsWith(`${index + 1} дом — `), true);
   });
   assert.equal(result.houses.some((house) => house.wraps), true);
+});
+
+test('Moscow 1981 Placidus ready-state regression does not duplicate intermediate cusps', () => {
+  const result = calculatePlacidusHousesForProfile(clone(moscowReadyStateRegressionProfile));
+  const tolerance = 0.05;
+
+  assertReadyPlacidusResult(result);
+  result.cusps.forEach((cusp, index) => {
+    const expected = moscowReadyStateExpectedCusps[index];
+
+    assert.equal(cusp.number, expected.number);
+    assertWithinTolerance(
+      cusp.longitude,
+      expected.longitude,
+      tolerance,
+      `moscow-1981: cusp ${expected.number}`,
+    );
+  });
+
+  assertWithinTolerance(result.cusps[0].longitude, result.angles.asc.longitude, tolerance, 'moscow-1981: cusp 1 ASC');
+  assertWithinTolerance(result.cusps[9].longitude, result.angles.mc.longitude, tolerance, 'moscow-1981: cusp 10 MC');
+  assertWithinTolerance(result.cusps[6].longitude, result.cusps[0].longitude + 180, tolerance, 'moscow-1981: cusp 7 opposite 1');
+  assertWithinTolerance(result.cusps[3].longitude, result.cusps[9].longitude + 180, tolerance, 'moscow-1981: cusp 4 opposite 10');
+
+  const roundedLongitudes = result.cusps.map((cusp) => cusp.longitude.toFixed(6));
+  const texts = result.houses.map((house) => house.text);
+
+  assert.equal(new Set(roundedLongitudes).size, 12);
+  assert.equal(new Set(texts).size, 12);
+  assert.notEqual(roundedLongitudes[3], roundedLongitudes[4]);
+  assert.notEqual(roundedLongitudes[4], roundedLongitudes[5]);
+  assert.notEqual(roundedLongitudes[9], roundedLongitudes[10]);
+  assert.notEqual(roundedLongitudes[10], roundedLongitudes[11]);
+  assert.notEqual(texts[3], texts[4]);
+  assert.notEqual(texts[4], texts[5]);
+  assert.notEqual(texts[9], texts[10]);
+  assert.notEqual(texts[10], texts[11]);
+});
+
+test('Moscow 1981 Placidus does not collapse intermediate cusps when MC is an endpoint root', () => {
+  const result = calculatePlacidusHouses({
+    utcDateTime: '1981-04-16T00:45:00.000Z',
+    latitude: 55.7558,
+    longitude: 37.53,
+  });
+  const tolerance = 0.05;
+
+  assertReadyPlacidusResult(result);
+  result.cusps.forEach((cusp, index) => {
+    const expected = moscowLegacyLongitudeExpectedCusps[index];
+
+    assert.equal(cusp.number, expected.number);
+    assertWithinTolerance(
+      cusp.longitude,
+      expected.longitude,
+      tolerance,
+      `moscow-1981-legacy-longitude: cusp ${expected.number}`,
+    );
+  });
+
+  const roundedLongitudes = result.cusps.map((cusp) => cusp.longitude.toFixed(6));
+  const texts = result.houses.map((house) => house.text);
+
+  assert.equal(new Set(roundedLongitudes).size, 12);
+  assert.equal(new Set(texts).size, 12);
+  assert.notEqual(texts[3], texts[4]);
+  assert.notEqual(texts[4], texts[5]);
+  assert.notEqual(texts[9], texts[10]);
+  assert.notEqual(texts[10], texts[11]);
 });
 
 test('high latitude unsupported fixture returns explicit unsupported status', () => {

@@ -1,5 +1,64 @@
 # Changelog
 
+## 2026-05-25 — Harden Houses display single-source consistency
+
+- Fixed the Houses UI view-model source path so `src/housesDisplay.js` uses the unwrapped selected house engine result as the single source for both angles and house rows.
+- Updated `src/housesForProfile.js` to pass the already calculated selected house result into planet-in-house assignment instead of triggering a second independent house calculation from the same profile.
+- Added regressions for Placidus display invariants: displayed ASC = house 1 cusp, MC = house 10 cusp, DSC = house 7 cusp and IC = house 4 cusp.
+- Verified the Moscow `1981-04-16 04:45 Europe/Moscow` Placidus expected rows against the local `swisseph.swe_houses` oracle; houses 5/6/11/12 are `Близнецы 29°46′`, `Рак 16°42′`, `Стрелец 29°46′`, `Козерог 16°42′` for coordinates `55.7558 / 37.6173`.
+- Bumped PWA cache to `lunar-calendar-v83` for the app-visible Houses display/source-path fix.
+- No fake Placidus, Equal House / Whole Sign fallback, provider calculations, UI copy, package files or generic `src/houses.js` / `src/houseSystems.js` were added.
+- Task 11.9 was not started.
+
+## 2026-05-25 — Harden Houses UI runtime source path
+
+- Added a full Moscow `1981-04-16 04:45 Europe/Moscow` Placidus regression that checks UTC conversion, ASC / MC, raw Placidus cusps, `housesForProfile` rows and `profileUi` view-model rows in one runtime path.
+- Confirmed the current local runtime path renders distinct houses 1–12 and does not duplicate houses 4/5/6 or 10/11/12.
+- Fixed a real mixed-shape profile bug: new manual `birthPlace.coordinates` now wins over stale legacy `birthPlace.latitude` / `longitude` direct fields.
+- Fixed a Placidus root-solver edge case where an endpoint root at MC / IC could collapse intermediate cusps to repeated 4/5/6 or 10/11/12 rows.
+- Bumped PWA cache to `lunar-calendar-v82` so browsers controlled by the service worker do not keep older Houses / Placidus modules.
+- No fake Placidus, Equal House / Whole Sign fallback, provider calculations, UI copy, package files or generic `src/houses.js` / `src/houseSystems.js` were added.
+- Task 11.9 was not started.
+
+## 2026-05-25 — Complete Task 11.8c Houses UI ready-state verification
+
+- Verified the Moscow `1981-04-16 04:45 Europe/Moscow` Placidus ready-state case after manual coordinate input.
+- Confirmed raw Placidus cusps are distinct and align with ASC / MC / opposite cusp invariants.
+- Confirmed the profile-level Houses UI view model formats distinct Placidus house rows for the same profile.
+- Added regression tests to prevent duplicated Placidus cusps/rows for houses 4/5/6 and 10/11/12.
+- No Placidus fallback to Equal House or Whole Sign was added.
+- No provider calculations, UI copy, package files or generic `src/houses.js` / `src/houseSystems.js` were changed.
+- Next active task is Task 11.9 — Houses / ASC / MC Debug, but it was not started.
+
+## 2026-05-25 — Complete Task 11.8b Birth Place Coordinates / Manual Coordinates Input
+
+- Added manual `Широта места рождения` and `Долгота места рождения` fields to the profile form.
+- Stored valid manual coordinates under `profile.birthPlace.coordinates.latitude` / `longitude` while preserving city, country, timezone and house-system fields.
+- Added profile validation for paired coordinates, latitude `-90..90` and longitude `-180..180`; empty coordinate fields remain allowed and do not store `NaN`.
+- Added city-level coordinate helper copy and kept hospital-level coordinates optional.
+- Confirmed no geocoding API, city lookup, browser location, Moscow auto-fill, provider changes, package changes or house calculation engine changes were added.
+- Bumped PWA cache to `lunar-calendar-v80`.
+- Next active task is Task 11.8c — Houses UI Ready State Verification, but it was not started.
+
+## 2026-05-25 — Fix Houses / ASC / MC fallback copy layout
+
+- Removed duplicated fallback message rendering in the `Дома и углы карты` UI block.
+- Kept the block header to title plus `Показать` / `Скрыть`; status and fallback message now render once below the header.
+- Kept limitations below the fallback message without duplicating the main fallback reason.
+- Bumped PWA cache to `lunar-calendar-v79`.
+- No calculation engines, selected-system router, provider calculations, interpretations, package files or generic `src/houses.js` / `src/houseSystems.js` were changed.
+
+## 2026-05-25 — Complete Task 11.8 Houses / ASC / MC collapsible UI
+
+- Added profile-level `src/housesForProfile.js` view-model helper.
+- Added `test/housesForProfile.test.js`.
+- Added the collapsible `Дома и углы карты` block inside `Мои карты` after `Термы, деканы и градусы`.
+- The block is collapsed by default and shows selected house system, ASC / MC / DSC / IC, houses and planet-in-house rows when ready.
+- Added safe fallback / unsupported UI states without raw birth data, raw coordinates, raw planet longitudes, interpretations or ritual scoring.
+- Bumped PWA cache to `lunar-calendar-v78` and cached the app-visible houses modules.
+- Kept calculation engines, selected-system router, provider calculations, package files and generic `src/houses.js` / `src/houseSystems.js` unchanged.
+- Next active task is Task 11.9 — Houses / ASC / MC Debug, but it was not started.
+
 ## 2026-05-25 — Complete Task 11.7 Houses / ASC / MC display helper
 
 - Added pure `src/housesDisplay.js`.

@@ -24,6 +24,10 @@ const cancer = Object.freeze({ key: 'cancer', ru: 'Рак', symbol: '♋' });
 const libra = Object.freeze({ key: 'libra', ru: 'Весы', symbol: '♎' });
 const capricorn = Object.freeze({ key: 'capricorn', ru: 'Козерог', symbol: '♑' });
 const taurus = Object.freeze({ key: 'taurus', ru: 'Телец', symbol: '♉' });
+const aquarius = Object.freeze({ key: 'aquarius', ru: 'Водолей', symbol: '♒' });
+const gemini = Object.freeze({ key: 'gemini', ru: 'Близнецы', symbol: '♊' });
+const leo = Object.freeze({ key: 'leo', ru: 'Лев', symbol: '♌' });
+const sagittarius = Object.freeze({ key: 'sagittarius', ru: 'Стрелец', symbol: '♐' });
 
 function angle(key, label, sign, degree, minutes, longitude) {
   return Object.freeze({
@@ -117,6 +121,51 @@ const routerResult = Object.freeze({
   result: placidusResult,
   houses: placidusResult.houses,
   angles,
+});
+
+const correctPlacidusAngles = Object.freeze({
+  asc: angle('asc', 'ASC', aquarius, 14, 57, 314.950768),
+  mc: angle('mc', 'MC', sagittarius, 14, 16, 254.283055),
+  dsc: angle('dsc', 'DSC', leo, 14, 57, 134.950768),
+  ic: angle('ic', 'IC', gemini, 14, 16, 74.283055),
+});
+
+const stalePlacidusAngles = Object.freeze({
+  asc: angle('asc', 'ASC', aquarius, 14, 47, 314.78),
+  mc: angle('mc', 'MC', sagittarius, 14, 12, 254.20),
+  dsc: angle('dsc', 'DSC', leo, 14, 47, 134.78),
+  ic: angle('ic', 'IC', gemini, 14, 12, 74.20),
+});
+
+const correctPlacidusHouses = Object.freeze([
+  Object.freeze({ number: 1, label: '1 дом', text: '1 дом — Водолей 14°57′' }),
+  Object.freeze({ number: 4, label: '4 дом', text: '4 дом — Близнецы 14°16′' }),
+  Object.freeze({ number: 5, label: '5 дом', text: '5 дом — Близнецы 29°46′' }),
+  Object.freeze({ number: 6, label: '6 дом', text: '6 дом — Рак 16°42′' }),
+  Object.freeze({ number: 7, label: '7 дом', text: '7 дом — Лев 14°57′' }),
+  Object.freeze({ number: 10, label: '10 дом', text: '10 дом — Стрелец 14°16′' }),
+  Object.freeze({ number: 11, label: '11 дом', text: '11 дом — Стрелец 29°46′' }),
+  Object.freeze({ number: 12, label: '12 дом', text: '12 дом — Козерог 16°42′' }),
+]);
+
+const stalePlacidusHouses = Object.freeze([
+  Object.freeze({ number: 1, label: '1 дом', text: '1 дом — Водолей 14°47′' }),
+  Object.freeze({ number: 4, label: '4 дом', text: '4 дом — Близнецы 14°12′' }),
+  Object.freeze({ number: 5, label: '5 дом', text: '5 дом — Близнецы 29°42′' }),
+  Object.freeze({ number: 6, label: '6 дом', text: '6 дом — Рак 16°36′' }),
+  Object.freeze({ number: 7, label: '7 дом', text: '7 дом — Лев 14°47′' }),
+  Object.freeze({ number: 10, label: '10 дом', text: '10 дом — Стрелец 14°12′' }),
+  Object.freeze({ number: 11, label: '11 дом', text: '11 дом — Стрелец 29°42′' }),
+  Object.freeze({ number: 12, label: '12 дом', text: '12 дом — Козерог 16°36′' }),
+]);
+
+const correctPlacidusEngineResult = Object.freeze({
+  status: 'ready',
+  ready: true,
+  houseSystem: 'placidus',
+  houseSystemLabel: 'Placidus',
+  angles: correctPlacidusAngles,
+  houses: correctPlacidusHouses,
 });
 
 const assignmentResult = Object.freeze({
@@ -288,6 +337,31 @@ test('formats ready, router, fallback and combined display results', () => {
     planetAssignments: 2,
   });
   assert.equal(summarizeHousesDisplay(notReady).text, 'Дома и углы карты недоступны');
+});
+
+test('router display uses one unwrapped house result source for Placidus angles and houses', () => {
+  const mixedRouterResult = Object.freeze({
+    status: 'ready',
+    ready: true,
+    selectedHouseSystem: 'placidus',
+    houseSystem: 'placidus',
+    houseSystemLabel: 'Placidus',
+    result: correctPlacidusEngineResult,
+    angles: stalePlacidusAngles,
+    houses: stalePlacidusHouses,
+  });
+
+  const display = formatHousesResult(mixedRouterResult);
+
+  assert.deepEqual(display.angles.map((item) => item.text), [
+    'ASC — Водолей 14°57′',
+    'MC — Стрелец 14°16′',
+    'DSC — Лев 14°57′',
+    'IC — Близнецы 14°16′',
+  ]);
+  assert.deepEqual(display.houses.map((item) => item.text), correctPlacidusHouses.map((house) => house.text));
+  assert.equal(JSON.stringify(display).includes('ASC — Водолей 14°47′'), false);
+  assert.equal(JSON.stringify(display).includes('5 дом — Близнецы 29°42′'), false);
 });
 
 test('display helper excludes raw data, unsafe words and mutations', () => {

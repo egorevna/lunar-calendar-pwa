@@ -382,10 +382,10 @@ function getProfileCoordinatePair(profile) {
   }
 
   const candidates = [
-    [birthPlace.latitude, birthPlace.longitude],
-    [birthPlace.lat, birthPlace.lng],
     [birthPlace.coordinates?.latitude, birthPlace.coordinates?.longitude],
     [birthPlace.coordinates?.lat, birthPlace.coordinates?.lng],
+    [birthPlace.latitude, birthPlace.longitude],
+    [birthPlace.lat, birthPlace.lng],
   ];
   const hasAnyCoordinateToken = candidates.some(([latitude, longitude]) => (
     latitude !== undefined && latitude !== null
