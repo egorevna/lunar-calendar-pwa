@@ -7,7 +7,7 @@ import { getNatalProviderValidationSummary } from './natalProviderValidationSumm
 import { getPlanetaryProviderCapabilities } from './planetaryPositionProvider.js';
 import { formatAspect, formatPlanet } from './vocDisplay.js';
 
-export const APP_CACHE_VERSION = 'lunar-calendar-v77';
+export const APP_CACHE_VERSION = 'lunar-calendar-v85';
 
 export function isDebugMode(search = window.location.search) {
   return new URLSearchParams(search).get('debug') === '1';
@@ -31,6 +31,7 @@ export function describeDebugPanel(context = {}) {
     natalAspectsUiDebug,
     essentialDignitiesUiDebug,
     detailedDignitiesUiDebug,
+    housesUiDebug,
   } = context;
 
   return [
@@ -90,6 +91,7 @@ export function describeDebugPanel(context = {}) {
     formatDetailedDignitiesUiDebug(
       detailedDignitiesUiDebug ?? createDetailedDignitiesDebugSummaryFromStorage(),
     ),
+    formatHousesUiDebug(housesUiDebug),
     formatBestWindowsDebug(bestWindowsDebug),
   ].filter(Boolean).join('\n\n');
 }
@@ -431,6 +433,64 @@ function formatDetailedDignitiesUiDebug(debug) {
     `rawSourceTokensExposed: ${formatDebugBoolean(privacy.rawSourceTokensExposed)}`,
     `rawSourceKeysExposed: ${formatDebugBoolean(privacy.rawSourceKeysExposed)}`,
     `fullTablesExposed: ${formatDebugBoolean(privacy.fullTablesExposed)}`,
+  ]);
+}
+
+function formatHousesUiDebug(debug) {
+  if (!debug) return '';
+
+  const activeProfile = debug.activeProfile ?? {};
+  const readiness = debug.readiness ?? {};
+  const selectedSystem = debug.selectedSystem ?? {};
+  const counts = debug.counts ?? {};
+  const capabilities = debug.capabilities ?? {};
+  const privacy = debug.privacy ?? {};
+
+  return formatSection(debug.section ?? 'Houses / ASC / MC UI Debug', [
+    `activeProfileId: ${activeProfile.id ?? 'null'}`,
+    `activeProfileName: ${activeProfile.name ?? 'Общий день'}`,
+    `hasActiveProfile: ${formatDebugBoolean(activeProfile.hasProfile)}`,
+    `panelStatus: ${debug.panelStatus ?? 'hidden'}`,
+    `reason: ${debug.reason ?? 'нет данных'}`,
+    `userFacingBlock: ${formatDebugBoolean(debug.userFacingBlock)}`,
+    `location: ${debug.location ?? 'My Cards'}`,
+    `collapsedDefault: ${formatDebugBoolean(debug.collapsedDefault)}`,
+    `collapsedState: ${formatDebugBoolean(debug.collapsedState)}`,
+    `hasExactBirthTime: ${formatDebugBoolean(readiness.hasExactBirthTime)}`,
+    `hasBirthCoordinates: ${formatDebugBoolean(readiness.hasBirthCoordinates)}`,
+    `hasBirthTimezone: ${formatDebugBoolean(readiness.hasBirthTimezone)}`,
+    `housesReady: ${formatDebugBoolean(readiness.housesReady)}`,
+    `anglesReady: ${formatDebugBoolean(readiness.anglesReady)}`,
+    `planetAssignmentsReady: ${formatDebugBoolean(readiness.planetAssignmentsReady)}`,
+    `selectedHouseSystem: ${selectedSystem.houseSystem ?? 'null'}`,
+    `houseSystemLabel: ${selectedSystem.label ?? 'null'}`,
+    `selectionSource: ${selectedSystem.selectionSource ?? 'null'}`,
+    `defaulted: ${formatDebugBoolean(selectedSystem.defaulted)}`,
+    `anglesCount: ${counts.angles ?? 0}`,
+    `housesCount: ${counts.houses ?? 0}`,
+    `planetAssignmentsCount: ${counts.planetAssignments ?? 0}`,
+    `asc: ${formatDebugBoolean(capabilities.asc)}`,
+    `mc: ${formatDebugBoolean(capabilities.mc)}`,
+    `dsc: ${formatDebugBoolean(capabilities.dsc)}`,
+    `ic: ${formatDebugBoolean(capabilities.ic)}`,
+    `houses: ${formatDebugBoolean(capabilities.houses)}`,
+    `wholeSign: ${formatDebugBoolean(capabilities.wholeSign)}`,
+    `equalHouse: ${formatDebugBoolean(capabilities.equalHouse)}`,
+    `placidus: ${formatDebugBoolean(capabilities.placidus)}`,
+    `planetInHouse: ${formatDebugBoolean(capabilities.planetInHouse)}`,
+    `interpretations: ${formatDebugBoolean(capabilities.interpretations)}`,
+    `fixedStars: ${formatDebugBoolean(capabilities.fixedStars)}`,
+    `parsFortuna: ${formatDebugBoolean(capabilities.parsFortuna)}`,
+    `arabicParts: ${formatDebugBoolean(capabilities.arabicParts)}`,
+    `transits: ${formatDebugBoolean(capabilities.transits)}`,
+    `ritualScoring: ${formatDebugBoolean(capabilities.ritualScoring)}`,
+    `rawBirthDataExposed: ${formatDebugBoolean(privacy.rawBirthDataExposed)}`,
+    `rawCoordinatesExposed: ${formatDebugBoolean(privacy.rawCoordinatesExposed)}`,
+    `rawTimezoneExposed: ${formatDebugBoolean(privacy.rawTimezoneExposed)}`,
+    `rawPlanetLongitudesExposed: ${formatDebugBoolean(privacy.rawPlanetLongitudesExposed)}`,
+    `rawCuspLongitudesExposed: ${formatDebugBoolean(privacy.rawCuspLongitudesExposed)}`,
+    `fullProfileJsonExposed: ${formatDebugBoolean(privacy.fullProfileJsonExposed)}`,
+    `providerPayloadExposed: ${formatDebugBoolean(privacy.providerPayloadExposed)}`,
   ]);
 }
 

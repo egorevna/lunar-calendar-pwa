@@ -3209,13 +3209,33 @@ Next active task:
 
 - Task 11.9 — Houses / ASC / MC Debug.
 
-Do not start Task 11.9 until explicitly requested.
+## Task 11.9 — Houses / ASC / MC Debug
+
+Status: done
+
+Goal:
+
+Add a safe Houses / ASC / MC debug/status section for `?debug=1`.
+
+Result:
+
+- Added pure `src/housesDebug.js` helper.
+- Added safe `Houses / ASC / MC UI Debug` section to the debug panel.
+- Debug shows only active profile id/name, readiness booleans, selected house system, counts, capabilities and privacy flags.
+- Debug does not expose birth date, birth time, UTC, raw timezone value, raw birth place, coordinates, raw planet/cusp longitudes, full profile JSON, provider payloads or full houses/cusps/assignments arrays.
+- Bumped PWA cache to `lunar-calendar-v85` and cached `src/housesDebug.js`.
+- No calculation engines, selected-system router, planet-in-house assignment, provider calculations, package files or generic `src/houses.js` / `src/houseSystems.js` were changed.
+
+Next active task:
+
+- Task 11.10 — Sprint 11 Hardening.
+
+Do not start Task 11.10 until explicitly requested.
 
 ## Later Sprint 11 Tasks
 
 Status: not started
 
-- Task 11.9 — Houses / ASC / MC Debug.
 - Task 11.10 — Sprint 11 Hardening.
 
 # Security Backlog

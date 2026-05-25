@@ -720,9 +720,149 @@ test('ordinary markup does not contain provider validation debug details', () =>
   assert.equal(markup.includes('Natal Aspects UI Debug'), false);
   assert.equal(markup.includes('Essential Dignities UI Debug'), false);
   assert.equal(markup.includes('Detailed Dignities UI Debug'), false);
+  assert.equal(markup.includes('Houses / ASC / MC UI Debug'), false);
   assert.equal(markup.includes('longitudeValidation: passed'), false);
   assert.equal(markup.includes('speedValidation: passed'), false);
   assert.equal(markup.includes('retrogradeValidation: passed'), false);
+});
+
+test('debug panel shows Houses ASC MC UI debug section when safe state is provided', () => {
+  const text = describeDebugPanel({
+    now: new Date('2026-05-15T00:40:00+03:00'),
+    housesUiDebug: {
+      section: 'Houses / ASC / MC UI Debug',
+      enabled: true,
+      activeProfile: {
+        hasProfile: true,
+        id: 'profile-egor',
+        name: 'Егор',
+      },
+      panelStatus: 'ready',
+      reason: null,
+      location: 'My Cards',
+      userFacingBlock: true,
+      collapsedDefault: true,
+      collapsedState: true,
+      readiness: {
+        hasExactBirthTime: true,
+        hasBirthCoordinates: true,
+        hasBirthTimezone: true,
+        housesReady: true,
+        anglesReady: true,
+        planetAssignmentsReady: true,
+      },
+      selectedSystem: {
+        houseSystem: 'placidus',
+        label: 'Placidus',
+        selectionSource: 'profile',
+        defaulted: false,
+      },
+      counts: {
+        angles: 4,
+        houses: 12,
+        planetAssignments: 10,
+      },
+      capabilities: {
+        asc: true,
+        mc: true,
+        dsc: true,
+        ic: true,
+        houses: true,
+        wholeSign: true,
+        equalHouse: true,
+        placidus: true,
+        planetInHouse: true,
+        interpretations: false,
+        fixedStars: false,
+        parsFortuna: false,
+        arabicParts: false,
+        transits: false,
+        ritualScoring: false,
+      },
+      privacy: {
+        rawBirthDataExposed: false,
+        rawCoordinatesExposed: false,
+        rawTimezoneExposed: false,
+        rawPlanetLongitudesExposed: false,
+        rawCuspLongitudesExposed: false,
+        fullProfileJsonExposed: false,
+        providerPayloadExposed: false,
+      },
+    },
+  });
+  const housesSection = text
+    .split('\n\n')
+    .find((section) => section.startsWith('## Houses / ASC / MC UI Debug'));
+
+  assert.equal(Boolean(housesSection), true);
+  assert.equal(housesSection.includes('activeProfileId: profile-egor'), true);
+  assert.equal(housesSection.includes('activeProfileName: Егор'), true);
+  assert.equal(housesSection.includes('hasActiveProfile: yes'), true);
+  assert.equal(housesSection.includes('panelStatus: ready'), true);
+  assert.equal(housesSection.includes('userFacingBlock: yes'), true);
+  assert.equal(housesSection.includes('location: My Cards'), true);
+  assert.equal(housesSection.includes('collapsedDefault: yes'), true);
+  assert.equal(housesSection.includes('collapsedState: yes'), true);
+  assert.equal(housesSection.includes('hasExactBirthTime: yes'), true);
+  assert.equal(housesSection.includes('hasBirthCoordinates: yes'), true);
+  assert.equal(housesSection.includes('hasBirthTimezone: yes'), true);
+  assert.equal(housesSection.includes('housesReady: yes'), true);
+  assert.equal(housesSection.includes('anglesReady: yes'), true);
+  assert.equal(housesSection.includes('planetAssignmentsReady: yes'), true);
+  assert.equal(housesSection.includes('selectedHouseSystem: placidus'), true);
+  assert.equal(housesSection.includes('houseSystemLabel: Placidus'), true);
+  assert.equal(housesSection.includes('selectionSource: profile'), true);
+  assert.equal(housesSection.includes('defaulted: no'), true);
+  assert.equal(housesSection.includes('anglesCount: 4'), true);
+  assert.equal(housesSection.includes('housesCount: 12'), true);
+  assert.equal(housesSection.includes('planetAssignmentsCount: 10'), true);
+  assert.equal(housesSection.includes('asc: yes'), true);
+  assert.equal(housesSection.includes('mc: yes'), true);
+  assert.equal(housesSection.includes('dsc: yes'), true);
+  assert.equal(housesSection.includes('ic: yes'), true);
+  assert.equal(housesSection.includes('wholeSign: yes'), true);
+  assert.equal(housesSection.includes('equalHouse: yes'), true);
+  assert.equal(housesSection.includes('placidus: yes'), true);
+  assert.equal(housesSection.includes('planetInHouse: yes'), true);
+  assert.equal(housesSection.includes('interpretations: no'), true);
+  assert.equal(housesSection.includes('fixedStars: no'), true);
+  assert.equal(housesSection.includes('transits: no'), true);
+  assert.equal(housesSection.includes('ritualScoring: no'), true);
+  assert.equal(housesSection.includes('rawBirthDataExposed: no'), true);
+  assert.equal(housesSection.includes('rawCoordinatesExposed: no'), true);
+  assert.equal(housesSection.includes('rawTimezoneExposed: no'), true);
+  assert.equal(housesSection.includes('rawPlanetLongitudesExposed: no'), true);
+  assert.equal(housesSection.includes('rawCuspLongitudesExposed: no'), true);
+  assert.equal(housesSection.includes('fullProfileJsonExposed: no'), true);
+  assert.equal(housesSection.includes('providerPayloadExposed: no'), true);
+  [
+    'birthDate',
+    'birthTime',
+    'utcDateTime',
+    'Europe/Moscow',
+    'birthPlace',
+    'latitude',
+    'longitude',
+    'coordinates',
+    'planetLongitude',
+    'cusps: [',
+    'assignments: [',
+    'Солнце —',
+    '1 дом —',
+    'providerPayload: {',
+    'фатально',
+    'кармически',
+  ].forEach((fragment) => {
+    assert.equal(housesSection.includes(fragment), false, fragment);
+  });
+});
+
+test('debug panel omits Houses ASC MC UI debug section when no safe state is provided', () => {
+  const text = describeDebugPanel({
+    now: new Date('2026-05-15T00:40:00+03:00'),
+  });
+
+  assert.equal(text.includes('Houses / ASC / MC UI Debug'), false);
 });
 
 test('natal provider validation report documents provider validation without private data', () => {

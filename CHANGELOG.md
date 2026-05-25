@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-25 — Complete Task 11.9 Houses / ASC / MC Debug
+
+- Added pure `src/housesDebug.js` safe status helper.
+- Added `Houses / ASC / MC UI Debug` section to `?debug=1`.
+- Debug shows active profile id/name only, readiness booleans, selected house system, counts, capabilities and privacy flags.
+- Debug does not expose raw birth data, raw coordinates, UTC, raw timezone value, raw planet/cusp longitudes, provider payloads, full profile JSON or full houses/cusps/assignments arrays.
+- Bumped PWA cache to `lunar-calendar-v85` and cached `src/housesDebug.js`.
+- No calculation engines, selected-system router, planet-in-house assignment, provider calculations, package files, interpretations or generic `src/houses.js` / `src/houseSystems.js` were changed.
+- Next active task is Task 11.10 — Sprint 11 Hardening, but it was not started.
+
 ## 2026-05-25 — Harden Houses display single-source consistency
 
 - Fixed the Houses UI view-model source path so `src/housesDisplay.js` uses the unwrapped selected house engine result as the single source for both angles and house rows.

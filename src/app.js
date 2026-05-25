@@ -43,6 +43,7 @@ import {
   describeDebugPanel,
   isDebugMode,
 } from './debugPanel.js';
+import { getHousesDebugState } from './housesDebug.js';
 import {
   DEFAULT_DASHBOARD_MODE,
   isDashboardModeKey,
@@ -296,6 +297,7 @@ function render() {
       : null,
     profileDebug: shouldShowDebug ? getProfileDebugState() : null,
     personalDebug: shouldShowDebug ? getPersonalDebugState() : null,
+    housesUiDebug: shouldShowDebug ? getHousesUiDebugState() : null,
   });
 }
 
@@ -604,6 +606,16 @@ function getPersonalDebugState() {
     missingFields: describePersonalDebugMissingFields(personalContext.missingFields),
     warnings: personalContext.warnings,
   };
+}
+
+function getHousesUiDebugState() {
+  const profiles = loadProfiles();
+  const activeProfileId = getActiveProfileId();
+  const activeProfile = profiles.find((profile) => profile.id === activeProfileId) ?? null;
+
+  return getHousesDebugState(activeProfile, {
+    collapsedState: !activeProfileId || expandedHousesProfileId !== activeProfileId,
+  });
 }
 
 function describePersonalDebugMissingFields(fields = []) {

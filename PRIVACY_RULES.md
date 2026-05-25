@@ -539,3 +539,13 @@ Sprint 11 Houses / ASC / MC may require birth place coordinates. These coordinat
 Manual birth place coordinates may appear in the profile edit/create form so the user can enter or correct them. They must not be shown in calculated Houses / ASC / MC user-facing output, debug raw dumps, provider payloads, or full profile JSON displays.
 
 Do not send birth place text, timezone or coordinates to external geocoding APIs. Do not request browser location permission, infer coordinates from timezone/country/city, or auto-fill hardcoded city coordinates.
+
+Houses / ASC / MC debug may show only safe status/counts/capabilities:
+
+- active profile id/name;
+- readiness booleans such as exact-time / coordinates / timezone present;
+- selected house system and selection source;
+- counts for angles, houses and planet assignments;
+- privacy flags.
+
+It must not expose raw birth date, birth time, UTC datetime, timezone value, raw birth place object, latitude, longitude, coordinates, raw planet/cusp longitudes, full houses/cusps/assignments arrays, provider payloads, swisseph payloads or full profile JSON.

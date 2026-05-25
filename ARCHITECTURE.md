@@ -515,6 +515,19 @@ Current responsibilities:
 
 This module does not calculate houses, calculate ASC / MC, calculate planets, call provider modules directly, render DOM, read localStorage, mutate profiles, expose raw birth data / raw birth coordinates / raw planet longitudes, or add interpretations.
 
+## `src/housesDebug.js`
+
+Defines the Sprint 11 safe Houses / ASC / MC debug-state helper for `?debug=1`.
+
+Current responsibilities:
+
+- read the safe profile-level Houses / ASC / MC view model from `src/housesForProfile.js`;
+- expose only debug-safe status, readiness booleans, selected house-system metadata, counts, capabilities and privacy flags;
+- identify the active profile by id/name only;
+- report collapsed state supplied by the UI layer.
+
+This module does not calculate houses, calculate ASC / MC, assign planets to houses, call provider modules, import browser ephemeris engines, render DOM, read localStorage, mutate profiles, expose raw birth data / UTC / timezone values / coordinates / raw longitudes, or dump full houses / cusps / assignments / profile JSON.
+
 ## `src/planetaryPositionProvider.js`
 
 Defines the future planetary position provider contract.
@@ -1275,7 +1288,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v83
+lunar-calendar-v85
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -1784,7 +1797,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v83
+lunar-calendar-v85
 ```
 
 Important operational rule:
@@ -2086,7 +2099,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v83
+lunar-calendar-v85
 ```
 
 If this value changes in `sw.js`, update this section.
