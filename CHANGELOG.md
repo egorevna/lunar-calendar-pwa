@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-05-25 — Complete Task 11.5 Houses validation fixtures
+
+- Added `test/fixtures/housesValidationFixtures.js`.
+- Added `test/housesValidation.test.js`.
+- Added manually declared Whole Sign validation sequences for ASC Aries, Scorpio and Pisces.
+- Added manually declared Equal House cusp fixtures for ASC Aries 14.5°, Pisces 29° and Aries 0°.
+- Reused static Placidus benchmark fixtures to validate cusp matching, ASC / MC alignment, opposite cusps, no Equal House fallback, no Whole Sign fallback and high-latitude unsupported behavior.
+- Added router / no-fallback validation for current profile aliases, missing selection default, unknown selected system and selected-engine `notReady` / `unsupported` preservation.
+- Added guardrail and privacy validation for missing profile, common day, unknown birth time, missing place, missing/invalid coordinates and strict source exclusions.
+- No production house calculation engine, UI, PWA cache, provider calculations, package files, `src/houses.js`, `src/houseSystems.js` or planet-in-house assignment were added.
+- Next active task is Task 11.6 — Planet-in-House Assignment for Selected House System, but it was not started.
+
 ## 2026-05-25 — Complete Task 11.4e House System Resolver
 
 - Added pure `src/houseSystemResolver.js`.

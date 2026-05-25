@@ -562,6 +562,7 @@ House systems policy:
 - do not approximate Placidus with Equal House or Whole Sign;
 - always expose the `houseSystem` label when houses are displayed or debugged;
 - Placidus / quadrant cusps must remain isolated to the validated Placidus engine.
+- `test/housesValidation.test.js` and `test/fixtures/housesValidationFixtures.js` validate the three house systems as separate systems, including router no-fallback behavior and guardrail failure states.
 
 ASC / MC calculation policy:
 

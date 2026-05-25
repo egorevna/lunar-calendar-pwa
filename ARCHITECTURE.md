@@ -1704,6 +1704,8 @@ Testing note:
 
 - `test/fixtures/natalFixtures.js` contains test-only mock provider data for future-ready natal engine tests. It is not used by the production provider path.
 - `test/fixtures/natalProviderReferenceFixtures.js` contains test-only UTC reference fixtures and Swiss Ephemeris reference helpers for validating `astronomy-engine` planet longitudes without importing `swisseph` into production code.
+- `test/fixtures/housesValidationFixtures.js` contains test-only manually declared cross-system house validation fixtures for Whole Sign, Equal House and selected-system router behavior. It is not used by production code.
+- `test/housesValidation.test.js` validates Whole Sign / Equal House manual fixtures, Placidus static benchmark fixtures, router no-fallback behavior, guardrail failures, privacy exclusions and strict source boundaries without creating a new production house engine.
 - `NATAL_PROVIDER_VALIDATION_REPORT.md` records the provider-layer validation summary; it does not enable user-facing natal values.
 - if personal data is added later, debug output must follow `PRIVACY_RULES.md`
 
@@ -1764,6 +1766,7 @@ Current test coverage includes:
 - day indicators
 - field quality
 - absence of removed decorative elements on the main screen
+- Sprint 11 house-system validation fixtures for Whole Sign, Equal House, Placidus and selected-system routing
 
 If new modules are added, tests should be added or updated.
 

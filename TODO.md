@@ -3073,17 +3073,36 @@ Result:
 - Router calls exactly one selected engine and preserves selected engine `notReady` / `unsupported` status and reason.
 - No direct house calculations, planet-in-house assignment, UI, provider changes, `src/houses.js` or `src/houseSystems.js` were added.
 
+## Task 11.5 — Houses Validation / Fixtures for Whole Sign / Equal House / Placidus
+
+Status: done
+
+Goal:
+
+Add cross-system validation fixtures and tests for Whole Sign, Equal House / Равнодомная and Placidus without adding a new calculation engine, UI, display helper, generic houses module or planet-in-house assignment.
+
+Result:
+
+- Added `test/fixtures/housesValidationFixtures.js`.
+- Added `test/housesValidation.test.js`.
+- Whole Sign fixtures validate manual ASC Aries, Scorpio and Pisces house sequences.
+- Equal House fixtures validate manual ASC Aries 14.5°, Pisces 29° and Aries 0° cusp longitudes.
+- Placidus validation reuses static `test/fixtures/placidusFixtures.js` benchmark values and confirms benchmark count, finite static cusps, ASC / MC alignment, opposite cusps, no Equal House fallback, no Whole Sign fallback and high-latitude unsupported behavior.
+- Router fixtures validate current profile aliases, missing-selection default, unknown-system unsupported behavior and no silent fallback.
+- Guardrail fixtures validate missing profile, common day, unknown birth time, missing birth place, city without coordinates, country/region only and invalid coordinates.
+- Privacy / strict exclusion tests confirm no raw profile data, provider imports, DOM/localStorage imports, generic `src/houses.js` / `src/houseSystems.js`, interpretations or planet-in-house assignment.
+- No production house calculation engine, UI, provider changes, package changes or PWA cache changes were added.
+
 Next active task:
 
-- Task 11.5 — Houses Validation / Fixtures for Whole Sign / Equal House / Placidus.
+- Task 11.6 — Planet-in-House Assignment for Selected House System.
 
-Do not start Task 11.5 until explicitly requested.
+Do not start Task 11.6 until explicitly requested.
 
 ## Later Sprint 11 Tasks
 
 Status: not started
 
-- Task 11.5 — Houses Validation / Fixtures for Whole Sign / Equal House / Placidus.
 - Task 11.6 — Planet-in-House Assignment for Selected House System.
 - Task 11.7 — Houses / ASC / MC Display Helper.
 - Task 11.8 — Houses / ASC / MC Collapsible UI.
