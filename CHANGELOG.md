@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-05-25 — Complete Task 11.4e House System Resolver
+
+- Added pure `src/houseSystemResolver.js`.
+- Added `test/houseSystemResolver.test.js`.
+- Implemented selected house-system normalization for `wholeSign` / `whole-sign`, `equal` / `equalHouse` / `equal-house` and `placidus` / `Placidus`.
+- Added router APIs that call exactly one selected engine: Whole Sign, Equal House or Placidus.
+- Missing profile `houseSystem` now defaults to `whole-sign` only when no saved selection exists.
+- Unknown selected house systems return explicit unsupported status with `reason: "unknownHouseSystem"` and no fallback.
+- Router preserves selected engine `notReady` / `unsupported` status and reason, including Placidus high-latitude unsupported behavior.
+- No direct house calculation, planet-in-house assignment, UI, PWA cache, provider calculations, package files, `src/houses.js` or `src/houseSystems.js` were added.
+- Next active task is Task 11.5 — Houses Validation / Fixtures for Whole Sign / Equal House / Placidus, but it was not started.
+
 ## 2026-05-25 — Complete Task 11.4d2 Placidus calculation activation
 
 - Added static benchmark fixtures in `test/fixtures/placidusFixtures.js`.

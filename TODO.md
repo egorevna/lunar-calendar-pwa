@@ -3049,7 +3049,7 @@ Result:
 
 ## Task 11.4e — House System Resolver / Selected System Router
 
-Status: active
+Status: done
 
 Goal:
 
@@ -3063,7 +3063,21 @@ Rules:
 - never silently fallback from Equal House to Whole Sign;
 - always include `houseSystem` in the result.
 
-Do not start Task 11.4e until explicitly requested.
+Result:
+
+- Added pure `src/houseSystemResolver.js`.
+- Added `test/houseSystemResolver.test.js`.
+- Router normalizes current profile values and explicit options into `whole-sign`, `equal-house` and `placidus`.
+- Missing `houseSystem` defaults to `whole-sign` only when no saved selection exists.
+- Unknown `houseSystem` returns explicit unsupported status with `reason: "unknownHouseSystem"`.
+- Router calls exactly one selected engine and preserves selected engine `notReady` / `unsupported` status and reason.
+- No direct house calculations, planet-in-house assignment, UI, provider changes, `src/houses.js` or `src/houseSystems.js` were added.
+
+Next active task:
+
+- Task 11.5 — Houses Validation / Fixtures for Whole Sign / Equal House / Placidus.
+
+Do not start Task 11.5 until explicitly requested.
 
 ## Later Sprint 11 Tasks
 

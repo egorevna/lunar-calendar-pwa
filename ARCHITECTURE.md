@@ -453,6 +453,22 @@ Current responsibilities:
 
 This module does not implement Whole Sign, implement Equal House, import `swisseph`, import provider modules, implement a generic house-system router, assign planets to houses, render UI, read localStorage, mutate profiles, or expose raw birth data / raw birth coordinates. `swisseph` is used only outside app runtime as the static benchmark oracle.
 
+## `src/houseSystemResolver.js`
+
+Defines the Sprint 11 pure selected house-system resolver / router.
+
+Current responsibilities:
+
+- normalize profile and explicit house-system values into canonical keys `whole-sign`, `equal-house` and `placidus`;
+- use the saved profile-level `houseSystem` as the source of truth, with `whole-sign` as the default only when no saved selection exists;
+- route profile-level calculation to exactly one selected engine: `src/wholeSignHouses.js`, `src/equalHouseHouses.js` or `src/placidusHouses.js`;
+- route ready ASC / MC results to the selected system-specific `FromAscMc` path;
+- preserve selected engine `ready`, `notReady` or `unsupported` status and reason without silently falling back to another system;
+- expose selected-system metadata such as `selectedHouseSystem`, `houseSystem`, `selectionSource` and `defaulted`;
+- report available house systems and Placidus readiness through the Placidus validation status.
+
+This module does not implement house calculations directly, calculate ASC / MC, calculate Placidus, calculate Equal House, calculate Whole Sign, assign planets to houses, render UI, read localStorage, import provider modules, mutate profiles or expose raw birth data / raw birth coordinates.
+
 ## `src/planetaryPositionProvider.js`
 
 Defines the future planetary position provider contract.
@@ -1296,11 +1312,13 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 30. `src/placidusHouses.js` calculates pure Placidus cusps and house spans with static benchmark-backed validation, returns explicit unsupported behavior for high-latitude / circumpolar cases, and does not fallback to Whole Sign / Equal House, import runtime `swisseph`, implement a generic router or assign planets to houses.
 
-31. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+31. `src/houseSystemResolver.js` normalizes the selected profile / explicit house-system value, routes to exactly one of the Whole Sign, Equal House or Placidus engines, preserves selected engine status/reason, defaults missing selection to `whole-sign`, and does not implement house calculations directly or assign planets to houses.
 
-32. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+32. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
 
-33. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
+33. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+
+34. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
 
 34. `src/natalProviderValidationSummary.js` exposes a safe provider validation summary for debug/reporting without calculating planets, reading profile data, or importing the `astronomy-engine` provider module.
 

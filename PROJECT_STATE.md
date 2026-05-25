@@ -603,10 +603,10 @@ Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7, Sprint 8, 
 Текущий фокус:
 
 ```txt
-Task 11.4e — House System Resolver / Selected System Router
+Task 11.5 — Houses Validation / Fixtures for Whole Sign / Equal House / Placidus
 ```
 
-Sprint 10 закрыт. Sprint 11 — Houses / ASC / MC активен. Task 11.1 добавила `SPRINT_11_PLAN.md` и `HOUSES_ASC_MC_STRATEGY.md`; они фиксируют расчетную стратегию, guardrails и порядок задач Sprint 11. Task 11.2 добавила pure `src/housesInputGuardrails.js` readiness / guardrails layer and `test/housesInputGuardrails.test.js`. Task 11.3 добавила pure `src/ascMc.js` ASC / MC calculation engine and `test/ascMc.test.js`. Task 11.4a обновила house systems strategy / dependency audit как docs-only. Task 11.4b добавила pure `src/wholeSignHouses.js` Whole Sign houses engine and `test/wholeSignHouses.test.js`. Task 11.4c добавила pure `src/equalHouseHouses.js` Equal House / Равнодомная houses engine and `test/equalHouseHouses.test.js`. Task 11.4d добавила pure `src/placidusHouses.js` Placidus integration gate and `test/placidusHouses.test.js`. Task 11.4d2 activated browser-safe Placidus calculation in `src/placidusHouses.js` using static benchmark fixtures from local `swisseph.swe_houses`. General house-system resolver/router and planet-in-house calculations are still not implemented. Следующая активная задача: Task 11.4e — House System Resolver / Selected System Router. Task 11.4e еще не начиналась.
+Sprint 10 закрыт. Sprint 11 — Houses / ASC / MC активен. Task 11.1 добавила `SPRINT_11_PLAN.md` и `HOUSES_ASC_MC_STRATEGY.md`; они фиксируют расчетную стратегию, guardrails и порядок задач Sprint 11. Task 11.2 добавила pure `src/housesInputGuardrails.js` readiness / guardrails layer and `test/housesInputGuardrails.test.js`. Task 11.3 добавила pure `src/ascMc.js` ASC / MC calculation engine and `test/ascMc.test.js`. Task 11.4a обновила house systems strategy / dependency audit как docs-only. Task 11.4b добавила pure `src/wholeSignHouses.js` Whole Sign houses engine and `test/wholeSignHouses.test.js`. Task 11.4c добавила pure `src/equalHouseHouses.js` Equal House / Равнодомная houses engine and `test/equalHouseHouses.test.js`. Task 11.4d добавила pure `src/placidusHouses.js` Placidus integration gate and `test/placidusHouses.test.js`. Task 11.4d2 activated browser-safe Placidus calculation in `src/placidusHouses.js` using static benchmark fixtures from local `swisseph.swe_houses`. Task 11.4e добавила pure `src/houseSystemResolver.js` selected-system router and `test/houseSystemResolver.test.js`. Planet-in-house calculations are still not implemented. Следующая активная задача: Task 11.5 — Houses Validation / Fixtures for Whole Sign / Equal House / Placidus. Task 11.5 еще не начиналась.
 
 Guardrails Sprint 11:
 
@@ -718,6 +718,19 @@ Task 11.4d2 result:
 - profile-level path still respects selected `houseSystem`: only `placidus` calculates in this module, while Whole Sign / Equal House selections return explicit `selectedHouseSystemNotPlacidus`;
 - `swisseph` is used only as a local dev/test oracle for static fixtures; current project/package is private/local and future public or commercial distribution requires license review before relying on that path;
 - runtime `swisseph`, fake Placidus, Equal House fallback, Whole Sign fallback, generic selected-system router, planet-in-house assignment, UI, provider calculations, `src/houses.js`, `src/houseSystems.js`, PWA cache and package files were not added or changed.
+
+Task 11.4e result:
+
+- pure selected-system router added in `src/houseSystemResolver.js`;
+- `test/houseSystemResolver.test.js` added;
+- router uses profile `houseSystem` or explicit option as source of truth and normalizes aliases to canonical keys `whole-sign`, `equal-house` and `placidus`;
+- missing `houseSystem` defaults to `whole-sign` only when no saved selection exists;
+- unknown `houseSystem` returns explicit unsupported status with `reason: "unknownHouseSystem"` and does not fallback;
+- router calls only the selected engine: Whole Sign, Equal House or Placidus;
+- selected engine `notReady` / `unsupported` status and reason are preserved;
+- router output includes `selectedHouseSystem`, `houseSystem`, `selectionSource` and `defaulted`;
+- Whole Sign, Equal House and Placidus remain separate calculation engines;
+- direct house calculations, planet-in-house assignment, UI, provider calculations, `src/houses.js`, `src/houseSystems.js`, PWA cache and package files were not added or changed.
 
 Результат Sprint 8:
 
@@ -921,8 +934,9 @@ Sprint 10 planning подготовлен:
 - Task 11.4b завершена: добавлен pure Whole Sign houses engine `src/wholeSignHouses.js`;
 - Task 11.4c завершена: добавлен pure Equal House / Равнодомная houses engine `src/equalHouseHouses.js`;
 - Task 11.4d завершена: добавлен pure Placidus integration gate `src/placidusHouses.js`; Placidus recognized but unsupported until validated path and benchmark fixtures exist; generic router and planet-in-house assignment still not implemented;
-- Task 11.4d2 завершена: Placidus activated in `src/placidusHouses.js` as browser-safe calculation validated against 5 static `local-swisseph-swe_houses-benchmark` fixtures; high-latitude / circumpolar cases return explicit unsupported status; generic router and planet-in-house assignment still not implemented;
-- активная задача — Task 11.4e, House System Resolver / Selected System Router;
+- Task 11.4d2 завершена: Placidus activated in `src/placidusHouses.js` as browser-safe calculation validated against 5 static `local-swisseph-swe_houses-benchmark` fixtures; high-latitude / circumpolar cases return explicit unsupported status;
+- Task 11.4e завершена: добавлен selected-system router `src/houseSystemResolver.js`; router uses profile `houseSystem` as source of truth, defaults missing selection to Whole Sign, preserves selected engine `notReady` / `unsupported` reasons and does not silently fallback between systems;
+- активная задача — Task 11.5, Houses Validation / Fixtures for Whole Sign / Equal House / Placidus;
 - Sprint 10 должен работать только с source-tracked lookup layers after validated natal planet coordinates;
 - dense Vronsky screenshots must not be OCR-imported blindly;
 - fixed stars, houses, ASC / MC, transits, interpretations и ritual scoring остаются out of scope; Houses / ASC / MC remain Sprint 11.
@@ -1397,10 +1411,10 @@ Sprint 8 завершен. Следующий этап — Sprint 9, Essential D
 Текущий следующий шаг:
 
 ```txt
-Task 11.4e — House System Resolver / Selected System Router
+Task 11.5 — Houses Validation / Fixtures for Whole Sign / Equal House / Placidus
 ```
 
-Sprint 8 завершен. Task 8.1, Task 8.2, Task 8.3, Task 8.4, Task 8.5, Task 8.6 и Task 8.7 завершены. Sprint 9 завершен: Task 9.1, Task 9.2, Task 9.3, Task 9.4, Task 9.5, Task 9.6, Task 9.7 и Task 9.8 закрыты. Sprint 10 закрыт: Task 10.1, Task 10.2, Task 10.3a, Task 10.3b, Task 10.3c, Task 10.4, Task 10.5, Task 10.5b, Task 10.5c, Task 10.5d, Task 10.6, Task 10.7a, Task 10.7b, Task 10.7c, Task 10.7d, Task 10.8, Task 10.9, Task 10.8b, Task 10.8c, Task 10.8d, Task 10.8d-fix, Task 10.8e, Task 10.8f, Task 10.9b, Task 10.10, Task 10.11 и Task 10.12 закрыты. Sprint 11 активен: Task 11.1 закрыла Houses / ASC / MC strategy docs, Task 11.2 добавила Birth Input / Coordinates Guardrails, Task 11.3 добавила ASC / MC Calculation Engine, Task 11.4a закрыла House Systems Strategy / Dependency Audit, Task 11.4b добавила Whole Sign Houses Engine, Task 11.4c добавила Equal House Engine, Task 11.4d добавила Placidus integration gate, Task 11.4d2 активировала Placidus calculation через статические benchmark fixtures. Следующая активная задача — Task 11.4e, House System Resolver / Selected System Router.
+Sprint 8 завершен. Task 8.1, Task 8.2, Task 8.3, Task 8.4, Task 8.5, Task 8.6 и Task 8.7 завершены. Sprint 9 завершен: Task 9.1, Task 9.2, Task 9.3, Task 9.4, Task 9.5, Task 9.6, Task 9.7 и Task 9.8 закрыты. Sprint 10 закрыт: Task 10.1, Task 10.2, Task 10.3a, Task 10.3b, Task 10.3c, Task 10.4, Task 10.5, Task 10.5b, Task 10.5c, Task 10.5d, Task 10.6, Task 10.7a, Task 10.7b, Task 10.7c, Task 10.7d, Task 10.8, Task 10.9, Task 10.8b, Task 10.8c, Task 10.8d, Task 10.8d-fix, Task 10.8e, Task 10.8f, Task 10.9b, Task 10.10, Task 10.11 и Task 10.12 закрыты. Sprint 11 активен: Task 11.1 закрыла Houses / ASC / MC strategy docs, Task 11.2 добавила Birth Input / Coordinates Guardrails, Task 11.3 добавила ASC / MC Calculation Engine, Task 11.4a закрыла House Systems Strategy / Dependency Audit, Task 11.4b добавила Whole Sign Houses Engine, Task 11.4c добавила Equal House Engine, Task 11.4d добавила Placidus integration gate, Task 11.4d2 активировала Placidus calculation через статические benchmark fixtures, Task 11.4e добавила House System Resolver / Selected System Router. Следующая активная задача — Task 11.5, Houses Validation / Fixtures for Whole Sign / Equal House / Placidus.
 
 Ниже сохраняется краткая история предыдущего Sprint 5 и результаты текущего Sprint 6.
 
@@ -2668,16 +2682,16 @@ lunar-calendar-v72
 Сейчас следующий конкретный шаг:
 
 ```txt
-Task 11.4e — House System Resolver / Selected System Router.
+Task 11.5 — Houses Validation / Fixtures for Whole Sign / Equal House / Placidus.
 ```
 
 Перед реализацией Codex должен:
 
 1. Работать строго по `TODO.md`.
-2. Работать только над Task 11.4e после отдельной команды пользователя.
+2. Работать только над Task 11.5 после отдельной команды пользователя.
 3. Объяснить минимальный план изменения.
 4. Внести только необходимые изменения.
-5. В Task 11.4e создать selected-system resolver/router без silent fallback между Whole Sign, Equal House и Placidus.
+5. В Task 11.5 добавить validation / fixtures для Whole Sign, Equal House и Placidus without UI or planet-in-house assignment.
 6. После реализации обновить документацию и выполнить проверки, требуемые задачей.
 
 ---
@@ -2690,4 +2704,4 @@ Task 11.4e — House System Resolver / Selected System Router.
 
 Этот шаг остается важным, но сейчас переносится ниже по приоритету.
 
-Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7 и Sprint 8 завершены. Sprint 7 добавил read-only natal planets panel внутри `Мои карты`: planet values показываются только для активного сохраненного профиля при `canConvertToUtc: true` и ready provider output, форматируются через `src/natalPlanetDisplay.js`, а missing coordinates не блокируют список планет. `Общий день`, unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap и nonexistent DST gap не показывают planet list. Safe `Natal Planets UI Debug` доступен только через `?debug=1` и показывает status/counts/capabilities без birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes, speed values or full planet list. Houses / ASC / MC / transits, chart wheel и personal ritual scoring остаются not supported. Sprint 8 — Natal Aspects Foundation завершен: Task 8.1 создала `NATAL_ASPECTS_STRATEGY.md`, Task 8.2 добавила pure `src/natalAspectEngine.js`, Task 8.3 добавила synthetic/manual fixture validation layer, Task 8.4 добавила pure `src/natalAspectDisplay.js`, Task 8.5 добавила collapsible `Натальные аспекты` section внутри `Мои карты`, Task 8.6 добавила safe `Natal Aspects UI Debug`, а Task 8.7 завершила hardening. Sprint 9 — Essential Dignities Foundation завершен: Task 9.1 создала `ESSENTIAL_DIGNITIES_STRATEGY.md`, Task 9.2 добавила source-tracked `src/essentialDignitiesData.js`, Task 9.3 добавила pure lookup engine, Task 9.4 добавила synthetic/manual fixture validation, Task 9.5 добавила pure display helper, Task 9.6 добавила collapsible `Достоинства планет` section внутри `Мои карты`, Task 9.7 добавила safe `Essential Dignities UI Debug`, а Task 9.8 завершила hardening. Sprint 10 — Terms / Decans / Degree Rulers закрыт: Task 10.1, Task 10.2, Task 10.3a, Task 10.3b, Task 10.3c, Task 10.4, Task 10.5, Task 10.5b, Task 10.5c, Task 10.5d, Task 10.6, Task 10.7a, Task 10.7b, Task 10.7c, Task 10.7d, Task 10.8, Task 10.9, Task 10.8b, Task 10.8c, Task 10.8d, Task 10.8d-fix, Task 10.8e, Task 10.8f, Task 10.9b, Task 10.10, Task 10.11 и Task 10.12 закрыты. Sprint 10 code includes verified `src/termsData.js` + pure `src/terms.js`, verified `src/decansData.js` + pure `src/decans.js`, verified `src/degreeRulersStarOfMagiData.js` + pure `src/degreeRulersStarOfMagi.js`, verified Table 7 `src/degreeRulersVronskyData.js` + pure `src/degreeRulersVronsky.js`, `src/detailedDignityDisplay.js`, `src/detailedDignitiesForProfile.js`, collapsed `Термы, деканы и градусы` UI in `Мои карты`, and safe `Detailed Dignities UI Debug` in `?debug=1`. Sprint 11 активен: Task 11.1 закрыла Houses / ASC / MC strategy docs, Task 11.2 добавила Birth Input / Coordinates Guardrails, Task 11.3 добавила ASC / MC Calculation Engine, Task 11.4a закрыла House Systems Strategy / Dependency Audit, Task 11.4b добавила Whole Sign Houses Engine, Task 11.4c добавила Equal House Engine, Task 11.4d добавила Placidus integration gate, Task 11.4d2 активировала Placidus calculation через статические benchmark fixtures; следующая активная задача — Task 11.4e, House System Resolver / Selected System Router.
+Sprint 1, Sprint 2, Sprint 3, Sprint 4, Sprint 5, Sprint 6, Sprint 7 и Sprint 8 завершены. Sprint 7 добавил read-only natal planets panel внутри `Мои карты`: planet values показываются только для активного сохраненного профиля при `canConvertToUtc: true` и ready provider output, форматируются через `src/natalPlanetDisplay.js`, а missing coordinates не блокируют список планет. `Общий день`, unknown birth time, missing/invalid date/time/timezone, ambiguous DST overlap и nonexistent DST gap не показывают planet list. Safe `Natal Planets UI Debug` доступен только через `?debug=1` и показывает status/counts/capabilities без birth data, UTC datetime, raw timezone, coordinates, raw planet longitudes, speed values or full planet list. Houses / ASC / MC / transits, chart wheel и personal ritual scoring остаются not supported. Sprint 8 — Natal Aspects Foundation завершен: Task 8.1 создала `NATAL_ASPECTS_STRATEGY.md`, Task 8.2 добавила pure `src/natalAspectEngine.js`, Task 8.3 добавила synthetic/manual fixture validation layer, Task 8.4 добавила pure `src/natalAspectDisplay.js`, Task 8.5 добавила collapsible `Натальные аспекты` section внутри `Мои карты`, Task 8.6 добавила safe `Natal Aspects UI Debug`, а Task 8.7 завершила hardening. Sprint 9 — Essential Dignities Foundation завершен: Task 9.1 создала `ESSENTIAL_DIGNITIES_STRATEGY.md`, Task 9.2 добавила source-tracked `src/essentialDignitiesData.js`, Task 9.3 добавила pure lookup engine, Task 9.4 добавила synthetic/manual fixture validation, Task 9.5 добавила pure display helper, Task 9.6 добавила collapsible `Достоинства планет` section внутри `Мои карты`, Task 9.7 добавила safe `Essential Dignities UI Debug`, а Task 9.8 завершила hardening. Sprint 10 — Terms / Decans / Degree Rulers закрыт: Task 10.1, Task 10.2, Task 10.3a, Task 10.3b, Task 10.3c, Task 10.4, Task 10.5, Task 10.5b, Task 10.5c, Task 10.5d, Task 10.6, Task 10.7a, Task 10.7b, Task 10.7c, Task 10.7d, Task 10.8, Task 10.9, Task 10.8b, Task 10.8c, Task 10.8d, Task 10.8d-fix, Task 10.8e, Task 10.8f, Task 10.9b, Task 10.10, Task 10.11 и Task 10.12 закрыты. Sprint 10 code includes verified `src/termsData.js` + pure `src/terms.js`, verified `src/decansData.js` + pure `src/decans.js`, verified `src/degreeRulersStarOfMagiData.js` + pure `src/degreeRulersStarOfMagi.js`, verified Table 7 `src/degreeRulersVronskyData.js` + pure `src/degreeRulersVronsky.js`, `src/detailedDignityDisplay.js`, `src/detailedDignitiesForProfile.js`, collapsed `Термы, деканы и градусы` UI in `Мои карты`, and safe `Detailed Dignities UI Debug` in `?debug=1`. Sprint 11 активен: Task 11.1 закрыла Houses / ASC / MC strategy docs, Task 11.2 добавила Birth Input / Coordinates Guardrails, Task 11.3 добавила ASC / MC Calculation Engine, Task 11.4a закрыла House Systems Strategy / Dependency Audit, Task 11.4b добавила Whole Sign Houses Engine, Task 11.4c добавила Equal House Engine, Task 11.4d добавила Placidus integration gate, Task 11.4d2 активировала Placidus calculation через статические benchmark fixtures, Task 11.4e добавила House System Resolver / Selected System Router; следующая активная задача — Task 11.5, Houses Validation / Fixtures for Whole Sign / Equal House / Placidus.

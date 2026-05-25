@@ -542,8 +542,10 @@ House systems policy:
 - systems must not be mixed and every result must include `houseSystem`;
 - existing profile-level `houseSystem` selection is the source of truth for future house calculations;
 - current stored profile values are `wholeSign` (Whole Sign), `equal` (Equal House / Равнодомная) and `placidus` (Placidus);
-- future engines must normalize current profile values into canonical calculation keys: `whole-sign`, `equal-house` and `placidus`;
+- `src/houseSystemResolver.js` normalizes current profile values into canonical calculation keys: `whole-sign`, `equal-house` and `placidus`;
+- selected-system routing must call exactly one selected engine and preserve its `notReady` / `unsupported` status and reason;
 - default initial UI may use Whole Sign only when the profile has no saved house system selection;
+- missing `houseSystem` may default to `whole-sign`, but unknown selected systems must return explicit unsupported status;
 - do not silently override a user-selected house system;
 - Whole Sign is sign-based: House 1 = ASC sign, each house = full zodiac sign;
 - Equal House is exact-ASC-longitude based: cusp 1 = ASC longitude, cusp N = `normalize(ASC longitude + (N - 1) * 30°)`;
