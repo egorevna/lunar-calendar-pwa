@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-05-25 — Complete Task 11.2 birth input and coordinates guardrails
+
+- Added pure `src/housesInputGuardrails.js`.
+- Added `test/housesInputGuardrails.test.js`.
+- Implemented readiness checks for future Houses / ASC / MC calculations without calculating ASC, MC, DSC, IC, houses or planet-in-house assignments.
+- Guardrails now require exact birth time, birth date, birth timezone, birth place and finite birth coordinates before future house calculations can proceed.
+- Supported existing and compatible coordinate shapes: `birthPlace.latitude/longitude`, `birthPlace.lat/lng`, `birthPlace.coordinates.latitude/longitude` and `birthPlace.coordinates.lat/lng`.
+- Added safe not-ready reasons and Russian fallback messages for missing profile, common day, missing date/time/timezone/place, country/region-only, city-without-coordinates, missing coordinates and invalid coordinates.
+- Added Sprint 11 requirements, limitations and initial `whole-sign` house-system policy helpers.
+- Updated `TODO.md`, `PROJECT_STATE.md` and `ARCHITECTURE.md`.
+- No provider calculations, ASC / MC engine, houses engine, UI, PWA cache, package files, generated ephemeris data, fixed stars, Pars Fortuna / Arabic Parts, transits, interpretations or ritual scoring were added.
+- Next active task is Task 11.3 — ASC / MC Calculation Engine, but it was not started.
+
 ## 2026-05-25 — Start Sprint 11 Houses / ASC / MC strategy
 
 - Started Sprint 11 — Houses / ASC / MC with docs-only Task 11.1.

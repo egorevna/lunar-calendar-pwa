@@ -2905,7 +2905,7 @@ Result:
 
 ## Task 11.2 — Birth Input / Coordinates Guardrails
 
-Status: active
+Status: done
 
 Goal:
 
@@ -2921,11 +2921,31 @@ Scope:
 
 Do not calculate ASC / MC / houses in Task 11.2.
 
+Result:
+
+- Added pure `src/housesInputGuardrails.js`.
+- Added `test/housesInputGuardrails.test.js`.
+- Implemented safe readiness checks for exact birth time, birth date, birth timezone, birth place and birth coordinates.
+- Supported existing and compatible coordinate shapes without returning raw coordinate values.
+- Added stable reason priority and safe Russian fallback messages for missing profile, common day, missing date/time/timezone/place, country/region-only, city-without-coordinates, missing coordinates and invalid coordinates.
+- Added Sprint 11 requirements, limitations and initial `whole-sign` house-system policy helpers.
+- Confirmed the module does not calculate ASC / MC / DSC / IC, houses or planet-in-house assignments.
+- No provider calculations, UI, app wiring, PWA cache, package files or ephemeris data were changed.
+
+## Task 11.3 — ASC / MC Calculation Engine
+
+Status: active
+
+Goal:
+
+Create the pure ASC / MC calculation engine after input guardrails are in place.
+
+Do not start Task 11.3 until explicitly requested.
+
 ## Later Sprint 11 Tasks
 
 Status: not started
 
-- Task 11.3 — ASC / MC Calculation Engine.
 - Task 11.4 — Houses Engine.
 - Task 11.5 — Houses Validation / Fixtures.
 - Task 11.6 — Planet-in-House Assignment.

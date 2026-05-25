@@ -374,6 +374,20 @@ Current responsibilities:
 
 This module does not call external APIs, does not use geocoding or location permissions, does not use the device timezone as a birth-time fallback, and does not calculate natal planets, houses, ASC / MC, aspects, personal transits, or orbs.
 
+## `src/housesInputGuardrails.js`
+
+Defines the Sprint 11 readiness / guardrails layer for future Houses / ASC / MC calculations.
+
+Current responsibilities:
+
+- evaluate whether a profile has enough safe input for future ASC / MC / house calculations;
+- require exact birth time, birth date, birth timezone, birth place and finite birth coordinates;
+- fail closed for `Общий день`, missing profile, unknown or empty birth time, missing timezone, missing birth place, country/region-only birth place, city without coordinates, missing coordinates and invalid coordinates;
+- support existing and compatible birth coordinate shapes without returning raw coordinate values;
+- expose safe flags, requirements, fallback messages, limitations and initial `whole-sign` house-system policy.
+
+This module does not calculate ASC, MC, DSC, IC, houses or planet-in-house assignments. It does not call providers, import `astronomy-engine`, read localStorage, render DOM, expose raw birth data, expose raw coordinates or mutate profiles.
+
 ## `src/planetaryPositionProvider.js`
 
 Defines the future planetary position provider contract.
