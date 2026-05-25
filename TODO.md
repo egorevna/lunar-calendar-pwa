@@ -3010,17 +3010,26 @@ Result:
 
 ## Task 11.4d — Placidus Engine / Validated Integration
 
-Status: active
+Status: done
 
 Goal:
 
 Implement Placidus only if a validated dependency / calculation path and benchmark fixtures exist. If no validated path exists, keep Placidus explicit unsupported / deferred with tests for unsupported behavior.
 
-Do not start Task 11.4d until explicitly requested.
+Result:
+
+- Added pure `src/placidusHouses.js`.
+- Added `test/placidusHouses.test.js`.
+- Completed the local dependency / implementation audit for Placidus house cusps.
+- Confirmed tracked `astronomy-engine` / vendor files do not provide a ready Placidus / house-cusp API.
+- Confirmed local `swisseph.swe_houses` exists only as a candidate dev dependency path and is not activated because trusted benchmark fixtures are not present.
+- Placidus is recognized as a separate `placidus` house system but remains calculation-disabled with explicit `status: "unsupported"` / `reason: "placidusNotValidated"`.
+- Validation status records `validated: false`, `implementationReady: false`, `benchmarkFixtures: false` and `reason: "missingBenchmarkFixtures"`.
+- Confirmed no fake Placidus cusps, no Equal House fallback, no Whole Sign fallback, no generic router, no quadrant cusps, no planet-in-house assignment, no UI, no provider changes and no package changes were added.
 
 ## Task 11.4e — House System Resolver / Selected System Router
 
-Status: not started
+Status: active
 
 Goal:
 

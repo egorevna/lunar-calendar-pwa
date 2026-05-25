@@ -600,13 +600,19 @@ Equal House boundary policy:
 Placidus boundary policy:
 
 - Placidus uses quadrant cusps;
+- Sprint 11 Task 11.4d recognizes Placidus through `src/placidusHouses.js` as a validation-gated integration module, not an active cusp calculator;
 - ASC = cusp 1;
 - MC = cusp 10;
 - planet-in-house requires longitude comparison against Placidus cusps;
 - unsupported / high-latitude / circumpolar cases must fail safely;
 - Placidus cusps are output as zodiac longitudes measured from 0° Aries;
 - Placidus does not start from 0° Aries as house anchor;
-- Placidus must not be approximated by Equal House or Whole Sign.
+- Placidus must not be approximated by Equal House or Whole Sign;
+- current local `astronomy-engine` / vendor runtime does not provide a ready Placidus / house-cusp API;
+- local `swisseph.swe_houses` is only a candidate dev dependency path and is not active without trusted benchmark fixtures;
+- until a validated path and benchmark fixtures are approved, Placidus returns explicit `status: "unsupported"` with `reason: "placidusNotValidated"`;
+- current validation status is `validated: false`, `implementationReady: false`, `benchmarkFixtures: false` and `reason: "missingBenchmarkFixtures"`;
+- future Placidus readiness requires benchmark fixtures and high-latitude / circumpolar unsupported tests before active calculation.
 
 Deferred:
 

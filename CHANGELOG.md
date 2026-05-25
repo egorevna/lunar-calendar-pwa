@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-25 — Complete Task 11.4d Placidus integration gate
+
+- Added pure `src/placidusHouses.js`.
+- Added `test/placidusHouses.test.js`.
+- Completed local Placidus dependency / implementation audit: tracked `astronomy-engine` / vendor files do not provide a ready Placidus / house-cusp API.
+- Recorded local `swisseph.swe_houses` as a candidate dev dependency path only; it was not activated because trusted benchmark fixtures are missing.
+- Placidus is recognized as a separate `placidus` house system but returns explicit unsupported status until a validated implementation and benchmark fixtures exist.
+- Added validation status output with `validated: false`, `implementationReady: false`, `benchmarkFixtures: false` and `reason: "missingBenchmarkFixtures"`.
+- No fake Placidus cusps, Equal House fallback, Whole Sign fallback, quadrant cusps, generic house-system router, planet-in-house assignment, UI, PWA cache, provider calculations, package files or generated ephemeris data were added.
+- Next active task is Task 11.4e — House System Resolver / Selected System Router, but it was not started.
+
 ## 2026-05-25 — Complete Task 11.4c Equal House houses engine
 
 - Added pure `src/equalHouseHouses.js`.
