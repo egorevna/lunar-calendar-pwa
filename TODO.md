@@ -3259,9 +3259,9 @@ Sprint 11 status:
 
 Next active task:
 
-- Sprint 12 has started below; current next active task is Task 12.2 — House Cusp Canonicalization / Fixtures.
+- Sprint 12 has started below; current next active task is Task 12.3 — Day / Night Chart Status Engine / Fixtures.
 
-Do not start Task 12.2 until explicitly requested.
+Do not start Task 12.3 until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -3366,11 +3366,31 @@ Result:
 - Confirmed Sprint 12 does not add interpretations or ritual scoring.
 - No calculation code, `src/`, tests, UI, PWA cache, package files or generated ephemeris data were changed.
 
+## Task 12.2 — House Cusp Canonicalization / Fixtures
+
+Status: done
+
+Goal:
+
+Create a canonical house cusp output layer for the selected house system without adding new house math.
+
+Result:
+
+- Added pure `src/houseCusps.js`.
+- Added canonical cusp fixtures in `test/fixtures/houseCuspsFixtures.js`.
+- Added `test/houseCuspsFixtures.test.js` and `test/houseCusps.test.js`.
+- Canonicalized Whole Sign as sign-boundary cusp-like house boundaries with `exactCuspDegrees: false`.
+- Canonicalized Equal House as exact ASC + 30° cusps with `exactCuspDegrees: true`.
+- Canonicalized Placidus as benchmark-validated quadrant cusps with `benchmarkValidated: true`.
+- Supported direct engine results and selected-system router-shaped results.
+- Added profile-level helper through the existing selected-system router.
+- No new house system, house calculation math, Pars Fortuna, Arabic Parts, day/night status, UI, provider changes, package changes or PWA cache changes were added.
+
 Next active task:
 
-- Task 12.2 — House Cusp Canonicalization / Fixtures.
+- Task 12.3 — Day / Night Chart Status Engine / Fixtures.
 
-Do not start Task 12.2 until explicitly requested.
+Do not start Task 12.3 until explicitly requested.
 Do not start Sprint 13.
 
 # Security Backlog

@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-26 — Complete Task 12.2 House Cusp Canonicalization / Fixtures
+
+- Added pure `src/houseCusps.js` canonical cusp layer for ready selected house-system results.
+- Added static/manual house cusp fixtures and tests for Whole Sign, Equal House and Placidus.
+- Canonical Whole Sign cusps are sign-boundary outputs with `exactCuspDegrees: false`.
+- Canonical Equal House cusps use exact ASC + 30° spacing.
+- Canonical Placidus cusps use the benchmark-validated selected Placidus result.
+- No new house math, Pars Fortuna, Arabic Parts, day/night status, UI, provider calculations, package files or PWA cache changes were added.
+
 ## 2026-05-26 — Start Sprint 12 House Cusps / Pars Fortuna strategy
 
 - Started Sprint 12 — House Cusps + Pars Fortuna + Basic Arabic Parts.

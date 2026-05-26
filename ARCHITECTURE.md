@@ -529,6 +529,21 @@ Current responsibilities:
 
 This module does not calculate houses, calculate ASC / MC, assign planets to houses, call provider modules, import browser ephemeris engines, render DOM, read localStorage, mutate profiles, expose raw birth data / UTC / timezone values / coordinates / raw longitudes, or dump full houses / cusps / assignments / profile JSON.
 
+## `src/houseCusps.js`
+
+Defines the Sprint 12 pure canonical house cusp layer.
+
+Current responsibilities:
+
+- accept a ready selected house-system result directly or through the `src/houseSystemResolver.js` router shape;
+- return a canonical 12-cusp output for `whole-sign`, `equal-house` and `placidus`;
+- represent Whole Sign as sign-boundary cusp-like house boundaries with `exactCuspDegrees: false`;
+- represent Equal House as exact ASC + 30° cusps from the existing Equal House result;
+- represent Placidus as benchmark-validated quadrant cusps from the existing Placidus result;
+- expose profile-level canonical cusp output through the existing selected-system router.
+
+This module does not calculate new house math, add a new house system, calculate day/night status, calculate Pars Fortuna, calculate Arabic Parts, call provider modules, render UI, read localStorage, mutate input, or expose raw birth data / raw birth coordinates.
+
 ## `src/planetaryPositionProvider.js`
 
 Defines the future planetary position provider contract.
@@ -1384,11 +1399,13 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 34. `src/housesForProfile.js` builds the profile-level safe view model for the `Дома и углы карты` UI block by composing selected-system houses, planet-in-house assignments and display formatting. It passes the already calculated selected house result into planet-in-house assignment so the view model does not combine independent house calculations. It does not calculate houses or render UI directly.
 
-35. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+35. `src/houseCusps.js` canonicalizes ready selected house-system results into 12 house cusp outputs for Whole Sign sign boundaries, Equal House exact 30-degree cusps and Placidus benchmark-validated quadrant cusps. It does not add new house math, Pars Fortuna, Arabic Parts, day/night status or UI.
 
-36. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+36. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
 
-35. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
+37. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+
+38. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
 
 34. `src/natalProviderValidationSummary.js` exposes a safe provider validation summary for debug/reporting without calculating planets, reading profile data, or importing the `astronomy-engine` provider module.
 
@@ -1778,6 +1795,8 @@ Testing note:
 - `test/housesValidation.test.js` validates Whole Sign / Equal House manual fixtures, Placidus static benchmark fixtures, router no-fallback behavior, guardrail failures, privacy exclusions and strict source boundaries without creating a new production house engine.
 - `test/fixtures/planetInHousesFixtures.js` contains test-only manually declared planet-in-house assignment fixtures for Whole Sign, Equal House, Placidus, boundary spans, selected-system behavior and privacy exclusions. It is not used by production code.
 - `test/planetInHouses.test.js` validates assignment behavior across selected house systems, half-open cusp boundaries, profile-level routing, privacy exclusions and strict source boundaries without adding UI or a new house calculation engine.
+- `test/fixtures/houseCuspsFixtures.js` contains test-only manually declared canonical cusp fixtures for Whole Sign sign boundaries, Equal House exact cusps and Placidus benchmark values. It is not used by production code.
+- `test/houseCuspsFixtures.test.js` and `test/houseCusps.test.js` validate canonical cusp output, router/profile integration, no-fallback behavior, privacy exclusions and strict source boundaries without adding new house math or lots / parts.
 - `NATAL_PROVIDER_VALIDATION_REPORT.md` records the provider-layer validation summary; it does not enable user-facing natal values.
 - if personal data is added later, debug output must follow `PRIVACY_RULES.md`
 
@@ -1839,6 +1858,7 @@ Current test coverage includes:
 - field quality
 - absence of removed decorative elements on the main screen
 - Sprint 11 house-system validation fixtures for Whole Sign, Equal House, Placidus and selected-system routing
+- Sprint 12 canonical cusp fixtures for Whole Sign, Equal House and Placidus
 
 If new modules are added, tests should be added or updated.
 

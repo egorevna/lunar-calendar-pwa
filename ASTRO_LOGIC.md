@@ -675,6 +675,13 @@ Core policy:
 - house-system fallback remains forbidden: Placidus must not fallback to Equal House or Whole Sign, and Equal House must not fallback to Whole Sign;
 - Sprint 12 does not add interpretations, ritual scoring, fixed stars or transits.
 
+Canonical cusp policy:
+
+- Whole Sign canonical cusps are sign-boundary outputs: house 1 starts at 0° of the ASC sign, house 2 at 0° of the next sign and so on; `exactCuspDegrees` is false, and the exact ASC degree is not treated as the first cusp.
+- Equal House canonical cusps are exact cusps from the Equal House result: cusp 1 is the exact ASC longitude, and each next cusp is +30° normalized.
+- Placidus canonical cusps are exact benchmark-validated quadrant cusps from the Placidus result; cusps 1 / 10 / 7 / 4 correspond to ASC / MC / DSC / IC.
+- Canonical cusp output reuses selected house-system results and must not recalculate or substitute house systems.
+
 User-facing and debug policy:
 
 - zodiac positions for lots / parts use degree-minute-second display, matching the current astrology position policy;
