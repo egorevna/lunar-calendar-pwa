@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-26 — Complete Task 12.3 Day / Night Chart Status Engine / Fixtures
+
+- Added pure `src/dayNightChart.js` day/night chart status engine.
+- Added static/manual day/night chart fixtures and tests.
+- Day/night status is determined by geometric Sun altitude above or below the horizon, not by local clock time.
+- Boundary cases near the horizon return explicit `boundary` status instead of silently choosing day or night.
+- Profile-level status uses existing guardrails, UTC conversion and the safe natal Sun path.
+- No Pars Fortuna, Arabic Parts, new house engine, UI, provider calculations, package files or PWA cache changes were added.
+
 ## 2026-05-26 — Complete Task 12.2 House Cusp Canonicalization / Fixtures
 
 - Added pure `src/houseCusps.js` canonical cusp layer for ready selected house-system results.

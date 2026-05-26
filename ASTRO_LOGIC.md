@@ -682,6 +682,14 @@ Canonical cusp policy:
 - Placidus canonical cusps are exact benchmark-validated quadrant cusps from the Placidus result; cusps 1 / 10 / 7 / 4 correspond to ASC / MC / DSC / IC.
 - Canonical cusp output reuses selected house-system results and must not recalculate or substitute house systems.
 
+Day / night chart policy:
+
+- day/night status is determined from geometric Sun altitude relative to the horizon, not from local clock time;
+- day chart means the Sun altitude is above the horizon by more than the explicit boundary tolerance;
+- night chart means the Sun altitude is below the horizon by more than the explicit boundary tolerance;
+- if the Sun is on or too close to the horizon, return explicit `boundary` status and do not choose a day or night formula;
+- no Pars Fortuna or Arabic Part formula may silently default to a day or night variant when chart sect is unknown.
+
 User-facing and debug policy:
 
 - zodiac positions for lots / parts use degree-minute-second display, matching the current astrology position policy;

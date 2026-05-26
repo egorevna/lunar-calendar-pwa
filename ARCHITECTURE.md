@@ -544,6 +544,19 @@ Current responsibilities:
 
 This module does not calculate new house math, add a new house system, calculate day/night status, calculate Pars Fortuna, calculate Arabic Parts, call provider modules, render UI, read localStorage, mutate input, or expose raw birth data / raw birth coordinates.
 
+## `src/dayNightChart.js`
+
+Defines the Sprint 12 pure day/night chart status engine.
+
+Current responsibilities:
+
+- calculate geometric Sun altitude from local sidereal time, latitude, obliquity and Sun ecliptic longitude;
+- classify chart sect as `day`, `night` or explicit `boundary` when the Sun is too close to the horizon;
+- calculate day/night status from UTC/date, coordinates and Sun longitude using the existing sidereal time and obliquity helpers from `src/ascMc.js`;
+- expose a profile-level helper that uses existing house input guardrails, `src/birthDateTime.js` UTC conversion and the safe `src/natalPlanetsForProfile.js` path for natal Sun longitude.
+
+This module does not calculate Pars Fortuna, calculate Arabic Parts, add interpretations, add UI, create a new house engine, call provider modules directly, render DOM, read localStorage, mutate profiles, or expose raw birth data / raw birth coordinates.
+
 ## `src/planetaryPositionProvider.js`
 
 Defines the future planetary position provider contract.
@@ -1401,11 +1414,13 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 35. `src/houseCusps.js` canonicalizes ready selected house-system results into 12 house cusp outputs for Whole Sign sign boundaries, Equal House exact 30-degree cusps and Placidus benchmark-validated quadrant cusps. It does not add new house math, Pars Fortuna, Arabic Parts, day/night status or UI.
 
-36. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+36. `src/dayNightChart.js` determines chart sect through geometric Sun altitude and returns day / night / boundary status for future lots and parts. It does not calculate Pars Fortuna, Arabic Parts, houses, UI or interpretations.
 
-37. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+37. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
 
-38. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
+38. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+
+39. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
 
 34. `src/natalProviderValidationSummary.js` exposes a safe provider validation summary for debug/reporting without calculating planets, reading profile data, or importing the `astronomy-engine` provider module.
 
@@ -1797,6 +1812,8 @@ Testing note:
 - `test/planetInHouses.test.js` validates assignment behavior across selected house systems, half-open cusp boundaries, profile-level routing, privacy exclusions and strict source boundaries without adding UI or a new house calculation engine.
 - `test/fixtures/houseCuspsFixtures.js` contains test-only manually declared canonical cusp fixtures for Whole Sign sign boundaries, Equal House exact cusps and Placidus benchmark values. It is not used by production code.
 - `test/houseCuspsFixtures.test.js` and `test/houseCusps.test.js` validate canonical cusp output, router/profile integration, no-fallback behavior, privacy exclusions and strict source boundaries without adding new house math or lots / parts.
+- `test/fixtures/dayNightChartFixtures.js` contains test-only manually declared day/night chart fixtures for synthetic Sun-altitude geometry, public Greenwich examples, fallback states and strict exclusions. It is not used by production code.
+- `test/dayNightChartFixtures.test.js` and `test/dayNightChart.test.js` validate day/night geometry, boundary handling, profile-level guardrails, privacy exclusions and strict source boundaries without calculating lots / parts.
 - `NATAL_PROVIDER_VALIDATION_REPORT.md` records the provider-layer validation summary; it does not enable user-facing natal values.
 - if personal data is added later, debug output must follow `PRIVACY_RULES.md`
 
@@ -1859,6 +1876,7 @@ Current test coverage includes:
 - absence of removed decorative elements on the main screen
 - Sprint 11 house-system validation fixtures for Whole Sign, Equal House, Placidus and selected-system routing
 - Sprint 12 canonical cusp fixtures for Whole Sign, Equal House and Placidus
+- Sprint 12 day/night chart status fixtures for Sun-altitude geometry and boundary behavior
 
 If new modules are added, tests should be added or updated.
 

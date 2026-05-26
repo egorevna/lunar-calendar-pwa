@@ -3259,9 +3259,9 @@ Sprint 11 status:
 
 Next active task:
 
-- Sprint 12 has started below; current next active task is Task 12.3 — Day / Night Chart Status Engine / Fixtures.
+- Sprint 12 has started below; current next active task is Task 12.4 — Pars Fortuna Engine / Fixtures.
 
-Do not start Task 12.3 until explicitly requested.
+Do not start Task 12.4 until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -3386,11 +3386,29 @@ Result:
 - Added profile-level helper through the existing selected-system router.
 - No new house system, house calculation math, Pars Fortuna, Arabic Parts, day/night status, UI, provider changes, package changes or PWA cache changes were added.
 
+## Task 12.3 — Day / Night Chart Status Engine / Fixtures
+
+Status: done
+
+Goal:
+
+Create a pure day/night chart status engine for future Pars Fortuna and Arabic Parts.
+
+Result:
+
+- Added pure `src/dayNightChart.js`.
+- Added day/night chart fixtures in `test/fixtures/dayNightChartFixtures.js`.
+- Added `test/dayNightChartFixtures.test.js` and `test/dayNightChart.test.js`.
+- Day/night status is determined by geometric Sun altitude above/below the horizon.
+- Boundary cases near the horizon return explicit `boundary` status instead of choosing day or night.
+- Profile-level helper uses existing guardrails, UTC conversion and the safe natal Sun path.
+- No Pars Fortuna, Arabic Parts, new house engine, UI, provider changes, package changes or PWA cache changes were added.
+
 Next active task:
 
-- Task 12.3 — Day / Night Chart Status Engine / Fixtures.
+- Task 12.4 — Pars Fortuna Engine / Fixtures.
 
-Do not start Task 12.3 until explicitly requested.
+Do not start Task 12.4 until explicitly requested.
 Do not start Sprint 13.
 
 # Security Backlog
