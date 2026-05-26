@@ -149,7 +149,6 @@ export const DAY_NIGHT_CHART_FIXTURES = Object.freeze([
         'src/houses.js',
         'src/houseSystems.js',
         'src/arabicParts.js',
-        'src/arabicPartsData.js',
       ]),
       providerImports: false,
       domStorageImports: false,

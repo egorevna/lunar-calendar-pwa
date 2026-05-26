@@ -266,5 +266,4 @@ test('Pars Fortuna module keeps strict source boundaries', async () => {
   assert.equal(existsSync(new URL('../src/houses.js', import.meta.url)), false);
   assert.equal(existsSync(new URL('../src/houseSystems.js', import.meta.url)), false);
   assert.equal(existsSync(new URL('../src/arabicParts.js', import.meta.url)), false);
-  assert.equal(existsSync(new URL('../src/arabicPartsData.js', import.meta.url)), false);
 });

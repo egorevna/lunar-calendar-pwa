@@ -182,7 +182,6 @@ export const PARS_FORTUNA_FIXTURES = Object.freeze([
         'src/houses.js',
         'src/houseSystems.js',
         'src/arabicParts.js',
-        'src/arabicPartsData.js',
       ]),
       providerImports: false,
       domStorageImports: false,

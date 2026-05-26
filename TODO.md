@@ -3259,9 +3259,9 @@ Sprint 11 status:
 
 Next active task:
 
-- Sprint 12 has started below; current next active task is Task 12.5 — Arabic Parts Source Decision / Formula Dataset.
+- Sprint 12 has started below; current next active task is Task 12.6 — Basic Arabic Parts Engine / Fixtures.
 
-Do not start Task 12.5 until explicitly requested.
+Do not start Task 12.6 until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -3432,7 +3432,30 @@ Next active task:
 
 - Task 12.5 — Arabic Parts Source Decision / Formula Dataset.
 
-Do not start Task 12.5 until explicitly requested.
+## Task 12.5 — Arabic Parts Source Decision / Formula Dataset
+
+Status: done
+
+Goal:
+
+Create a data-only formula dataset / source decision layer for Basic Arabic Parts.
+
+Result:
+
+- Added pure data-only `src/arabicPartsData.js`.
+- Added `test/arabicPartsData.test.js`.
+- Documented verified-only formula activation policy in code-level metadata.
+- Kept `pars-fortuna` as the only active verified formula.
+- Kept Lot of Spirit, Lot of Eros, Lot of Necessity, Lot of Basis and Lot of Exaltation inactive/deferred until formula source verification.
+- Confirmed the dataset does not calculate formulas, import the Pars Fortuna engine, call providers, read DOM/localStorage, expose birth data or add interpretations.
+- Updated legacy strict checks so `src/arabicPartsData.js` is allowed as data-only while broad `src/arabicParts.js` remains forbidden.
+- No broad Arabic Parts engine, Lot of Spirit calculation, UI, provider changes, package changes or PWA cache changes were added.
+
+Next active task:
+
+- Task 12.6 — Basic Arabic Parts Engine / Fixtures.
+
+Do not start Task 12.6 until explicitly requested.
 Do not start Sprint 13.
 
 # Security Backlog

@@ -700,6 +700,16 @@ Pars Fortuna policy:
 - if chart sect is `boundary`, unknown or not ready, Pars Fortuna returns safe `notReady` instead of choosing a formula;
 - Task 12.4 does not implement Lot of Spirit, a broad Arabic Parts catalog, house assignment or interpretations.
 
+Arabic Parts formula dataset policy:
+
+- Arabic Parts use a verified-only activation policy;
+- no formula may become active from memory alone;
+- `pars-fortuna` is currently the only active verified formula row;
+- Lot of Spirit remains deferred until a formula source decision verifies and activates it;
+- Lot of Eros, Lot of Necessity, Lot of Basis, Lot of Exaltation and other additional parts remain deferred until source verification;
+- the formula dataset is data-only and does not calculate lots/parts;
+- Task 12.5 does not implement a broad Arabic Parts engine, Lot of Spirit calculation, house assignment, UI or interpretations.
+
 User-facing and debug policy:
 
 - zodiac positions for lots / parts use degree-minute-second display, matching the current astrology position policy;

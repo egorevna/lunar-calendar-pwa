@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-26 — Complete Task 12.5 Arabic Parts Source Decision / Formula Dataset
+
+- Added data-only `src/arabicPartsData.js` formula dataset / source decision module.
+- Added `test/arabicPartsData.test.js`.
+- Recorded verified-only Arabic Parts activation policy in module metadata.
+- Kept Pars Fortuna / Lot of Fortune as the only active verified formula.
+- Kept Lot of Spirit, Lot of Eros, Lot of Necessity, Lot of Basis and Lot of Exaltation inactive/deferred until source verification.
+- Updated existing strict tests so the data-only module is allowed while broad `src/arabicParts.js` remains forbidden.
+- No broad Arabic Parts calculations, Lot of Spirit calculation, Pars Fortuna formula changes, UI, provider calculations, package files or PWA cache changes were added.
+
 ## 2026-05-26 — Complete Task 12.4 Pars Fortuna Engine / Fixtures
 
 - Added pure `src/parsFortuna.js` Pars Fortuna / Lot of Fortune engine.
