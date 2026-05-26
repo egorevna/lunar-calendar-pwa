@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-26 — Complete Task 12.4 Pars Fortuna Engine / Fixtures
+
+- Added pure `src/parsFortuna.js` Pars Fortuna / Lot of Fortune engine.
+- Added static/manual Pars Fortuna fixtures and tests.
+- Implemented verified day chart formula `ASC + Moon - Sun`.
+- Implemented verified night chart formula `ASC + Sun - Moon`.
+- Boundary or unknown day/night status returns explicit `notReady`; no formula variant is chosen silently.
+- Profile-level calculation uses existing guardrails, ASC / MC, day/night status and the safe natal Sun/Moon path.
+- No broad Arabic Parts catalog, Lot of Spirit, house assignment, UI, provider calculations, package files or PWA cache changes were added.
+
 ## 2026-05-26 — Complete Task 12.3 Day / Night Chart Status Engine / Fixtures
 
 - Added pure `src/dayNightChart.js` day/night chart status engine.

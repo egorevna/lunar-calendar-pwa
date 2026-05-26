@@ -690,6 +690,16 @@ Day / night chart policy:
 - if the Sun is on or too close to the horizon, return explicit `boundary` status and do not choose a day or night formula;
 - no Pars Fortuna or Arabic Part formula may silently default to a day or night variant when chart sect is unknown.
 
+Pars Fortuna policy:
+
+- Pars Fortuna / Lot of Fortune uses only numeric tropical longitudes, not formatted display text;
+- required inputs are ASC, Sun, Moon and explicit day/night chart status;
+- day chart formula is `ASC + Moon - Sun`;
+- night chart formula is `ASC + Sun - Moon`;
+- the final longitude is normalized to `0 <= longitude < 360`;
+- if chart sect is `boundary`, unknown or not ready, Pars Fortuna returns safe `notReady` instead of choosing a formula;
+- Task 12.4 does not implement Lot of Spirit, a broad Arabic Parts catalog, house assignment or interpretations.
+
 User-facing and debug policy:
 
 - zodiac positions for lots / parts use degree-minute-second display, matching the current astrology position policy;

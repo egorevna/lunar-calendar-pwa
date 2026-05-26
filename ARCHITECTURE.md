@@ -557,6 +557,21 @@ Current responsibilities:
 
 This module does not calculate Pars Fortuna, calculate Arabic Parts, add interpretations, add UI, create a new house engine, call provider modules directly, render DOM, read localStorage, mutate profiles, or expose raw birth data / raw birth coordinates.
 
+## `src/parsFortuna.js`
+
+Defines the Sprint 12 pure Pars Fortuna / Lot of Fortune formula engine.
+
+Current responsibilities:
+
+- calculate Pars Fortuna from numeric ASC, Sun and Moon longitudes;
+- choose the verified day formula `ASC + Moon - Sun` only when chart sect is `day`;
+- choose the verified night formula `ASC + Sun - Moon` only when chart sect is `night`;
+- normalize the result to tropical zodiac longitude `0 <= longitude < 360`;
+- format the result as sign, degree, minute and second text;
+- expose a profile-level helper that uses existing house guardrails, `src/ascMc.js`, `src/dayNightChart.js` and the safe `src/natalPlanetsForProfile.js` Sun/Moon path.
+
+This module does not implement a broad Arabic Parts catalog, calculate Lot of Spirit, assign lots to houses, add interpretations, add UI, call provider modules directly, render DOM, read localStorage, mutate profiles, or expose raw birth data / raw birth coordinates.
+
 ## `src/planetaryPositionProvider.js`
 
 Defines the future planetary position provider contract.
@@ -1416,11 +1431,13 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 36. `src/dayNightChart.js` determines chart sect through geometric Sun altitude and returns day / night / boundary status for future lots and parts. It does not calculate Pars Fortuna, Arabic Parts, houses, UI or interpretations.
 
-37. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+37. `src/parsFortuna.js` calculates Pars Fortuna / Lot of Fortune from numeric ASC, Sun and Moon longitudes using the verified day/night formula policy. It does not implement a broad Arabic Parts catalog, Lot of Spirit, house assignment, UI or interpretations.
 
-38. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+38. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
 
-39. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
+39. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+
+40. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
 
 34. `src/natalProviderValidationSummary.js` exposes a safe provider validation summary for debug/reporting without calculating planets, reading profile data, or importing the `astronomy-engine` provider module.
 

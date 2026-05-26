@@ -3259,9 +3259,9 @@ Sprint 11 status:
 
 Next active task:
 
-- Sprint 12 has started below; current next active task is Task 12.4 — Pars Fortuna Engine / Fixtures.
+- Sprint 12 has started below; current next active task is Task 12.5 — Arabic Parts Source Decision / Formula Dataset.
 
-Do not start Task 12.4 until explicitly requested.
+Do not start Task 12.5 until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -3408,7 +3408,31 @@ Next active task:
 
 - Task 12.4 — Pars Fortuna Engine / Fixtures.
 
-Do not start Task 12.4 until explicitly requested.
+## Task 12.4 — Pars Fortuna Engine / Fixtures
+
+Status: done
+
+Goal:
+
+Create a pure Pars Fortuna / Lot of Fortune engine using the verified day/night formula policy.
+
+Result:
+
+- Added pure `src/parsFortuna.js`.
+- Added Pars Fortuna fixtures in `test/fixtures/parsFortunaFixtures.js`.
+- Added `test/parsFortunaFixtures.test.js` and `test/parsFortuna.test.js`.
+- Implemented day chart formula `ASC + Moon - Sun`.
+- Implemented night chart formula `ASC + Sun - Moon`.
+- Normalized result longitude to `0 <= longitude < 360`.
+- Added profile-level helper through existing guardrails, ASC / MC, day/night status and safe natal Sun/Moon path.
+- Boundary / unknown day-night status returns safe `notReady` instead of choosing a formula.
+- No Arabic Parts catalog, Lot of Spirit, house assignment, UI, provider changes, package changes or PWA cache changes were added.
+
+Next active task:
+
+- Task 12.5 — Arabic Parts Source Decision / Formula Dataset.
+
+Do not start Task 12.5 until explicitly requested.
 Do not start Sprint 13.
 
 # Security Backlog

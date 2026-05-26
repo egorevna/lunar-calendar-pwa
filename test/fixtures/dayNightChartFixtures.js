@@ -148,7 +148,6 @@ export const DAY_NIGHT_CHART_FIXTURES = Object.freeze([
       forbiddenFiles: Object.freeze([
         'src/houses.js',
         'src/houseSystems.js',
-        'src/parsFortuna.js',
         'src/arabicParts.js',
         'src/arabicPartsData.js',
       ]),

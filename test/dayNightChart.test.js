@@ -261,7 +261,6 @@ test('day/night chart output and source keep strict exclusions', async () => {
   assert.equal(source.includes('карми'), false);
   assert.equal(existsSync(new URL('../src/houses.js', import.meta.url)), false);
   assert.equal(existsSync(new URL('../src/houseSystems.js', import.meta.url)), false);
-  assert.equal(existsSync(new URL('../src/parsFortuna.js', import.meta.url)), false);
   assert.equal(existsSync(new URL('../src/arabicParts.js', import.meta.url)), false);
   assert.equal(existsSync(new URL('../src/arabicPartsData.js', import.meta.url)), false);
 });
