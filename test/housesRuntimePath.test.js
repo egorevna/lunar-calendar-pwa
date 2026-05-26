@@ -42,38 +42,38 @@ const MOSCOW_PLACIDUS_PROFILE = Object.freeze({
 
 const EXPECTED_UTC = '1981-04-16T00:45:00.000Z';
 const EXPECTED_ANGLE_ROWS = Object.freeze([
-  'ASC — Водолей 14°57′',
-  'MC — Стрелец 14°16′',
-  'DSC — Лев 14°57′',
-  'IC — Близнецы 14°16′',
+  'ASC — Водолей 14°57′17″',
+  'MC — Стрелец 14°16′58″',
+  'DSC — Лев 14°57′17″',
+  'IC — Близнецы 14°16′58″',
 ]);
 const EXPECTED_HOUSE_ROWS = Object.freeze([
-  '1 дом — Водолей 14°57′',
-  '2 дом — Овен 24°02′',
-  '3 дом — Телец 25°30′',
-  '4 дом — Близнецы 14°16′',
-  '5 дом — Близнецы 29°46′',
-  '6 дом — Рак 16°42′',
-  '7 дом — Лев 14°57′',
-  '8 дом — Весы 24°02′',
-  '9 дом — Скорпион 25°30′',
-  '10 дом — Стрелец 14°16′',
-  '11 дом — Стрелец 29°46′',
-  '12 дом — Козерог 16°42′',
+  '1 дом — Водолей 14°57′17″',
+  '2 дом — Овен 24°02′09″',
+  '3 дом — Телец 25°30′04″',
+  '4 дом — Близнецы 14°16′58″',
+  '5 дом — Близнецы 29°46′49″',
+  '6 дом — Рак 16°42′10″',
+  '7 дом — Лев 14°57′17″',
+  '8 дом — Весы 24°02′09″',
+  '9 дом — Скорпион 25°30′04″',
+  '10 дом — Стрелец 14°16′58″',
+  '11 дом — Стрелец 29°46′49″',
+  '12 дом — Козерог 16°42′10″',
 ]);
 const EXPECTED_CUSPS = Object.freeze([
-  314.950768,
-  24.037296,
-  55.50228,
-  74.283055,
-  89.779314,
-  106.700696,
-  134.950768,
-  204.037296,
-  235.50228,
-  254.283055,
-  269.779314,
-  286.700696,
+  314.954953,
+  24.035906,
+  55.501108,
+  74.282890,
+  89.780290,
+  106.703066,
+  134.954953,
+  204.035906,
+  235.501108,
+  254.282890,
+  269.780290,
+  286.703066,
 ]);
 const BAD_DUPLICATE_ROWS = Object.freeze([
   '5 дом — Близнецы 14°12′',
@@ -141,10 +141,10 @@ function assertNoSensitiveOutput(value) {
 }
 
 function assertPlacidusDisplayInvariants(view) {
-  assert.equal(view.angles[0], 'ASC — Водолей 14°57′');
-  assert.equal(view.angles[1], 'MC — Стрелец 14°16′');
-  assert.equal(view.angles[2], 'DSC — Лев 14°57′');
-  assert.equal(view.angles[3], 'IC — Близнецы 14°16′');
+  assert.equal(view.angles[0], EXPECTED_ANGLE_ROWS[0]);
+  assert.equal(view.angles[1], EXPECTED_ANGLE_ROWS[1]);
+  assert.equal(view.angles[2], EXPECTED_ANGLE_ROWS[2]);
+  assert.equal(view.angles[3], EXPECTED_ANGLE_ROWS[3]);
   assert.equal(view.angles[0].replace('ASC — ', ''), view.houses[0].replace('1 дом — ', ''));
   assert.equal(view.angles[1].replace('MC — ', ''), view.houses[9].replace('10 дом — ', ''));
   assert.equal(view.angles[2].replace('DSC — ', ''), view.houses[6].replace('7 дом — ', ''));
@@ -163,12 +163,13 @@ test('Moscow 1981 Placidus runtime path stays consistent from UTC conversion to 
   assert.equal(birthDateTime.canConvertToUtc, true);
   assert.equal(birthDateTime.utcDateTime, EXPECTED_UTC);
   assert.equal(ascMc.status, 'ready');
-  assert.equal(ascMc.angles.asc.text, 'Водолей 14°57′');
-  assert.equal(ascMc.angles.mc.text, 'Стрелец 14°16′');
-  assertClose(ascMc.angles.asc.longitude, EXPECTED_CUSPS[0], 0.001, 'ASC longitude');
-  assertClose(ascMc.angles.mc.longitude, EXPECTED_CUSPS[9], 0.001, 'MC longitude');
+  assert.equal(ascMc.angles.asc.text, 'Водолей 14°57′02″');
+  assert.equal(ascMc.angles.mc.text, 'Стрелец 14°16′58″');
 
   assert.equal(placidus.status, 'ready');
+  assert.notEqual(ascMc.angles.asc.text, placidus.angles.asc.text);
+  assert.equal(placidus.angles.asc.text, 'Водолей 14°57′17″');
+  assert.equal(placidus.angles.mc.text, 'Стрелец 14°16′58″');
   assert.equal(placidus.cusps.length, 12);
   placidus.cusps.forEach((cusp, index) => {
     assert.equal(cusp.number, index + 1);

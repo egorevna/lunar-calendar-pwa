@@ -42,6 +42,24 @@ function moscowPlacidusReadyStateProfile() {
   };
 }
 
+function moscowSwissExactProfile() {
+  return {
+    ...validProfile('placidus'),
+    id: 'profile-placidus-moscow-1981-swiss-exact',
+    birthDate: '1981-04-16',
+    birthTime: '04:45',
+    birthPlace: {
+      city: 'Москва',
+      country: 'Россия',
+      coordinates: {
+        latitude: 55.7577,
+        longitude: 37.5410,
+      },
+      timezone: 'Europe/Moscow',
+    },
+  };
+}
+
 function assertSafeOutput(value) {
   const json = JSON.stringify(value);
 
@@ -55,7 +73,9 @@ function assertSafeOutput(value) {
     'latitude',
     'coordinates',
     '55.7558',
+    '55.7577',
     '37.6173',
+    '37.541',
     'planetLongitude',
     'raw',
     'provider',
@@ -132,18 +152,18 @@ test('getHousesForProfile returns ready view model for Whole Sign Equal House an
 test('getHousesForProfile keeps Moscow 1981 Placidus house rows distinct', () => {
   const result = getHousesForProfile(moscowPlacidusReadyStateProfile());
   const expectedRows = [
-    '1 дом — Водолей 14°57′',
-    '2 дом — Овен 24°02′',
-    '3 дом — Телец 25°30′',
-    '4 дом — Близнецы 14°16′',
-    '5 дом — Близнецы 29°46′',
-    '6 дом — Рак 16°42′',
-    '7 дом — Лев 14°57′',
-    '8 дом — Весы 24°02′',
-    '9 дом — Скорпион 25°30′',
-    '10 дом — Стрелец 14°16′',
-    '11 дом — Стрелец 29°46′',
-    '12 дом — Козерог 16°42′',
+    '1 дом — Водолей 14°57′17″',
+    '2 дом — Овен 24°02′09″',
+    '3 дом — Телец 25°30′04″',
+    '4 дом — Близнецы 14°16′58″',
+    '5 дом — Близнецы 29°46′49″',
+    '6 дом — Рак 16°42′10″',
+    '7 дом — Лев 14°57′17″',
+    '8 дом — Весы 24°02′09″',
+    '9 дом — Скорпион 25°30′04″',
+    '10 дом — Стрелец 14°16′58″',
+    '11 дом — Стрелец 29°46′49″',
+    '12 дом — Козерог 16°42′10″',
   ];
   const rows = result.houses.map((house) => house.text);
 
@@ -156,11 +176,35 @@ test('getHousesForProfile keeps Moscow 1981 Placidus house rows distinct', () =>
   assert.notEqual(rows[9], rows[10]);
   assert.notEqual(rows[10], rows[11]);
   assert.deepEqual(result.angles.map((angle) => angle.text), [
-    'ASC — Водолей 14°57′',
-    'MC — Стрелец 14°16′',
-    'DSC — Лев 14°57′',
-    'IC — Близнецы 14°16′',
+    'ASC — Водолей 14°57′17″',
+    'MC — Стрелец 14°16′58″',
+    'DSC — Лев 14°57′17″',
+    'IC — Близнецы 14°16′58″',
   ]);
+  assert.equal(result.angles[0].text.replace('ASC — ', ''), rows[0].replace('1 дом — ', ''));
+  assert.equal(result.angles[1].text.replace('MC — ', ''), rows[9].replace('10 дом — ', ''));
+  assert.equal(result.angles[2].text.replace('DSC — ', ''), rows[6].replace('7 дом — ', ''));
+  assert.equal(result.angles[3].text.replace('IC — ', ''), rows[3].replace('4 дом — ', ''));
+  assertSafeOutput(result);
+});
+
+test('getHousesForProfile uses Placidus cusp source for exact Swiss Moscow 1981 angles', () => {
+  const result = getHousesForProfile(moscowSwissExactProfile());
+  const rows = result.houses.map((house) => house.text);
+
+  assert.equal(result.status, 'ready');
+  assert.deepEqual(result.angles.map((angle) => angle.text), [
+    'ASC — Водолей 14°47′29″',
+    'MC — Стрелец 14°12′42″',
+    'DSC — Лев 14°47′29″',
+    'IC — Близнецы 14°12′42″',
+  ]);
+  assert.equal(rows[0], '1 дом — Водолей 14°47′29″');
+  assert.equal(rows[4], '5 дом — Близнецы 29°42′33″');
+  assert.equal(rows[5], '6 дом — Рак 16°36′56″');
+  assert.equal(rows[9], '10 дом — Стрелец 14°12′42″');
+  assert.equal(rows[10], '11 дом — Стрелец 29°42′33″');
+  assert.equal(rows[11], '12 дом — Козерог 16°36′56″');
   assert.equal(result.angles[0].text.replace('ASC — ', ''), rows[0].replace('1 дом — ', ''));
   assert.equal(result.angles[1].text.replace('MC — ', ''), rows[9].replace('10 дом — ', ''));
   assert.equal(result.angles[2].text.replace('DSC — ', ''), rows[6].replace('7 дом — ', ''));

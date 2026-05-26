@@ -129,8 +129,9 @@ test('calculateEqualHouseCusps returns 12 cusps from exact Aries ASC longitude',
   assert.equal(result.cusps[0].sign.key, 'aries');
   assert.equal(result.cusps[0].degree, 14);
   assert.equal(result.cusps[0].minutes, 30);
+  assert.equal(result.cusps[0].seconds, 0);
   assert.equal(result.cusps[0].label, 'Куспид 1 дома');
-  assert.equal(result.cusps[0].text, '1 дом — Овен 14°30′');
+  assert.equal(result.cusps[0].text, '1 дом — Овен 14°30′00″');
   assert.deepEqual(result.cusps.map((cusp) => cusp.sign.key), [
     'aries',
     'taurus',
@@ -147,7 +148,27 @@ test('calculateEqualHouseCusps returns 12 cusps from exact Aries ASC longitude',
   ]);
   assert.deepEqual(result.cusps.map((cusp) => cusp.number), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
   assert.equal(result.cusps[11].longitude, 344.5);
-  assert.equal(result.cusps[11].text, '12 дом — Рыбы 14°30′');
+  assert.equal(result.cusps[11].text, '12 дом — Рыбы 14°30′00″');
+});
+
+test('calculateEqualHouseCusps shows visible cusp seconds without changing longitude', () => {
+  const asc = Object.freeze({
+    ...ariesAsc,
+    longitude: 90 + 16 + (36 / 60) + (56 / 3600),
+    sign: Object.freeze({ key: 'cancer', ru: 'Рак', symbol: '♋' }),
+    degree: 16,
+    minutes: 36,
+    text: 'Рак 16°36′',
+  });
+
+  const result = calculateEqualHouseCusps(asc);
+
+  assert.equal(result.cusps[0].longitude, asc.longitude);
+  assert.equal(result.cusps[0].sign.key, 'cancer');
+  assert.equal(result.cusps[0].degree, 16);
+  assert.equal(result.cusps[0].minutes, 36);
+  assert.equal(result.cusps[0].seconds, 56);
+  assert.equal(result.cusps[0].text, '1 дом — Рак 16°36′56″');
 });
 
 test('calculateEqualHouseCusps wraps Pisces 29 ASC through Aries 29', () => {
@@ -181,8 +202,8 @@ test('calculateEqualHouseCusps wraps Pisces 29 ASC through Aries 29', () => {
     299,
     329,
   ]);
-  assert.equal(result.cusps[0].text, '1 дом — Рыбы 29°00′');
-  assert.equal(result.cusps[1].text, '2 дом — Овен 29°00′');
+  assert.equal(result.cusps[0].text, '1 дом — Рыбы 29°00′00″');
+  assert.equal(result.cusps[1].text, '2 дом — Овен 29°00′00″');
 });
 
 test('calculateEqualHouseHouses returns 12 houses with next cusp and wrap flags', () => {
@@ -199,7 +220,7 @@ test('calculateEqualHouseHouses returns 12 houses with next cusp and wrap flags'
   assert.equal(aries.houses[0].wraps, false);
   assert.equal(aries.houses[11].nextCuspLongitude, 14.5);
   assert.equal(aries.houses[11].wraps, true);
-  assert.equal(aries.houses[0].text, '1 дом — Овен 14°30′');
+  assert.equal(aries.houses[0].text, '1 дом — Овен 14°30′00″');
   assert.equal(pisces.houses[0].cusp.longitude, 359);
   assert.equal(pisces.houses[0].nextCuspLongitude, 29);
   assert.equal(pisces.houses[0].wraps, true);

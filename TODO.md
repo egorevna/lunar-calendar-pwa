@@ -3263,6 +3263,58 @@ Next active task:
 
 Do not start Sprint 12 until explicitly requested.
 
+## Task 11.10-fix — Zodiac Position Minute Rounding
+
+Status: done
+
+Goal:
+
+Round visible zodiac positions to the nearest minute while preserving precise numeric longitudes.
+
+Result:
+
+- User-facing ASC / MC and house cusp text rounds seconds to the nearest minute.
+- Debug/test/internal formatting can request second precision through `formatDegree(..., { precision: "second" })`.
+- Numeric `longitude` values remain precise and unchanged.
+- Placidus, Equal House and ASC / MC calculation math were not changed.
+- PWA cache is `lunar-calendar-v86`.
+- Sprint 12 was not started.
+
+## Task 11.10-fix-2 — Zodiac Position Seconds Display
+
+Status: done
+
+Goal:
+
+Show user-facing zodiac positions with seconds instead of nearest-minute rounding.
+
+Result:
+
+- User-facing ASC / MC and house cusp text uses degree-minute-second precision.
+- Normal astrology UI no longer rounds zodiac positions to the nearest minute.
+- Numeric `longitude` values remain precise and unchanged.
+- Placidus, Equal House and ASC / MC calculation math were not changed.
+- PWA cache is `lunar-calendar-v87`.
+- Sprint 12 was not started.
+
+## Task 11.10-fix-3 — Placidus Swiss Precision Alignment
+
+Status: done
+
+Goal:
+
+Align Placidus displayed angles with the validated Placidus cusp result after local Swiss Ephemeris comparison.
+
+Result:
+
+- Placidus ready results derive ASC / MC / DSC / IC from cusps 1 / 10 / 7 / 4.
+- Placidus cusp anchors use true obliquity from the tracked Astronomy Engine runtime, matching the local `swisseph.swe_houses` benchmark more closely.
+- Added exact Moscow `1981-04-16T00:45:00Z`, `55.7577 / 37.5410` Swiss benchmark fixture and regressions.
+- Runtime `swisseph` imports were not added.
+- Equal House, Whole Sign, selected-system router, provider calculations and package files were not changed.
+- PWA cache is `lunar-calendar-v88`.
+- Sprint 12 was not started.
+
 # Next Sprint
 
 ## Sprint 12 planning — House Cusps + Pars Fortuna + Basic Arabic Parts

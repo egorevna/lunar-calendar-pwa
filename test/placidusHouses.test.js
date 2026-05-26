@@ -186,6 +186,7 @@ test('static Placidus benchmark fixtures are available and manually declared', a
   assert.deepEqual(getPlacidusBenchmarkFixtureIds(), [
     'greenwich-j2000-midday',
     'moscow-modern-midlatitude',
+    'moscow-1981-swiss-exact',
     'equator-march-equinox',
     'sydney-southern-hemisphere',
     'reykjavik-high-supported-latitude',
@@ -269,6 +270,34 @@ test('calculatePlacidusHouses matches static swisseph benchmark cusp fixtures', 
   }
 });
 
+test('calculatePlacidusHouses matches exact Moscow 1981 Swiss Placidus seconds and derives angles from cusps', () => {
+  const fixture = getPlacidusBenchmarkFixture('moscow-1981-swiss-exact');
+  const result = calculatePlacidusHouses(fixture.input);
+
+  assertReadyPlacidusResult(result);
+  fixture.expected.cusps.forEach((expectedCusp, index) => {
+    assertWithinTolerance(
+      result.cusps[index].longitude,
+      expectedCusp.longitude,
+      fixture.expected.toleranceDegrees,
+      `Swiss exact cusp ${expectedCusp.number}`,
+    );
+  });
+
+  assert.equal(result.angles.asc.longitude, result.cusps[0].longitude);
+  assert.equal(result.angles.mc.longitude, result.cusps[9].longitude);
+  assert.equal(result.angles.dsc.longitude, result.cusps[6].longitude);
+  assert.equal(result.angles.ic.longitude, result.cusps[3].longitude);
+  assert.equal(result.angles.asc.text, 'Водолей 14°47′29″');
+  assert.equal(result.angles.mc.text, 'Стрелец 14°12′42″');
+  assert.equal(result.houses[0].text, '1 дом — Водолей 14°47′29″');
+  assert.equal(result.houses[9].text, '10 дом — Стрелец 14°12′42″');
+  assert.equal(result.houses[4].text, '5 дом — Близнецы 29°42′33″');
+  assert.equal(result.houses[5].text, '6 дом — Рак 16°36′56″');
+  assert.equal(result.houses[10].text, '11 дом — Стрелец 29°42′33″');
+  assert.equal(result.houses[11].text, '12 дом — Козерог 16°36′56″');
+});
+
 test('Placidus cusps preserve angle relationships without Equal House or Whole Sign fallback', () => {
   const fixture = getPlacidusBenchmarkFixture('greenwich-j2000-midday');
   const result = calculatePlacidusHouses(fixture.input);
@@ -335,6 +364,12 @@ test('Moscow 1981 Placidus ready-state regression does not duplicate intermediat
 
   assert.equal(new Set(roundedLongitudes).size, 12);
   assert.equal(new Set(texts).size, 12);
+  assert.equal(texts[3], '4 дом — Близнецы 14°16′58″');
+  assert.equal(texts[4], '5 дом — Близнецы 29°46′49″');
+  assert.equal(texts[5], '6 дом — Рак 16°42′10″');
+  assert.equal(texts[9], '10 дом — Стрелец 14°16′58″');
+  assert.equal(texts[10], '11 дом — Стрелец 29°46′49″');
+  assert.equal(texts[11], '12 дом — Козерог 16°42′10″');
   assert.notEqual(roundedLongitudes[3], roundedLongitudes[4]);
   assert.notEqual(roundedLongitudes[4], roundedLongitudes[5]);
   assert.notEqual(roundedLongitudes[9], roundedLongitudes[10]);

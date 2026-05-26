@@ -116,7 +116,20 @@ test('formatAscMcAngle handles 359.999 degree wrap safely', () => {
   assert.equal(angle.sign.key, 'pisces');
   assert.equal(angle.degree, 29);
   assert.equal(angle.minutes, 59);
-  assert.equal(angle.text, 'Рыбы 29°59′');
+  assert.equal(angle.seconds, 56);
+  assert.equal(angle.text, 'Рыбы 29°59′56″');
+});
+
+test('formatAscMcAngle shows seconds without changing longitude', () => {
+  const longitude = 90 + 16 + (36 / 60) + (56 / 3600);
+  const angle = formatAscMcAngle(longitude, 'ic');
+
+  closeTo(angle.longitude, longitude);
+  assert.equal(angle.sign.key, 'cancer');
+  assert.equal(angle.degree, 16);
+  assert.equal(angle.minutes, 36);
+  assert.equal(angle.seconds, 56);
+  assert.equal(angle.text, 'Рак 16°36′56″');
 });
 
 test('calculateAscMc rejects missing invalid date and coordinate input safely', () => {

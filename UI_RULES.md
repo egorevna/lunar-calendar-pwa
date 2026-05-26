@@ -620,8 +620,19 @@ Rules:
 - collapsed by default;
 - header shows only the title and `Показать` / `Скрыть` action;
 - ready state shows selected house system, ASC / MC / DSC / IC, houses and planet-to-house rows;
+- in Placidus ready state, displayed ASC / MC / DSC / IC must match cusps 1 / 10 / 7 / 4;
 - fallback state shows `Пока недоступно.` once, then one safe reason message and non-duplicated limitations;
 - no interpretations, ritual advice, fatalistic copy, fixed stars, transits, Pars Fortuna or Arabic Parts;
 - calculated output must not show raw birth date, birth time, UTC, timezone value, raw coordinates, raw profile JSON, raw planet longitude or raw cusp longitude.
 
 `?debug=1` may include `Houses / ASC / MC UI Debug`, but only as safe status/counts/capabilities/privacy flags. It must not change normal UI behavior.
+
+## Zodiac Position Formatting
+
+User-facing astrology positions such as ASC, MC and house cusps display sign, degree, minute and second:
+
+- normal astrology UI shows seconds;
+- normal astrology UI does not round zodiac positions to the nearest minute;
+- sign and degree must not roll over just because a position is at 29°59′30″.
+
+Stored and calculated numeric longitudes remain full precision and are not changed by display formatting.

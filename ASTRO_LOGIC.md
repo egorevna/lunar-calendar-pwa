@@ -530,6 +530,13 @@ Final Sprint 11 status:
 - display, UI and debug layers format ready results only and do not change calculation policy;
 - Sprint 11 does not add interpretations, transits, fixed stars, Pars Fortuna, Arabic Parts or ritual scoring.
 
+Display-only zodiac formatting:
+
+- user-facing ASC / MC and house cusp positions show degree-minute-second precision by default;
+- user-facing astrology positions do not round to the nearest minute;
+- explicit minute formatting remains available only for technical callers that request it;
+- calculation longitudes and house cusp math remain full-precision numeric values.
+
 Required for user-facing ASC / MC / houses:
 
 - exact birth time;
@@ -615,6 +622,7 @@ Placidus boundary policy:
 - Sprint 11 Task 11.4d2 activates Placidus through `src/placidusHouses.js` as a browser-safe local calculation engine;
 - ASC = cusp 1;
 - MC = cusp 10;
+- Placidus ready results derive displayed ASC / MC / DSC / IC from cusps 1 / 10 / 7 / 4 so angles and cusps share one source of truth;
 - planet-in-house requires longitude comparison against Placidus cusps;
 - unsupported / high-latitude / circumpolar cases must fail safely;
 - Placidus cusps are output as zodiac longitudes measured from 0° Aries;
@@ -623,9 +631,10 @@ Placidus boundary policy:
 - current local `astronomy-engine` / vendor runtime does not provide a ready Placidus / house-cusp API;
 - local `swisseph.swe_houses` is used only as the static benchmark oracle and is not imported or bundled in app runtime modules;
 - the current package is private/local; future public or commercial distribution requires a Swiss Ephemeris / `swisseph` license review before relying on that benchmark path;
-- Placidus calculation uses a local semi-arc cusp method validated against 5 static `local-swisseph-swe_houses-benchmark` fixtures;
+- Placidus calculation uses true obliquity from the tracked Astronomy Engine runtime for Swiss-aligned cusp anchors;
+- Placidus calculation uses a local semi-arc cusp method validated against 6 static `local-swisseph-swe_houses-benchmark` fixtures;
 - benchmark tolerance is `0.05°`;
-- current validation status is `validated: true`, `implementationReady: true`, `benchmarkFixtures: true`, `benchmarkFixtureCount: 5` and `reason: null`;
+- current validation status is `validated: true`, `implementationReady: true`, `benchmarkFixtures: true`, `benchmarkFixtureCount: 6` and `reason: null`;
 - high-latitude / circumpolar unsupported cases return explicit `status: "unsupported"` with `reason: "placidusUnsupportedAtLatitude"`;
 - profile-level Placidus calculation still requires exact birth time, timezone and birth coordinates through Sprint 11 guardrails.
 

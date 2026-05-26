@@ -311,7 +311,7 @@ Current responsibilities:
 - calculate minimal angular distance between longitudes;
 - detect major aspects with an explicit orb;
 - detect an aspect between two longitudes;
-- format longitude into a stable sign / degree / minute structure.
+- format longitude into a stable sign / degree / minute / second structure for user-facing astrology positions, with explicit minute formatting available only when requested.
 
 This module is intentionally independent from:
 
@@ -446,13 +446,14 @@ Current responsibilities:
 - recognize Placidus as a separate `placidus` house system;
 - expose Placidus validation status and capabilities with benchmark-backed readiness;
 - calculate 12 Placidus cusps and house spans from normalized UTC/date and coordinates;
-- use ASC / MC sidereal time and mean-obliquity helpers from `src/ascMc.js`;
-- validate the browser-safe local calculation against 5 static `local-swisseph-swe_houses-benchmark` fixtures with `0.05°` tolerance;
+- use sidereal time from `src/ascMc.js` and true obliquity from the tracked Astronomy Engine runtime for Swiss-aligned Placidus cusp anchors;
+- derive Placidus ASC / MC / DSC / IC display angles from cusps 1 / 10 / 7 / 4 in the ready Placidus result;
+- validate the browser-safe local calculation against 6 static `local-swisseph-swe_houses-benchmark` fixtures with `0.05°` tolerance;
 - return explicit unsupported status for high-latitude / circumpolar cases where Placidus cannot be safely calculated;
 - respect profile-level `houseSystem` selection for the Placidus path: Placidus aliases check guardrails and calculate when ready, Whole Sign / Equal House aliases return explicit selected-system unsupported status;
 - use `src/housesInputGuardrails.js` for selected-Placidus profile readiness.
 
-This module does not implement Whole Sign, implement Equal House, import `swisseph`, import provider modules, implement a generic house-system router, assign planets to houses, render UI, read localStorage, mutate profiles, or expose raw birth data / raw birth coordinates. `swisseph` is used only outside app runtime as the static benchmark oracle.
+This module does not implement Whole Sign, implement Equal House, import runtime `swisseph`, import provider modules, implement a generic house-system router, assign planets to houses, render UI, read localStorage, mutate profiles, or expose raw birth data / raw birth coordinates. `swisseph` is used only outside app runtime as the static benchmark oracle.
 
 ## `src/houseSystemResolver.js`
 
@@ -1288,7 +1289,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v85
+lunar-calendar-v88
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -1797,7 +1798,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v85
+lunar-calendar-v88
 ```
 
 Important operational rule:
@@ -2099,7 +2100,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v85
+lunar-calendar-v88
 ```
 
 If this value changes in `sw.js`, update this section.

@@ -95,7 +95,8 @@ test('formatDegree returns stable sign degree minute structure and text', () => 
     symbol: '♈',
     degree: 15,
     minutes: 30,
-    text: '15°30′ Овен',
+    seconds: 0,
+    text: '15°30′00″ Овен',
   });
 
   assert.deepEqual(formatDegree(45), {
@@ -104,11 +105,15 @@ test('formatDegree returns stable sign degree minute structure and text', () => 
     symbol: '♉',
     degree: 15,
     minutes: 0,
-    text: '15°00′ Телец',
+    seconds: 0,
+    text: '15°00′00″ Телец',
   });
 
   const wrapped = formatDegree(359.999);
   assert.equal(wrapped.sign, 'Рыбы');
+  assert.equal(wrapped.degree, 29);
+  assert.equal(wrapped.minutes, 59);
+  assert.equal(wrapped.seconds, 56);
   assert.equal(Number.isNaN(wrapped.degree), false);
   assert.equal(Number.isNaN(wrapped.minutes), false);
   assert.equal(String(wrapped.text).includes('undefined'), false);
@@ -123,4 +128,30 @@ test('formatDegree returns stable sign degree minute structure and text', () => 
     minutes: 0,
     text: '',
   });
+});
+
+test('formatDegree shows seconds by default without minute rounding', () => {
+  assert.equal(formatDegree(90 + 16 + (36 / 60) + (29 / 3600)).text, '16°36′29″ Рак');
+  assert.equal(formatDegree(90 + 16 + (36 / 60) + (30 / 3600)).text, '16°36′30″ Рак');
+  assert.equal(formatDegree(90 + 16 + (36 / 60) + (56 / 3600)).text, '16°36′56″ Рак');
+  assert.equal(formatDegree(29 + (59 / 60) + (29 / 3600)).text, '29°59′29″ Овен');
+  assert.equal(formatDegree(29 + (59 / 60) + (30 / 3600)).text, '29°59′30″ Овен');
+  assert.equal(formatDegree(359 + (59 / 60) + (30 / 3600)).text, '29°59′30″ Рыбы');
+  assert.equal(formatDegree(29 / 3600).text, '0°00′29″ Овен');
+  assert.equal(formatDegree(30 / 3600).text, '0°00′30″ Овен');
+});
+
+test('formatDegree can keep seconds for precise debug formatting', () => {
+  const precise = formatDegree(90 + 16 + (36 / 60) + (56 / 3600), {
+    precision: 'second',
+    rounding: 'floor',
+  });
+
+  assert.equal(precise.sign, 'Рак');
+  assert.equal(precise.degree, 16);
+  assert.equal(precise.minutes, 36);
+  assert.equal(precise.seconds, 56);
+  assert.equal(precise.text, '16°36′56″ Рак');
+  assert.equal(String(precise.text).includes('NaN'), false);
+  assert.equal(String(precise.text).includes('undefined'), false);
 });

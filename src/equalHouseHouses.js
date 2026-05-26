@@ -1,6 +1,5 @@
 import {
-  getDegreeInSign,
-  getZodiacSign,
+  formatDegree,
   normalizeDegrees,
 } from './astroMath.js';
 import { calculateAscMcForProfile } from './ascMc.js';
@@ -12,7 +11,6 @@ const HOUSE_SYSTEM = 'equal-house';
 const HOUSE_SYSTEM_LABEL = 'Равнодомная';
 const SIGN_SIZE = 30;
 const HOUSE_COUNT = 12;
-const EPSILON = 1e-12;
 
 const HOUSE_SYSTEM_LABELS = Object.freeze({
   'whole-sign': 'Whole Sign',
@@ -227,6 +225,7 @@ function buildEqualHouseCusps(ascLongitude) {
       sign: formatted.sign,
       degree: formatted.degree,
       minutes: formatted.minutes,
+      seconds: formatted.seconds,
       label: `Куспид ${number} дома`,
       text: `${number} дом — ${formatted.text}`,
     });
@@ -250,28 +249,22 @@ function buildEqualHouseSpans(cusps) {
 
 function formatEqualHouseCusp(longitude) {
   const normalized = normalizeDegrees(longitude);
-  const sign = getZodiacSign(normalized);
-  const degreeWithinSign = getDegreeInSign(normalized);
+  const formatted = formatDegree(normalized);
 
-  if (normalized === null || !sign || degreeWithinSign === null) {
+  if (normalized === null || !formatted.signKey) {
     return null;
   }
 
-  const degree = Math.floor(degreeWithinSign);
-  const minutes = Math.min(
-    59,
-    Math.floor((degreeWithinSign - degree) * 60 + EPSILON),
-  );
-
   return Object.freeze({
     sign: Object.freeze({
-      key: sign.key,
-      ru: sign.ru,
-      symbol: sign.symbol,
+      key: formatted.signKey,
+      ru: formatted.sign,
+      symbol: formatted.symbol,
     }),
-    degree,
-    minutes,
-    text: `${sign.ru} ${degree}°${String(minutes).padStart(2, '0')}′`,
+    degree: formatted.degree,
+    minutes: formatted.minutes,
+    seconds: formatted.seconds,
+    text: `${formatted.sign} ${formatted.degree}°${String(formatted.minutes).padStart(2, '0')}′${String(formatted.seconds).padStart(2, '0')}″`,
   });
 }
 

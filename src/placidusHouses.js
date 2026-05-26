@@ -1,10 +1,10 @@
+import * as Astronomy from './vendor/astronomy-engine.mjs';
+
 import {
-  calculateAscMc,
   calculateLocalSiderealDegrees,
-  calculateMeanObliquityDegrees,
   isValidAscMcCoordinateInput,
 } from './ascMc.js';
-import { getDegreeInSign, getZodiacSign, normalizeDegrees } from './astroMath.js';
+import { formatDegree, normalizeDegrees } from './astroMath.js';
 import { createBirthDateTimeInput } from './birthDateTime.js';
 import { evaluateHousesInputReadiness } from './housesInputGuardrails.js';
 
@@ -19,8 +19,15 @@ const ROOT_SAMPLES = 720;
 const ROOT_ITERATIONS = 80;
 const ROOT_EPSILON = 1e-10;
 const POLAR_MARGIN_DEGREES = 1e-9;
-const BENCHMARK_FIXTURE_COUNT = 5;
+const BENCHMARK_FIXTURE_COUNT = 6;
 const BENCHMARK_TOLERANCE_DEGREES = 0.05;
+
+const ANGLE_LABELS = Object.freeze({
+  asc: 'ASC',
+  mc: 'MC',
+  dsc: 'DSC',
+  ic: 'IC',
+});
 
 const HOUSE_SYSTEM_LABELS = Object.freeze({
   'whole-sign': 'Whole Sign',
@@ -73,22 +80,27 @@ export function calculatePlacidusHouses(input = {}) {
   const date = dateResolution.date;
   const latitude = input.latitude;
   const longitude = input.longitude;
-  const obliquityDegrees = calculateMeanObliquityDegrees(date);
+  const obliquityDegrees = calculatePlacidusObliquityDegrees(date);
+
+  if (!Number.isFinite(obliquityDegrees)) {
+    return notReadyResult('calculationError');
+  }
 
   if (isUnsupportedPlacidusLatitude(latitude, obliquityDegrees)) {
     return getPlacidusUnsupportedResult('placidusUnsupportedAtLatitude');
   }
 
-  const ascMcResult = calculateAscMc({ date, latitude, longitude });
+  const localSiderealDegrees = calculateLocalSiderealDegrees(date, longitude);
+  const ascLongitude = calculatePlacidusAscendantLongitude(localSiderealDegrees, latitude, obliquityDegrees);
+  const mcLongitude = calculatePlacidusMcLongitude(localSiderealDegrees, obliquityDegrees);
 
-  if (ascMcResult.status !== READY_STATUS) {
-    return notReadyResult(ascMcResult.reason || 'calculationError');
+  if (ascLongitude === null || mcLongitude === null) {
+    return notReadyResult('calculationError');
   }
 
-  const localSiderealDegrees = calculateLocalSiderealDegrees(date, longitude);
   const cuspLongitudes = calculatePlacidusCuspLongitudes({
-    ascLongitude: ascMcResult.angles.asc.longitude,
-    mcLongitude: ascMcResult.angles.mc.longitude,
+    ascLongitude,
+    mcLongitude,
     localSiderealDegrees,
     latitude,
     obliquityDegrees,
@@ -107,6 +119,12 @@ export function calculatePlacidusHouses(input = {}) {
   }
 
   const cusps = freezeArray(formattedCusps);
+  const angles = buildPlacidusAnglesFromCusps(cusps);
+
+  if (!angles) {
+    return notReadyResult('calculationError');
+  }
+
   const houses = freezeArray(cusps.map((cusp, index) => {
     const nextCusp = cusps[(index + 1) % cusps.length];
 
@@ -129,13 +147,13 @@ export function calculatePlacidusHouses(input = {}) {
     method: 'placidus-semi-arc-local-js',
     cusps,
     houses,
-    angles: ascMcResult.angles,
+    angles,
     validation: getPlacidusValidationStatus(),
     calculation: Object.freeze({
       benchmarkSource: 'static local swisseph swe_houses fixtures',
-      siderealTimeSource: ascMcResult.calculation.siderealTimeSource,
-      obliquitySource: ascMcResult.calculation.obliquitySource,
-      coordinateConvention: ascMcResult.calculation.coordinateConvention,
+      siderealTimeSource: 'astronomy-engine SiderealTime (GAST)',
+      obliquitySource: 'astronomy-engine true-obliquity e_tilt',
+      coordinateConvention: 'east-positive-longitude',
     }),
     limitations: getPlacidusCalculationLimitations(),
     capabilities: getPlacidusEngineCapabilities(),
@@ -296,6 +314,39 @@ function calculatePlacidusCuspLongitudes({
   ];
 }
 
+function calculatePlacidusObliquityDegrees(date) {
+  try {
+    const tilt = Astronomy.e_tilt(Astronomy.MakeTime(date));
+
+    return Number.isFinite(tilt?.tobl) ? tilt.tobl : null;
+  } catch {
+    return null;
+  }
+}
+
+function calculatePlacidusMcLongitude(localSiderealDegrees, obliquityDegrees) {
+  const theta = degreesToRadians(normalizeDegrees(localSiderealDegrees));
+  const epsilon = degreesToRadians(obliquityDegrees);
+  const longitude = radiansToDegrees(Math.atan2(
+    Math.sin(theta) / Math.cos(epsilon),
+    Math.cos(theta),
+  ));
+
+  return normalizeDegrees(longitude);
+}
+
+function calculatePlacidusAscendantLongitude(localSiderealDegrees, latitude, obliquityDegrees) {
+  const theta = degreesToRadians(normalizeDegrees(localSiderealDegrees));
+  const phi = degreesToRadians(latitude);
+  const epsilon = degreesToRadians(obliquityDegrees);
+  const longitude = radiansToDegrees(Math.atan2(
+    Math.cos(theta),
+    -((Math.sin(theta) * Math.cos(epsilon)) + (Math.tan(phi) * Math.sin(epsilon))),
+  ));
+
+  return normalizeDegrees(longitude);
+}
+
 function upperSemiArcFunction(longitude, siderealDegrees, latitude, obliquityDegrees, fraction) {
   const coordinates = getEclipticEquatorialCoordinates(longitude, obliquityDegrees);
   const semiArc = getSemiDiurnalArc(coordinates.declination, latitude);
@@ -420,29 +471,57 @@ function getEasternHourAngle(longitude, siderealDegrees, obliquityDegrees) {
 
 function formatPlacidusCusp(number, longitude) {
   const normalized = normalizeDegrees(longitude);
-  const sign = getZodiacSign(normalized);
-  const degreeWithinSign = getDegreeInSign(normalized);
+  const formatted = formatDegree(normalized);
 
-  if (!sign || degreeWithinSign === null) {
+  if (normalized === null || !formatted.signKey) {
     return null;
   }
 
-  const degree = Math.floor(degreeWithinSign);
-  const minutes = Math.min(59, Math.floor((degreeWithinSign - degree) * 60));
-  const text = `${sign.ru} ${degree}°${String(minutes).padStart(2, '0')}′`;
+  const text = `${formatted.sign} ${formatted.degree}°${String(formatted.minutes).padStart(2, '0')}′${String(formatted.seconds).padStart(2, '0')}″`;
 
   return Object.freeze({
     number,
     longitude: normalized,
     sign: Object.freeze({
-      key: sign.key,
-      ru: sign.ru,
-      symbol: sign.symbol,
+      key: formatted.signKey,
+      ru: formatted.sign,
+      symbol: formatted.symbol,
     }),
-    degree,
-    minutes,
+    degree: formatted.degree,
+    minutes: formatted.minutes,
+    seconds: formatted.seconds,
     label: `Куспид ${number} дома`,
     text,
+  });
+}
+
+function buildPlacidusAnglesFromCusps(cusps) {
+  const asc = formatPlacidusAngleFromCusp(cusps[0], 'asc');
+  const mc = formatPlacidusAngleFromCusp(cusps[9], 'mc');
+  const dsc = formatPlacidusAngleFromCusp(cusps[6], 'dsc');
+  const ic = formatPlacidusAngleFromCusp(cusps[3], 'ic');
+
+  if (!asc || !mc || !dsc || !ic) {
+    return null;
+  }
+
+  return Object.freeze({ asc, mc, dsc, ic });
+}
+
+function formatPlacidusAngleFromCusp(cusp, key) {
+  if (!cusp || typeof cusp !== 'object') {
+    return null;
+  }
+
+  return Object.freeze({
+    key,
+    label: ANGLE_LABELS[key],
+    longitude: cusp.longitude,
+    sign: cusp.sign,
+    degree: cusp.degree,
+    minutes: cusp.minutes,
+    seconds: cusp.seconds,
+    text: cusp.text,
   });
 }
 

@@ -23,6 +23,14 @@ export const MAJOR_ASTRO_ASPECTS = Object.freeze([
 
 const FULL_CIRCLE = 360;
 const SIGN_SIZE = 30;
+const MINUTES_PER_DEGREE = 60;
+const SECONDS_PER_MINUTE = 60;
+const SECONDS_PER_DEGREE = MINUTES_PER_DEGREE * SECONDS_PER_MINUTE;
+const MINUTES_PER_CIRCLE = FULL_CIRCLE * MINUTES_PER_DEGREE;
+const SECONDS_PER_CIRCLE = FULL_CIRCLE * SECONDS_PER_DEGREE;
+const SIGN_SIZE_MINUTES = SIGN_SIZE * MINUTES_PER_DEGREE;
+const SIGN_SIZE_SECONDS = SIGN_SIZE * SECONDS_PER_DEGREE;
+const FORMAT_EPSILON = 1e-9;
 
 export function normalizeDegrees(value) {
   if (!Number.isFinite(value)) {
@@ -91,25 +99,66 @@ export function getAspectBetween(longitudeA, longitudeB, orb) {
   return detectAspect(angle, orb);
 }
 
-export function formatDegree(longitude) {
-  const sign = getZodiacSign(longitude);
-  const degreeInSign = getDegreeInSign(longitude);
+export function formatDegree(longitude, options = {}) {
+  const normalized = normalizeDegrees(longitude);
 
-  if (!sign || degreeInSign === null) {
+  if (normalized === null) {
     return emptyDegreeFormat();
   }
 
-  const degree = Math.floor(degreeInSign);
-  const minutes = Math.floor((degreeInSign - degree) * 60);
-  const formattedMinutes = String(minutes).padStart(2, '0');
+  const precision = options.precision === 'minute' ? 'minute' : 'second';
+  const rounding = options.rounding === 'nearest' ? 'nearest' : 'floor';
+  const formatted = precision === 'second'
+    ? formatDegreeToSecond(normalized, rounding)
+    : formatDegreeToMinute(normalized, rounding);
 
   return {
-    sign: sign.ru,
-    signKey: sign.key,
-    symbol: sign.symbol,
+    sign: formatted.sign.ru,
+    signKey: formatted.sign.key,
+    symbol: formatted.sign.symbol,
+    degree: formatted.degree,
+    minutes: formatted.minutes,
+    ...(precision === 'second' ? { seconds: formatted.seconds } : {}),
+    text: precision === 'second'
+      ? `${formatted.degree}°${String(formatted.minutes).padStart(2, '0')}′${String(formatted.seconds).padStart(2, '0')}″ ${formatted.sign.ru}`
+      : `${formatted.degree}°${String(formatted.minutes).padStart(2, '0')}′ ${formatted.sign.ru}`,
+  };
+}
+
+function formatDegreeToMinute(normalizedLongitude, rounding) {
+  const totalMinutes = positiveModulo(
+    rounding === 'floor'
+      ? Math.floor(normalizedLongitude * MINUTES_PER_DEGREE + FORMAT_EPSILON)
+      : Math.round(normalizedLongitude * MINUTES_PER_DEGREE + FORMAT_EPSILON),
+    MINUTES_PER_CIRCLE,
+  );
+  const sign = ASTRO_ZODIAC_SIGNS[Math.floor(totalMinutes / SIGN_SIZE_MINUTES)];
+  const minutesInSign = totalMinutes % SIGN_SIZE_MINUTES;
+
+  return {
+    sign,
+    degree: Math.floor(minutesInSign / MINUTES_PER_DEGREE),
+    minutes: minutesInSign % MINUTES_PER_DEGREE,
+  };
+}
+
+function formatDegreeToSecond(normalizedLongitude, rounding) {
+  const totalSeconds = positiveModulo(
+    rounding === 'floor'
+      ? Math.floor(normalizedLongitude * SECONDS_PER_DEGREE + FORMAT_EPSILON)
+      : Math.round(normalizedLongitude * SECONDS_PER_DEGREE + FORMAT_EPSILON),
+    SECONDS_PER_CIRCLE,
+  );
+  const sign = ASTRO_ZODIAC_SIGNS[Math.floor(totalSeconds / SIGN_SIZE_SECONDS)];
+  const secondsInSign = totalSeconds % SIGN_SIZE_SECONDS;
+  const degree = Math.floor(secondsInSign / SECONDS_PER_DEGREE);
+  const secondsAfterDegree = secondsInSign % SECONDS_PER_DEGREE;
+
+  return {
+    sign,
     degree,
-    minutes,
-    text: `${degree}°${formattedMinutes}′ ${sign.ru}`,
+    minutes: Math.floor(secondsAfterDegree / SECONDS_PER_MINUTE),
+    seconds: secondsAfterDegree % SECONDS_PER_MINUTE,
   };
 }
 

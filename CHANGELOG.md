@@ -1,5 +1,30 @@
 # Changelog
 
+## 2026-05-26 — Align Placidus precision with Swiss benchmark
+
+- Updated the Placidus engine to use true obliquity from the tracked Astronomy Engine runtime for Placidus cusp anchors, matching the local `swisseph.swe_houses` benchmark more closely.
+- Placidus ready results now derive displayed ASC / MC / DSC / IC from cusps 1 / 10 / 7 / 4, so Placidus angles and house cusps share one source of truth.
+- Added the exact Moscow `1981-04-16T00:45:00Z`, `55.7577 / 37.5410` Swiss Placidus benchmark fixture and regression coverage.
+- Bumped PWA cache to `lunar-calendar-v88`.
+- No Equal House, Whole Sign, selected-system router, provider calculations, package files, runtime `swisseph` imports, interpretations or Sprint 12 features were added.
+
+## 2026-05-26 — Fix zodiac position seconds display
+
+- Updated user-facing ASC / MC and house cusp formatting to show zodiac positions with seconds by default.
+- Reverted nearest-minute rounding for normal astrology UI; positions like `Рак 16°36′56″` now stay `Рак 16°36′56″`.
+- Kept numeric longitudes and calculation math unchanged.
+- Bumped PWA cache to `lunar-calendar-v87`.
+- No house engines, selected-system router, planet-in-house assignment, provider calculations, package files, interpretations or Sprint 12 features were added.
+
+## 2026-05-26 — Fix zodiac position minute rounding
+
+- Updated user-facing ASC / MC and house cusp formatting to round zodiac positions to the nearest minute instead of truncating seconds.
+- Added precise formatter support for seconds through `formatDegree(..., { precision: "second" })` for debug/test verification.
+- Kept numeric longitudes and calculation math unchanged.
+- Updated Placidus Moscow runtime expectations for the new display-only rounding policy.
+- Bumped PWA cache to `lunar-calendar-v86`.
+- No house engines, selected-system router, planet-in-house assignment, provider calculations, package files, interpretations or Sprint 12 features were added.
+
 ## 2026-05-25 — Complete Task 11.10 Sprint 11 Hardening
 
 - Completed final Sprint 11 audit / hardening for Houses / ASC / MC.

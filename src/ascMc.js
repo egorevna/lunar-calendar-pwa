@@ -1,8 +1,7 @@
 import * as Astronomy from './vendor/astronomy-engine.mjs';
 
 import {
-  getDegreeInSign,
-  getZodiacSign,
+  formatDegree,
   normalizeDegrees,
 } from './astroMath.js';
 import { createBirthDateTimeInput } from './birthDateTime.js';
@@ -211,18 +210,12 @@ export function deriveOppositeAngle(angle, key) {
 
 export function formatAscMcAngle(longitude, key) {
   const normalized = normalizeDegrees(longitude);
-  const sign = getZodiacSign(normalized);
-  const degreeWithinSign = getDegreeInSign(normalized);
+  const formatted = formatDegree(normalized);
 
-  if (normalized === null || !sign || degreeWithinSign === null) {
+  if (normalized === null || !formatted.signKey) {
     return null;
   }
 
-  const degree = Math.floor(degreeWithinSign);
-  const minutes = Math.min(
-    59,
-    Math.floor((degreeWithinSign - degree) * 60 + EPSILON),
-  );
   const label = ANGLE_LABELS[key] ?? String(key || '').toUpperCase();
 
   return Object.freeze({
@@ -230,13 +223,14 @@ export function formatAscMcAngle(longitude, key) {
     label,
     longitude: normalized,
     sign: Object.freeze({
-      key: sign.key,
-      ru: sign.ru,
-      symbol: sign.symbol,
+      key: formatted.signKey,
+      ru: formatted.sign,
+      symbol: formatted.symbol,
     }),
-    degree,
-    minutes,
-    text: `${sign.ru} ${degree}°${String(minutes).padStart(2, '0')}′`,
+    degree: formatted.degree,
+    minutes: formatted.minutes,
+    seconds: formatted.seconds,
+    text: `${formatted.sign} ${formatted.degree}°${String(formatted.minutes).padStart(2, '0')}′${String(formatted.seconds).padStart(2, '0')}″`,
   });
 }
 
