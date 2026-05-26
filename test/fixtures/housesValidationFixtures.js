@@ -354,13 +354,14 @@ export function getHouseSystemValidationFixtureCategories() {
   return [...new Set(HOUSE_SYSTEM_VALIDATION_FIXTURES.map((fixture) => fixture.category))];
 }
 
-function freezeCusps(signs, degree, minutes) {
+function freezeCusps(signs, degree, minutes, seconds = 0) {
   return Object.freeze(signs.map(([sign, signRu], index) => Object.freeze({
     number: index + 1,
     sign,
     degree,
     minutes,
-    text: `${index + 1} дом — ${signRu} ${degree}°${String(minutes).padStart(2, '0')}′`,
+    seconds,
+    text: `${index + 1} дом — ${signRu} ${degree}°${String(minutes).padStart(2, '0')}′${String(seconds).padStart(2, '0')}″`,
   })));
 }
 

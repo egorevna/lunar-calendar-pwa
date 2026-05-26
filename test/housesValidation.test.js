@@ -253,6 +253,7 @@ test('Equal House validation fixtures match manual cusp longitudes and labels', 
       assert.equal(cusp.sign.key, expected.sign);
       assert.equal(cusp.degree, expected.degree);
       assert.equal(cusp.minutes, expected.minutes);
+      assert.equal(cusp.seconds, expected.seconds);
       assert.equal(cusp.text, expected.text);
       assertClose(cusp.longitude, fixture.expected.cuspLongitudes[index]);
 

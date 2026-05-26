@@ -251,6 +251,19 @@ test('formats angles, house-system labels, houses and planet assignments safely'
     title: 'MC',
     text: 'MC — Козерог 3°18′',
   });
+  assert.deepEqual(formatHouseAngle({
+    key: 'ic',
+    label: 'IC',
+    sign: cancer,
+    degree: 16,
+    minutes: 36,
+    seconds: 56,
+  }), {
+    type: 'angle',
+    key: 'ic',
+    title: 'IC',
+    text: 'IC — Рак 16°36′56″',
+  });
   assert.deepEqual(formatHouseAngle({ key: 'asc', label: 'ASC' }), null);
 
   assert.deepEqual(formatHouseAngles(angles).map((item) => item.key), ['asc', 'mc', 'dsc', 'ic']);

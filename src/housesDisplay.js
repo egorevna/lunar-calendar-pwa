@@ -271,12 +271,16 @@ function getAnglePositionText(angle) {
   const sign = normalizeText(angle.sign?.ru);
   const degree = angle.degree;
   const minutes = angle.minutes;
+  const seconds = angle.seconds;
 
   if (!sign || !Number.isInteger(degree) || !Number.isInteger(minutes)) {
     return '';
   }
 
-  const text = `${sign} ${degree}°${String(minutes).padStart(2, '0')}′`;
+  const secondsText = Number.isInteger(seconds)
+    ? `${String(seconds).padStart(2, '0')}″`
+    : '';
+  const text = `${sign} ${degree}°${String(minutes).padStart(2, '0')}′${secondsText}`;
 
   return containsUnsafeText(text) ? '' : text;
 }
