@@ -2864,11 +2864,11 @@ Result:
 - Sprint 10 is closed.
 - Next work is Sprint 11 planning / Houses / ASC / MC.
 
-# Active Sprint
+# Completed Sprint
 
 ## Sprint 11 — Houses / ASC / MC
 
-Status: active
+Status: closed
 
 Goal:
 
@@ -3259,9 +3259,9 @@ Sprint 11 status:
 
 Next active task:
 
-- Sprint 12 planning — House Cusps + Pars Fortuna + Basic Arabic Parts.
+- Sprint 12 has started below; current next active task is Task 12.2 — House Cusp Canonicalization / Fixtures.
 
-Do not start Sprint 12 until explicitly requested.
+Do not start Task 12.2 until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -3315,11 +3315,63 @@ Result:
 - PWA cache is `lunar-calendar-v88`.
 - Sprint 12 was not started.
 
-# Next Sprint
+# Active Sprint
 
-## Sprint 12 planning — House Cusps + Pars Fortuna + Basic Arabic Parts
+## Sprint 12 — House Cusps + Pars Fortuna + Basic Arabic Parts
 
-Status: not started
+Status: active
+
+Goal:
+
+Add the next calculation layer on top of Sprint 11:
+
+- canonical house cusp output for the selected house system;
+- day / night chart status;
+- Pars Fortuna / Lot of Fortune;
+- verified basic Arabic Parts;
+- house assignment for lots / parts;
+- display, UI, debug and hardening.
+
+Sprint 12 reuses the Sprint 11 house engines and selected-system router. Do not reimplement Whole Sign, Equal House, Placidus or ASC / MC.
+
+Strict boundaries:
+
+- no interpretations;
+- no ritual scoring;
+- no formula from memory;
+- no fake Arabic Parts;
+- no new house systems;
+- no fallback between house systems;
+- no provider changes;
+- no geocoding or external lookup.
+
+## Task 12.1 — House Cusps / Pars Fortuna / Arabic Parts Strategy
+
+Status: done
+
+Goal:
+
+Start Sprint 12 with source, formula and layer-separation policy before implementation.
+
+Result:
+
+- Added `SPRINT_12_PLAN.md`.
+- Added `HOUSE_CUSPS_PARS_FORTUNA_STRATEGY.md`.
+- Added `PARS_FORTUNA_ARABIC_PARTS_FORMULA_POLICY.md`.
+- Confirmed Sprint 12 reuses Sprint 11 guardrails, ASC / MC, house engines, selected-system router and planet-in-house foundation.
+- Confirmed house cusps must be canonicalized from selected house-system results, not recalculated ad hoc.
+- Confirmed Pars Fortuna requires explicit day / night chart status.
+- Confirmed Arabic Parts require verified formulas before activation.
+- Confirmed no formula may be activated from memory and no fake Arabic Parts are allowed.
+- Confirmed Sprint 12 does not add interpretations or ritual scoring.
+- No calculation code, `src/`, tests, UI, PWA cache, package files or generated ephemeris data were changed.
+
+Next active task:
+
+- Task 12.2 — House Cusp Canonicalization / Fixtures.
+
+Do not start Task 12.2 until explicitly requested.
+Do not start Sprint 13.
 
 # Security Backlog
 

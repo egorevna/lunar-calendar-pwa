@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-05-26 — Start Sprint 12 House Cusps / Pars Fortuna strategy
+
+- Started Sprint 12 — House Cusps + Pars Fortuna + Basic Arabic Parts.
+- Added `SPRINT_12_PLAN.md`, `HOUSE_CUSPS_PARS_FORTUNA_STRATEGY.md` and `PARS_FORTUNA_ARABIC_PARTS_FORMULA_POLICY.md`.
+- Recorded that Sprint 12 reuses the Sprint 11 house engines, selected-system router and guardrails.
+- Recorded that Pars Fortuna requires day/night chart status and Arabic Parts require verified formulas before activation.
+- No calculation code, UI, PWA cache, provider calculations, package files or generated ephemeris data were changed.
+
 ## 2026-05-26 — Align Placidus precision with Swiss benchmark
 
 - Updated the Placidus engine to use true obliquity from the tracked Astronomy Engine runtime for Placidus cusp anchors, matching the local `swisseph.swe_houses` benchmark more closely.

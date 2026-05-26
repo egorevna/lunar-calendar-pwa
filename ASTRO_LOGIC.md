@@ -657,6 +657,30 @@ Deferred:
 - Pars Fortuna / Arabic Parts remain Sprint 12;
 - fixed stars, personal transits, interpretations and ritual scoring remain outside Sprint 11 strategy until explicitly moved into `TODO.md`.
 
+## Sprint 12 — House Cusps / Pars Fortuna / Arabic Parts Policy
+
+Sprint 12 adds calculation-ready points on top of Sprint 11 without changing the Sprint 11 house engines.
+
+Core policy:
+
+- canonical house cusps must be derived from the selected house-system result (`whole-sign`, `equal-house` or `placidus`);
+- Sprint 12 must reuse Sprint 11 guardrails, ASC / MC, Whole Sign, Equal House, Placidus and selected-system routing;
+- no new house systems are introduced in Sprint 12;
+- Pars Fortuna requires explicit day / night chart status before calculation;
+- Pars Fortuna formula policy is day chart `ASC + Moon - Sun`, night chart `ASC + Sun - Moon`, with all longitudes normalized to `0 <= longitude < 360`;
+- Arabic Parts formulas must be verified before activation;
+- no Arabic Part may be calculated from memory or activated with `pending`, `draft` or `needsReview` formula status;
+- if day/night status or required formula inputs are missing, return safe not-ready / deferred status instead of fake values;
+- lots / parts may be assigned to houses only through the selected ready house-system result;
+- house-system fallback remains forbidden: Placidus must not fallback to Equal House or Whole Sign, and Equal House must not fallback to Whole Sign;
+- Sprint 12 does not add interpretations, ritual scoring, fixed stars or transits.
+
+User-facing and debug policy:
+
+- zodiac positions for lots / parts use degree-minute-second display, matching the current astrology position policy;
+- UI/debug must not expose raw birth date, birth time, UTC datetime, raw timezone, raw coordinates, full profile JSON, provider payloads or raw intermediate calculation arrays;
+- debug may show safe readiness flags, selected system, formula key, formula variant, result counts and house assignment counts.
+
 ## Personal Transits
 
 Do not show personal transits until both natal positions and current planetary positions are reliable.
