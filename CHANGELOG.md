@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-05-26 — Complete Task 12.5b Lot of Spirit Source Verification
+
+- Verified Lot of Spirit as an active formula row in the data-only Arabic Parts source decision layer.
+- Added Lot of Spirit day formula `ASC + Sun - Moon` and night formula `ASC + Moon - Sun` to `src/arabicPartsData.js`.
+- Updated Arabic Parts dataset tests so active verified formulas are now Pars Fortuna and Lot of Spirit only.
+- Kept Lot of Eros, Lot of Necessity, Lot of Basis and Lot of Exaltation inactive/deferred.
+- No Lot of Spirit calculation engine, broad Arabic Parts engine, UI, interpretations, provider calculations, package files or PWA cache changes were added.
+
 ## 2026-05-26 — Complete Task 12.5 Arabic Parts Source Decision / Formula Dataset
 
 - Added data-only `src/arabicPartsData.js` formula dataset / source decision module.

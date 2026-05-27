@@ -3455,6 +3455,29 @@ Next active task:
 
 - Task 12.6 — Basic Arabic Parts Engine / Fixtures.
 
+## Task 12.5b — Lot of Spirit Source Verification
+
+Status: done
+
+Goal:
+
+Verify the Lot of Spirit formula source decision before the Basic Arabic Parts engine.
+
+Result:
+
+- Accepted Lot of Spirit as a verified Sprint 12 project-level source decision.
+- Updated data-only `src/arabicPartsData.js` so `lot-of-spirit` is active and verified.
+- Documented Lot of Spirit day formula: `ASC + Sun - Moon`.
+- Documented Lot of Spirit night formula: `ASC + Moon - Sun`.
+- Kept required inputs as `asc`, `sun`, `moon` and `chartSect`.
+- Kept house assignment deferred to Task 12.7 and interpretation disabled.
+- Kept Lot of Eros, Lot of Necessity, Lot of Basis and Lot of Exaltation inactive/deferred.
+- No Lot of Spirit calculation engine, broad `src/arabicParts.js`, UI, provider changes, package changes or PWA cache changes were added.
+
+Next active task:
+
+- Task 12.6 — Basic Arabic Parts Engine / Fixtures.
+
 Do not start Task 12.6 until explicitly requested.
 Do not start Sprint 13.
 

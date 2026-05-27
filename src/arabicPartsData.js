@@ -14,7 +14,8 @@ export const ARABIC_PARTS_SOURCE_DECISION = deepFreeze({
   notes: [
     'No Arabic Part formula is active unless verified.',
     'Pars Fortuna is the first active formula.',
-    'Lot of Spirit and additional parts remain deferred until source verification.',
+    'Lot of Spirit is verified in Task 12.5b as the inverse day/night pair to Pars Fortuna.',
+    'Additional parts remain deferred until source verification.',
   ],
 });
 
@@ -52,20 +53,27 @@ export const ARABIC_PARTS_FORMULA_ROWS = deepFreeze([
     labelRu: 'Жребий Духа',
     labelEn: 'Lot of Spirit',
     aliases: ['Lot of Spirit'],
-    active: false,
-    verificationStatus: ARABIC_PARTS_VERIFICATION_STATUS.DEFERRED,
-    formulaType: 'day-night-candidate',
-    formula: null,
+    active: true,
+    verificationStatus: ARABIC_PARTS_VERIFICATION_STATUS.VERIFIED,
+    formulaType: 'day-night',
+    formula: {
+      day: {
+        expression: 'ASC + Sun - Moon',
+        operands: ['asc', '+', 'sun', '-', 'moon'],
+      },
+      night: {
+        expression: 'ASC + Moon - Sun',
+        operands: ['asc', '+', 'moon', '-', 'sun'],
+      },
+    },
     requiredInputs: ['asc', 'sun', 'moon', 'chartSect'],
     output: {
-      longitude: false,
-      houseAssignment: false,
+      longitude: true,
+      houseAssignment: 'deferred-to-task-12.7',
       interpretation: false,
     },
-    sourceNote: 'Deferred until formula source decision is verified.',
-    notes: [
-      'Candidate formula must not be activated from memory.',
-    ],
+    sourceNote: 'Verified in Task 12.5b source decision as inverse day/night pair to Pars Fortuna.',
+    notes: [],
   },
   {
     key: 'lot-of-eros',

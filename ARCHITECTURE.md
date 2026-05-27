@@ -581,8 +581,8 @@ Current responsibilities:
 - expose formula verification status constants;
 - record the Sprint 12 verified-only formula activation policy;
 - list active and deferred Arabic Part formula rows;
-- keep Pars Fortuna / Lot of Fortune as the only active verified formula;
-- keep Lot of Spirit and additional candidate parts inactive/deferred until source verification;
+- keep Pars Fortuna / Lot of Fortune and Lot of Spirit as active verified formula rows;
+- keep additional candidate parts inactive/deferred until source verification;
 - expose helpers for active rows, deferred rows, lookup by key, verification checks, policy and deferred reasons.
 
 This module does not calculate formulas, implement the broad Arabic Parts engine, calculate Lot of Spirit, import `src/parsFortuna.js`, add interpretations, add UI, call provider modules, render DOM, read localStorage, mutate profiles, or expose raw birth data / raw birth coordinates.
@@ -1448,7 +1448,7 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 37. `src/parsFortuna.js` calculates Pars Fortuna / Lot of Fortune from numeric ASC, Sun and Moon longitudes using the verified day/night formula policy. It does not implement a broad Arabic Parts catalog, Lot of Spirit, house assignment, UI or interpretations.
 
-38. `src/arabicPartsData.js` exposes the data-only Arabic Parts source decision / formula dataset. Pars Fortuna is the only active verified formula; Lot of Spirit and additional candidate parts remain inactive/deferred until source verification. It does not calculate formulas, import the Pars Fortuna engine, implement a broad Arabic Parts engine, add UI or add interpretations.
+38. `src/arabicPartsData.js` exposes the data-only Arabic Parts source decision / formula dataset. Pars Fortuna and Lot of Spirit are active verified formula rows; additional candidate parts remain inactive/deferred until source verification. It does not calculate formulas, import the Pars Fortuna engine, implement a broad Arabic Parts engine, add UI or add interpretations.
 
 39. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
 

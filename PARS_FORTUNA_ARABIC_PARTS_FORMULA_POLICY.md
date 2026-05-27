@@ -77,7 +77,7 @@ verified after Task 12.4 fixtures pass
 
 ## Lot of Spirit
 
-Formula candidate:
+Verified formula:
 
 ```txt
 Day chart:   ASC + Sun - Moon
@@ -87,18 +87,29 @@ Night chart: ASC + Moon - Sun
 Status:
 
 ```txt
-candidate until formula source decision is completed
+verified in Task 12.5b source decision
 ```
 
-Do not activate until Task 12.5 approves it.
+Required inputs:
+
+- ASC;
+- Sun;
+- Moon;
+- day/night status.
+
+Activation note:
+
+```txt
+Lot of Spirit is active in the formula dataset, but Task 12.5b does not calculate it.
+Calculation is deferred to Task 12.6.
+```
 
 ## Additional Basic Arabic Parts
 
-Additional lots/parts must be handled through Task 12.5.
+Additional lots/parts must be handled through later verified source decisions.
 
 Candidate examples may include:
 
-- Lot of Spirit;
 - Lot of Eros;
 - Lot of Necessity;
 - Lot of Basis;

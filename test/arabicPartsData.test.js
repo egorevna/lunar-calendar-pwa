@@ -51,14 +51,14 @@ test('source decision metadata and formula policy enforce verified-only activati
   assert.equal(policy.noFormulaFromMemory, true);
   assert.equal(policy.noInterpretations, true);
   assert.equal(policy.dayNightRequiredForVariantFormulas, true);
-  assert.deepEqual(policy.activeFormulaKeys, ['pars-fortuna']);
-  assert.equal(policy.deferredFormulaKeys.includes('lot-of-spirit'), true);
+  assert.deepEqual(policy.activeFormulaKeys, ['pars-fortuna', 'lot-of-spirit']);
+  assert.equal(policy.deferredFormulaKeys.includes('lot-of-spirit'), false);
   assert.equal(Object.isFrozen(policy.activeFormulaKeys), true);
   assert.equal(Object.isFrozen(policy.deferredFormulaKeys), true);
   assertNoSensitiveOrInterpretiveText({ source: ARABIC_PARTS_SOURCE_DECISION, policy });
 });
 
-test('Pars Fortuna is the only active verified Arabic Part formula row', () => {
+test('Pars Fortuna remains an active verified Arabic Part formula row', () => {
   const parsFortuna = getArabicPartFormulaByKey('pars-fortuna');
   const activeRows = getActiveArabicPartsFormulas();
 
@@ -85,30 +85,45 @@ test('Pars Fortuna is the only active verified Arabic Part formula row', () => {
     houseAssignment: 'deferred-to-task-12.7',
     interpretation: false,
   });
-  assert.equal(activeRows.length, 1);
-  assert.equal(activeRows[0].key, 'pars-fortuna');
+  assert.equal(activeRows.some((row) => row.key === 'pars-fortuna'), true);
   assert.equal(isVerifiedArabicPartFormula('pars-fortuna'), true);
   assert.equal(isVerifiedArabicPartFormula(parsFortuna), true);
   assertNoSensitiveOrInterpretiveText(parsFortuna);
 });
 
-test('Lot of Spirit and additional candidate formulas remain inactive and deferred', () => {
+test('Lot of Spirit is active only after explicit Task 12.5b source verification', () => {
   const lotOfSpirit = getArabicPartFormulaByKey('lot-of-spirit');
+  const activeRows = getActiveArabicPartsFormulas();
+
+  assert.equal(lotOfSpirit.active, true);
+  assert.equal(lotOfSpirit.verificationStatus, 'verified');
+  assert.equal(lotOfSpirit.formulaType, 'day-night');
+  assert.deepEqual(lotOfSpirit.formula.day, {
+    expression: 'ASC + Sun - Moon',
+    operands: ['asc', '+', 'sun', '-', 'moon'],
+  });
+  assert.deepEqual(lotOfSpirit.formula.night, {
+    expression: 'ASC + Moon - Sun',
+    operands: ['asc', '+', 'moon', '-', 'sun'],
+  });
+  assert.deepEqual(lotOfSpirit.requiredInputs, ['asc', 'sun', 'moon', 'chartSect']);
+  assert.deepEqual(lotOfSpirit.output, {
+    longitude: true,
+    houseAssignment: 'deferred-to-task-12.7',
+    interpretation: false,
+  });
+  assert.equal(lotOfSpirit.sourceNote, 'Verified in Task 12.5b source decision as inverse day/night pair to Pars Fortuna.');
+  assert.equal(isVerifiedArabicPartFormula('lot-of-spirit'), true);
+  assert.equal(activeRows.length, 2);
+  assert.deepEqual(activeRows.map((row) => row.key), ['pars-fortuna', 'lot-of-spirit']);
+  assertNoSensitiveOrInterpretiveText(lotOfSpirit);
+});
+
+test('additional candidate formulas remain inactive and deferred', () => {
   const deferredRows = getDeferredArabicPartsFormulas();
   const deferredKeys = deferredRows.map((row) => row.key);
 
-  assert.equal(lotOfSpirit.active, false);
-  assert.equal(['deferred', 'candidate', 'needsReview'].includes(lotOfSpirit.verificationStatus), true);
-  assert.notEqual(lotOfSpirit.verificationStatus, 'verified');
-  assert.equal(lotOfSpirit.formula, null);
-  assert.deepEqual(lotOfSpirit.requiredInputs, ['asc', 'sun', 'moon', 'chartSect']);
-  assert.deepEqual(lotOfSpirit.output, {
-    longitude: false,
-    houseAssignment: false,
-    interpretation: false,
-  });
-  assert.equal(isVerifiedArabicPartFormula('lot-of-spirit'), false);
-  assert.equal(deferredKeys.includes('lot-of-spirit'), true);
+  assert.equal(deferredKeys.includes('lot-of-spirit'), false);
   ['lot-of-eros', 'lot-of-necessity', 'lot-of-basis', 'lot-of-exaltation'].forEach((key) => {
     const row = getArabicPartFormulaByKey(key);
 
@@ -128,8 +143,8 @@ test('dataset getters return safe frozen policy slices', () => {
   assert.equal(dataset.source.sourceKey, 'sprint-12-arabic-parts-source-decision');
   assert.equal(dataset.policy.verifiedOnly, true);
   assert.equal(dataset.rows.length, ARABIC_PARTS_FORMULA_ROWS.length);
-  assert.equal(dataset.activeRows.length, 1);
-  assert.equal(dataset.activeRows[0].key, 'pars-fortuna');
+  assert.equal(dataset.activeRows.length, 2);
+  assert.deepEqual(dataset.activeRows.map((row) => row.key), ['pars-fortuna', 'lot-of-spirit']);
   assert.equal(dataset.deferredRows.length >= 1, true);
   assert.deepEqual(reasons, [
     'formulaSourceNotVerified',

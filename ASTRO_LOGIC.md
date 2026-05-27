@@ -704,11 +704,13 @@ Arabic Parts formula dataset policy:
 
 - Arabic Parts use a verified-only activation policy;
 - no formula may become active from memory alone;
-- `pars-fortuna` is currently the only active verified formula row;
-- Lot of Spirit remains deferred until a formula source decision verifies and activates it;
+- `pars-fortuna` and `lot-of-spirit` are currently active verified formula rows;
+- Lot of Spirit is verified in Task 12.5b as the inverse day/night pair to Pars Fortuna;
+- Lot of Spirit day chart formula is `ASC + Sun - Moon`;
+- Lot of Spirit night chart formula is `ASC + Moon - Sun`;
 - Lot of Eros, Lot of Necessity, Lot of Basis, Lot of Exaltation and other additional parts remain deferred until source verification;
 - the formula dataset is data-only and does not calculate lots/parts;
-- Task 12.5 does not implement a broad Arabic Parts engine, Lot of Spirit calculation, house assignment, UI or interpretations.
+- Task 12.5b does not implement a broad Arabic Parts engine, Lot of Spirit calculation, house assignment, UI or interpretations.
 
 User-facing and debug policy:
 
