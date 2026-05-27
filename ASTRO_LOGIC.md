@@ -728,6 +728,18 @@ Basic Arabic Parts engine policy:
 - deferred formula rows must not produce ready values;
 - Task 12.6 does not assign lots/parts to houses, add UI/debug/display helpers, add interpretations or activate additional Arabic Parts.
 
+Lots / Arabic Parts house-assignment policy:
+
+- `src/arabicPartsHouseAssignment.js` assigns only already-calculated active verified lots/parts to houses;
+- assignment uses numeric lot longitude against canonical cusps from the selected house system;
+- Whole Sign uses canonical sign-boundary cusps, not exact ASC degree;
+- Equal House uses exact ASC + 30° canonical cusps;
+- Placidus uses benchmark-validated canonical Placidus cusps;
+- each house span is half-open: `[cusp, nextCusp)`;
+- exact cusp boundary belongs to the house that starts at that cusp;
+- wrapping spans across 360° are supported;
+- no formula calculation, deferred Arabic Parts activation, UI, display helper or interpretations are added in Task 12.7.
+
 User-facing and debug policy:
 
 - zodiac positions for lots / parts use degree-minute-second display, matching the current astrology position policy;

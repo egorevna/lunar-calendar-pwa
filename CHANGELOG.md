@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-27 — Complete Task 12.7 Lots / Arabic Parts House Assignment
+
+- Added pure `src/arabicPartsHouseAssignment.js` assignment layer.
+- Added manual lots / Arabic Parts house-assignment fixtures and tests.
+- Assigned active verified lots (`pars-fortuna`, `lot-of-spirit`) to canonical Whole Sign, Equal House and Placidus cusps.
+- Used numeric longitude, half-open house spans and exact-cusp boundary policy.
+- Preserved deferred Arabic Parts as inactive and not assigned as ready values.
+- No formula changes, new house math, UI, display/debug helper, interpretations, provider calculations, package files or PWA cache changes were added.
+
 ## 2026-05-27 — Complete Task 12.6 Basic Arabic Parts Engine / Fixtures
 
 - Added pure `src/arabicParts.js` Basic Arabic Parts calculation engine.

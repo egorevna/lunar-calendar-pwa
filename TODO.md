@@ -3259,9 +3259,9 @@ Sprint 11 status:
 
 Next active task:
 
-- Sprint 12 has started below; current next active task is Task 12.6 — Basic Arabic Parts Engine / Fixtures.
+- Sprint 12 has started below; current next active task is Task 12.8 — Lots / Arabic Parts Display Helper.
 
-Do not start Task 12.6 until explicitly requested.
+Do not start Task 12.8 until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -3507,7 +3507,31 @@ Next active task:
 
 - Task 12.7 — Lots / Arabic Parts House Assignment.
 
-Do not start Task 12.7 until explicitly requested.
+## Task 12.7 — Lots / Arabic Parts House Assignment
+
+Status: done
+
+Goal:
+
+Create a pure house-assignment layer for calculated active Arabic Parts / lots.
+
+Result:
+
+- Added pure `src/arabicPartsHouseAssignment.js`.
+- Added manual fixtures in `test/fixtures/arabicPartsHouseAssignmentFixtures.js`.
+- Added `test/arabicPartsHouseAssignmentFixtures.test.js` and `test/arabicPartsHouseAssignment.test.js`.
+- Assigns calculated `pars-fortuna` and `lot-of-spirit` to houses through canonical cusps from the selected house system.
+- Uses numeric lot longitude and half-open house spans `[cusp, nextCusp)`.
+- Exact cusp boundary belongs to the house that starts at that cusp.
+- Supports Whole Sign sign-boundary cusps, Equal House exact cusps and Placidus canonical cusps.
+- Preserves deferred formulas as inactive: Lot of Eros, Lot of Necessity, Lot of Basis and Lot of Exaltation are not assigned as ready values.
+- No formula changes, new house math, UI, display helper, debug section, provider changes, package changes or PWA cache changes were added.
+
+Next active task:
+
+- Task 12.8 — Lots / Arabic Parts Display Helper.
+
+Do not start Task 12.8 until explicitly requested.
 Do not start Sprint 13.
 
 # Security Backlog

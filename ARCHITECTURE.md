@@ -602,6 +602,20 @@ Current responsibilities:
 
 This module does not activate deferred formulas, assign lots to houses, add interpretations, add UI, call provider modules directly, render DOM, read localStorage, mutate profiles, or expose raw birth data / raw birth coordinates.
 
+## `src/arabicPartsHouseAssignment.js`
+
+Defines the Sprint 12 pure Lots / Arabic Parts house-assignment layer.
+
+Current responsibilities:
+
+- accept calculated Arabic Parts / lots from `src/arabicParts.js`;
+- accept canonical house cusps from `src/houseCusps.js`;
+- assign active verified lots to Whole Sign, Equal House or Placidus houses by numeric longitude;
+- use half-open spans `[cusp, nextCusp)` with exact cusp boundaries assigned to the house that starts at that cusp;
+- expose a profile-level helper that composes the existing Arabic Parts engine and canonical cusp helper without direct provider calls.
+
+This module does not calculate formulas, activate deferred Arabic Parts, calculate houses, add UI, add display/debug helpers, add interpretations, call provider modules directly, render DOM, read localStorage, mutate profiles, or expose raw birth data / raw birth coordinates.
+
 ## `src/planetaryPositionProvider.js`
 
 Defines the future planetary position provider contract.
@@ -1467,11 +1481,13 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 39. `src/arabicParts.js` calculates only active verified Basic Arabic Parts formulas from the dataset. In Sprint 12 that means Pars Fortuna and Lot of Spirit only. It uses numeric ASC, Sun and Moon longitudes plus explicit day/night chart status, and it does not assign houses, activate deferred parts, add UI or add interpretations.
 
-40. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+40. `src/arabicPartsHouseAssignment.js` assigns calculated active Arabic Parts / lots to selected-system canonical house cusps by numeric longitude. It uses half-open spans, supports Whole Sign / Equal House / Placidus through `src/houseCusps.js`, and does not calculate formulas, activate deferred parts, add UI or add interpretations.
 
-41. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+41. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
 
-42. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
+42. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+
+43. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
 
 34. `src/natalProviderValidationSummary.js` exposes a safe provider validation summary for debug/reporting without calculating planets, reading profile data, or importing the `astronomy-engine` provider module.
 
@@ -1865,6 +1881,8 @@ Testing note:
 - `test/houseCuspsFixtures.test.js` and `test/houseCusps.test.js` validate canonical cusp output, router/profile integration, no-fallback behavior, privacy exclusions and strict source boundaries without adding new house math or lots / parts.
 - `test/fixtures/dayNightChartFixtures.js` contains test-only manually declared day/night chart fixtures for synthetic Sun-altitude geometry, public Greenwich examples, fallback states and strict exclusions. It is not used by production code.
 - `test/dayNightChartFixtures.test.js` and `test/dayNightChart.test.js` validate day/night geometry, boundary handling, profile-level guardrails, privacy exclusions and strict source boundaries without calculating lots / parts.
+- `test/fixtures/arabicPartsHouseAssignmentFixtures.js` contains test-only manually declared lots / Arabic Parts house-assignment fixtures for Whole Sign, Equal House, Placidus, cusp boundaries, wrapping spans, fallback states and strict exclusions. It is not used by production code.
+- `test/arabicPartsHouseAssignmentFixtures.test.js` and `test/arabicPartsHouseAssignment.test.js` validate active lots assignment to houses, deferred formula exclusion, half-open cusp policy, profile-level composition, privacy exclusions and strict source boundaries without changing formulas, house engines or UI.
 - `NATAL_PROVIDER_VALIDATION_REPORT.md` records the provider-layer validation summary; it does not enable user-facing natal values.
 - if personal data is added later, debug output must follow `PRIVACY_RULES.md`
 
