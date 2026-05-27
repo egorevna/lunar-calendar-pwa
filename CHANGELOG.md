@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-28 — Complete Task 12.8 Lots / Arabic Parts Display Helper
+
+- Added pure `src/arabicPartsDisplay.js` display helper.
+- Added `test/arabicPartsDisplay.test.js`.
+- Formatted Pars Fortuna and Lot of Spirit result rows with degree-minute-second positions.
+- Formatted existing lots / Arabic Parts house assignments when assignment data is already provided.
+- Added safe day/night labels, summaries, limitations and fallback states for future UI use.
+- No formula calculations, house assignment changes, UI, debug section, interpretations, provider calculations, package files or PWA cache changes were added.
+
 ## 2026-05-27 — Complete Task 12.7 Lots / Arabic Parts House Assignment
 
 - Added pure `src/arabicPartsHouseAssignment.js` assignment layer.

@@ -3259,9 +3259,9 @@ Sprint 11 status:
 
 Next active task:
 
-- Sprint 12 has started below; current next active task is Task 12.8 — Lots / Arabic Parts Display Helper.
+- Sprint 12 has started below; current next active task is Task 12.9 — User-Facing UI.
 
-Do not start Task 12.8 until explicitly requested.
+Do not start Task 12.9 until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -3531,7 +3531,29 @@ Next active task:
 
 - Task 12.8 — Lots / Arabic Parts Display Helper.
 
-Do not start Task 12.8 until explicitly requested.
+## Task 12.8 — Lots / Arabic Parts Display Helper
+
+Status: done
+
+Goal:
+
+Create a pure display helper for already calculated lots / Arabic Parts results.
+
+Result:
+
+- Added pure `src/arabicPartsDisplay.js`.
+- Added `test/arabicPartsDisplay.test.js`.
+- Formats Pars Fortuna and Lot of Spirit positions with degree-minute-second text.
+- Formats existing lots / Arabic Parts house assignments when provided.
+- Formats day/night chart labels and safe fallback states.
+- Keeps display output free of raw birth data, raw coordinates, raw longitudes, formula operands arrays and provider payloads.
+- No formula engine changes, house-assignment changes, UI, debug section, provider changes, package changes or PWA cache changes were added.
+
+Next active task:
+
+- Task 12.9 — User-Facing UI.
+
+Do not start Task 12.9 until explicitly requested.
 Do not start Sprint 13.
 
 # Security Backlog

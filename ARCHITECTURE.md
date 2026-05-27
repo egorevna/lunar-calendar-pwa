@@ -616,6 +616,20 @@ Current responsibilities:
 
 This module does not calculate formulas, activate deferred Arabic Parts, calculate houses, add UI, add display/debug helpers, add interpretations, call provider modules directly, render DOM, read localStorage, mutate profiles, or expose raw birth data / raw birth coordinates.
 
+## `src/arabicPartsDisplay.js`
+
+Defines the Sprint 12 pure Lots / Arabic Parts display helper.
+
+Current responsibilities:
+
+- format already calculated Pars Fortuna and Lot of Spirit rows for user-facing display;
+- format already available lots / Arabic Parts house assignments when provided;
+- format day/night chart labels, summaries, limitations and fallback states;
+- combine part position text with house labels without recalculating formulas or assigning houses;
+- keep output free of raw birth data, raw coordinates, raw longitudes, formula operand arrays and provider payloads.
+
+This module does not calculate formulas, assign lots to houses, activate deferred Arabic Parts, add UI, add debug output, add interpretations, call provider modules, render DOM, read localStorage, mutate inputs, or expose raw birth data / raw birth coordinates.
+
 ## `src/planetaryPositionProvider.js`
 
 Defines the future planetary position provider contract.
@@ -1483,11 +1497,13 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 40. `src/arabicPartsHouseAssignment.js` assigns calculated active Arabic Parts / lots to selected-system canonical house cusps by numeric longitude. It uses half-open spans, supports Whole Sign / Equal House / Placidus through `src/houseCusps.js`, and does not calculate formulas, activate deferred parts, add UI or add interpretations.
 
-41. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+41. `src/arabicPartsDisplay.js` formats already calculated lots / Arabic Parts and optional house assignments into safe display rows, chart sect labels, summaries and fallback states. It does not calculate formulas, assign houses, add UI/debug or add interpretations.
 
-42. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+42. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
 
-43. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
+43. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+
+44. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
 
 34. `src/natalProviderValidationSummary.js` exposes a safe provider validation summary for debug/reporting without calculating planets, reading profile data, or importing the `astronomy-engine` provider module.
 
@@ -1883,6 +1899,7 @@ Testing note:
 - `test/dayNightChartFixtures.test.js` and `test/dayNightChart.test.js` validate day/night geometry, boundary handling, profile-level guardrails, privacy exclusions and strict source boundaries without calculating lots / parts.
 - `test/fixtures/arabicPartsHouseAssignmentFixtures.js` contains test-only manually declared lots / Arabic Parts house-assignment fixtures for Whole Sign, Equal House, Placidus, cusp boundaries, wrapping spans, fallback states and strict exclusions. It is not used by production code.
 - `test/arabicPartsHouseAssignmentFixtures.test.js` and `test/arabicPartsHouseAssignment.test.js` validate active lots assignment to houses, deferred formula exclusion, half-open cusp policy, profile-level composition, privacy exclusions and strict source boundaries without changing formulas, house engines or UI.
+- `test/arabicPartsDisplay.test.js` validates the pure lots / Arabic Parts display helper, including formatted part rows, optional house labels, chart sect labels, fallback states, privacy exclusions and strict display-only source boundaries.
 - `NATAL_PROVIDER_VALIDATION_REPORT.md` records the provider-layer validation summary; it does not enable user-facing natal values.
 - if personal data is added later, debug output must follow `PRIVACY_RULES.md`
 
