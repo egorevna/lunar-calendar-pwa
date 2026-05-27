@@ -721,6 +721,7 @@ test('ordinary markup does not contain provider validation debug details', () =>
   assert.equal(markup.includes('Essential Dignities UI Debug'), false);
   assert.equal(markup.includes('Detailed Dignities UI Debug'), false);
   assert.equal(markup.includes('Houses / ASC / MC UI Debug'), false);
+  assert.equal(markup.includes('Arabic Parts UI Debug'), false);
   assert.equal(markup.includes('longitudeValidation: passed'), false);
   assert.equal(markup.includes('speedValidation: passed'), false);
   assert.equal(markup.includes('retrogradeValidation: passed'), false);
@@ -863,6 +864,141 @@ test('debug panel omits Houses ASC MC UI debug section when no safe state is pro
   });
 
   assert.equal(text.includes('Houses / ASC / MC UI Debug'), false);
+});
+
+test('debug panel shows safe Arabic Parts UI debug section when safe state is provided', () => {
+  const text = describeDebugPanel({
+    now: new Date('2026-05-15T00:40:00+03:00'),
+    arabicPartsUiDebug: {
+      section: 'Arabic Parts UI Debug',
+      enabled: true,
+      activeProfile: {
+        hasProfile: true,
+        id: 'profile-egor',
+        name: 'Егор',
+      },
+      panelStatus: 'ready',
+      reason: null,
+      location: 'My Cards',
+      userFacingBlock: true,
+      collapsedDefault: true,
+      collapsedState: true,
+      readiness: {
+        hasExactBirthTime: true,
+        hasBirthCoordinates: true,
+        hasBirthTimezone: true,
+        dayNightReady: true,
+        arabicPartsReady: true,
+        houseAssignmentsReady: true,
+      },
+      chartSect: {
+        status: 'ready',
+        value: 'day',
+        label: 'Дневная карта',
+        boundary: false,
+      },
+      formulas: {
+        active: ['pars-fortuna', 'lot-of-spirit'],
+        deferred: ['lot-of-eros', 'lot-of-necessity', 'lot-of-basis', 'lot-of-exaltation'],
+        activeCount: 2,
+        deferredCount: 4,
+      },
+      counts: {
+        parts: 2,
+        houseAssignments: 2,
+      },
+      capabilities: {
+        arabicParts: true,
+        parsFortuna: true,
+        lotOfSpirit: true,
+        houseAssignment: true,
+        interpretations: false,
+        fixedStars: false,
+        transits: false,
+        ritualScoring: false,
+      },
+      privacy: {
+        rawBirthDataExposed: false,
+        rawCoordinatesExposed: false,
+        rawTimezoneExposed: false,
+        rawLongitudesExposed: false,
+        formulaOperandsExposed: false,
+        fullProfileJsonExposed: false,
+        providerPayloadExposed: false,
+      },
+    },
+  });
+  const section = text
+    .split('\n\n')
+    .find((item) => item.startsWith('## Arabic Parts UI Debug'));
+
+  assert.equal(Boolean(section), true);
+  assert.equal(section.includes('activeProfileId: profile-egor'), true);
+  assert.equal(section.includes('activeProfileName: Егор'), true);
+  assert.equal(section.includes('hasActiveProfile: yes'), true);
+  assert.equal(section.includes('panelStatus: ready'), true);
+  assert.equal(section.includes('userFacingBlock: yes'), true);
+  assert.equal(section.includes('location: My Cards'), true);
+  assert.equal(section.includes('collapsedDefault: yes'), true);
+  assert.equal(section.includes('collapsedState: yes'), true);
+  assert.equal(section.includes('hasExactBirthTime: yes'), true);
+  assert.equal(section.includes('hasBirthCoordinates: yes'), true);
+  assert.equal(section.includes('hasBirthTimezone: yes'), true);
+  assert.equal(section.includes('dayNightReady: yes'), true);
+  assert.equal(section.includes('arabicPartsReady: yes'), true);
+  assert.equal(section.includes('houseAssignmentsReady: yes'), true);
+  assert.equal(section.includes('chartSectStatus: ready'), true);
+  assert.equal(section.includes('chartSect: day'), true);
+  assert.equal(section.includes('chartSectLabel: Дневная карта'), true);
+  assert.equal(section.includes('chartSectBoundary: no'), true);
+  assert.equal(section.includes('activeFormulas: pars-fortuna, lot-of-spirit'), true);
+  assert.equal(section.includes('deferredFormulas: lot-of-eros, lot-of-necessity, lot-of-basis, lot-of-exaltation'), true);
+  assert.equal(section.includes('activeFormulaCount: 2'), true);
+  assert.equal(section.includes('deferredFormulaCount: 4'), true);
+  assert.equal(section.includes('partsCount: 2'), true);
+  assert.equal(section.includes('houseAssignmentsCount: 2'), true);
+  assert.equal(section.includes('parsFortuna: yes'), true);
+  assert.equal(section.includes('lotOfSpirit: yes'), true);
+  assert.equal(section.includes('interpretations: no'), true);
+  assert.equal(section.includes('fixedStars: no'), true);
+  assert.equal(section.includes('transits: no'), true);
+  assert.equal(section.includes('ritualScoring: no'), true);
+  assert.equal(section.includes('rawBirthDataExposed: no'), true);
+  assert.equal(section.includes('rawCoordinatesExposed: no'), true);
+  assert.equal(section.includes('rawTimezoneExposed: no'), true);
+  assert.equal(section.includes('rawLongitudesExposed: no'), true);
+  assert.equal(section.includes('formulaOperandsExposed: no'), true);
+  assert.equal(section.includes('fullProfileJsonExposed: no'), true);
+  assert.equal(section.includes('providerPayloadExposed: no'), true);
+  [
+    'birthDate',
+    'birthTime',
+    'utcDateTime',
+    'Europe/Moscow',
+    'birthPlace',
+    'latitude',
+    'longitude',
+    'coordinates',
+    'parts: [',
+    'assignments: [',
+    'cusps: [',
+    'operands: [',
+    'Парс Фортуны —',
+    'Жребий Духа —',
+    'providerPayload: {',
+    'фатально',
+    'кармически',
+  ].forEach((fragment) => {
+    assert.equal(section.includes(fragment), false, fragment);
+  });
+});
+
+test('debug panel omits Arabic Parts UI debug section when no safe state is provided', () => {
+  const text = describeDebugPanel({
+    now: new Date('2026-05-15T00:40:00+03:00'),
+  });
+
+  assert.equal(text.includes('Arabic Parts UI Debug'), false);
 });
 
 test('natal provider validation report documents provider validation without private data', () => {

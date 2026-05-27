@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-28 — Complete Task 12.10 Arabic Parts Debug
+
+- Added pure `src/arabicPartsDebug.js` safe debug helper.
+- Added `test/arabicPartsDebug.test.js`.
+- Added `Arabic Parts UI Debug` section to `?debug=1`.
+- Debug shows active profile id/name, readiness booleans, chart sect status/label, active/deferred formula keys, counts, capabilities and privacy flags.
+- Debug does not expose raw birth data, coordinates, UTC, raw longitudes, formula operand arrays, provider payloads or full parts/assignments/cusps arrays.
+- Bumped PWA cache to `lunar-calendar-v90` and cached `src/arabicPartsDebug.js`.
+- No formula changes, calculation engine changes, house-assignment changes, normal UI behavior changes, interpretations, provider calculations or package files were added.
+
 ## 2026-05-28 — Complete Task 12.9 User-Facing Arabic Parts UI
 
 - Added profile-level `src/arabicPartsForProfile.js` view-model helper.

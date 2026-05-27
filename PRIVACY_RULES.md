@@ -121,6 +121,8 @@ Avoid showing full birth data on debug screen unless needed.
 
 If shown, keep it in developer-only context.
 
+Arabic Parts debug must show status/counts/capabilities only. It may show active/deferred formula keys and day/night chart label, but must not expose raw birth data, UTC, raw timezone values, raw coordinates, raw planet/lots/cusp longitudes, formula operand arrays, provider payloads, full profile JSON, or full parts/assignments/cusps arrays.
+
 ## Future Sync Rule
 
 If cloud sync is ever added, it must include:

@@ -43,6 +43,7 @@ import {
   describeDebugPanel,
   isDebugMode,
 } from './debugPanel.js';
+import { getArabicPartsDebugState } from './arabicPartsDebug.js';
 import { getHousesDebugState } from './housesDebug.js';
 import {
   DEFAULT_DASHBOARD_MODE,
@@ -311,6 +312,7 @@ function render() {
     profileDebug: shouldShowDebug ? getProfileDebugState() : null,
     personalDebug: shouldShowDebug ? getPersonalDebugState() : null,
     housesUiDebug: shouldShowDebug ? getHousesUiDebugState() : null,
+    arabicPartsUiDebug: shouldShowDebug ? getArabicPartsUiDebugState() : null,
   });
 }
 
@@ -656,6 +658,16 @@ function getHousesUiDebugState() {
 
   return getHousesDebugState(activeProfile, {
     collapsedState: !activeProfileId || expandedHousesProfileId !== activeProfileId,
+  });
+}
+
+function getArabicPartsUiDebugState() {
+  const profiles = loadProfiles();
+  const activeProfileId = getActiveProfileId();
+  const activeProfile = profiles.find((profile) => profile.id === activeProfileId) ?? null;
+
+  return getArabicPartsDebugState(activeProfile, {
+    collapsedState: !activeProfileId || expandedArabicPartsProfileId !== activeProfileId,
   });
 }
 

@@ -3257,11 +3257,11 @@ Sprint 11 status:
 
 - Sprint 11 — Houses / ASC / MC is closed.
 
-Next active task:
+Next active task at that later checkpoint:
 
-- Sprint 12 has started below; current next active task is Task 12.10 — Debug.
+- Sprint 12 has started below; current next active task is Task 12.11 — Sprint 12 Hardening.
 
-Do not start Task 12.10 until explicitly requested.
+Do not start Task 12.11 until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -3576,11 +3576,36 @@ Result:
 - No formula changes, house-assignment changes, debug section, interpretations, provider changes or package changes were added.
 - PWA cache is `lunar-calendar-v89`.
 
-Next active task:
+Next active task at that time:
 
 - Task 12.10 — Debug.
 
-Do not start Task 12.10 until explicitly requested.
+Task 12.10 is now completed below.
+Do not start Sprint 13.
+
+## Task 12.10 — Debug
+
+Status: done
+
+Goal:
+
+Add a safe `?debug=1` status section for the user-facing Arabic Parts / lots block.
+
+Result:
+
+- Added pure `src/arabicPartsDebug.js` safe debug helper.
+- Added `test/arabicPartsDebug.test.js`.
+- Added `Arabic Parts UI Debug` section to the hidden debug panel.
+- Debug shows only active profile id/name, readiness booleans, chart sect status/label, active/deferred formula keys, counts, capabilities and privacy flags.
+- Debug does not expose raw birth data, coordinates, UTC, raw longitudes, formula operand arrays, provider payloads or full parts/assignments/cusps arrays.
+- No formula changes, calculation engine changes, house-assignment changes, normal UI behavior changes, interpretations, provider changes or package changes were added.
+- PWA cache is `lunar-calendar-v90`.
+
+Next active task:
+
+- Task 12.11 — Sprint 12 Hardening.
+
+Do not start Task 12.11 until explicitly requested.
 Do not start Sprint 13.
 
 # Security Backlog

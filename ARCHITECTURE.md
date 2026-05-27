@@ -196,7 +196,7 @@ Responsibilities:
 - renders the collapsible `Дома и углы карты` block inside `Мои карты` through `src/profileUi.js` and `src/housesForProfile.js` when house input guardrails and selected house-system calculations are ready
 - renders the collapsible `Жребии и арабские части` block inside `Мои карты` through `src/profileUi.js` and `src/arabicPartsForProfile.js` when Arabic Parts inputs are ready
 - renders the compact `Лично для меня` dashboard block through `src/personalContext.js`, `src/personalRecommendations.js`, and `src/profileUi.js`
-- passes safe profile summary state into the hidden debug panel
+- passes safe profile summary state, Houses UI debug state and Arabic Parts UI debug state into the hidden debug panel only when `?debug=1`
 
 `src/app.js` is currently the composition layer.
 
@@ -643,6 +643,19 @@ Current responsibilities:
 - return UI-ready safe rows for day/night chart label, Pars Fortuna, Lot of Spirit, optional house labels, fallback messages and limitations.
 
 This module does not calculate formulas, assign lots to houses itself, activate deferred Arabic Parts, call provider modules directly, render DOM, read localStorage, mutate profiles, expose raw birth data / raw birth coordinates / raw lot longitudes, or add interpretations.
+
+## `src/arabicPartsDebug.js`
+
+Builds the Sprint 12 safe debug/status state for the `Жребии и арабские части` UI block.
+
+Current responsibilities:
+
+- report active profile id/name only;
+- report readiness booleans for exact birth time, birth coordinates, birth timezone, day/night status, Arabic Parts readiness and house-assignment readiness;
+- report safe chart sect status/label, active/deferred formula keys, counts, capabilities and privacy flags;
+- avoid raw birth data, raw coordinates, UTC, raw timezone values, raw longitudes, formula operand arrays, provider payloads and full parts/assignments/cusps arrays.
+
+This module does not calculate formulas, change house assignment, render UI directly, add interpretations, call provider modules directly, render DOM, read localStorage, mutate profiles, or expose raw profile data.
 
 ## `src/planetaryPositionProvider.js`
 
@@ -1163,10 +1176,10 @@ Current behavior:
 
 - reads `debug=1` from URL query parameters;
 - returns hidden-panel text for calculation verification;
-- includes calculated time, `debugDate` status, Moscow day system, Moon sign, VOC, Moon aspects, indicators, safe profile debug state, safe personal debug state, safe natal-engine/provider debug state, safe natal planets UI debug state, safe natal aspects UI debug state, safe essential dignities UI debug state, safe detailed dignities UI debug state, best-window debug reasoning, ephemeris range/source, and cache version;
+- includes calculated time, `debugDate` status, Moscow day system, Moon sign, VOC, Moon aspects, indicators, safe profile debug state, safe personal debug state, safe natal-engine/provider debug state, safe natal planets UI debug state, safe natal aspects UI debug state, safe essential dignities UI debug state, safe detailed dignities UI debug state, safe Houses / ASC / MC UI debug state, safe Arabic Parts UI debug state, best-window debug reasoning, ephemeris range/source, and cache version;
 - allows technical timestamps with seconds because this is debug-only.
 
-The debug panel does not store data and does not expose birth data, raw place objects, raw coordinates, exact birth timezone values, raw planet longitudes, source tokens, source keys/source systems, full tables or full profile data.
+The debug panel does not store data and does not expose birth data, raw place objects, raw coordinates, exact birth timezone values, raw planet/lots/cusp longitudes, formula operand arrays, source tokens, source keys/source systems, full tables, full result arrays or full profile data.
 
 ## `src/dashboardModes.js`
 
@@ -1405,7 +1418,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v89
+lunar-calendar-v90
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -1516,9 +1529,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 42. `src/arabicPartsForProfile.js` builds the profile-level safe view model for the `Жребии и арабские части` UI block by composing active Arabic Parts calculation, lots / Arabic Parts house assignment and display formatting. It does not calculate formulas, assign houses itself or render UI directly.
 
-43. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+43. `src/arabicPartsDebug.js` builds safe status/count/capability/privacy debug state for the `Жребии и арабские части` UI block. It does not expose raw profile data, raw coordinates, raw longitudes, formula operands or full result arrays.
 
-44. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+44. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+
+45. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
 
 45. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
 
@@ -1568,9 +1583,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 56. `src/detailedDignitiesDebug.js` converts active-profile detailed dignity UI state into a sanitized debug summary with status/counts/source labels/capability and privacy flags only.
 
-57. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, provider validation summary, natal planets UI summary, natal aspects UI summary, essential dignities UI summary and detailed dignities UI summary without birth details.
+57. `src/arabicPartsDebug.js` converts active-profile Arabic Parts UI state into a sanitized debug summary with readiness booleans, chart sect status, formula keys, counts, capabilities and privacy flags only.
 
-58. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
+58. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, provider validation summary, natal planets UI summary, natal aspects UI summary, essential dignities UI summary, detailed dignities UI summary, Houses UI summary and Arabic Parts UI summary without birth details.
+
+59. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 
@@ -1918,6 +1935,7 @@ Testing note:
 - `test/arabicPartsHouseAssignmentFixtures.test.js` and `test/arabicPartsHouseAssignment.test.js` validate active lots assignment to houses, deferred formula exclusion, half-open cusp policy, profile-level composition, privacy exclusions and strict source boundaries without changing formulas, house engines or UI.
 - `test/arabicPartsDisplay.test.js` validates the pure lots / Arabic Parts display helper, including formatted part rows, optional house labels, chart sect labels, fallback states, privacy exclusions and strict display-only source boundaries.
 - `test/arabicPartsForProfile.test.js` validates the profile-level Arabic Parts UI view model helper, including fallback states, ready active lots, day/night label, house labels, deferred formula exclusion, privacy exclusions and no mutation.
+- `test/arabicPartsDebug.test.js` validates the safe Arabic Parts UI debug helper, including readiness booleans, chart sect status, formula keys, counts, capabilities, privacy exclusions and strict source boundaries.
 - `NATAL_PROVIDER_VALIDATION_REPORT.md` records the provider-layer validation summary; it does not enable user-facing natal values.
 - if personal data is added later, debug output must follow `PRIVACY_RULES.md`
 
@@ -1938,7 +1956,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v89
+lunar-calendar-v90
 ```
 
 Important operational rule:
@@ -2242,7 +2260,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v89
+lunar-calendar-v90
 ```
 
 If this value changes in `sw.js`, update this section.
