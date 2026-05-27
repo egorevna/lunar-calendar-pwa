@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lunar-calendar-v88';
+const CACHE_NAME = 'lunar-calendar-v89';
 const ASSETS = [
   './',
   'index.html',
@@ -40,6 +40,14 @@ const ASSETS = [
   'src/housesForProfile.js',
   'src/housesDebug.js',
   'src/housesDisplay.js',
+  'src/arabicPartsForProfile.js',
+  'src/arabicPartsDisplay.js',
+  'src/arabicPartsHouseAssignment.js',
+  'src/arabicParts.js',
+  'src/arabicPartsData.js',
+  'src/parsFortuna.js',
+  'src/dayNightChart.js',
+  'src/houseCusps.js',
   'src/planetInHouses.js',
   'src/houseSystemResolver.js',
   'src/wholeSignHouses.js',

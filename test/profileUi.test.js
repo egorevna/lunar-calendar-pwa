@@ -5,6 +5,7 @@ import {
   describeDetailedDignitiesBlock,
   describeEssentialDignitiesBlock,
   describeHousesBlock,
+  describeArabicPartsBlock,
   describeNatalAspectsBlock,
   describeNatalPlanetsReadinessBlock,
   describePersonalContextBlock,
@@ -756,5 +757,100 @@ test('houses block shows ready rows for selected house system without sensitive 
   assert.equal(text.includes('longitude'), false);
   assert.equal(text.includes('coordinates'), false);
   assert.equal(text.includes('planetLongitude'), false);
+  assert.equal(text.includes('interpretation'), false);
+});
+
+test('Arabic Parts block returns safe fallback for general day and incomplete profile', () => {
+  const general = describeArabicPartsBlock(null);
+  const fallback = describeArabicPartsBlock({
+    id: 'profile-egor',
+    name: 'Егор',
+    birthDate: '1990-05-12',
+    birthTime: '',
+    birthTimeAccuracy: 'unknown',
+    birthPlace: {
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+    },
+    currentPlace: {
+      mode: 'moscow',
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+    },
+    houseSystem: 'wholeSign',
+    zodiac: 'tropical',
+  });
+  const text = JSON.stringify(fallback);
+
+  assert.equal(general.hidden, false);
+  assert.equal(general.title, 'Жребии и арабские части');
+  assert.equal(general.status, 'Пока недоступно.');
+  assert.equal(general.summary, 'Пока недоступно.');
+  assert.equal(general.canToggleArabicParts, true);
+  assert.equal(fallback.hidden, false);
+  assert.equal(fallback.title, 'Жребии и арабские части');
+  assert.equal(fallback.status, 'Пока недоступно.');
+  assert.equal(fallback.explanation, 'Для расчета нужны ASC, Солнце, Луна и дневная/ночная карта.');
+  assert.equal(fallback.summary, 'Пока недоступно.');
+  assert.equal(fallback.canToggleArabicParts, true);
+  assert.deepEqual(fallback.items, []);
+  assert.equal(text.includes('birthDate'), false);
+  assert.equal(text.includes('birthTime'), false);
+  assert.equal(text.includes('Europe/Moscow'), false);
+  assert.equal(text.includes('latitude'), false);
+  assert.equal(text.includes('longitude'), false);
+  assert.equal(text.includes('coordinates'), false);
+});
+
+test('Arabic Parts block shows ready lots and house labels without sensitive data', () => {
+  const view = describeArabicPartsBlock({
+    id: 'profile-egor',
+    name: 'Егор',
+    birthDate: '1990-05-12',
+    birthTime: '14:30',
+    birthTimeAccuracy: 'exact',
+    birthPlace: {
+      city: 'Москва',
+      country: 'Россия',
+      coordinates: {
+        latitude: 55.7558,
+        longitude: 37.6173,
+      },
+      timezone: 'Europe/Moscow',
+    },
+    currentPlace: {
+      mode: 'moscow',
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+    },
+    houseSystem: 'placidus',
+    zodiac: 'tropical',
+  });
+  const text = JSON.stringify(view);
+
+  assert.equal(view.hidden, false);
+  assert.equal(view.title, 'Жребии и арабские части');
+  assert.equal(view.status, '');
+  assert.equal(view.explanation, '');
+  assert.equal(view.summary, '2 жребия рассчитаны');
+  assert.match(view.chartSectLabel, /^(Дневная карта|Ночная карта)$/);
+  assert.equal(view.canToggleArabicParts, true);
+  assert.equal(view.items.length, 2);
+  assert.equal(view.items.some((item) => item.startsWith('Парс Фортуны — ')), true);
+  assert.equal(view.items.some((item) => item.startsWith('Жребий Духа — ')), true);
+  assert.equal(view.items.every((item) => / · \d{1,2} дом$/.test(item)), true);
+  assert.equal(text.includes('lot-of-eros'), false);
+  assert.equal(text.includes('lot-of-necessity'), false);
+  assert.equal(text.includes('1990-05-12'), false);
+  assert.equal(text.includes('14:30'), false);
+  assert.equal(text.includes('Europe/Moscow'), false);
+  assert.equal(text.includes('latitude'), false);
+  assert.equal(text.includes('longitude'), false);
+  assert.equal(text.includes('coordinates'), false);
+  assert.equal(text.includes('formula'), false);
+  assert.equal(text.includes('provider'), false);
   assert.equal(text.includes('interpretation'), false);
 });

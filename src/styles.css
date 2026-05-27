@@ -403,7 +403,8 @@ button {
 .natal-aspects-readiness,
 .essential-dignities-readiness,
 .detailed-dignities-readiness,
-.houses-readiness {
+.houses-readiness,
+.arabic-parts-readiness {
   display: grid;
   gap: 8px;
   margin-top: 14px;
@@ -415,23 +416,27 @@ button {
 .natal-aspects-readiness[hidden],
 .essential-dignities-readiness[hidden],
 .detailed-dignities-readiness[hidden],
-.houses-readiness[hidden] {
+.houses-readiness[hidden],
+.arabic-parts-readiness[hidden] {
   display: none;
 }
 
 .detailed-dignities-readiness,
-.houses-readiness {
+.houses-readiness,
+.arabic-parts-readiness {
   grid-template-columns: minmax(0, 1fr) auto;
 }
 
 .detailed-dignities-readiness > h3,
-.houses-readiness > h3 {
+.houses-readiness > h3,
+.arabic-parts-readiness > h3 {
   grid-column: 1;
   grid-row: 1;
 }
 
 .detailed-dignities-disclosure,
-.houses-disclosure {
+.houses-disclosure,
+.arabic-parts-disclosure {
   grid-column: 2;
   grid-row: 1;
   justify-self: end;
@@ -444,7 +449,10 @@ button {
 .detailed-dignities-readiness > .detailed-dignities-limitations,
 .houses-readiness > .houses-status,
 .houses-readiness > [data-houses-explanation],
-.houses-readiness > .houses-content {
+.houses-readiness > .houses-content,
+.arabic-parts-readiness > .arabic-parts-status,
+.arabic-parts-readiness > [data-arabic-parts-explanation],
+.arabic-parts-readiness > .arabic-parts-content {
   grid-column: 1 / -1;
 }
 
@@ -454,7 +462,8 @@ button {
 .essential-dignities-readiness h3,
 .detailed-dignities-readiness h3,
 .houses-readiness h3,
-.houses-readiness h4 {
+.houses-readiness h4,
+.arabic-parts-readiness h3 {
   margin: 0;
   color: rgba(255, 248, 239, 0.84);
   font-size: clamp(15px, 4vw, 18px);
@@ -470,7 +479,8 @@ button {
 .natal-aspects-readiness p,
 .essential-dignities-readiness p,
 .detailed-dignities-readiness p,
-.houses-readiness p {
+.houses-readiness p,
+.arabic-parts-readiness p {
   margin: 0;
   color: var(--muted);
   font-size: clamp(13px, 3.5vw, 16px);
@@ -481,7 +491,9 @@ button {
 .natal-aspects-readiness .natal-aspects-status,
 .essential-dignities-readiness .essential-dignities-status,
 .detailed-dignities-readiness .detailed-dignities-status,
-.houses-readiness .houses-status {
+.houses-readiness .houses-status,
+.arabic-parts-readiness .arabic-parts-status,
+.arabic-parts-readiness .arabic-parts-chart-sect {
   color: rgba(255, 248, 239, 0.82);
   font-weight: 700;
 }
@@ -490,7 +502,8 @@ button {
 .natal-aspects-disclosure,
 .essential-dignities-disclosure,
 .detailed-dignities-disclosure,
-.houses-disclosure {
+.houses-disclosure,
+.arabic-parts-disclosure {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -502,7 +515,9 @@ button {
 .essential-dignities-disclosure[hidden],
 .detailed-dignities-disclosure[hidden],
 .houses-disclosure[hidden],
-.houses-content[hidden] {
+.houses-content[hidden],
+.arabic-parts-disclosure[hidden],
+.arabic-parts-content[hidden] {
   display: none;
 }
 
@@ -510,7 +525,8 @@ button {
 .natal-aspects-readiness .natal-aspects-summary,
 .essential-dignities-readiness .essential-dignities-summary,
 .detailed-dignities-readiness .detailed-dignities-summary,
-.houses-readiness .houses-summary {
+.houses-readiness .houses-summary,
+.arabic-parts-readiness .arabic-parts-summary {
   color: rgba(255, 248, 239, 0.82);
   font-weight: 700;
 }
@@ -519,7 +535,8 @@ button {
 .natal-aspects-toggle,
 .essential-dignities-toggle,
 .detailed-dignities-toggle,
-.houses-toggle {
+.houses-toggle,
+.arabic-parts-toggle {
   flex: 0 0 auto;
   border: 1px solid rgba(231, 199, 126, 0.42);
   border-radius: 8px;
@@ -534,7 +551,8 @@ button {
 .natal-aspects-toggle[hidden],
 .essential-dignities-toggle[hidden],
 .detailed-dignities-toggle[hidden],
-.houses-toggle[hidden] {
+.houses-toggle[hidden],
+.arabic-parts-toggle[hidden] {
   display: none;
 }
 
@@ -559,7 +577,10 @@ button {
 .houses-angles,
 .houses-list,
 .houses-planet-assignments,
-.houses-limitations {
+.houses-limitations,
+.arabic-parts-content,
+.arabic-parts-list,
+.arabic-parts-limitations {
   display: grid;
   gap: 7px;
   margin: 0;
@@ -577,7 +598,10 @@ button {
 .houses-angles[hidden],
 .houses-list[hidden],
 .houses-planet-assignments[hidden],
-.houses-limitations[hidden] {
+.houses-limitations[hidden],
+.arabic-parts-chart-sect[hidden],
+.arabic-parts-list[hidden],
+.arabic-parts-limitations[hidden] {
   display: none;
 }
 
@@ -592,7 +616,9 @@ button {
 .houses-angles li,
 .houses-list li,
 .houses-planet-assignments li,
-.houses-limitations li {
+.houses-limitations li,
+.arabic-parts-list li,
+.arabic-parts-limitations li {
   color: var(--muted);
   font-size: clamp(13px, 3.5vw, 16px);
   line-height: 1.28;
@@ -603,7 +629,8 @@ button {
 .essential-dignities-list li,
 .houses-angles li,
 .houses-list li,
-.houses-planet-assignments li {
+.houses-planet-assignments li,
+.arabic-parts-list li {
   color: rgba(255, 248, 239, 0.86);
   font-weight: 700;
 }
@@ -611,12 +638,14 @@ button {
 .natal-aspects-list li,
 .essential-dignities-list li,
 .houses-list li,
-.houses-planet-assignments li {
+.houses-planet-assignments li,
+.arabic-parts-list li {
   color: rgba(255, 248, 239, 0.8);
   font-weight: 600;
 }
 
-.houses-content {
+.houses-content,
+.arabic-parts-content {
   padding-top: 2px;
 }
 
@@ -680,7 +709,8 @@ button {
 .natal-aspects-limitations li::before,
 .essential-dignities-limitations li::before,
 .detailed-dignities-limitations li::before,
-.houses-limitations li::before {
+.houses-limitations li::before,
+.arabic-parts-limitations li::before {
   content: "";
   display: inline-block;
   width: 5px;

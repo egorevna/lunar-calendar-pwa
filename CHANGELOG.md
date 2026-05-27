@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-28 — Complete Task 12.9 User-Facing Arabic Parts UI
+
+- Added profile-level `src/arabicPartsForProfile.js` view-model helper.
+- Added `test/arabicPartsForProfile.test.js`.
+- Added collapsible `Жребии и арабские части` block inside `Мои карты` after `Дома и углы карты`.
+- Ready state shows day/night chart label, Pars Fortuna, Lot of Spirit and house labels when assignment is ready.
+- Fallback state remains safe and does not fake parts.
+- Bumped PWA cache to `lunar-calendar-v89` and cached the app-visible Arabic Parts modules.
+- No formula changes, house-assignment changes, debug section, interpretations, provider calculations or package files were added.
+
 ## 2026-05-28 — Complete Task 12.8 Lots / Arabic Parts Display Helper
 
 - Added pure `src/arabicPartsDisplay.js` display helper.

@@ -67,6 +67,7 @@ import {
   updateProfile,
 } from './profileStorage.js';
 import {
+  describeArabicPartsBlock,
   describeDetailedDignitiesBlock,
   describeEssentialDignitiesBlock,
   describeHousesBlock,
@@ -86,6 +87,7 @@ let expandedNatalAspectsProfileId = null;
 let expandedEssentialDignitiesProfileId = null;
 let expandedDetailedDignitiesProfileId = null;
 let expandedHousesProfileId = null;
+let expandedArabicPartsProfileId = null;
 
 const DELETE_PROFILE_CONFIRMATION = 'Удалить профиль? Это действие нельзя отменить.';
 
@@ -191,6 +193,17 @@ const elements = {
   housesPlanetAssignmentsTitle: document.querySelector('[data-houses-planet-assignments-title]'),
   housesPlanetAssignments: document.querySelector('[data-houses-planet-assignments]'),
   housesLimitations: document.querySelector('[data-houses-limitations]'),
+  arabicParts: document.querySelector('[data-arabic-parts-readiness]'),
+  arabicPartsTitle: document.querySelector('[data-arabic-parts-title]'),
+  arabicPartsStatus: document.querySelector('[data-arabic-parts-status]'),
+  arabicPartsExplanation: document.querySelector('[data-arabic-parts-explanation]'),
+  arabicPartsDisclosure: document.querySelector('[data-arabic-parts-disclosure]'),
+  arabicPartsSummary: document.querySelector('[data-arabic-parts-summary]'),
+  arabicPartsToggle: document.querySelector('[data-arabic-parts-toggle]'),
+  arabicPartsContent: document.querySelector('[data-arabic-parts-content]'),
+  arabicPartsChartSect: document.querySelector('[data-arabic-parts-chart-sect]'),
+  arabicPartsList: document.querySelector('[data-arabic-parts-list]'),
+  arabicPartsLimitations: document.querySelector('[data-arabic-parts-limitations]'),
   personalContextCard: document.querySelector('[data-personal-context-card]'),
   personalContextTitle: document.querySelector('[data-personal-context-title]'),
   personalContextSummary: document.querySelector('[data-personal-context-summary]'),
@@ -410,6 +423,7 @@ function renderStoredProfilesShell() {
   renderEssentialDignitiesBlock(describeEssentialDignitiesBlock(activeProfile));
   renderDetailedDignitiesBlock(describeDetailedDignitiesBlock(activeProfile));
   renderHousesBlock(describeHousesBlock(activeProfile));
+  renderArabicPartsBlock(describeArabicPartsBlock(activeProfile));
   renderPersonalContextBlock(describePersonalContextBlock(createPersonalContext(activeProfile)));
 }
 
@@ -542,6 +556,33 @@ function renderHousesBlock(view) {
   elements.housesPlanetAssignments.hidden = !isExpanded || view.planetAssignments.length === 0;
   renderSimpleList(elements.housesLimitations, view.limitations);
   elements.housesLimitations.hidden = !isExpanded || view.limitations.length === 0;
+}
+
+function renderArabicPartsBlock(view) {
+  const isExpanded = view.canToggleArabicParts
+    && Boolean(view.profileId)
+    && expandedArabicPartsProfileId === view.profileId;
+
+  elements.arabicParts.hidden = view.hidden;
+  elements.arabicPartsTitle.textContent = view.title;
+  elements.arabicPartsStatus.textContent = view.status || view.summary;
+  elements.arabicPartsStatus.hidden = !(view.status || view.summary);
+  elements.arabicPartsExplanation.textContent = view.explanation;
+  elements.arabicPartsExplanation.hidden = !view.explanation;
+  elements.arabicPartsDisclosure.hidden = !view.canToggleArabicParts;
+  elements.arabicPartsSummary.textContent = view.summary;
+  elements.arabicPartsSummary.hidden = true;
+  elements.arabicPartsToggle.hidden = !view.canToggleArabicParts;
+  elements.arabicPartsToggle.textContent = isExpanded ? 'Скрыть' : 'Показать';
+  elements.arabicPartsToggle.setAttribute('aria-expanded', String(isExpanded));
+  elements.arabicPartsToggle.dataset.profileId = view.canToggleArabicParts ? view.profileId : '';
+  elements.arabicPartsContent.hidden = !isExpanded;
+  elements.arabicPartsChartSect.textContent = view.chartSectLabel;
+  elements.arabicPartsChartSect.hidden = !isExpanded || !view.chartSectLabel;
+  renderSimpleList(elements.arabicPartsList, view.items);
+  elements.arabicPartsList.hidden = !isExpanded || view.items.length === 0;
+  renderSimpleList(elements.arabicPartsLimitations, view.limitations);
+  elements.arabicPartsLimitations.hidden = !isExpanded || view.limitations.length === 0;
 }
 
 function renderPersonalContextBlock(view) {
@@ -751,6 +792,7 @@ function resetNatalProfileDisclosures() {
   expandedEssentialDignitiesProfileId = null;
   expandedDetailedDignitiesProfileId = null;
   expandedHousesProfileId = null;
+  expandedArabicPartsProfileId = null;
 }
 
 function handleProfileFormSubmit(event) {
@@ -1017,6 +1059,15 @@ elements.housesToggle.addEventListener('click', () => {
 
   const isExpanded = expandedHousesProfileId === profileId;
   expandedHousesProfileId = isExpanded ? null : profileId;
+  renderStoredProfilesShell();
+});
+
+elements.arabicPartsToggle.addEventListener('click', () => {
+  const profileId = elements.arabicPartsToggle.dataset.profileId || null;
+  if (!profileId) return;
+
+  const isExpanded = expandedArabicPartsProfileId === profileId;
+  expandedArabicPartsProfileId = isExpanded ? null : profileId;
   renderStoredProfilesShell();
 });
 

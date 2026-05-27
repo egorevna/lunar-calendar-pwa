@@ -3259,9 +3259,9 @@ Sprint 11 status:
 
 Next active task:
 
-- Sprint 12 has started below; current next active task is Task 12.9 — User-Facing UI.
+- Sprint 12 has started below; current next active task is Task 12.10 — Debug.
 
-Do not start Task 12.9 until explicitly requested.
+Do not start Task 12.10 until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -3549,11 +3549,38 @@ Result:
 - Keeps display output free of raw birth data, raw coordinates, raw longitudes, formula operands arrays and provider payloads.
 - No formula engine changes, house-assignment changes, UI, debug section, provider changes, package changes or PWA cache changes were added.
 
-Next active task:
+Next active task at that time:
 
 - Task 12.9 — User-Facing UI.
 
-Do not start Task 12.9 until explicitly requested.
+Task 12.9 is now completed below.
+Do not start Sprint 13.
+
+## Task 12.9 — User-Facing UI
+
+Status: done
+
+Goal:
+
+Add a user-facing collapsible UI block for active Arabic Parts / lots inside `Мои карты`.
+
+Result:
+
+- Added profile-level `src/arabicPartsForProfile.js` view-model helper.
+- Added `test/arabicPartsForProfile.test.js`.
+- Added collapsible `Жребии и арабские части` block inside `Мои карты` after `Дома и углы карты`.
+- Block is collapsed by default and resets with the existing profile disclosure reset behavior.
+- Ready state shows day/night chart label, Pars Fortuna, Lot of Spirit and house labels when assignment is ready.
+- Fallback state shows safe unavailable copy without fake lots.
+- Deferred formulas remain hidden.
+- No formula changes, house-assignment changes, debug section, interpretations, provider changes or package changes were added.
+- PWA cache is `lunar-calendar-v89`.
+
+Next active task:
+
+- Task 12.10 — Debug.
+
+Do not start Task 12.10 until explicitly requested.
 Do not start Sprint 13.
 
 # Security Backlog

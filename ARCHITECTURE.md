@@ -194,6 +194,7 @@ Responsibilities:
 - renders the collapsible essential dignities block inside `Мои карты` through `src/profileUi.js` and `src/essentialDignitiesForProfile.js` when natal planets are ready
 - renders the collapsible `Термы, деканы и градусы` block inside `Мои карты` through `src/profileUi.js` and `src/detailedDignitiesForProfile.js` when natal planets are ready
 - renders the collapsible `Дома и углы карты` block inside `Мои карты` through `src/profileUi.js` and `src/housesForProfile.js` when house input guardrails and selected house-system calculations are ready
+- renders the collapsible `Жребии и арабские части` block inside `Мои карты` through `src/profileUi.js` and `src/arabicPartsForProfile.js` when Arabic Parts inputs are ready
 - renders the compact `Лично для меня` dashboard block through `src/personalContext.js`, `src/personalRecommendations.js`, and `src/profileUi.js`
 - passes safe profile summary state into the hidden debug panel
 
@@ -629,6 +630,19 @@ Current responsibilities:
 - keep output free of raw birth data, raw coordinates, raw longitudes, formula operand arrays and provider payloads.
 
 This module does not calculate formulas, assign lots to houses, activate deferred Arabic Parts, add UI, add debug output, add interpretations, call provider modules, render DOM, read localStorage, mutate inputs, or expose raw birth data / raw birth coordinates.
+
+## `src/arabicPartsForProfile.js`
+
+Builds the Sprint 12 profile-level Lots / Arabic Parts view model for the `Жребии и арабские части` UI block.
+
+Current responsibilities:
+
+- request calculated active Arabic Parts through `src/arabicParts.js`;
+- request lots / Arabic Parts house assignment through `src/arabicPartsHouseAssignment.js` only when parts are ready;
+- format the combined result through `src/arabicPartsDisplay.js`;
+- return UI-ready safe rows for day/night chart label, Pars Fortuna, Lot of Spirit, optional house labels, fallback messages and limitations.
+
+This module does not calculate formulas, assign lots to houses itself, activate deferred Arabic Parts, call provider modules directly, render DOM, read localStorage, mutate profiles, expose raw birth data / raw birth coordinates / raw lot longitudes, or add interpretations.
 
 ## `src/planetaryPositionProvider.js`
 
@@ -1274,6 +1288,7 @@ Current responsibilities:
 - translate natal readiness missing fields into human-readable labels without raw birth data or technical keys;
 - format the collapsible `Натальные аспекты`, `Достоинства планет` and `Термы, деканы и градусы` block view models from their profile helpers;
 - format the collapsible `Дома и углы карты` block view model from `src/housesForProfile.js`;
+- format the collapsible `Жребии и арабские части` block view model from `src/arabicPartsForProfile.js`;
 - format the compact `Лично для меня` dashboard block from `src/personalContext.js`;
 - include safe personal recommendation sections from `src/personalRecommendations.js`;
 - translate missing personal profile fields into human-readable Russian copy without rendering technical keys.
@@ -1390,7 +1405,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v88
+lunar-calendar-v89
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -1499,11 +1514,13 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 41. `src/arabicPartsDisplay.js` formats already calculated lots / Arabic Parts and optional house assignments into safe display rows, chart sect labels, summaries and fallback states. It does not calculate formulas, assign houses, add UI/debug or add interpretations.
 
-42. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+42. `src/arabicPartsForProfile.js` builds the profile-level safe view model for the `Жребии и арабские части` UI block by composing active Arabic Parts calculation, lots / Arabic Parts house assignment and display formatting. It does not calculate formulas, assign houses itself or render UI directly.
 
-43. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+43. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
 
-44. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
+44. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+
+45. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
 
 34. `src/natalProviderValidationSummary.js` exposes a safe provider validation summary for debug/reporting without calculating planets, reading profile data, or importing the `astronomy-engine` provider module.
 
@@ -1900,6 +1917,7 @@ Testing note:
 - `test/fixtures/arabicPartsHouseAssignmentFixtures.js` contains test-only manually declared lots / Arabic Parts house-assignment fixtures for Whole Sign, Equal House, Placidus, cusp boundaries, wrapping spans, fallback states and strict exclusions. It is not used by production code.
 - `test/arabicPartsHouseAssignmentFixtures.test.js` and `test/arabicPartsHouseAssignment.test.js` validate active lots assignment to houses, deferred formula exclusion, half-open cusp policy, profile-level composition, privacy exclusions and strict source boundaries without changing formulas, house engines or UI.
 - `test/arabicPartsDisplay.test.js` validates the pure lots / Arabic Parts display helper, including formatted part rows, optional house labels, chart sect labels, fallback states, privacy exclusions and strict display-only source boundaries.
+- `test/arabicPartsForProfile.test.js` validates the profile-level Arabic Parts UI view model helper, including fallback states, ready active lots, day/night label, house labels, deferred formula exclusion, privacy exclusions and no mutation.
 - `NATAL_PROVIDER_VALIDATION_REPORT.md` records the provider-layer validation summary; it does not enable user-facing natal values.
 - if personal data is added later, debug output must follow `PRIVACY_RULES.md`
 
@@ -1920,7 +1938,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v88
+lunar-calendar-v89
 ```
 
 Important operational rule:
@@ -2224,7 +2242,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v88
+lunar-calendar-v89
 ```
 
 If this value changes in `sw.js`, update this section.

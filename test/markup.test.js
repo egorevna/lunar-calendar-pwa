@@ -103,6 +103,9 @@ test('home screen renders profile shell', () => {
   assert.equal(html.includes('data-houses-readiness'), true);
   assert.equal(html.includes('data-houses-title'), true);
   assert.equal(html.includes('Дома и углы карты'), true);
+  assert.equal(html.includes('data-arabic-parts-readiness'), true);
+  assert.equal(html.includes('data-arabic-parts-title'), true);
+  assert.equal(html.includes('Жребии и арабские части'), true);
   assert.equal(html.includes('Добавление профиля — следующий шаг.'), false);
   assert.equal(html.includes('Натальная карта'), false);
   assert.equal(html.includes('Персональные транзиты'), false);
@@ -236,6 +239,51 @@ test('houses shell stays inside profiles panel after detailed dignities and has 
   assert.equal(housesHtml.includes('fixedStars'), false);
   assert.equal(housesHtml.includes('Pars Fortuna'), false);
   assert.equal(housesHtml.includes('interpretation'), false);
+});
+
+test('Arabic Parts shell stays inside profiles panel after houses and has no static values', () => {
+  const panelStart = html.indexOf('data-profiles-panel');
+  const panelEnd = html.indexOf('class="glass-card mode-selector"');
+  const panelHtml = html.slice(panelStart, panelEnd);
+  const housesStart = html.indexOf('data-houses-readiness');
+  const arabicPartsStart = html.indexOf('data-arabic-parts-readiness');
+  const addButtonStart = html.indexOf('class="profile-create-actions"');
+  const arabicPartsHtml = html.slice(arabicPartsStart, addButtonStart);
+
+  assert.equal(panelStart >= 0, true);
+  assert.equal(arabicPartsStart > housesStart, true);
+  assert.equal(arabicPartsStart < panelEnd, true);
+  assert.equal(arabicPartsStart < addButtonStart, true);
+  assert.equal(panelHtml.includes('data-arabic-parts-readiness hidden'), true);
+  assert.equal(arabicPartsHtml.includes('data-arabic-parts-summary'), true);
+  assert.equal(arabicPartsHtml.includes('data-arabic-parts-toggle'), true);
+  assert.equal(arabicPartsHtml.includes('data-arabic-parts-chart-sect'), true);
+  assert.equal(arabicPartsHtml.includes('data-arabic-parts-list'), true);
+  assert.equal(arabicPartsHtml.includes('data-arabic-parts-list hidden'), true);
+  assert.equal(arabicPartsHtml.includes('Парс Фортуны — Телец'), false);
+  assert.equal(arabicPartsHtml.includes('Жребий Духа — Скорпион'), false);
+  assert.equal(arabicPartsHtml.includes('birthDate'), false);
+  assert.equal(arabicPartsHtml.includes('birthTime'), false);
+  assert.equal(arabicPartsHtml.includes('utcDateTime'), false);
+  assert.equal(arabicPartsHtml.includes('latitude'), false);
+  assert.equal(arabicPartsHtml.includes('longitude'), false);
+  assert.equal(arabicPartsHtml.includes('coordinates'), false);
+  assert.equal(arabicPartsHtml.includes('formula'), false);
+  assert.equal(arabicPartsHtml.includes('fixedStars'), false);
+  assert.equal(arabicPartsHtml.includes('transits'), false);
+  assert.equal(arabicPartsHtml.includes('ritual'), false);
+  assert.equal(arabicPartsHtml.includes('interpretation'), false);
+});
+
+test('Arabic Parts block is collapsible and resets on profile changes', () => {
+  assert.equal(appJs.includes('let expandedArabicPartsProfileId = null;'), true);
+  assert.equal(appJs.includes('const isExpanded = view.canToggleArabicParts'), true);
+  assert.equal(appJs.includes("elements.arabicPartsToggle.textContent = isExpanded ? 'Скрыть' : 'Показать';"), true);
+  assert.equal(appJs.includes('elements.arabicPartsStatus.textContent = view.status || view.summary;'), true);
+  assert.equal(appJs.includes('elements.arabicPartsSummary.hidden = true;'), true);
+  assert.equal(appJs.includes('elements.arabicPartsList.hidden = !isExpanded || view.items.length === 0;'), true);
+  assert.equal(appJs.includes('expandedArabicPartsProfileId = isExpanded ? null : profileId;'), true);
+  assert.equal(appJs.includes('expandedArabicPartsProfileId = null;'), true);
 });
 
 test('houses block is collapsible and resets on profile changes', () => {
@@ -443,11 +491,11 @@ test('detailed dignities list is collapsible without ready summary duplication',
 });
 
 test('detailed dignities header keeps toggle aligned with title without summary row', () => {
-  assert.equal(stylesCss.includes('.detailed-dignities-readiness,\n.houses-readiness {\n  grid-template-columns: minmax(0, 1fr) auto;'), true);
-  assert.equal(stylesCss.includes('.detailed-dignities-readiness > h3,\n.houses-readiness > h3 {\n  grid-column: 1;\n  grid-row: 1;'), true);
-  assert.equal(stylesCss.includes('.detailed-dignities-disclosure,\n.houses-disclosure {\n  grid-column: 2;\n  grid-row: 1;'), true);
+  assert.equal(stylesCss.includes('.detailed-dignities-readiness,\n.houses-readiness,\n.arabic-parts-readiness {\n  grid-template-columns: minmax(0, 1fr) auto;'), true);
+  assert.equal(stylesCss.includes('.detailed-dignities-readiness > h3,\n.houses-readiness > h3,\n.arabic-parts-readiness > h3 {\n  grid-column: 1;\n  grid-row: 1;'), true);
+  assert.equal(stylesCss.includes('.detailed-dignities-disclosure,\n.houses-disclosure,\n.arabic-parts-disclosure {\n  grid-column: 2;\n  grid-row: 1;'), true);
   assert.equal(stylesCss.includes('  justify-self: end;\n  align-self: center;'), true);
-  assert.equal(stylesCss.includes('.detailed-dignities-readiness > .detailed-dignities-status,\n.detailed-dignities-readiness > [data-detailed-dignities-explanation],\n.detailed-dignities-readiness > .detailed-dignities-groups,\n.detailed-dignities-readiness > .detailed-dignities-limitations,\n.houses-readiness > .houses-status,\n.houses-readiness > [data-houses-explanation],\n.houses-readiness > .houses-content {\n  grid-column: 1 / -1;'), true);
+  assert.equal(stylesCss.includes('.detailed-dignities-readiness > .detailed-dignities-status,\n.detailed-dignities-readiness > [data-detailed-dignities-explanation],\n.detailed-dignities-readiness > .detailed-dignities-groups,\n.detailed-dignities-readiness > .detailed-dignities-limitations,\n.houses-readiness > .houses-status,\n.houses-readiness > [data-houses-explanation],\n.houses-readiness > .houses-content,\n.arabic-parts-readiness > .arabic-parts-status,\n.arabic-parts-readiness > [data-arabic-parts-explanation],\n.arabic-parts-readiness > .arabic-parts-content {\n  grid-column: 1 / -1;'), true);
 });
 
 test('home screen renders hidden warnings card shell', () => {

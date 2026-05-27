@@ -3,6 +3,7 @@ import { getNatalAspectsForProfile } from './natalAspectsForProfile.js';
 import { getEssentialDignitiesForProfile } from './essentialDignitiesForProfile.js';
 import { getDetailedDignitiesForProfile } from './detailedDignitiesForProfile.js';
 import { getHousesForProfile } from './housesForProfile.js';
+import { getArabicPartsForProfile } from './arabicPartsForProfile.js';
 import { getPersonalRecommendations } from './personalRecommendations.js';
 
 export const GENERAL_PROFILE_LABEL = 'Общий день';
@@ -33,6 +34,8 @@ const DETAILED_DIGNITIES_STATUS = 'Пока недоступны.';
 const DETAILED_DIGNITIES_EXPLANATION = 'Сначала нужен расчет натальных планет.';
 const HOUSES_TITLE = 'Дома и углы карты';
 const HOUSES_STATUS = 'Пока недоступно.';
+const ARABIC_PARTS_TITLE = 'Жребии и арабские части';
+const ARABIC_PARTS_STATUS = 'Пока недоступно.';
 
 const MISSING_FIELD_LABELS = {
   birthDate: 'дата рождения',
@@ -345,6 +348,26 @@ export function describeHousesBlock(profile = null) {
     planetAssignments: toDisplayTextList(houses.planetAssignments),
     limitations: Array.isArray(houses.limitations)
       ? houses.limitations.map(cleanText).filter(Boolean)
+      : [],
+  };
+}
+
+export function describeArabicPartsBlock(profile = null) {
+  const arabicParts = getArabicPartsForProfile(profile);
+  const isReady = arabicParts.status === 'ready' && arabicParts.ready === true;
+
+  return {
+    hidden: false,
+    title: ARABIC_PARTS_TITLE,
+    status: isReady ? '' : ARABIC_PARTS_STATUS,
+    explanation: isReady ? '' : cleanText(arabicParts.message),
+    profileId: profileId(profile) || 'general',
+    summary: isReady ? cleanText(arabicParts.summary) : ARABIC_PARTS_STATUS,
+    chartSectLabel: isReady ? cleanText(arabicParts.chartSectLabel) : '',
+    canToggleArabicParts: true,
+    items: toDisplayTextList(arabicParts.items),
+    limitations: Array.isArray(arabicParts.limitations)
+      ? arabicParts.limitations.map(cleanText).filter(Boolean)
       : [],
   };
 }
