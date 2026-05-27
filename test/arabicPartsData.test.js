@@ -189,10 +189,10 @@ test('arabicPartsData module is data-only and keeps strict source boundaries', a
   assert.equal(source.includes('astronomy-engine'), false);
   assert.equal(source.includes('calculateLotOfSpirit'), false);
   assert.equal(source.includes('function calculate'), false);
+  assert.equal(source.includes("from './arabicParts"), false);
   assert.equal(source.includes('фаталь'), false);
   assert.equal(source.includes('карми'), false);
   assert.equal(source.includes('сильный дом'), false);
   assert.equal(existsSync(new URL('../src/houses.js', import.meta.url)), false);
   assert.equal(existsSync(new URL('../src/houseSystems.js', import.meta.url)), false);
-  assert.equal(existsSync(new URL('../src/arabicParts.js', import.meta.url)), false);
 });

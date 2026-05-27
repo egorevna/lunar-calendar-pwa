@@ -100,8 +100,8 @@ Required inputs:
 Activation note:
 
 ```txt
-Lot of Spirit is active in the formula dataset, but Task 12.5b does not calculate it.
-Calculation is deferred to Task 12.6.
+Lot of Spirit is active in the formula dataset.
+Task 12.6 calculates it through the Basic Arabic Parts engine.
 ```
 
 ## Additional Basic Arabic Parts

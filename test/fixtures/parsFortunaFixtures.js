@@ -181,7 +181,6 @@ export const PARS_FORTUNA_FIXTURES = Object.freeze([
       forbiddenFiles: Object.freeze([
         'src/houses.js',
         'src/houseSystems.js',
-        'src/arabicParts.js',
       ]),
       providerImports: false,
       domStorageImports: false,

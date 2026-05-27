@@ -587,6 +587,21 @@ Current responsibilities:
 
 This module does not calculate formulas, implement the broad Arabic Parts engine, calculate Lot of Spirit, import `src/parsFortuna.js`, add interpretations, add UI, call provider modules, render DOM, read localStorage, mutate profiles, or expose raw birth data / raw birth coordinates.
 
+## `src/arabicParts.js`
+
+Defines the Sprint 12 pure Basic Arabic Parts formula calculation engine.
+
+Current responsibilities:
+
+- read active verified formula rows from `src/arabicPartsData.js`;
+- calculate only Pars Fortuna and Lot of Spirit in Sprint 12;
+- evaluate verified ordered arithmetic formulas from numeric ASC, Sun and Moon longitudes plus explicit day/night chart status;
+- normalize result longitudes to `0 <= longitude < 360`;
+- format calculated lots with sign, degree, minute and second text;
+- expose a profile-level helper that uses existing house guardrails, `src/ascMc.js`, `src/dayNightChart.js` and the safe `src/natalPlanetsForProfile.js` Sun/Moon path.
+
+This module does not activate deferred formulas, assign lots to houses, add interpretations, add UI, call provider modules directly, render DOM, read localStorage, mutate profiles, or expose raw birth data / raw birth coordinates.
+
 ## `src/planetaryPositionProvider.js`
 
 Defines the future planetary position provider contract.
@@ -1450,11 +1465,13 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 38. `src/arabicPartsData.js` exposes the data-only Arabic Parts source decision / formula dataset. Pars Fortuna and Lot of Spirit are active verified formula rows; additional candidate parts remain inactive/deferred until source verification. It does not calculate formulas, import the Pars Fortuna engine, implement a broad Arabic Parts engine, add UI or add interpretations.
 
-39. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+39. `src/arabicParts.js` calculates only active verified Basic Arabic Parts formulas from the dataset. In Sprint 12 that means Pars Fortuna and Lot of Spirit only. It uses numeric ASC, Sun and Moon longitudes plus explicit day/night chart status, and it does not assign houses, activate deferred parts, add UI or add interpretations.
 
-40. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+40. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
 
-41. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
+41. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+
+42. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
 
 34. `src/natalProviderValidationSummary.js` exposes a safe provider validation summary for debug/reporting without calculating planets, reading profile data, or importing the `astronomy-engine` provider module.
 

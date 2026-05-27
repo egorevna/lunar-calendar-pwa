@@ -1,12 +1,21 @@
 # Changelog
 
+## 2026-05-27 — Complete Task 12.6 Basic Arabic Parts Engine / Fixtures
+
+- Added pure `src/arabicParts.js` Basic Arabic Parts calculation engine.
+- Added manual Arabic Parts fixtures and tests.
+- Calculated only active verified formulas from `src/arabicPartsData.js`: Pars Fortuna and Lot of Spirit.
+- Preserved day/night formula behavior and verified generic Pars Fortuna output against the existing Pars Fortuna engine.
+- Deferred Lot of Eros, Lot of Necessity, Lot of Basis and Lot of Exaltation remain inactive and do not produce ready values.
+- No house assignment, UI, display/debug helper, interpretations, provider calculations, package files or PWA cache changes were added.
+
 ## 2026-05-26 — Complete Task 12.5b Lot of Spirit Source Verification
 
 - Verified Lot of Spirit as an active formula row in the data-only Arabic Parts source decision layer.
 - Added Lot of Spirit day formula `ASC + Sun - Moon` and night formula `ASC + Moon - Sun` to `src/arabicPartsData.js`.
 - Updated Arabic Parts dataset tests so active verified formulas are now Pars Fortuna and Lot of Spirit only.
 - Kept Lot of Eros, Lot of Necessity, Lot of Basis and Lot of Exaltation inactive/deferred.
-- No Lot of Spirit calculation engine, broad Arabic Parts engine, UI, interpretations, provider calculations, package files or PWA cache changes were added.
+- No Lot of Spirit calculation engine, UI, interpretations, provider calculations, package files or PWA cache changes were added in Task 12.5b.
 
 ## 2026-05-26 — Complete Task 12.5 Arabic Parts Source Decision / Formula Dataset
 
@@ -15,7 +24,7 @@
 - Recorded verified-only Arabic Parts activation policy in module metadata.
 - Kept Pars Fortuna / Lot of Fortune as the only active verified formula.
 - Kept Lot of Spirit, Lot of Eros, Lot of Necessity, Lot of Basis and Lot of Exaltation inactive/deferred until source verification.
-- Updated existing strict tests so the data-only module is allowed while broad `src/arabicParts.js` remains forbidden.
+- Updated existing strict tests so the data-only module is allowed while broad calculations remained deferred at that stage.
 - No broad Arabic Parts calculations, Lot of Spirit calculation, Pars Fortuna formula changes, UI, provider calculations, package files or PWA cache changes were added.
 
 ## 2026-05-26 — Complete Task 12.4 Pars Fortuna Engine / Fixtures

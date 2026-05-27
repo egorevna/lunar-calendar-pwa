@@ -3448,7 +3448,7 @@ Result:
 - Kept `pars-fortuna` as the only active verified formula.
 - Kept Lot of Spirit, Lot of Eros, Lot of Necessity, Lot of Basis and Lot of Exaltation inactive/deferred until formula source verification.
 - Confirmed the dataset does not calculate formulas, import the Pars Fortuna engine, call providers, read DOM/localStorage, expose birth data or add interpretations.
-- Updated legacy strict checks so `src/arabicPartsData.js` is allowed as data-only while broad `src/arabicParts.js` remains forbidden.
+- Updated legacy strict checks so `src/arabicPartsData.js` is allowed as data-only while broad calculations remained deferred at that stage.
 - No broad Arabic Parts engine, Lot of Spirit calculation, UI, provider changes, package changes or PWA cache changes were added.
 
 Next active task:
@@ -3472,13 +3472,42 @@ Result:
 - Kept required inputs as `asc`, `sun`, `moon` and `chartSect`.
 - Kept house assignment deferred to Task 12.7 and interpretation disabled.
 - Kept Lot of Eros, Lot of Necessity, Lot of Basis and Lot of Exaltation inactive/deferred.
-- No Lot of Spirit calculation engine, broad `src/arabicParts.js`, UI, provider changes, package changes or PWA cache changes were added.
+- No Lot of Spirit calculation engine, UI, provider changes, package changes or PWA cache changes were added in Task 12.5b.
 
 Next active task:
 
 - Task 12.6 — Basic Arabic Parts Engine / Fixtures.
 
-Do not start Task 12.6 until explicitly requested.
+## Task 12.6 — Basic Arabic Parts Engine / Fixtures
+
+Status: done
+
+Goal:
+
+Create a pure calculation engine for active verified Arabic Parts formulas only.
+
+Result:
+
+- Added pure `src/arabicParts.js`.
+- Added manual fixtures in `test/fixtures/arabicPartsFixtures.js`.
+- Added `test/arabicPartsFixtures.test.js` and `test/arabicParts.test.js`.
+- Calculates only active verified formulas from `src/arabicPartsData.js`: `pars-fortuna` and `lot-of-spirit`.
+- Uses numeric ASC, Sun and Moon longitudes plus explicit day/night `chartSect`.
+- Preserves day/night formula behavior:
+  - Pars Fortuna day: `ASC + Moon - Sun`;
+  - Pars Fortuna night: `ASC + Sun - Moon`;
+  - Lot of Spirit day: `ASC + Sun - Moon`;
+  - Lot of Spirit night: `ASC + Moon - Sun`.
+- Deferred formulas (`lot-of-eros`, `lot-of-necessity`, `lot-of-basis`, `lot-of-exaltation`) do not produce ready values.
+- Generic `pars-fortuna` result is tested against the existing `src/parsFortuna.js` behavior.
+- Profile-level helper uses existing guardrails, ASC / MC, day/night status and safe natal Sun/Moon path.
+- No house assignment, UI, display helper, debug section, provider changes, package changes or PWA cache changes were added.
+
+Next active task:
+
+- Task 12.7 — Lots / Arabic Parts House Assignment.
+
+Do not start Task 12.7 until explicitly requested.
 Do not start Sprint 13.
 
 # Security Backlog

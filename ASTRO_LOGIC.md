@@ -698,7 +698,7 @@ Pars Fortuna policy:
 - night chart formula is `ASC + Sun - Moon`;
 - the final longitude is normalized to `0 <= longitude < 360`;
 - if chart sect is `boundary`, unknown or not ready, Pars Fortuna returns safe `notReady` instead of choosing a formula;
-- Task 12.4 does not implement Lot of Spirit, a broad Arabic Parts catalog, house assignment or interpretations.
+- `src/parsFortuna.js` remains the single-lot Pars Fortuna engine and does not implement Lot of Spirit, a broad Arabic Parts catalog, house assignment or interpretations.
 
 Arabic Parts formula dataset policy:
 
@@ -710,7 +710,23 @@ Arabic Parts formula dataset policy:
 - Lot of Spirit night chart formula is `ASC + Moon - Sun`;
 - Lot of Eros, Lot of Necessity, Lot of Basis, Lot of Exaltation and other additional parts remain deferred until source verification;
 - the formula dataset is data-only and does not calculate lots/parts;
-- Task 12.5b does not implement a broad Arabic Parts engine, Lot of Spirit calculation, house assignment, UI or interpretations.
+- Task 12.5b did not implement calculation, house assignment, UI or interpretations.
+
+Basic Arabic Parts engine policy:
+
+- `src/arabicParts.js` calculates only active verified formula rows from `src/arabicPartsData.js`;
+- current active calculated keys are `pars-fortuna` and `lot-of-spirit`;
+- Pars Fortuna day/night formulas remain:
+  - day `ASC + Moon - Sun`;
+  - night `ASC + Sun - Moon`;
+- Lot of Spirit day/night formulas remain:
+  - day `ASC + Sun - Moon`;
+  - night `ASC + Moon - Sun`;
+- formula operands use numeric tropical longitudes only, never display text;
+- results are normalized to `0 <= longitude < 360` and formatted with degree-minute-second display;
+- `boundary`, unknown or not-ready chart sect returns safe `notReady`; no default formula variant is chosen;
+- deferred formula rows must not produce ready values;
+- Task 12.6 does not assign lots/parts to houses, add UI/debug/display helpers, add interpretations or activate additional Arabic Parts.
 
 User-facing and debug policy:
 
