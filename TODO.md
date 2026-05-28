@@ -3259,9 +3259,9 @@ Sprint 11 status:
 
 Next active task at that later checkpoint:
 
-- Sprint 12 has started below; current next active task is Task 12.11 — Sprint 12 Hardening.
+- Sprint 12 is closed below; current next active task is Sprint 13 planning.
 
-Do not start Task 12.11 until explicitly requested.
+Do not start Sprint 13 until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -3605,8 +3605,36 @@ Next active task:
 
 - Task 12.11 — Sprint 12 Hardening.
 
-Do not start Task 12.11 until explicitly requested.
+Task 12.11 is now completed below.
 Do not start Sprint 13.
+
+## Task 12.11 — Sprint 12 Hardening
+
+Status: done
+
+Goal:
+
+Complete final Sprint 12 audit / hardening for House Cusps + Pars Fortuna + Basic Arabic Parts.
+
+Result:
+
+- Rechecked canonical house cusps for Whole Sign, Equal House and Placidus.
+- Rechecked day/night chart status policy: geometric Sun altitude, no local-clock-only shortcut, boundary does not choose a formula.
+- Rechecked Pars Fortuna and Lot of Spirit formulas and normalization.
+- Confirmed active verified formulas remain only `pars-fortuna` and `lot-of-spirit`.
+- Confirmed `lot-of-eros`, `lot-of-necessity`, `lot-of-basis` and `lot-of-exaltation` remain inactive/deferred.
+- Rechecked Arabic Parts assignment policy: numeric longitude, canonical cusps, half-open spans and exact cusp belongs to the starting house.
+- Rechecked user-facing UI and `?debug=1` debug safety.
+- Confirmed no code fixes were needed during hardening.
+- Confirmed PWA cache remains `lunar-calendar-v90`.
+
+Sprint 12 is closed.
+
+Next active task:
+
+- Sprint 13 planning.
+
+Do not start Sprint 13 without explicit user approval.
 
 # Security Backlog
 

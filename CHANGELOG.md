@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-28 — Complete Task 12.11 Sprint 12 Hardening
+
+- Completed final Sprint 12 audit / hardening for House Cusps + Pars Fortuna + Basic Arabic Parts.
+- Rechecked canonical house cusps, day/night status, Pars Fortuna, Lot of Spirit, deferred Arabic Parts, house assignment, UI/debug, privacy and architecture boundaries.
+- Confirmed active verified formulas remain only `pars-fortuna` and `lot-of-spirit`.
+- Confirmed Lot of Eros, Lot of Necessity, Lot of Basis and Lot of Exaltation remain inactive/deferred.
+- Confirmed `Жребии и арабские части` UI/debug stays safe and does not expose raw birth data, coordinates, UTC, raw longitudes, formula operands, full profile JSON or full result arrays.
+- Confirmed PWA cache remains `lunar-calendar-v90`.
+- No code fixes, calculation changes, package changes, Fixed Stars, transits, interpretations, ritual scoring or Sprint 13 work were added.
+- Sprint 12 is closed. Next active work is Sprint 13 planning, but Sprint 13 was not started.
+
 ## 2026-05-28 — Complete Task 12.10 Arabic Parts Debug
 
 - Added pure `src/arabicPartsDebug.js` safe debug helper.
