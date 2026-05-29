@@ -3259,9 +3259,9 @@ Sprint 11 status:
 
 Next active task at the current checkpoint:
 
-- Sprint 13 has started below; current next active task is Task 13.4 — Lunar Nodes House Assignment.
+- Sprint 13 has started below; current next active task is Task 13.5 — Lilith Source Decision / Feasibility.
 
-Do not start Task 13.4 until explicitly requested.
+Do not start Task 13.5 until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -3680,7 +3680,7 @@ Next active task:
 
 - Task 13.2 — Lunar Nodes Source / Calculation Policy. Completed below.
 
-Task 13.2 and Task 13.3 are now closed; current next active task is Task 13.4.
+Task 13.2, Task 13.3 and Task 13.4 are now closed; current next active task is Task 13.5.
 Do not start Sprint 14 or later.
 
 ## Task 13.2 — Lunar Nodes Source / Calculation Policy
@@ -3706,7 +3706,7 @@ Next active task:
 
 - Task 13.3 — Lunar Nodes Engine / Fixtures. Completed below.
 
-Task 13.3 is now closed; current next active task is Task 13.4.
+Task 13.3 and Task 13.4 are now closed; current next active task is Task 13.5.
 Do not start Sprint 14 or later.
 
 ## Task 13.3 — Lunar Nodes Engine / Fixtures
@@ -3730,9 +3730,34 @@ Result:
 
 Next active task:
 
-- Task 13.4 — Lunar Nodes House Assignment.
+- Task 13.4 — Lunar Nodes House Assignment. Completed below.
 
-Do not start Task 13.4 until explicitly requested.
+Task 13.4 is now closed; current next active task is Task 13.5.
+Do not start Sprint 14 or later.
+
+## Task 13.4 — Lunar Nodes House Assignment
+
+Status: done
+
+Goal:
+
+Create a pure house-assignment layer for ready Lunar Nodes.
+
+Result:
+
+- Added pure `src/lunarNodesHouseAssignment.js`.
+- Added static/manual Lunar Nodes house-assignment fixtures and tests.
+- Assigned North Node and South Node to canonical Whole Sign, Equal House and Placidus cusps.
+- Used numeric longitude only, half-open spans `[cusp, nextCusp)`, exact-cusp boundary assignment and wrap-around support.
+- Preserved North/South-only scope: true node, Lilith and Selena are not assigned.
+- Profile-level helper composes ready Lunar Nodes with canonical house cusps; Lunar Nodes themselves do not require coordinates, but house assignment requires ready cusps and therefore profile coordinates.
+- Did not change Lunar Nodes calculation, house engines, provider calculations, UI, display helper, debug, PWA cache or package files.
+
+Next active task:
+
+- Task 13.5 — Lilith Source Decision / Feasibility.
+
+Do not start Task 13.5 until explicitly requested.
 Do not start Sprint 14 or later.
 
 # Security Backlog

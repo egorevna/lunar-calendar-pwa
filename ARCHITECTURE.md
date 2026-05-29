@@ -24,6 +24,7 @@ These documents define the Special Points strategy and Lunar Nodes source policy
 Implemented Sprint 13 module:
 
 - `src/lunarNodes.js` — pure mean Lunar Nodes engine validated against static local Swiss Ephemeris `SE_MEAN_NODE` benchmark fixtures.
+- `src/lunarNodesHouseAssignment.js` — pure Lunar Nodes house-assignment layer for North/South Nodes against canonical house cusps.
 
 ## Update Rules
 
@@ -683,6 +684,20 @@ Current responsibilities:
 - keep source metadata, capabilities and limitations explicit.
 
 This module does not calculate true node, Lilith, Selena, Fixed Stars, transits, house assignment, display/UI/debug helpers or interpretations. It does not import runtime `swisseph`, provider modules, DOM or localStorage, mutate profiles, require birth coordinates, or expose raw birth data / raw coordinates.
+
+## `src/lunarNodesHouseAssignment.js`
+
+Defines the Sprint 13 pure Lunar Nodes house-assignment layer.
+
+Current responsibilities:
+
+- accept ready Lunar Nodes results and ready canonical house cusps;
+- assign only North Node and South Node to Whole Sign, Equal House or Placidus house spans;
+- use numeric longitude only, half-open spans `[cusp, nextCusp)`, exact-cusp boundary ownership and wrap-around support;
+- expose a profile-level helper that composes `calculateLunarNodesForProfile()` with `getCanonicalHouseCuspsForProfile()`;
+- return safe assignment summaries, capabilities and limitations.
+
+This module does not calculate Lunar Nodes, calculate houses, implement true node, Lilith, Selena, UI, display helpers, debug helpers or interpretations. It does not import provider modules, DOM, localStorage or `swisseph`, mutate profiles, or expose raw birth data / raw coordinates.
 
 ## `src/planetaryPositionProvider.js`
 
@@ -1560,9 +1575,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 44. `src/lunarNodes.js` calculates the active mean Lunar Nodes layer: North Node from the `mean-lunar-node` source policy and South Node as North Node + 180°. It does not calculate true node, Lilith, Selena, house assignment, UI/debug or interpretations.
 
-45. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+45. `src/lunarNodesHouseAssignment.js` assigns North/South Nodes to selected-system canonical house cusps. It uses numeric longitude, half-open spans, exact-cusp boundary ownership and wrap-around support, and does not calculate nodes or houses.
 
-45. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+46. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+
+47. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
 
 45. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
 
@@ -1967,6 +1984,8 @@ Testing note:
 - `test/arabicPartsDebug.test.js` validates the safe Arabic Parts UI debug helper, including readiness booleans, chart sect status, formula keys, counts, capabilities, privacy exclusions and strict source boundaries.
 - `test/fixtures/lunarNodesFixtures.js` contains test-only static mean Lunar Nodes benchmark fixtures from local Swiss Ephemeris `SE_MEAN_NODE`, including wrap-around and South Node opposite checks. It is not used by production code.
 - `test/lunarNodesFixtures.test.js` and `test/lunarNodes.test.js` validate the pure mean Lunar Nodes engine, static benchmark matching, South Node derivation, profile-level UTC readiness, privacy exclusions and strict Sprint 13 source boundaries without adding true node, Lilith, Selena, UI/debug or house assignment.
+- `test/fixtures/lunarNodesHouseAssignmentFixtures.js` contains test-only manual Lunar Nodes house-assignment fixtures for Whole Sign, Equal House, Placidus, cusp boundaries, wrapping spans, fallback states and strict exclusions. It is not used by production code.
+- `test/lunarNodesHouseAssignmentFixtures.test.js` and `test/lunarNodesHouseAssignment.test.js` validate North/South Node assignment to canonical cusps, half-open cusp policy, profile-level composition, privacy exclusions and strict Sprint 13 source boundaries without changing Lunar Nodes calculation, adding true node, Lilith, Selena, UI/debug or interpretations.
 - `NATAL_PROVIDER_VALIDATION_REPORT.md` records the provider-layer validation summary; it does not enable user-facing natal values.
 - if personal data is added later, debug output must follow `PRIVACY_RULES.md`
 

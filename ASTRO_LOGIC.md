@@ -782,6 +782,17 @@ Policy:
 - profile-level Lunar Nodes require exact birth time and timezone; birth coordinates are not required for this geocentric node position layer;
 - no interpretations, karmic/fatalistic text, ritual scoring, Lilith or Selena are added by this policy.
 
+House assignment policy:
+
+- Lunar Nodes house assignment uses the exact numeric longitude of the node against canonical cusps from the selected house system;
+- Whole Sign uses sign-boundary cusps, not exact ASC degree;
+- Equal House and Placidus use exact canonical cusp longitudes;
+- each house span is half-open: `[cusp, nextCusp)`;
+- an exact cusp boundary belongs to the house that starts at that cusp;
+- wrap-around spans across `360° -> 0°` are supported;
+- profile-level house assignment requires ready house cusps, so exact time and coordinates are needed for assignment even though Lunar Nodes longitude itself does not require coordinates;
+- no display text is used for assignment math.
+
 ## Personal Transits
 
 Do not show personal transits until both natal positions and current planetary positions are reliable.

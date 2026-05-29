@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-05-29 — Complete Task 13.4 Lunar Nodes House Assignment
+
+- Added pure `src/lunarNodesHouseAssignment.js` assignment layer.
+- Added manual Lunar Nodes house-assignment fixtures and tests.
+- North Node and South Node can now be assigned to Whole Sign, Equal House and Placidus canonical cusps using numeric longitude, half-open spans, exact-cusp boundary ownership and wrap-around support.
+- Lunar Nodes calculation, true node, Lilith, Selena, UI, display helper, debug, provider calculations, PWA cache and package files were not changed.
+- Next active task is Task 13.5 — Lilith Source Decision / Feasibility, but it was not started.
+
 ## 2026-05-29 — Complete Task 13.3 Lunar Nodes Engine / Fixtures
 
 - Added pure `src/lunarNodes.js` mean Lunar Nodes engine.
