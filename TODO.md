@@ -3925,7 +3925,34 @@ Next active task:
 
 - Task 13.11 — Special Points Debug.
 
-Do not start Task 13.11 until explicitly requested.
+Task 13.11 is now closed; current next active task is Task 13.12.
+Do not start Task 13.12 until explicitly requested.
+Do not start Sprint 14 or later.
+
+## Task 13.11 — Special Points Debug
+
+Status: done
+
+Goal:
+
+Add a safe `Special Points UI Debug` section for `?debug=1`.
+
+Result:
+
+- Added pure `src/specialPointsDebug.js`.
+- Added `test/specialPointsDebug.test.js`.
+- Added `Special Points UI Debug` to the hidden debug panel when safe state is provided.
+- Debug shows active profile id/name only, readiness booleans, source statuses, counts, capabilities, collapsed state and privacy flags.
+- Debug does not expose raw birth data, coordinates, UTC, timezone values, raw longitudes, full profile JSON, full points/assignments/cusps arrays or provider payloads.
+- Normal UI behavior was not changed.
+- No calculation engines, source policies, house assignment, provider calculations, package files, interpretations, Fixed Stars, transits or ritual scoring were changed.
+- PWA cache bumped to `lunar-calendar-v92`.
+
+Next active task:
+
+- Task 13.12 — Sprint 13 Hardening.
+
+Do not start Task 13.12 until explicitly requested.
 Do not start Sprint 14 or later.
 
 # Security Backlog

@@ -943,7 +943,16 @@ test('Special Points block shows ready points, node houses, and Selena note with
   assert.equal(view.items.some((item) => item.startsWith('Лилит / Средняя Лилит — ')), true);
   assert.equal(view.items.some((item) => item.startsWith('Селена / Белая Луна — ')), true);
   assert.equal(view.items.filter((item) => / · \d{1,2} дом$/.test(item)).length, 2);
-  assert.equal(text.includes('фиктивная / гипотетическая точка'), true);
+  assert.deepEqual(view.sections.map((section) => section.limitations), [[], [], []]);
+  assert.deepEqual(view.limitations, [
+    'В Sprint 13 активны mean Lunar Nodes, Mean Lilith и Selena / White Moon.',
+    'True Node, True/Osculating Lilith и альтернативные Selena source systems отложены.',
+    'Селена отображается как фиктивная / гипотетическая расчетная точка.',
+    'Этот блок не содержит интерпретаций.',
+  ]);
+  assert.equal(text.includes('Этот модуль не рассчитывает Lilith или Selena'), false);
+  assert.equal(text.includes('Этот модуль не рассчитывает Lunar Nodes или Lilith'), false);
+  assert.equal((text.match(/фиктивная \/ гипотетическая/g) ?? []).length, 1);
   assert.equal(text.includes('true-lilith'), false);
   assert.equal(text.includes('osculating'), false);
   assert.equal(text.includes('1990-05-12'), false);

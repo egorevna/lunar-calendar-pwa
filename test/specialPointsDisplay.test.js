@@ -264,6 +264,7 @@ test('formatLunarNodesDisplay formats nodes and assignments', () => {
       'Южный узел — Водолей 03°12′44″ · 1 дом',
     ],
   );
+  assert.deepEqual(result.limitations, []);
 });
 
 test('formatLunarNodesDisplay returns safe fallback', () => {
@@ -282,6 +283,7 @@ test('formatLilithDisplay formats Mean Lilith', () => {
   const result = formatLilithDisplay(LILITH_RESULT);
   assert.equal(result.status, 'ready');
   assert.equal(result.items[0].text, 'Лилит / Средняя Лилит — Скорпион 18°22′10″');
+  assert.deepEqual(result.limitations, []);
 });
 
 test('formatLilithDisplay returns safe fallback', () => {
@@ -297,9 +299,9 @@ test('formatSelenaDisplay formats Selena', () => {
   assert.equal(result.items[0].text, 'Селена / Белая Луна — Рак 04°11′52″');
 });
 
-test('formatSelenaDisplay includes safe fictitious/hypothetical note', () => {
+test('formatSelenaDisplay keeps section free of technical notes', () => {
   const result = formatSelenaDisplay(SELENA_RESULT);
-  assert.ok(result.limitations.some((text) => text.includes('фиктивная / гипотетическая точка')));
+  assert.deepEqual(result.limitations, []);
 });
 
 test('formatSelenaDisplay returns safe fallback', () => {
@@ -325,6 +327,35 @@ test('formatSpecialPointsResult combines nodes, Lilith, Selena', () => {
     ['north-node', 'south-node', 'lilith', 'selena'],
   );
   assert.equal(result.sections.length, 3);
+  assert.deepEqual(result.sections.map((section) => section.limitations), [[], [], []]);
+  assert.deepEqual(result.limitations, getSpecialPointsDisplayLimitations());
+});
+
+test('formatSpecialPointsResult keeps calculated rows before one general notes list', () => {
+  const result = formatSpecialPointsResult({
+    lunarNodesResult: NODES_RESULT,
+    lunarNodesAssignmentResult: NODES_ASSIGNMENT_RESULT,
+    lilithResult: LILITH_RESULT,
+    selenaResult: SELENA_RESULT,
+  });
+  const output = JSON.stringify(result);
+
+  assert.deepEqual(
+    result.sections.map((section) => section.title),
+    ['Лунные узлы', 'Лилит', 'Селена'],
+  );
+  assert.deepEqual(
+    result.items.map((item) => item.text),
+    [
+      'Северный узел — Лев 03°12′44″ · 7 дом',
+      'Южный узел — Водолей 03°12′44″ · 1 дом',
+      'Лилит / Средняя Лилит — Скорпион 18°22′10″',
+      'Селена / Белая Луна — Рак 04°11′52″',
+    ],
+  );
+  assert.equal(output.includes('Этот модуль не рассчитывает Lilith или Selena'), false);
+  assert.equal(output.includes('Этот модуль не рассчитывает Lunar Nodes или Lilith'), false);
+  assert.equal((output.match(/фиктивная \/ гипотетическая/g) ?? []).length, 1);
 });
 
 test('formatSpecialPointsResult handles partial readiness safely', () => {
@@ -360,9 +391,12 @@ test('summarizeSpecialPointsDisplay counts ready items', () => {
 
 test('getSpecialPointsDisplayLimitations mentions active mean nodes, Mean Lilith and Selena', () => {
   const limitations = getSpecialPointsDisplayLimitations();
-  assert.ok(limitations.some((text) => text.includes('mean Lunar Nodes')));
-  assert.ok(limitations.some((text) => text.includes('Mean Lilith')));
-  assert.ok(limitations.some((text) => text.includes('Selena / White Moon')));
+  assert.deepEqual(limitations, [
+    'В Sprint 13 активны mean Lunar Nodes, Mean Lilith и Selena / White Moon.',
+    'True Node, True/Osculating Lilith и альтернативные Selena source systems отложены.',
+    'Селена отображается как фиктивная / гипотетическая расчетная точка.',
+    'Этот блок не содержит интерпретаций.',
+  ]);
 });
 
 test('display output contains no private or raw data', () => {

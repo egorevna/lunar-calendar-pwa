@@ -1,8 +1,6 @@
 const TITLE = 'Особые точки карты';
 const FALLBACK_SUMMARY = 'Пока недоступно.';
 const FALLBACK_MESSAGE = 'Для расчета нужны точное время рождения и timezone.';
-const SELENA_LIMITATION =
-  'Селена рассчитывается как фиктивная / гипотетическая точка по выбранной модели Swiss Ephemeris.';
 
 const UNSAFE_TEXT_FRAGMENTS = [
   'birthDate',
@@ -281,7 +279,7 @@ export function formatLunarNodesDisplay(nodesResult, assignmentResult = null) {
     return fallbackSection('lunarNodes', 'Лунные узлы', 'Лунные узлы пока недоступны.');
   }
 
-  return buildReadySection('lunarNodes', 'Лунные узлы', items, nodesResult.limitations);
+  return buildReadySection('lunarNodes', 'Лунные узлы', items);
 }
 
 export function formatLilithDisplay(lilithResult) {
@@ -294,7 +292,7 @@ export function formatLilithDisplay(lilithResult) {
     return fallbackSection('lilith', 'Лилит', 'Лилит пока недоступна.');
   }
 
-  return buildReadySection('lilith', 'Лилит', [item], lilithResult.limitations);
+  return buildReadySection('lilith', 'Лилит', [item]);
 }
 
 export function formatSelenaDisplay(selenaResult) {
@@ -307,10 +305,7 @@ export function formatSelenaDisplay(selenaResult) {
     return fallbackSection('selena', 'Селена', 'Селена пока недоступна.');
   }
 
-  return buildReadySection('selena', 'Селена', [item], [
-    ...(Array.isArray(selenaResult.limitations) ? selenaResult.limitations : []),
-    SELENA_LIMITATION,
-  ]);
+  return buildReadySection('selena', 'Селена', [item]);
 }
 
 export function formatSpecialPointsResult(input = {}) {
@@ -379,7 +374,6 @@ export function isDisplayableSpecialPointItem(item) {
 
 export function getSpecialPointsDisplayLimitations() {
   return [
-    'Особые точки рассчитываются только при готовых исходных данных профиля.',
     'В Sprint 13 активны mean Lunar Nodes, Mean Lilith и Selena / White Moon.',
     'True Node, True/Osculating Lilith и альтернативные Selena source systems отложены.',
     'Селена отображается как фиктивная / гипотетическая расчетная точка.',

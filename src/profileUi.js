@@ -412,9 +412,7 @@ function toSpecialPointsSectionView(section) {
     title,
     message: cleanText(section.message),
     items: toDisplayTextList(section.items),
-    limitations: Array.isArray(section.limitations)
-      ? section.limitations.map(cleanText).filter(Boolean)
-      : [],
+    limitations: [],
   };
 }
 

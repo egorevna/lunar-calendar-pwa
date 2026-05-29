@@ -333,6 +333,12 @@ test('Special Points block is collapsible and resets on profile changes', () => 
   assert.equal(appJs.includes('elements.specialPointsStatus.textContent = view.status || view.summary;'), true);
   assert.equal(appJs.includes('elements.specialPointsSummary.hidden = true;'), true);
   assert.equal(appJs.includes('elements.specialPointsSections.hidden = !isExpanded || view.sections.length === 0;'), true);
+  assert.equal(
+    appJs.indexOf('renderSpecialPointSections(elements.specialPointsSections, view.sections);') <
+      appJs.indexOf('renderSimpleList(elements.specialPointsLimitations, view.limitations);'),
+    true,
+  );
+  assert.equal(appJs.includes('special-points-section-limitations'), false);
   assert.equal(appJs.includes('expandedSpecialPointsProfileId = isExpanded ? null : profileId;'), true);
   assert.equal(appJs.includes('expandedSpecialPointsProfileId = null;'), true);
 });

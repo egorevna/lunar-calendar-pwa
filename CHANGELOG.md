@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-05-30 — Refine Special Points UI Notes
+
+- Cleaned up the user-facing `Особые точки карты` expanded block so calculated rows render first and one shared notes list renders at the bottom.
+- Removed section-level technical limitations from the normal Special Points UI.
+- Kept the Selena fictitious / hypothetical calculated-point note once in the shared notes list.
+- Bumped PWA cache to `lunar-calendar-v93`.
+- No calculation engine changes, source policy changes, debug changes, provider changes, package changes, Fixed Stars, transits, ritual scoring or interpretations were added.
+- Task 13.12 — Sprint 13 Hardening was not started.
+
+## 2026-05-29 — Complete Task 13.11 Special Points Debug
+
+- Added pure `src/specialPointsDebug.js` safe debug helper.
+- Added `test/specialPointsDebug.test.js`.
+- Added `Special Points UI Debug` section to `?debug=1`.
+- Debug shows active profile id/name, readiness booleans, source statuses, counts, capabilities, collapsed state and privacy flags.
+- Debug does not expose raw birth data, coordinates, UTC, raw longitudes, full profile JSON, full points/assignments/cusps arrays or provider payloads.
+- Bumped PWA cache to `lunar-calendar-v92` and cached `src/specialPointsDebug.js`.
+- No calculation engine changes, source policy changes, house-assignment changes, normal UI behavior changes, provider changes, package changes, Fixed Stars, transits, ritual scoring or interpretations were added.
+- Next active task is Task 13.12 — Sprint 13 Hardening, but it was not started.
+
 ## 2026-05-29 — Complete Task 13.10 Special Points UI
 
 - Added profile-level `src/specialPointsForProfile.js` view-model helper.

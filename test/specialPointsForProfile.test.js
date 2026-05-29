@@ -131,7 +131,16 @@ test('getSpecialPointsForProfile returns ready for exact birth time and timezone
   assert.equal(result.items.some((item) => item.text.startsWith('Лилит / Средняя Лилит — ')), true);
   assert.equal(result.items.some((item) => item.text.startsWith('Селена / Белая Луна — ')), true);
   assert.equal(result.items.filter((item) => / · \d{1,2} дом$/.test(item.text)).length, 2);
-  assert.equal(text.includes('фиктивная / гипотетическая точка'), true);
+  assert.deepEqual(result.sections.map((section) => section.limitations), [[], [], []]);
+  assert.deepEqual(result.limitations, [
+    'В Sprint 13 активны mean Lunar Nodes, Mean Lilith и Selena / White Moon.',
+    'True Node, True/Osculating Lilith и альтернативные Selena source systems отложены.',
+    'Селена отображается как фиктивная / гипотетическая расчетная точка.',
+    'Этот блок не содержит интерпретаций.',
+  ]);
+  assert.equal(text.includes('Этот модуль не рассчитывает Lilith или Selena'), false);
+  assert.equal(text.includes('Этот модуль не рассчитывает Lunar Nodes или Lilith'), false);
+  assert.equal((text.match(/фиктивная \/ гипотетическая/g) ?? []).length, 1);
   assertNoPrivateProfileData(result);
 });
 
