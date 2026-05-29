@@ -31,6 +31,7 @@ Implemented Sprint 13 module:
 - `src/selena.js` — pure Selena / White Moon engine for the selected Swiss Ephemeris seorbel source system validated against static local Swiss Ephemeris `SE_WHITE_MOON` benchmark fixtures.
 - `src/specialPointsDisplay.js` — pure display helper for already calculated Special Points.
 - `src/specialPointsForProfile.js` — profile-level view-model helper for the `Особые точки карты` UI block.
+- `src/specialPointsDebug.js` — safe debug helper for the `Special Points UI Debug` section; it exposes status/readiness/source statuses/counts/capabilities/privacy flags only and does not expose raw profile data, raw coordinates, UTC, raw point longitudes, full arrays or provider payloads.
 
 ## Update Rules
 
@@ -745,7 +746,7 @@ Current responsibilities:
 - format already calculated North Node and South Node rows;
 - format already calculated Mean Lilith and Selena / White Moon rows;
 - format optional Lunar Nodes house assignment labels when assignment data is already provided;
-- build safe section-level and combined `Особые точки карты` display results;
+- build clean section rows and one shared `Особые точки карты` limitations list for normal UI;
 - expose display summary, displayability checks and limitations for future UI integration;
 - show Selena / White Moon as a fictitious / hypothetical calculated point through safe limitations, not as interpretation text.
 
@@ -1527,7 +1528,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v91
+lunar-calendar-v93
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -2087,7 +2088,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v91
+lunar-calendar-v93
 ```
 
 Important operational rule:
@@ -2391,7 +2392,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v91
+lunar-calendar-v93
 ```
 
 If this value changes in `sw.js`, update this section.

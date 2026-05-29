@@ -3259,10 +3259,10 @@ Sprint 11 status:
 
 Next active task at the current checkpoint:
 
-- Sprint 13 has started below; current next active task is Task 13.11 — Special Points Debug.
+- Sprint 13 is closed below; current next active task is Sprint 14 planning — Fixed Stars.
 
-Task 13.10 is now closed; current next active task is Task 13.11.
-Do not start Task 13.11 until explicitly requested.
+Task 13.12 is now closed.
+Do not start Sprint 14 implementation until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -3925,8 +3925,7 @@ Next active task:
 
 - Task 13.11 — Special Points Debug.
 
-Task 13.11 is now closed; current next active task is Task 13.12.
-Do not start Task 13.12 until explicitly requested.
+Task 13.11 is now closed; Task 13.12 is now closed below.
 Do not start Sprint 14 or later.
 
 ## Task 13.11 — Special Points Debug
@@ -3950,10 +3949,39 @@ Result:
 
 Next active task:
 
-- Task 13.12 — Sprint 13 Hardening.
+- Task 13.12 — Sprint 13 Hardening. Completed below.
 
-Do not start Task 13.12 until explicitly requested.
-Do not start Sprint 14 or later.
+Task 13.12 is now closed below.
+Do not start Sprint 14 or later without explicit user approval.
+
+## Task 13.12 — Sprint 13 Hardening
+
+Status: done
+
+Goal:
+
+Final audit and close Sprint 13 — Special Points Foundation.
+
+Result:
+
+- Rechecked Mean Lunar Nodes: active system remains `mean-lunar-node` / `lunar-nodes-mean`; true node remains deferred; South Node remains derived as North Node + 180°; runtime `swisseph` is not imported; interpretations are not added.
+- Rechecked Lunar Nodes house assignment: North/South Nodes use numeric longitude against selected canonical cusps, half-open spans `[cusp, nextCusp)`, exact-cusp boundary ownership and wrap-around support.
+- Rechecked Mean Lilith: active system remains `mean-black-moon-lilith` / `mean-lunar-apogee`; true / osculating / interpolated Lilith remain deferred; runtime `swisseph` is not imported; no house assignment or interpretations were added.
+- Rechecked Selena / White Moon: active system remains `selena-white-moon`; method remains `swisseph-seorbel-white-moon-linear-elements`; Selena remains marked as a Swiss Ephemeris fictitious / hypothetical calculated point; alternate Selena source systems remain deferred.
+- Rechecked `Особые точки карты` UI and `Special Points UI Debug`: normal UI shows calculated rows first and one shared notes list at the bottom; debug exposes only safe status/readiness/source/count/capability/privacy fields.
+- Rechecked privacy and architecture boundaries: no raw birth data, UTC, raw timezone values, raw coordinates, raw point longitudes, full profile JSON, provider payloads, full points/assignments/cusps arrays, Fixed Stars, transits, ritual scoring or interpretations were added.
+- No calculation code fixes were needed; hardening changes are docs/status only.
+- PWA cache remains `lunar-calendar-v93`.
+
+Sprint 13 status:
+
+- Sprint 13 — Special Points Foundation is closed.
+
+Next active task:
+
+- Sprint 14 planning — Fixed Stars.
+
+Do not start Sprint 14 implementation without explicit user approval.
 
 # Security Backlog
 

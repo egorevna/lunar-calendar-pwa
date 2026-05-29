@@ -627,6 +627,23 @@ Rules:
 
 `?debug=1` may include `Houses / ASC / MC UI Debug`, but only as safe status/counts/capabilities/privacy flags. It must not change normal UI behavior.
 
+## Special Points Block
+
+The `Особые точки карты` block belongs inside `Мои карты` after `Жребии и арабские части`.
+
+Rules:
+
+- collapsed by default;
+- ready state shows Lunar Nodes, Mean Lilith and Selena / White Moon;
+- Lunar Nodes may show house labels as `· N дом` when house assignment is ready;
+- normal UI shows calculated point rows first, then one shared notes / limitations list at the bottom;
+- do not render technical module limitations under each section;
+- Selena may have one safe note that it is a fictitious / hypothetical calculated point;
+- no interpretations, karmic/fatalistic copy, guardian-angel language, ritual advice, Fixed Stars, transits or ritual scoring;
+- calculated output must not show raw birth date, birth time, UTC, timezone value, raw coordinates, raw profile JSON or raw point longitudes.
+
+`?debug=1` may include `Special Points UI Debug`, but only as safe status/readiness/source/count/capability/privacy flags. It must not change normal UI behavior.
+
 ## Zodiac Position Formatting
 
 User-facing astrology positions such as ASC, MC and house cusps display sign, degree, minute and second:

@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-30 — Complete Task 13.12 Sprint 13 Hardening
+
+- Closed Sprint 13 — Special Points Foundation after final hardening.
+- Rechecked Mean Lunar Nodes, Lunar Nodes house assignment, Mean Lilith, Selena / White Moon, Special Points UI/debug, privacy and architecture boundaries.
+- Confirmed true node, true / osculating / interpolated Lilith and alternate Selena source systems remain deferred.
+- Confirmed Fixed Stars, Arabic Parts Expansion, Midpoints / Antiscia, Personal Transits, interpretations and ritual scoring were not added.
+- No calculation code fixes, provider changes or package changes were needed.
+- PWA cache remains `lunar-calendar-v93`.
+- Next active task is Sprint 14 planning — Fixed Stars, but Sprint 14 implementation was not started.
+
 ## 2026-05-30 — Refine Special Points UI Notes
 
 - Cleaned up the user-facing `Особые точки карты` expanded block so calculated rows render first and one shared notes list renders at the bottom.

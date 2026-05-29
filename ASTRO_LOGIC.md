@@ -752,11 +752,11 @@ Sprint 13 adds a controlled Special Points foundation without changing Sprint 11
 
 Core policy:
 
-- Lunar Nodes are the active Sprint 13 target.
+- Mean Lunar Nodes are the active Sprint 13 node system.
 - Active Lunar Nodes source system: `mean-lunar-node` / `lunar-nodes-mean`.
 - True Lunar Node remains deferred until a separate source decision.
 - South Node is derived as `normalize(North Node + 180°)` and uses the same source metadata as North Node.
-- Lilith is source-gated and must not be activated until variant, source path and fixtures are verified.
+- Mean Lilith / Mean Lunar Apogee is source-verified and active; true / osculating / interpolated Lilith remain deferred.
 - Selena was source-gated at Sprint 13 start; Task 13.7 verifies the `selena-white-moon` source target and Task 13.8 implements it in `src/selena.js`.
 - No special point may be faked or calculated from memory.
 - Unsupported or source-gated points must return safe deferred / not-ready status instead of fake zodiac positions.
