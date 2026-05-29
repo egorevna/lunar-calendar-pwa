@@ -6,6 +6,7 @@ import {
   describeEssentialDignitiesBlock,
   describeHousesBlock,
   describeArabicPartsBlock,
+  describeSpecialPointsBlock,
   describeNatalAspectsBlock,
   describeNatalPlanetsReadinessBlock,
   describePersonalContextBlock,
@@ -853,4 +854,109 @@ test('Arabic Parts block shows ready lots and house labels without sensitive dat
   assert.equal(text.includes('formula'), false);
   assert.equal(text.includes('provider'), false);
   assert.equal(text.includes('interpretation'), false);
+});
+
+test('Special Points block returns safe fallback for general day and incomplete profile', () => {
+  const general = describeSpecialPointsBlock(null);
+  const fallback = describeSpecialPointsBlock({
+    id: 'profile-egor',
+    name: 'Егор',
+    birthDate: '1990-05-12',
+    birthTime: '',
+    birthTimeAccuracy: 'unknown',
+    birthPlace: {
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+    },
+    currentPlace: {
+      mode: 'moscow',
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+    },
+    houseSystem: 'wholeSign',
+    zodiac: 'tropical',
+  });
+  const text = JSON.stringify(fallback);
+
+  assert.equal(general.hidden, false);
+  assert.equal(general.title, 'Особые точки карты');
+  assert.equal(general.status, 'Пока недоступно.');
+  assert.equal(general.summary, 'Пока недоступно.');
+  assert.equal(general.canToggleSpecialPoints, true);
+  assert.equal(fallback.hidden, false);
+  assert.equal(fallback.title, 'Особые точки карты');
+  assert.equal(fallback.status, 'Пока недоступно.');
+  assert.equal(fallback.explanation, 'Для расчета нужны точное время рождения и timezone.');
+  assert.equal(fallback.summary, 'Пока недоступно.');
+  assert.equal(fallback.canToggleSpecialPoints, true);
+  assert.deepEqual(fallback.items, []);
+  assert.deepEqual(fallback.sections, []);
+  assert.equal(text.includes('birthDate'), false);
+  assert.equal(text.includes('birthTime'), false);
+  assert.equal(text.includes('Europe/Moscow'), false);
+  assert.equal(text.includes('latitude'), false);
+  assert.equal(text.includes('longitude'), false);
+  assert.equal(text.includes('coordinates'), false);
+});
+
+test('Special Points block shows ready points, node houses, and Selena note without sensitive data', () => {
+  const view = describeSpecialPointsBlock({
+    id: 'profile-egor',
+    name: 'Егор',
+    birthDate: '1990-05-12',
+    birthTime: '14:30',
+    birthTimeAccuracy: 'exact',
+    birthPlace: {
+      city: 'Москва',
+      country: 'Россия',
+      coordinates: {
+        latitude: 55.7558,
+        longitude: 37.6173,
+      },
+      timezone: 'Europe/Moscow',
+    },
+    currentPlace: {
+      mode: 'moscow',
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+    },
+    houseSystem: 'placidus',
+    zodiac: 'tropical',
+  });
+  const text = JSON.stringify(view);
+
+  assert.equal(view.hidden, false);
+  assert.equal(view.title, 'Особые точки карты');
+  assert.equal(view.status, '');
+  assert.equal(view.explanation, '');
+  assert.equal(view.summary, '4 точки рассчитаны');
+  assert.equal(view.canToggleSpecialPoints, true);
+  assert.equal(view.sections.some((section) => section.title === 'Лунные узлы'), true);
+  assert.equal(view.sections.some((section) => section.title === 'Лилит'), true);
+  assert.equal(view.sections.some((section) => section.title === 'Селена'), true);
+  assert.equal(view.items.length, 4);
+  assert.equal(view.items.some((item) => item.startsWith('Северный узел — ')), true);
+  assert.equal(view.items.some((item) => item.startsWith('Южный узел — ')), true);
+  assert.equal(view.items.some((item) => item.startsWith('Лилит / Средняя Лилит — ')), true);
+  assert.equal(view.items.some((item) => item.startsWith('Селена / Белая Луна — ')), true);
+  assert.equal(view.items.filter((item) => / · \d{1,2} дом$/.test(item)).length, 2);
+  assert.equal(text.includes('фиктивная / гипотетическая точка'), true);
+  assert.equal(text.includes('true-lilith'), false);
+  assert.equal(text.includes('osculating'), false);
+  assert.equal(text.includes('1990-05-12'), false);
+  assert.equal(text.includes('14:30'), false);
+  assert.equal(text.includes('Europe/Moscow'), false);
+  assert.equal(text.includes('latitude'), false);
+  assert.equal(text.includes('longitude'), false);
+  assert.equal(text.includes('coordinates'), false);
+  assert.equal(text.includes('provider'), false);
+  assert.equal(text.includes('карми'), false);
+  assert.equal(text.includes('фаталь'), false);
+  assert.equal(text.includes('ангел'), false);
+  assert.equal(text.includes('ритуал'), false);
+  assert.equal(text.includes('fixedStars'), false);
+  assert.equal(text.includes('transits'), false);
 });

@@ -4,6 +4,7 @@ import { getEssentialDignitiesForProfile } from './essentialDignitiesForProfile.
 import { getDetailedDignitiesForProfile } from './detailedDignitiesForProfile.js';
 import { getHousesForProfile } from './housesForProfile.js';
 import { getArabicPartsForProfile } from './arabicPartsForProfile.js';
+import { getSpecialPointsForProfile } from './specialPointsForProfile.js';
 import { getPersonalRecommendations } from './personalRecommendations.js';
 
 export const GENERAL_PROFILE_LABEL = 'Общий день';
@@ -36,6 +37,8 @@ const HOUSES_TITLE = 'Дома и углы карты';
 const HOUSES_STATUS = 'Пока недоступно.';
 const ARABIC_PARTS_TITLE = 'Жребии и арабские части';
 const ARABIC_PARTS_STATUS = 'Пока недоступно.';
+const SPECIAL_POINTS_TITLE = 'Особые точки карты';
+const SPECIAL_POINTS_STATUS = 'Пока недоступно.';
 
 const MISSING_FIELD_LABELS = {
   birthDate: 'дата рождения',
@@ -368,6 +371,49 @@ export function describeArabicPartsBlock(profile = null) {
     items: toDisplayTextList(arabicParts.items),
     limitations: Array.isArray(arabicParts.limitations)
       ? arabicParts.limitations.map(cleanText).filter(Boolean)
+      : [],
+  };
+}
+
+export function describeSpecialPointsBlock(profile = null) {
+  const specialPoints = getSpecialPointsForProfile(profile);
+  const isReady = specialPoints.status === 'ready' && specialPoints.ready === true;
+
+  return {
+    hidden: false,
+    title: SPECIAL_POINTS_TITLE,
+    status: isReady ? '' : SPECIAL_POINTS_STATUS,
+    explanation: isReady ? '' : cleanText(specialPoints.message),
+    profileId: profileId(profile) || 'general',
+    summary: isReady ? cleanText(specialPoints.summary) : SPECIAL_POINTS_STATUS,
+    canToggleSpecialPoints: true,
+    sections: isReady && Array.isArray(specialPoints.sections)
+      ? specialPoints.sections.map(toSpecialPointsSectionView).filter(Boolean)
+      : [],
+    items: toDisplayTextList(specialPoints.items),
+    limitations: Array.isArray(specialPoints.limitations)
+      ? specialPoints.limitations.map(cleanText).filter(Boolean)
+      : [],
+  };
+}
+
+function toSpecialPointsSectionView(section) {
+  if (!section || typeof section !== 'object') {
+    return null;
+  }
+
+  const title = cleanText(section.title);
+
+  if (!title) {
+    return null;
+  }
+
+  return {
+    title,
+    message: cleanText(section.message),
+    items: toDisplayTextList(section.items),
+    limitations: Array.isArray(section.limitations)
+      ? section.limitations.map(cleanText).filter(Boolean)
       : [],
   };
 }

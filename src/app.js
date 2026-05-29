@@ -74,6 +74,7 @@ import {
   describeHousesBlock,
   describeNatalAspectsBlock,
   describeNatalPlanetsReadinessBlock,
+  describeSpecialPointsBlock,
   describeProfileFormMode,
   describeProfileFormValues,
   describePersonalContextBlock,
@@ -89,6 +90,7 @@ let expandedEssentialDignitiesProfileId = null;
 let expandedDetailedDignitiesProfileId = null;
 let expandedHousesProfileId = null;
 let expandedArabicPartsProfileId = null;
+let expandedSpecialPointsProfileId = null;
 
 const DELETE_PROFILE_CONFIRMATION = 'Удалить профиль? Это действие нельзя отменить.';
 
@@ -205,6 +207,16 @@ const elements = {
   arabicPartsChartSect: document.querySelector('[data-arabic-parts-chart-sect]'),
   arabicPartsList: document.querySelector('[data-arabic-parts-list]'),
   arabicPartsLimitations: document.querySelector('[data-arabic-parts-limitations]'),
+  specialPoints: document.querySelector('[data-special-points-readiness]'),
+  specialPointsTitle: document.querySelector('[data-special-points-title]'),
+  specialPointsStatus: document.querySelector('[data-special-points-status]'),
+  specialPointsExplanation: document.querySelector('[data-special-points-explanation]'),
+  specialPointsDisclosure: document.querySelector('[data-special-points-disclosure]'),
+  specialPointsSummary: document.querySelector('[data-special-points-summary]'),
+  specialPointsToggle: document.querySelector('[data-special-points-toggle]'),
+  specialPointsContent: document.querySelector('[data-special-points-content]'),
+  specialPointsSections: document.querySelector('[data-special-points-sections]'),
+  specialPointsLimitations: document.querySelector('[data-special-points-limitations]'),
   personalContextCard: document.querySelector('[data-personal-context-card]'),
   personalContextTitle: document.querySelector('[data-personal-context-title]'),
   personalContextSummary: document.querySelector('[data-personal-context-summary]'),
@@ -426,6 +438,7 @@ function renderStoredProfilesShell() {
   renderDetailedDignitiesBlock(describeDetailedDignitiesBlock(activeProfile));
   renderHousesBlock(describeHousesBlock(activeProfile));
   renderArabicPartsBlock(describeArabicPartsBlock(activeProfile));
+  renderSpecialPointsBlock(describeSpecialPointsBlock(activeProfile));
   renderPersonalContextBlock(describePersonalContextBlock(createPersonalContext(activeProfile)));
 }
 
@@ -585,6 +598,31 @@ function renderArabicPartsBlock(view) {
   elements.arabicPartsList.hidden = !isExpanded || view.items.length === 0;
   renderSimpleList(elements.arabicPartsLimitations, view.limitations);
   elements.arabicPartsLimitations.hidden = !isExpanded || view.limitations.length === 0;
+}
+
+function renderSpecialPointsBlock(view) {
+  const isExpanded = view.canToggleSpecialPoints
+    && Boolean(view.profileId)
+    && expandedSpecialPointsProfileId === view.profileId;
+
+  elements.specialPoints.hidden = view.hidden;
+  elements.specialPointsTitle.textContent = view.title;
+  elements.specialPointsStatus.textContent = view.status || view.summary;
+  elements.specialPointsStatus.hidden = !(view.status || view.summary);
+  elements.specialPointsExplanation.textContent = view.explanation;
+  elements.specialPointsExplanation.hidden = !view.explanation;
+  elements.specialPointsDisclosure.hidden = !view.canToggleSpecialPoints;
+  elements.specialPointsSummary.textContent = view.summary;
+  elements.specialPointsSummary.hidden = true;
+  elements.specialPointsToggle.hidden = !view.canToggleSpecialPoints;
+  elements.specialPointsToggle.textContent = isExpanded ? 'Скрыть' : 'Показать';
+  elements.specialPointsToggle.setAttribute('aria-expanded', String(isExpanded));
+  elements.specialPointsToggle.dataset.profileId = view.canToggleSpecialPoints ? view.profileId : '';
+  elements.specialPointsContent.hidden = !isExpanded;
+  renderSpecialPointSections(elements.specialPointsSections, view.sections);
+  elements.specialPointsSections.hidden = !isExpanded || view.sections.length === 0;
+  renderSimpleList(elements.specialPointsLimitations, view.limitations);
+  elements.specialPointsLimitations.hidden = !isExpanded || view.limitations.length === 0;
 }
 
 function renderPersonalContextBlock(view) {
@@ -805,6 +843,7 @@ function resetNatalProfileDisclosures() {
   expandedDetailedDignitiesProfileId = null;
   expandedHousesProfileId = null;
   expandedArabicPartsProfileId = null;
+  expandedSpecialPointsProfileId = null;
 }
 
 function handleProfileFormSubmit(event) {
@@ -955,6 +994,46 @@ function renderDetailedDignityGroups(element, groups = []) {
   }));
 }
 
+function renderSpecialPointSections(element, sections = []) {
+  element.replaceChildren(...sections.map((section) => {
+    const sectionElement = document.createElement('section');
+    sectionElement.className = 'special-points-section';
+
+    const title = document.createElement('h4');
+    title.textContent = section.title;
+    sectionElement.append(title);
+
+    if (section.message) {
+      const message = document.createElement('p');
+      message.textContent = section.message;
+      sectionElement.append(message);
+    }
+
+    if (section.items.length > 0) {
+      const list = document.createElement('ul');
+      list.replaceChildren(...section.items.map((text) => {
+        const item = document.createElement('li');
+        item.textContent = text;
+        return item;
+      }));
+      sectionElement.append(list);
+    }
+
+    if (section.limitations.length > 0) {
+      const limitations = document.createElement('ul');
+      limitations.className = 'special-points-section-limitations';
+      limitations.replaceChildren(...section.limitations.map((text) => {
+        const item = document.createElement('li');
+        item.textContent = text;
+        return item;
+      }));
+      sectionElement.append(limitations);
+    }
+
+    return sectionElement;
+  }));
+}
+
 function renderVocAspect(voc) {
   const lines = describeVocAspect(voc).split('\n').filter(Boolean);
   elements.vocAspect.replaceChildren(...lines.map((text, index) => {
@@ -1080,6 +1159,15 @@ elements.arabicPartsToggle.addEventListener('click', () => {
 
   const isExpanded = expandedArabicPartsProfileId === profileId;
   expandedArabicPartsProfileId = isExpanded ? null : profileId;
+  renderStoredProfilesShell();
+});
+
+elements.specialPointsToggle.addEventListener('click', () => {
+  const profileId = elements.specialPointsToggle.dataset.profileId || null;
+  if (!profileId) return;
+
+  const isExpanded = expandedSpecialPointsProfileId === profileId;
+  expandedSpecialPointsProfileId = isExpanded ? null : profileId;
   renderStoredProfilesShell();
 });
 

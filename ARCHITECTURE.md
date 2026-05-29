@@ -30,6 +30,7 @@ Implemented Sprint 13 module:
 - `src/lilith.js` — pure Mean Black Moon Lilith / Mean Lunar Apogee engine validated against static local Swiss Ephemeris `SE_MEAN_APOG` benchmark fixtures.
 - `src/selena.js` — pure Selena / White Moon engine for the selected Swiss Ephemeris seorbel source system validated against static local Swiss Ephemeris `SE_WHITE_MOON` benchmark fixtures.
 - `src/specialPointsDisplay.js` — pure display helper for already calculated Special Points.
+- `src/specialPointsForProfile.js` — profile-level view-model helper for the `Особые точки карты` UI block.
 
 ## Update Rules
 
@@ -214,6 +215,7 @@ Responsibilities:
 - renders the collapsible `Термы, деканы и градусы` block inside `Мои карты` through `src/profileUi.js` and `src/detailedDignitiesForProfile.js` when natal planets are ready
 - renders the collapsible `Дома и углы карты` block inside `Мои карты` through `src/profileUi.js` and `src/housesForProfile.js` when house input guardrails and selected house-system calculations are ready
 - renders the collapsible `Жребии и арабские части` block inside `Мои карты` through `src/profileUi.js` and `src/arabicPartsForProfile.js` when Arabic Parts inputs are ready
+- renders the collapsible `Особые точки карты` block inside `Мои карты` through `src/profileUi.js` and `src/specialPointsForProfile.js` when Special Points inputs are ready
 - renders the compact `Лично для меня` dashboard block through `src/personalContext.js`, `src/personalRecommendations.js`, and `src/profileUi.js`
 - passes safe profile summary state, Houses UI debug state and Arabic Parts UI debug state into the hidden debug panel only when `?debug=1`
 
@@ -748,6 +750,20 @@ Current responsibilities:
 - show Selena / White Moon as a fictitious / hypothetical calculated point through safe limitations, not as interpretation text.
 
 This module does not calculate Special Points, assign houses, render UI, add debug output, call providers, read DOM/localStorage, import astronomy engines or `swisseph`, mutate inputs, expose raw birth data / raw coordinates / raw numeric longitudes, or add interpretations.
+
+## `src/specialPointsForProfile.js`
+
+Defines the Sprint 13 profile-level Special Points view-model helper.
+
+Current responsibilities:
+
+- compose `calculateLunarNodesForProfile`, `calculateLilithForProfile` and `calculateSelenaForProfile` results for the active profile;
+- request Lunar Nodes house assignment through `assignLunarNodesToHousesForProfile` only when nodes are ready;
+- format the combined result through `src/specialPointsDisplay.js`;
+- return UI-ready `Особые точки карты` ready / partial / fallback state without raw profile fields;
+- allow Special Points positions without birth coordinates, while Lunar Nodes house labels appear only when house cusps are ready.
+
+This module does not calculate point longitudes directly, assign houses itself, call providers, read DOM/localStorage, mutate profiles, expose raw birth data / raw coordinates / raw numeric longitudes, add debug output, activate deferred variants, or add interpretations.
 
 ## `src/planetaryPositionProvider.js`
 
@@ -1394,6 +1410,7 @@ Current responsibilities:
 - format the collapsible `Натальные аспекты`, `Достоинства планет` and `Термы, деканы и градусы` block view models from their profile helpers;
 - format the collapsible `Дома и углы карты` block view model from `src/housesForProfile.js`;
 - format the collapsible `Жребии и арабские части` block view model from `src/arabicPartsForProfile.js`;
+- format the collapsible `Особые точки карты` block view model from `src/specialPointsForProfile.js`;
 - format the compact `Лично для меня` dashboard block from `src/personalContext.js`;
 - include safe personal recommendation sections from `src/personalRecommendations.js`;
 - translate missing personal profile fields into human-readable Russian copy without rendering technical keys.
@@ -1510,7 +1527,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v90
+lunar-calendar-v91
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -1633,9 +1650,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 48. `src/specialPointsDisplay.js` formats already calculated Special Points into safe display rows, optional Lunar Nodes house labels, combined summaries, fallback states and limitations. It does not calculate points, assign houses, render UI/debug or add interpretations.
 
-49. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+49. `src/specialPointsForProfile.js` composes ready Lunar Nodes, Mean Lilith, Selena and optional Lunar Nodes house-assignment results into a safe profile-level view model for the `Особые точки карты` UI block. It does not calculate point longitudes directly, call providers, expose raw profile fields, add debug or interpretations.
 
-50. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+50. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+
+51. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
 
 45. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
 
@@ -2047,6 +2066,7 @@ Testing note:
 - `test/fixtures/selenaFixtures.js` contains test-only static Selena / White Moon benchmark fixtures from local Swiss Ephemeris `SE_WHITE_MOON`, including wrap-around near 0° Aries. It is not used by production code.
 - `test/selenaFixtures.test.js` and `test/selena.test.js` validate the pure Selena / White Moon engine, static benchmark matching, profile-level UTC readiness, `fictitious-calculated-point` metadata, privacy exclusions and strict Sprint 13 source boundaries without adding alternate Selena variants, Lunar Nodes, Lilith, UI/debug or house assignment.
 - `test/specialPointsDisplay.test.js` validates the pure Special Points display helper, including formatted North/South Node, Mean Lilith and Selena rows, optional Lunar Nodes house labels, fallback states, Selena fictitious / hypothetical note, privacy exclusions and strict display-only source boundaries.
+- `test/specialPointsForProfile.test.js` validates the profile-level Special Points view-model helper, including fallback states, ready/partial profile behavior, optional Lunar Nodes house labels, Selena fictitious / hypothetical note, privacy exclusions and no provider/native astronomy imports.
 - `NATAL_PROVIDER_VALIDATION_REPORT.md` records the provider-layer validation summary; it does not enable user-facing natal values.
 - if personal data is added later, debug output must follow `PRIVACY_RULES.md`
 
@@ -2067,7 +2087,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v90
+lunar-calendar-v91
 ```
 
 Important operational rule:
@@ -2371,7 +2391,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v90
+lunar-calendar-v91
 ```
 
 If this value changes in `sw.js`, update this section.

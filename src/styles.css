@@ -404,7 +404,8 @@ button {
 .essential-dignities-readiness,
 .detailed-dignities-readiness,
 .houses-readiness,
-.arabic-parts-readiness {
+.arabic-parts-readiness,
+.special-points-readiness {
   display: grid;
   gap: 8px;
   margin-top: 14px;
@@ -417,26 +418,30 @@ button {
 .essential-dignities-readiness[hidden],
 .detailed-dignities-readiness[hidden],
 .houses-readiness[hidden],
-.arabic-parts-readiness[hidden] {
+.arabic-parts-readiness[hidden],
+.special-points-readiness[hidden] {
   display: none;
 }
 
 .detailed-dignities-readiness,
 .houses-readiness,
-.arabic-parts-readiness {
+.arabic-parts-readiness,
+.special-points-readiness {
   grid-template-columns: minmax(0, 1fr) auto;
 }
 
 .detailed-dignities-readiness > h3,
 .houses-readiness > h3,
-.arabic-parts-readiness > h3 {
+.arabic-parts-readiness > h3,
+.special-points-readiness > h3 {
   grid-column: 1;
   grid-row: 1;
 }
 
 .detailed-dignities-disclosure,
 .houses-disclosure,
-.arabic-parts-disclosure {
+.arabic-parts-disclosure,
+.special-points-disclosure {
   grid-column: 2;
   grid-row: 1;
   justify-self: end;
@@ -452,7 +457,10 @@ button {
 .houses-readiness > .houses-content,
 .arabic-parts-readiness > .arabic-parts-status,
 .arabic-parts-readiness > [data-arabic-parts-explanation],
-.arabic-parts-readiness > .arabic-parts-content {
+.arabic-parts-readiness > .arabic-parts-content,
+.special-points-readiness > .special-points-status,
+.special-points-readiness > [data-special-points-explanation],
+.special-points-readiness > .special-points-content {
   grid-column: 1 / -1;
 }
 
@@ -463,7 +471,9 @@ button {
 .detailed-dignities-readiness h3,
 .houses-readiness h3,
 .houses-readiness h4,
-.arabic-parts-readiness h3 {
+.arabic-parts-readiness h3,
+.special-points-readiness h3,
+.special-points-readiness h4 {
   margin: 0;
   color: rgba(255, 248, 239, 0.84);
   font-size: clamp(15px, 4vw, 18px);
@@ -480,7 +490,8 @@ button {
 .essential-dignities-readiness p,
 .detailed-dignities-readiness p,
 .houses-readiness p,
-.arabic-parts-readiness p {
+.arabic-parts-readiness p,
+.special-points-readiness p {
   margin: 0;
   color: var(--muted);
   font-size: clamp(13px, 3.5vw, 16px);
@@ -493,7 +504,8 @@ button {
 .detailed-dignities-readiness .detailed-dignities-status,
 .houses-readiness .houses-status,
 .arabic-parts-readiness .arabic-parts-status,
-.arabic-parts-readiness .arabic-parts-chart-sect {
+.arabic-parts-readiness .arabic-parts-chart-sect,
+.special-points-readiness .special-points-status {
   color: rgba(255, 248, 239, 0.82);
   font-weight: 700;
 }
@@ -503,7 +515,8 @@ button {
 .essential-dignities-disclosure,
 .detailed-dignities-disclosure,
 .houses-disclosure,
-.arabic-parts-disclosure {
+.arabic-parts-disclosure,
+.special-points-disclosure {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -517,7 +530,9 @@ button {
 .houses-disclosure[hidden],
 .houses-content[hidden],
 .arabic-parts-disclosure[hidden],
-.arabic-parts-content[hidden] {
+.arabic-parts-content[hidden],
+.special-points-disclosure[hidden],
+.special-points-content[hidden] {
   display: none;
 }
 
@@ -526,7 +541,8 @@ button {
 .essential-dignities-readiness .essential-dignities-summary,
 .detailed-dignities-readiness .detailed-dignities-summary,
 .houses-readiness .houses-summary,
-.arabic-parts-readiness .arabic-parts-summary {
+.arabic-parts-readiness .arabic-parts-summary,
+.special-points-readiness .special-points-summary {
   color: rgba(255, 248, 239, 0.82);
   font-weight: 700;
 }
@@ -536,7 +552,8 @@ button {
 .essential-dignities-toggle,
 .detailed-dignities-toggle,
 .houses-toggle,
-.arabic-parts-toggle {
+.arabic-parts-toggle,
+.special-points-toggle {
   flex: 0 0 auto;
   border: 1px solid rgba(231, 199, 126, 0.42);
   border-radius: 8px;
@@ -552,7 +569,8 @@ button {
 .essential-dignities-toggle[hidden],
 .detailed-dignities-toggle[hidden],
 .houses-toggle[hidden],
-.arabic-parts-toggle[hidden] {
+.arabic-parts-toggle[hidden],
+.special-points-toggle[hidden] {
   display: none;
 }
 
@@ -580,7 +598,10 @@ button {
 .houses-limitations,
 .arabic-parts-content,
 .arabic-parts-list,
-.arabic-parts-limitations {
+.arabic-parts-limitations,
+.special-points-content,
+.special-points-sections,
+.special-points-limitations {
   display: grid;
   gap: 7px;
   margin: 0;
@@ -601,7 +622,9 @@ button {
 .houses-limitations[hidden],
 .arabic-parts-chart-sect[hidden],
 .arabic-parts-list[hidden],
-.arabic-parts-limitations[hidden] {
+.arabic-parts-limitations[hidden],
+.special-points-sections[hidden],
+.special-points-limitations[hidden] {
   display: none;
 }
 
@@ -618,7 +641,9 @@ button {
 .houses-planet-assignments li,
 .houses-limitations li,
 .arabic-parts-list li,
-.arabic-parts-limitations li {
+.arabic-parts-limitations li,
+.special-points-section li,
+.special-points-limitations li {
   color: var(--muted);
   font-size: clamp(13px, 3.5vw, 16px);
   line-height: 1.28;
@@ -630,7 +655,8 @@ button {
 .houses-angles li,
 .houses-list li,
 .houses-planet-assignments li,
-.arabic-parts-list li {
+.arabic-parts-list li,
+.special-points-section li {
   color: rgba(255, 248, 239, 0.86);
   font-weight: 700;
 }
@@ -639,17 +665,20 @@ button {
 .essential-dignities-list li,
 .houses-list li,
 .houses-planet-assignments li,
-.arabic-parts-list li {
+.arabic-parts-list li,
+.special-points-section li {
   color: rgba(255, 248, 239, 0.8);
   font-weight: 600;
 }
 
 .houses-content,
-.arabic-parts-content {
+.arabic-parts-content,
+.special-points-content {
   padding-top: 2px;
 }
 
-.houses-readiness h4 {
+.houses-readiness h4,
+.special-points-readiness h4 {
   color: rgba(255, 248, 239, 0.68);
   font-size: clamp(13px, 3.5vw, 16px);
 }
@@ -662,6 +691,19 @@ button {
 .detailed-dignity-group {
   display: grid;
   gap: 7px;
+}
+
+.special-points-section {
+  display: grid;
+  gap: 7px;
+}
+
+.special-points-section ul {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .detailed-dignity-group h4 {
@@ -710,7 +752,9 @@ button {
 .essential-dignities-limitations li::before,
 .detailed-dignities-limitations li::before,
 .houses-limitations li::before,
-.arabic-parts-limitations li::before {
+.arabic-parts-limitations li::before,
+.special-points-limitations li::before,
+.special-points-section-limitations li::before {
   content: "";
   display: inline-block;
   width: 5px;

@@ -3259,9 +3259,10 @@ Sprint 11 status:
 
 Next active task at the current checkpoint:
 
-- Sprint 13 has started below; current next active task is Task 13.10 — Special Points UI.
+- Sprint 13 has started below; current next active task is Task 13.11 — Special Points Debug.
 
-Do not start Task 13.10 until explicitly requested.
+Task 13.10 is now closed; current next active task is Task 13.11.
+Do not start Task 13.11 until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -3680,7 +3681,7 @@ Next active task:
 
 - Task 13.2 — Lunar Nodes Source / Calculation Policy. Completed below.
 
-Task 13.2 through Task 13.9 are now closed; current next active task is Task 13.10.
+Task 13.2 through Task 13.9 are now closed; current next active task is Task 13.11.
 Do not start Sprint 14 or later.
 
 ## Task 13.2 — Lunar Nodes Source / Calculation Policy
@@ -3706,7 +3707,7 @@ Next active task:
 
 - Task 13.3 — Lunar Nodes Engine / Fixtures. Completed below.
 
-Task 13.3 through Task 13.9 are now closed; current next active task is Task 13.10.
+Task 13.3 through Task 13.9 are now closed; current next active task is Task 13.11.
 Do not start Sprint 14 or later.
 
 ## Task 13.3 — Lunar Nodes Engine / Fixtures
@@ -3732,7 +3733,7 @@ Next active task:
 
 - Task 13.4 — Lunar Nodes House Assignment. Completed below.
 
-Task 13.4 through Task 13.9 are now closed; current next active task is Task 13.10.
+Task 13.4 through Task 13.9 are now closed; current next active task is Task 13.11.
 Do not start Sprint 14 or later.
 
 ## Task 13.4 — Lunar Nodes House Assignment
@@ -3757,8 +3758,9 @@ Next active task:
 
 - Task 13.5 — Lilith Source Decision / Feasibility. Completed below.
 
-Task 13.5 through Task 13.9 are now closed; current next active task is Task 13.10.
-Do not start Task 13.10 until explicitly requested.
+Task 13.5 through Task 13.9 are now closed; current next active task is Task 13.11.
+Task 13.10 is now closed; current next active task is Task 13.11.
+Do not start Task 13.11 until explicitly requested.
 Do not start Sprint 14 or later.
 
 ## Task 13.5 — Lilith Source Decision / Feasibility
@@ -3787,8 +3789,9 @@ Next active task:
 
 - Task 13.6 — Mean Lilith Engine / Fixtures. Completed below.
 
-Task 13.6 through Task 13.9 are now closed; current next active task is Task 13.10.
-Do not start Task 13.10 until explicitly requested.
+Task 13.6 through Task 13.9 are now closed; current next active task is Task 13.11.
+Task 13.10 is now closed; current next active task is Task 13.11.
+Do not start Task 13.11 until explicitly requested.
 Do not start Sprint 14 or later.
 
 ## Task 13.6 — Mean Lilith Engine / Fixtures
@@ -3810,7 +3813,7 @@ Next active task:
 
 - Task 13.7 — Selena Source Decision / Feasibility. Completed below.
 
-Task 13.7 through Task 13.9 are now closed; current next active task is Task 13.10.
+Task 13.7 through Task 13.9 are now closed; current next active task is Task 13.11.
 
 ## Task 13.7 — Selena Source Decision / Feasibility
 
@@ -3838,8 +3841,9 @@ Next active task:
 
 - Task 13.8 — Selena Engine / Fixtures. Completed below.
 
-Task 13.9 is now closed; current next active task is Task 13.10.
-Do not start Task 13.10 until explicitly requested.
+Task 13.9 is now closed; current next active task is Task 13.11.
+Task 13.10 is now closed; current next active task is Task 13.11.
+Do not start Task 13.11 until explicitly requested.
 Do not start Sprint 14 or later.
 
 ## Task 13.8 — Selena Engine / Fixtures
@@ -3865,8 +3869,9 @@ Next active task:
 
 - Task 13.9 — Special Points Display Helper. Completed below.
 
-Task 13.9 is now closed; current next active task is Task 13.10.
-Do not start Task 13.10 until explicitly requested.
+Task 13.9 is now closed; current next active task is Task 13.11.
+Task 13.10 is now closed; current next active task is Task 13.11.
+Do not start Task 13.11 until explicitly requested.
 Do not start Sprint 14 or later.
 
 ## Task 13.9 — Special Points Display Helper
@@ -3889,9 +3894,38 @@ Result:
 
 Next active task:
 
-- Task 13.10 — Special Points UI.
+- Task 13.10 — Special Points UI. Completed below.
 
-Do not start Task 13.10 until explicitly requested.
+Task 13.10 is now closed; current next active task is Task 13.11.
+Do not start Task 13.11 until explicitly requested.
+Do not start Sprint 14 or later.
+
+## Task 13.10 — Special Points UI
+
+Status: done
+
+Goal:
+
+Add a user-facing `Особые точки карты` UI block inside `Мои карты`.
+
+Result:
+
+- Added profile-level `src/specialPointsForProfile.js`.
+- Added `test/specialPointsForProfile.test.js`.
+- Added collapsible `Особые точки карты` block inside `Мои карты` after `Жребии и арабские части`.
+- Block is collapsed by default and uses the existing `Показать` / `Скрыть` disclosure pattern.
+- Ready state shows Lunar Nodes, Mean Lilith and Selena / White Moon.
+- Lunar Nodes show house assignment via `· N дом` when house cusps are ready.
+- Selena is shown with a safe fictitious / hypothetical calculated-point note.
+- Safe fallback remains `Пока недоступно.` when exact birth time / timezone is not ready.
+- No calculation engines, source policies, provider calculations, package files, debug section, interpretations, Fixed Stars, transits or ritual scoring were changed.
+- PWA cache bumped to `lunar-calendar-v91`.
+
+Next active task:
+
+- Task 13.11 — Special Points Debug.
+
+Do not start Task 13.11 until explicitly requested.
 Do not start Sprint 14 or later.
 
 # Security Backlog

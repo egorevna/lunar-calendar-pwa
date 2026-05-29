@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-05-29 — Complete Task 13.10 Special Points UI
+
+- Added profile-level `src/specialPointsForProfile.js` view-model helper.
+- Added `test/specialPointsForProfile.test.js`.
+- Added collapsible `Особые точки карты` UI block inside `Мои карты` after `Жребии и арабские части`.
+- Ready state shows Lunar Nodes, Mean Lilith and Selena / White Moon.
+- Lunar Nodes show house labels when house assignment is ready.
+- Selena / White Moon includes the safe fictitious / hypothetical calculated-point note.
+- Bumped PWA cache to `lunar-calendar-v91` and cached the app-visible Special Points modules.
+- No calculation engine changes, source policy changes, debug section, provider changes, package changes, Fixed Stars, transits, ritual scoring or interpretations were added.
+- Next active task is Task 13.11 — Special Points Debug, but it was not started.
+
 ## 2026-05-29 — Complete Task 13.9 Special Points Display Helper
 
 - Added pure `src/specialPointsDisplay.js` display helper.
