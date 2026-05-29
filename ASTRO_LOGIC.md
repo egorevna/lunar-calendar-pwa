@@ -753,8 +753,9 @@ Sprint 13 adds a controlled Special Points foundation without changing Sprint 11
 Core policy:
 
 - Lunar Nodes are the active Sprint 13 target.
-- Mean node / true node source decision is deferred to Task 13.2.
-- South Node derivation policy is deferred until the North Node source policy is chosen.
+- Active Lunar Nodes source system: `mean-lunar-node` / `lunar-nodes-mean`.
+- True Lunar Node remains deferred until a separate source decision.
+- South Node is derived as `normalize(North Node + 180°)` and uses the same source metadata as North Node.
 - Lilith is source-gated and must not be activated until variant, source path and fixtures are verified.
 - Selena is source-gated and must not be activated until source path, calculation method and fixtures are verified.
 - No special point may be faked or calculated from memory.
@@ -762,6 +763,23 @@ Core policy:
 - Special Points output may show formatted zodiac positions with seconds and house labels when verified.
 - Special Points UI/debug must not expose raw birth data, UTC, raw timezone, raw coordinates, full profile JSON, provider payloads or raw calculation arrays.
 - Sprint 13 does not add interpretations, ritual scoring, Fixed Stars, transits, Arabic Parts Expansion Pack, Midpoints or Antiscia.
+
+## Lunar Nodes Policy
+
+Task 13.2 selects Mean Lunar Node as the active Sprint 13 node system.
+
+Policy:
+
+- active node type: mean;
+- source system key: `lunar-nodes-mean`;
+- North Node is a tropical zodiac longitude normalized into `0 <= longitude < 360`;
+- South Node is always `normalize(North Node + 180°)`;
+- South Node must not be independently calculated from a different source;
+- user-facing output uses sign, degree, minute and second;
+- true node is deferred until a separate source policy;
+- validation must use static benchmark fixtures, with local Swiss Ephemeris `SE_MEAN_NODE` allowed only as a dev/test oracle;
+- `swisseph` must not be imported into PWA runtime modules;
+- no interpretations, karmic/fatalistic text, ritual scoring, Lilith or Selena are added by this policy.
 
 ## Personal Transits
 

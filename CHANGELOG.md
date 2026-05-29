@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-29 — Complete Task 13.2 Lunar Nodes Source Policy
+
+- Added `LUNAR_NODES_SOURCE_POLICY.md`.
+- Selected `mean-lunar-node` / `lunar-nodes-mean` as the active Sprint 13 Lunar Nodes source system.
+- Deferred `true-lunar-node` until a separate source decision.
+- Recorded South Node derivation as `normalize(North Node + 180°)` with the same source metadata as North Node.
+- Recorded static benchmark fixture plan against local Swiss Ephemeris `SE_MEAN_NODE`.
+- No code changes, package changes, PWA cache changes, UI, debug or Lunar Nodes engine were added.
+
 ## 2026-05-29 — Start Sprint 13 Special Points Foundation
 
 - Started Sprint 13 — Special Points Foundation.

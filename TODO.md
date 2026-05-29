@@ -3259,9 +3259,9 @@ Sprint 11 status:
 
 Next active task at the current checkpoint:
 
-- Sprint 13 has started below; current next active task is Task 13.2 — Lunar Nodes Source / Calculation Policy.
+- Sprint 13 has started below; current next active task is Task 13.3 — Lunar Nodes Engine / Fixtures.
 
-Do not start Task 13.2 until explicitly requested.
+Do not start Task 13.3 until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -3678,9 +3678,35 @@ Result:
 
 Next active task:
 
-- Task 13.2 — Lunar Nodes Source / Calculation Policy.
+- Task 13.2 — Lunar Nodes Source / Calculation Policy. Completed below.
 
-Do not start Task 13.2 until explicitly requested.
+Task 13.2 is now closed; current next active task is Task 13.3.
+Do not start Sprint 14 or later.
+
+## Task 13.2 — Lunar Nodes Source / Calculation Policy
+
+Status: done
+
+Goal:
+
+Decide the Sprint 13 Lunar Nodes source / calculation policy before any engine implementation.
+
+Result:
+
+- Created `LUNAR_NODES_SOURCE_POLICY.md`.
+- Selected `mean-lunar-node` as the active Sprint 13 Lunar Nodes system.
+- Set source system key to `lunar-nodes-mean`.
+- Deferred `true-lunar-node` until a separate source decision.
+- Recorded South Node policy: `South Node = normalize(North Node + 180°)`, using the same source metadata as North Node.
+- Recorded validation plan: static benchmark fixtures from local Swiss Ephemeris `SE_MEAN_NODE`, at least 5 UTC dates, one wrap-around case near 0° Aries, and South Node opposite checks.
+- Confirmed `swisseph` may be used only as a local dev/test oracle and must not be imported into PWA runtime.
+- No calculation engine, fixtures with calculated node values, UI, debug, PWA cache, provider calculations or package files were changed.
+
+Next active task:
+
+- Task 13.3 — Lunar Nodes Engine / Fixtures.
+
+Do not start Task 13.3 until explicitly requested.
 Do not start Sprint 14 or later.
 
 # Security Backlog

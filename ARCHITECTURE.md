@@ -17,8 +17,9 @@ Current Sprint 13 strategy docs:
 - `SPRINT_13_PLAN.md`
 - `SPECIAL_POINTS_STRATEGY.md`
 - `SPECIAL_POINTS_SOURCE_POLICY.md`
+- `LUNAR_NODES_SOURCE_POLICY.md`
 
-These documents define the Special Points strategy only. No Sprint 13 calculation modules are implemented yet.
+These documents define the Special Points strategy and Lunar Nodes source policy only. No Sprint 13 calculation modules are implemented yet.
 
 ## Update Rules
 
