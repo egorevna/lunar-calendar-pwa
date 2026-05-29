@@ -3257,11 +3257,11 @@ Sprint 11 status:
 
 - Sprint 11 — Houses / ASC / MC is closed.
 
-Next active task at that later checkpoint:
+Next active task at the current checkpoint:
 
-- Sprint 12 is closed below; current next active task is Sprint 13 planning.
+- Sprint 13 has started below; current next active task is Task 13.2 — Lunar Nodes Source / Calculation Policy.
 
-Do not start Sprint 13 until explicitly requested.
+Do not start Task 13.2 until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -3630,11 +3630,58 @@ Result:
 
 Sprint 12 is closed.
 
+Sprint 13 starts below.
+
+# Active Sprint
+
+## Sprint 13 — Special Points Foundation
+
+Goal:
+
+Add a controlled Special Points foundation for natal profiles.
+
+Scope:
+
+- Lunar Nodes / Лунные узлы are the active target.
+- Lilith is source-gated.
+- Selena is source-gated.
+- No fake points.
+- No formulas from memory.
+- No interpretations.
+- No Fixed Stars, transits, Arabic Parts expansion, Midpoints / Antiscia or ritual scoring in Sprint 13 unless explicitly moved into an active task.
+
+Roadmap after Sprint 13:
+
+- Sprint 14 — Fixed Stars.
+- Sprint 15 — Arabic Parts Expansion Pack.
+- Sprint 16 — Midpoints / Antiscia.
+- Sprint 17 — Personal Transits.
+- Sprint 18 — Interpretation Layer / Ritual Scores.
+- Sprint 19 — Polish / UX / iPhone PWA / backup-security.
+
+## Task 13.1 — Special Points Strategy
+
+Status: done
+
+Goal:
+
+Merge Sprint 13 strategy documents into project status.
+
+Result:
+
+- Added / accepted `SPRINT_13_PLAN.md`, `SPECIAL_POINTS_STRATEGY.md` and `SPECIAL_POINTS_SOURCE_POLICY.md` as Sprint 13 strategy docs.
+- Started Sprint 13 — Special Points Foundation.
+- Recorded Lunar Nodes as the active target.
+- Recorded Lilith and Selena as source-gated.
+- Recorded no fake points, no formulas from memory and no interpretations.
+- No calculation code, UI, PWA cache, provider calculations or package files were changed.
+
 Next active task:
 
-- Sprint 13 planning.
+- Task 13.2 — Lunar Nodes Source / Calculation Policy.
 
-Do not start Sprint 13 without explicit user approval.
+Do not start Task 13.2 until explicitly requested.
+Do not start Sprint 14 or later.
 
 # Security Backlog
 

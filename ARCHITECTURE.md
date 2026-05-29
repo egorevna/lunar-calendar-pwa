@@ -12,6 +12,14 @@ This file describes the actual current state of the codebase, not future plans.
 
 Future architecture ideas belong in `MASTER_PLAN.md` or `TODO.md`, not here.
 
+Current Sprint 13 strategy docs:
+
+- `SPRINT_13_PLAN.md`
+- `SPECIAL_POINTS_STRATEGY.md`
+- `SPECIAL_POINTS_SOURCE_POLICY.md`
+
+These documents define the Special Points strategy only. No Sprint 13 calculation modules are implemented yet.
+
 ## Update Rules
 
 Update this file when a task changes:

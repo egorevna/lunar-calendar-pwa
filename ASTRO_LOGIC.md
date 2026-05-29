@@ -746,6 +746,23 @@ User-facing and debug policy:
 - UI/debug must not expose raw birth date, birth time, UTC datetime, raw timezone, raw coordinates, full profile JSON, provider payloads or raw intermediate calculation arrays;
 - debug may show safe readiness flags, selected system, formula key, formula variant, result counts and house assignment counts.
 
+## Sprint 13 — Special Points Policy
+
+Sprint 13 adds a controlled Special Points foundation without changing Sprint 11 house engines or Sprint 12 Arabic Parts formulas.
+
+Core policy:
+
+- Lunar Nodes are the active Sprint 13 target.
+- Mean node / true node source decision is deferred to Task 13.2.
+- South Node derivation policy is deferred until the North Node source policy is chosen.
+- Lilith is source-gated and must not be activated until variant, source path and fixtures are verified.
+- Selena is source-gated and must not be activated until source path, calculation method and fixtures are verified.
+- No special point may be faked or calculated from memory.
+- Unsupported or source-gated points must return safe deferred / not-ready status instead of fake zodiac positions.
+- Special Points output may show formatted zodiac positions with seconds and house labels when verified.
+- Special Points UI/debug must not expose raw birth data, UTC, raw timezone, raw coordinates, full profile JSON, provider payloads or raw calculation arrays.
+- Sprint 13 does not add interpretations, ritual scoring, Fixed Stars, transits, Arabic Parts Expansion Pack, Midpoints or Antiscia.
+
 ## Personal Transits
 
 Do not show personal transits until both natal positions and current planetary positions are reliable.

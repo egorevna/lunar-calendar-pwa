@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-29 — Start Sprint 13 Special Points Foundation
+
+- Started Sprint 13 — Special Points Foundation.
+- Added / accepted `SPRINT_13_PLAN.md`, `SPECIAL_POINTS_STRATEGY.md` and `SPECIAL_POINTS_SOURCE_POLICY.md` as strategy docs.
+- Recorded Lunar Nodes as the active Sprint 13 target.
+- Recorded Lilith and Selena as source-gated.
+- Recorded no fake points, no formulas from memory and no interpretations.
+- No calculation code, UI, PWA cache, provider calculations, package files or generated ephemeris data were changed.
+
 ## 2026-05-28 — Complete Task 12.11 Sprint 12 Hardening
 
 - Completed final Sprint 12 audit / hardening for House Cusps + Pars Fortuna + Basic Arabic Parts.
