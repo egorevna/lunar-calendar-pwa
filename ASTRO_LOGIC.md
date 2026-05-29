@@ -757,7 +757,7 @@ Core policy:
 - True Lunar Node remains deferred until a separate source decision.
 - South Node is derived as `normalize(North Node + 180°)` and uses the same source metadata as North Node.
 - Lilith is source-gated and must not be activated until variant, source path and fixtures are verified.
-- Selena is source-gated and must not be activated until source path, calculation method and fixtures are verified.
+- Selena was source-gated at Sprint 13 start; Task 13.7 verifies the `selena-white-moon` source target for Task 13.8, but no Selena engine exists yet.
 - No special point may be faked or calculated from memory.
 - Unsupported or source-gated points must return safe deferred / not-ready status instead of fake zodiac positions.
 - Special Points output may show formatted zodiac positions with seconds and house labels when verified.
@@ -816,6 +816,30 @@ Policy:
 - Task 13.6 includes static benchmark fixtures and strict no-mixing between mean, osculating and interpolated variants;
 - no fake Lilith zodiac position is allowed;
 - no interpretations, karmic/fatalistic text, dark destiny language or ritual scoring are allowed.
+
+## Selena Policy
+
+Task 13.7 verifies Selena / White Moon as a source-verified implementation target for Task 13.8. No Selena engine exists yet at Task 13.7.
+
+Policy:
+
+- Selena status: `source-verified-for-implementation`;
+- active source system: `selena-white-moon`;
+- calculation method: `swisseph-seorbel-white-moon-linear-elements`;
+- Selena / White Moon is treated as a Swiss Ephemeris fictitious / hypothetical calculated point, not as a physical astronomical body;
+- runtime target: browser-safe local implementation;
+- benchmark oracle: static local Swiss Ephemeris `SE_WHITE_MOON` / `swe_calc_ut` fixtures;
+- local source row: Swiss Ephemeris `seorbel.txt` explicitly defines `Selena/White Moon, geo #17`;
+- user-facing labels: `Селена`, `Белая Луна`, `Selena`, `White Moon`;
+- Selena longitude must be normalized into tropical zodiac `0 <= longitude < 360`;
+- user-facing output must use sign, degree, minute and second;
+- profile-level Selena will require exact birth time and timezone; birth coordinates are not required for this geocentric fictitious point longitude layer;
+- local Astronomy Engine support is limited to lunar apsis event search and is not an approved Selena / White Moon longitude API for arbitrary UTC moments;
+- local Swiss Ephemeris may be used only as a local static benchmark oracle, not PWA runtime;
+- Task 13.8 must include static benchmark fixtures, source labels and strict no-fake-value tests before ready output;
+- no alternate Selena source system is active;
+- no fake Selena zodiac position is allowed;
+- no interpretations, karmic/fatalistic text, guardian-angel language, ritual advice or ritual scoring are allowed.
 
 ## Personal Transits
 

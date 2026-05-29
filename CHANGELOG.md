@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-29 — Complete Task 13.7 Selena Source Decision / Feasibility
+
+- Added `SELENA_SOURCE_DECISION.md`.
+- Set Selena status to `source-verified-for-implementation`.
+- Selected `selena-white-moon` as the active source system for the first supported Selena / White Moon target.
+- Set calculation method to `swisseph-seorbel-white-moon-linear-elements`.
+- Set runtime target to a browser-safe local implementation validated by static local Swiss Ephemeris `SE_WHITE_MOON` / `swe_calc_ut` fixtures.
+- Recorded local audit: Astronomy Engine has lunar apsis event helpers but no approved Selena / White Moon longitude API; local Swiss Ephemeris exposes `SE_WHITE_MOON`, and local `seorbel.txt` contains explicit `Selena/White Moon, geo #17` elements.
+- No code changes, Selena engine, fixtures with calculated values, UI, debug, provider changes, package changes or PWA cache changes were added.
+- Next active task is Task 13.8 — Selena Engine / Fixtures, but it was not started.
+
 ## 2026-05-29 — Complete Task 13.6 Mean Lilith Engine / Fixtures
 
 - Added pure `src/lilith.js` Mean Black Moon Lilith / Mean Lunar Apogee engine.

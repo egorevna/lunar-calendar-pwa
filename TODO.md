@@ -3259,9 +3259,9 @@ Sprint 11 status:
 
 Next active task at the current checkpoint:
 
-- Sprint 13 has started below; current next active task is Task 13.7 — Selena Source Decision / Feasibility.
+- Sprint 13 has started below; current next active task is Task 13.8 — Selena Engine / Fixtures.
 
-Do not start Task 13.7 until explicitly requested.
+Do not start Task 13.8 until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -3680,7 +3680,7 @@ Next active task:
 
 - Task 13.2 — Lunar Nodes Source / Calculation Policy. Completed below.
 
-Task 13.2 through Task 13.6 are now closed; current next active task is Task 13.7.
+Task 13.2 through Task 13.7 are now closed; current next active task is Task 13.8.
 Do not start Sprint 14 or later.
 
 ## Task 13.2 — Lunar Nodes Source / Calculation Policy
@@ -3706,7 +3706,7 @@ Next active task:
 
 - Task 13.3 — Lunar Nodes Engine / Fixtures. Completed below.
 
-Task 13.3 through Task 13.6 are now closed; current next active task is Task 13.7.
+Task 13.3 through Task 13.7 are now closed; current next active task is Task 13.8.
 Do not start Sprint 14 or later.
 
 ## Task 13.3 — Lunar Nodes Engine / Fixtures
@@ -3732,7 +3732,7 @@ Next active task:
 
 - Task 13.4 — Lunar Nodes House Assignment. Completed below.
 
-Task 13.4 through Task 13.6 are now closed; current next active task is Task 13.7.
+Task 13.4 through Task 13.7 are now closed; current next active task is Task 13.8.
 Do not start Sprint 14 or later.
 
 ## Task 13.4 — Lunar Nodes House Assignment
@@ -3757,8 +3757,8 @@ Next active task:
 
 - Task 13.5 — Lilith Source Decision / Feasibility. Completed below.
 
-Task 13.5 and Task 13.6 are now closed; current next active task is Task 13.7.
-Do not start Task 13.7 until explicitly requested.
+Task 13.5 through Task 13.7 are now closed; current next active task is Task 13.8.
+Do not start Task 13.8 until explicitly requested.
 Do not start Sprint 14 or later.
 
 ## Task 13.5 — Lilith Source Decision / Feasibility
@@ -3787,8 +3787,8 @@ Next active task:
 
 - Task 13.6 — Mean Lilith Engine / Fixtures. Completed below.
 
-Task 13.6 is now closed; current next active task is Task 13.7.
-Do not start Task 13.7 until explicitly requested.
+Task 13.6 and Task 13.7 are now closed; current next active task is Task 13.8.
+Do not start Task 13.8 until explicitly requested.
 Do not start Sprint 14 or later.
 
 ## Task 13.6 — Mean Lilith Engine / Fixtures
@@ -3808,9 +3808,37 @@ Goal:
 
 Next active task:
 
-- Task 13.7 — Selena Source Decision / Feasibility.
+- Task 13.7 — Selena Source Decision / Feasibility. Completed below.
 
-Do not start Task 13.7 until explicitly requested.
+Task 13.7 is now closed; current next active task is Task 13.8.
+
+## Task 13.7 — Selena Source Decision / Feasibility
+
+Status: done
+
+Goal:
+
+Decide whether Selena / White Moon can be activated in Sprint 13 and document the source / runtime feasibility policy.
+
+Result:
+
+- Created `SELENA_SOURCE_DECISION.md`.
+- Set Selena status to `source-verified-for-implementation`.
+- Selected `selena-white-moon` as the active source system for the first supported Selena target.
+- Set calculation method to `swisseph-seorbel-white-moon-linear-elements`.
+- Set runtime target to a browser-safe local implementation for Task 13.8.
+- Set benchmark oracle to local Swiss Ephemeris `SE_WHITE_MOON` / `swe_calc_ut` static fixtures.
+- Confirmed there is no production Selena helper in `src/`.
+- Confirmed tracked Astronomy Engine supports lunar apsis event search but not a ready Selena / White Moon zodiac longitude API for arbitrary UTC moments.
+- Confirmed local `swisseph` exposes `SE_WHITE_MOON`; local `seorbel.txt` explicitly includes `Selena/White Moon, geo #17`; local audit confirmed `swe_calc_ut` can calculate `SE_WHITE_MOON` with the local ephemeris path.
+- Confirmed `swisseph` may be used only as a local static benchmark oracle and must not be imported into PWA runtime.
+- No calculation code, fixtures with calculated Selena values, UI, debug, PWA cache, provider calculations or package files were changed.
+
+Next active task:
+
+- Task 13.8 — Selena Engine / Fixtures.
+
+Do not start Task 13.8 until explicitly requested.
 Do not start Sprint 14 or later.
 
 # Security Backlog
