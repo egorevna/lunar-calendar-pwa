@@ -19,7 +19,11 @@ Current Sprint 13 strategy docs:
 - `SPECIAL_POINTS_SOURCE_POLICY.md`
 - `LUNAR_NODES_SOURCE_POLICY.md`
 
-These documents define the Special Points strategy and Lunar Nodes source policy only. No Sprint 13 calculation modules are implemented yet.
+These documents define the Special Points strategy and Lunar Nodes source policy.
+
+Implemented Sprint 13 module:
+
+- `src/lunarNodes.js` — pure mean Lunar Nodes engine validated against static local Swiss Ephemeris `SE_MEAN_NODE` benchmark fixtures.
 
 ## Update Rules
 
@@ -665,6 +669,20 @@ Current responsibilities:
 - avoid raw birth data, raw coordinates, UTC, raw timezone values, raw longitudes, formula operand arrays, provider payloads and full parts/assignments/cusps arrays.
 
 This module does not calculate formulas, change house assignment, render UI directly, add interpretations, call provider modules directly, render DOM, read localStorage, mutate profiles, or expose raw profile data.
+
+## `src/lunarNodes.js`
+
+Defines the Sprint 13 pure mean Lunar Nodes engine.
+
+Current responsibilities:
+
+- calculate the active `mean-lunar-node` / `lunar-nodes-mean` North Node longitude from a UTC moment;
+- derive South Node only as `normalize(North Node + 180°)`;
+- format North Node and South Node as tropical zodiac sign, degree, minute and second rows;
+- expose a profile-level helper that uses `src/birthDateTime.js` UTC readiness;
+- keep source metadata, capabilities and limitations explicit.
+
+This module does not calculate true node, Lilith, Selena, Fixed Stars, transits, house assignment, display/UI/debug helpers or interpretations. It does not import runtime `swisseph`, provider modules, DOM or localStorage, mutate profiles, require birth coordinates, or expose raw birth data / raw coordinates.
 
 ## `src/planetaryPositionProvider.js`
 
@@ -1540,7 +1558,9 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 43. `src/arabicPartsDebug.js` builds safe status/count/capability/privacy debug state for the `Жребии и арабские части` UI block. It does not expose raw profile data, raw coordinates, raw longitudes, formula operands or full result arrays.
 
-44. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+44. `src/lunarNodes.js` calculates the active mean Lunar Nodes layer: North Node from the `mean-lunar-node` source policy and South Node as North Node + 180°. It does not calculate true node, Lilith, Selena, house assignment, UI/debug or interpretations.
+
+45. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
 
 45. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
 
@@ -1945,6 +1965,8 @@ Testing note:
 - `test/arabicPartsDisplay.test.js` validates the pure lots / Arabic Parts display helper, including formatted part rows, optional house labels, chart sect labels, fallback states, privacy exclusions and strict display-only source boundaries.
 - `test/arabicPartsForProfile.test.js` validates the profile-level Arabic Parts UI view model helper, including fallback states, ready active lots, day/night label, house labels, deferred formula exclusion, privacy exclusions and no mutation.
 - `test/arabicPartsDebug.test.js` validates the safe Arabic Parts UI debug helper, including readiness booleans, chart sect status, formula keys, counts, capabilities, privacy exclusions and strict source boundaries.
+- `test/fixtures/lunarNodesFixtures.js` contains test-only static mean Lunar Nodes benchmark fixtures from local Swiss Ephemeris `SE_MEAN_NODE`, including wrap-around and South Node opposite checks. It is not used by production code.
+- `test/lunarNodesFixtures.test.js` and `test/lunarNodes.test.js` validate the pure mean Lunar Nodes engine, static benchmark matching, South Node derivation, profile-level UTC readiness, privacy exclusions and strict Sprint 13 source boundaries without adding true node, Lilith, Selena, UI/debug or house assignment.
 - `NATAL_PROVIDER_VALIDATION_REPORT.md` records the provider-layer validation summary; it does not enable user-facing natal values.
 - if personal data is added later, debug output must follow `PRIVACY_RULES.md`
 

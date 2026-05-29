@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-29 — Complete Task 13.3 Lunar Nodes Engine / Fixtures
+
+- Added pure `src/lunarNodes.js` mean Lunar Nodes engine.
+- Added static Lunar Nodes benchmark fixtures and tests.
+- Calculated only the active `mean-lunar-node` / `lunar-nodes-mean` source system.
+- Derived South Node strictly as `normalize(North Node + 180°)` with the same source metadata.
+- Validated benchmark fixtures against local Swiss Ephemeris `SE_MEAN_NODE` static values.
+- Confirmed exact birth time and timezone are required for profile-level nodes, while birth coordinates are not required.
+- No true node, Lilith, Selena, UI, display helper, debug, house assignment, provider changes, package changes or PWA cache changes were added.
+
 ## 2026-05-29 — Complete Task 13.2 Lunar Nodes Source Policy
 
 - Added `LUNAR_NODES_SOURCE_POLICY.md`.

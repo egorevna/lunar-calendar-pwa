@@ -3259,9 +3259,9 @@ Sprint 11 status:
 
 Next active task at the current checkpoint:
 
-- Sprint 13 has started below; current next active task is Task 13.3 — Lunar Nodes Engine / Fixtures.
+- Sprint 13 has started below; current next active task is Task 13.4 — Lunar Nodes House Assignment.
 
-Do not start Task 13.3 until explicitly requested.
+Do not start Task 13.4 until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -3680,7 +3680,7 @@ Next active task:
 
 - Task 13.2 — Lunar Nodes Source / Calculation Policy. Completed below.
 
-Task 13.2 is now closed; current next active task is Task 13.3.
+Task 13.2 and Task 13.3 are now closed; current next active task is Task 13.4.
 Do not start Sprint 14 or later.
 
 ## Task 13.2 — Lunar Nodes Source / Calculation Policy
@@ -3704,9 +3704,35 @@ Result:
 
 Next active task:
 
-- Task 13.3 — Lunar Nodes Engine / Fixtures.
+- Task 13.3 — Lunar Nodes Engine / Fixtures. Completed below.
 
-Do not start Task 13.3 until explicitly requested.
+Task 13.3 is now closed; current next active task is Task 13.4.
+Do not start Sprint 14 or later.
+
+## Task 13.3 — Lunar Nodes Engine / Fixtures
+
+Status: done
+
+Goal:
+
+Create a pure Lunar Nodes engine for the active Sprint 13 source policy.
+
+Result:
+
+- Added pure `src/lunarNodes.js`.
+- Implemented only `mean-lunar-node` / `lunar-nodes-mean`.
+- Added North Node output and derived South Node output.
+- South Node is calculated only as `normalize(North Node + 180°)` and keeps the same source metadata.
+- Added static benchmark fixtures from local Swiss Ephemeris `SE_MEAN_NODE`.
+- Added fixture and engine tests for benchmark matching, wrap-around, South Node opposition, profile fallback, privacy and strict exclusions.
+- Confirmed profile-level Lunar Nodes calculation requires exact birth time and timezone but does not require birth coordinates.
+- Did not implement true node, Lilith, Selena, UI, display helper, debug, house assignment, provider changes, PWA cache changes or package changes.
+
+Next active task:
+
+- Task 13.4 — Lunar Nodes House Assignment.
+
+Do not start Task 13.4 until explicitly requested.
 Do not start Sprint 14 or later.
 
 # Security Backlog

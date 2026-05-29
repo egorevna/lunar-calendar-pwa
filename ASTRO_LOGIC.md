@@ -766,19 +766,20 @@ Core policy:
 
 ## Lunar Nodes Policy
 
-Task 13.2 selects Mean Lunar Node as the active Sprint 13 node system.
+Task 13.2 selects Mean Lunar Node as the active Sprint 13 node system. Task 13.3 implements that policy in `src/lunarNodes.js`.
 
 Policy:
 
 - active node type: mean;
 - source system key: `lunar-nodes-mean`;
-- North Node is a tropical zodiac longitude normalized into `0 <= longitude < 360`;
+- North Node is calculated from the active mean lunar ascending node longitude formula and normalized into tropical zodiac `0 <= longitude < 360`;
 - South Node is always `normalize(North Node + 180°)`;
 - South Node must not be independently calculated from a different source;
 - user-facing output uses sign, degree, minute and second;
 - true node is deferred until a separate source policy;
-- validation must use static benchmark fixtures, with local Swiss Ephemeris `SE_MEAN_NODE` allowed only as a dev/test oracle;
+- validation uses static benchmark fixtures checked against local Swiss Ephemeris `SE_MEAN_NODE`, with Swiss Ephemeris allowed only as a dev/test oracle;
 - `swisseph` must not be imported into PWA runtime modules;
+- profile-level Lunar Nodes require exact birth time and timezone; birth coordinates are not required for this geocentric node position layer;
 - no interpretations, karmic/fatalistic text, ritual scoring, Lilith or Selena are added by this policy.
 
 ## Personal Transits
