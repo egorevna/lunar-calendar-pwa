@@ -3259,9 +3259,9 @@ Sprint 11 status:
 
 Next active task at the current checkpoint:
 
-- Sprint 13 has started below; current next active task is Task 13.9 — Special Points Display Helper.
+- Sprint 13 has started below; current next active task is Task 13.10 — Special Points UI.
 
-Do not start Task 13.9 until explicitly requested.
+Do not start Task 13.10 until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -3680,7 +3680,7 @@ Next active task:
 
 - Task 13.2 — Lunar Nodes Source / Calculation Policy. Completed below.
 
-Task 13.2 through Task 13.8 are now closed; current next active task is Task 13.9.
+Task 13.2 through Task 13.9 are now closed; current next active task is Task 13.10.
 Do not start Sprint 14 or later.
 
 ## Task 13.2 — Lunar Nodes Source / Calculation Policy
@@ -3706,7 +3706,7 @@ Next active task:
 
 - Task 13.3 — Lunar Nodes Engine / Fixtures. Completed below.
 
-Task 13.3 through Task 13.8 are now closed; current next active task is Task 13.9.
+Task 13.3 through Task 13.9 are now closed; current next active task is Task 13.10.
 Do not start Sprint 14 or later.
 
 ## Task 13.3 — Lunar Nodes Engine / Fixtures
@@ -3732,7 +3732,7 @@ Next active task:
 
 - Task 13.4 — Lunar Nodes House Assignment. Completed below.
 
-Task 13.4 through Task 13.8 are now closed; current next active task is Task 13.9.
+Task 13.4 through Task 13.9 are now closed; current next active task is Task 13.10.
 Do not start Sprint 14 or later.
 
 ## Task 13.4 — Lunar Nodes House Assignment
@@ -3757,8 +3757,8 @@ Next active task:
 
 - Task 13.5 — Lilith Source Decision / Feasibility. Completed below.
 
-Task 13.5 through Task 13.8 are now closed; current next active task is Task 13.9.
-Do not start Task 13.9 until explicitly requested.
+Task 13.5 through Task 13.9 are now closed; current next active task is Task 13.10.
+Do not start Task 13.10 until explicitly requested.
 Do not start Sprint 14 or later.
 
 ## Task 13.5 — Lilith Source Decision / Feasibility
@@ -3787,8 +3787,8 @@ Next active task:
 
 - Task 13.6 — Mean Lilith Engine / Fixtures. Completed below.
 
-Task 13.6 through Task 13.8 are now closed; current next active task is Task 13.9.
-Do not start Task 13.9 until explicitly requested.
+Task 13.6 through Task 13.9 are now closed; current next active task is Task 13.10.
+Do not start Task 13.10 until explicitly requested.
 Do not start Sprint 14 or later.
 
 ## Task 13.6 — Mean Lilith Engine / Fixtures
@@ -3810,7 +3810,7 @@ Next active task:
 
 - Task 13.7 — Selena Source Decision / Feasibility. Completed below.
 
-Task 13.7 and Task 13.8 are now closed; current next active task is Task 13.9.
+Task 13.7 through Task 13.9 are now closed; current next active task is Task 13.10.
 
 ## Task 13.7 — Selena Source Decision / Feasibility
 
@@ -3838,8 +3838,8 @@ Next active task:
 
 - Task 13.8 — Selena Engine / Fixtures. Completed below.
 
-Task 13.8 is now closed; current next active task is Task 13.9.
-Do not start Task 13.9 until explicitly requested.
+Task 13.9 is now closed; current next active task is Task 13.10.
+Do not start Task 13.10 until explicitly requested.
 Do not start Sprint 14 or later.
 
 ## Task 13.8 — Selena Engine / Fixtures
@@ -3863,9 +3863,35 @@ Result:
 
 Next active task:
 
-- Task 13.9 — Special Points Display Helper.
+- Task 13.9 — Special Points Display Helper. Completed below.
 
-Do not start Task 13.9 until explicitly requested.
+Task 13.9 is now closed; current next active task is Task 13.10.
+Do not start Task 13.10 until explicitly requested.
+Do not start Sprint 14 or later.
+
+## Task 13.9 — Special Points Display Helper
+
+Status: done
+
+Goal:
+
+Create a pure display helper for already calculated Special Points.
+
+Result:
+
+- Added pure `src/specialPointsDisplay.js`.
+- Added `test/specialPointsDisplay.test.js`.
+- Formatted Северный узел, Южный узел, Лилит / Средняя Лилит and Селена / Белая Луна rows from already calculated results.
+- Formatted optional Lunar Nodes house assignment labels when assignment data is already provided.
+- Added safe fallback states, combined `Особые точки карты` display result, summary helper and display limitations.
+- Preserved Selena as a fictitious / hypothetical calculated point in safe limitations only, without interpretation text.
+- Did not calculate points, assign houses, add UI, add debug, change source policy, change provider calculations, change PWA cache, change package files or add interpretations.
+
+Next active task:
+
+- Task 13.10 — Special Points UI.
+
+Do not start Task 13.10 until explicitly requested.
 Do not start Sprint 14 or later.
 
 # Security Backlog

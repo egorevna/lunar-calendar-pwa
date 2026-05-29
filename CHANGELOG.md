@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-29 — Complete Task 13.9 Special Points Display Helper
+
+- Added pure `src/specialPointsDisplay.js` display helper.
+- Added `test/specialPointsDisplay.test.js`.
+- Formatted already calculated North Node, South Node, Mean Lilith and Selena / White Moon rows.
+- Formatted optional Lunar Nodes house labels when assignment data is already provided.
+- Added safe fallback states, combined display result, summary helper and display limitations for the future `Особые точки карты` UI block.
+- Kept Selena / White Moon as a safe fictitious / hypothetical calculated-point note without adding interpretations.
+- No calculation changes, house-assignment changes, UI, debug, provider changes, package changes, PWA cache changes or interpretations were added.
+- Next active task is Task 13.10 — Special Points UI, but it was not started.
+
 ## 2026-05-29 — Complete Task 13.8 Selena Engine / Fixtures
 
 - Added pure `src/selena.js` Selena / White Moon engine.
