@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-05-29 — Complete Task 13.8 Selena Engine / Fixtures
+
+- Added pure `src/selena.js` Selena / White Moon engine.
+- Added static Selena benchmark fixtures and tests.
+- Calculated only the selected `selena-white-moon` / `swiss-ephemeris-seorbel-white-moon` source system.
+- Set method metadata to `swisseph-seorbel-white-moon-linear-elements`.
+- Marked Selena / White Moon output as `fictitious-calculated-point`, not a physical astronomical body.
+- Validated benchmark fixtures against local Swiss Ephemeris `SE_WHITE_MOON` static values.
+- Confirmed exact birth time and timezone are required for profile-level Selena, while birth coordinates are not required.
+- No alternate Selena variants, Lunar Nodes changes, Lilith changes, UI, display helper, debug, house assignment, provider changes, package changes, PWA cache changes or interpretations were added.
+- Next active task is Task 13.9 — Special Points Display Helper, but it was not started.
+
 ## 2026-05-29 — Complete Task 13.7 Selena Source Decision / Feasibility
 
 - Added `SELENA_SOURCE_DECISION.md`.

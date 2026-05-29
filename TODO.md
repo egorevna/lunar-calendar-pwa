@@ -3259,9 +3259,9 @@ Sprint 11 status:
 
 Next active task at the current checkpoint:
 
-- Sprint 13 has started below; current next active task is Task 13.8 — Selena Engine / Fixtures.
+- Sprint 13 has started below; current next active task is Task 13.9 — Special Points Display Helper.
 
-Do not start Task 13.8 until explicitly requested.
+Do not start Task 13.9 until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -3680,7 +3680,7 @@ Next active task:
 
 - Task 13.2 — Lunar Nodes Source / Calculation Policy. Completed below.
 
-Task 13.2 through Task 13.7 are now closed; current next active task is Task 13.8.
+Task 13.2 through Task 13.8 are now closed; current next active task is Task 13.9.
 Do not start Sprint 14 or later.
 
 ## Task 13.2 — Lunar Nodes Source / Calculation Policy
@@ -3706,7 +3706,7 @@ Next active task:
 
 - Task 13.3 — Lunar Nodes Engine / Fixtures. Completed below.
 
-Task 13.3 through Task 13.7 are now closed; current next active task is Task 13.8.
+Task 13.3 through Task 13.8 are now closed; current next active task is Task 13.9.
 Do not start Sprint 14 or later.
 
 ## Task 13.3 — Lunar Nodes Engine / Fixtures
@@ -3732,7 +3732,7 @@ Next active task:
 
 - Task 13.4 — Lunar Nodes House Assignment. Completed below.
 
-Task 13.4 through Task 13.7 are now closed; current next active task is Task 13.8.
+Task 13.4 through Task 13.8 are now closed; current next active task is Task 13.9.
 Do not start Sprint 14 or later.
 
 ## Task 13.4 — Lunar Nodes House Assignment
@@ -3757,8 +3757,8 @@ Next active task:
 
 - Task 13.5 — Lilith Source Decision / Feasibility. Completed below.
 
-Task 13.5 through Task 13.7 are now closed; current next active task is Task 13.8.
-Do not start Task 13.8 until explicitly requested.
+Task 13.5 through Task 13.8 are now closed; current next active task is Task 13.9.
+Do not start Task 13.9 until explicitly requested.
 Do not start Sprint 14 or later.
 
 ## Task 13.5 — Lilith Source Decision / Feasibility
@@ -3787,8 +3787,8 @@ Next active task:
 
 - Task 13.6 — Mean Lilith Engine / Fixtures. Completed below.
 
-Task 13.6 and Task 13.7 are now closed; current next active task is Task 13.8.
-Do not start Task 13.8 until explicitly requested.
+Task 13.6 through Task 13.8 are now closed; current next active task is Task 13.9.
+Do not start Task 13.9 until explicitly requested.
 Do not start Sprint 14 or later.
 
 ## Task 13.6 — Mean Lilith Engine / Fixtures
@@ -3810,7 +3810,7 @@ Next active task:
 
 - Task 13.7 — Selena Source Decision / Feasibility. Completed below.
 
-Task 13.7 is now closed; current next active task is Task 13.8.
+Task 13.7 and Task 13.8 are now closed; current next active task is Task 13.9.
 
 ## Task 13.7 — Selena Source Decision / Feasibility
 
@@ -3836,9 +3836,36 @@ Result:
 
 Next active task:
 
-- Task 13.8 — Selena Engine / Fixtures.
+- Task 13.8 — Selena Engine / Fixtures. Completed below.
 
-Do not start Task 13.8 until explicitly requested.
+Task 13.8 is now closed; current next active task is Task 13.9.
+Do not start Task 13.9 until explicitly requested.
+Do not start Sprint 14 or later.
+
+## Task 13.8 — Selena Engine / Fixtures
+
+Status: done
+
+Goal:
+
+Create a pure Selena / White Moon engine and static fixtures for the selected Swiss Ephemeris seorbel source system.
+
+Result:
+
+- Added pure `src/selena.js`.
+- Implemented only Selena / White Moon from `selena-white-moon` / `swiss-ephemeris-seorbel-white-moon`.
+- Set calculation method metadata to `swisseph-seorbel-white-moon-linear-elements`.
+- Marked Selena output as `fictitious-calculated-point`.
+- Added static benchmark fixtures from local Swiss Ephemeris `SE_WHITE_MOON`.
+- Added fixture and engine tests for benchmark matching, wrap-around near 0° Aries, profile fallback, privacy and strict exclusions.
+- Confirmed profile-level Selena calculation requires exact birth time and timezone but does not require birth coordinates.
+- Did not add alternate Selena variants, Lunar Nodes changes, Lilith changes, UI, debug, house assignment, provider changes, PWA cache changes, package changes or interpretations.
+
+Next active task:
+
+- Task 13.9 — Special Points Display Helper.
+
+Do not start Task 13.9 until explicitly requested.
 Do not start Sprint 14 or later.
 
 # Security Backlog

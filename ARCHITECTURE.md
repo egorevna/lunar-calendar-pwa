@@ -28,6 +28,7 @@ Implemented Sprint 13 module:
 - `src/lunarNodes.js` — pure mean Lunar Nodes engine validated against static local Swiss Ephemeris `SE_MEAN_NODE` benchmark fixtures.
 - `src/lunarNodesHouseAssignment.js` — pure Lunar Nodes house-assignment layer for North/South Nodes against canonical house cusps.
 - `src/lilith.js` — pure Mean Black Moon Lilith / Mean Lunar Apogee engine validated against static local Swiss Ephemeris `SE_MEAN_APOG` benchmark fixtures.
+- `src/selena.js` — pure Selena / White Moon engine for the selected Swiss Ephemeris seorbel source system validated against static local Swiss Ephemeris `SE_WHITE_MOON` benchmark fixtures.
 
 ## Update Rules
 
@@ -715,6 +716,22 @@ Current responsibilities:
 - validate the browser-safe local calculation against static `local-swisseph-SE_MEAN_APOG-benchmark` fixtures with `0.01°` tolerance.
 
 This module does not calculate true Lilith, osculating Lilith, interpolated Lilith, Selena, Lunar Nodes, Fixed Stars, transits, house assignment, display/UI/debug helpers or interpretations. It does not import runtime `swisseph`, provider modules, DOM or localStorage, mutate profiles, require birth coordinates, or expose raw birth data / raw coordinates.
+
+## `src/selena.js`
+
+Defines the Sprint 13 pure Selena / White Moon engine.
+
+Current responsibilities:
+
+- calculate only the selected `selena-white-moon` / `swiss-ephemeris-seorbel-white-moon` longitude from a UTC moment;
+- use the `swisseph-seorbel-white-moon-linear-elements` method documented in `SELENA_SOURCE_DECISION.md`;
+- mark Selena / White Moon as `fictitious-calculated-point`, not a physical astronomical body;
+- format Selena as tropical zodiac sign, degree, minute and second row;
+- expose a profile-level helper that uses `src/birthDateTime.js` UTC readiness;
+- keep source metadata, capabilities and limitations explicit;
+- validate the browser-safe local calculation against static `local-swisseph-SE_WHITE_MOON-benchmark` fixtures with `0.01°` tolerance.
+
+This module does not calculate alternate Selena source systems, Lunar Nodes, Lilith, Fixed Stars, transits, house assignment, display/UI/debug helpers or interpretations. It does not import runtime `swisseph`, provider modules, DOM or localStorage, mutate profiles, require birth coordinates, or expose raw birth data / raw coordinates.
 
 ## `src/planetaryPositionProvider.js`
 
@@ -1596,9 +1613,11 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 46. `src/lilith.js` calculates only Mean Black Moon Lilith / Mean Lunar Apogee from the `mean-black-moon-lilith` source policy. It does not calculate true/osculating/interpolated Lilith, Selena, house assignment, UI/debug or interpretations.
 
-47. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+47. `src/selena.js` calculates only Selena / White Moon from the selected `selena-white-moon` source policy. It marks the point as `fictitious-calculated-point` and does not calculate alternate Selena variants, Lunar Nodes, Lilith, house assignment, UI/debug or interpretations.
 
-48. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
+48. `src/planetaryPositionProvider.js` defines the future planetary position provider interface and currently returns `incomplete` / `notSupported` without calculating planets.
+
+49. `src/natalProviderAdapter.js` defines the future natal provider adapter contract and currently returns explicit `notSupported` by default without connecting a real provider.
 
 45. `src/astronomyEngineProvider.js` isolates the installed `astronomy-engine@2.1.19` provider, imports it through the tracked vendored runtime asset, audits source behavior, and calculates validated natal planet longitudes / speed / retrograde in the provider layer.
 
@@ -2007,6 +2026,8 @@ Testing note:
 - `test/lunarNodesHouseAssignmentFixtures.test.js` and `test/lunarNodesHouseAssignment.test.js` validate North/South Node assignment to canonical cusps, half-open cusp policy, profile-level composition, privacy exclusions and strict Sprint 13 source boundaries without changing Lunar Nodes calculation, adding true node, Lilith, Selena, UI/debug or interpretations.
 - `test/fixtures/lilithFixtures.js` contains test-only static Mean Lilith benchmark fixtures from local Swiss Ephemeris `SE_MEAN_APOG`, including wrap-around near 0° Aries. It is not used by production code.
 - `test/lilithFixtures.test.js` and `test/lilith.test.js` validate the pure Mean Lilith engine, static benchmark matching, profile-level UTC readiness, privacy exclusions and strict Sprint 13 source boundaries without adding true/osculating/interpolated Lilith, Selena, UI/debug or house assignment.
+- `test/fixtures/selenaFixtures.js` contains test-only static Selena / White Moon benchmark fixtures from local Swiss Ephemeris `SE_WHITE_MOON`, including wrap-around near 0° Aries. It is not used by production code.
+- `test/selenaFixtures.test.js` and `test/selena.test.js` validate the pure Selena / White Moon engine, static benchmark matching, profile-level UTC readiness, `fictitious-calculated-point` metadata, privacy exclusions and strict Sprint 13 source boundaries without adding alternate Selena variants, Lunar Nodes, Lilith, UI/debug or house assignment.
 - `NATAL_PROVIDER_VALIDATION_REPORT.md` records the provider-layer validation summary; it does not enable user-facing natal values.
 - if personal data is added later, debug output must follow `PRIVACY_RULES.md`
 
