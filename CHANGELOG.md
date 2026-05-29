@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-05-29 — Complete Task 13.6 Mean Lilith Engine / Fixtures
+
+- Added pure `src/lilith.js` Mean Black Moon Lilith / Mean Lunar Apogee engine.
+- Added static Mean Lilith benchmark fixtures and tests.
+- Calculated only the active `mean-black-moon-lilith` / `mean-lunar-apogee` source system.
+- Validated benchmark fixtures against local Swiss Ephemeris `SE_MEAN_APOG` static values.
+- Confirmed exact birth time and timezone are required for profile-level Mean Lilith, while birth coordinates are not required.
+- Kept True / Osculating Lilith and interpolated Lilith deferred.
+- No Selena, UI, display helper, debug, house assignment, provider changes, package changes or PWA cache changes were added.
+
 ## 2026-05-29 — Complete Task 13.5 Lilith Source Decision / Feasibility
 
 - Added `LILITH_SOURCE_DECISION.md`.

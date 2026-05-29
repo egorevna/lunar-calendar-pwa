@@ -3259,9 +3259,9 @@ Sprint 11 status:
 
 Next active task at the current checkpoint:
 
-- Sprint 13 has started below; current next active task is Task 13.6 — Mean Lilith Engine / Fixtures.
+- Sprint 13 has started below; current next active task is Task 13.7 — Selena Source Decision / Feasibility.
 
-Do not start Task 13.6 until explicitly requested.
+Do not start Task 13.7 until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -3680,7 +3680,7 @@ Next active task:
 
 - Task 13.2 — Lunar Nodes Source / Calculation Policy. Completed below.
 
-Task 13.2 through Task 13.5 are now closed; current next active task is Task 13.6.
+Task 13.2 through Task 13.6 are now closed; current next active task is Task 13.7.
 Do not start Sprint 14 or later.
 
 ## Task 13.2 — Lunar Nodes Source / Calculation Policy
@@ -3706,7 +3706,7 @@ Next active task:
 
 - Task 13.3 — Lunar Nodes Engine / Fixtures. Completed below.
 
-Task 13.3 through Task 13.5 are now closed; current next active task is Task 13.6.
+Task 13.3 through Task 13.6 are now closed; current next active task is Task 13.7.
 Do not start Sprint 14 or later.
 
 ## Task 13.3 — Lunar Nodes Engine / Fixtures
@@ -3732,7 +3732,7 @@ Next active task:
 
 - Task 13.4 — Lunar Nodes House Assignment. Completed below.
 
-Task 13.4 and Task 13.5 are now closed; current next active task is Task 13.6.
+Task 13.4 through Task 13.6 are now closed; current next active task is Task 13.7.
 Do not start Sprint 14 or later.
 
 ## Task 13.4 — Lunar Nodes House Assignment
@@ -3757,8 +3757,8 @@ Next active task:
 
 - Task 13.5 — Lilith Source Decision / Feasibility. Completed below.
 
-Task 13.5 is now closed; current next active task is Task 13.6.
-Do not start Task 13.6 until explicitly requested.
+Task 13.5 and Task 13.6 are now closed; current next active task is Task 13.7.
+Do not start Task 13.7 until explicitly requested.
 Do not start Sprint 14 or later.
 
 ## Task 13.5 — Lilith Source Decision / Feasibility
@@ -3785,27 +3785,32 @@ Result:
 
 Next active task:
 
-- Task 13.6 — Mean Lilith Engine / Fixtures.
+- Task 13.6 — Mean Lilith Engine / Fixtures. Completed below.
 
-Do not start Task 13.6 until explicitly requested.
+Task 13.6 is now closed; current next active task is Task 13.7.
+Do not start Task 13.7 until explicitly requested.
 Do not start Sprint 14 or later.
 
 ## Task 13.6 — Mean Lilith Engine / Fixtures
 
-Status: not started
+Status: done
 
 Goal:
 
-- Create a pure Mean Black Moon Lilith / Mean Lunar Apogee engine using the Task 13.5 source decision.
-- Validate against static benchmark fixtures generated / checked from local Swiss Ephemeris `SE_MEAN_APOG` / `swe_calc_ut`.
-- Keep `osculating-black-moon-lilith`, `true-lilith` and `interpolated-lilith` deferred.
-- Do not add UI, debug, house assignment, Selena or interpretations.
+- Added pure `src/lilith.js`.
+- Implemented only Mean Black Moon Lilith / Mean Lunar Apogee.
+- Set source metadata to `mean-black-moon-lilith` / `mean-lunar-apogee`.
+- Added static benchmark fixtures from local Swiss Ephemeris `SE_MEAN_APOG`.
+- Added fixture and engine tests for benchmark matching, wrap-around near 0° Aries, profile fallback, privacy and strict exclusions.
+- Confirmed profile-level Mean Lilith calculation requires exact birth time and timezone but does not require birth coordinates.
+- Kept `osculating-black-moon-lilith`, `true-lilith` and `interpolated-lilith` deferred.
+- Did not add UI, debug, house assignment, Selena, provider changes, PWA cache changes, package changes or interpretations.
 
 Next active task:
 
-- Task 13.6 — Mean Lilith Engine / Fixtures.
+- Task 13.7 — Selena Source Decision / Feasibility.
 
-Do not start Task 13.6 until explicitly requested.
+Do not start Task 13.7 until explicitly requested.
 Do not start Sprint 14 or later.
 
 # Security Backlog

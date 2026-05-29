@@ -796,19 +796,24 @@ House assignment policy:
 ## Lilith Policy
 
 Task 13.5 verifies Mean Black Moon Lilith / Mean Lunar Apogee as the first Lilith implementation target.
+Task 13.6 implements that policy in `src/lilith.js`.
 
 Policy:
 
 - active Lilith variant: Mean Black Moon Lilith / Mean Lunar Apogee;
 - source system key: `mean-black-moon-lilith`;
-- runtime target: browser-safe local implementation;
+- source key: `mean-lunar-apogee`;
+- runtime: browser-safe local implementation;
 - benchmark oracle: static local Swiss Ephemeris `SE_MEAN_APOG` / `swe_calc_ut` fixtures;
 - user-facing labels: `Лилит`, `Средняя Лилит`, `Black Moon Lilith`, `Mean Lunar Apogee`;
+- Mean Lilith longitude is normalized into tropical zodiac `0 <= longitude < 360`;
+- user-facing output uses sign, degree, minute and second;
+- profile-level Mean Lilith requires exact birth time and timezone; birth coordinates are not required for this geocentric point longitude layer;
 - True / Osculating Black Moon Lilith remains deferred;
 - interpolated / natural Lilith remains deferred if encountered;
 - local Astronomy Engine support is limited to lunar apsis event search and is not an approved Black Moon Lilith longitude API for arbitrary UTC moments;
 - local Swiss Ephemeris supports `SE_MEAN_APOG`, `SE_OSCU_APOG` and `SE_INTP_APOG`, but it may be used only as a local static benchmark oracle, not PWA runtime;
-- Task 13.6 must include static benchmark fixtures and strict no-mixing between mean, osculating and interpolated variants;
+- Task 13.6 includes static benchmark fixtures and strict no-mixing between mean, osculating and interpolated variants;
 - no fake Lilith zodiac position is allowed;
 - no interpretations, karmic/fatalistic text, dark destiny language or ritual scoring are allowed.
 
