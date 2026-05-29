@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-29 — Complete Task 13.5 Lilith Source Decision / Feasibility
+
+- Added `LILITH_SOURCE_DECISION.md`.
+- Set Lilith status to `source-verified-for-implementation`.
+- Selected `mean-black-moon-lilith` / Mean Lunar Apogee as the active target for the first supported Lilith variant.
+- Set runtime target to a browser-safe local implementation validated by static local Swiss Ephemeris `SE_MEAN_APOG` / `swe_calc_ut` fixtures.
+- Kept True / Osculating Lilith and interpolated Lilith deferred.
+- Recorded local audit: Astronomy Engine has lunar apsis event helpers but no approved Black Moon longitude API; local Swiss Ephemeris exposes `SE_MEAN_APOG`, `SE_OSCU_APOG`, `SE_INTP_APOG` and can calculate `SE_MEAN_APOG` through `swe_calc_ut`, but remains dev/test oracle only.
+- No code changes, Lilith engine, fixtures with calculated values, UI, debug, provider changes, package changes or PWA cache changes were added.
+- Next active task is Task 13.6 — Mean Lilith Engine / Fixtures, but it was not started.
+
 ## 2026-05-29 — Complete Task 13.4 Lunar Nodes House Assignment
 
 - Added pure `src/lunarNodesHouseAssignment.js` assignment layer.

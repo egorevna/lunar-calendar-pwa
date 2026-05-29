@@ -18,8 +18,9 @@ Current Sprint 13 strategy docs:
 - `SPECIAL_POINTS_STRATEGY.md`
 - `SPECIAL_POINTS_SOURCE_POLICY.md`
 - `LUNAR_NODES_SOURCE_POLICY.md`
+- `LILITH_SOURCE_DECISION.md`
 
-These documents define the Special Points strategy and Lunar Nodes source policy.
+These documents define the Special Points strategy, Lunar Nodes source policy and Mean Black Moon Lilith source decision.
 
 Implemented Sprint 13 module:
 

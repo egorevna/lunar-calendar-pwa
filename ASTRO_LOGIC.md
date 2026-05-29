@@ -793,6 +793,25 @@ House assignment policy:
 - profile-level house assignment requires ready house cusps, so exact time and coordinates are needed for assignment even though Lunar Nodes longitude itself does not require coordinates;
 - no display text is used for assignment math.
 
+## Lilith Policy
+
+Task 13.5 verifies Mean Black Moon Lilith / Mean Lunar Apogee as the first Lilith implementation target.
+
+Policy:
+
+- active Lilith variant: Mean Black Moon Lilith / Mean Lunar Apogee;
+- source system key: `mean-black-moon-lilith`;
+- runtime target: browser-safe local implementation;
+- benchmark oracle: static local Swiss Ephemeris `SE_MEAN_APOG` / `swe_calc_ut` fixtures;
+- user-facing labels: `Лилит`, `Средняя Лилит`, `Black Moon Lilith`, `Mean Lunar Apogee`;
+- True / Osculating Black Moon Lilith remains deferred;
+- interpolated / natural Lilith remains deferred if encountered;
+- local Astronomy Engine support is limited to lunar apsis event search and is not an approved Black Moon Lilith longitude API for arbitrary UTC moments;
+- local Swiss Ephemeris supports `SE_MEAN_APOG`, `SE_OSCU_APOG` and `SE_INTP_APOG`, but it may be used only as a local static benchmark oracle, not PWA runtime;
+- Task 13.6 must include static benchmark fixtures and strict no-mixing between mean, osculating and interpolated variants;
+- no fake Lilith zodiac position is allowed;
+- no interpretations, karmic/fatalistic text, dark destiny language or ritual scoring are allowed.
+
 ## Personal Transits
 
 Do not show personal transits until both natal positions and current planetary positions are reliable.
