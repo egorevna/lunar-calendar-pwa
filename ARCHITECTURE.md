@@ -12,7 +12,17 @@ This file describes the actual current state of the codebase, not future plans.
 
 Future architecture ideas belong in `MASTER_PLAN.md` or `TODO.md`, not here.
 
-Current Sprint 13 strategy docs:
+Current Sprint 14 strategy docs:
+
+- `SPRINT_14_PLAN.md`
+- `FIXED_STARS_STRATEGY.md`
+- `FIXED_STARS_SOURCE_POLICY.md`
+
+These documents define the Fixed Stars strategy, source gating, catalog/source decision boundaries, coordinate / epoch / precession requirements, explicit orb policy and conjunction-only initial policy.
+
+Task 14.1 does not implement Fixed Stars modules. There is currently no `src/fixedStars.js`, `src/fixedStarsData.js`, `src/fixedStarsDisplay.js` or `src/fixedStarsForProfile.js`.
+
+Completed Sprint 13 strategy docs:
 
 - `SPRINT_13_PLAN.md`
 - `SPECIAL_POINTS_STRATEGY.md`

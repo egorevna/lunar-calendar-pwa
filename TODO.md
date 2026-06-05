@@ -3259,10 +3259,10 @@ Sprint 11 status:
 
 Next active task at the current checkpoint:
 
-- Sprint 13 is closed below; current next active task is Sprint 14 planning — Fixed Stars.
+- Sprint 13 is closed below; Task 14.1 is closed below; current next active task is Task 14.2 — Fixed Stars Source / Catalog / Orb Policy.
 
 Task 13.12 is now closed.
-Do not start Sprint 14 implementation until explicitly requested.
+Do not start Task 14.2 until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -3979,9 +3979,69 @@ Sprint 13 status:
 
 Next active task:
 
-- Sprint 14 planning — Fixed Stars.
+- Sprint 14 planning — Fixed Stars. Completed below.
 
-Do not start Sprint 14 implementation without explicit user approval.
+Task 14.1 is now closed below.
+Do not start Sprint 14 implementation beyond Task 14.1 without explicit user approval.
+
+# Sprint 14 — Fixed Stars Foundation
+
+Goal:
+
+Add a controlled, source-gated Fixed Stars foundation.
+
+Sprint 14 target:
+
+- source-gated Fixed Stars catalog;
+- coordinate / epoch / precession policy;
+- explicit conjunction-only relationship policy;
+- explicit orb policy;
+- target resolver;
+- conjunction engine;
+- display / UI / debug;
+- no interpretations.
+
+Sprint 14 guardrails:
+
+- no fixed stars from memory;
+- no catalog row active without source verification;
+- no hidden orb;
+- no mixed epochs;
+- conjunction-only as the initial relationship type unless Task 14.2 decides otherwise;
+- no interpretations, mythology text, predictive claims, ritual scoring or fatalistic text;
+- no Fixed Stars calculation engine in Task 14.1.
+
+Roadmap after Sprint 14:
+
+- Sprint 15 — Arabic Parts Expansion Pack.
+- Sprint 16 — Midpoints / Antiscia.
+- Sprint 17 — Personal Transits.
+- Sprint 18 — Interpretation Layer / Ritual Scores.
+- Sprint 19 — Polish / UX / iPhone PWA / backup-security.
+
+## Task 14.1 — Fixed Stars Strategy
+
+Status: done
+
+Goal:
+
+Merge Sprint 14 strategy documents into project status.
+
+Result:
+
+- Added / accepted `SPRINT_14_PLAN.md`, `FIXED_STARS_STRATEGY.md` and `FIXED_STARS_SOURCE_POLICY.md` as Sprint 14 strategy docs.
+- Started Sprint 14 — Fixed Stars Foundation.
+- Recorded Fixed Stars as source-gated.
+- Recorded source/catalog, coordinate/epoch/precession, explicit orb, conjunction-only, display/UI/debug and hardening roadmap.
+- Recorded strict boundaries: no fixed stars from memory, no hidden orb, no mixed epochs, no interpretations and no Fixed Stars engine in Task 14.1.
+- No calculation code, source code, tests, UI, PWA cache, provider calculations, package files or generated ephemeris data were changed.
+
+Next active task:
+
+- Task 14.2 — Fixed Stars Source / Catalog / Orb Policy.
+
+Task 14.2 is not started.
+Do not start Sprint 15 or later.
 
 # Security Backlog
 

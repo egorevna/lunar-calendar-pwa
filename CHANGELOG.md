@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-06-03 — Start Sprint 14 Fixed Stars Foundation
+
+- Started Sprint 14 — Fixed Stars Foundation.
+- Added / accepted `SPRINT_14_PLAN.md`, `FIXED_STARS_STRATEGY.md` and `FIXED_STARS_SOURCE_POLICY.md` as strategy docs.
+- Recorded Fixed Stars as source-gated with no catalog rows from memory, no hidden orb, no mixed epochs, conjunction-only initial policy and no interpretations.
+- No calculation code, UI, debug, provider changes, package files, PWA cache changes or generated ephemeris data were changed.
+- Next active task is Task 14.2 — Fixed Stars Source / Catalog / Orb Policy, but it was not started.
+
 ## 2026-05-30 — Complete Task 13.12 Sprint 13 Hardening
 
 - Closed Sprint 13 — Special Points Foundation after final hardening.

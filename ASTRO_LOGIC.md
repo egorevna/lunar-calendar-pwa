@@ -844,6 +844,24 @@ Policy:
 - no fake Selena zodiac position is allowed;
 - no interpretations, karmic/fatalistic text, guardian-angel language, ritual advice or ritual scoring are allowed.
 
+## Sprint 14 — Fixed Stars Policy
+
+Sprint 14 starts a controlled Fixed Stars foundation. Task 14.1 is strategy/status only and does not add a Fixed Stars engine, catalog dataset, UI, debug section or interpretations.
+
+Policy:
+
+- Fixed Stars are source-gated.
+- No fixed star catalog row may be activated from memory.
+- Active catalog rows require documented source metadata, coordinate data, epoch / coordinate policy, verification status and active flag.
+- Coordinate / epoch / precession policy must be explicit before implementation.
+- The project must not silently mix J2000, date-of-birth, tropical, sidereal or other epoch/coordinate systems.
+- Orb policy must be explicit; no hidden “near star” rule is allowed.
+- Initial relationship policy is conjunction-only unless Task 14.2 explicitly decides otherwise.
+- Deferred relationship types include oppositions, squares, trines, parans, heliacal phenomena and star-rise/set calculations.
+- Initial target set must be decided explicitly in Task 14.2 before target resolution or conjunction detection.
+- User-facing output may eventually show fixed star labels, safe target labels, formatted zodiac positions with seconds and explicit orb text.
+- No interpretations, mythology text, predictive claims, karmic/fatalistic language, ritual advice or ritual scoring are allowed.
+
 ## Personal Transits
 
 Do not show personal transits until both natal positions and current planetary positions are reliable.
