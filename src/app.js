@@ -45,6 +45,7 @@ import {
 } from './debugPanel.js';
 import { getArabicPartsDebugState } from './arabicPartsDebug.js';
 import { getHousesDebugState } from './housesDebug.js';
+import { getSpecialPointsDebugState } from './specialPointsDebug.js';
 import {
   DEFAULT_DASHBOARD_MODE,
   isDashboardModeKey,
@@ -325,6 +326,7 @@ function render() {
     personalDebug: shouldShowDebug ? getPersonalDebugState() : null,
     housesUiDebug: shouldShowDebug ? getHousesUiDebugState() : null,
     arabicPartsUiDebug: shouldShowDebug ? getArabicPartsUiDebugState() : null,
+    specialPointsUiDebug: shouldShowDebug ? getSpecialPointsUiDebugState() : null,
   });
 }
 
@@ -709,6 +711,16 @@ function getArabicPartsUiDebugState() {
   });
 }
 
+function getSpecialPointsUiDebugState() {
+  const profiles = loadProfiles();
+  const activeProfileId = getActiveProfileId();
+  const activeProfile = profiles.find((profile) => profile.id === activeProfileId) ?? null;
+
+  return getSpecialPointsDebugState(activeProfile, {
+    collapsedState: !activeProfileId || expandedSpecialPointsProfileId !== activeProfileId,
+  });
+}
+
 function describePersonalDebugMissingFields(fields = []) {
   const labels = {
     birthDate: 'дата рождения',
@@ -1017,17 +1029,6 @@ function renderSpecialPointSections(element, sections = []) {
         return item;
       }));
       sectionElement.append(list);
-    }
-
-    if (section.limitations.length > 0) {
-      const limitations = document.createElement('ul');
-      limitations.className = 'special-points-section-limitations';
-      limitations.replaceChildren(...section.limitations.map((text) => {
-        const item = document.createElement('li');
-        item.textContent = text;
-        return item;
-      }));
-      sectionElement.append(limitations);
     }
 
     return sectionElement;

@@ -722,6 +722,7 @@ test('ordinary markup does not contain provider validation debug details', () =>
   assert.equal(markup.includes('Detailed Dignities UI Debug'), false);
   assert.equal(markup.includes('Houses / ASC / MC UI Debug'), false);
   assert.equal(markup.includes('Arabic Parts UI Debug'), false);
+  assert.equal(markup.includes('Special Points UI Debug'), false);
   assert.equal(markup.includes('longitudeValidation: passed'), false);
   assert.equal(markup.includes('speedValidation: passed'), false);
   assert.equal(markup.includes('retrogradeValidation: passed'), false);
@@ -999,6 +1000,167 @@ test('debug panel omits Arabic Parts UI debug section when no safe state is prov
   });
 
   assert.equal(text.includes('Arabic Parts UI Debug'), false);
+});
+
+test('debug panel shows safe Special Points UI debug section when safe state is provided', () => {
+  const text = describeDebugPanel({
+    now: new Date('2026-05-15T00:40:00+03:00'),
+    specialPointsUiDebug: {
+      section: 'Special Points UI Debug',
+      enabled: true,
+      activeProfile: {
+        hasProfile: true,
+        id: 'profile-egor',
+        name: 'Егор',
+      },
+      panelStatus: 'ready',
+      reason: null,
+      location: 'My Cards',
+      userFacingBlock: true,
+      collapsedDefault: true,
+      collapsedState: true,
+      readiness: {
+        hasExactBirthTime: true,
+        hasBirthTimezone: true,
+        lunarNodesReady: true,
+        lunarNodesHouseAssignmentReady: true,
+        lilithReady: true,
+        selenaReady: true,
+        specialPointsReady: true,
+      },
+      sources: {
+        lunarNodes: {
+          active: true,
+          sourceSystem: 'mean-lunar-node',
+          trueNodeStatus: 'deferred',
+        },
+        lilith: {
+          active: true,
+          sourceSystem: 'mean-black-moon-lilith',
+          deferredVariants: [
+            'true-lilith',
+            'osculating-black-moon-lilith',
+            'interpolated-lilith',
+          ],
+        },
+        selena: {
+          active: true,
+          sourceSystem: 'selena-white-moon',
+          pointType: 'fictitious-calculated-point',
+          alternateSourceSystems: [],
+        },
+      },
+      counts: {
+        points: 4,
+        nodeAssignments: 2,
+        sectionsReady: 3,
+      },
+      capabilities: {
+        specialPoints: true,
+        lunarNodes: true,
+        meanNode: true,
+        trueNode: false,
+        lilith: true,
+        meanLilith: true,
+        trueLilith: false,
+        osculatingLilith: false,
+        selena: true,
+        fixedStars: false,
+        transits: false,
+        interpretations: false,
+        ritualScoring: false,
+      },
+      privacy: {
+        rawBirthDataExposed: false,
+        rawCoordinatesExposed: false,
+        rawTimezoneExposed: false,
+        rawUtcExposed: false,
+        rawLongitudesExposed: false,
+        fullProfileJsonExposed: false,
+        providerPayloadExposed: false,
+      },
+    },
+  });
+  const section = text
+    .split('\n\n')
+    .find((item) => item.startsWith('## Special Points UI Debug'));
+
+  assert.equal(Boolean(section), true);
+  assert.equal(section.includes('activeProfileId: profile-egor'), true);
+  assert.equal(section.includes('activeProfileName: Егор'), true);
+  assert.equal(section.includes('hasActiveProfile: yes'), true);
+  assert.equal(section.includes('panelStatus: ready'), true);
+  assert.equal(section.includes('userFacingBlock: yes'), true);
+  assert.equal(section.includes('location: My Cards'), true);
+  assert.equal(section.includes('collapsedDefault: yes'), true);
+  assert.equal(section.includes('collapsedState: yes'), true);
+  assert.equal(section.includes('hasExactBirthTime: yes'), true);
+  assert.equal(section.includes('hasBirthTimezone: yes'), true);
+  assert.equal(section.includes('lunarNodesReady: yes'), true);
+  assert.equal(section.includes('lunarNodesHouseAssignmentReady: yes'), true);
+  assert.equal(section.includes('lilithReady: yes'), true);
+  assert.equal(section.includes('selenaReady: yes'), true);
+  assert.equal(section.includes('specialPointsReady: yes'), true);
+  assert.equal(section.includes('lunarNodesSourceSystem: mean-lunar-node'), true);
+  assert.equal(section.includes('trueNodeStatus: deferred'), true);
+  assert.equal(section.includes('lilithSourceSystem: mean-black-moon-lilith'), true);
+  assert.equal(section.includes('deferredLilithVariants: true-lilith, osculating-black-moon-lilith, interpolated-lilith'), true);
+  assert.equal(section.includes('selenaSourceSystem: selena-white-moon'), true);
+  assert.equal(section.includes('selenaPointType: fictitious-calculated-point'), true);
+  assert.equal(section.includes('alternateSelenaSourceSystems: нет данных'), true);
+  assert.equal(section.includes('pointsCount: 4'), true);
+  assert.equal(section.includes('nodeAssignmentsCount: 2'), true);
+  assert.equal(section.includes('sectionsReady: 3'), true);
+  assert.equal(section.includes('specialPoints: yes'), true);
+  assert.equal(section.includes('lunarNodes: yes'), true);
+  assert.equal(section.includes('meanNode: yes'), true);
+  assert.equal(section.includes('trueNode: no'), true);
+  assert.equal(section.includes('lilith: yes'), true);
+  assert.equal(section.includes('meanLilith: yes'), true);
+  assert.equal(section.includes('trueLilith: no'), true);
+  assert.equal(section.includes('osculatingLilith: no'), true);
+  assert.equal(section.includes('selena: yes'), true);
+  assert.equal(section.includes('fixedStars: no'), true);
+  assert.equal(section.includes('transits: no'), true);
+  assert.equal(section.includes('interpretations: no'), true);
+  assert.equal(section.includes('ritualScoring: no'), true);
+  assert.equal(section.includes('rawBirthDataExposed: no'), true);
+  assert.equal(section.includes('rawCoordinatesExposed: no'), true);
+  assert.equal(section.includes('rawTimezoneExposed: no'), true);
+  assert.equal(section.includes('rawUtcExposed: no'), true);
+  assert.equal(section.includes('rawLongitudesExposed: no'), true);
+  assert.equal(section.includes('fullProfileJsonExposed: no'), true);
+  assert.equal(section.includes('providerPayloadExposed: no'), true);
+  [
+    'birthDate',
+    'birthTime',
+    'utcDateTime',
+    'Europe/Moscow',
+    'birthPlace',
+    'latitude',
+    'longitude',
+    'coordinates',
+    'points: [',
+    'assignments: [',
+    'cusps: [',
+    'Северный узел —',
+    'Лилит / Средняя Лилит —',
+    'Селена / Белая Луна —',
+    'providerPayload: {',
+    'карми',
+    'фаталь',
+    'ангел',
+  ].forEach((fragment) => {
+    assert.equal(section.includes(fragment), false, fragment);
+  });
+});
+
+test('debug panel omits Special Points UI debug section when no safe state is provided', () => {
+  const text = describeDebugPanel({
+    now: new Date('2026-05-15T00:40:00+03:00'),
+  });
+
+  assert.equal(text.includes('Special Points UI Debug'), false);
 });
 
 test('natal provider validation report documents provider validation without private data', () => {

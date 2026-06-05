@@ -123,6 +123,8 @@ If shown, keep it in developer-only context.
 
 Arabic Parts debug must show status/counts/capabilities only. It may show active/deferred formula keys and day/night chart label, but must not expose raw birth data, UTC, raw timezone values, raw coordinates, raw planet/lots/cusp longitudes, formula operand arrays, provider payloads, full profile JSON, or full parts/assignments/cusps arrays.
 
+Special Points debug must show status/readiness/source statuses/counts/capabilities only. It may show active profile id/name, active/deferred source keys, Selena point type and privacy flags, but must not expose raw birth data, UTC, raw timezone values, raw coordinates, raw point/cusp longitudes, provider payloads, full profile JSON, or full points/assignments/cusps arrays.
+
 ## Future Sync Rule
 
 If cloud sync is ever added, it must include:

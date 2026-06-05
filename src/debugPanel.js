@@ -7,7 +7,7 @@ import { getNatalProviderValidationSummary } from './natalProviderValidationSumm
 import { getPlanetaryProviderCapabilities } from './planetaryPositionProvider.js';
 import { formatAspect, formatPlanet } from './vocDisplay.js';
 
-export const APP_CACHE_VERSION = 'lunar-calendar-v90';
+export const APP_CACHE_VERSION = 'lunar-calendar-v92';
 
 export function isDebugMode(search = window.location.search) {
   return new URLSearchParams(search).get('debug') === '1';
@@ -33,6 +33,7 @@ export function describeDebugPanel(context = {}) {
     detailedDignitiesUiDebug,
     housesUiDebug,
     arabicPartsUiDebug,
+    specialPointsUiDebug,
   } = context;
 
   return [
@@ -94,6 +95,7 @@ export function describeDebugPanel(context = {}) {
     ),
     formatHousesUiDebug(housesUiDebug),
     formatArabicPartsUiDebug(arabicPartsUiDebug),
+    formatSpecialPointsUiDebug(specialPointsUiDebug),
     formatBestWindowsDebug(bestWindowsDebug),
   ].filter(Boolean).join('\n\n');
 }
@@ -546,6 +548,72 @@ function formatArabicPartsUiDebug(debug) {
     `rawTimezoneExposed: ${formatDebugBoolean(privacy.rawTimezoneExposed)}`,
     `rawLongitudesExposed: ${formatDebugBoolean(privacy.rawLongitudesExposed)}`,
     `formulaOperandsExposed: ${formatDebugBoolean(privacy.formulaOperandsExposed)}`,
+    `fullProfileJsonExposed: ${formatDebugBoolean(privacy.fullProfileJsonExposed)}`,
+    `providerPayloadExposed: ${formatDebugBoolean(privacy.providerPayloadExposed)}`,
+  ]);
+}
+
+function formatSpecialPointsUiDebug(debug) {
+  if (!debug) return '';
+
+  const activeProfile = debug.activeProfile ?? {};
+  const readiness = debug.readiness ?? {};
+  const sources = debug.sources ?? {};
+  const lunarNodes = sources.lunarNodes ?? {};
+  const lilith = sources.lilith ?? {};
+  const selena = sources.selena ?? {};
+  const counts = debug.counts ?? {};
+  const capabilities = debug.capabilities ?? {};
+  const privacy = debug.privacy ?? {};
+
+  return formatSection(debug.section ?? 'Special Points UI Debug', [
+    `activeProfileId: ${activeProfile.id ?? 'null'}`,
+    `activeProfileName: ${activeProfile.name ?? 'Общий день'}`,
+    `hasActiveProfile: ${formatDebugBoolean(activeProfile.hasProfile)}`,
+    `panelStatus: ${debug.panelStatus ?? 'hidden'}`,
+    `reason: ${debug.reason ?? 'нет данных'}`,
+    `userFacingBlock: ${formatDebugBoolean(debug.userFacingBlock)}`,
+    `location: ${debug.location ?? 'My Cards'}`,
+    `collapsedDefault: ${formatDebugBoolean(debug.collapsedDefault)}`,
+    `collapsedState: ${formatDebugBoolean(debug.collapsedState)}`,
+    `hasExactBirthTime: ${formatDebugBoolean(readiness.hasExactBirthTime)}`,
+    `hasBirthTimezone: ${formatDebugBoolean(readiness.hasBirthTimezone)}`,
+    `lunarNodesReady: ${formatDebugBoolean(readiness.lunarNodesReady)}`,
+    `lunarNodesHouseAssignmentReady: ${formatDebugBoolean(readiness.lunarNodesHouseAssignmentReady)}`,
+    `lilithReady: ${formatDebugBoolean(readiness.lilithReady)}`,
+    `selenaReady: ${formatDebugBoolean(readiness.selenaReady)}`,
+    `specialPointsReady: ${formatDebugBoolean(readiness.specialPointsReady)}`,
+    `lunarNodesActive: ${formatDebugBoolean(lunarNodes.active)}`,
+    `lunarNodesSourceSystem: ${lunarNodes.sourceSystem ?? 'null'}`,
+    `trueNodeStatus: ${lunarNodes.trueNodeStatus ?? 'deferred'}`,
+    `lilithActive: ${formatDebugBoolean(lilith.active)}`,
+    `lilithSourceSystem: ${lilith.sourceSystem ?? 'null'}`,
+    `deferredLilithVariants: ${formatList(lilith.deferredVariants)}`,
+    `selenaActive: ${formatDebugBoolean(selena.active)}`,
+    `selenaSourceSystem: ${selena.sourceSystem ?? 'null'}`,
+    `selenaPointType: ${selena.pointType ?? 'null'}`,
+    `alternateSelenaSourceSystems: ${formatList(selena.alternateSourceSystems)}`,
+    `pointsCount: ${counts.points ?? 0}`,
+    `nodeAssignmentsCount: ${counts.nodeAssignments ?? 0}`,
+    `sectionsReady: ${counts.sectionsReady ?? 0}`,
+    `specialPoints: ${formatDebugBoolean(capabilities.specialPoints)}`,
+    `lunarNodes: ${formatDebugBoolean(capabilities.lunarNodes)}`,
+    `meanNode: ${formatDebugBoolean(capabilities.meanNode)}`,
+    `trueNode: ${formatDebugBoolean(capabilities.trueNode)}`,
+    `lilith: ${formatDebugBoolean(capabilities.lilith)}`,
+    `meanLilith: ${formatDebugBoolean(capabilities.meanLilith)}`,
+    `trueLilith: ${formatDebugBoolean(capabilities.trueLilith)}`,
+    `osculatingLilith: ${formatDebugBoolean(capabilities.osculatingLilith)}`,
+    `selena: ${formatDebugBoolean(capabilities.selena)}`,
+    `fixedStars: ${formatDebugBoolean(capabilities.fixedStars)}`,
+    `transits: ${formatDebugBoolean(capabilities.transits)}`,
+    `interpretations: ${formatDebugBoolean(capabilities.interpretations)}`,
+    `ritualScoring: ${formatDebugBoolean(capabilities.ritualScoring)}`,
+    `rawBirthDataExposed: ${formatDebugBoolean(privacy.rawBirthDataExposed)}`,
+    `rawCoordinatesExposed: ${formatDebugBoolean(privacy.rawCoordinatesExposed)}`,
+    `rawTimezoneExposed: ${formatDebugBoolean(privacy.rawTimezoneExposed)}`,
+    `rawUtcExposed: ${formatDebugBoolean(privacy.rawUtcExposed)}`,
+    `rawLongitudesExposed: ${formatDebugBoolean(privacy.rawLongitudesExposed)}`,
     `fullProfileJsonExposed: ${formatDebugBoolean(privacy.fullProfileJsonExposed)}`,
     `providerPayloadExposed: ${formatDebugBoolean(privacy.providerPayloadExposed)}`,
   ]);
