@@ -4070,9 +4070,36 @@ Result:
 
 Next active task:
 
-- Task 14.3 — Fixed Star Catalog Dataset / Fixtures.
+- Task 14.3 — Fixed Star Catalog Dataset / Fixtures. Completed below.
 
-Task 14.3 is not started.
+Task 14.3 is now closed below.
+Do not start Sprint 15 or later.
+
+## Task 14.3 — Fixed Star Catalog Dataset / Fixtures
+
+Status: done
+
+Goal:
+
+Create a source-tracked Fixed Stars catalog dataset and fixtures.
+
+Result:
+
+- Added data-only `src/fixedStarsData.js`.
+- Added static/manual fixtures and tests for Fixed Stars catalog data.
+- Added 13 manually verified active rows from the initial Vronsky Table 18 subset: Алголь, Альдебаран, Ригель, Бетельгейзе, Сириус, Канопус, Регул, Спика, Арктур, Антарес, Вега, Альтаир and Фомальгаут.
+- Candidate row count is 0 because the initial candidate subset was manually verified from the provided reference photos.
+- Preserved Vronsky 1950 / 1970 / 1990 source columns for active rows and uses 1990 as the initial reference epoch.
+- Preserved source policy: Vronsky Table 18 primary source, Swiss / modern validation where possible, no OCR import and no rows from memory.
+- Preserved orb policy: global conjunction orb `1°00′`, policy key `fixed-stars-global-conjunction-orb-1deg`.
+- Preserved target policy: natal planets + ASC / MC / DSC / IC.
+- No position / epoch engine, precession implementation, conjunction engine, target resolver, display helper, UI, debug, provider changes, package changes, PWA cache changes or interpretations were added.
+
+Next active task:
+
+- Task 14.4 — Fixed Star Position / Epoch Engine.
+
+Task 14.4 is not started.
 Do not start Sprint 15 or later.
 
 # Security Backlog

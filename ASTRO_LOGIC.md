@@ -846,7 +846,7 @@ Policy:
 
 ## Fixed Stars Policy
 
-Sprint 14 starts a controlled Fixed Stars foundation. Task 14.1 is strategy/status only. Task 14.2 defines the source/catalog/orb policy. Neither task adds a Fixed Stars engine, catalog dataset, UI, debug section or interpretations.
+Sprint 14 starts a controlled Fixed Stars foundation. Task 14.1 is strategy/status only. Task 14.2 defines the source/catalog/orb policy. Task 14.3 adds a source-tracked catalog dataset only. These tasks do not add a Fixed Stars position engine, conjunction engine, UI, debug section or interpretations.
 
 Policy:
 
@@ -856,12 +856,13 @@ Policy:
 - Validation source: Swiss / modern fixed-star validation where possible.
 - Swiss / modern validation supports identity and coordinate checks, but must not replace the Vronsky primary source silently.
 - No fixed star catalog row may be activated from memory.
-- No fixed star catalog row is active until Task 14.3 manually verifies source-tracked dataset rows.
 - Candidate initial subset: Алголь, Альдебаран, Ригель, Бетельгейзе, Сириус, Канопус, Регул, Спика, Арктур, Антарес, Вега, Альтаир, Фомальгаут.
-- Candidate names are not active rows until Task 14.3 verifies them.
+- Task 14.3 manually verifies 13 active source-tracked rows from the candidate subset: Алголь, Альдебаран, Ригель, Бетельгейзе, Сириус, Канопус, Регул, Спика, Арктур, Антарес, Вега, Альтаир, Фомальгаут.
+- Candidate row count after Task 14.3 is 0.
 - Active catalog rows require documented source metadata, coordinate data, epoch / coordinate policy, verification status and active flag.
 - Vronsky 1950 / 1970 / 1990 columns must be preserved where available.
 - The Vronsky 1990 column is the initial reference epoch for verified source rows.
+- Task 14.3 preserves source coordinates as catalog evidence only; it does not calculate date-of-birth star positions.
 - Task 14.4 must validate date-of-birth tropical position handling before any conjunction engine runs.
 - The project must not silently mix J2000, date-of-birth, tropical, sidereal or other epoch/coordinate systems.
 - Orb policy: global conjunction orb `1°00′`, policy key `fixed-stars-global-conjunction-orb-1deg`.

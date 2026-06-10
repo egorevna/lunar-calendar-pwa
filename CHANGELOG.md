@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-06-10 — Complete Task 14.3 Fixed Star Catalog Dataset / Fixtures
+
+- Added data-only `src/fixedStarsData.js`.
+- Added static/manual Fixed Stars catalog fixtures and tests.
+- Added 13 manually verified active rows from Vronsky Table 18: Алголь, Альдебаран, Ригель, Бетельгейзе, Сириус, Канопус, Регул, Спика, Арктур, Антарес, Вега, Альтаир and Фомальгаут.
+- Preserved Vronsky 1950 / 1970 / 1990 source columns and 1990 as the initial reference epoch.
+- Preserved source policy, global conjunction orb `1°00′` and first target policy natal planets + ASC / MC / DSC / IC.
+- No position / epoch engine, precession implementation, conjunction engine, target resolver, UI, debug, provider changes, package changes, PWA cache changes, OCR import, rows from memory or interpretations were added.
+- Next active task is Task 14.4 — Fixed Star Position / Epoch Engine, but it was not started.
+
 ## 2026-06-10 — Complete Task 14.2 Fixed Stars Source / Catalog / Orb Policy
 
 - Added `FIXED_STARS_SOURCE_DECISION.md`.
