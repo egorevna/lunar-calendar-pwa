@@ -27,6 +27,8 @@ Task 14.3 implements `src/fixedStarsData.js` as a data-only source/catalog modul
 
 Task 14.4 implements `src/fixedStarPositions.js` as a pure Fixed Star position / epoch helper. It calculates tropical zodiac positions from source-tracked Vronsky 1950 / 1970 / 1990 columns using exact source epochs, explicit interpolation, explicit extrapolation and wrap-around handling.
 
+Task 14.10 implements `src/fixedStarsDebug.js` as a safe Fixed Stars debug / QA guardrails helper for `?debug=1`. It exposes catalog/policy/pipeline counts and statuses only, without raw profile data, provider payloads, full arrays or interpretations.
+
 There is currently no `src/fixedStars.js` or `src/fixedStarsForProfile.js`.
 
 Completed Sprint 13 strategy docs:
@@ -236,7 +238,7 @@ Responsibilities:
 - renders the collapsible `Особые точки карты` block inside `Мои карты` through `src/profileUi.js` and `src/specialPointsForProfile.js` when Special Points inputs are ready
 - renders the collapsible `Неподвижные звезды` block inside `Мои карты` through `src/profileUi.js`, `src/fixedStarConjunctions.js` and `src/fixedStarsDisplay.js` when Fixed Star conjunction checks are available
 - renders the compact `Лично для меня` dashboard block through `src/personalContext.js`, `src/personalRecommendations.js`, and `src/profileUi.js`
-- passes safe profile summary state, Houses UI debug state and Arabic Parts UI debug state into the hidden debug panel only when `?debug=1`
+- passes safe profile summary state, Houses UI debug state, Arabic Parts UI debug state, Special Points debug state and Fixed Stars debug state into the hidden debug panel only when `?debug=1`
 
 `src/app.js` is currently the composition layer.
 
@@ -1030,6 +1032,21 @@ Current responsibilities:
 
 This module does not calculate conjunctions, calculate Fixed Star positions, resolve targets, import catalog rows, render UI/debug, read profiles, localStorage or DOM, call provider modules, import runtime Swiss Ephemeris or Astronomy Engine, create `src/fixedStars.js`, expose raw distances/longitudes/full arrays, or include interpretations, mythology text, predictive text, transits or ritual scoring.
 
+## `src/fixedStarsDebug.js`
+
+Defines the safe Sprint 14 Fixed Stars debug / QA guardrails helper for `?debug=1`.
+
+Current responsibilities:
+
+- build a compact Fixed Stars debug snapshot with catalog, policy and pipeline statuses/counts;
+- expose source key, active/candidate row counts, source columns and initial reference epoch;
+- expose conjunction-only relationship policy, global orb policy and active/deferred target set summaries;
+- summarize Fixed Star positions, target resolver, conjunction and display readiness by status/count only;
+- expose guardrail booleans for no interpretations, no deferred targets active, no non-conjunction relationships and no raw profile data;
+- provide a formatter for the existing debug panel.
+
+This module does not change catalog rows, position policy, target policy, conjunction/orb policy or normal UI behavior. It does not expose raw birth data, UTC, raw timezone values, coordinates, full profile JSON, provider payloads, full catalog/target/position/conjunction arrays or hit rows. It does not create `src/fixedStars.js`, does not add interpretations and does not import runtime Swiss Ephemeris or Astronomy Engine.
+
 ## `src/degreeRulersStarOfMagiData.js`
 
 Defines the source-tracked Sprint 10 Degree Rulers Table 6 / Star of the Magi dataset.
@@ -1627,7 +1644,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v94
+lunar-calendar-v95
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -1787,6 +1804,8 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 43d. `src/fixedStarsDisplay.js` formats already calculated Fixed Star conjunction hits, ready/noHits/notReady states and safe source/orb notes for UI; it does not calculate conjunctions, resolve targets, calculate positions, render UI/debug, expose raw arrays or add interpretations.
 
 43e. The `Неподвижные звезды` UI block is rendered inside `Мои карты` after `Особые точки карты`. It is collapsed by default, shows conjunction hits / noHits / partial / notReady states, renders source/orb notes once at the bottom, and does not add debug or interpretations.
+
+43f. `src/fixedStarsDebug.js` builds safe Fixed Stars debug / QA guardrail snapshots for `?debug=1`; it exposes only catalog/policy/pipeline counts, statuses and guardrail booleans and does not expose raw profile data, full arrays, provider payloads or interpretations.
 
 44. `src/degreeRulersStarOfMagiData.js` defines the source-tracked Sprint 10 Degree Rulers Table 6 / Star of the Magi dataset with 360 verified rows, integer degree indexes, septener-only rulers and deferred system / feature metadata; it does not perform degree lookup or render UI.
 
@@ -2183,6 +2202,7 @@ Testing note:
 - `test/fixedStarsValidation.test.js` cross-checks the Fixed Stars foundation across catalog data, position/epoch behavior, target resolver policy, conjunction/orb behavior, privacy exclusions and runtime/file boundaries without adding a production module, display helper, UI, debug or interpretations.
 - `test/fixedStarsDisplay.test.js` validates the pure Fixed Stars display helper, including formatted conjunction hit rows, ready/noHits/notReady display states, safe source/orb notes, privacy exclusions and strict display-only boundaries.
 - `test/fixedStarsUi.test.js` validates the user-facing Fixed Stars UI view-model, including ready hits, noHits, partial and notReady states, one-time source/orb notes, privacy exclusions and no interpretation text.
+- `test/fixedStarsDebug.test.js` validates the safe Fixed Stars debug helper, including catalog/policy/pipeline counts, formatter rows, privacy exclusions and strict runtime/file boundaries.
 - `NATAL_PROVIDER_VALIDATION_REPORT.md` records the provider-layer validation summary; it does not enable user-facing natal values.
 - if personal data is added later, debug output must follow `PRIVACY_RULES.md`
 
@@ -2203,7 +2223,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v94
+lunar-calendar-v95
 ```
 
 Important operational rule:
@@ -2507,7 +2527,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v94
+lunar-calendar-v95
 ```
 
 If this value changes in `sw.js`, update this section.

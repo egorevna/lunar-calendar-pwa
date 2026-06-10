@@ -125,6 +125,8 @@ Arabic Parts debug must show status/counts/capabilities only. It may show active
 
 Special Points debug must show status/readiness/source statuses/counts/capabilities only. It may show active profile id/name, active/deferred source keys, Selena point type and privacy flags, but must not expose raw birth data, UTC, raw timezone values, raw coordinates, raw point/cusp longitudes, provider payloads, full profile JSON, or full points/assignments/cusps arrays.
 
+Fixed Stars debug must show catalog/policy/pipeline statuses, counts and guardrails only. It must not expose raw birth data, UTC, raw timezone values, coordinates, provider payloads, full profile JSON, full catalog/target/position/conjunction arrays, raw hit rows, or interpretations.
+
 ## Future Sync Rule
 
 If cloud sync is ever added, it must include:

@@ -4262,9 +4262,36 @@ Result:
 
 Next active task:
 
-- Task 14.10 — Fixed Stars Debug / QA Guardrails.
+- Task 14.10 — Fixed Stars Debug / QA Guardrails. Completed below.
 
-Task 14.10 is not started.
+Task 14.10 is now closed below.
+Do not start Sprint 15 or later.
+
+## Task 14.10 — Fixed Stars Debug / QA Guardrails
+
+Status: done
+
+Goal:
+
+Add safe debug / QA guardrails for Fixed Stars.
+
+Result:
+
+- Added pure `src/fixedStarsDebug.js`.
+- Added `test/fixedStarsDebug.test.js`.
+- Added `Fixed Stars Debug` to the existing `?debug=1` debug panel only.
+- Debug exposes safe catalog/policy/pipeline counts and statuses: active/candidate row counts, source key, source columns, reference epoch, conjunction/orb policy, active/deferred target sets, positions/targets/conjunction/display statuses and hit/display counts.
+- Debug guardrails report no interpretations, no deferred targets active, no non-conjunction relationships and no raw profile data.
+- Debug output does not expose raw birth data, timezone values, UTC, raw coordinates, full profile JSON, provider payloads, full catalog/target/position/conjunction arrays or hit rows.
+- Normal `Неподвижные звезды` UI behavior was not changed.
+- Bumped PWA cache to `lunar-calendar-v95` and cached `src/fixedStarsDebug.js`.
+- No catalog rows, position policy, target policy, conjunction/orb policy, provider calculations, package files, deferred targets, extra relationships or interpretations were changed.
+
+Next active task:
+
+- Task 14.11 — Fixed Stars Final Hardening / Regression.
+
+Task 14.11 is not started.
 Do not start Sprint 15 or later.
 
 # Security Backlog

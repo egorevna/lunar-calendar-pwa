@@ -44,6 +44,7 @@ import {
   isDebugMode,
 } from './debugPanel.js';
 import { getArabicPartsDebugState } from './arabicPartsDebug.js';
+import { buildFixedStarsDebugSnapshotForProfile } from './fixedStarsDebug.js';
 import { getHousesDebugState } from './housesDebug.js';
 import { getSpecialPointsDebugState } from './specialPointsDebug.js';
 import {
@@ -340,6 +341,7 @@ function render() {
     housesUiDebug: shouldShowDebug ? getHousesUiDebugState() : null,
     arabicPartsUiDebug: shouldShowDebug ? getArabicPartsUiDebugState() : null,
     specialPointsUiDebug: shouldShowDebug ? getSpecialPointsUiDebugState() : null,
+    fixedStarsUiDebug: shouldShowDebug ? getFixedStarsUiDebugState() : null,
   });
 }
 
@@ -760,6 +762,14 @@ function getSpecialPointsUiDebugState() {
   return getSpecialPointsDebugState(activeProfile, {
     collapsedState: !activeProfileId || expandedSpecialPointsProfileId !== activeProfileId,
   });
+}
+
+function getFixedStarsUiDebugState() {
+  const profiles = loadProfiles();
+  const activeProfileId = getActiveProfileId();
+  const activeProfile = profiles.find((profile) => profile.id === activeProfileId) ?? null;
+
+  return buildFixedStarsDebugSnapshotForProfile(activeProfile);
 }
 
 function describePersonalDebugMissingFields(fields = []) {

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lunar-calendar-v94';
+const CACHE_NAME = 'lunar-calendar-v95';
 const ASSETS = [
   './',
   'index.html',
@@ -52,6 +52,7 @@ const ASSETS = [
   'src/specialPointsDebug.js',
   'src/specialPointsDisplay.js',
   'src/fixedStarConjunctions.js',
+  'src/fixedStarsDebug.js',
   'src/fixedStarsDisplay.js',
   'src/fixedStarPositions.js',
   'src/fixedStarTargets.js',

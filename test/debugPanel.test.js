@@ -723,6 +723,7 @@ test('ordinary markup does not contain provider validation debug details', () =>
   assert.equal(markup.includes('Houses / ASC / MC UI Debug'), false);
   assert.equal(markup.includes('Arabic Parts UI Debug'), false);
   assert.equal(markup.includes('Special Points UI Debug'), false);
+  assert.equal(markup.includes('Fixed Stars Debug'), false);
   assert.equal(markup.includes('longitudeValidation: passed'), false);
   assert.equal(markup.includes('speedValidation: passed'), false);
   assert.equal(markup.includes('retrogradeValidation: passed'), false);
@@ -1161,6 +1162,107 @@ test('debug panel omits Special Points UI debug section when no safe state is pr
   });
 
   assert.equal(text.includes('Special Points UI Debug'), false);
+});
+
+test('debug panel shows safe Fixed Stars debug section when safe state is provided', () => {
+  const text = describeDebugPanel({
+    now: new Date('2026-05-15T00:40:00+03:00'),
+    fixedStarsUiDebug: {
+      status: 'ready',
+      title: 'Неподвижные звезды',
+      debugTitle: 'Fixed Stars Debug',
+      catalog: {
+        sourceKey: 'vronsky-table-18-fixed-stars',
+        activeRowCount: 13,
+        candidateRowCount: 0,
+        initialReferenceEpoch: 1990,
+        sourceColumns: ['1950', '1970', '1990'],
+      },
+      policy: {
+        relationship: 'conjunction',
+        orbPolicyKey: 'fixed-stars-global-conjunction-orb-1deg',
+        orbDegrees: 1,
+        activeTargetSets: ['natal-planets', 'angles'],
+        deferredTargetSets: ['house-cusps', 'lunar-nodes', 'lilith'],
+      },
+      pipeline: {
+        positionsStatus: 'ready',
+        positionsCount: 13,
+        targetsStatus: 'partial',
+        targetCount: 4,
+        conjunctionStatus: 'ready',
+        hitCount: 1,
+        displayStatus: 'ready',
+        displayItemCount: 1,
+      },
+      guardrails: {
+        noInterpretations: true,
+        noDeferredTargetsActive: true,
+        noNonConjunctionRelationships: true,
+        noRawProfileData: true,
+      },
+      limitations: ['Fixed Stars Debug показывает только безопасные статусы и счетчики.'],
+    },
+  });
+  const section = text
+    .split('\n\n')
+    .find((item) => item.startsWith('## Fixed Stars Debug'));
+
+  assert.equal(text.includes('Fixed Stars Debug'), true);
+  assert.equal(section.includes('sourceKey: vronsky-table-18-fixed-stars'), true);
+  assert.equal(section.includes('activeRows: 13'), true);
+  assert.equal(section.includes('candidateRows: 0'), true);
+  assert.equal(section.includes('initialReferenceEpoch: 1990'), true);
+  assert.equal(section.includes('sourceColumns: 1950, 1970, 1990'), true);
+  assert.equal(section.includes('relationship: conjunction'), true);
+  assert.equal(section.includes('orbPolicyKey: fixed-stars-global-conjunction-orb-1deg'), true);
+  assert.equal(section.includes('orbDegrees: 1'), true);
+  assert.equal(section.includes('activeTargetSets: natal-planets, angles'), true);
+  assert.equal(section.includes('deferredTargetSets: house-cusps, lunar-nodes, lilith'), true);
+  assert.equal(section.includes('positionsStatus: ready'), true);
+  assert.equal(section.includes('positionsCount: 13'), true);
+  assert.equal(section.includes('targetsStatus: partial'), true);
+  assert.equal(section.includes('targetCount: 4'), true);
+  assert.equal(section.includes('conjunctionStatus: ready'), true);
+  assert.equal(section.includes('hitCount: 1'), true);
+  assert.equal(section.includes('displayStatus: ready'), true);
+  assert.equal(section.includes('displayItemCount: 1'), true);
+  assert.equal(section.includes('noInterpretations: yes'), true);
+  assert.equal(section.includes('noDeferredTargetsActive: yes'), true);
+  assert.equal(section.includes('noNonConjunctionRelationships: yes'), true);
+  assert.equal(section.includes('noRawProfileData: yes'), true);
+
+  [
+    'birthDate',
+    'birthTime',
+    'utcDateTime',
+    'Europe/Moscow',
+    'timezone',
+    'latitude',
+    'longitude',
+    'coordinates',
+    'providerPayload',
+    'catalogDump',
+    'targetArray',
+    'positionArray',
+    'hits: [',
+    'Регул —',
+    'миф',
+    'карм',
+    'фаталь',
+    'судьб',
+    'ритуал',
+  ].forEach((fragment) => {
+    assert.equal(section.includes(fragment), false, fragment);
+  });
+});
+
+test('debug panel omits Fixed Stars debug section when no safe state is provided', () => {
+  const text = describeDebugPanel({
+    now: new Date('2026-05-15T00:40:00+03:00'),
+  });
+
+  assert.equal(text.includes('Fixed Stars Debug'), false);
 });
 
 test('natal provider validation report documents provider validation without private data', () => {

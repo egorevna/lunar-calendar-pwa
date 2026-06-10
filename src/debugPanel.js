@@ -5,9 +5,10 @@ import { createNatalAspectsDebugSummaryFromStorage } from './natalAspectsDebug.j
 import { createNatalPlanetsDebugSummaryFromStorage } from './natalPlanetsDebug.js';
 import { getNatalProviderValidationSummary } from './natalProviderValidationSummary.js';
 import { getPlanetaryProviderCapabilities } from './planetaryPositionProvider.js';
+import { formatFixedStarsDebugSnapshot } from './fixedStarsDebug.js';
 import { formatAspect, formatPlanet } from './vocDisplay.js';
 
-export const APP_CACHE_VERSION = 'lunar-calendar-v92';
+export const APP_CACHE_VERSION = 'lunar-calendar-v95';
 
 export function isDebugMode(search = window.location.search) {
   return new URLSearchParams(search).get('debug') === '1';
@@ -34,6 +35,7 @@ export function describeDebugPanel(context = {}) {
     housesUiDebug,
     arabicPartsUiDebug,
     specialPointsUiDebug,
+    fixedStarsUiDebug,
   } = context;
 
   return [
@@ -96,6 +98,7 @@ export function describeDebugPanel(context = {}) {
     formatHousesUiDebug(housesUiDebug),
     formatArabicPartsUiDebug(arabicPartsUiDebug),
     formatSpecialPointsUiDebug(specialPointsUiDebug),
+    formatFixedStarsUiDebug(fixedStarsUiDebug),
     formatBestWindowsDebug(bestWindowsDebug),
   ].filter(Boolean).join('\n\n');
 }
@@ -616,6 +619,42 @@ function formatSpecialPointsUiDebug(debug) {
     `rawLongitudesExposed: ${formatDebugBoolean(privacy.rawLongitudesExposed)}`,
     `fullProfileJsonExposed: ${formatDebugBoolean(privacy.fullProfileJsonExposed)}`,
     `providerPayloadExposed: ${formatDebugBoolean(privacy.providerPayloadExposed)}`,
+  ]);
+}
+
+function formatFixedStarsUiDebug(debug) {
+  if (!debug) return '';
+
+  const snapshot = formatFixedStarsDebugSnapshot(debug);
+  const rowsByLabel = new Map(snapshot.rows ?? []);
+  const catalog = debug.catalog ?? {};
+  const policy = debug.policy ?? {};
+  const pipeline = debug.pipeline ?? {};
+  const guardrails = debug.guardrails ?? {};
+
+  return formatSection(snapshot.title ?? 'Fixed Stars Debug', [
+    `sourceKey: ${catalog.sourceKey ?? rowsByLabel.get('Source') ?? 'unknown'}`,
+    `activeRows: ${catalog.activeRowCount ?? rowsByLabel.get('Active rows') ?? 0}`,
+    `candidateRows: ${catalog.candidateRowCount ?? rowsByLabel.get('Candidate rows') ?? 0}`,
+    `initialReferenceEpoch: ${catalog.initialReferenceEpoch ?? rowsByLabel.get('Initial reference epoch') ?? 'unknown'}`,
+    `sourceColumns: ${formatList(catalog.sourceColumns)}`,
+    `relationship: ${policy.relationship ?? rowsByLabel.get('Relationship') ?? 'unknown'}`,
+    `orbPolicyKey: ${policy.orbPolicyKey ?? rowsByLabel.get('Orb policy') ?? 'unknown'}`,
+    `orbDegrees: ${policy.orbDegrees ?? 'unknown'}`,
+    `activeTargetSets: ${formatList(policy.activeTargetSets)}`,
+    `deferredTargetSets: ${formatList(policy.deferredTargetSets)}`,
+    `positionsStatus: ${pipeline.positionsStatus ?? 'unknown'}`,
+    `positionsCount: ${pipeline.positionsCount ?? 0}`,
+    `targetsStatus: ${pipeline.targetsStatus ?? 'unknown'}`,
+    `targetCount: ${pipeline.targetCount ?? 0}`,
+    `conjunctionStatus: ${pipeline.conjunctionStatus ?? 'unknown'}`,
+    `hitCount: ${pipeline.hitCount ?? 0}`,
+    `displayStatus: ${pipeline.displayStatus ?? 'unknown'}`,
+    `displayItemCount: ${pipeline.displayItemCount ?? 0}`,
+    `noInterpretations: ${formatDebugBoolean(guardrails.noInterpretations)}`,
+    `noDeferredTargetsActive: ${formatDebugBoolean(guardrails.noDeferredTargetsActive)}`,
+    `noNonConjunctionRelationships: ${formatDebugBoolean(guardrails.noNonConjunctionRelationships)}`,
+    `noRawProfileData: ${formatDebugBoolean(guardrails.noRawProfileData)}`,
   ]);
 }
 

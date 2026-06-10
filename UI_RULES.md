@@ -660,6 +660,8 @@ Rules:
 - no interpretations, mythology, karmic/fatalistic copy, predictions, ritual advice, transits or debug payloads;
 - calculated output must not show raw birth date, birth time, UTC, timezone value, raw coordinates, raw longitudes, raw catalog/target/position arrays, full profile JSON or provider payloads.
 
+`?debug=1` may include `Fixed Stars Debug`, but only as safe catalog/policy/pipeline statuses, counts and guardrails. It must not appear in normal UI, must not change normal `Неподвижные звезды` behavior, and must not expose raw birth data, coordinates, UTC, provider payloads, full catalog/target/position/conjunction arrays or interpretations.
+
 ## Zodiac Position Formatting
 
 User-facing astrology positions such as ASC, MC and house cusps display sign, degree, minute and second:

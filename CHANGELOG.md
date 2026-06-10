@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-06-10 — Complete Task 14.10 Fixed Stars Debug / QA Guardrails
+
+- Added pure `src/fixedStarsDebug.js`.
+- Added `test/fixedStarsDebug.test.js`.
+- Added `Fixed Stars Debug` to the existing `?debug=1` debug panel only.
+- Debug shows safe catalog, policy and pipeline counts/statuses: active/candidate rows, source key, source columns, reference epoch, conjunction/orb policy, active/deferred target sets and hit/display counts.
+- Added QA guardrails for no raw birth data, coordinates, UTC, provider payloads, full catalog/target/position/conjunction arrays, deferred targets, non-conjunction relationships or interpretations.
+- Bumped PWA cache to `lunar-calendar-v95` and cached `src/fixedStarsDebug.js`.
+- No catalog, position, target resolver, conjunction/orb policy, normal UI behavior, provider, package or interpretation changes were added.
+- Next active task is Task 14.11 — Fixed Stars Final Hardening / Regression, but it was not started.
+
 ## 2026-06-10 — Complete Task 14.9 Fixed Stars UI
 
 - Added the collapsible user-facing `Неподвижные звезды` UI block inside `Мои карты` after `Особые точки карты`.
