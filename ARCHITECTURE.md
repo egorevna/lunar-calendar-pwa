@@ -27,7 +27,7 @@ Task 14.3 implements `src/fixedStarsData.js` as a data-only source/catalog modul
 
 Task 14.4 implements `src/fixedStarPositions.js` as a pure Fixed Star position / epoch helper. It calculates tropical zodiac positions from source-tracked Vronsky 1950 / 1970 / 1990 columns using exact source epochs, explicit interpolation, explicit extrapolation and wrap-around handling.
 
-There is currently no `src/fixedStars.js`, `src/fixedStarsDisplay.js` or `src/fixedStarsForProfile.js`.
+There is currently no `src/fixedStars.js` or `src/fixedStarsForProfile.js`.
 
 Completed Sprint 13 strategy docs:
 
@@ -1015,6 +1015,20 @@ Current responsibilities:
 
 This module depends on `src/fixedStarPositions.js`, `src/fixedStarTargets.js`, `src/fixedStarsData.js`, `src/birthDateTime.js` and `src/astroMath.js`. It does not calculate Fixed Star catalog rows, does not resolve target logic when ready targets are provided, does not calculate opposition/square/trine/sextile/paran/heliacal relationships, does not activate deferred targets, does not render display/UI/debug, does not read localStorage or DOM, does not import runtime Swiss Ephemeris or Astronomy Engine, does not create `src/fixedStars.js`, and does not include interpretations, mythology text, predictive text, transits or ritual scoring.
 
+## `src/fixedStarsDisplay.js`
+
+Defines the pure Sprint 14 Fixed Stars display helper.
+
+Current responsibilities:
+
+- format already calculated Fixed Star conjunction hit rows into safe user-facing text;
+- preserve engine hit order while filtering invalid or unsafe hit rows;
+- format ready, noHits and notReady display states for the future `Неподвижные звезды` UI block;
+- expose safe source and orb notes for Vronsky Table 18 and the global `1°00′` conjunction orb;
+- expose summary, displayability and limitation helpers.
+
+This module does not calculate conjunctions, calculate Fixed Star positions, resolve targets, import catalog rows, render UI/debug, read profiles, localStorage or DOM, call provider modules, import runtime Swiss Ephemeris or Astronomy Engine, create `src/fixedStars.js`, expose raw distances/longitudes/full arrays, or include interpretations, mythology text, predictive text, transits or ritual scoring.
+
 ## `src/degreeRulersStarOfMagiData.js`
 
 Defines the source-tracked Sprint 10 Degree Rulers Table 6 / Star of the Magi dataset.
@@ -1768,6 +1782,8 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 43c. `src/fixedStarConjunctions.js` calculates pure Fixed Star conjunction hits from already calculated Fixed Star positions and resolved targets using the global `1°00′` orb, shortest angular distance, wrap-around support and inclusive boundary policy; it does not render UI/debug, calculate other relationships, activate deferred targets or add interpretations.
 
+43d. `src/fixedStarsDisplay.js` formats already calculated Fixed Star conjunction hits, ready/noHits/notReady states and safe source/orb notes for future UI; it does not calculate conjunctions, resolve targets, calculate positions, render UI/debug, expose raw arrays or add interpretations.
+
 44. `src/degreeRulersStarOfMagiData.js` defines the source-tracked Sprint 10 Degree Rulers Table 6 / Star of the Magi dataset with 360 verified rows, integer degree indexes, septener-only rulers and deferred system / feature metadata; it does not perform degree lookup or render UI.
 
 45. `src/degreeRulersVronskyData.js` defines the source-tracked Sprint 10 Degree Rulers Table 7 / Vronsky dataset with 360 verified rows, source tokens, structured `rulers[]`, per-ruler retrograde markers, outer planets, Chiron and Proserpina; it does not perform degree lookup or render UI.
@@ -2161,6 +2177,7 @@ Testing note:
 - `test/specialPointsForProfile.test.js` validates the profile-level Special Points view-model helper, including fallback states, ready/partial profile behavior, optional Lunar Nodes house labels, Selena fictitious / hypothetical note, privacy exclusions and no provider/native astronomy imports.
 - `test/fixtures/fixedStarsValidationFixtures.js` contains test-only manual Fixed Stars validation fixtures for catalog keys, source policy, epoch columns, position modes, target policy, conjunction boundaries, privacy and strict exclusions. It is not used by production code.
 - `test/fixedStarsValidation.test.js` cross-checks the Fixed Stars foundation across catalog data, position/epoch behavior, target resolver policy, conjunction/orb behavior, privacy exclusions and runtime/file boundaries without adding a production module, display helper, UI, debug or interpretations.
+- `test/fixedStarsDisplay.test.js` validates the pure Fixed Stars display helper, including formatted conjunction hit rows, ready/noHits/notReady display states, safe source/orb notes, privacy exclusions and strict display-only boundaries.
 - `NATAL_PROVIDER_VALIDATION_REPORT.md` records the provider-layer validation summary; it does not enable user-facing natal values.
 - if personal data is added later, debug output must follow `PRIVACY_RULES.md`
 

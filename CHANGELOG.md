@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-06-10 — Complete Task 14.8 Fixed Stars Display Helper
+
+- Added pure `src/fixedStarsDisplay.js`.
+- Added `test/fixedStarsDisplay.test.js`.
+- Formatted already calculated Fixed Star conjunction hits for future user-facing display.
+- Added ready, noHits and notReady display states, safe source/orb notes and display limitations.
+- Kept the helper display-only: no conjunction calculations, target resolution, position calculations, UI, debug, provider changes, package changes, PWA cache changes or interpretations were added.
+- Next active task is Task 14.9 — Fixed Stars UI, but it was not started.
+
 ## 2026-06-10 — Complete Task 14.7 Fixed Star Validation / Cross-Checks
 
 - Added static/manual Fixed Stars validation fixtures and tests.

@@ -4209,9 +4209,35 @@ Result:
 
 Next active task:
 
-- Task 14.8 — Fixed Stars Display Helper.
+- Task 14.8 — Fixed Stars Display Helper. Completed below.
 
-Task 14.8 is not started.
+Task 14.8 is now closed below.
+Do not start Sprint 15 or later.
+
+## Task 14.8 — Fixed Stars Display Helper
+
+Status: done
+
+Goal:
+
+Create a pure display helper for already calculated Fixed Star conjunction hits.
+
+Result:
+
+- Added pure `src/fixedStarsDisplay.js`.
+- Added `test/fixedStarsDisplay.test.js`.
+- Formatted already calculated fixed-star conjunction hits as safe user-facing rows.
+- Added ready, noHits and notReady display states for the future `Неподвижные звезды` UI block.
+- Added safe source and orb notes: `Источник: Вронский, Таблица 18.` and `Орб соединения: 1°00′.`
+- Preserved conjunction-only display scope and global orb policy text.
+- Kept raw distances, raw longitudes, full catalog/target/position arrays, provider payloads and private profile data out of display output.
+- No catalog, position, target resolver, conjunction engine, UI, debug, provider, package, PWA cache or interpretation changes were added.
+
+Next active task:
+
+- Task 14.9 — Fixed Stars UI.
+
+Task 14.9 is not started.
 Do not start Sprint 15 or later.
 
 # Security Backlog
