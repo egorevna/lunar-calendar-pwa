@@ -17,10 +17,13 @@ Current Sprint 14 strategy docs:
 - `SPRINT_14_PLAN.md`
 - `FIXED_STARS_STRATEGY.md`
 - `FIXED_STARS_SOURCE_POLICY.md`
+- `FIXED_STARS_SOURCE_DECISION.md`
 
 These documents define the Fixed Stars strategy, source gating, catalog/source decision boundaries, coordinate / epoch / precession requirements, explicit orb policy and conjunction-only initial policy.
 
-Task 14.1 does not implement Fixed Stars modules. There is currently no `src/fixedStars.js`, `src/fixedStarsData.js`, `src/fixedStarsDisplay.js` or `src/fixedStarsForProfile.js`.
+Task 14.2 selects Vronsky Table 18 as primary source, Swiss / modern validation where possible, global conjunction orb `1°00′`, and natal planets + ASC / MC / DSC / IC as the first target set.
+
+Task 14.1 and Task 14.2 do not implement Fixed Stars modules. There is currently no `src/fixedStars.js`, `src/fixedStarsData.js`, `src/fixedStarsDisplay.js` or `src/fixedStarsForProfile.js`.
 
 Completed Sprint 13 strategy docs:
 

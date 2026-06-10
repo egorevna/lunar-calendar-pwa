@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-06-10 — Complete Task 14.2 Fixed Stars Source / Catalog / Orb Policy
+
+- Added `FIXED_STARS_SOURCE_DECISION.md`.
+- Selected `Вронский, Таблица 18 — Неподвижные звезды` as the primary Fixed Stars astrology source.
+- Set validation policy to Vronsky primary with Swiss / modern fixed-star validation where possible.
+- Recorded candidate-only initial subset: Алголь, Альдебаран, Ригель, Бетельгейзе, Сириус, Канопус, Регул, Спика, Арктур, Антарес, Вега, Альтаир and Фомальгаут.
+- Set coordinate / epoch policy to preserve Vronsky 1950 / 1970 / 1990 columns where available, use the 1990 column as initial reference epoch for verified source rows, and require Task 14.4 validation before conjunction detection.
+- Set conjunction-only relationship policy, global conjunction orb `1°00′`, and first target set as natal planets + ASC / MC / DSC / IC.
+- No code changes, Fixed Stars catalog, engine, UI, debug, provider changes, package changes or PWA cache changes were added.
+- Next active task is Task 14.3 — Fixed Star Catalog Dataset / Fixtures, but it was not started.
+
 ## 2026-06-03 — Start Sprint 14 Fixed Stars Foundation
 
 - Started Sprint 14 — Fixed Stars Foundation.

@@ -3259,10 +3259,10 @@ Sprint 11 status:
 
 Next active task at the current checkpoint:
 
-- Sprint 13 is closed below; Task 14.1 is closed below; current next active task is Task 14.2 — Fixed Stars Source / Catalog / Orb Policy.
+- Sprint 13 is closed below; Task 14.1 and Task 14.2 are closed below; current next active task is Task 14.3 — Fixed Star Catalog Dataset / Fixtures.
 
 Task 13.12 is now closed.
-Do not start Task 14.2 until explicitly requested.
+Do not start Task 14.3 until explicitly requested.
 
 ## Task 11.10-fix — Zodiac Position Minute Rounding
 
@@ -4007,7 +4007,7 @@ Sprint 14 guardrails:
 - no catalog row active without source verification;
 - no hidden orb;
 - no mixed epochs;
-- conjunction-only as the initial relationship type unless Task 14.2 decides otherwise;
+- conjunction-only as the initial relationship type;
 - no interpretations, mythology text, predictive claims, ritual scoring or fatalistic text;
 - no Fixed Stars calculation engine in Task 14.1.
 
@@ -4038,9 +4038,41 @@ Result:
 
 Next active task:
 
-- Task 14.2 — Fixed Stars Source / Catalog / Orb Policy.
+- Task 14.2 — Fixed Stars Source / Catalog / Orb Policy. Completed below.
 
-Task 14.2 is not started.
+Task 14.2 is now closed below.
+Do not start Sprint 15 or later.
+
+## Task 14.2 — Fixed Stars Source / Catalog / Orb Policy
+
+Status: done
+
+Goal:
+
+Decide the Sprint 14 Fixed Stars source, catalog, coordinate / epoch, orb and target policies before any dataset or engine implementation.
+
+Result:
+
+- Added `FIXED_STARS_SOURCE_DECISION.md`.
+- Selected primary astrology source: `Вронский, Таблица 18 — Неподвижные звезды`.
+- Selected source system key: `fixed-stars-vronsky-table-18`.
+- Selected validation policy: Vronsky primary + Swiss / modern fixed-star validation where possible.
+- Confirmed local Swiss Ephemeris fixed-star support may be used only as a dev/test oracle for static/manual validation, not PWA runtime.
+- Confirmed `astronomy-engine` has user-defined star support but no approved fixed-star catalog source for this project.
+- Set active catalog policy: no active rows until Task 14.3 manually verifies source-tracked dataset rows.
+- Recorded candidate-only initial subset: Алголь, Альдебаран, Ригель, Бетельгейзе, Сириус, Канопус, Регул, Спика, Арктур, Антарес, Вега, Альтаир, Фомальгаут.
+- Set coordinate / epoch policy: preserve Vronsky 1950 / 1970 / 1990 columns where available, use Vronsky 1990 as initial reference epoch for verified source rows, and require Task 14.4 to validate date-of-birth tropical position handling before conjunction detection.
+- Set relationship policy: conjunction only.
+- Set orb policy: global conjunction orb `1°00′`, policy key `fixed-stars-global-conjunction-orb-1deg`; per-star and per-target overrides deferred.
+- Set first target policy: natal planets + ASC / MC / DSC / IC.
+- Deferred house cusps, Lunar Nodes, Lilith, Selena, Pars Fortuna, Lot of Spirit, Arabic Parts and custom points.
+- No calculation code, source code, tests, UI, PWA cache, provider calculations, package files, OCR import or generated ephemeris data were changed.
+
+Next active task:
+
+- Task 14.3 — Fixed Star Catalog Dataset / Fixtures.
+
+Task 14.3 is not started.
 Do not start Sprint 15 or later.
 
 # Security Backlog

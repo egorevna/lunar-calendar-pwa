@@ -844,21 +844,33 @@ Policy:
 - no fake Selena zodiac position is allowed;
 - no interpretations, karmic/fatalistic text, guardian-angel language, ritual advice or ritual scoring are allowed.
 
-## Sprint 14 — Fixed Stars Policy
+## Fixed Stars Policy
 
-Sprint 14 starts a controlled Fixed Stars foundation. Task 14.1 is strategy/status only and does not add a Fixed Stars engine, catalog dataset, UI, debug section or interpretations.
+Sprint 14 starts a controlled Fixed Stars foundation. Task 14.1 is strategy/status only. Task 14.2 defines the source/catalog/orb policy. Neither task adds a Fixed Stars engine, catalog dataset, UI, debug section or interpretations.
 
 Policy:
 
 - Fixed Stars are source-gated.
+- Primary astrology source: `Вронский, Таблица 18 — Неподвижные звезды`.
+- Primary source system key: `fixed-stars-vronsky-table-18`.
+- Validation source: Swiss / modern fixed-star validation where possible.
+- Swiss / modern validation supports identity and coordinate checks, but must not replace the Vronsky primary source silently.
 - No fixed star catalog row may be activated from memory.
+- No fixed star catalog row is active until Task 14.3 manually verifies source-tracked dataset rows.
+- Candidate initial subset: Алголь, Альдебаран, Ригель, Бетельгейзе, Сириус, Канопус, Регул, Спика, Арктур, Антарес, Вега, Альтаир, Фомальгаут.
+- Candidate names are not active rows until Task 14.3 verifies them.
 - Active catalog rows require documented source metadata, coordinate data, epoch / coordinate policy, verification status and active flag.
-- Coordinate / epoch / precession policy must be explicit before implementation.
+- Vronsky 1950 / 1970 / 1990 columns must be preserved where available.
+- The Vronsky 1990 column is the initial reference epoch for verified source rows.
+- Task 14.4 must validate date-of-birth tropical position handling before any conjunction engine runs.
 - The project must not silently mix J2000, date-of-birth, tropical, sidereal or other epoch/coordinate systems.
-- Orb policy must be explicit; no hidden “near star” rule is allowed.
-- Initial relationship policy is conjunction-only unless Task 14.2 explicitly decides otherwise.
+- Orb policy: global conjunction orb `1°00′`, policy key `fixed-stars-global-conjunction-orb-1deg`.
+- No hidden “near star” rule is allowed.
+- Per-star and per-target orb overrides are deferred.
+- Initial relationship policy is conjunction-only.
 - Deferred relationship types include oppositions, squares, trines, parans, heliacal phenomena and star-rise/set calculations.
-- Initial target set must be decided explicitly in Task 14.2 before target resolution or conjunction detection.
+- Initial target set: natal planets + ASC / MC / DSC / IC.
+- Deferred targets: house cusps, Lunar Nodes, Lilith, Selena, Pars Fortuna, Lot of Spirit, Arabic Parts and custom points.
 - User-facing output may eventually show fixed star labels, safe target labels, formatted zodiac positions with seconds and explicit orb text.
 - No interpretations, mythology text, predictive claims, karmic/fatalistic language, ritual advice or ritual scoring are allowed.
 

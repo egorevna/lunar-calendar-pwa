@@ -19,6 +19,23 @@ Task 14.2 must decide:
 
 No source decision means no engine implementation.
 
+## Task 14.2 Decision Snapshot
+
+Task 14.2 records the source/catalog/orb decision in `FIXED_STARS_SOURCE_DECISION.md`.
+
+Resolved policy:
+
+- primary astrology source: `Вронский, Таблица 18 — Неподвижные звезды`;
+- source system key: `fixed-stars-vronsky-table-18`;
+- validation source: Swiss / modern fixed-star validation where possible;
+- active catalog rows: none until Task 14.3 manually verifies source-tracked dataset rows;
+- coordinate / epoch policy: preserve Vronsky 1950 / 1970 / 1990 columns where available, use the Vronsky 1990 column as initial reference epoch for verified source rows, and require Task 14.4 to validate date-of-birth tropical position handling before conjunction detection;
+- relationship policy: conjunction only;
+- orb policy: global conjunction orb `1°00′`;
+- first target set: natal planets + ASC / MC / DSC / IC.
+
+Task 14.2 does not create a catalog dataset, fixed-star position engine, conjunction engine, UI, debug or interpretations.
+
 ## Source Statuses
 
 Allowed statuses:
@@ -125,7 +142,7 @@ Recommended first target set:
 natal planets + chart angles
 ```
 
-Alternative targets such as Lunar Nodes, Lilith, Selena, Pars Fortuna, Lot of Spirit, and house cusps are deferred unless Task 14.2 explicitly activates them.
+Alternative targets such as Lunar Nodes, Lilith, Selena, Pars Fortuna, Lot of Spirit, and house cusps are deferred unless a future explicit source decision activates them.
 
 ## Interpretation Policy
 
