@@ -25,6 +25,8 @@ Task 14.2 selects Vronsky Table 18 as primary source, Swiss / modern validation 
 
 Task 14.3 implements `src/fixedStarsData.js` as a data-only source/catalog module with 13 manually verified active rows from Vronsky Table 18, preserved 1950 / 1970 / 1990 columns and 1990 as the initial reference epoch.
 
+Task 14.4 implements `src/fixedStarPositions.js` as a pure Fixed Star position / epoch helper. It calculates tropical zodiac positions from source-tracked Vronsky 1950 / 1970 / 1990 columns using exact source epochs, explicit interpolation, explicit extrapolation and wrap-around handling.
+
 There is currently no `src/fixedStars.js`, `src/fixedStarsDisplay.js` or `src/fixedStarsForProfile.js`.
 
 Completed Sprint 13 strategy docs:
@@ -962,6 +964,24 @@ Current responsibilities:
 
 This module does not calculate birth-date star positions, precession, conjunctions or targets. It does not read natal planets, profiles, localStorage or DOM, does not call providers, does not import runtime Swiss Ephemeris or Astronomy Engine, and does not include UI, debug, interpretations, mythology text, predictive text, transits or ritual scoring.
 
+## `src/fixedStarPositions.js`
+
+Defines the pure Sprint 14 Fixed Star position / epoch engine for source-tracked Vronsky Table 18 rows.
+
+Current responsibilities:
+
+- calculate a UTC decimal year from a provided UTC date/date string without exposing the raw UTC input in output;
+- calculate one fixed star position from a verified source row or active catalog key;
+- calculate the active source-tracked fixed star positions as a batch;
+- preserve exact Vronsky source epochs 1950 / 1970 / 1990;
+- linearly interpolate dates between 1950–1970 and 1970–1990;
+- linearly extrapolate dates outside 1950–1990 with explicit output flags;
+- unwrap longitudes across 0° Aries before interpolation / extrapolation and normalize the final tropical zodiac longitude;
+- format positions with sign / degree / minute / second and expose safe source / epoch metadata;
+- expose lookup, validation, summary, capability and limitation helpers.
+
+This module depends on `src/fixedStarsData.js` and `src/astroMath.js`. It does not calculate conjunctions, resolve targets, render UI/debug, read profiles, localStorage or DOM, call provider modules, import runtime Swiss Ephemeris or Astronomy Engine, mutate catalog rows, create `src/fixedStars.js`, or include interpretations, mythology text, predictive text, transits or ritual scoring.
+
 ## `src/degreeRulersStarOfMagiData.js`
 
 Defines the source-tracked Sprint 10 Degree Rulers Table 6 / Star of the Magi dataset.
@@ -1707,7 +1727,9 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 42. `src/decansData.js` defines the source-tracked Sprint 10 Decans Star of the Magi / Egyptian tradition dataset with 36 verified rows, septener-only rulers, half-open interval boundaries and deferred system / feature metadata; it does not perform degree lookup or render UI.
 
-43. `src/fixedStarsData.js` defines the source-tracked Sprint 14 Fixed Stars catalog dataset with 13 manually verified active Vronsky Table 18 rows, preserved 1950 / 1970 / 1990 source columns, 1990 initial reference epoch, explicit orb / target / relationship policies and no position or conjunction engine.
+43. `src/fixedStarsData.js` defines the source-tracked Sprint 14 Fixed Stars catalog dataset with 13 manually verified active Vronsky Table 18 rows, preserved 1950 / 1970 / 1990 source columns, 1990 initial reference epoch and explicit orb / target / relationship policies; it does not calculate positions or conjunctions.
+
+43a. `src/fixedStarPositions.js` calculates pure Fixed Star positions from source-tracked Vronsky rows using exact source epochs, explicit interpolation, explicit extrapolation and wrap-around handling; it does not resolve targets, calculate conjunctions, render UI/debug or add interpretations.
 
 44. `src/degreeRulersStarOfMagiData.js` defines the source-tracked Sprint 10 Degree Rulers Table 6 / Star of the Magi dataset with 360 verified rows, integer degree indexes, septener-only rulers and deferred system / feature metadata; it does not perform degree lookup or render UI.
 

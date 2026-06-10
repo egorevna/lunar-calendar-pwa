@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-06-10 — Complete Task 14.4 Fixed Star Position / Epoch Engine
+
+- Added pure `src/fixedStarPositions.js`.
+- Added static/manual Fixed Star position fixtures and tests.
+- Calculated source-tracked Fixed Star positions from preserved Vronsky 1950 / 1970 / 1990 columns.
+- Preserved exact source epochs, used explicit interpolation between 1950–1970 and 1970–1990, and used explicit extrapolation outside 1950–1990.
+- Added wrap-around handling near 0° Aries and formatted tropical zodiac positions with seconds.
+- No conjunction engine, target resolver, display helper, UI, debug, provider changes, package changes, PWA cache changes or interpretations were added.
+- Next active task is Task 14.5 — Fixed Star Target Resolver, but it was not started.
+
 ## 2026-06-10 — Complete Task 14.3 Fixed Star Catalog Dataset / Fixtures
 
 - Added data-only `src/fixedStarsData.js`.

@@ -4097,9 +4097,36 @@ Result:
 
 Next active task:
 
-- Task 14.4 — Fixed Star Position / Epoch Engine.
+- Task 14.4 — Fixed Star Position / Epoch Engine. Completed below.
 
-Task 14.4 is not started.
+Task 14.4 is now closed below.
+Do not start Sprint 15 or later.
+
+## Task 14.4 — Fixed Star Position / Epoch Engine
+
+Status: done
+
+Goal:
+
+Create a pure Fixed Star position / epoch engine for source-tracked Vronsky Table 18 catalog rows.
+
+Result:
+
+- Added pure `src/fixedStarPositions.js`.
+- Added static/manual Fixed Star position fixtures and tests.
+- Calculated birth-date star positions from preserved Vronsky 1950 / 1970 / 1990 source columns.
+- Exact source epochs 1950 / 1970 / 1990 return the preserved source coordinate.
+- Dates between source epochs use explicit linear interpolation.
+- Dates outside 1950–1990 use explicit linear extrapolation with output flags.
+- Wrap-around near 0° Aries is handled by unwrapping source longitudes before interpolation / extrapolation and normalizing the final longitude.
+- Output includes formatted tropical zodiac position with seconds and source/epoch metadata.
+- No conjunction engine, target resolver, display helper, UI, debug, provider changes, package changes, PWA cache changes or interpretations were added.
+
+Next active task:
+
+- Task 14.5 — Fixed Star Target Resolver.
+
+Task 14.5 is not started.
 Do not start Sprint 15 or later.
 
 # Security Backlog

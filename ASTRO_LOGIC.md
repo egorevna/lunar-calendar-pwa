@@ -846,7 +846,7 @@ Policy:
 
 ## Fixed Stars Policy
 
-Sprint 14 starts a controlled Fixed Stars foundation. Task 14.1 is strategy/status only. Task 14.2 defines the source/catalog/orb policy. Task 14.3 adds a source-tracked catalog dataset only. These tasks do not add a Fixed Stars position engine, conjunction engine, UI, debug section or interpretations.
+Sprint 14 starts a controlled Fixed Stars foundation. Task 14.1 is strategy/status only. Task 14.2 defines the source/catalog/orb policy. Task 14.3 adds a source-tracked catalog dataset only. Task 14.4 adds a pure position / epoch engine. These tasks do not add a Fixed Stars conjunction engine, UI, debug section or interpretations.
 
 Policy:
 
@@ -863,7 +863,14 @@ Policy:
 - Vronsky 1950 / 1970 / 1990 columns must be preserved where available.
 - The Vronsky 1990 column is the initial reference epoch for verified source rows.
 - Task 14.3 preserves source coordinates as catalog evidence only; it does not calculate date-of-birth star positions.
-- Task 14.4 must validate date-of-birth tropical position handling before any conjunction engine runs.
+- Task 14.4 adds `src/fixedStarPositions.js` as a pure position / epoch layer for source-tracked rows.
+- Position policy:
+  - exact requested epochs 1950 / 1970 / 1990 use the preserved source coordinate;
+  - dates between 1950–1970 and 1970–1990 use linear interpolation;
+  - dates before 1950 and after 1990 use explicit linear extrapolation with output flags;
+  - longitudes crossing 0° Aries are unwrapped before interpolation / extrapolation and normalized afterward;
+  - output is tropical zodiac longitude with sign / degree / minute / second.
+- The position layer does not resolve natal targets and does not calculate conjunctions.
 - The project must not silently mix J2000, date-of-birth, tropical, sidereal or other epoch/coordinate systems.
 - Orb policy: global conjunction orb `1°00′`, policy key `fixed-stars-global-conjunction-orb-1deg`.
 - No hidden “near star” rule is allowed.
