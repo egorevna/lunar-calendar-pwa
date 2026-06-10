@@ -997,6 +997,24 @@ Current responsibilities:
 
 This module depends on existing safe profile-level helpers (`src/natalPlanetsForProfile.js` and `src/ascMc.js`), `src/fixedStarsData.js` target policy and `src/astroMath.js`. It does not calculate fixed star positions, calculate conjunctions, activate deferred targets, render UI/debug, read localStorage or DOM, import runtime Swiss Ephemeris or Astronomy Engine, create `src/fixedStars.js`, or include interpretations, mythology text, predictive text, transits or ritual scoring.
 
+## `src/fixedStarConjunctions.js`
+
+Defines the pure Sprint 14 Fixed Star conjunction engine.
+
+Current responsibilities:
+
+- expose the active global conjunction orb policy from `src/fixedStarsData.js`;
+- calculate shortest angular distance between a Fixed Star longitude and target longitude;
+- detect conjunction hits only when `distance <= 1°00′`, including exact conjunction and exact orb boundary;
+- support wrap-around across 359° / 0° Aries;
+- calculate safe conjunction hit rows from already calculated Fixed Star positions and resolved targets;
+- calculate batch conjunction results with ready / partial / noHits / notReady behavior;
+- sort hits deterministically by orb ascending, then target order, then Fixed Star catalog/order;
+- expose hit lookup, summary, capability and limitation helpers;
+- provide a profile-level helper that composes existing Fixed Star position and target resolver layers.
+
+This module depends on `src/fixedStarPositions.js`, `src/fixedStarTargets.js`, `src/fixedStarsData.js`, `src/birthDateTime.js` and `src/astroMath.js`. It does not calculate Fixed Star catalog rows, does not resolve target logic when ready targets are provided, does not calculate opposition/square/trine/sextile/paran/heliacal relationships, does not activate deferred targets, does not render display/UI/debug, does not read localStorage or DOM, does not import runtime Swiss Ephemeris or Astronomy Engine, does not create `src/fixedStars.js`, and does not include interpretations, mythology text, predictive text, transits or ritual scoring.
+
 ## `src/degreeRulersStarOfMagiData.js`
 
 Defines the source-tracked Sprint 10 Degree Rulers Table 6 / Star of the Magi dataset.
@@ -1747,6 +1765,8 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 43a. `src/fixedStarPositions.js` calculates pure Fixed Star positions from source-tracked Vronsky rows using exact source epochs, explicit interpolation, explicit extrapolation and wrap-around handling; it does not resolve targets, calculate conjunctions, render UI/debug or add interpretations.
 
 43b. `src/fixedStarTargets.js` resolves pure Fixed Star target rows from ready natal planets and ASC / MC / DSC / IC angle results, preserving ready / partial / notReady states and deferred target metadata; it does not calculate fixed star positions or conjunctions.
+
+43c. `src/fixedStarConjunctions.js` calculates pure Fixed Star conjunction hits from already calculated Fixed Star positions and resolved targets using the global `1°00′` orb, shortest angular distance, wrap-around support and inclusive boundary policy; it does not render UI/debug, calculate other relationships, activate deferred targets or add interpretations.
 
 44. `src/degreeRulersStarOfMagiData.js` defines the source-tracked Sprint 10 Degree Rulers Table 6 / Star of the Magi dataset with 360 verified rows, integer degree indexes, septener-only rulers and deferred system / feature metadata; it does not perform degree lookup or render UI.
 

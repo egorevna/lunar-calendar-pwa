@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-06-10 — Complete Task 14.6 Fixed Star Conjunction Engine / Fixtures
+
+- Added pure `src/fixedStarConjunctions.js`.
+- Added static/manual Fixed Star conjunction fixtures and tests.
+- Implemented conjunction-only detection using the explicit global `1°00′` orb policy.
+- Added shortest angular distance handling, 359° / 0° Aries wrap-around support and inclusive orb boundary behavior.
+- Preserved active targets only: natal planets + ASC / MC / DSC / IC.
+- Added ready / partial / noHits / notReady behavior, deterministic hit sorting and safe summary/capability/limitation helpers.
+- No display helper, UI, debug, other relationships, deferred targets, provider changes, package changes, PWA cache changes or interpretations were added.
+- Next active task is Task 14.7 — Fixed Star Validation / Cross-Checks, but it was not started.
+
 ## 2026-06-10 — Complete Task 14.5 Fixed Star Target Resolver
 
 - Added pure `src/fixedStarTargets.js`.

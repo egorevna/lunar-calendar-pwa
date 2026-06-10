@@ -4154,9 +4154,37 @@ Result:
 
 Next active task:
 
-- Task 14.6 — Fixed Star Conjunction Engine / Fixtures.
+- Task 14.6 — Fixed Star Conjunction Engine / Fixtures. Completed below.
 
-Task 14.6 is not started.
+Task 14.6 is now closed below.
+Do not start Sprint 15 or later.
+
+## Task 14.6 — Fixed Star Conjunction Engine / Fixtures
+
+Status: done
+
+Goal:
+
+Create a pure Fixed Star conjunction engine and fixtures.
+
+Result:
+
+- Added pure `src/fixedStarConjunctions.js`.
+- Added static/manual Fixed Star conjunction fixtures and tests.
+- Implemented conjunction-only relationship detection against already calculated Fixed Star positions and resolved active targets.
+- Used the explicit global orb policy from `src/fixedStarsData.js`: `fixed-stars-global-conjunction-orb-1deg`, `1°00′`, inclusive boundary.
+- Used shortest angular distance with wrap-around support across 359° / 0° Aries.
+- Preserved ready / partial / noHits / notReady / invalid behavior.
+- Sorted hits by orb ascending, then target order, then Fixed Star catalog/order.
+- Preserved active targets only: natal planets + ASC / MC / DSC / IC.
+- Kept deferred targets inactive: house cusps, Lunar Nodes, Lilith, Selena, Pars Fortuna, Lot of Spirit, Arabic Parts and custom points.
+- No fixed star catalog changes, position engine changes, target resolver changes, display helper, UI, debug, provider changes, package changes, PWA cache changes or interpretations were added.
+
+Next active task:
+
+- Task 14.7 — Fixed Star Validation / Cross-Checks.
+
+Task 14.7 is not started.
 Do not start Sprint 15 or later.
 
 # Security Backlog

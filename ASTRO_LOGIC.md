@@ -846,7 +846,7 @@ Policy:
 
 ## Fixed Stars Policy
 
-Sprint 14 starts a controlled Fixed Stars foundation. Task 14.1 is strategy/status only. Task 14.2 defines the source/catalog/orb policy. Task 14.3 adds a source-tracked catalog dataset only. Task 14.4 adds a pure position / epoch engine. These tasks do not add a Fixed Stars conjunction engine, UI, debug section or interpretations.
+Sprint 14 starts a controlled Fixed Stars foundation. Task 14.1 is strategy/status only. Task 14.2 defines the source/catalog/orb policy. Task 14.3 adds a source-tracked catalog dataset only. Task 14.4 adds a pure position / epoch engine. Task 14.5 adds the active target resolver. Task 14.6 adds a pure conjunction engine. These tasks do not add Fixed Stars UI, debug section or interpretations.
 
 Policy:
 
@@ -876,6 +876,12 @@ Policy:
 - No hidden “near star” rule is allowed.
 - Per-star and per-target orb overrides are deferred.
 - Initial relationship policy is conjunction-only.
+- Task 14.6 calculates conjunctions only.
+- Conjunction distance uses shortest angular distance between the Fixed Star longitude and target longitude.
+- Wrap-around across 359° / 0° Aries is supported.
+- Exact conjunction is included.
+- Orb boundary is included: `distance <= 1°00′` is a hit, `distance > 1°00′` is not a hit.
+- Hit sorting is deterministic: orb ascending, then target order, then Fixed Star catalog/order.
 - Deferred relationship types include oppositions, squares, trines, parans, heliacal phenomena and star-rise/set calculations.
 - Initial target set: natal planets + ASC / MC / DSC / IC.
 - Deferred targets: house cusps, Lunar Nodes, Lilith, Selena, Pars Fortuna, Lot of Spirit, Arabic Parts and custom points.
@@ -884,6 +890,7 @@ Policy:
 - Active target order is natal planets first (Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto), then angles (ASC, MC, DSC, IC).
 - If one active target set is unavailable, resolver output may be `partial`; missing targets are not faked.
 - Deferred target sets remain metadata-only and must not appear as ready Fixed Star targets.
+- Fixed Star conjunction output must contain safe labels, relationship `conjunction`, distance/orb text and source/orb policy metadata only.
 - User-facing output may eventually show fixed star labels, safe target labels, formatted zodiac positions with seconds and explicit orb text.
 - No interpretations, mythology text, predictive claims, karmic/fatalistic language, ritual advice or ritual scoring are allowed.
 
