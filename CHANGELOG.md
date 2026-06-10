@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-06-11 — Close Sprint 14 Fixed Stars Final Hardening / Regression
+
+- Completed the final Sprint 14 Fixed Stars hardening / regression pass.
+- Rechecked source policy, catalog rows, position / epoch handling, target resolver, conjunction engine, validation fixtures, display helper, UI, debug / QA guardrails, privacy, architecture boundaries and service worker cache.
+- Confirmed the final Fixed Stars state: Vronsky Table 18 primary source, 13 active verified rows, 0 candidate rows, preserved 1950 / 1970 / 1990 source columns, conjunction-only relationship, global `1°00′` orb and natal planets + ASC / MC / DSC / IC targets.
+- Confirmed deferred scope remains deferred: parans, heliacal phenomena, non-conjunction aspects, house-cusp targets, Special Points targets, Arabic Parts targets and interpretations.
+- No code fixes were needed.
+- Sprint 14 is closed.
+- Next active task is Sprint 15 planning — Arabic Parts Expansion Pack, but it was not started.
+
 ## 2026-06-10 — Complete Task 14.10 Fixed Stars Debug / QA Guardrails
 
 - Added pure `src/fixedStarsDebug.js`.

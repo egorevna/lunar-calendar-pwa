@@ -846,7 +846,7 @@ Policy:
 
 ## Fixed Stars Policy
 
-Sprint 14 starts a controlled Fixed Stars foundation. Task 14.1 is strategy/status only. Task 14.2 defines the source/catalog/orb policy. Task 14.3 adds a source-tracked catalog dataset only. Task 14.4 adds a pure position / epoch engine. Task 14.5 adds the active target resolver. Task 14.6 adds a pure conjunction engine. These tasks do not add Fixed Stars UI, debug section or interpretations.
+Sprint 14 closes with a controlled Fixed Stars foundation. Task 14.1 was strategy/status only. Task 14.2 defined the source/catalog/orb policy. Task 14.3 added a source-tracked catalog dataset. Task 14.4 added a pure position / epoch engine. Task 14.5 added the active target resolver. Task 14.6 added a pure conjunction engine. Task 14.7 added validation / cross-check fixtures. Task 14.8 added a pure display helper. Task 14.9 added the user-facing `Неподвижные звезды` UI block. Task 14.10 added safe `Fixed Stars Debug` / QA guardrails. Task 14.11 completed final hardening. Sprint 14 does not add Fixed Stars interpretations.
 
 Policy:
 
@@ -892,6 +892,8 @@ Policy:
 - Deferred target sets remain metadata-only and must not appear as ready Fixed Star targets.
 - Fixed Star conjunction output must contain safe labels, relationship `conjunction`, distance/orb text and source/orb policy metadata only.
 - User-facing output may eventually show fixed star labels, safe target labels, formatted zodiac positions with seconds and explicit orb text.
+- User-facing Sprint 14 UI shows already calculated conjunction facts only, with Vronsky source and global orb notes once at the bottom of the block.
+- `Fixed Stars Debug` may show only safe catalog/policy/pipeline counts, statuses and guardrails.
 - No interpretations, mythology text, predictive claims, karmic/fatalistic language, ritual advice or ritual scoring are allowed.
 
 ## Personal Transits

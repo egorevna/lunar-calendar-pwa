@@ -4291,8 +4291,38 @@ Next active task:
 
 - Task 14.11 — Fixed Stars Final Hardening / Regression.
 
-Task 14.11 is not started.
+Task 14.11 is now closed below.
 Do not start Sprint 15 or later.
+
+## Task 14.11 — Fixed Stars Final Hardening / Regression
+
+Status: done
+
+Goal:
+
+Run the final Sprint 14 hardening / regression pass across the Fixed Stars pipeline.
+
+Result:
+
+- Rechecked source policy, catalog dataset, position / epoch handling, target resolver, conjunction engine, validation fixtures, display helper, UI block, debug / QA guardrails, privacy boundaries, architecture boundaries and service worker cache.
+- Confirmed primary source remains `Вронский, Таблица 18 — Неподвижные звезды`.
+- Confirmed the active catalog has 13 verified rows and 0 candidate rows, with preserved 1950 / 1970 / 1990 source columns and initial reference epoch 1990.
+- Confirmed relationship policy remains conjunction-only.
+- Confirmed orb policy remains `fixed-stars-global-conjunction-orb-1deg` with global `1°00′` inclusive boundary.
+- Confirmed active targets remain natal planets + ASC / MC / DSC / IC.
+- Confirmed house cusps, Lunar Nodes, Lilith, Selena, Pars Fortuna, Lot of Spirit, Arabic Parts and custom points remain deferred targets.
+- Confirmed parans, heliacal phenomena and non-conjunction aspects remain deferred.
+- Confirmed normal `Неподвижные звезды` UI stays collapsed by default, appears after `Особые точки карты`, renders source/orb notes once, and contains no debug payload or interpretations.
+- Confirmed `Fixed Stars Debug` remains debug-only and exposes safe catalog/policy/pipeline counts, statuses and guardrails only.
+- Confirmed no code fixes were needed.
+
+Sprint 14 is closed.
+
+Next active task:
+
+- Sprint 15 planning — Arabic Parts Expansion Pack.
+
+Sprint 15 is not started.
 
 # Security Backlog
 

@@ -12,7 +12,7 @@ This file describes the actual current state of the codebase, not future plans.
 
 Future architecture ideas belong in `MASTER_PLAN.md` or `TODO.md`, not here.
 
-Current Sprint 14 strategy docs:
+Completed Sprint 14 strategy docs:
 
 - `SPRINT_14_PLAN.md`
 - `FIXED_STARS_STRATEGY.md`
@@ -28,6 +28,8 @@ Task 14.3 implements `src/fixedStarsData.js` as a data-only source/catalog modul
 Task 14.4 implements `src/fixedStarPositions.js` as a pure Fixed Star position / epoch helper. It calculates tropical zodiac positions from source-tracked Vronsky 1950 / 1970 / 1990 columns using exact source epochs, explicit interpolation, explicit extrapolation and wrap-around handling.
 
 Task 14.10 implements `src/fixedStarsDebug.js` as a safe Fixed Stars debug / QA guardrails helper for `?debug=1`. It exposes catalog/policy/pipeline counts and statuses only, without raw profile data, provider payloads, full arrays or interpretations.
+
+Task 14.11 closes Sprint 14 after final hardening / regression. The final Fixed Stars architecture remains source-gated and conjunction-only: 13 active Vronsky Table 18 rows, global `1°00′` orb, natal planets + ASC / MC / DSC / IC targets, display/UI/debug layers, and no interpretations, parans, heliacal phenomena, non-conjunction aspects or deferred targets.
 
 There is currently no `src/fixedStars.js` or `src/fixedStarsForProfile.js`.
 
