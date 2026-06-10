@@ -5,6 +5,8 @@ import { getDetailedDignitiesForProfile } from './detailedDignitiesForProfile.js
 import { getHousesForProfile } from './housesForProfile.js';
 import { getArabicPartsForProfile } from './arabicPartsForProfile.js';
 import { getSpecialPointsForProfile } from './specialPointsForProfile.js';
+import { calculateFixedStarConjunctionsForProfile } from './fixedStarConjunctions.js';
+import { formatFixedStarConjunctionResult } from './fixedStarsDisplay.js';
 import { getPersonalRecommendations } from './personalRecommendations.js';
 
 export const GENERAL_PROFILE_LABEL = 'Общий день';
@@ -39,6 +41,9 @@ const ARABIC_PARTS_TITLE = 'Жребии и арабские части';
 const ARABIC_PARTS_STATUS = 'Пока недоступно.';
 const SPECIAL_POINTS_TITLE = 'Особые точки карты';
 const SPECIAL_POINTS_STATUS = 'Пока недоступно.';
+const FIXED_STARS_TITLE = 'Неподвижные звезды';
+const FIXED_STARS_STATUS = 'Пока недоступно.';
+const FIXED_STARS_PARTIAL_NOTE = 'Рассчитано по доступным целям карты.';
 
 const MISSING_FIELD_LABELS = {
   birthDate: 'дата рождения',
@@ -394,6 +399,30 @@ export function describeSpecialPointsBlock(profile = null) {
     limitations: Array.isArray(specialPoints.limitations)
       ? specialPoints.limitations.map(cleanText).filter(Boolean)
       : [],
+  };
+}
+
+export function describeFixedStarsBlock(profile = null, options = {}) {
+  const conjunctions = calculateFixedStarConjunctionsForProfile(profile, options);
+  const fixedStars = formatFixedStarConjunctionResult(conjunctions);
+  const isReady = fixedStars.status === 'ready' && fixedStars.ready === true;
+  const notes = [
+    fixedStars.partial === true ? FIXED_STARS_PARTIAL_NOTE : '',
+    ...(Array.isArray(fixedStars.notes) ? fixedStars.notes : []),
+  ].map(cleanText).filter(Boolean);
+
+  return {
+    hidden: false,
+    title: FIXED_STARS_TITLE,
+    status: isReady ? '' : FIXED_STARS_STATUS,
+    explanation: isReady ? '' : cleanText(fixedStars.message),
+    profileId: profileId(profile) || 'general',
+    summary: isReady ? cleanText(fixedStars.summary) : FIXED_STARS_STATUS,
+    message: isReady ? cleanText(fixedStars.message) : '',
+    canToggleFixedStars: true,
+    items: toDisplayTextList(fixedStars.items),
+    notes,
+    partial: fixedStars.partial === true,
   };
 }
 

@@ -644,6 +644,22 @@ Rules:
 
 `?debug=1` may include `Special Points UI Debug`, but only as safe status/readiness/source/count/capability/privacy flags. It must not change normal UI behavior.
 
+## Fixed Stars Block
+
+The `Неподвижные звезды` block belongs inside `Мои карты` after `Особые точки карты`.
+
+Rules:
+
+- collapsed by default;
+- show only conjunction facts between active Fixed Stars and active targets;
+- ready state may show rows such as `Регул — соединение с ASC · орб 0°06′00″`;
+- noHits state shows a safe no-hit message;
+- partial state may show available hits and the note `Рассчитано по доступным целям карты.`;
+- source/orb notes render once at the bottom of the block;
+- do not repeat source/orb notes under each row;
+- no interpretations, mythology, karmic/fatalistic copy, predictions, ritual advice, transits or debug payloads;
+- calculated output must not show raw birth date, birth time, UTC, timezone value, raw coordinates, raw longitudes, raw catalog/target/position arrays, full profile JSON or provider payloads.
+
 ## Zodiac Position Formatting
 
 User-facing astrology positions such as ASC, MC and house cusps display sign, degree, minute and second:

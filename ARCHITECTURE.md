@@ -234,6 +234,7 @@ Responsibilities:
 - renders the collapsible `Дома и углы карты` block inside `Мои карты` through `src/profileUi.js` and `src/housesForProfile.js` when house input guardrails and selected house-system calculations are ready
 - renders the collapsible `Жребии и арабские части` block inside `Мои карты` through `src/profileUi.js` and `src/arabicPartsForProfile.js` when Arabic Parts inputs are ready
 - renders the collapsible `Особые точки карты` block inside `Мои карты` through `src/profileUi.js` and `src/specialPointsForProfile.js` when Special Points inputs are ready
+- renders the collapsible `Неподвижные звезды` block inside `Мои карты` through `src/profileUi.js`, `src/fixedStarConjunctions.js` and `src/fixedStarsDisplay.js` when Fixed Star conjunction checks are available
 - renders the compact `Лично для меня` dashboard block through `src/personalContext.js`, `src/personalRecommendations.js`, and `src/profileUi.js`
 - passes safe profile summary state, Houses UI debug state and Arabic Parts UI debug state into the hidden debug panel only when `?debug=1`
 
@@ -1023,7 +1024,7 @@ Current responsibilities:
 
 - format already calculated Fixed Star conjunction hit rows into safe user-facing text;
 - preserve engine hit order while filtering invalid or unsafe hit rows;
-- format ready, noHits and notReady display states for the future `Неподвижные звезды` UI block;
+- format ready, noHits and notReady display states for the `Неподвижные звезды` UI block;
 - expose safe source and orb notes for Vronsky Table 18 and the global `1°00′` conjunction orb;
 - expose summary, displayability and limitation helpers.
 
@@ -1509,6 +1510,7 @@ Current responsibilities:
 - format the collapsible `Дома и углы карты` block view model from `src/housesForProfile.js`;
 - format the collapsible `Жребии и арабские части` block view model from `src/arabicPartsForProfile.js`;
 - format the collapsible `Особые точки карты` block view model from `src/specialPointsForProfile.js`;
+- format the collapsible `Неподвижные звезды` block view model by composing `src/fixedStarConjunctions.js` with `src/fixedStarsDisplay.js`;
 - format the compact `Лично для меня` dashboard block from `src/personalContext.js`;
 - include safe personal recommendation sections from `src/personalRecommendations.js`;
 - translate missing personal profile fields into human-readable Russian copy without rendering technical keys.
@@ -1625,7 +1627,7 @@ When changes must reliably appear on iPhone after deployment, update `CACHE_NAME
 Current cache version:
 
 ```txt
-lunar-calendar-v93
+lunar-calendar-v94
 ```
 
 If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was updated.
@@ -1782,7 +1784,9 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 43c. `src/fixedStarConjunctions.js` calculates pure Fixed Star conjunction hits from already calculated Fixed Star positions and resolved targets using the global `1°00′` orb, shortest angular distance, wrap-around support and inclusive boundary policy; it does not render UI/debug, calculate other relationships, activate deferred targets or add interpretations.
 
-43d. `src/fixedStarsDisplay.js` formats already calculated Fixed Star conjunction hits, ready/noHits/notReady states and safe source/orb notes for future UI; it does not calculate conjunctions, resolve targets, calculate positions, render UI/debug, expose raw arrays or add interpretations.
+43d. `src/fixedStarsDisplay.js` formats already calculated Fixed Star conjunction hits, ready/noHits/notReady states and safe source/orb notes for UI; it does not calculate conjunctions, resolve targets, calculate positions, render UI/debug, expose raw arrays or add interpretations.
+
+43e. The `Неподвижные звезды` UI block is rendered inside `Мои карты` after `Особые точки карты`. It is collapsed by default, shows conjunction hits / noHits / partial / notReady states, renders source/orb notes once at the bottom, and does not add debug or interpretations.
 
 44. `src/degreeRulersStarOfMagiData.js` defines the source-tracked Sprint 10 Degree Rulers Table 6 / Star of the Magi dataset with 360 verified rows, integer degree indexes, septener-only rulers and deferred system / feature metadata; it does not perform degree lookup or render UI.
 
@@ -1816,7 +1820,7 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 58. `src/debugPanel.js` formats the hidden debug panel when enabled, including safe profile summary state, safe personal readiness/capability state, natal engine state, provider validation summary, natal planets UI summary, natal aspects UI summary, essential dignities UI summary, detailed dignities UI summary, Houses UI summary and Arabic Parts UI summary without birth details.
 
-59. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
+59. `src/app.js` updates DOM elements on the main dashboard, mode selector, profile shell, advanced profile blocks including Fixed Stars, personal context/recommendations block, mode-specific scores, mode-specific recommendations, best-window card, and optional debug panel.
 
 ## Current Preferred Source Order
 
@@ -2178,6 +2182,7 @@ Testing note:
 - `test/fixtures/fixedStarsValidationFixtures.js` contains test-only manual Fixed Stars validation fixtures for catalog keys, source policy, epoch columns, position modes, target policy, conjunction boundaries, privacy and strict exclusions. It is not used by production code.
 - `test/fixedStarsValidation.test.js` cross-checks the Fixed Stars foundation across catalog data, position/epoch behavior, target resolver policy, conjunction/orb behavior, privacy exclusions and runtime/file boundaries without adding a production module, display helper, UI, debug or interpretations.
 - `test/fixedStarsDisplay.test.js` validates the pure Fixed Stars display helper, including formatted conjunction hit rows, ready/noHits/notReady display states, safe source/orb notes, privacy exclusions and strict display-only boundaries.
+- `test/fixedStarsUi.test.js` validates the user-facing Fixed Stars UI view-model, including ready hits, noHits, partial and notReady states, one-time source/orb notes, privacy exclusions and no interpretation text.
 - `NATAL_PROVIDER_VALIDATION_REPORT.md` records the provider-layer validation summary; it does not enable user-facing natal values.
 - if personal data is added later, debug output must follow `PRIVACY_RULES.md`
 
@@ -2198,7 +2203,7 @@ Current PWA files:
 Current cache version:
 
 ```txt
-lunar-calendar-v93
+lunar-calendar-v94
 ```
 
 Important operational rule:
@@ -2502,7 +2507,7 @@ For those tasks, update only:
 Current PWA cache version:
 
 ```txt
-lunar-calendar-v93
+lunar-calendar-v94
 ```
 
 If this value changes in `sw.js`, update this section.

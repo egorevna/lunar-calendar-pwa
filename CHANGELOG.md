@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-06-10 — Complete Task 14.9 Fixed Stars UI
+
+- Added the collapsible user-facing `Неподвижные звезды` UI block inside `Мои карты` after `Особые точки карты`.
+- Wired the UI through existing `calculateFixedStarConjunctionsForProfile` and `formatFixedStarConjunctionResult` helpers.
+- Added ready, noHits, partial and notReady UI behavior.
+- Rendered Fixed Star conjunction hit rows with one shared source note and one shared orb note at the bottom of the block.
+- Bumped PWA cache to `lunar-calendar-v94` and cached app-visible Fixed Stars modules.
+- Added `test/fixedStarsUi.test.js` and updated profile / markup UI coverage.
+- Fixed a display-copy issue so planet target rows use user-facing instrumental forms such as `с Венерой`.
+- No catalog, position, target resolver, conjunction policy, provider, package, debug or interpretation changes were added.
+- Next active task is Task 14.10 — Fixed Stars Debug / QA Guardrails, but it was not started.
+
 ## 2026-06-10 — Complete Task 14.8 Fixed Stars Display Helper
 
 - Added pure `src/fixedStarsDisplay.js`.

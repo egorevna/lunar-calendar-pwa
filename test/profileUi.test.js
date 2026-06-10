@@ -6,6 +6,7 @@ import {
   describeEssentialDignitiesBlock,
   describeHousesBlock,
   describeArabicPartsBlock,
+  describeFixedStarsBlock,
   describeSpecialPointsBlock,
   describeNatalAspectsBlock,
   describeNatalPlanetsReadinessBlock,
@@ -968,4 +969,121 @@ test('Special Points block shows ready points, node houses, and Selena note with
   assert.equal(text.includes('ритуал'), false);
   assert.equal(text.includes('fixedStars'), false);
   assert.equal(text.includes('transits'), false);
+});
+
+test('Fixed Stars block returns safe fallback for general day and incomplete profile', () => {
+  const general = describeFixedStarsBlock(null);
+  const fallback = describeFixedStarsBlock({
+    id: 'profile-egor',
+    name: 'Егор',
+    birthDate: '1990-05-12',
+    birthTime: '',
+    birthTimeAccuracy: 'unknown',
+    birthPlace: {
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+    },
+    currentPlace: {
+      mode: 'moscow',
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+    },
+    houseSystem: 'wholeSign',
+    zodiac: 'tropical',
+  });
+  const text = JSON.stringify(fallback);
+
+  assert.equal(general.hidden, false);
+  assert.equal(general.title, 'Неподвижные звезды');
+  assert.equal(general.status, 'Пока недоступно.');
+  assert.equal(general.summary, 'Пока недоступно.');
+  assert.equal(general.canToggleFixedStars, true);
+  assert.equal(fallback.hidden, false);
+  assert.equal(fallback.title, 'Неподвижные звезды');
+  assert.equal(fallback.status, 'Пока недоступно.');
+  assert.equal(fallback.explanation, 'Неподвижные звезды пока недоступны.');
+  assert.equal(fallback.summary, 'Пока недоступно.');
+  assert.equal(fallback.canToggleFixedStars, true);
+  assert.deepEqual(fallback.items, []);
+  assert.deepEqual(fallback.notes, [
+    'Источник: Вронский, Таблица 18.',
+    'Орб соединения: 1°00′.',
+  ]);
+  assert.equal(text.includes('birthDate'), false);
+  assert.equal(text.includes('birthTime'), false);
+  assert.equal(text.includes('Europe/Moscow'), false);
+  assert.equal(text.includes('latitude'), false);
+  assert.equal(text.includes('longitude'), false);
+  assert.equal(text.includes('coordinates'), false);
+});
+
+test('Fixed Stars block shows ready hits without sensitive data or interpretations', () => {
+  const view = describeFixedStarsBlock({
+    id: 'profile-egor',
+    name: 'Егор',
+    birthDate: '1990-05-12',
+    birthTime: '14:30',
+    birthTimeAccuracy: 'exact',
+    birthPlace: {
+      city: 'Москва',
+      country: 'Россия',
+      coordinates: {
+        latitude: 55.7558,
+        longitude: 37.6173,
+      },
+      timezone: 'Europe/Moscow',
+    },
+    currentPlace: {
+      mode: 'moscow',
+      city: 'Москва',
+      country: 'Россия',
+      timezone: 'Europe/Moscow',
+    },
+    houseSystem: 'placidus',
+    zodiac: 'tropical',
+  }, {
+    positionsResult: {
+      status: 'ready',
+      ready: true,
+      positions: [
+        { key: 'regulus', labelRu: 'Регул', labelEn: 'Regulus', longitude: 150 },
+      ],
+    },
+    targetsResult: {
+      status: 'ready',
+      ready: true,
+      targetSets: ['angles'],
+      targets: [
+        { key: 'asc', label: 'ASC', labelEn: 'Ascendant', category: 'angle', longitude: 150.1 },
+      ],
+    },
+  });
+  const text = JSON.stringify(view);
+
+  assert.equal(view.hidden, false);
+  assert.equal(view.title, 'Неподвижные звезды');
+  assert.equal(view.status, '');
+  assert.equal(view.explanation, '');
+  assert.equal(view.summary, '1 соединение с неподвижными звездами');
+  assert.deepEqual(view.items, ['Регул — соединение с ASC · орб 0°06′00″']);
+  assert.deepEqual(view.notes, [
+    'Источник: Вронский, Таблица 18.',
+    'Орб соединения: 1°00′.',
+  ]);
+  assert.equal(text.includes('1990-05-12'), false);
+  assert.equal(text.includes('14:30'), false);
+  assert.equal(text.includes('Europe/Moscow'), false);
+  assert.equal(text.includes('latitude'), false);
+  assert.equal(text.includes('longitude'), false);
+  assert.equal(text.includes('coordinates'), false);
+  assert.equal(text.includes('provider'), false);
+  assert.equal(text.includes('mythology'), false);
+  assert.equal(text.includes('prediction'), false);
+  assert.equal(text.includes('опасность'), false);
+  assert.equal(text.includes('слава'), false);
+  assert.equal(text.includes('судьба'), false);
+  assert.equal(text.includes('карм'), false);
+  assert.equal(text.includes('ритуал'), false);
 });

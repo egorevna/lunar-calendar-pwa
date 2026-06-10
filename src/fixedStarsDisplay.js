@@ -227,12 +227,12 @@ function isReadyHit(hit) {
 function getHitText(hit, parts) {
   const existingText = normalizeText(hit.text);
 
-  if (existingText) {
-    return containsUnsafeText(existingText) ? '' : existingText;
+  if (existingText && containsUnsafeText(existingText)) {
+    return '';
   }
 
   if (!parts.starLabel || !parts.relationshipLabel || !parts.targetLabel || !parts.orbText) {
-    return '';
+    return existingText;
   }
 
   const targetLabel = getTargetInstrumentalLabel(parts.targetKey, parts.targetLabel);

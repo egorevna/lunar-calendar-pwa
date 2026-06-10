@@ -72,6 +72,7 @@ import {
   describeArabicPartsBlock,
   describeDetailedDignitiesBlock,
   describeEssentialDignitiesBlock,
+  describeFixedStarsBlock,
   describeHousesBlock,
   describeNatalAspectsBlock,
   describeNatalPlanetsReadinessBlock,
@@ -92,6 +93,7 @@ let expandedDetailedDignitiesProfileId = null;
 let expandedHousesProfileId = null;
 let expandedArabicPartsProfileId = null;
 let expandedSpecialPointsProfileId = null;
+let expandedFixedStarsProfileId = null;
 
 const DELETE_PROFILE_CONFIRMATION = 'Удалить профиль? Это действие нельзя отменить.';
 
@@ -218,6 +220,17 @@ const elements = {
   specialPointsContent: document.querySelector('[data-special-points-content]'),
   specialPointsSections: document.querySelector('[data-special-points-sections]'),
   specialPointsLimitations: document.querySelector('[data-special-points-limitations]'),
+  fixedStars: document.querySelector('[data-fixed-stars-readiness]'),
+  fixedStarsTitle: document.querySelector('[data-fixed-stars-title]'),
+  fixedStarsStatus: document.querySelector('[data-fixed-stars-status]'),
+  fixedStarsExplanation: document.querySelector('[data-fixed-stars-explanation]'),
+  fixedStarsDisclosure: document.querySelector('[data-fixed-stars-disclosure]'),
+  fixedStarsSummary: document.querySelector('[data-fixed-stars-summary]'),
+  fixedStarsToggle: document.querySelector('[data-fixed-stars-toggle]'),
+  fixedStarsContent: document.querySelector('[data-fixed-stars-content]'),
+  fixedStarsMessage: document.querySelector('[data-fixed-stars-message]'),
+  fixedStarsList: document.querySelector('[data-fixed-stars-list]'),
+  fixedStarsNotes: document.querySelector('[data-fixed-stars-notes]'),
   personalContextCard: document.querySelector('[data-personal-context-card]'),
   personalContextTitle: document.querySelector('[data-personal-context-title]'),
   personalContextSummary: document.querySelector('[data-personal-context-summary]'),
@@ -441,6 +454,7 @@ function renderStoredProfilesShell() {
   renderHousesBlock(describeHousesBlock(activeProfile));
   renderArabicPartsBlock(describeArabicPartsBlock(activeProfile));
   renderSpecialPointsBlock(describeSpecialPointsBlock(activeProfile));
+  renderFixedStarsBlock(describeFixedStarsBlock(activeProfile));
   renderPersonalContextBlock(describePersonalContextBlock(createPersonalContext(activeProfile)));
 }
 
@@ -625,6 +639,33 @@ function renderSpecialPointsBlock(view) {
   elements.specialPointsSections.hidden = !isExpanded || view.sections.length === 0;
   renderSimpleList(elements.specialPointsLimitations, view.limitations);
   elements.specialPointsLimitations.hidden = !isExpanded || view.limitations.length === 0;
+}
+
+function renderFixedStarsBlock(view) {
+  const isExpanded = view.canToggleFixedStars
+    && Boolean(view.profileId)
+    && expandedFixedStarsProfileId === view.profileId;
+
+  elements.fixedStars.hidden = view.hidden;
+  elements.fixedStarsTitle.textContent = view.title;
+  elements.fixedStarsStatus.textContent = view.status || view.summary;
+  elements.fixedStarsStatus.hidden = !(view.status || view.summary);
+  elements.fixedStarsExplanation.textContent = view.explanation;
+  elements.fixedStarsExplanation.hidden = !view.explanation;
+  elements.fixedStarsDisclosure.hidden = !view.canToggleFixedStars;
+  elements.fixedStarsSummary.textContent = view.summary;
+  elements.fixedStarsSummary.hidden = true;
+  elements.fixedStarsToggle.hidden = !view.canToggleFixedStars;
+  elements.fixedStarsToggle.textContent = isExpanded ? 'Скрыть' : 'Показать';
+  elements.fixedStarsToggle.setAttribute('aria-expanded', String(isExpanded));
+  elements.fixedStarsToggle.dataset.profileId = view.canToggleFixedStars ? view.profileId : '';
+  elements.fixedStarsContent.hidden = !isExpanded;
+  elements.fixedStarsMessage.textContent = view.message;
+  elements.fixedStarsMessage.hidden = !isExpanded || !view.message;
+  renderSimpleList(elements.fixedStarsList, view.items);
+  elements.fixedStarsList.hidden = !isExpanded || view.items.length === 0;
+  renderSimpleList(elements.fixedStarsNotes, view.notes);
+  elements.fixedStarsNotes.hidden = !isExpanded || view.notes.length === 0;
 }
 
 function renderPersonalContextBlock(view) {
@@ -856,6 +897,7 @@ function resetNatalProfileDisclosures() {
   expandedHousesProfileId = null;
   expandedArabicPartsProfileId = null;
   expandedSpecialPointsProfileId = null;
+  expandedFixedStarsProfileId = null;
 }
 
 function handleProfileFormSubmit(event) {
@@ -1169,6 +1211,15 @@ elements.specialPointsToggle.addEventListener('click', () => {
 
   const isExpanded = expandedSpecialPointsProfileId === profileId;
   expandedSpecialPointsProfileId = isExpanded ? null : profileId;
+  renderStoredProfilesShell();
+});
+
+elements.fixedStarsToggle.addEventListener('click', () => {
+  const profileId = elements.fixedStarsToggle.dataset.profileId || null;
+  if (!profileId) return;
+
+  const isExpanded = expandedFixedStarsProfileId === profileId;
+  expandedFixedStarsProfileId = isExpanded ? null : profileId;
   renderStoredProfilesShell();
 });
 

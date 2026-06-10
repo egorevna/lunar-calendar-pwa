@@ -405,7 +405,8 @@ button {
 .detailed-dignities-readiness,
 .houses-readiness,
 .arabic-parts-readiness,
-.special-points-readiness {
+.special-points-readiness,
+.fixed-stars-readiness {
   display: grid;
   gap: 8px;
   margin-top: 14px;
@@ -419,21 +420,24 @@ button {
 .detailed-dignities-readiness[hidden],
 .houses-readiness[hidden],
 .arabic-parts-readiness[hidden],
-.special-points-readiness[hidden] {
+.special-points-readiness[hidden],
+.fixed-stars-readiness[hidden] {
   display: none;
 }
 
 .detailed-dignities-readiness,
 .houses-readiness,
 .arabic-parts-readiness,
-.special-points-readiness {
+.special-points-readiness,
+.fixed-stars-readiness {
   grid-template-columns: minmax(0, 1fr) auto;
 }
 
 .detailed-dignities-readiness > h3,
 .houses-readiness > h3,
 .arabic-parts-readiness > h3,
-.special-points-readiness > h3 {
+.special-points-readiness > h3,
+.fixed-stars-readiness > h3 {
   grid-column: 1;
   grid-row: 1;
 }
@@ -441,7 +445,8 @@ button {
 .detailed-dignities-disclosure,
 .houses-disclosure,
 .arabic-parts-disclosure,
-.special-points-disclosure {
+.special-points-disclosure,
+.fixed-stars-disclosure {
   grid-column: 2;
   grid-row: 1;
   justify-self: end;
@@ -460,7 +465,10 @@ button {
 .arabic-parts-readiness > .arabic-parts-content,
 .special-points-readiness > .special-points-status,
 .special-points-readiness > [data-special-points-explanation],
-.special-points-readiness > .special-points-content {
+.special-points-readiness > .special-points-content,
+.fixed-stars-readiness > .fixed-stars-status,
+.fixed-stars-readiness > [data-fixed-stars-explanation],
+.fixed-stars-readiness > .fixed-stars-content {
   grid-column: 1 / -1;
 }
 
@@ -473,7 +481,8 @@ button {
 .houses-readiness h4,
 .arabic-parts-readiness h3,
 .special-points-readiness h3,
-.special-points-readiness h4 {
+.special-points-readiness h4,
+.fixed-stars-readiness h3 {
   margin: 0;
   color: rgba(255, 248, 239, 0.84);
   font-size: clamp(15px, 4vw, 18px);
@@ -491,7 +500,8 @@ button {
 .detailed-dignities-readiness p,
 .houses-readiness p,
 .arabic-parts-readiness p,
-.special-points-readiness p {
+.special-points-readiness p,
+.fixed-stars-readiness p {
   margin: 0;
   color: var(--muted);
   font-size: clamp(13px, 3.5vw, 16px);
@@ -505,7 +515,8 @@ button {
 .houses-readiness .houses-status,
 .arabic-parts-readiness .arabic-parts-status,
 .arabic-parts-readiness .arabic-parts-chart-sect,
-.special-points-readiness .special-points-status {
+.special-points-readiness .special-points-status,
+.fixed-stars-readiness .fixed-stars-status {
   color: rgba(255, 248, 239, 0.82);
   font-weight: 700;
 }
@@ -516,7 +527,8 @@ button {
 .detailed-dignities-disclosure,
 .houses-disclosure,
 .arabic-parts-disclosure,
-.special-points-disclosure {
+.special-points-disclosure,
+.fixed-stars-disclosure {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -532,7 +544,9 @@ button {
 .arabic-parts-disclosure[hidden],
 .arabic-parts-content[hidden],
 .special-points-disclosure[hidden],
-.special-points-content[hidden] {
+.special-points-content[hidden],
+.fixed-stars-disclosure[hidden],
+.fixed-stars-content[hidden] {
   display: none;
 }
 
@@ -542,7 +556,8 @@ button {
 .detailed-dignities-readiness .detailed-dignities-summary,
 .houses-readiness .houses-summary,
 .arabic-parts-readiness .arabic-parts-summary,
-.special-points-readiness .special-points-summary {
+.special-points-readiness .special-points-summary,
+.fixed-stars-readiness .fixed-stars-summary {
   color: rgba(255, 248, 239, 0.82);
   font-weight: 700;
 }
@@ -553,7 +568,8 @@ button {
 .detailed-dignities-toggle,
 .houses-toggle,
 .arabic-parts-toggle,
-.special-points-toggle {
+.special-points-toggle,
+.fixed-stars-toggle {
   flex: 0 0 auto;
   border: 1px solid rgba(231, 199, 126, 0.42);
   border-radius: 8px;
@@ -570,7 +586,8 @@ button {
 .detailed-dignities-toggle[hidden],
 .houses-toggle[hidden],
 .arabic-parts-toggle[hidden],
-.special-points-toggle[hidden] {
+.special-points-toggle[hidden],
+.fixed-stars-toggle[hidden] {
   display: none;
 }
 
@@ -601,7 +618,10 @@ button {
 .arabic-parts-limitations,
 .special-points-content,
 .special-points-sections,
-.special-points-limitations {
+.special-points-limitations,
+.fixed-stars-content,
+.fixed-stars-list,
+.fixed-stars-notes {
   display: grid;
   gap: 7px;
   margin: 0;
@@ -624,7 +644,9 @@ button {
 .arabic-parts-list[hidden],
 .arabic-parts-limitations[hidden],
 .special-points-sections[hidden],
-.special-points-limitations[hidden] {
+.special-points-limitations[hidden],
+.fixed-stars-list[hidden],
+.fixed-stars-notes[hidden] {
   display: none;
 }
 
@@ -643,7 +665,9 @@ button {
 .arabic-parts-list li,
 .arabic-parts-limitations li,
 .special-points-section li,
-.special-points-limitations li {
+.special-points-limitations li,
+.fixed-stars-list li,
+.fixed-stars-notes li {
   color: var(--muted);
   font-size: clamp(13px, 3.5vw, 16px);
   line-height: 1.28;
@@ -656,7 +680,8 @@ button {
 .houses-list li,
 .houses-planet-assignments li,
 .arabic-parts-list li,
-.special-points-section li {
+.special-points-section li,
+.fixed-stars-list li {
   color: rgba(255, 248, 239, 0.86);
   font-weight: 700;
 }
@@ -666,14 +691,16 @@ button {
 .houses-list li,
 .houses-planet-assignments li,
 .arabic-parts-list li,
-.special-points-section li {
+.special-points-section li,
+.fixed-stars-list li {
   color: rgba(255, 248, 239, 0.8);
   font-weight: 600;
 }
 
 .houses-content,
 .arabic-parts-content,
-.special-points-content {
+.special-points-content,
+.fixed-stars-content {
   padding-top: 2px;
 }
 
@@ -754,7 +781,8 @@ button {
 .houses-limitations li::before,
 .arabic-parts-limitations li::before,
 .special-points-limitations li::before,
-.special-points-section-limitations li::before {
+.special-points-section-limitations li::before,
+.fixed-stars-notes li::before {
   content: "";
   display: inline-block;
   width: 5px;

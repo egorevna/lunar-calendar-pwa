@@ -109,6 +109,9 @@ test('home screen renders profile shell', () => {
   assert.equal(html.includes('data-special-points-readiness'), true);
   assert.equal(html.includes('data-special-points-title'), true);
   assert.equal(html.includes('Особые точки карты'), true);
+  assert.equal(html.includes('data-fixed-stars-readiness'), true);
+  assert.equal(html.includes('data-fixed-stars-title'), true);
+  assert.equal(html.includes('Неподвижные звезды'), true);
   assert.equal(html.includes('Добавление профиля — следующий шаг.'), false);
   assert.equal(html.includes('Натальная карта'), false);
   assert.equal(html.includes('Персональные транзиты'), false);
@@ -343,6 +346,59 @@ test('Special Points block is collapsible and resets on profile changes', () => 
   assert.equal(appJs.includes('expandedSpecialPointsProfileId = null;'), true);
 });
 
+test('Fixed Stars shell stays inside profiles panel after Special Points and has no static values', () => {
+  const panelStart = html.indexOf('data-profiles-panel');
+  const panelEnd = html.indexOf('class="glass-card mode-selector"');
+  const panelHtml = html.slice(panelStart, panelEnd);
+  const specialPointsStart = html.indexOf('data-special-points-readiness');
+  const fixedStarsStart = html.indexOf('data-fixed-stars-readiness');
+  const addButtonStart = html.indexOf('class="profile-create-actions"');
+  const fixedStarsHtml = html.slice(fixedStarsStart, addButtonStart);
+
+  assert.equal(panelStart >= 0, true);
+  assert.equal(fixedStarsStart > specialPointsStart, true);
+  assert.equal(fixedStarsStart < panelEnd, true);
+  assert.equal(fixedStarsStart < addButtonStart, true);
+  assert.equal(panelHtml.includes('data-fixed-stars-readiness hidden'), true);
+  assert.equal(fixedStarsHtml.includes('data-fixed-stars-summary'), true);
+  assert.equal(fixedStarsHtml.includes('data-fixed-stars-toggle'), true);
+  assert.equal(fixedStarsHtml.includes('data-fixed-stars-list'), true);
+  assert.equal(fixedStarsHtml.includes('data-fixed-stars-list hidden'), true);
+  assert.equal(fixedStarsHtml.includes('data-fixed-stars-message'), true);
+  assert.equal(fixedStarsHtml.includes('data-fixed-stars-notes'), true);
+  assert.equal(fixedStarsHtml.includes('Регул — соединение с ASC'), false);
+  assert.equal(fixedStarsHtml.includes('Спика — соединение с Венерой'), false);
+  assert.equal(fixedStarsHtml.includes('birthDate'), false);
+  assert.equal(fixedStarsHtml.includes('birthTime'), false);
+  assert.equal(fixedStarsHtml.includes('utcDateTime'), false);
+  assert.equal(fixedStarsHtml.includes('timezone'), false);
+  assert.equal(fixedStarsHtml.includes('latitude'), false);
+  assert.equal(fixedStarsHtml.includes('longitude'), false);
+  assert.equal(fixedStarsHtml.includes('coordinates'), false);
+  assert.equal(fixedStarsHtml.includes('provider'), false);
+  assert.equal(fixedStarsHtml.includes('catalogDump'), false);
+  assert.equal(fixedStarsHtml.includes('targetArray'), false);
+  assert.equal(fixedStarsHtml.includes('positionArray'), false);
+  assert.equal(fixedStarsHtml.includes('debug'), false);
+  assert.equal(fixedStarsHtml.includes('опасность'), false);
+  assert.equal(fixedStarsHtml.includes('слава'), false);
+  assert.equal(fixedStarsHtml.includes('судьба'), false);
+  assert.equal(fixedStarsHtml.includes('карм'), false);
+  assert.equal(fixedStarsHtml.includes('ритуал'), false);
+});
+
+test('Fixed Stars block is collapsible and resets on profile changes', () => {
+  assert.equal(appJs.includes('let expandedFixedStarsProfileId = null;'), true);
+  assert.equal(appJs.includes('const isExpanded = view.canToggleFixedStars'), true);
+  assert.equal(appJs.includes("elements.fixedStarsToggle.textContent = isExpanded ? 'Скрыть' : 'Показать';"), true);
+  assert.equal(appJs.includes('elements.fixedStarsStatus.textContent = view.status || view.summary;'), true);
+  assert.equal(appJs.includes('elements.fixedStarsSummary.hidden = true;'), true);
+  assert.equal(appJs.includes('elements.fixedStarsList.hidden = !isExpanded || view.items.length === 0;'), true);
+  assert.equal(appJs.includes('elements.fixedStarsNotes.hidden = !isExpanded || view.notes.length === 0;'), true);
+  assert.equal(appJs.includes('expandedFixedStarsProfileId = isExpanded ? null : profileId;'), true);
+  assert.equal(appJs.includes('expandedFixedStarsProfileId = null;'), true);
+});
+
 test('houses block is collapsible and resets on profile changes', () => {
   assert.equal(appJs.includes('let expandedHousesProfileId = null;'), true);
   assert.equal(appJs.includes('const isExpanded = view.canToggleHouses'), true);
@@ -548,11 +604,11 @@ test('detailed dignities list is collapsible without ready summary duplication',
 });
 
 test('detailed dignities header keeps toggle aligned with title without summary row', () => {
-  assert.equal(stylesCss.includes('.detailed-dignities-readiness,\n.houses-readiness,\n.arabic-parts-readiness,\n.special-points-readiness {\n  grid-template-columns: minmax(0, 1fr) auto;'), true);
-  assert.equal(stylesCss.includes('.detailed-dignities-readiness > h3,\n.houses-readiness > h3,\n.arabic-parts-readiness > h3,\n.special-points-readiness > h3 {\n  grid-column: 1;\n  grid-row: 1;'), true);
-  assert.equal(stylesCss.includes('.detailed-dignities-disclosure,\n.houses-disclosure,\n.arabic-parts-disclosure,\n.special-points-disclosure {\n  grid-column: 2;\n  grid-row: 1;'), true);
+  assert.equal(stylesCss.includes('.detailed-dignities-readiness,\n.houses-readiness,\n.arabic-parts-readiness,\n.special-points-readiness,\n.fixed-stars-readiness {\n  grid-template-columns: minmax(0, 1fr) auto;'), true);
+  assert.equal(stylesCss.includes('.detailed-dignities-readiness > h3,\n.houses-readiness > h3,\n.arabic-parts-readiness > h3,\n.special-points-readiness > h3,\n.fixed-stars-readiness > h3 {\n  grid-column: 1;\n  grid-row: 1;'), true);
+  assert.equal(stylesCss.includes('.detailed-dignities-disclosure,\n.houses-disclosure,\n.arabic-parts-disclosure,\n.special-points-disclosure,\n.fixed-stars-disclosure {\n  grid-column: 2;\n  grid-row: 1;'), true);
   assert.equal(stylesCss.includes('  justify-self: end;\n  align-self: center;'), true);
-  assert.equal(stylesCss.includes('.detailed-dignities-readiness > .detailed-dignities-status,\n.detailed-dignities-readiness > [data-detailed-dignities-explanation],\n.detailed-dignities-readiness > .detailed-dignities-groups,\n.detailed-dignities-readiness > .detailed-dignities-limitations,\n.houses-readiness > .houses-status,\n.houses-readiness > [data-houses-explanation],\n.houses-readiness > .houses-content,\n.arabic-parts-readiness > .arabic-parts-status,\n.arabic-parts-readiness > [data-arabic-parts-explanation],\n.arabic-parts-readiness > .arabic-parts-content,\n.special-points-readiness > .special-points-status,\n.special-points-readiness > [data-special-points-explanation],\n.special-points-readiness > .special-points-content {\n  grid-column: 1 / -1;'), true);
+  assert.equal(stylesCss.includes('.detailed-dignities-readiness > .detailed-dignities-status,\n.detailed-dignities-readiness > [data-detailed-dignities-explanation],\n.detailed-dignities-readiness > .detailed-dignities-groups,\n.detailed-dignities-readiness > .detailed-dignities-limitations,\n.houses-readiness > .houses-status,\n.houses-readiness > [data-houses-explanation],\n.houses-readiness > .houses-content,\n.arabic-parts-readiness > .arabic-parts-status,\n.arabic-parts-readiness > [data-arabic-parts-explanation],\n.arabic-parts-readiness > .arabic-parts-content,\n.special-points-readiness > .special-points-status,\n.special-points-readiness > [data-special-points-explanation],\n.special-points-readiness > .special-points-content,\n.fixed-stars-readiness > .fixed-stars-status,\n.fixed-stars-readiness > [data-fixed-stars-explanation],\n.fixed-stars-readiness > .fixed-stars-content {\n  grid-column: 1 / -1;'), true);
 });
 
 test('home screen renders hidden warnings card shell', () => {

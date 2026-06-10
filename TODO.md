@@ -4235,9 +4235,36 @@ Result:
 
 Next active task:
 
-- Task 14.9 — Fixed Stars UI.
+- Task 14.9 — Fixed Stars UI. Completed below.
 
-Task 14.9 is not started.
+Task 14.9 is now closed below.
+Do not start Sprint 15 or later.
+
+## Task 14.9 — Fixed Stars UI
+
+Status: done
+
+Goal:
+
+Add a user-facing `Неподвижные звезды` block inside `Мои карты`.
+
+Result:
+
+- Added the collapsible `Неподвижные звезды` UI block after `Особые точки карты`.
+- Wired the block through existing `calculateFixedStarConjunctionsForProfile` and `formatFixedStarConjunctionResult` helpers.
+- Added ready, noHits, partial and notReady UI behavior.
+- Rendered conjunction hit rows, a one-time Vronsky source note and a one-time global orb note.
+- Kept the block collapsed by default and reset with the other profile disclosure blocks.
+- Bumped PWA cache to `lunar-calendar-v94` and cached app-visible Fixed Stars modules.
+- Added `test/fixedStarsUi.test.js` and updated profile / markup UI tests.
+- Fixed a display-copy issue so planet targets render in user-facing instrumental form, for example `с Венерой`.
+- No catalog, position, target resolver, conjunction policy, provider, package, debug or interpretation changes were added.
+
+Next active task:
+
+- Task 14.10 — Fixed Stars Debug / QA Guardrails.
+
+Task 14.10 is not started.
 Do not start Sprint 15 or later.
 
 # Security Backlog
