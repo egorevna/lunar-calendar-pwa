@@ -4182,9 +4182,36 @@ Result:
 
 Next active task:
 
-- Task 14.7 — Fixed Star Validation / Cross-Checks.
+- Task 14.7 — Fixed Star Validation / Cross-Checks. Completed below.
 
-Task 14.7 is not started.
+Task 14.7 is now closed below.
+Do not start Sprint 15 or later.
+
+## Task 14.7 — Fixed Star Validation / Cross-Checks
+
+Status: done
+
+Goal:
+
+Add cross-system validation tests and fixtures for the Fixed Stars foundation before display/UI work.
+
+Result:
+
+- Added static/manual `test/fixtures/fixedStarsValidationFixtures.js`.
+- Added `test/fixedStarsValidation.test.js`.
+- Validated Fixed Stars source policy, no-OCR/no-memory boundaries, active catalog rows, source metadata and 1950 / 1970 / 1990 epoch columns.
+- Validated position exact-epoch preservation, interpolation, extrapolation, wrap-around-safe batch behavior and no hidden/mixed epoch output.
+- Validated active targets: natal planets + ASC / MC / DSC / IC.
+- Validated deferred targets remain metadata-only.
+- Validated global conjunction orb `1°00′`, conjunction-only relationship, exact/inside/boundary/outside orb behavior, wrap-around behavior, sorting, noHits, partial and notReady behavior.
+- Validated privacy and strict runtime/file boundaries.
+- No production modules, display helper, UI, debug, source/orb/target policy changes, provider changes, package changes, PWA cache changes or interpretations were added.
+
+Next active task:
+
+- Task 14.8 — Fixed Stars Display Helper.
+
+Task 14.8 is not started.
 Do not start Sprint 15 or later.
 
 # Security Backlog

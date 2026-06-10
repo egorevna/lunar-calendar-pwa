@@ -2159,6 +2159,8 @@ Testing note:
 - `test/selenaFixtures.test.js` and `test/selena.test.js` validate the pure Selena / White Moon engine, static benchmark matching, profile-level UTC readiness, `fictitious-calculated-point` metadata, privacy exclusions and strict Sprint 13 source boundaries without adding alternate Selena variants, Lunar Nodes, Lilith, UI/debug or house assignment.
 - `test/specialPointsDisplay.test.js` validates the pure Special Points display helper, including formatted North/South Node, Mean Lilith and Selena rows, optional Lunar Nodes house labels, fallback states, Selena fictitious / hypothetical note, privacy exclusions and strict display-only source boundaries.
 - `test/specialPointsForProfile.test.js` validates the profile-level Special Points view-model helper, including fallback states, ready/partial profile behavior, optional Lunar Nodes house labels, Selena fictitious / hypothetical note, privacy exclusions and no provider/native astronomy imports.
+- `test/fixtures/fixedStarsValidationFixtures.js` contains test-only manual Fixed Stars validation fixtures for catalog keys, source policy, epoch columns, position modes, target policy, conjunction boundaries, privacy and strict exclusions. It is not used by production code.
+- `test/fixedStarsValidation.test.js` cross-checks the Fixed Stars foundation across catalog data, position/epoch behavior, target resolver policy, conjunction/orb behavior, privacy exclusions and runtime/file boundaries without adding a production module, display helper, UI, debug or interpretations.
 - `NATAL_PROVIDER_VALIDATION_REPORT.md` records the provider-layer validation summary; it does not enable user-facing natal values.
 - if personal data is added later, debug output must follow `PRIVACY_RULES.md`
 

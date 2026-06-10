@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-06-10 — Complete Task 14.7 Fixed Star Validation / Cross-Checks
+
+- Added static/manual Fixed Stars validation fixtures and tests.
+- Cross-checked source policy, no-OCR/no-memory boundaries, active catalog keys, source metadata and 1950 / 1970 / 1990 epoch columns.
+- Validated exact-source positions, interpolation, extrapolation, wrap-around-safe batch output, active targets, deferred target metadata, global `1°00′` conjunction orb, inclusive boundaries, sorting, noHits, partial and notReady behavior.
+- Added privacy and strict runtime/file boundary checks for the Fixed Stars foundation.
+- No production modules, display helper, UI, debug, source/orb/target policy changes, provider changes, package changes, PWA cache changes or interpretations were added.
+- Next active task is Task 14.8 — Fixed Stars Display Helper, but it was not started.
+
 ## 2026-06-10 — Complete Task 14.6 Fixed Star Conjunction Engine / Fixtures
 
 - Added pure `src/fixedStarConjunctions.js`.
