@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-06-10 — Complete Task 14.5 Fixed Star Target Resolver
+
+- Added pure `src/fixedStarTargets.js`.
+- Added static/manual Fixed Star target resolver fixtures and tests.
+- Resolved only the active Sprint 14 target sets: natal planets and ASC / MC / DSC / IC.
+- Preserved deferred target sets as metadata only: house cusps, Lunar Nodes, Lilith, Selena, Pars Fortuna, Lot of Spirit, Arabic Parts and custom points.
+- Added ready / partial / notReady target resolution behavior for future conjunction work.
+- No fixed star position changes, conjunction engine, display helper, UI, debug, provider changes, package changes, PWA cache changes or interpretations were added.
+- Next active task is Task 14.6 — Fixed Star Conjunction Engine / Fixtures, but it was not started.
+
 ## 2026-06-10 — Complete Task 14.4 Fixed Star Position / Epoch Engine
 
 - Added pure `src/fixedStarPositions.js`.

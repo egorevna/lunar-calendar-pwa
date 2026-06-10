@@ -879,6 +879,11 @@ Policy:
 - Deferred relationship types include oppositions, squares, trines, parans, heliacal phenomena and star-rise/set calculations.
 - Initial target set: natal planets + ASC / MC / DSC / IC.
 - Deferred targets: house cusps, Lunar Nodes, Lilith, Selena, Pars Fortuna, Lot of Spirit, Arabic Parts and custom points.
+- Task 14.5 adds a pure target resolver for the active target set only.
+- Fixed Star target rows use numeric tropical longitudes from ready natal planet and ASC / MC angle results.
+- Active target order is natal planets first (Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto), then angles (ASC, MC, DSC, IC).
+- If one active target set is unavailable, resolver output may be `partial`; missing targets are not faked.
+- Deferred target sets remain metadata-only and must not appear as ready Fixed Star targets.
 - User-facing output may eventually show fixed star labels, safe target labels, formatted zodiac positions with seconds and explicit orb text.
 - No interpretations, mythology text, predictive claims, karmic/fatalistic language, ritual advice or ritual scoring are allowed.
 

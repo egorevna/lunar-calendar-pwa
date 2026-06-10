@@ -4124,9 +4124,39 @@ Result:
 
 Next active task:
 
-- Task 14.5 — Fixed Star Target Resolver.
+- Task 14.5 — Fixed Star Target Resolver. Completed below.
 
-Task 14.5 is not started.
+Task 14.5 is now closed below.
+Do not start Sprint 15 or later.
+
+## Task 14.5 — Fixed Star Target Resolver
+
+Status: done
+
+Goal:
+
+Create a pure target resolver for the future Fixed Star conjunction engine.
+
+Result:
+
+- Added pure `src/fixedStarTargets.js`.
+- Added static/manual target resolver fixtures and tests.
+- Resolved the active Sprint 14 target sets only:
+  - natal planets: Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto;
+  - angles: ASC, MC, DSC and IC.
+- Normalized target rows from ready natal planet and ASC / MC results using numeric longitudes, tropical zodiac sign / degree / minute / second text and safe labels.
+- Preserved ready / partial / notReady behavior:
+  - ready when natal planets and angles are both available;
+  - partial when only one active target set is available;
+  - notReady when no active target set is available.
+- Kept deferred target sets as metadata only: house cusps, Lunar Nodes, Lilith, Selena, Pars Fortuna, Lot of Spirit, Arabic Parts and custom points.
+- No fixed star position changes, conjunction engine, display helper, UI, debug, provider changes, package changes, PWA cache changes or interpretations were added.
+
+Next active task:
+
+- Task 14.6 — Fixed Star Conjunction Engine / Fixtures.
+
+Task 14.6 is not started.
 Do not start Sprint 15 or later.
 
 # Security Backlog
