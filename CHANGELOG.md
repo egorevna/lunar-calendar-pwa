@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-06-21 — Start Sprint 15 Arabic Parts Expansion Pack
+
+- Started Sprint 15 — Arabic Parts Expansion Pack.
+- Added / accepted `SPRINT_15_PLAN.md`, `ARABIC_PARTS_EXPANSION_STRATEGY.md` and `ARABIC_PARTS_EXPANSION_SOURCE_POLICY.md` as strategy/source-policy docs.
+- Recorded that active Arabic Parts formulas remain `pars-fortuna` and `lot-of-spirit`.
+- Recorded candidate Lots as source-gated only: Lot of Eros, Lot of Necessity, Lot of Basis and Lot of Exaltation.
+- No calculation code, formula dataset changes, UI, debug, provider changes, package files, PWA cache changes or interpretations were added.
+- Next active task is Task 15.2 — Source Corpus / Formula Tradition Decision, but it was not started.
+
 ## 2026-06-11 — Close Sprint 14 Fixed Stars Final Hardening / Regression
 
 - Completed the final Sprint 14 Fixed Stars hardening / regression pass.

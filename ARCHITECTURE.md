@@ -12,6 +12,14 @@ This file describes the actual current state of the codebase, not future plans.
 
 Future architecture ideas belong in `MASTER_PLAN.md` or `TODO.md`, not here.
 
+Current Sprint 15 strategy docs:
+
+- `SPRINT_15_PLAN.md`
+- `ARABIC_PARTS_EXPANSION_STRATEGY.md`
+- `ARABIC_PARTS_EXPANSION_SOURCE_POLICY.md`
+
+These documents define the Arabic Parts Expansion Pack strategy and source-gated formula activation policy. Task 15.1 is docs-only: it does not implement new calculation modules, does not activate new Arabic Parts, and does not change the existing Arabic Parts architecture.
+
 Completed Sprint 14 strategy docs:
 
 - `SPRINT_14_PLAN.md`

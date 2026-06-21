@@ -4320,9 +4320,61 @@ Sprint 14 is closed.
 
 Next active task:
 
-- Sprint 15 planning — Arabic Parts Expansion Pack.
+- Task 15.1 — Arabic Parts Expansion Strategy.
 
-Sprint 15 is not started.
+Task 15.1 is now closed below.
+
+# Sprint 15 — Arabic Parts Expansion Pack
+
+Status: active
+
+Sprint 15 target:
+
+- expand Arabic Parts / Lots beyond the currently active verified formulas;
+- keep `pars-fortuna` and `lot-of-spirit` active and unchanged;
+- verify candidate Lots one by one before any dataset or engine activation;
+- update formula dataset, engine, house assignment, display, UI and debug only after source verification permits it.
+
+Candidate Lots:
+
+- Lot of Eros;
+- Lot of Necessity;
+- Lot of Basis;
+- Lot of Exaltation.
+
+Guardrails:
+
+- no Arabic Part formula may be activated from memory;
+- no candidate Lot may become active without source/tradition verification;
+- conflicting sources keep a candidate inactive as `needsReview` or `deferred`;
+- only `verified` rows may be active;
+- no interpretations, predictions, ritual scoring, karmic/fatalistic text or broad unverified Arabic Parts catalog;
+- do not change Pars Fortuna or Lot of Spirit formulas without a real bug;
+- do not start Sprint 16 or later.
+
+## Task 15.1 — Arabic Parts Expansion Strategy
+
+Status: done
+
+Goal:
+
+Merge Sprint 15 strategy documents into project status.
+
+Result:
+
+- Added / accepted `SPRINT_15_PLAN.md`, `ARABIC_PARTS_EXPANSION_STRATEGY.md` and `ARABIC_PARTS_EXPANSION_SOURCE_POLICY.md` as Sprint 15 strategy docs.
+- Started Sprint 15 — Arabic Parts Expansion Pack.
+- Confirmed active formulas remain `pars-fortuna` and `lot-of-spirit`.
+- Confirmed candidate Lots are `lot-of-eros`, `lot-of-necessity`, `lot-of-basis` and `lot-of-exaltation`.
+- Confirmed candidates are source-gated and inactive until source/tradition verification passes.
+- Confirmed Task 15.1 is docs-only: no Arabic Parts dataset, formula engine, UI, debug, provider, package or service worker changes were made.
+
+Next active task:
+
+- Task 15.2 — Source Corpus / Formula Tradition Decision.
+
+Task 15.2 is not started.
+Do not start Sprint 16 or later.
 
 # Security Backlog
 

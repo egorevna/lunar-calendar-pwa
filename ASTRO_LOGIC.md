@@ -746,6 +746,23 @@ User-facing and debug policy:
 - UI/debug must not expose raw birth date, birth time, UTC datetime, raw timezone, raw coordinates, full profile JSON, provider payloads or raw intermediate calculation arrays;
 - debug may show safe readiness flags, selected system, formula key, formula variant, result counts and house assignment counts.
 
+## Sprint 15 — Arabic Parts Expansion Policy
+
+Sprint 15 expands Arabic Parts / Lots only through verified source and formula governance. Task 15.1 is strategy/status only and does not change calculation modules.
+
+Policy:
+
+- active formulas at Sprint 15 start remain `pars-fortuna` and `lot-of-spirit`;
+- candidate expansion Lots are `lot-of-eros`, `lot-of-necessity`, `lot-of-basis` and `lot-of-exaltation`;
+- candidates remain inactive until source/tradition verification passes;
+- Task 15.2 must decide the source corpus, formula tradition, conflict policy, day/night handling and active/deferred criteria before any candidate formula is activated;
+- no formula may become active from memory or from a broad unverified Arabic Parts catalog;
+- if sources disagree, the candidate stays inactive as `needsReview` or `deferred`;
+- only `verificationStatus: "verified"` rows may be active;
+- Pars Fortuna and Lot of Spirit formulas must not change without a real bug;
+- future verified Lots must use numeric tropical longitudes, explicit required inputs, normalized output and degree-minute-second display;
+- no interpretations, predictions, ritual scoring, karmic/fatalistic text or psychological labels are added.
+
 ## Sprint 13 — Special Points Policy
 
 Sprint 13 adds a controlled Special Points foundation without changing Sprint 11 house engines or Sprint 12 Arabic Parts formulas.
