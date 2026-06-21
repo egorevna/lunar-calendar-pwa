@@ -755,13 +755,31 @@ Policy:
 - active formulas at Sprint 15 start remain `pars-fortuna` and `lot-of-spirit`;
 - candidate expansion Lots are `lot-of-eros`, `lot-of-necessity`, `lot-of-basis` and `lot-of-exaltation`;
 - candidates remain inactive until source/tradition verification passes;
-- Task 15.2 must decide the source corpus, formula tradition, conflict policy, day/night handling and active/deferred criteria before any candidate formula is activated;
+- Task 15.2 attempted the source corpus / tradition decision and blocks activation until local verified formula source materials are provided;
 - no formula may become active from memory or from a broad unverified Arabic Parts catalog;
 - if sources disagree, the candidate stays inactive as `needsReview` or `deferred`;
 - only `verificationStatus: "verified"` rows may be active;
 - Pars Fortuna and Lot of Spirit formulas must not change without a real bug;
 - future verified Lots must use numeric tropical longitudes, explicit required inputs, normalized output and degree-minute-second display;
 - no interpretations, predictions, ritual scoring, karmic/fatalistic text or psychological labels are added.
+
+## Arabic Parts Expansion Source Policy
+
+Task 15.2 blocks the Sprint 15 source corpus decision until local verified formula source materials are provided.
+
+Policy:
+
+- source corpus status: blocked;
+- formula tradition: not selected;
+- blocked candidate Lots: `lot-of-eros`, `lot-of-necessity`, `lot-of-basis`, `lot-of-exaltation`;
+- existing active formulas remain `pars-fortuna` and `lot-of-spirit`;
+- Hellenistic, medieval Arabic, Vronsky, modern compilation or mixed traditions must not be selected from memory;
+- a future source pack must provide readable source text, screenshots, book pages, manually verified formula table or explicit citation;
+- if sources disagree, the candidate remains inactive as `needsReview` or `deferred`;
+- day/night variants must be documented separately if present;
+- formulas may depend on another Lot only when the dependency is already active verified and explicitly required by the source;
+- Task 15.3 must not start until Task 15.2b accepts source materials;
+- no interpretations are added.
 
 ## Sprint 13 — Special Points Policy
 

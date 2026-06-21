@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-06-21 — Block Task 15.2 Arabic Parts Source Corpus Decision
+
+- Added `ARABIC_PARTS_SOURCE_CORPUS_DECISION.md`.
+- Recorded that the Sprint 15 Arabic Parts expansion source corpus is blocked because no local verified formula source materials are available for Lot of Eros, Lot of Necessity, Lot of Basis or Lot of Exaltation.
+- Kept active formulas unchanged: `pars-fortuna` and `lot-of-spirit`.
+- Kept candidate Lots inactive/deferred.
+- No code changes, formula dataset changes, fixtures with new Lot values, UI, debug, package files, PWA cache changes or interpretations were added.
+- Next active task is Task 15.2b — Arabic Parts Source Materials Intake, but it was not started.
+
 ## 2026-06-21 — Start Sprint 15 Arabic Parts Expansion Pack
 
 - Started Sprint 15 — Arabic Parts Expansion Pack.

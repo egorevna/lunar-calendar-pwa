@@ -17,8 +17,9 @@ Current Sprint 15 strategy docs:
 - `SPRINT_15_PLAN.md`
 - `ARABIC_PARTS_EXPANSION_STRATEGY.md`
 - `ARABIC_PARTS_EXPANSION_SOURCE_POLICY.md`
+- `ARABIC_PARTS_SOURCE_CORPUS_DECISION.md`
 
-These documents define the Arabic Parts Expansion Pack strategy and source-gated formula activation policy. Task 15.1 is docs-only: it does not implement new calculation modules, does not activate new Arabic Parts, and does not change the existing Arabic Parts architecture.
+These documents define the Arabic Parts Expansion Pack strategy and source-gated formula activation policy. Task 15.1 is docs-only: it does not implement new calculation modules, does not activate new Arabic Parts, and does not change the existing Arabic Parts architecture. Task 15.2 records the source corpus as blocked until verified local formula materials are provided; no new modules or formulas are implemented.
 
 Completed Sprint 14 strategy docs:
 

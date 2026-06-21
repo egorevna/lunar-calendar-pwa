@@ -4371,9 +4371,36 @@ Result:
 
 Next active task:
 
-- Task 15.2 — Source Corpus / Formula Tradition Decision.
+- Task 15.2b — Arabic Parts Source Materials Intake.
 
-Task 15.2 is not started.
+Task 15.2 is blocked/source-materials-required.
+Task 15.2b is not started.
+Do not start Sprint 16 or later.
+
+## Task 15.2 — Source Corpus / Formula Tradition Decision
+
+Status: blocked — source materials required
+
+Goal:
+
+Decide the source corpus / formula tradition for Sprint 15 Arabic Parts Expansion before any candidate Lot is activated.
+
+Result:
+
+- Added `ARABIC_PARTS_SOURCE_CORPUS_DECISION.md`.
+- Source corpus decision: blocked.
+- Reason: no local verified formula source materials are available for Lot of Eros, Lot of Necessity, Lot of Basis or Lot of Exaltation.
+- Existing active formulas remain unchanged: `pars-fortuna` and `lot-of-spirit`.
+- Candidate Lots remain inactive/deferred: `lot-of-eros`, `lot-of-necessity`, `lot-of-basis` and `lot-of-exaltation`.
+- No source tradition was selected from memory.
+- No formulas, fixtures, calculation code, UI, debug, provider, package or service worker changes were made.
+
+Next active task:
+
+- Task 15.2b — Arabic Parts Source Materials Intake.
+
+Task 15.2b is not started.
+Task 15.3 — Lot of Eros Source Verification must not start until a source pack is accepted.
 Do not start Sprint 16 or later.
 
 # Security Backlog
