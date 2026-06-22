@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-06-22 — Complete Task 15.2b Vronsky Table 17 Source Materials Intake
+
+- Added `ARABIC_PARTS_VRONSKY_TABLE_17_SOURCE_MATERIALS.md`.
+- Updated the Sprint 15 Arabic Parts source corpus decision from blocked to partial but accepted.
+- Recorded Vronsky, Tome 1, Appendix 2, Table 17 — `Арабские точки` as the primary/only Sprint 15 source corpus.
+- Recorded that provided pages verify the day-birth section on book pages 209–210, while night-birth formulas remain unverified.
+- Recorded source-visible rows and complexity buckets without OCR-importing the full table.
+- Kept active formulas unchanged: `pars-fortuna` and `lot-of-spirit`.
+- No code changes, formula dataset changes, fixtures with new Lot values, UI, debug, package files, PWA cache changes or interpretations were added.
+- Next active task is Task 15.2c — Vronsky Arabic Points Scope Selection, but it was not started.
+
 ## 2026-06-21 — Block Task 15.2 Arabic Parts Source Corpus Decision
 
 - Added `ARABIC_PARTS_SOURCE_CORPUS_DECISION.md`.

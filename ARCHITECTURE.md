@@ -18,8 +18,9 @@ Current Sprint 15 strategy docs:
 - `ARABIC_PARTS_EXPANSION_STRATEGY.md`
 - `ARABIC_PARTS_EXPANSION_SOURCE_POLICY.md`
 - `ARABIC_PARTS_SOURCE_CORPUS_DECISION.md`
+- `ARABIC_PARTS_VRONSKY_TABLE_17_SOURCE_MATERIALS.md`
 
-These documents define the Arabic Parts Expansion Pack strategy and source-gated formula activation policy. Task 15.1 is docs-only: it does not implement new calculation modules, does not activate new Arabic Parts, and does not change the existing Arabic Parts architecture. Task 15.2 records the source corpus as blocked until verified local formula materials are provided; no new modules or formulas are implemented.
+These documents define the Arabic Parts Expansion Pack strategy and source-gated formula activation policy. Task 15.1 is docs-only: it does not implement new calculation modules, does not activate new Arabic Parts, and does not change the existing Arabic Parts architecture. Task 15.2 records the initial source corpus blocker; Task 15.2b accepts Vronsky Table 17 as the partial primary/only Sprint 15 source corpus for day-birth Arabic point formulas. No new modules or formulas are implemented.
 
 Completed Sprint 14 strategy docs:
 

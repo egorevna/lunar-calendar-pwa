@@ -755,7 +755,7 @@ Policy:
 - active formulas at Sprint 15 start remain `pars-fortuna` and `lot-of-spirit`;
 - candidate expansion Lots are `lot-of-eros`, `lot-of-necessity`, `lot-of-basis` and `lot-of-exaltation`;
 - candidates remain inactive until source/tradition verification passes;
-- Task 15.2 attempted the source corpus / tradition decision and blocks activation until local verified formula source materials are provided;
+- Task 15.2 attempted the source corpus / tradition decision; Task 15.2b accepted Vronsky Table 17 source materials as partial, and Task 15.2c must select the Vronsky scope before activation;
 - no formula may become active from memory or from a broad unverified Arabic Parts catalog;
 - if sources disagree, the candidate stays inactive as `needsReview` or `deferred`;
 - only `verificationStatus: "verified"` rows may be active;
@@ -765,20 +765,24 @@ Policy:
 
 ## Arabic Parts Expansion Source Policy
 
-Task 15.2 blocks the Sprint 15 source corpus decision until local verified formula source materials are provided.
+Task 15.2 initially blocked the Sprint 15 source corpus decision until local verified formula source materials were provided. Task 15.2b accepts Vronsky Table 17 source materials as a partial source corpus for day-birth Arabic point formulas.
 
 Policy:
 
-- source corpus status: blocked;
-- formula tradition: not selected;
-- blocked candidate Lots: `lot-of-eros`, `lot-of-necessity`, `lot-of-basis`, `lot-of-exaltation`;
+- source corpus status: partial but accepted;
+- primary/only Sprint 15 source corpus: Вронский, Том 1, Приложение 2, Таблица 17 — Арабские точки;
+- formula tradition: Vronsky Table 17 Arabic Points;
+- day-birth source materials are accepted from the visible pages;
+- night-birth formulas are not verified from the provided page photos;
 - existing active formulas remain `pars-fortuna` and `lot-of-spirit`;
-- Hellenistic, medieval Arabic, Vronsky, modern compilation or mixed traditions must not be selected from memory;
-- a future source pack must provide readable source text, screenshots, book pages, manually verified formula table or explicit citation;
+- Vronsky source-visible rows are candidates only until later verification and dataset update;
+- `Pars amoris / точка любви` is source-visible and may use a Vronsky key such as `pars-amoris`; it must not be mapped automatically to `lot-of-eros`;
+- original Sprint 15 candidate keys `lot-of-eros`, `lot-of-necessity`, `lot-of-basis` and `lot-of-exaltation` remain inactive/deferred and are not required Vronsky keys;
+- Valens, Paulus, Olympiodorus, Hermetic Lots, Astrology X-Files, medieval Arabic, modern compilation or mixed traditions must not be used for activation in Sprint 15;
 - if sources disagree, the candidate remains inactive as `needsReview` or `deferred`;
 - day/night variants must be documented separately if present;
 - formulas may depend on another Lot only when the dependency is already active verified and explicitly required by the source;
-- Task 15.3 must not start until Task 15.2b accepts source materials;
+- Task 15.2c must select Vronsky Arabic Points scope and project keys before any per-row source verification task proceeds;
 - no interpretations are added.
 
 ## Sprint 13 — Special Points Policy

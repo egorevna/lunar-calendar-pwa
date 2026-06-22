@@ -4371,10 +4371,10 @@ Result:
 
 Next active task:
 
-- Task 15.2b — Arabic Parts Source Materials Intake.
+- Task 15.2c — Vronsky Arabic Points Scope Selection.
 
-Task 15.2 is blocked/source-materials-required.
-Task 15.2b is not started.
+Task 15.2b is done.
+Task 15.2c is not started.
 Do not start Sprint 16 or later.
 
 ## Task 15.2 — Source Corpus / Formula Tradition Decision
@@ -4399,8 +4399,38 @@ Next active task:
 
 - Task 15.2b — Arabic Parts Source Materials Intake.
 
-Task 15.2b is not started.
-Task 15.3 — Lot of Eros Source Verification must not start until a source pack is accepted.
+Task 15.2b is done.
+Task 15.3 — Lot of Eros Source Verification must not start from the old candidate list until Vronsky Table 17 scope and project keys are selected.
+Do not start Sprint 16 or later.
+
+## Task 15.2b — Vronsky Table 17 Source Materials Intake
+
+Status: done
+
+Goal:
+
+Accept Vronsky Table 17 source materials for Sprint 15 without activating formulas.
+
+Result:
+
+- Added `ARABIC_PARTS_VRONSKY_TABLE_17_SOURCE_MATERIALS.md`.
+- Updated `ARABIC_PARTS_SOURCE_CORPUS_DECISION.md`.
+- Source corpus status: partial but accepted.
+- Primary/only Sprint 15 source corpus: Вронский, Том 1, Приложение 2, Таблица 17 — Арабские точки.
+- Formula tradition: Vronsky Table 17 Arabic Points.
+- Provided source pages confirm Table 17, `Для дневного рождения`, book pages 209–210.
+- Night-birth formulas are not verified from the provided source pages.
+- Visible rows were recorded as source-visible candidates only.
+- `Pars amoris / точка любви` is a visible Vronsky row with suggested key `pars-amoris`; it is not automatically `lot-of-eros`.
+- Existing active formulas remain unchanged: `pars-fortuna` and `lot-of-spirit`.
+- No new Lots were activated.
+- No formulas, fixtures, calculation code, UI, debug, provider, package or service worker changes were made.
+
+Next active task:
+
+- Task 15.2c — Vronsky Arabic Points Scope Selection.
+
+Task 15.2c is not started.
 Do not start Sprint 16 or later.
 
 # Security Backlog

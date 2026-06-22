@@ -8,18 +8,17 @@ This is a source policy document only. It does not activate formulas and does no
 
 ## Decision
 
-Decision status: source corpus blocked.
+Decision status: source corpus partial but accepted.
 
-Source corpus: blocked.
+Primary/only Sprint 15 source corpus:
 
-Reason: no local verified formula source materials are available for the Sprint 15 candidate Lots:
+- Вронский, Том 1, Приложение 2, Таблица 17 — Арабские точки.
 
-- Lot of Eros;
-- Lot of Necessity;
-- Lot of Basis;
-- Lot of Exaltation.
+Formula tradition:
 
-Task 15.3 must not start until a verified local source pack is provided and accepted.
+- Vronsky Table 17 Arabic Points.
+
+Task 15.2b accepts the provided Vronsky Table 17 source materials as a partial source corpus for day-birth Arabic point formulas. New formula rows remain inactive until later Vronsky-only scope selection, formula verification, dataset update and fixtures.
 
 ## Existing Active Formulas
 
@@ -32,7 +31,7 @@ These formulas must not be changed without a real bug.
 
 ## Candidate Lots
 
-Candidate rows remain inactive:
+Existing Sprint 15 candidate rows remain inactive:
 
 - `lot-of-eros`;
 - `lot-of-necessity`;
@@ -46,18 +45,20 @@ Each candidate remains source-gated and must stay one of:
 - `needsReview`;
 - `rejected`.
 
-No candidate may become `active: true` in Task 15.2.
+No candidate may become `active: true` in Task 15.2 or Task 15.2b.
+
+Task 15.2b reframes Sprint 15 around Vronsky Table 17 source rows. Original Hellenistic-style candidate keys must not be treated as required Vronsky keys.
 
 ## Source Audit
 
-Local audit found:
+Initial Task 15.2 local audit found:
 
 - existing Sprint 12 / Sprint 15 policy docs;
 - existing inactive candidate rows in `src/arabicPartsData.js`;
 - existing tests proving deferred rows do not produce ready values;
 - roadmap-level mention of formula tables involving ASC and planets.
 
-Local audit did not find:
+Initial Task 15.2 local audit did not find:
 
 - verified formula source pages for Lot of Eros;
 - verified formula source pages for Lot of Necessity;
@@ -68,38 +69,62 @@ Local audit did not find:
 
 Roadmap-level mentions are not sufficient to activate formulas.
 
+Task 15.2b source-materials intake found:
+
+- provided local page photos `arabic2.jpg` and `arabic.jpg`;
+- book page 209 with `Таблица 17. Арабские точки`;
+- section `Для дневного рождения`;
+- continuation of the table on book page 210;
+- visible day-birth rows including `Pars Fortunae`, `Pars amoris` and `Pars animae`.
+
+Task 15.2b did not find / verify:
+
+- a visible `Для ночного рождения` section in the provided page photos;
+- a complete manually verified table transcription;
+- active formulas for new Vronsky rows;
+- calculated fixtures for new Vronsky rows.
+
 ## Formula Tradition
 
-Formula tradition: not selected.
+Formula tradition: Vronsky Table 17 Arabic Points.
 
-Blocked traditions:
+External traditions not used for activation in Sprint 15:
 
 - Hellenistic Lots;
 - medieval Arabic Parts;
-- Vronsky;
+- Valens;
+- Paulus;
+- Olympiodorus;
+- Hermetic Lots;
+- Astrology X-Files;
 - modern compilation;
 - mixed tradition.
 
-None of these may be selected from memory. A future task must select a tradition only from local, readable and citable source materials.
+Vronsky Table 17 is selected only from the provided local source materials. Other traditions must not be used for activation in Sprint 15.
 
 ## Required Source Materials
 
-To unblock Sprint 15 formula verification, provide one of:
+Accepted Task 15.2b source materials:
 
-- book pages;
-- screenshots;
-- manually verified formula table;
-- explicit source citation with readable formula text.
+- Сергей Алексеевич Вронский;
+- Том 1. Введение в астрологию;
+- Классическая астрология в 12 томах — 1;
+- ВШКА, Москва, 2003;
+- ISBN 5-900504-99-X;
+- Приложение 2: Справочные таблицы;
+- Таблица 17. Арабские точки;
+- section: Для дневного рождения.
 
-The source pack must identify:
+The source materials are accepted as partial because the provided photos verify day-birth rows only. Future tasks still need to identify:
 
-- source name;
-- tradition type;
-- formula text for each candidate Lot;
+- source row scope;
+- project key naming;
 - day/night variants, if any;
 - required inputs;
 - whether a formula depends on another Lot;
 - source note for each formula row.
+
+See `ARABIC_PARTS_VRONSKY_TABLE_17_SOURCE_MATERIALS.md`.
 
 ## Formula Conflict Policy
 
@@ -134,18 +159,20 @@ No formula may depend on inactive or deferred Lots.
 
 ## Candidate Verification Path
 
-Current path:
+Current path after Task 15.2b:
 
-- `lot-of-eros`: blocked pending source materials;
-- `lot-of-necessity`: blocked pending source materials;
-- `lot-of-basis`: blocked pending source materials;
-- `lot-of-exaltation`: blocked pending source materials.
+- Vronsky Table 17 source corpus: partial but accepted;
+- `pars-fortuna`: remains active and unchanged;
+- `lot-of-spirit`: remains active and unchanged;
+- Vronsky source-visible rows: candidates only, inactive;
+- `Pars amoris / точка любви`: source-visible candidate with suggested key `pars-amoris`; not automatically `lot-of-eros`;
+- `lot-of-eros`, `lot-of-necessity`, `lot-of-basis`, `lot-of-exaltation`: remain inactive/deferred and are not required Vronsky keys.
 
 Next active task:
 
-- Task 15.2b — Arabic Parts Source Materials Intake.
+- Task 15.2c — Vronsky Arabic Points Scope Selection.
 
-Task 15.3 — Lot of Eros Source Verification must not start until Task 15.2b accepts a source pack.
+Task 15.3 — Lot of Eros Source Verification must not start from the old Hellenistic-style candidate list. Sprint 15 must first select Vronsky Table 17 scope and project keys in Task 15.2c.
 
 ## Strict Exclusions
 
