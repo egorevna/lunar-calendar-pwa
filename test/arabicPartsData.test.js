@@ -12,9 +12,13 @@ import {
   getArabicPartsDeferredReasons,
   getArabicPartsFormulaDataset,
   getArabicPartsFormulaPolicy,
+  getPendingArabicPartsFormulaRows,
   getDeferredArabicPartsFormulas,
+  getVronskyArabicPartsFormulaRows,
+  getVronskySimpleArabicPartsFormulaRows,
   isVerifiedArabicPartFormula,
 } from '../src/arabicPartsData.js';
+import { getVronskyArabicPartsDataFixture } from './fixtures/vronskyArabicPartsDataFixtures.js';
 
 function assertNoSensitiveOrInterpretiveText(value) {
   const json = JSON.stringify(value);
@@ -134,6 +138,106 @@ test('additional candidate formulas remain inactive and deferred', () => {
     assert.equal(deferredKeys.includes(key), true);
   });
   assertNoSensitiveOrInterpretiveText(deferredRows);
+});
+
+test('Vronsky simple Arabic Parts rows are source-tracked but inactive pending-engine rows', () => {
+  const sourceFixture = getVronskyArabicPartsDataFixture('vronsky-source-policy').expected;
+  const keysFixture = getVronskyArabicPartsDataFixture('vronsky-simple-row-keys').expected;
+  const formulasFixture = getVronskyArabicPartsDataFixture('vronsky-simple-row-formulas').expected;
+  const dayOnlyFixture = getVronskyArabicPartsDataFixture('day-only-policy').expected;
+  const pendingFixture = getVronskyArabicPartsDataFixture('pending-engine-policy').expected;
+  const rows = getVronskySimpleArabicPartsFormulaRows();
+
+  assert.deepEqual(rows.map((row) => row.key), keysFixture.keys);
+  assert.equal(rows.length, 12);
+  rows.forEach((row) => {
+    assert.equal(row.sourceSystem, sourceFixture.sourceSystem);
+    assert.equal(row.sourceCorpus, sourceFixture.sourceCorpus);
+    assert.equal(row.formulaTradition, sourceFixture.formulaTradition);
+    assert.equal(row.sourceSection, sourceFixture.sourceSection);
+    assert.equal(row.sourceStatus, 'sourceVerified');
+    assert.equal(row.sourceRecordingStatus, 'manuallyRecordedFromSource');
+    assert.equal(row.active, pendingFixture.active);
+    assert.equal(row.engineStatus, pendingFixture.engineStatus);
+    assert.equal(row.activationStatus, pendingFixture.activationStatus);
+    assert.equal(row.implementationStatus, pendingFixture.implementationStatus);
+    assert.equal(row.chartSectPolicy, dayOnlyFixture.chartSectPolicy);
+    assert.equal(row.nightFormulaStatus, dayOnlyFixture.nightFormulaStatus);
+    assert.equal(row.displaySafe, true);
+    assert.equal(row.interpretation, false);
+    assert.deepEqual(row.externalTraditions, []);
+    assert.equal(row.formula?.day?.expression, formulasFixture.formulas[row.key]);
+    assert.equal(row.formula?.night, null);
+    assert.equal(row.requiredInputs.includes('chartSect'), true);
+    assertNoSensitiveOrInterpretiveText(row);
+  });
+});
+
+test('Vronsky scope distinctions preserve source keys and exclude complex/sensitive rows from simple pack', () => {
+  const vronskyRows = getVronskyArabicPartsFormulaRows();
+  const simpleRows = getVronskySimpleArabicPartsFormulaRows();
+  const simpleKeys = simpleRows.map((row) => row.key);
+  const parsAmoris = getArabicPartFormulaByKey('pars-amoris');
+  const lotOfEros = getArabicPartFormulaByKey('lot-of-eros');
+  const trade = getArabicPartFormulaByKey('pars-mercaturae');
+
+  assert.equal(vronskyRows.length, 12);
+  assert.equal(parsAmoris.key, 'pars-amoris');
+  assert.equal(parsAmoris.active, false);
+  assert.equal(parsAmoris.aliases.includes('lot-of-eros'), false);
+  assert.equal(lotOfEros.active, false);
+  assert.equal(lotOfEros.verificationStatus, 'deferred');
+  assert.equal(trade.sourceLabelRu, 'Торговля');
+  assert.equal(trade.formula.day.expression, 'ASC + Mercury - Sun');
+  assert.deepEqual(trade.formula.day.operands, ['asc', '+', 'mercury', '-', 'sun']);
+  assert.equal(simpleKeys.includes('pars-mercaturae'), true);
+  assert.equal(simpleKeys.includes('pars-mercatoris'), false);
+  assert.equal(simpleKeys.includes('pars-scientiae'), false);
+  assert.equal(simpleKeys.includes('pars-morbi'), false);
+  assertNoSensitiveOrInterpretiveText({ vronskyRows, simpleRows });
+});
+
+test('pending Arabic Parts helpers expose Vronsky rows safely without changing active formulas', () => {
+  const activeRows = getActiveArabicPartsFormulas();
+  const pendingRows = getPendingArabicPartsFormulaRows();
+  const pendingKeys = pendingRows.map((row) => row.key);
+  const deferredKeys = getDeferredArabicPartsFormulas().map((row) => row.key);
+  const policy = getArabicPartsFormulaPolicy();
+  const dataset = getArabicPartsFormulaDataset();
+  const originalDeferredKeys = getVronskyArabicPartsDataFixture('deferred-original-candidates').expected.keys;
+
+  assert.deepEqual(activeRows.map((row) => row.key), ['pars-fortuna', 'lot-of-spirit']);
+  assert.deepEqual(policy.activeFormulaKeys, ['pars-fortuna', 'lot-of-spirit']);
+  assert.deepEqual(deferredKeys, originalDeferredKeys);
+  assert.deepEqual(policy.deferredFormulaKeys, originalDeferredKeys);
+  getVronskyArabicPartsDataFixture('vronsky-simple-row-keys').expected.keys.forEach((key) => {
+    assert.equal(pendingKeys.includes(key), true);
+    assert.equal(deferredKeys.includes(key), false);
+    assert.equal(policy.deferredFormulaKeys.includes(key), false);
+    assert.equal(policy.pendingFormulaKeys.includes(key), true);
+  });
+  assert.equal(dataset.pendingRows.length, 12);
+  assert.equal(Object.isFrozen(pendingRows), true);
+  assert.equal(Object.isFrozen(dataset.pendingRows), true);
+  assertNoSensitiveOrInterpretiveText({ pendingRows, policy, dataset });
+});
+
+test('Vronsky dataset rows do not use external formula traditions or calculated fixtures', () => {
+  const rows = getVronskySimpleArabicPartsFormulaRows();
+  const json = JSON.stringify(rows);
+
+  assert.equal(json.includes('Valens'), false);
+  assert.equal(json.includes('Paulus'), false);
+  assert.equal(json.includes('Olympiodorus'), false);
+  assert.equal(json.includes('Hermetic'), false);
+  assert.equal(json.includes('Astrology X-Files'), false);
+  assert.equal(json.includes('modern online'), false);
+  assert.equal(json.includes('calculatedLongitude'), false);
+  assert.equal(json.includes('birthDate'), false);
+  assert.equal(json.includes('birthTime'), false);
+  assert.equal(json.includes('utcDateTime'), false);
+  assert.equal(json.includes('coordinates'), false);
+  assert.equal(json.includes('providerPayload'), false);
 });
 
 test('dataset getters return safe frozen policy slices', () => {

@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-06-22 — Complete Task 15.3 Vronsky Simple Arabic Points Dataset / Fixtures
+
+- Updated `src/arabicPartsData.js` with 12 source-tracked Vronsky Table 17 simple day-only Arabic Point rows.
+- Added the rows as inactive / pending-engine metadata only; no new formula calculations were activated.
+- Added `test/fixtures/vronskyArabicPartsDataFixtures.js` and `test/vronskyArabicPartsDataFixtures.test.js`.
+- Updated `test/arabicPartsData.test.js` to lock the active-only invariant and Vronsky row metadata.
+- Kept active calculated formulas exactly unchanged: `pars-fortuna` and `lot-of-spirit`.
+- Kept night formulas missing / not verified for the new Vronsky rows.
+- No Arabic Parts engine expansion, UI, debug, provider, package files, PWA cache changes or interpretations were added.
+- Next active task is Task 15.4 — Vronsky Simple Arabic Points Engine Expansion / Fixtures, but it was not started.
+
 ## 2026-06-22 — Complete Task 15.2c Vronsky Arabic Points Scope Selection
 
 - Added `ARABIC_PARTS_VRONSKY_SCOPE_SELECTION.md`.
@@ -10,7 +21,7 @@
 - Kept active formulas unchanged: `pars-fortuna` and `lot-of-spirit`.
 - Kept `lot-of-eros`, `lot-of-necessity`, `lot-of-basis` and `lot-of-exaltation` inactive/deferred under the Vronsky Table 17 expansion path.
 - No code changes, formula dataset changes, fixtures with new Lot values, UI, debug, package files, PWA cache changes or interpretations were added.
-- Next active task is Task 15.3 — Vronsky Simple Arabic Points Dataset / Fixtures, but it was not started.
+- Task 15.3 later added inactive dataset rows / fixtures; engine expansion remains for Task 15.4.
 
 ## 2026-06-22 — Complete Task 15.2b Vronsky Table 17 Source Materials Intake
 

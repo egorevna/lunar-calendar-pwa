@@ -4371,11 +4371,12 @@ Result:
 
 Next active task:
 
-- Task 15.3 — Vronsky Simple Arabic Points Dataset / Fixtures.
+- Task 15.4 — Vronsky Simple Arabic Points Engine Expansion / Fixtures.
 
 Task 15.2b is done.
 Task 15.2c is done.
-Task 15.3 is not started.
+Task 15.3 is done.
+Task 15.4 is not started.
 Do not start Sprint 16 or later.
 
 ## Task 15.2 — Source Corpus / Formula Tradition Decision
@@ -4432,7 +4433,7 @@ Next active task:
 - Task 15.3 — Vronsky Simple Arabic Points Dataset / Fixtures.
 
 Task 15.2c is done.
-Task 15.3 is not started.
+Task 15.3 is done.
 Do not start Sprint 16 or later.
 
 ## Task 15.2c — Vronsky Arabic Points Scope Selection
@@ -4471,9 +4472,50 @@ Result:
 
 Next active task:
 
-- Task 15.3 — Vronsky Simple Arabic Points Dataset / Fixtures.
+- Task 15.4 — Vronsky Simple Arabic Points Engine Expansion / Fixtures.
 
-Task 15.3 is not started.
+Task 15.3 is done.
+Task 15.4 is not started.
+Do not start Sprint 16 or later.
+
+## Task 15.3 — Vronsky Simple Arabic Points Dataset / Fixtures
+
+Status: done
+
+Goal:
+
+Add source-tracked dataset rows and fixtures for the first Vronsky simple day-only pack without calculation engine expansion.
+
+Result:
+
+- Updated `src/arabicPartsData.js`.
+- Added `test/fixtures/vronskyArabicPartsDataFixtures.js`.
+- Added `test/vronskyArabicPartsDataFixtures.test.js`.
+- Updated `test/arabicPartsData.test.js`.
+- Added 12 source-tracked Vronsky Table 17 rows as inactive / pending-engine metadata:
+  - `pars-amoris`;
+  - `pars-artis`;
+  - `pars-creationis`;
+  - `pars-fratrum-et-sororum`;
+  - `pars-hereditatis`;
+  - `pars-itineris`;
+  - `pars-liberorum`;
+  - `pars-matris`;
+  - `pars-patris`;
+  - `pars-pueri`;
+  - `astrologia`;
+  - `pars-mercaturae`.
+- Added dataset helpers for Vronsky rows and pending-engine rows.
+- Existing active calculated formulas remain exactly `pars-fortuna` and `lot-of-spirit`.
+- New Vronsky rows are inactive, `dayOnly`, `pendingEngineExpansion`, `inactiveUntilEngineTask` and `selectedForTask15_4`.
+- Night formulas remain `missing/notVerified`.
+- No engine expansion, calculated longitudes, UI, debug, provider, package or service worker changes were made.
+
+Next active task:
+
+- Task 15.4 — Vronsky Simple Arabic Points Engine Expansion / Fixtures.
+
+Task 15.4 is not started.
 Do not start Sprint 16 or later.
 
 # Security Backlog
