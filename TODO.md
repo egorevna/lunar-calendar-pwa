@@ -4371,10 +4371,11 @@ Result:
 
 Next active task:
 
-- Task 15.2c — Vronsky Arabic Points Scope Selection.
+- Task 15.3 — Vronsky Simple Arabic Points Dataset / Fixtures.
 
 Task 15.2b is done.
-Task 15.2c is not started.
+Task 15.2c is done.
+Task 15.3 is not started.
 Do not start Sprint 16 or later.
 
 ## Task 15.2 — Source Corpus / Formula Tradition Decision
@@ -4400,7 +4401,7 @@ Next active task:
 - Task 15.2b — Arabic Parts Source Materials Intake.
 
 Task 15.2b is done.
-Task 15.3 — Lot of Eros Source Verification must not start from the old candidate list until Vronsky Table 17 scope and project keys are selected.
+The old Task 15.3 — Lot of Eros Source Verification track is superseded/deferred by the Vronsky Table 17 expansion path.
 Do not start Sprint 16 or later.
 
 ## Task 15.2b — Vronsky Table 17 Source Materials Intake
@@ -4428,9 +4429,51 @@ Result:
 
 Next active task:
 
-- Task 15.2c — Vronsky Arabic Points Scope Selection.
+- Task 15.3 — Vronsky Simple Arabic Points Dataset / Fixtures.
 
-Task 15.2c is not started.
+Task 15.2c is done.
+Task 15.3 is not started.
+Do not start Sprint 16 or later.
+
+## Task 15.2c — Vronsky Arabic Points Scope Selection
+
+Status: done
+
+Goal:
+
+Select the first implementation scope for Vronsky Table 17 Arabic Points without activating formulas.
+
+Result:
+
+- Added `ARABIC_PARTS_VRONSKY_SCOPE_SELECTION.md`.
+- Selected the first implementation pack as simple day-only display-safe Vronsky formulas:
+  - `pars-amoris`;
+  - `pars-artis`;
+  - `pars-creationis`;
+  - `pars-fratrum-et-sororum`;
+  - `pars-hereditatis`;
+  - `pars-itineris`;
+  - `pars-liberorum`;
+  - `pars-matris`;
+  - `pars-patris`;
+  - `pars-pueri`;
+  - `astrologia`;
+  - `pars-mercaturae`.
+- Existing active formulas remain unchanged: `pars-fortuna` and `lot-of-spirit`.
+- New Vronsky rows remain inactive until dataset / fixture work.
+- New selected rows are day-only candidates: calculate only for `chartSect: day`; night, boundary, unknown or not-ready chart sect must return `notReady`.
+- Night-birth formulas remain missing / not verified from the provided source pages.
+- Sensitive / fatalistic / medical / sexual / hostile labels are deferred from the first implementation pack and normal UI.
+- Complex operand rows are deferred until operand policy / engines exist.
+- Ambiguous labels or formulas are marked for `needsReview`.
+- Original Sprint 15 candidate keys `lot-of-eros`, `lot-of-necessity`, `lot-of-basis` and `lot-of-exaltation` remain inactive/deferred and are not required Vronsky keys.
+- No formulas, fixtures, calculation code, UI, debug, provider, package or service worker changes were made.
+
+Next active task:
+
+- Task 15.3 — Vronsky Simple Arabic Points Dataset / Fixtures.
+
+Task 15.3 is not started.
 Do not start Sprint 16 or later.
 
 # Security Backlog

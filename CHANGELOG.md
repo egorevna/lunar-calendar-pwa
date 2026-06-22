@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-06-22 — Complete Task 15.2c Vronsky Arabic Points Scope Selection
+
+- Added `ARABIC_PARTS_VRONSKY_SCOPE_SELECTION.md`.
+- Selected the first implementation pack of simple day-only display-safe Vronsky Table 17 formulas for the next dataset / fixture task.
+- Recorded the day-only policy: new selected Vronsky rows may calculate only for `chartSect: day`; night, boundary, unknown or not-ready chart sect must return `notReady`.
+- Deferred sensitive / fatalistic / medical / sexual / hostile labels from normal UI and the first implementation pack.
+- Deferred complex operands until house-cusp, house-ruler, dependent-Lot, lunar-phase, fixed-degree and progressus policies exist.
+- Kept active formulas unchanged: `pars-fortuna` and `lot-of-spirit`.
+- Kept `lot-of-eros`, `lot-of-necessity`, `lot-of-basis` and `lot-of-exaltation` inactive/deferred under the Vronsky Table 17 expansion path.
+- No code changes, formula dataset changes, fixtures with new Lot values, UI, debug, package files, PWA cache changes or interpretations were added.
+- Next active task is Task 15.3 — Vronsky Simple Arabic Points Dataset / Fixtures, but it was not started.
+
 ## 2026-06-22 — Complete Task 15.2b Vronsky Table 17 Source Materials Intake
 
 - Added `ARABIC_PARTS_VRONSKY_TABLE_17_SOURCE_MATERIALS.md`.

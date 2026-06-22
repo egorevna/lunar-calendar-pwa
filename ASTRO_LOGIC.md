@@ -753,9 +753,9 @@ Sprint 15 expands Arabic Parts / Lots only through verified source and formula g
 Policy:
 
 - active formulas at Sprint 15 start remain `pars-fortuna` and `lot-of-spirit`;
-- candidate expansion Lots are `lot-of-eros`, `lot-of-necessity`, `lot-of-basis` and `lot-of-exaltation`;
+- original candidate expansion Lots `lot-of-eros`, `lot-of-necessity`, `lot-of-basis` and `lot-of-exaltation` remain inactive/deferred and are not required Vronsky keys;
 - candidates remain inactive until source/tradition verification passes;
-- Task 15.2 attempted the source corpus / tradition decision; Task 15.2b accepted Vronsky Table 17 source materials as partial, and Task 15.2c must select the Vronsky scope before activation;
+- Task 15.2 attempted the source corpus / tradition decision; Task 15.2b accepted Vronsky Table 17 source materials as partial, and Task 15.2c selected the first Vronsky scope as simple day-only display-safe formulas;
 - no formula may become active from memory or from a broad unverified Arabic Parts catalog;
 - if sources disagree, the candidate stays inactive as `needsReview` or `deferred`;
 - only `verificationStatus: "verified"` rows may be active;
@@ -775,14 +775,18 @@ Policy:
 - day-birth source materials are accepted from the visible pages;
 - night-birth formulas are not verified from the provided page photos;
 - existing active formulas remain `pars-fortuna` and `lot-of-spirit`;
+- first implementation pack for Task 15.3 is simple day-only display-safe Vronsky formulas selected in `ARABIC_PARTS_VRONSKY_SCOPE_SELECTION.md`;
+- selected new Vronsky rows calculate only for `chartSect: day`; night, boundary, unknown or not-ready chart sect must return `notReady`;
 - Vronsky source-visible rows are candidates only until later verification and dataset update;
 - `Pars amoris / точка любви` is source-visible and may use a Vronsky key such as `pars-amoris`; it must not be mapped automatically to `lot-of-eros`;
 - original Sprint 15 candidate keys `lot-of-eros`, `lot-of-necessity`, `lot-of-basis` and `lot-of-exaltation` remain inactive/deferred and are not required Vronsky keys;
+- sensitive / fatalistic / medical / sexual / hostile labels are deferred from normal UI and the first implementation pack;
+- complex operands such as house cusps, house rulers, dependent Lots, lunar phases before birth, fixed degrees and progressus are deferred until explicit operand policy / engines exist;
 - Valens, Paulus, Olympiodorus, Hermetic Lots, Astrology X-Files, medieval Arabic, modern compilation or mixed traditions must not be used for activation in Sprint 15;
 - if sources disagree, the candidate remains inactive as `needsReview` or `deferred`;
-- day/night variants must be documented separately if present;
+- day/night variants must be documented separately if present; night variants for new Vronsky rows are currently missing / not verified;
 - formulas may depend on another Lot only when the dependency is already active verified and explicitly required by the source;
-- Task 15.2c must select Vronsky Arabic Points scope and project keys before any per-row source verification task proceeds;
+- Task 15.3 must follow the selected Vronsky simple day-only scope and must not continue the old Hellenistic-style Lot of Eros verification track;
 - no interpretations are added.
 
 ## Sprint 13 — Special Points Policy

@@ -18,7 +18,7 @@ Formula tradition:
 
 - Vronsky Table 17 Arabic Points.
 
-Task 15.2b accepts the provided Vronsky Table 17 source materials as a partial source corpus for day-birth Arabic point formulas. New formula rows remain inactive until later Vronsky-only scope selection, formula verification, dataset update and fixtures.
+Task 15.2b accepts the provided Vronsky Table 17 source materials as a partial source corpus for day-birth Arabic point formulas. Task 15.2c selects the first Vronsky implementation scope as simple day-only display-safe formulas. New formula rows remain inactive until formula verification, dataset update and fixtures.
 
 ## Existing Active Formulas
 
@@ -45,9 +45,11 @@ Each candidate remains source-gated and must stay one of:
 - `needsReview`;
 - `rejected`.
 
-No candidate may become `active: true` in Task 15.2 or Task 15.2b.
+No candidate may become `active: true` in Task 15.2, Task 15.2b or Task 15.2c.
 
 Task 15.2b reframes Sprint 15 around Vronsky Table 17 source rows. Original Hellenistic-style candidate keys must not be treated as required Vronsky keys.
+
+Task 15.2c supersedes the original Lot of Eros / Necessity / Basis / Exaltation verification track for Sprint 15 with a Vronsky Table 17 simple day-only dataset path.
 
 ## Source Audit
 
@@ -83,6 +85,14 @@ Task 15.2b did not find / verify:
 - a complete manually verified table transcription;
 - active formulas for new Vronsky rows;
 - calculated fixtures for new Vronsky rows.
+
+Task 15.2c scope selection records:
+
+- first implementation pack: simple day-only display-safe Vronsky formulas;
+- sensitive/fatalistic labels: deferred from normal UI;
+- complex operands: deferred until operand policy/engines exist;
+- ambiguous labels/formulas: `needsReview`;
+- night formulas: still missing / not verified.
 
 ## Formula Tradition
 
@@ -138,6 +148,14 @@ If sources disagree:
 
 ## Day / Night Policy
 
+Current Task 15.2c policy for new Vronsky rows:
+
+- new selected rows are `dayOnlyCandidate`;
+- calculate only when `chartSect` is `day`;
+- `night`, `boundary`, unknown or not-ready chart sect returns `notReady`;
+- do not invert formulas by analogy;
+- do not silently apply day formulas to night charts.
+
 If a future source gives day/night variants:
 
 - document day and night formulas separately;
@@ -159,20 +177,21 @@ No formula may depend on inactive or deferred Lots.
 
 ## Candidate Verification Path
 
-Current path after Task 15.2b:
+Current path after Task 15.2c:
 
 - Vronsky Table 17 source corpus: partial but accepted;
 - `pars-fortuna`: remains active and unchanged;
 - `lot-of-spirit`: remains active and unchanged;
-- Vronsky source-visible rows: candidates only, inactive;
+- first implementation pack: simple day-only display-safe Vronsky rows selected in `ARABIC_PARTS_VRONSKY_SCOPE_SELECTION.md`;
+- Vronsky source-visible rows: candidates only, inactive until dataset/fixture tasks;
 - `Pars amoris / точка любви`: source-visible candidate with suggested key `pars-amoris`; not automatically `lot-of-eros`;
 - `lot-of-eros`, `lot-of-necessity`, `lot-of-basis`, `lot-of-exaltation`: remain inactive/deferred and are not required Vronsky keys.
 
 Next active task:
 
-- Task 15.2c — Vronsky Arabic Points Scope Selection.
+- Task 15.3 — Vronsky Simple Arabic Points Dataset / Fixtures.
 
-Task 15.3 — Lot of Eros Source Verification must not start from the old Hellenistic-style candidate list. Sprint 15 must first select Vronsky Table 17 scope and project keys in Task 15.2c.
+Task 15.3 must follow the Vronsky simple day-only scope, not the old Hellenistic-style Lot of Eros source-verification track.
 
 ## Strict Exclusions
 
