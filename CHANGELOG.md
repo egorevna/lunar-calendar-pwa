@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-06-22 — Complete Task 15.4 Vronsky Simple Arabic Points Engine Expansion / Fixtures
+
+- Added explicit Vronsky simple Arabic Points calculation APIs in `src/arabicParts.js`.
+- Updated the 12 selected Vronsky Table 17 rows in `src/arabicPartsData.js` to `engineReady` / `explicitVronskyEngineOnly` while keeping them inactive in the default Arabic Parts output.
+- Added static/manual engine fixtures and tests for day-ready, night notReady, boundary notReady, unknown notReady, missing operand partial, wrap-around, profile, privacy and strict exclusion behavior.
+- Kept default active Arabic Parts formulas exactly unchanged: `pars-fortuna` and `lot-of-spirit`.
+- Kept night formulas missing / not verified for new Vronsky rows and failed closed outside `chartSect: day`.
+- No house assignment, display helper, UI, debug, provider, package files, PWA cache changes or interpretations were added.
+- Next active task is Task 15.5 — Vronsky Arabic Points House Assignment / Display Integration, but it was not started.
+
 ## 2026-06-22 — Complete Task 15.3 Vronsky Simple Arabic Points Dataset / Fixtures
 
 - Updated `src/arabicPartsData.js` with 12 source-tracked Vronsky Table 17 simple day-only Arabic Point rows.

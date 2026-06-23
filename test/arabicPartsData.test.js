@@ -140,12 +140,12 @@ test('additional candidate formulas remain inactive and deferred', () => {
   assertNoSensitiveOrInterpretiveText(deferredRows);
 });
 
-test('Vronsky simple Arabic Parts rows are source-tracked but inactive pending-engine rows', () => {
+test('Vronsky simple Arabic Parts rows are source-tracked explicit-engine rows', () => {
   const sourceFixture = getVronskyArabicPartsDataFixture('vronsky-source-policy').expected;
   const keysFixture = getVronskyArabicPartsDataFixture('vronsky-simple-row-keys').expected;
   const formulasFixture = getVronskyArabicPartsDataFixture('vronsky-simple-row-formulas').expected;
   const dayOnlyFixture = getVronskyArabicPartsDataFixture('day-only-policy').expected;
-  const pendingFixture = getVronskyArabicPartsDataFixture('pending-engine-policy').expected;
+  const engineFixture = getVronskyArabicPartsDataFixture('explicit-engine-policy').expected;
   const rows = getVronskySimpleArabicPartsFormulaRows();
 
   assert.deepEqual(rows.map((row) => row.key), keysFixture.keys);
@@ -157,10 +157,10 @@ test('Vronsky simple Arabic Parts rows are source-tracked but inactive pending-e
     assert.equal(row.sourceSection, sourceFixture.sourceSection);
     assert.equal(row.sourceStatus, 'sourceVerified');
     assert.equal(row.sourceRecordingStatus, 'manuallyRecordedFromSource');
-    assert.equal(row.active, pendingFixture.active);
-    assert.equal(row.engineStatus, pendingFixture.engineStatus);
-    assert.equal(row.activationStatus, pendingFixture.activationStatus);
-    assert.equal(row.implementationStatus, pendingFixture.implementationStatus);
+    assert.equal(row.active, engineFixture.active);
+    assert.equal(row.engineStatus, engineFixture.engineStatus);
+    assert.equal(row.activationStatus, engineFixture.activationStatus);
+    assert.equal(row.implementationStatus, engineFixture.implementationStatus);
     assert.equal(row.chartSectPolicy, dayOnlyFixture.chartSectPolicy);
     assert.equal(row.nightFormulaStatus, dayOnlyFixture.nightFormulaStatus);
     assert.equal(row.displaySafe, true);
@@ -197,7 +197,7 @@ test('Vronsky scope distinctions preserve source keys and exclude complex/sensit
   assertNoSensitiveOrInterpretiveText({ vronskyRows, simpleRows });
 });
 
-test('pending Arabic Parts helpers expose Vronsky rows safely without changing active formulas', () => {
+test('explicit Vronsky helpers expose engine rows safely without changing active formulas', () => {
   const activeRows = getActiveArabicPartsFormulas();
   const pendingRows = getPendingArabicPartsFormulaRows();
   const pendingKeys = pendingRows.map((row) => row.key);
@@ -205,21 +205,23 @@ test('pending Arabic Parts helpers expose Vronsky rows safely without changing a
   const policy = getArabicPartsFormulaPolicy();
   const dataset = getArabicPartsFormulaDataset();
   const originalDeferredKeys = getVronskyArabicPartsDataFixture('deferred-original-candidates').expected.keys;
+  const vronskyKeys = getVronskyArabicPartsDataFixture('vronsky-simple-row-keys').expected.keys;
 
   assert.deepEqual(activeRows.map((row) => row.key), ['pars-fortuna', 'lot-of-spirit']);
   assert.deepEqual(policy.activeFormulaKeys, ['pars-fortuna', 'lot-of-spirit']);
   assert.deepEqual(deferredKeys, originalDeferredKeys);
   assert.deepEqual(policy.deferredFormulaKeys, originalDeferredKeys);
-  getVronskyArabicPartsDataFixture('vronsky-simple-row-keys').expected.keys.forEach((key) => {
-    assert.equal(pendingKeys.includes(key), true);
+  assert.deepEqual(getVronskySimpleArabicPartsFormulaRows().map((row) => row.key), vronskyKeys);
+  vronskyKeys.forEach((key) => {
+    assert.equal(pendingKeys.includes(key), false);
     assert.equal(deferredKeys.includes(key), false);
     assert.equal(policy.deferredFormulaKeys.includes(key), false);
-    assert.equal(policy.pendingFormulaKeys.includes(key), true);
+    assert.equal(policy.pendingFormulaKeys.includes(key), false);
   });
-  assert.equal(dataset.pendingRows.length, 12);
+  assert.equal(dataset.pendingRows.length, 0);
   assert.equal(Object.isFrozen(pendingRows), true);
   assert.equal(Object.isFrozen(dataset.pendingRows), true);
-  assertNoSensitiveOrInterpretiveText({ pendingRows, policy, dataset });
+  assertNoSensitiveOrInterpretiveText({ pendingRows, policy, dataset, vronskyKeys });
 });
 
 test('Vronsky dataset rows do not use external formula traditions or calculated fixtures', () => {

@@ -4371,12 +4371,13 @@ Result:
 
 Next active task:
 
-- Task 15.4 — Vronsky Simple Arabic Points Engine Expansion / Fixtures.
+- Task 15.5 — Vronsky Arabic Points House Assignment / Display Integration.
 
 Task 15.2b is done.
 Task 15.2c is done.
 Task 15.3 is done.
-Task 15.4 is not started.
+Task 15.4 is done.
+Task 15.5 is not started.
 Do not start Sprint 16 or later.
 
 ## Task 15.2 — Source Corpus / Formula Tradition Decision
@@ -4472,10 +4473,11 @@ Result:
 
 Next active task:
 
-- Task 15.4 — Vronsky Simple Arabic Points Engine Expansion / Fixtures.
+- Task 15.5 — Vronsky Arabic Points House Assignment / Display Integration.
 
 Task 15.3 is done.
-Task 15.4 is not started.
+Task 15.4 is done.
+Task 15.5 is not started.
 Do not start Sprint 16 or later.
 
 ## Task 15.3 — Vronsky Simple Arabic Points Dataset / Fixtures
@@ -4492,7 +4494,7 @@ Result:
 - Added `test/fixtures/vronskyArabicPartsDataFixtures.js`.
 - Added `test/vronskyArabicPartsDataFixtures.test.js`.
 - Updated `test/arabicPartsData.test.js`.
-- Added 12 source-tracked Vronsky Table 17 rows as inactive / pending-engine metadata:
+- Added 12 source-tracked Vronsky Table 17 rows as inactive / pending-engine metadata for Task 15.3; Task 15.4 later moved those rows to explicit-engine-ready status:
   - `pars-amoris`;
   - `pars-artis`;
   - `pars-creationis`;
@@ -4507,15 +4509,59 @@ Result:
   - `pars-mercaturae`.
 - Added dataset helpers for Vronsky rows and pending-engine rows.
 - Existing active calculated formulas remain exactly `pars-fortuna` and `lot-of-spirit`.
-- New Vronsky rows are inactive, `dayOnly`, `pendingEngineExpansion`, `inactiveUntilEngineTask` and `selectedForTask15_4`.
+- New Vronsky rows are now inactive, `dayOnly`, `engineReady`, `explicitVronskyEngineOnly` and `implementedTask15_4`.
 - Night formulas remain `missing/notVerified`.
 - No engine expansion, calculated longitudes, UI, debug, provider, package or service worker changes were made.
 
 Next active task:
 
-- Task 15.4 — Vronsky Simple Arabic Points Engine Expansion / Fixtures.
+- Task 15.5 — Vronsky Arabic Points House Assignment / Display Integration.
 
-Task 15.4 is not started.
+Task 15.4 is done.
+Task 15.5 is not started.
+Do not start Sprint 16 or later.
+
+## Task 15.4 — Vronsky Simple Arabic Points Engine Expansion / Fixtures
+
+Status: done
+
+Goal:
+
+Add an explicit pure calculation path for the first Vronsky simple day-only Arabic Points pack.
+
+Result:
+
+- Updated `src/arabicPartsData.js` so the 12 selected Vronsky Table 17 rows are `engineReady` but remain `active: false`.
+- Added explicit Vronsky-only calculation APIs in `src/arabicParts.js`.
+- Added `test/fixtures/vronskyArabicPartsEngineFixtures.js`.
+- Added `test/vronskyArabicPartsEngineFixtures.test.js`.
+- Added `test/vronskyArabicPartsEngine.test.js`.
+- Updated existing Vronsky data fixtures/tests to reflect `explicitVronskyEngineOnly` status.
+- The explicit engine calculates only the selected 12 Vronsky day-birth formulas:
+  - `pars-amoris`;
+  - `pars-artis`;
+  - `pars-creationis`;
+  - `pars-fratrum-et-sororum`;
+  - `pars-hereditatis`;
+  - `pars-itineris`;
+  - `pars-liberorum`;
+  - `pars-matris`;
+  - `pars-patris`;
+  - `pars-pueri`;
+  - `astrologia`;
+  - `pars-mercaturae`.
+- Vronsky calculations are available only through explicit Vronsky APIs, not through the default Arabic Parts output.
+- Default active calculated formulas remain exactly `pars-fortuna` and `lot-of-spirit`.
+- Night, boundary and unknown chart sect states fail closed as `notReady`.
+- Missing planet operands return safe partial / notReady rows without fake values.
+- No house assignment, display integration, UI, debug, provider, package or service worker changes were made.
+- No interpretations were added.
+
+Next active task:
+
+- Task 15.5 — Vronsky Arabic Points House Assignment / Display Integration.
+
+Task 15.5 is not started.
 Do not start Sprint 16 or later.
 
 # Security Backlog

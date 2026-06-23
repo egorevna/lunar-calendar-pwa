@@ -28,9 +28,9 @@ export const VRONSKY_ARABIC_PARTS_SOURCE_METADATA = deepFreeze({
   sourceRecordingStatus: 'manuallyRecordedFromSource',
   nightFormulaStatus: 'missing/notVerified',
   chartSectPolicy: 'dayOnly',
-  engineStatus: 'pendingEngineExpansion',
-  activationStatus: 'inactiveUntilEngineTask',
-  implementationStatus: 'selectedForTask15_4',
+  engineStatus: 'engineReady',
+  activationStatus: 'explicitVronskyEngineOnly',
+  implementationStatus: 'implementedTask15_4',
   externalTraditions: [],
 });
 
@@ -363,8 +363,9 @@ export function getVronskyArabicPartsFormulaRows() {
 export function getVronskySimpleArabicPartsFormulaRows() {
   return Object.freeze(getVronskyArabicPartsFormulaRows().filter((row) => (
     VRONSKY_SIMPLE_ARABIC_PART_KEYS.includes(row.key)
-    && row.engineStatus === 'pendingEngineExpansion'
-    && row.activationStatus === 'inactiveUntilEngineTask'
+    && row.formulaType === 'vronsky-day-only'
+    && row.engineStatus === VRONSKY_ARABIC_PARTS_SOURCE_METADATA.engineStatus
+    && row.activationStatus === VRONSKY_ARABIC_PARTS_SOURCE_METADATA.activationStatus
   )));
 }
 
@@ -438,7 +439,7 @@ function createVronskySimpleArabicPartRow({
     aliases: [sourceLabel, sourceLabelRu].filter(Boolean),
     active: false,
     verificationStatus: ARABIC_PARTS_VERIFICATION_STATUS.CANDIDATE,
-    formulaType: 'vronsky-day-only-pending',
+    formulaType: 'vronsky-day-only',
     formula: {
       day: {
         expression,
@@ -449,7 +450,7 @@ function createVronskySimpleArabicPartRow({
     },
     requiredInputs,
     output: {
-      longitude: false,
+      longitude: 'explicitVronskyEngineOnly',
       houseAssignment: false,
       interpretation: false,
     },
@@ -469,10 +470,11 @@ function createVronskySimpleArabicPartRow({
     externalTraditions: [...VRONSKY_ARABIC_PARTS_SOURCE_METADATA.externalTraditions],
     displaySafe: true,
     interpretation: false,
-    sourceNote: 'Manually recorded from Vronsky Table 17 day-birth Arabic Points source materials; inactive until engine expansion.',
+    sourceNote: 'Manually recorded from Vronsky Table 17 day-birth Arabic Points source materials; available only through the explicit Vronsky engine API.',
     notes: [
       'Day-only Vronsky source row.',
       'Night formula is missing / not verified.',
+      'Explicit Vronsky engine only; not included in default active Arabic Parts output.',
       'Formula must not be activated from non-Vronsky traditions.',
     ],
   };

@@ -755,7 +755,7 @@ Policy:
 - active formulas at Sprint 15 start remain `pars-fortuna` and `lot-of-spirit`;
 - original candidate expansion Lots `lot-of-eros`, `lot-of-necessity`, `lot-of-basis` and `lot-of-exaltation` remain inactive/deferred and are not required Vronsky keys;
 - candidates remain inactive until source/tradition verification passes;
-- Task 15.2 attempted the source corpus / tradition decision; Task 15.2b accepted Vronsky Table 17 source materials as partial; Task 15.2c selected the first Vronsky scope as simple day-only display-safe formulas; Task 15.3 records those selected rows in the data-only formula dataset as inactive / pending-engine metadata;
+- Task 15.2 attempted the source corpus / tradition decision; Task 15.2b accepted Vronsky Table 17 source materials as partial; Task 15.2c selected the first Vronsky scope as simple day-only display-safe formulas; Task 15.3 records those selected rows in the data-only formula dataset; Task 15.4 adds explicit day-only Vronsky engine support while keeping the rows out of default Arabic Parts output;
 - no formula may become active from memory or from a broad unverified Arabic Parts catalog;
 - if sources disagree, the candidate stays inactive as `needsReview` or `deferred`;
 - only `verificationStatus: "verified"` rows may be active;
@@ -776,9 +776,9 @@ Policy:
 - night-birth formulas are not verified from the provided page photos;
 - existing active formulas remain `pars-fortuna` and `lot-of-spirit`;
 - first implementation pack is simple day-only display-safe Vronsky formulas selected in `ARABIC_PARTS_VRONSKY_SCOPE_SELECTION.md`;
-- Task 15.3 adds the selected Vronsky rows to `src/arabicPartsData.js` as inactive / pending-engine metadata only;
-- selected new Vronsky rows must calculate only for `chartSect: day` once Task 15.4 implements the engine expansion; night, boundary, unknown or not-ready chart sect must return `notReady`;
-- Vronsky source-visible rows remain inactive until explicit engine implementation and verification;
+- Task 15.3 adds the selected Vronsky rows to `src/arabicPartsData.js`; Task 15.4 marks them `engineReady` for explicit Vronsky API use only;
+- selected new Vronsky rows calculate only for `chartSect: day`; night, boundary, unknown or not-ready chart sect returns `notReady`;
+- Vronsky source-visible rows remain inactive in the default Arabic Parts formula set and are available only through explicit Vronsky APIs;
 - `Pars amoris / точка любви` is source-visible and may use a Vronsky key such as `pars-amoris`; it must not be mapped automatically to `lot-of-eros`;
 - original Sprint 15 candidate keys `lot-of-eros`, `lot-of-necessity`, `lot-of-basis` and `lot-of-exaltation` remain inactive/deferred and are not required Vronsky keys;
 - sensitive / fatalistic / medical / sexual / hostile labels are deferred from normal UI and the first implementation pack;

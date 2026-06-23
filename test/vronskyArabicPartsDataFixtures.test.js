@@ -13,7 +13,7 @@ const REQUIRED_CATEGORIES = Object.freeze([
   'existingActiveRows',
   'vronskySimpleRows',
   'dayOnlyPolicy',
-  'pendingEngine',
+  'engineStatus',
   'deferredRows',
   'needsReviewRows',
   'privacy',
@@ -61,7 +61,7 @@ test('Vronsky Arabic Parts fixtures record source policy and first simple row pa
   const rows = getVronskyArabicPartsDataFixture('vronsky-simple-row-keys').expected;
   const formulas = getVronskyArabicPartsDataFixture('vronsky-simple-row-formulas').expected.formulas;
   const dayOnly = getVronskyArabicPartsDataFixture('day-only-policy').expected;
-  const pending = getVronskyArabicPartsDataFixture('pending-engine-policy').expected;
+  const engine = getVronskyArabicPartsDataFixture('explicit-engine-policy').expected;
 
   assert.equal(source.sourceSystem, 'vronsky-table-17-arabic-points');
   assert.equal(source.formulaTradition, 'Vronsky Table 17 Arabic Points');
@@ -75,8 +75,9 @@ test('Vronsky Arabic Parts fixtures record source policy and first simple row pa
   assert.equal(formulas['pars-mercaturae'], 'ASC + Mercury - Sun');
   assert.equal(dayOnly.chartSectPolicy, 'dayOnly');
   assert.equal(dayOnly.nightFormulaStatus, 'missing/notVerified');
-  assert.equal(pending.active, false);
-  assert.equal(pending.engineStatus, 'pendingEngineExpansion');
+  assert.equal(engine.active, false);
+  assert.equal(engine.engineStatus, 'engineReady');
+  assert.equal(engine.activationStatus, 'explicitVronskyEngineOnly');
 });
 
 test('Vronsky Arabic Parts fixtures are privacy-safe and contain no interpretations', () => {

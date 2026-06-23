@@ -21,7 +21,7 @@ Current Sprint 15 strategy docs:
 - `ARABIC_PARTS_VRONSKY_TABLE_17_SOURCE_MATERIALS.md`
 - `ARABIC_PARTS_VRONSKY_SCOPE_SELECTION.md`
 
-These documents define the Arabic Parts Expansion Pack strategy and source-gated formula activation policy. Task 15.1 is docs-only: it does not implement new calculation modules, does not activate new Arabic Parts, and does not change the existing Arabic Parts architecture. Task 15.2 records the initial source corpus blocker; Task 15.2b accepts Vronsky Table 17 as the partial primary/only Sprint 15 source corpus for day-birth Arabic point formulas. Task 15.2c selects the first Vronsky implementation scope as simple day-only display-safe formulas, while sensitive labels, complex operands and night formulas remain deferred. Task 15.3 adds the selected rows to `src/arabicPartsData.js` as inactive / pending-engine metadata with fixtures. No engine expansion or new active formulas are implemented yet.
+These documents define the Arabic Parts Expansion Pack strategy and source-gated formula activation policy. Task 15.1 is docs-only: it does not implement new calculation modules, does not activate new Arabic Parts, and does not change the existing Arabic Parts architecture. Task 15.2 records the initial source corpus blocker; Task 15.2b accepts Vronsky Table 17 as the partial primary/only Sprint 15 source corpus for day-birth Arabic point formulas. Task 15.2c selects the first Vronsky implementation scope as simple day-only display-safe formulas, while sensitive labels, complex operands and night formulas remain deferred. Task 15.3 adds the selected rows to `src/arabicPartsData.js`; Task 15.4 marks those rows `engineReady` for explicit Vronsky API use only and adds the day-only calculation path. Default active Arabic Parts remain only Pars Fortuna and Lot of Spirit.
 
 Completed Sprint 14 strategy docs:
 
@@ -624,7 +624,7 @@ Current responsibilities:
 - choose the verified night formula `ASC + Sun - Moon` only when chart sect is `night`;
 - normalize the result to tropical zodiac longitude `0 <= longitude < 360`;
 - format the result as sign, degree, minute and second text;
-- expose a profile-level helper that uses existing house guardrails, `src/ascMc.js`, `src/dayNightChart.js` and the safe `src/natalPlanetsForProfile.js` Sun/Moon path.
+- expose profile-level helpers that use existing house guardrails, `src/ascMc.js`, `src/dayNightChart.js` and safe `src/natalPlanetsForProfile.js` planet results.
 
 This module does not implement a broad Arabic Parts catalog, calculate Lot of Spirit, assign lots to houses, add interpretations, add UI, call provider modules directly, render DOM, read localStorage, mutate profiles, or expose raw birth data / raw birth coordinates.
 
@@ -639,7 +639,7 @@ Current responsibilities:
 - list active and deferred Arabic Part formula rows;
 - keep Pars Fortuna / Lot of Fortune and Lot of Spirit as active verified formula rows;
 - keep additional candidate parts inactive/deferred until source verification;
-- expose the Task 15.3 Vronsky Table 17 simple day-only selected rows as inactive / pending-engine metadata;
+- expose the Task 15.3 / 15.4 Vronsky Table 17 simple day-only selected rows as inactive but explicit-engine-ready metadata;
 - expose helpers for active rows, deferred rows, pending rows, Vronsky rows, lookup by key, verification checks, policy and deferred reasons.
 
 This module does not calculate formulas, implement the broad Arabic Parts engine, calculate Lot of Spirit, import `src/parsFortuna.js`, add interpretations, add UI, call provider modules, render DOM, read localStorage, mutate profiles, or expose raw birth data / raw birth coordinates.
@@ -651,13 +651,15 @@ Defines the Sprint 12 pure Basic Arabic Parts formula calculation engine.
 Current responsibilities:
 
 - read active verified formula rows from `src/arabicPartsData.js`;
-- calculate only Pars Fortuna and Lot of Spirit in Sprint 12;
+- calculate Pars Fortuna and Lot of Spirit through the default active Arabic Parts path;
+- calculate the 12 selected Vronsky Table 17 simple day-only rows only through explicit Vronsky APIs;
 - evaluate verified ordered arithmetic formulas from numeric ASC, Sun and Moon longitudes plus explicit day/night chart status;
+- evaluate Vronsky day-only formulas from numeric ASC and required natal planet longitudes, returning `notReady` for night, boundary or unknown chart sect;
 - normalize result longitudes to `0 <= longitude < 360`;
 - format calculated lots with sign, degree, minute and second text;
 - expose a profile-level helper that uses existing house guardrails, `src/ascMc.js`, `src/dayNightChart.js` and the safe `src/natalPlanetsForProfile.js` Sun/Moon path.
 
-This module does not activate deferred formulas, assign lots to houses, add interpretations, add UI, call provider modules directly, render DOM, read localStorage, mutate profiles, or expose raw birth data / raw birth coordinates.
+This module does not put Vronsky rows into default Arabic Parts output, activate old deferred Lots, assign lots to houses, add interpretations, add UI, call provider modules directly, render DOM, read localStorage, mutate profiles, or expose raw birth data / raw birth coordinates.
 
 ## `src/arabicPartsHouseAssignment.js`
 
@@ -1759,9 +1761,9 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 37. `src/parsFortuna.js` calculates Pars Fortuna / Lot of Fortune from numeric ASC, Sun and Moon longitudes using the verified day/night formula policy. It does not implement a broad Arabic Parts catalog, Lot of Spirit, house assignment, UI or interpretations.
 
-38. `src/arabicPartsData.js` exposes the data-only Arabic Parts source decision / formula dataset. Pars Fortuna and Lot of Spirit are active verified formula rows; Task 15.3 adds 12 source-tracked Vronsky Table 17 simple day-only rows as inactive / pending-engine metadata. Additional candidate parts remain inactive/deferred until source verification or explicit engine work. It does not calculate formulas, import the Pars Fortuna engine, implement a broad Arabic Parts engine, add UI or add interpretations.
+38. `src/arabicPartsData.js` exposes the data-only Arabic Parts source decision / formula dataset. Pars Fortuna and Lot of Spirit are active verified formula rows; Task 15.3 / 15.4 adds 12 source-tracked Vronsky Table 17 simple day-only rows as inactive but `explicitVronskyEngineOnly` rows. Additional candidate parts remain inactive/deferred until source verification or explicit engine work. It does not calculate formulas, import the Pars Fortuna engine, implement a broad Arabic Parts engine, add UI or add interpretations.
 
-39. `src/arabicParts.js` calculates only active verified Basic Arabic Parts formulas from the dataset. In Sprint 12 that means Pars Fortuna and Lot of Spirit only. It uses numeric ASC, Sun and Moon longitudes plus explicit day/night chart status, and it does not assign houses, activate deferred parts, add UI or add interpretations.
+39. `src/arabicParts.js` calculates active verified Basic Arabic Parts formulas from the default dataset path, which remains Pars Fortuna and Lot of Spirit only. It also exposes explicit Vronsky-only APIs for the 12 selected simple day-only Vronsky Table 17 rows. It uses numeric ASC and planet longitudes plus explicit chart sect status, fails closed outside `chartSect: day` for Vronsky rows, and does not assign houses, add UI/debug or add interpretations.
 
 40. `src/arabicPartsHouseAssignment.js` assigns calculated active Arabic Parts / lots to selected-system canonical house cusps by numeric longitude. It uses half-open spans, supports Whole Sign / Equal House / Placidus through `src/houseCusps.js`, and does not calculate formulas, activate deferred parts, add UI or add interpretations.
 
@@ -2200,7 +2202,7 @@ Testing note:
 - `test/fixtures/arabicPartsHouseAssignmentFixtures.js` contains test-only manually declared lots / Arabic Parts house-assignment fixtures for Whole Sign, Equal House, Placidus, cusp boundaries, wrapping spans, fallback states and strict exclusions. It is not used by production code.
 - `test/arabicPartsHouseAssignmentFixtures.test.js` and `test/arabicPartsHouseAssignment.test.js` validate active lots assignment to houses, deferred formula exclusion, half-open cusp policy, profile-level composition, privacy exclusions and strict source boundaries without changing formulas, house engines or UI.
 - `test/fixtures/vronskyArabicPartsDataFixtures.js` contains test-only metadata fixtures for the Task 15.3 Vronsky Table 17 simple day-only dataset rows. It does not contain calculated longitudes or production engine values.
-- `test/vronskyArabicPartsDataFixtures.test.js` validates Vronsky row metadata, day-only / pending-engine policy, privacy exclusions and strict no-interpretation boundaries without activating calculations.
+- `test/vronskyArabicPartsDataFixtures.test.js` validates Vronsky row metadata, day-only / explicit-engine policy, privacy exclusions and strict no-interpretation boundaries without changing default active calculations.
 - `test/arabicPartsDisplay.test.js` validates the pure lots / Arabic Parts display helper, including formatted part rows, optional house labels, chart sect labels, fallback states, privacy exclusions and strict display-only source boundaries.
 - `test/arabicPartsForProfile.test.js` validates the profile-level Arabic Parts UI view model helper, including fallback states, ready active lots, day/night label, house labels, deferred formula exclusion, privacy exclusions and no mutation.
 - `test/arabicPartsDebug.test.js` validates the safe Arabic Parts UI debug helper, including readiness booleans, chart sect status, formula keys, counts, capabilities, privacy exclusions and strict source boundaries.

@@ -76,13 +76,13 @@ export const VRONSKY_ARABIC_PARTS_DATA_FIXTURES = Object.freeze([
     }),
   }),
   Object.freeze({
-    id: 'pending-engine-policy',
-    category: 'pendingEngine',
+    id: 'explicit-engine-policy',
+    category: 'engineStatus',
     expected: Object.freeze({
       active: false,
-      engineStatus: 'pendingEngineExpansion',
-      activationStatus: 'inactiveUntilEngineTask',
-      implementationStatus: 'selectedForTask15_4',
+      engineStatus: 'engineReady',
+      activationStatus: 'explicitVronskyEngineOnly',
+      implementationStatus: 'implementedTask15_4',
       manuallyDeclared: true,
     }),
   }),
