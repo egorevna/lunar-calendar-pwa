@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-06-23 — Complete Task 15.5 Vronsky Arabic Points House Assignment / Display Integration
+
+- Added explicit Vronsky Arabic Points house-assignment helpers in `src/arabicPartsHouseAssignment.js`.
+- Added explicit Vronsky Arabic Points display helpers in `src/arabicPartsDisplay.js`.
+- Added `src/vronskyArabicPartsForProfile.js` as an explicit profile-level composer for Vronsky calculation, house assignment and display formatting.
+- Added static/manual fixtures and tests for Vronsky house assignment, display and profile helper behavior.
+- Kept default active Arabic Parts output unchanged: `pars-fortuna` and `lot-of-spirit`.
+- Kept night, boundary and unknown Vronsky chart sect states as safe fallbacks.
+- No UI, debug, provider, package files, service worker changes or interpretations were added.
+- Next active task is Task 15.6 — Vronsky Arabic Points UI Update, but it was not started.
+
 ## 2026-06-22 — Complete Task 15.4 Vronsky Simple Arabic Points Engine Expansion / Fixtures
 
 - Added explicit Vronsky simple Arabic Points calculation APIs in `src/arabicParts.js`.

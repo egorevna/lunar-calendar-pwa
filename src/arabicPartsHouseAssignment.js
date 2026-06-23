@@ -1,4 +1,7 @@
-import { calculateArabicPartsForProfile } from './arabicParts.js';
+import {
+  calculateArabicPartsForProfile,
+  calculateVronskySimpleArabicPartsForProfile,
+} from './arabicParts.js';
 import { normalizeDegrees } from './astroMath.js';
 import { getCanonicalHouseCuspsForProfile } from './houseCusps.js';
 import { isLongitudeInHouseSpan } from './planetInHouses.js';
@@ -10,6 +13,8 @@ const INVALID_STATUS = 'invalid';
 const UNSUPPORTED_STATUS = 'unsupported';
 const EMPTY_ARRAY = Object.freeze([]);
 const SUPPORTED_HOUSE_SYSTEMS = Object.freeze(['whole-sign', 'equal-house', 'placidus']);
+const VRONSKY_SOURCE_SYSTEM = 'vronsky-table-17-arabic-points';
+const VRONSKY_ACTIVATION_STATUS = 'explicitVronskyEngineOnly';
 
 export function assignArabicPartToHouse(part = null, cuspResult = null) {
   const cuspReadiness = resolveCuspReadiness(cuspResult);
@@ -99,6 +104,85 @@ export function assignArabicPartsToHousesForProfile(profile = null, options = {}
   return assignArabicPartsToHouses(partsResult, cuspResult);
 }
 
+export function assignVronskyArabicPartToHouse(part = null, cuspResult = null) {
+  if (!isPlainObject(part)) {
+    return withVronskySource(invalidAssignment(part, 'missingVronskyArabicPart', 'Сначала нужна рассчитанная точка Вронского.'));
+  }
+
+  if (part.status === READY_STATUS && part.ready === true && !isVronskyArabicPart(part)) {
+    return withVronskySource(invalidAssignment(
+      part,
+      'notVronskyArabicPart',
+      'Точка не входит в explicit набор точек Вронского.',
+    ));
+  }
+
+  return withVronskySource(assignArabicPartToHouse(part, cuspResult));
+}
+
+export function assignVronskyArabicPartsToHouses(vronskyResult = null, cuspResult = null) {
+  const partsReadiness = resolveVronskyPartsResultReadiness(vronskyResult);
+
+  if (partsReadiness.status !== READY_STATUS) {
+    return unavailableVronskyAssignmentResult(
+      partsReadiness.status,
+      partsReadiness.reason,
+      partsReadiness.message,
+    );
+  }
+
+  const cuspReadiness = resolveCuspReadiness(cuspResult);
+
+  if (cuspReadiness.status !== READY_STATUS) {
+    return unavailableVronskyAssignmentResult(
+      cuspReadiness.status,
+      cuspReadiness.reason,
+      cuspReadiness.message,
+      cuspResult?.houseSystem ?? null,
+    );
+  }
+
+  const assignments = vronskyResult.parts.map((part) => assignVronskyArabicPartToHouse(part, cuspResult));
+  const summary = getVronskyArabicPartsHouseAssignmentSummary(assignments);
+  const status = summary.ready === assignments.length
+    ? READY_STATUS
+    : summary.ready > 0 ? PARTIAL_STATUS : NOT_READY_STATUS;
+
+  return freezeObject({
+    status,
+    ready: summary.ready > 0,
+    sourceSystem: VRONSKY_SOURCE_SYSTEM,
+    houseSystem: cuspResult.houseSystem,
+    total: assignments.length,
+    readyCount: summary.ready,
+    invalidCount: summary.invalid,
+    assignments: freezeArray(assignments),
+    summary,
+    limitations: getVronskyArabicPartsHouseAssignmentLimitations(),
+    capabilities: getVronskyArabicPartsHouseAssignmentCapabilities(),
+  });
+}
+
+export function assignVronskyArabicPartsToHousesForProfile(profile = null, options = {}) {
+  const vronskyResult = isPlainObject(options.vronskyResult)
+    ? options.vronskyResult
+    : calculateVronskySimpleArabicPartsForProfile(profile, options);
+
+  if (!isVronskyResultWithReadyParts(vronskyResult)) {
+    return unavailableVronskyAssignmentResult(
+      vronskyResult?.status === UNSUPPORTED_STATUS ? UNSUPPORTED_STATUS : NOT_READY_STATUS,
+      vronskyResult?.reason ?? 'vronskyArabicPartsNotReady',
+      vronskyResult?.message ?? 'Точки Вронского пока не рассчитаны.',
+    );
+  }
+
+  const cuspResult = isPlainObject(options.cuspResult)
+    ? options.cuspResult
+    : getCanonicalHouseCuspsForProfile(profile, options);
+
+  return assignVronskyArabicPartsToHouses(vronskyResult, cuspResult);
+}
+
 export function findHouseForArabicPartLongitude(longitude, cuspResult = null) {
   const normalized = normalizeDegrees(longitude);
 
@@ -178,6 +262,65 @@ export function getArabicPartsHouseAssignmentLimitations() {
   ]);
 }
 
+export function getVronskyArabicPartsHouseAssignmentSummary(resultOrAssignments = EMPTY_ARRAY) {
+  const assignments = Array.isArray(resultOrAssignments)
+    ? resultOrAssignments
+    : Array.isArray(resultOrAssignments?.assignments) ? resultOrAssignments.assignments : EMPTY_ARRAY;
+
+  if (assignments.length === 0) {
+    return freezeObject({
+      total: 0,
+      ready: 0,
+      invalid: 0,
+      byHouse: freezeObject({}),
+      text: 'Точки Вронского недоступны',
+    });
+  }
+
+  const readyAssignments = assignments.filter((assignment) => assignment?.status === READY_STATUS);
+  const byHouse = readyAssignments.reduce((memo, assignment) => {
+    const key = String(assignment.houseNumber);
+
+    memo[key] = (memo[key] ?? 0) + 1;
+    return memo;
+  }, {});
+
+  return freezeObject({
+    total: assignments.length,
+    ready: readyAssignments.length,
+    invalid: assignments.length - readyAssignments.length,
+    byHouse: freezeObject(byHouse),
+    text: readyAssignments.length > 0 ? 'Точки Вронского распределены по домам' : 'Точки Вронского недоступны',
+  });
+}
+
+export function getVronskyArabicPartsHouseAssignmentCapabilities() {
+  return freezeObject({
+    vronskyArabicPartsHouseAssignment: true,
+    dayOnly: true,
+    defaultArabicPartsOutput: false,
+    oldDeferredLots: false,
+    wholeSign: true,
+    equalHouse: true,
+    placidus: true,
+    ui: false,
+    debug: false,
+    interpretations: false,
+    transits: false,
+    fixedStars: false,
+  });
+}
+
+export function getVronskyArabicPartsHouseAssignmentLimitations() {
+  return freezeArray([
+    'Точки Вронского назначаются в дома по выбранной системе домов профиля.',
+    'Используется точная числовая долгота точки, а не отображаемый текст.',
+    'Граница куспида относится к дому, который с нее начинается.',
+    'Ночные формулы по Вронскому пока не verified.',
+    'Этот слой не добавляет интерпретации.',
+  ]);
+}
+
 function resolvePartsResultReadiness(partsResult) {
   if (!isPlainObject(partsResult)) {
     return readiness(NOT_READY_STATUS, 'arabicPartsNotReady', 'Жребии пока не рассчитаны.');
@@ -193,6 +336,26 @@ function resolvePartsResultReadiness(partsResult) {
 
   if (!Array.isArray(partsResult.parts) || partsResult.parts.length === 0) {
     return readiness(NOT_READY_STATUS, 'emptyPartsResult', 'Нет рассчитанных жребиев для назначения в дома.');
+  }
+
+  return readiness(READY_STATUS, null, null);
+}
+
+function resolveVronskyPartsResultReadiness(vronskyResult) {
+  if (!isPlainObject(vronskyResult)) {
+    return readiness(NOT_READY_STATUS, 'vronskyArabicPartsNotReady', 'Точки Вронского пока не рассчитаны.');
+  }
+
+  if (!isVronskyResultWithReadyParts(vronskyResult)) {
+    return readiness(
+      vronskyResult.status === UNSUPPORTED_STATUS ? UNSUPPORTED_STATUS : NOT_READY_STATUS,
+      vronskyResult.reason ?? 'vronskyArabicPartsNotReady',
+      vronskyResult.message ?? 'Точки Вронского пока не рассчитаны.',
+    );
+  }
+
+  if (!Array.isArray(vronskyResult.parts) || vronskyResult.parts.length === 0) {
+    return readiness(NOT_READY_STATUS, 'emptyVronskyPartsResult', 'Нет рассчитанных точек Вронского для назначения в дома.');
   }
 
   return readiness(READY_STATUS, null, null);
@@ -313,12 +476,51 @@ function unavailableResult(status, reason, message, houseSystem = null) {
   });
 }
 
+function unavailableVronskyAssignmentResult(status, reason, message, houseSystem = null) {
+  return freezeObject({
+    status,
+    ready: false,
+    sourceSystem: VRONSKY_SOURCE_SYSTEM,
+    houseSystem,
+    total: 0,
+    readyCount: 0,
+    invalidCount: 0,
+    reason,
+    ...(message ? { message } : {}),
+    assignments: EMPTY_ARRAY,
+    summary: getVronskyArabicPartsHouseAssignmentSummary(EMPTY_ARRAY),
+    limitations: getVronskyArabicPartsHouseAssignmentLimitations(),
+    capabilities: getVronskyArabicPartsHouseAssignmentCapabilities(),
+  });
+}
+
 function getPartKey(part) {
   return typeof part?.key === 'string' && part.key.trim() ? part.key : null;
 }
 
 function getPartLabel(part) {
   return typeof part?.label === 'string' && part.label.trim() ? part.label : 'Жребий';
+}
+
+function isVronskyResultWithReadyParts(result) {
+  return isPlainObject(result)
+    && result.sourceSystem === VRONSKY_SOURCE_SYSTEM
+    && result.ready === true
+    && [READY_STATUS, PARTIAL_STATUS].includes(result.status)
+    && Array.isArray(result.parts);
+}
+
+function isVronskyArabicPart(part) {
+  return isPlainObject(part)
+    && part.sourceSystem === VRONSKY_SOURCE_SYSTEM
+    && part.activationStatus === VRONSKY_ACTIVATION_STATUS;
+}
+
+function withVronskySource(assignment) {
+  return freezeObject({
+    ...assignment,
+    sourceSystem: VRONSKY_SOURCE_SYSTEM,
+  });
 }
 
 function readiness(status, reason, message) {

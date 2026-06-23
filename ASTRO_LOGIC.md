@@ -790,6 +790,22 @@ Policy:
 - Task 15.4 must follow the selected Vronsky simple day-only scope and must not continue the old Hellenistic-style Lot of Eros verification track;
 - no interpretations are added.
 
+## Vronsky Arabic Points House Assignment / Display Policy
+
+Task 15.5 adds explicit house-assignment and display integration for the selected Vronsky Table 17 simple day-only Arabic Points without wiring them into normal UI.
+
+Policy:
+
+- Vronsky house assignment uses the existing Arabic Parts house-assignment rule: numeric longitude against selected-system canonical cusps.
+- House spans are half-open intervals `[cusp, nextCusp)`, exact cusp boundaries belong to the house that starts at that cusp, and wrap-around through `360°` is supported.
+- Whole Sign, Equal House and Placidus behavior comes only from the canonical cusp result; no separate Vronsky house fallback is introduced.
+- Vronsky display helpers format already calculated point rows and optional house labels only.
+- For `chartSect: day`, ready Vronsky rows may be displayed as factual position rows with optional `· N дом`.
+- For night, boundary, unknown or not-ready chart sect states, Vronsky display returns safe fallback messages and does not apply day formulas silently.
+- Default Arabic Parts output remains `pars-fortuna` and `lot-of-spirit`; the Vronsky rows remain explicit-API only until a later UI task connects them.
+- The old deferred keys `lot-of-eros`, `lot-of-necessity`, `lot-of-basis` and `lot-of-exaltation` remain inactive/deferred.
+- No interpretations, predictions, ritual scoring, karmic/fatalistic text or psychological labels are added.
+
 ## Sprint 13 — Special Points Policy
 
 Sprint 13 adds a controlled Special Points foundation without changing Sprint 11 house engines or Sprint 12 Arabic Parts formulas.

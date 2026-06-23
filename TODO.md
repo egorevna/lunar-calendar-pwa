@@ -4371,13 +4371,14 @@ Result:
 
 Next active task:
 
-- Task 15.5 — Vronsky Arabic Points House Assignment / Display Integration.
+- Task 15.6 — Vronsky Arabic Points UI Update.
 
 Task 15.2b is done.
 Task 15.2c is done.
 Task 15.3 is done.
 Task 15.4 is done.
-Task 15.5 is not started.
+Task 15.5 is done.
+Task 15.6 is not started.
 Do not start Sprint 16 or later.
 
 ## Task 15.2 — Source Corpus / Formula Tradition Decision
@@ -4473,11 +4474,12 @@ Result:
 
 Next active task:
 
-- Task 15.5 — Vronsky Arabic Points House Assignment / Display Integration.
+- Task 15.6 — Vronsky Arabic Points UI Update.
 
 Task 15.3 is done.
 Task 15.4 is done.
-Task 15.5 is not started.
+Task 15.5 is done.
+Task 15.6 is not started.
 Do not start Sprint 16 or later.
 
 ## Task 15.3 — Vronsky Simple Arabic Points Dataset / Fixtures
@@ -4515,10 +4517,11 @@ Result:
 
 Next active task:
 
-- Task 15.5 — Vronsky Arabic Points House Assignment / Display Integration.
+- Task 15.6 — Vronsky Arabic Points UI Update.
 
 Task 15.4 is done.
-Task 15.5 is not started.
+Task 15.5 is done.
+Task 15.6 is not started.
 Do not start Sprint 16 or later.
 
 ## Task 15.4 — Vronsky Simple Arabic Points Engine Expansion / Fixtures
@@ -4559,9 +4562,38 @@ Result:
 
 Next active task:
 
-- Task 15.5 — Vronsky Arabic Points House Assignment / Display Integration.
+- Task 15.6 — Vronsky Arabic Points UI Update.
 
-Task 15.5 is not started.
+Task 15.5 is done.
+Task 15.6 is not started.
+Do not start Sprint 16 or later.
+
+## Task 15.5 — Vronsky Arabic Points House Assignment / Display Integration
+
+Status: done
+
+Goal:
+
+Add explicit house-assignment and display integration helpers for the 12 selected Vronsky Table 17 simple day-only Arabic Points without wiring them into the normal UI.
+
+Result:
+
+- Extended `src/arabicPartsHouseAssignment.js` with explicit Vronsky Arabic Points house-assignment helpers.
+- Extended `src/arabicPartsDisplay.js` with explicit Vronsky Arabic Points display helpers.
+- Added `src/vronskyArabicPartsForProfile.js` as an explicit profile-level composer for Vronsky calculation, house assignment and display formatting.
+- Added manual house-assignment and display fixtures for the 12 selected Vronsky points.
+- Preserved the existing house-assignment policy: numeric longitude, selected canonical cusps, half-open spans `[cusp, nextCusp)`, exact cusp assigned to the starting house and wrap-around support.
+- Preserved the Vronsky day-only policy: day charts can display ready rows; night, boundary and unknown chart sect states return safe fallback messages.
+- Kept default active Arabic Parts output unchanged: only `pars-fortuna` and `lot-of-spirit`.
+- Kept `lot-of-eros`, `lot-of-necessity`, `lot-of-basis` and `lot-of-exaltation` inactive/deferred.
+- No UI, debug, provider, package or service worker changes were made.
+- No interpretations were added.
+
+Next active task:
+
+- Task 15.6 — Vronsky Arabic Points UI Update.
+
+Task 15.6 is not started.
 Do not start Sprint 16 or later.
 
 # Security Backlog

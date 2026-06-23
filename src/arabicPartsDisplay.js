@@ -1,8 +1,12 @@
 const READY_STATUS = 'ready';
+const PARTIAL_STATUS = 'partial';
 const UNSUPPORTED_STATUS = 'unsupported';
 const TITLE = 'Жребии и арабские части';
+const VRONSKY_TITLE = 'Точки Вронского';
 const FALLBACK_SUMMARY = 'Пока недоступно.';
 const DEFAULT_FALLBACK_MESSAGE = 'Для расчета нужны ASC, Солнце, Луна и дневная/ночная карта.';
+const DEFAULT_VRONSKY_FALLBACK_MESSAGE = 'Для расчета точек Вронского нужна готовая дневная/ночная карта.';
+const VRONSKY_SOURCE_SYSTEM = 'vronsky-table-17-arabic-points';
 
 const CHART_SECT_LABELS = Object.freeze({
   day: 'Дневная карта',
@@ -19,6 +23,13 @@ const DISPLAY_LIMITATIONS = Object.freeze([
   'Жребии рассчитываются только при готовых ASC, Солнце, Луне и дневной/ночной карте.',
   'В Sprint 12 активны Pars Fortuna и Lot of Spirit.',
   'Остальные арабские части отложены до проверки источников.',
+  'Этот блок не содержит интерпретаций.',
+]);
+
+const VRONSKY_DISPLAY_LIMITATIONS = Object.freeze([
+  'Формулы Вронского подтверждены для дневного рождения.',
+  'Ночные формулы по Вронскому пока не verified.',
+  'В Sprint 15 используется выбранный простой набор из 12 строк Вронского.',
   'Этот блок не содержит интерпретаций.',
 ]);
 
@@ -40,6 +51,11 @@ const UNSAFE_TEXT_FRAGMENTS = Object.freeze([
   'profileJson',
   'сильный жребий',
   'слабый жребий',
+  'опасность',
+  'судьба',
+  'зловещ',
+  'психолог',
+  'предсказ',
   'фатально',
   '\u043a\u0430\u0440\u043c\u0438\u0447\u0435\u0441\u043a\u0438',
   'interpretation',
@@ -214,6 +230,141 @@ export function getArabicPartsDisplayLimitations() {
   return [...DISPLAY_LIMITATIONS];
 }
 
+export function formatVronskyArabicPartResult(part = null) {
+  if (!isPlainObject(part)
+    || part.status !== READY_STATUS
+    || part.ready !== true
+    || part.sourceSystem !== VRONSKY_SOURCE_SYSTEM) {
+    return null;
+  }
+
+  const key = normalizeText(part.key);
+  const label = normalizeText(part.label);
+  const text = getArabicPartText(part, label);
+
+  if (!key || !label || !text) {
+    return null;
+  }
+
+  return safeDisplayItem({
+    type: 'vronskyArabicPart',
+    key,
+    label,
+    text,
+    sourceSystem: VRONSKY_SOURCE_SYSTEM,
+  });
+}
+
+export function formatVronskyArabicPartList(parts = []) {
+  if (!Array.isArray(parts)) {
+    return [];
+  }
+
+  return parts.map(formatVronskyArabicPartResult).filter(Boolean);
+}
+
+export function formatVronskyArabicPartHouseAssignment(assignment = null) {
+  const formatted = formatArabicPartHouseAssignment(assignment);
+
+  if (!formatted) {
+    return null;
+  }
+
+  return safeDisplayItem({
+    type: 'vronskyArabicPartHouseAssignment',
+    key: formatted.key,
+    label: formatted.label,
+    houseNumber: formatted.houseNumber,
+    text: formatted.text,
+    sourceSystem: VRONSKY_SOURCE_SYSTEM,
+  });
+}
+
+export function formatVronskyArabicPartWithHouse(part = null, assignment = null) {
+  const partItem = formatVronskyArabicPartResult(part);
+
+  if (!partItem) {
+    return null;
+  }
+
+  const assignmentItem = formatVronskyArabicPartHouseAssignment(assignment);
+
+  if (!assignmentItem || assignmentItem.key !== partItem.key) {
+    return partItem;
+  }
+
+  return safeDisplayItem({
+    type: 'vronskyArabicPartWithHouse',
+    key: partItem.key,
+    label: partItem.label,
+    text: `${partItem.text} · ${assignmentItem.houseNumber} дом`,
+    sourceSystem: VRONSKY_SOURCE_SYSTEM,
+    houseNumber: assignmentItem.houseNumber,
+  });
+}
+
+export function formatVronskyArabicPartsResult(result = null) {
+  return formatVronskyArabicPartsWithAssignments(result, null);
+}
+
+export function formatVronskyArabicPartsWithAssignments(vronskyResult = null, assignmentsResult = null) {
+  if (!isDisplayReadyVronskyResult(vronskyResult)) {
+    return formatUnavailableVronskyArabicPartsResult(vronskyResult);
+  }
+
+  const assignments = isDisplayReadyAssignmentResult(assignmentsResult)
+    ? assignmentsResult.assignments
+    : [];
+  const items = vronskyResult.parts
+    .map((part) => formatVronskyArabicPartWithHouse(part, getAssignmentByKey(assignments, part?.key)))
+    .filter(Boolean);
+
+  if (items.length === 0) {
+    return formatUnavailableVronskyArabicPartsResult({
+      status: 'notReady',
+      ready: false,
+      reason: 'emptyVronskyPartsResult',
+    });
+  }
+
+  return safeDisplayItem({
+    status: vronskyResult.status === PARTIAL_STATUS ? PARTIAL_STATUS : READY_STATUS,
+    ready: true,
+    title: VRONSKY_TITLE,
+    summary: getVronskyReadySummary(items.length),
+    chartSect: normalizeText(vronskyResult.chartSect) || null,
+    chartSectLabel: getChartSectDisplayLabel(vronskyResult.chartSect),
+    items,
+    message: null,
+    limitations: getVronskyArabicPartsDisplayLimitations(),
+  });
+}
+
+export function summarizeVronskyArabicPartsDisplay(displayResult = null) {
+  if (!isPlainObject(displayResult) || displayResult.ready !== true || ![READY_STATUS, PARTIAL_STATUS].includes(displayResult.status)) {
+    return {
+      status: normalizeText(displayResult?.status) || 'notReady',
+      text: 'Точки Вронского недоступны',
+      count: 0,
+      houseAssignments: 0,
+    };
+  }
+
+  const items = Array.isArray(displayResult.items) ? displayResult.items : [];
+  const houseAssignments = items.filter((item) => Number.isInteger(item?.houseNumber)).length;
+
+  return {
+    status: displayResult.status,
+    text: 'Точки Вронского рассчитаны',
+    count: items.length,
+    houseAssignments,
+  };
+}
+
+export function getVronskyArabicPartsDisplayLimitations() {
+  return [...VRONSKY_DISPLAY_LIMITATIONS];
+}
+
 function formatUnavailableArabicPartsResult(result = null) {
   const status = result?.status === UNSUPPORTED_STATUS ? UNSUPPORTED_STATUS : 'notReady';
 
@@ -230,6 +381,20 @@ function formatUnavailableArabicPartsResult(result = null) {
   });
 }
 
+function formatUnavailableVronskyArabicPartsResult(result = null) {
+  return safeDisplayItem({
+    status: 'notReady',
+    ready: false,
+    title: VRONSKY_TITLE,
+    summary: FALLBACK_SUMMARY,
+    chartSect: null,
+    chartSectLabel: 'Недоступно',
+    message: getSafeVronskyFallbackMessage(result),
+    items: [],
+    limitations: getVronskyArabicPartsDisplayLimitations(),
+  });
+}
+
 function isReadyPartsResult(result) {
   return isPlainObject(result)
     && result.status === READY_STATUS
@@ -241,6 +406,21 @@ function isReadyAssignmentResult(result) {
   return isPlainObject(result)
     && result.status === READY_STATUS
     && result.ready === true
+    && Array.isArray(result.assignments);
+}
+
+function isDisplayReadyVronskyResult(result) {
+  return isPlainObject(result)
+    && result.sourceSystem === VRONSKY_SOURCE_SYSTEM
+    && result.ready === true
+    && [READY_STATUS, PARTIAL_STATUS].includes(result.status)
+    && Array.isArray(result.parts);
+}
+
+function isDisplayReadyAssignmentResult(result) {
+  return isPlainObject(result)
+    && result.ready === true
+    && [READY_STATUS, PARTIAL_STATUS].includes(result.status)
     && Array.isArray(result.assignments);
 }
 
@@ -307,6 +487,14 @@ function getReadySummary(count) {
   return `${count} жребиев рассчитано`;
 }
 
+function getVronskyReadySummary(count) {
+  if (count === 1) {
+    return '1 точка Вронского рассчитана';
+  }
+
+  return `${count} точек Вронского рассчитаны`;
+}
+
 function getSafeFallbackMessage(message) {
   const text = normalizeText(message);
 
@@ -315,6 +503,24 @@ function getSafeFallbackMessage(message) {
   }
 
   return text;
+}
+
+function getSafeVronskyFallbackMessage(result = null) {
+  if (result?.reason === 'vronskyNightFormulaNotVerified' || result?.chartSect === 'night') {
+    return 'Точки Вронского пока недоступны для ночной карты. Ночные формулы по Вронскому пока не verified.';
+  }
+
+  if (result?.reason === 'chartSectBoundary' || result?.chartSect === 'boundary') {
+    return 'Точки Вронского пока недоступны на границе дня и ночи.';
+  }
+
+  const text = normalizeText(result?.message);
+
+  if (text && !containsUnsafeText(text)) {
+    return text;
+  }
+
+  return DEFAULT_VRONSKY_FALLBACK_MESSAGE;
 }
 
 function safeDisplayItem(item) {
