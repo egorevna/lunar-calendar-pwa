@@ -191,10 +191,13 @@ test('Arabic Parts renderer handles Vronsky section and notes inside existing co
   assert.equal(appSource.includes('renderSimpleList(elements.arabicPartsLimitations, view.limitations);'), true);
   assert.equal(appSource.includes('expandedArabicPartsProfileId = isExpanded ? null : profileId;'), true);
   assert.equal(appSource.includes('getArabicPartsDebugState'), true);
-  assert.equal(appSource.includes('getVronskyArabicPartsDebugState'), false);
+  assert.equal(appSource.includes('buildVronskyArabicPartsDebugSnapshotForProfile'), true);
+  assert.equal(html.includes('Vronsky Arabic Points Debug'), false);
+  assert.equal(html.includes('Точки Вронского Debug'), false);
 });
 
 test('service worker caches app-visible Vronsky profile helper and bumps cache version', () => {
-  assert.equal(swSource.includes("const CACHE_NAME = 'lunar-calendar-v96';"), true);
+  assert.equal(swSource.includes("const CACHE_NAME = 'lunar-calendar-v97';"), true);
   assert.equal(swSource.includes("'src/vronskyArabicPartsForProfile.js'"), true);
+  assert.equal(swSource.includes("'src/vronskyArabicPartsDebug.js'"), true);
 });

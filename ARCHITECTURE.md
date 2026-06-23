@@ -21,7 +21,7 @@ Current Sprint 15 strategy docs:
 - `ARABIC_PARTS_VRONSKY_TABLE_17_SOURCE_MATERIALS.md`
 - `ARABIC_PARTS_VRONSKY_SCOPE_SELECTION.md`
 
-These documents define the Arabic Parts Expansion Pack strategy and source-gated formula activation policy. Task 15.1 is docs-only: it does not implement new calculation modules, does not activate new Arabic Parts, and does not change the existing Arabic Parts architecture. Task 15.2 records the initial source corpus blocker; Task 15.2b accepts Vronsky Table 17 as the partial primary/only Sprint 15 source corpus for day-birth Arabic point formulas. Task 15.2c selects the first Vronsky implementation scope as simple day-only display-safe formulas, while sensitive labels, complex operands and night formulas remain deferred. Task 15.3 adds the selected rows to `src/arabicPartsData.js`; Task 15.4 marks those rows `engineReady` for explicit Vronsky API use only and adds the day-only calculation path; Task 15.5 adds explicit Vronsky house-assignment and display/profile composition helpers; Task 15.6 wires the explicit Vronsky profile helper into the existing `Жребии и арабские части` UI block as a `Точки Вронского` subsection. Default active Arabic Parts remain only Pars Fortuna and Lot of Spirit.
+These documents define the Arabic Parts Expansion Pack strategy and source-gated formula activation policy. Task 15.1 is docs-only: it does not implement new calculation modules, does not activate new Arabic Parts, and does not change the existing Arabic Parts architecture. Task 15.2 records the initial source corpus blocker; Task 15.2b accepts Vronsky Table 17 as the partial primary/only Sprint 15 source corpus for day-birth Arabic point formulas. Task 15.2c selects the first Vronsky implementation scope as simple day-only display-safe formulas, while sensitive labels, complex operands and night formulas remain deferred. Task 15.3 adds the selected rows to `src/arabicPartsData.js`; Task 15.4 marks those rows `engineReady` for explicit Vronsky API use only and adds the day-only calculation path; Task 15.5 adds explicit Vronsky house-assignment and display/profile composition helpers; Task 15.6 wires the explicit Vronsky profile helper into the existing `Жребии и арабские части` UI block as a `Точки Вронского` subsection. Task 15.7 adds safe `Vronsky Arabic Points Debug` / QA guardrails for `?debug=1` only. Default active Arabic Parts remain only Pars Fortuna and Lot of Spirit.
 
 Completed Sprint 14 strategy docs:
 
@@ -251,7 +251,7 @@ Responsibilities:
 - renders the collapsible `Особые точки карты` block inside `Мои карты` through `src/profileUi.js` and `src/specialPointsForProfile.js` when Special Points inputs are ready
 - renders the collapsible `Неподвижные звезды` block inside `Мои карты` through `src/profileUi.js`, `src/fixedStarConjunctions.js` and `src/fixedStarsDisplay.js` when Fixed Star conjunction checks are available
 - renders the compact `Лично для меня` dashboard block through `src/personalContext.js`, `src/personalRecommendations.js`, and `src/profileUi.js`
-- passes safe profile summary state, Houses UI debug state, Arabic Parts UI debug state, Special Points debug state and Fixed Stars debug state into the hidden debug panel only when `?debug=1`
+- passes safe profile summary state, Houses UI debug state, Arabic Parts UI debug state, Vronsky Arabic Points debug state, Special Points debug state and Fixed Stars debug state into the hidden debug panel only when `?debug=1`
 
 `src/app.js` is currently the composition layer.
 
@@ -717,6 +717,20 @@ Current responsibilities:
 - preserve day-only fallback behavior for night, boundary and unknown chart sect states.
 
 This module is consumed by `src/profileUi.js` for the normal Arabic Parts UI subsection. It does not calculate formulas itself, assign houses itself, activate old deferred Lots, call provider modules directly, render DOM, read localStorage, mutate profiles, expose raw birth data / raw birth coordinates / raw point longitudes, or add interpretations.
+
+## `src/vronskyArabicPartsDebug.js`
+
+Builds a safe debug / QA guardrails snapshot for the Task 15 Vronsky Arabic Points layer.
+
+Current responsibilities:
+
+- report Vronsky Table 17 source corpus, formula tradition and day-birth source section;
+- report selected row count, selected keys, default active formula count and old deferred Lot count;
+- report day-only chart sect policy, missing / not verified night formulas and Vronsky-only source policy;
+- report calculation, assignment and display statuses/counts when safe results are available;
+- expose guardrails for no night fallback, no non-Vronsky sources, old deferred Lots inactive, sensitive rows excluded, no interpretations and no raw profile data.
+
+This module integrates only with the existing `?debug=1` debug panel. It does not change normal UI behavior, change formulas, activate old deferred Lots, dump formula arrays or result arrays, call provider modules directly, render DOM, read localStorage, mutate profiles, expose raw birth data / raw coordinates / raw point longitudes, or add interpretations.
 
 ## `src/arabicPartsDebug.js`
 
@@ -1432,7 +1446,7 @@ Current behavior:
 
 - reads `debug=1` from URL query parameters;
 - returns hidden-panel text for calculation verification;
-- includes calculated time, `debugDate` status, Moscow day system, Moon sign, VOC, Moon aspects, indicators, safe profile debug state, safe personal debug state, safe natal-engine/provider debug state, safe natal planets UI debug state, safe natal aspects UI debug state, safe essential dignities UI debug state, safe detailed dignities UI debug state, safe Houses / ASC / MC UI debug state, safe Arabic Parts UI debug state, best-window debug reasoning, ephemeris range/source, and cache version;
+- includes calculated time, `debugDate` status, Moscow day system, Moon sign, VOC, Moon aspects, indicators, safe profile debug state, safe personal debug state, safe natal-engine/provider debug state, safe natal planets UI debug state, safe natal aspects UI debug state, safe essential dignities UI debug state, safe detailed dignities UI debug state, safe Houses / ASC / MC UI debug state, safe Arabic Parts UI debug state, safe Vronsky Arabic Points debug state, best-window debug reasoning, ephemeris range/source, and cache version;
 - allows technical timestamps with seconds because this is debug-only.
 
 The debug panel does not store data and does not expose birth data, raw place objects, raw coordinates, exact birth timezone values, raw planet/lots/cusp longitudes, formula operand arrays, source tokens, source keys/source systems, full tables, full result arrays or full profile data.
@@ -1788,6 +1802,8 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 42. `src/arabicPartsForProfile.js` builds the profile-level safe view model for the `Жребии и арабские части` UI block by composing active Arabic Parts calculation, lots / Arabic Parts house assignment and display formatting. It does not calculate formulas, assign houses itself or render UI directly.
 
 42a. `src/vronskyArabicPartsForProfile.js` builds an explicit profile-level Vronsky Arabic Points view model by composing the explicit Vronsky calculation APIs, Vronsky house assignment and Vronsky display formatting. It is consumed by the existing Arabic Parts UI subsection and does not calculate formulas or assign houses itself.
+
+42b. `src/vronskyArabicPartsDebug.js` builds safe Vronsky Arabic Points debug / QA guardrail snapshots for `?debug=1`. It exposes only source/dataset/policy/pipeline counts, statuses and guardrail booleans, and does not expose raw profile data, formula dumps, full arrays or interpretations.
 
 43. `src/arabicPartsDebug.js` builds safe status/count/capability/privacy debug state for the `Жребии и арабские части` UI block. It does not expose raw profile data, raw coordinates, raw longitudes, formula operands or full result arrays.
 

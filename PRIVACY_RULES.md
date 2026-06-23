@@ -125,6 +125,8 @@ Arabic Parts debug must show status/counts/capabilities only. It may show active
 
 Vronsky Arabic Points UI must show only safe formatted point text and optional house labels. It must not expose raw birth data, UTC, raw timezone values, raw coordinates, raw point longitudes, formula operand arrays, provider payloads, full profile JSON, or sensitive/deferred Vronsky rows.
 
+Vronsky Arabic Points debug must show only safe source/dataset/policy/pipeline counts, statuses and guardrails. It must not expose raw birth data, UTC, raw timezone values, coordinates, provider payloads, formula operand arrays, full profile JSON, full calculated parts arrays, full assignment arrays, full cusp arrays, sensitive/deferred rows, or interpretations.
+
 Special Points debug must show status/readiness/source statuses/counts/capabilities only. It may show active profile id/name, active/deferred source keys, Selena point type and privacy flags, but must not expose raw birth data, UTC, raw timezone values, raw coordinates, raw point/cusp longitudes, provider payloads, full profile JSON, or full points/assignments/cusps arrays.
 
 Fixed Stars debug must show catalog/policy/pipeline statuses, counts and guardrails only. It must not expose raw birth data, UTC, raw timezone values, coordinates, provider payloads, full profile JSON, full catalog/target/position/conjunction arrays, raw hit rows, or interpretations.

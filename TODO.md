@@ -4624,9 +4624,36 @@ Result:
 
 Next active task:
 
-- Task 15.7 — Vronsky Arabic Points Debug Update.
+- Task 15.8 — Vronsky Arabic Points Final Hardening / Regression.
 
-Task 15.7 is not started.
+Task 15.7 is done.
+Task 15.8 is not started.
+Do not start Sprint 16 or later.
+
+## Task 15.7 — Vronsky Arabic Points Debug Update
+
+Status: done
+
+Goal:
+
+Add safe debug / QA guardrails for the 12 selected Vronsky Table 17 Arabic Points without changing formulas, source policy or normal UI behavior.
+
+Result:
+
+- Added `src/vronskyArabicPartsDebug.js` as a safe Vronsky Arabic Points debug summary helper.
+- Integrated `Vronsky Arabic Points Debug` into the existing `?debug=1` debug panel only.
+- Debug shows only source summary, selected row count, day-only policy, night formula status, pipeline counts and guardrail booleans.
+- Debug confirms Vronsky-only source corpus, 12 selected rows, day-only policy, `missing/notVerified` night formulas, old deferred Lots inactive and no interpretations.
+- Debug does not expose raw birth data, UTC, timezone values, coordinates, provider payloads, formula operand arrays, full profile JSON or full result arrays.
+- Normal `Жребии и арабские части` UI behavior was not changed.
+- No formulas, source/data rows, house assignment, display behavior, provider calculations or package files were changed.
+- PWA cache was bumped to `lunar-calendar-v97`.
+
+Next active task:
+
+- Task 15.8 — Vronsky Arabic Points Final Hardening / Regression.
+
+Task 15.8 is not started.
 Do not start Sprint 16 or later.
 
 # Security Backlog

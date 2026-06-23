@@ -56,6 +56,8 @@ Show source/day-only notes once at the bottom of the Arabic Parts block. Do not 
 
 Do not show sensitive/deferred Vronsky rows, old deferred Lot keys, interpretations, karmic/fatalistic copy, predictions or ritual advice.
 
+`?debug=1` may include `Vronsky Arabic Points Debug`, but only as safe source/dataset/policy/pipeline counts, statuses and guardrails. It must not appear in normal UI, must not change normal `Жребии и арабские части` behavior, and must not expose raw birth data, formula dumps, full result arrays or interpretations.
+
 ## Time Formatting
 
 Main dashboard:

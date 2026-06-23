@@ -47,6 +47,7 @@ import { getArabicPartsDebugState } from './arabicPartsDebug.js';
 import { buildFixedStarsDebugSnapshotForProfile } from './fixedStarsDebug.js';
 import { getHousesDebugState } from './housesDebug.js';
 import { getSpecialPointsDebugState } from './specialPointsDebug.js';
+import { buildVronskyArabicPartsDebugSnapshotForProfile } from './vronskyArabicPartsDebug.js';
 import {
   DEFAULT_DASHBOARD_MODE,
   isDashboardModeKey,
@@ -344,6 +345,7 @@ function render() {
     personalDebug: shouldShowDebug ? getPersonalDebugState() : null,
     housesUiDebug: shouldShowDebug ? getHousesUiDebugState() : null,
     arabicPartsUiDebug: shouldShowDebug ? getArabicPartsUiDebugState() : null,
+    vronskyArabicPartsDebug: shouldShowDebug ? getVronskyArabicPartsDebugState() : null,
     specialPointsUiDebug: shouldShowDebug ? getSpecialPointsUiDebugState() : null,
     fixedStarsUiDebug: shouldShowDebug ? getFixedStarsUiDebugState() : null,
   });
@@ -758,6 +760,14 @@ function getArabicPartsUiDebugState() {
   return getArabicPartsDebugState(activeProfile, {
     collapsedState: !activeProfileId || expandedArabicPartsProfileId !== activeProfileId,
   });
+}
+
+function getVronskyArabicPartsDebugState() {
+  const profiles = loadProfiles();
+  const activeProfileId = getActiveProfileId();
+  const activeProfile = profiles.find((profile) => profile.id === activeProfileId) ?? null;
+
+  return buildVronskyArabicPartsDebugSnapshotForProfile(activeProfile);
 }
 
 function getSpecialPointsUiDebugState() {

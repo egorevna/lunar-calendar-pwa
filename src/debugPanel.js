@@ -6,9 +6,10 @@ import { createNatalPlanetsDebugSummaryFromStorage } from './natalPlanetsDebug.j
 import { getNatalProviderValidationSummary } from './natalProviderValidationSummary.js';
 import { getPlanetaryProviderCapabilities } from './planetaryPositionProvider.js';
 import { formatFixedStarsDebugSnapshot } from './fixedStarsDebug.js';
+import { formatVronskyArabicPartsDebugSnapshot } from './vronskyArabicPartsDebug.js';
 import { formatAspect, formatPlanet } from './vocDisplay.js';
 
-export const APP_CACHE_VERSION = 'lunar-calendar-v95';
+export const APP_CACHE_VERSION = 'lunar-calendar-v97';
 
 export function isDebugMode(search = window.location.search) {
   return new URLSearchParams(search).get('debug') === '1';
@@ -34,6 +35,7 @@ export function describeDebugPanel(context = {}) {
     detailedDignitiesUiDebug,
     housesUiDebug,
     arabicPartsUiDebug,
+    vronskyArabicPartsDebug,
     specialPointsUiDebug,
     fixedStarsUiDebug,
   } = context;
@@ -97,6 +99,7 @@ export function describeDebugPanel(context = {}) {
     ),
     formatHousesUiDebug(housesUiDebug),
     formatArabicPartsUiDebug(arabicPartsUiDebug),
+    formatVronskyArabicPartsDebug(vronskyArabicPartsDebug),
     formatSpecialPointsUiDebug(specialPointsUiDebug),
     formatFixedStarsUiDebug(fixedStarsUiDebug),
     formatBestWindowsDebug(bestWindowsDebug),
@@ -553,6 +556,44 @@ function formatArabicPartsUiDebug(debug) {
     `formulaOperandsExposed: ${formatDebugBoolean(privacy.formulaOperandsExposed)}`,
     `fullProfileJsonExposed: ${formatDebugBoolean(privacy.fullProfileJsonExposed)}`,
     `providerPayloadExposed: ${formatDebugBoolean(privacy.providerPayloadExposed)}`,
+  ]);
+}
+
+function formatVronskyArabicPartsDebug(debug) {
+  if (!debug) return '';
+
+  const snapshot = formatVronskyArabicPartsDebugSnapshot(debug);
+  const rowsByLabel = new Map(snapshot.rows ?? []);
+  const source = debug.source ?? {};
+  const dataset = debug.dataset ?? {};
+  const policy = debug.policy ?? {};
+  const pipeline = debug.pipeline ?? {};
+  const guardrails = debug.guardrails ?? {};
+
+  return formatSection(snapshot.title ?? 'Vronsky Arabic Points Debug', [
+    `sourceSystem: ${source.sourceSystem ?? rowsByLabel.get('Source') ?? 'unknown'}`,
+    `sourceCorpusPolicy: ${policy.sourceCorpusPolicy ?? rowsByLabel.get('Source corpus policy') ?? 'unknown'}`,
+    `selectedRows: ${dataset.selectedRowCount ?? rowsByLabel.get('Selected rows') ?? 0}`,
+    `activeDefaultFormulaCount: ${dataset.activeDefaultFormulaCount ?? rowsByLabel.get('Active default formulas') ?? 0}`,
+    `oldDeferredLotCount: ${dataset.oldDeferredLotCount ?? rowsByLabel.get('Old deferred Lots') ?? 0}`,
+    `selectedKeys: ${formatList(dataset.selectedKeys)}`,
+    `chartSectPolicy: ${policy.chartSectPolicy ?? rowsByLabel.get('Chart sect policy') ?? 'unknown'}`,
+    `nightFormulaStatus: ${policy.nightFormulaStatus ?? rowsByLabel.get('Night formulas') ?? 'unknown'}`,
+    `externalTraditionsUsed: ${formatDebugBoolean(policy.externalTraditionsUsed)}`,
+    `interpretations: ${formatDebugBoolean(policy.interpretations)}`,
+    `calculationStatus: ${pipeline.calculationStatus ?? rowsByLabel.get('Calculation status') ?? 'unknown'}`,
+    `readyCount: ${pipeline.readyCount ?? rowsByLabel.get('Ready rows') ?? 0}`,
+    `notReadyCount: ${pipeline.notReadyCount ?? rowsByLabel.get('Not ready rows') ?? 0}`,
+    `assignmentStatus: ${pipeline.assignmentStatus ?? rowsByLabel.get('Assignment status') ?? 'unknown'}`,
+    `assignedCount: ${pipeline.assignedCount ?? rowsByLabel.get('Assigned rows') ?? 0}`,
+    `displayStatus: ${pipeline.displayStatus ?? rowsByLabel.get('Display status') ?? 'unknown'}`,
+    `displayItemCount: ${pipeline.displayItemCount ?? rowsByLabel.get('Display items') ?? 0}`,
+    `noNightFormulaFallback: ${formatDebugBoolean(guardrails.noNightFormulaFallback)}`,
+    `noNonVronskySources: ${formatDebugBoolean(guardrails.noNonVronskySources)}`,
+    `oldDeferredLotsInactive: ${formatDebugBoolean(guardrails.oldDeferredLotsInactive)}`,
+    `sensitiveRowsExcluded: ${formatDebugBoolean(guardrails.sensitiveRowsExcluded)}`,
+    `noInterpretations: ${formatDebugBoolean(guardrails.noInterpretations)}`,
+    `noRawProfileData: ${formatDebugBoolean(guardrails.noRawProfileData)}`,
   ]);
 }
 

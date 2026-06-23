@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-06-23 — Complete Task 15.7 Vronsky Arabic Points Debug Update
+
+- Added `src/vronskyArabicPartsDebug.js` as a safe Vronsky Arabic Points debug / QA guardrails helper.
+- Integrated `Vronsky Arabic Points Debug` into the existing `?debug=1` panel only.
+- Debug shows Vronsky-only source corpus, selected row count, day-only policy, night formula status, pipeline counts and guardrail booleans.
+- Debug does not expose raw birth data, UTC, timezone values, coordinates, provider payloads, formula operand arrays, full profile JSON or full result arrays.
+- No formula, source-policy, normal UI, provider, package-file changes or interpretations were added.
+- Old deferred Lots remain inactive.
+- Bumped PWA cache from `lunar-calendar-v96` to `lunar-calendar-v97`.
+- Next active task is Task 15.8 — Vronsky Arabic Points Final Hardening / Regression, but it was not started.
+
 ## 2026-06-23 — Complete Task 15.6 Vronsky Arabic Points UI Update
 
 - Added the `Точки Вронского` subsection inside the existing `Жребии и арабские части` UI block.

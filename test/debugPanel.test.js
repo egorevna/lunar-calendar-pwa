@@ -995,6 +995,121 @@ test('debug panel shows safe Arabic Parts UI debug section when safe state is pr
   });
 });
 
+test('debug panel shows safe Vronsky Arabic Points debug section when safe state is provided', () => {
+  const text = describeDebugPanel({
+    now: new Date('2026-05-15T00:40:00+03:00'),
+    vronskyArabicPartsDebug: {
+      status: 'ready',
+      title: 'Точки Вронского',
+      debugTitle: 'Vronsky Arabic Points Debug',
+      source: {
+        sourceSystem: 'vronsky-table-17-arabic-points',
+        sourceCorpus: 'Вронский, Том 1, Приложение 2, Таблица 17 — Арабские точки',
+        formulaTradition: 'Vronsky Table 17 Arabic Points',
+        sourceSection: 'Для дневного рождения',
+      },
+      dataset: {
+        selectedRowCount: 12,
+        activeDefaultFormulaCount: 2,
+        oldDeferredLotCount: 4,
+        selectedKeys: [
+          'pars-amoris',
+          'pars-artis',
+          'pars-creationis',
+          'pars-fratrum-et-sororum',
+          'pars-hereditatis',
+          'pars-itineris',
+          'pars-liberorum',
+          'pars-matris',
+          'pars-patris',
+          'pars-pueri',
+          'astrologia',
+          'pars-mercaturae',
+        ],
+      },
+      policy: {
+        sourceCorpusPolicy: 'vronsky-only',
+        chartSectPolicy: 'dayOnly',
+        nightFormulaStatus: 'missing/notVerified',
+        externalTraditionsUsed: false,
+        interpretations: false,
+      },
+      pipeline: {
+        calculationStatus: 'ready',
+        readyCount: 12,
+        notReadyCount: 0,
+        assignmentStatus: 'ready',
+        assignedCount: 12,
+        displayStatus: 'ready',
+        displayItemCount: 12,
+      },
+      guardrails: {
+        noNightFormulaFallback: true,
+        noNonVronskySources: true,
+        oldDeferredLotsInactive: true,
+        sensitiveRowsExcluded: true,
+        noInterpretations: true,
+        noRawProfileData: true,
+      },
+    },
+  });
+  const section = text
+    .split('\n\n')
+    .find((item) => item.startsWith('## Vronsky Arabic Points Debug'));
+
+  assert.equal(Boolean(section), true);
+  assert.equal(section.includes('sourceSystem: vronsky-table-17-arabic-points'), true);
+  assert.equal(section.includes('sourceCorpusPolicy: vronsky-only'), true);
+  assert.equal(section.includes('selectedRows: 12'), true);
+  assert.equal(section.includes('activeDefaultFormulaCount: 2'), true);
+  assert.equal(section.includes('oldDeferredLotCount: 4'), true);
+  assert.equal(section.includes('chartSectPolicy: dayOnly'), true);
+  assert.equal(section.includes('nightFormulaStatus: missing/notVerified'), true);
+  assert.equal(section.includes('externalTraditionsUsed: no'), true);
+  assert.equal(section.includes('interpretations: no'), true);
+  assert.equal(section.includes('calculationStatus: ready'), true);
+  assert.equal(section.includes('readyCount: 12'), true);
+  assert.equal(section.includes('assignedCount: 12'), true);
+  assert.equal(section.includes('displayItemCount: 12'), true);
+  assert.equal(section.includes('noNightFormulaFallback: yes'), true);
+  assert.equal(section.includes('noNonVronskySources: yes'), true);
+  assert.equal(section.includes('oldDeferredLotsInactive: yes'), true);
+  assert.equal(section.includes('sensitiveRowsExcluded: yes'), true);
+  assert.equal(section.includes('noInterpretations: yes'), true);
+  assert.equal(section.includes('noRawProfileData: yes'), true);
+
+  [
+    'birthDate',
+    'birthTime',
+    'utcDateTime',
+    'Europe/Moscow',
+    'timezone',
+    'birthPlace',
+    'latitude',
+    'longitude',
+    'coordinates',
+    'providerPayload',
+    'operands: [',
+    'parts: [',
+    'assignments: [',
+    'cusps: [',
+    'Точка любви —',
+    'фатально',
+    'кармически',
+    'ритуал',
+  ].forEach((fragment) => {
+    assert.equal(section.includes(fragment), false, fragment);
+  });
+});
+
+test('debug panel omits Vronsky Arabic Points debug section when no safe state is provided', () => {
+  const text = describeDebugPanel({
+    now: new Date('2026-05-15T00:40:00+03:00'),
+  });
+
+  assert.equal(text.includes('Vronsky Arabic Points Debug'), false);
+});
+
 test('debug panel omits Arabic Parts UI debug section when no safe state is provided', () => {
   const text = describeDebugPanel({
     now: new Date('2026-05-15T00:40:00+03:00'),
