@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-06-23 — Complete Task 15.6 Vronsky Arabic Points UI Update
+
+- Added the `Точки Вронского` subsection inside the existing `Жребии и арабские части` UI block.
+- Kept existing Pars Fortuna and Lot of Spirit rows in the same block.
+- Connected the explicit `src/vronskyArabicPartsForProfile.js` view model to the profile UI flow.
+- Day charts can show the 12 selected Vronsky Table 17 rows with zodiac positions and house labels when ready.
+- Night, boundary and unknown chart sect states show safe fallback messages without applying day formulas.
+- Source/day-only notes are shown once at the bottom of the block.
+- Kept sensitive/deferred Vronsky rows and old deferred Lot keys hidden from normal UI.
+- No formula, source-policy, debug, provider, package-file changes or interpretations were added.
+- Bumped PWA cache from `lunar-calendar-v95` to `lunar-calendar-v96`.
+- Next active task is Task 15.7 — Vronsky Arabic Points Debug Update, but it was not started.
+
 ## 2026-06-23 — Complete Task 15.5 Vronsky Arabic Points House Assignment / Display Integration
 
 - Added explicit Vronsky Arabic Points house-assignment helpers in `src/arabicPartsHouseAssignment.js`.

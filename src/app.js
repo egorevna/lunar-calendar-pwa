@@ -210,6 +210,10 @@ const elements = {
   arabicPartsContent: document.querySelector('[data-arabic-parts-content]'),
   arabicPartsChartSect: document.querySelector('[data-arabic-parts-chart-sect]'),
   arabicPartsList: document.querySelector('[data-arabic-parts-list]'),
+  arabicPartsVronskySection: document.querySelector('[data-arabic-parts-vronsky-section]'),
+  arabicPartsVronskyTitle: document.querySelector('[data-arabic-parts-vronsky-title]'),
+  arabicPartsVronskyMessage: document.querySelector('[data-arabic-parts-vronsky-message]'),
+  arabicPartsVronskyList: document.querySelector('[data-arabic-parts-vronsky-list]'),
   arabicPartsLimitations: document.querySelector('[data-arabic-parts-limitations]'),
   specialPoints: document.querySelector('[data-special-points-readiness]'),
   specialPointsTitle: document.querySelector('[data-special-points-title]'),
@@ -614,6 +618,8 @@ function renderArabicPartsBlock(view) {
   elements.arabicPartsChartSect.hidden = !isExpanded || !view.chartSectLabel;
   renderSimpleList(elements.arabicPartsList, view.items);
   elements.arabicPartsList.hidden = !isExpanded || view.items.length === 0;
+  renderArabicPartsVronskySection(elements.arabicPartsVronskySection, view.vronskySection);
+  elements.arabicPartsVronskySection.hidden = !isExpanded || !view.vronskySection.title;
   renderSimpleList(elements.arabicPartsLimitations, view.limitations);
   elements.arabicPartsLimitations.hidden = !isExpanded || view.limitations.length === 0;
 }
@@ -1022,6 +1028,18 @@ function renderSimpleList(element, items) {
     item.textContent = text;
     return item;
   }));
+}
+
+function renderArabicPartsVronskySection(element, section = {}) {
+  const title = typeof section?.title === 'string' ? section.title : '';
+  const message = typeof section?.message === 'string' ? section.message : '';
+  const items = Array.isArray(section?.items) ? section.items : [];
+
+  elements.arabicPartsVronskyTitle.textContent = title;
+  elements.arabicPartsVronskyMessage.textContent = message;
+  elements.arabicPartsVronskyMessage.hidden = !message;
+  renderSimpleList(elements.arabicPartsVronskyList, items);
+  elements.arabicPartsVronskyList.hidden = items.length === 0;
 }
 
 function renderDetailedDignityGroups(element, groups = []) {

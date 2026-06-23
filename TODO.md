@@ -4371,14 +4371,15 @@ Result:
 
 Next active task:
 
-- Task 15.6 — Vronsky Arabic Points UI Update.
+- Task 15.7 — Vronsky Arabic Points Debug Update.
 
 Task 15.2b is done.
 Task 15.2c is done.
 Task 15.3 is done.
 Task 15.4 is done.
 Task 15.5 is done.
-Task 15.6 is not started.
+Task 15.6 is done.
+Task 15.7 is not started.
 Do not start Sprint 16 or later.
 
 ## Task 15.2 — Source Corpus / Formula Tradition Decision
@@ -4474,12 +4475,13 @@ Result:
 
 Next active task:
 
-- Task 15.6 — Vronsky Arabic Points UI Update.
+- Task 15.7 — Vronsky Arabic Points Debug Update.
 
 Task 15.3 is done.
 Task 15.4 is done.
 Task 15.5 is done.
-Task 15.6 is not started.
+Task 15.6 is done.
+Task 15.7 is not started.
 Do not start Sprint 16 or later.
 
 ## Task 15.3 — Vronsky Simple Arabic Points Dataset / Fixtures
@@ -4517,11 +4519,12 @@ Result:
 
 Next active task:
 
-- Task 15.6 — Vronsky Arabic Points UI Update.
+- Task 15.7 — Vronsky Arabic Points Debug Update.
 
 Task 15.4 is done.
 Task 15.5 is done.
-Task 15.6 is not started.
+Task 15.6 is done.
+Task 15.7 is not started.
 Do not start Sprint 16 or later.
 
 ## Task 15.4 — Vronsky Simple Arabic Points Engine Expansion / Fixtures
@@ -4562,10 +4565,11 @@ Result:
 
 Next active task:
 
-- Task 15.6 — Vronsky Arabic Points UI Update.
+- Task 15.7 — Vronsky Arabic Points Debug Update.
 
 Task 15.5 is done.
-Task 15.6 is not started.
+Task 15.6 is done.
+Task 15.7 is not started.
 Do not start Sprint 16 or later.
 
 ## Task 15.5 — Vronsky Arabic Points House Assignment / Display Integration
@@ -4591,9 +4595,38 @@ Result:
 
 Next active task:
 
-- Task 15.6 — Vronsky Arabic Points UI Update.
+- Task 15.7 — Vronsky Arabic Points Debug Update.
 
-Task 15.6 is not started.
+Task 15.6 is done.
+Task 15.7 is not started.
+Do not start Sprint 16 or later.
+
+## Task 15.6 — Vronsky Arabic Points UI Update
+
+Status: done
+
+Goal:
+
+Connect the 12 selected Vronsky Table 17 simple day-only Arabic Points to the existing `Жребии и арабские части` UI block without changing formulas, source policy or debug.
+
+Result:
+
+- Added the `Точки Вронского` subsection inside the existing `Жребии и арабские части` block.
+- Kept existing Pars Fortuna and Lot of Spirit rows in the same block.
+- Connected `src/vronskyArabicPartsForProfile.js` through the profile UI view model.
+- Day charts can show the 12 selected Vronsky rows with formatted zodiac positions and house labels when ready.
+- Night, boundary and unknown chart sect states show safe Vronsky fallback messages without applying day formulas.
+- Source/day-only notes are shown once at the bottom of the block.
+- Sensitive/deferred Vronsky rows and old deferred keys remain hidden.
+- No formulas, source/data rows, debug output, provider calculations or package files were changed.
+- No interpretations were added.
+- PWA cache was bumped to `lunar-calendar-v96`.
+
+Next active task:
+
+- Task 15.7 — Vronsky Arabic Points Debug Update.
+
+Task 15.7 is not started.
 Do not start Sprint 16 or later.
 
 # Security Backlog

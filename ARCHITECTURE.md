@@ -21,7 +21,7 @@ Current Sprint 15 strategy docs:
 - `ARABIC_PARTS_VRONSKY_TABLE_17_SOURCE_MATERIALS.md`
 - `ARABIC_PARTS_VRONSKY_SCOPE_SELECTION.md`
 
-These documents define the Arabic Parts Expansion Pack strategy and source-gated formula activation policy. Task 15.1 is docs-only: it does not implement new calculation modules, does not activate new Arabic Parts, and does not change the existing Arabic Parts architecture. Task 15.2 records the initial source corpus blocker; Task 15.2b accepts Vronsky Table 17 as the partial primary/only Sprint 15 source corpus for day-birth Arabic point formulas. Task 15.2c selects the first Vronsky implementation scope as simple day-only display-safe formulas, while sensitive labels, complex operands and night formulas remain deferred. Task 15.3 adds the selected rows to `src/arabicPartsData.js`; Task 15.4 marks those rows `engineReady` for explicit Vronsky API use only and adds the day-only calculation path; Task 15.5 adds explicit Vronsky house-assignment and display/profile composition helpers without wiring them into normal UI. Default active Arabic Parts remain only Pars Fortuna and Lot of Spirit.
+These documents define the Arabic Parts Expansion Pack strategy and source-gated formula activation policy. Task 15.1 is docs-only: it does not implement new calculation modules, does not activate new Arabic Parts, and does not change the existing Arabic Parts architecture. Task 15.2 records the initial source corpus blocker; Task 15.2b accepts Vronsky Table 17 as the partial primary/only Sprint 15 source corpus for day-birth Arabic point formulas. Task 15.2c selects the first Vronsky implementation scope as simple day-only display-safe formulas, while sensitive labels, complex operands and night formulas remain deferred. Task 15.3 adds the selected rows to `src/arabicPartsData.js`; Task 15.4 marks those rows `engineReady` for explicit Vronsky API use only and adds the day-only calculation path; Task 15.5 adds explicit Vronsky house-assignment and display/profile composition helpers; Task 15.6 wires the explicit Vronsky profile helper into the existing `Жребии и арабские части` UI block as a `Точки Вронского` subsection. Default active Arabic Parts remain only Pars Fortuna and Lot of Spirit.
 
 Completed Sprint 14 strategy docs:
 
@@ -247,7 +247,7 @@ Responsibilities:
 - renders the collapsible essential dignities block inside `Мои карты` through `src/profileUi.js` and `src/essentialDignitiesForProfile.js` when natal planets are ready
 - renders the collapsible `Термы, деканы и градусы` block inside `Мои карты` through `src/profileUi.js` and `src/detailedDignitiesForProfile.js` when natal planets are ready
 - renders the collapsible `Дома и углы карты` block inside `Мои карты` through `src/profileUi.js` and `src/housesForProfile.js` when house input guardrails and selected house-system calculations are ready
-- renders the collapsible `Жребии и арабские части` block inside `Мои карты` through `src/profileUi.js` and `src/arabicPartsForProfile.js` when Arabic Parts inputs are ready
+- renders the collapsible `Жребии и арабские части` block inside `Мои карты` through `src/profileUi.js`, `src/arabicPartsForProfile.js` and `src/vronskyArabicPartsForProfile.js` when Arabic Parts inputs are ready; Vronsky rows appear as a subsection inside the existing block, not as a competing block
 - renders the collapsible `Особые точки карты` block inside `Мои карты` through `src/profileUi.js` and `src/specialPointsForProfile.js` when Special Points inputs are ready
 - renders the collapsible `Неподвижные звезды` block inside `Мои карты` through `src/profileUi.js`, `src/fixedStarConjunctions.js` and `src/fixedStarsDisplay.js` when Fixed Star conjunction checks are available
 - renders the compact `Лично для меня` dashboard block through `src/personalContext.js`, `src/personalRecommendations.js`, and `src/profileUi.js`
@@ -707,7 +707,7 @@ This module does not calculate formulas, assign lots to houses itself, activate 
 
 ## `src/vronskyArabicPartsForProfile.js`
 
-Builds an explicit profile-level Vronsky Arabic Points view model for future UI integration.
+Builds an explicit profile-level Vronsky Arabic Points view model for the `Точки Вронского` subsection inside the existing `Жребии и арабские части` UI block.
 
 Current responsibilities:
 
@@ -716,7 +716,7 @@ Current responsibilities:
 - format the combined result through `src/arabicPartsDisplay.js`;
 - preserve day-only fallback behavior for night, boundary and unknown chart sect states.
 
-This module is not wired into the normal `Жребии и арабские части` UI yet. It does not calculate formulas itself, assign houses itself, activate old deferred Lots, call provider modules directly, render DOM, read localStorage, mutate profiles, expose raw birth data / raw birth coordinates / raw point longitudes, or add interpretations.
+This module is consumed by `src/profileUi.js` for the normal Arabic Parts UI subsection. It does not calculate formulas itself, assign houses itself, activate old deferred Lots, call provider modules directly, render DOM, read localStorage, mutate profiles, expose raw birth data / raw birth coordinates / raw point longitudes, or add interpretations.
 
 ## `src/arabicPartsDebug.js`
 
@@ -1557,7 +1557,7 @@ Current responsibilities:
 - translate natal readiness missing fields into human-readable labels without raw birth data or technical keys;
 - format the collapsible `Натальные аспекты`, `Достоинства планет` and `Термы, деканы и градусы` block view models from their profile helpers;
 - format the collapsible `Дома и углы карты` block view model from `src/housesForProfile.js`;
-- format the collapsible `Жребии и арабские части` block view model from `src/arabicPartsForProfile.js`;
+- format the collapsible `Жребии и арабские части` block view model from `src/arabicPartsForProfile.js` and the `Точки Вронского` subsection from `src/vronskyArabicPartsForProfile.js`;
 - format the collapsible `Особые точки карты` block view model from `src/specialPointsForProfile.js`;
 - format the collapsible `Неподвижные звезды` block view model by composing `src/fixedStarConjunctions.js` with `src/fixedStarsDisplay.js`;
 - format the compact `Лично для меня` dashboard block from `src/personalContext.js`;
@@ -1787,7 +1787,7 @@ If a deployment appears stale on iPhone, first check whether `CACHE_NAME` was up
 
 42. `src/arabicPartsForProfile.js` builds the profile-level safe view model for the `Жребии и арабские части` UI block by composing active Arabic Parts calculation, lots / Arabic Parts house assignment and display formatting. It does not calculate formulas, assign houses itself or render UI directly.
 
-42a. `src/vronskyArabicPartsForProfile.js` builds an explicit profile-level Vronsky Arabic Points view model by composing the explicit Vronsky calculation APIs, Vronsky house assignment and Vronsky display formatting. It is not wired into normal UI yet and does not calculate formulas or assign houses itself.
+42a. `src/vronskyArabicPartsForProfile.js` builds an explicit profile-level Vronsky Arabic Points view model by composing the explicit Vronsky calculation APIs, Vronsky house assignment and Vronsky display formatting. It is consumed by the existing Arabic Parts UI subsection and does not calculate formulas or assign houses itself.
 
 43. `src/arabicPartsDebug.js` builds safe status/count/capability/privacy debug state for the `Жребии и арабские части` UI block. It does not expose raw profile data, raw coordinates, raw longitudes, formula operands or full result arrays.
 
@@ -2225,6 +2225,7 @@ Testing note:
 - `test/vronskyArabicPartsHouseAssignmentFixtures.test.js` and `test/vronskyArabicPartsHouseAssignment.test.js` validate explicit Vronsky house assignment, half-open cusp spans, fallback states, privacy exclusions and strict source boundaries without changing formulas, house engines, default Arabic Parts output or UI.
 - `test/fixtures/vronskyArabicPartsDisplayFixtures.js` contains test-only manual fixtures for formatting the 12 selected Vronsky Table 17 points and optional house labels. It is not used by production code.
 - `test/vronskyArabicPartsDisplayFixtures.test.js`, `test/vronskyArabicPartsDisplay.test.js` and `test/vronskyArabicPartsForProfile.test.js` validate explicit Vronsky display/profile composition, safe day/night/boundary fallback copy, privacy exclusions, default Arabic Parts invariants and strict display-only source boundaries.
+- `test/vronskyArabicPartsUi.test.js` validates the user-facing `Точки Вронского` subsection inside the existing Arabic Parts block, including day-ready rows, night/boundary/unknown fallback copy, one-time source/day-only notes, markup hooks, PWA cache entry and strict privacy/source boundaries.
 - `test/arabicPartsDisplay.test.js` validates the pure lots / Arabic Parts display helper, including formatted part rows, optional house labels, chart sect labels, fallback states, privacy exclusions and strict display-only source boundaries.
 - `test/arabicPartsForProfile.test.js` validates the profile-level Arabic Parts UI view model helper, including fallback states, ready active lots, day/night label, house labels, deferred formula exclusion, privacy exclusions and no mutation.
 - `test/arabicPartsDebug.test.js` validates the safe Arabic Parts UI debug helper, including readiness booleans, chart sect status, formula keys, counts, capabilities, privacy exclusions and strict source boundaries.

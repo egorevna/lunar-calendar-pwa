@@ -480,6 +480,7 @@ button {
 .houses-readiness h3,
 .houses-readiness h4,
 .arabic-parts-readiness h3,
+.arabic-parts-readiness h4,
 .special-points-readiness h3,
 .special-points-readiness h4,
 .fixed-stars-readiness h3 {
@@ -615,6 +616,8 @@ button {
 .houses-limitations,
 .arabic-parts-content,
 .arabic-parts-list,
+.arabic-parts-vronsky-section,
+.arabic-parts-vronsky-list,
 .arabic-parts-limitations,
 .special-points-content,
 .special-points-sections,
@@ -642,6 +645,8 @@ button {
 .houses-limitations[hidden],
 .arabic-parts-chart-sect[hidden],
 .arabic-parts-list[hidden],
+.arabic-parts-vronsky-section[hidden],
+.arabic-parts-vronsky-list[hidden],
 .arabic-parts-limitations[hidden],
 .special-points-sections[hidden],
 .special-points-limitations[hidden],
@@ -663,6 +668,7 @@ button {
 .houses-planet-assignments li,
 .houses-limitations li,
 .arabic-parts-list li,
+.arabic-parts-vronsky-list li,
 .arabic-parts-limitations li,
 .special-points-section li,
 .special-points-limitations li,
@@ -680,6 +686,7 @@ button {
 .houses-list li,
 .houses-planet-assignments li,
 .arabic-parts-list li,
+.arabic-parts-vronsky-list li,
 .special-points-section li,
 .fixed-stars-list li {
   color: rgba(255, 248, 239, 0.86);
@@ -691,6 +698,7 @@ button {
 .houses-list li,
 .houses-planet-assignments li,
 .arabic-parts-list li,
+.arabic-parts-vronsky-list li,
 .special-points-section li,
 .fixed-stars-list li {
   color: rgba(255, 248, 239, 0.8);
@@ -705,6 +713,7 @@ button {
 }
 
 .houses-readiness h4,
+.arabic-parts-readiness h4,
 .special-points-readiness h4 {
   color: rgba(255, 248, 239, 0.68);
   font-size: clamp(13px, 3.5vw, 16px);

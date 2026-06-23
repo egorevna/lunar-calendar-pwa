@@ -4,6 +4,7 @@ import { getEssentialDignitiesForProfile } from './essentialDignitiesForProfile.
 import { getDetailedDignitiesForProfile } from './detailedDignitiesForProfile.js';
 import { getHousesForProfile } from './housesForProfile.js';
 import { getArabicPartsForProfile } from './arabicPartsForProfile.js';
+import { getVronskyArabicPartsForProfile } from './vronskyArabicPartsForProfile.js';
 import { getSpecialPointsForProfile } from './specialPointsForProfile.js';
 import { calculateFixedStarConjunctionsForProfile } from './fixedStarConjunctions.js';
 import { formatFixedStarConjunctionResult } from './fixedStarsDisplay.js';
@@ -39,6 +40,7 @@ const HOUSES_TITLE = 'Дома и углы карты';
 const HOUSES_STATUS = 'Пока недоступно.';
 const ARABIC_PARTS_TITLE = 'Жребии и арабские части';
 const ARABIC_PARTS_STATUS = 'Пока недоступно.';
+const VRONSKY_SOURCE_NOTE = 'Источник: Вронский, Том 1, Приложение 2, Таблица 17.';
 const SPECIAL_POINTS_TITLE = 'Особые точки карты';
 const SPECIAL_POINTS_STATUS = 'Пока недоступно.';
 const FIXED_STARS_TITLE = 'Неподвижные звезды';
@@ -360,9 +362,15 @@ export function describeHousesBlock(profile = null) {
   };
 }
 
-export function describeArabicPartsBlock(profile = null) {
-  const arabicParts = getArabicPartsForProfile(profile);
+export function describeArabicPartsBlock(profile = null, options = {}) {
+  const arabicParts = isPlainObject(options.arabicParts)
+    ? options.arabicParts
+    : getArabicPartsForProfile(profile);
+  const vronskyArabicParts = isPlainObject(options.vronskyArabicParts)
+    ? options.vronskyArabicParts
+    : getVronskyArabicPartsForProfile(profile);
   const isReady = arabicParts.status === 'ready' && arabicParts.ready === true;
+  const vronskySection = toVronskyArabicPartsSectionView(vronskyArabicParts);
 
   return {
     hidden: false,
@@ -374,9 +382,8 @@ export function describeArabicPartsBlock(profile = null) {
     chartSectLabel: isReady ? cleanText(arabicParts.chartSectLabel) : '',
     canToggleArabicParts: true,
     items: toDisplayTextList(arabicParts.items),
-    limitations: Array.isArray(arabicParts.limitations)
-      ? arabicParts.limitations.map(cleanText).filter(Boolean)
-      : [],
+    vronskySection,
+    limitations: getArabicPartsUiLimitations(arabicParts, vronskyArabicParts),
   };
 }
 
@@ -443,6 +450,33 @@ function toSpecialPointsSectionView(section) {
     items: toDisplayTextList(section.items),
     limitations: [],
   };
+}
+
+function toVronskyArabicPartsSectionView(result) {
+  const title = cleanText(result?.title) || 'Точки Вронского';
+  const items = toDisplayTextList(result?.items);
+  const message = items.length > 0 ? '' : cleanText(result?.message);
+
+  return {
+    title,
+    message,
+    items,
+  };
+}
+
+function getArabicPartsUiLimitations(arabicParts, vronskyArabicParts) {
+  const arabicLimitations = Array.isArray(arabicParts?.limitations)
+    ? arabicParts.limitations.map(cleanText).filter(Boolean)
+    : [];
+  const vronskyLimitations = Array.isArray(vronskyArabicParts?.limitations)
+    ? vronskyArabicParts.limitations.map(cleanText).filter(Boolean)
+    : [];
+
+  return unique([
+    ...arabicLimitations,
+    ...vronskyLimitations,
+    VRONSKY_SOURCE_NOTE,
+  ]);
 }
 
 function toDetailedDignityGroupView(group) {
@@ -514,6 +548,10 @@ function section(title, items = []) {
 
 function cleanText(value) {
   return typeof value === 'string' ? value.trim() : '';
+}
+
+function isPlainObject(value) {
+  return value !== null && typeof value === 'object' && !Array.isArray(value);
 }
 
 function toDisplayTextList(items = []) {

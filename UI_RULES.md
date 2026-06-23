@@ -40,6 +40,22 @@ Use:
 - Separate screens.
 - Hidden debug screen.
 
+## Vronsky Arabic Points UI
+
+Vronsky Arabic Points must appear inside the existing `Жребии и арабские части` block as the `Точки Вронского` subsection, not as a separate competing block.
+
+Show factual rows only:
+
+- formatted zodiac position with seconds;
+- optional house label when already assigned;
+- no raw longitude, formula operands, birth data, coordinates or provider payloads.
+
+Sprint 15 Vronsky rows are day-only. For night, boundary or unknown chart sect states, show a safe fallback message and do not apply day formulas silently.
+
+Show source/day-only notes once at the bottom of the Arabic Parts block. Do not repeat technical limitations after every row.
+
+Do not show sensitive/deferred Vronsky rows, old deferred Lot keys, interpretations, karmic/fatalistic copy, predictions or ritual advice.
+
 ## Time Formatting
 
 Main dashboard:
