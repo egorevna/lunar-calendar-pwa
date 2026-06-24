@@ -4326,7 +4326,7 @@ Task 15.1 is now closed below.
 
 # Sprint 15 — Arabic Parts Expansion Pack
 
-Status: active
+Status: closed
 
 Sprint 15 target:
 
@@ -4350,7 +4350,7 @@ Guardrails:
 - only `verified` rows may be active;
 - no interpretations, predictions, ritual scoring, karmic/fatalistic text or broad unverified Arabic Parts catalog;
 - do not change Pars Fortuna or Lot of Spirit formulas without a real bug;
-- do not start Sprint 16 or later.
+- Sprint 16 is started below; do not start Sprint 17 or later.
 
 ## Task 15.1 — Arabic Parts Expansion Strategy
 
@@ -4379,7 +4379,7 @@ Task 15.3 is done.
 Task 15.4 is done.
 Task 15.5 is done.
 Task 15.6 is done.
-Task 15.7 is not started.
+Task 15.7 is done.
 Do not start Sprint 16 or later.
 
 ## Task 15.2 — Source Corpus / Formula Tradition Decision
@@ -4481,7 +4481,7 @@ Task 15.3 is done.
 Task 15.4 is done.
 Task 15.5 is done.
 Task 15.6 is done.
-Task 15.7 is not started.
+Task 15.7 is done.
 Do not start Sprint 16 or later.
 
 ## Task 15.3 — Vronsky Simple Arabic Points Dataset / Fixtures
@@ -4524,7 +4524,7 @@ Next active task:
 Task 15.4 is done.
 Task 15.5 is done.
 Task 15.6 is done.
-Task 15.7 is not started.
+Task 15.7 is done.
 Do not start Sprint 16 or later.
 
 ## Task 15.4 — Vronsky Simple Arabic Points Engine Expansion / Fixtures
@@ -4569,7 +4569,7 @@ Next active task:
 
 Task 15.5 is done.
 Task 15.6 is done.
-Task 15.7 is not started.
+Task 15.7 is done.
 Do not start Sprint 16 or later.
 
 ## Task 15.5 — Vronsky Arabic Points House Assignment / Display Integration
@@ -4598,7 +4598,7 @@ Next active task:
 - Task 15.7 — Vronsky Arabic Points Debug Update.
 
 Task 15.6 is done.
-Task 15.7 is not started.
+Task 15.7 is done.
 Do not start Sprint 16 or later.
 
 ## Task 15.6 — Vronsky Arabic Points UI Update
@@ -4624,11 +4624,13 @@ Result:
 
 Next active task:
 
-- Task 15.8 — Vronsky Arabic Points Final Hardening / Regression.
+- Task 16.1 — Midpoints / Antiscia Strategy.
 
 Task 15.7 is done.
-Task 15.8 is not started.
-Do not start Sprint 16 or later.
+Task 15.8 is done below.
+Sprint 15 is closed.
+Task 16.1 is done below.
+Do not start Task 16.2 here.
 
 ## Task 15.7 — Vronsky Arabic Points Debug Update
 
@@ -4651,10 +4653,105 @@ Result:
 
 Next active task:
 
-- Task 15.8 — Vronsky Arabic Points Final Hardening / Regression.
+- Task 16.1 — Midpoints / Antiscia Strategy.
 
-Task 15.8 is not started.
-Do not start Sprint 16 or later.
+Task 15.8 is done.
+Sprint 15 is closed.
+Task 16.1 is done below.
+Do not start Task 16.2 here.
+
+## Task 15.8 — Vronsky Arabic Points Final Hardening / Regression
+
+Status: done
+
+Goal:
+
+Run the final Sprint 15 hardening / regression pass across the Vronsky Arabic Points pipeline.
+
+Result:
+
+- Rechecked source corpus, source materials, scope selection, dataset rows, explicit engine, day-only policy, house assignment, display, UI, debug, privacy, architecture boundaries and service worker cache.
+- Confirmed the primary/only Sprint 15 source corpus remains Вронский, Том 1, Приложение 2, Таблица 17 — Арабские точки.
+- Confirmed the selected Vronsky pack remains exactly 12 day-only display-safe rows:
+  - `pars-amoris`;
+  - `pars-artis`;
+  - `pars-creationis`;
+  - `pars-fratrum-et-sororum`;
+  - `pars-hereditatis`;
+  - `pars-itineris`;
+  - `pars-liberorum`;
+  - `pars-matris`;
+  - `pars-patris`;
+  - `pars-pueri`;
+  - `astrologia`;
+  - `pars-mercaturae`.
+- Confirmed default active Arabic Parts remain exactly `pars-fortuna` and `lot-of-spirit`.
+- Confirmed `lot-of-eros`, `lot-of-necessity`, `lot-of-basis` and `lot-of-exaltation` remain inactive/deferred.
+- Confirmed Vronsky formulas remain `dayOnly`: day charts can calculate, while night, boundary and unknown chart sect states fail closed with safe fallback.
+- Confirmed Vronsky house assignment, display, UI subsection and debug expose only safe factual/status data and no interpretations.
+- Confirmed no code fixes were needed.
+
+Sprint 15 is closed.
+
+Next active task:
+
+- Task 16.1 — Midpoints / Antiscia Strategy.
+
+Task 16.1 is done below.
+Do not start Task 16.2 here.
+
+# Sprint 16 — Midpoints / Antiscia Foundation
+
+Status: active
+
+Sprint 16 target:
+
+- source / formula / scope policy for Midpoints / Срединные точки;
+- source / formula / scope policy for Antiscia / Антисы and Contra-antiscia / Контрантисы;
+- safe target resolvers;
+- midpoint engine and validation fixtures;
+- antiscia / contra-antiscia engine and validation fixtures if source policy verifies them;
+- display helper, UI block, safe debug and final hardening.
+
+Recommended first scope:
+
+- Midpoints: natal planets only.
+- Antiscia / Contra-antiscia: natal planets + ASC / MC / DSC / IC.
+
+Guardrails:
+
+- no formula from memory;
+- no hidden formula policy;
+- no broad midpoint trees;
+- no midpoint-to-planet contacts in Sprint 16 unless a later source policy explicitly approves them;
+- no interpretations, predictive text, psychological claims, transits or ritual scoring;
+- no calculation engine, UI or debug changes in Task 16.1;
+- do not start Sprint 17 or later.
+
+## Task 16.1 — Midpoints / Antiscia Strategy
+
+Status: done
+
+Goal:
+
+Merge Sprint 16 strategy documents into project status.
+
+Result:
+
+- Added / accepted `SPRINT_16_PLAN.md`, `MIDPOINTS_ANTISCIA_STRATEGY.md` and `MIDPOINTS_ANTISCIA_SOURCE_POLICY.md` as Sprint 16 strategy docs.
+- Started Sprint 16 — Midpoints / Antiscia Foundation.
+- Confirmed Task 16.2 must verify the midpoint formula, wrap-around policy, midpoint axis policy, antiscion formula, contra-antiscion formula, tropical zodiac basis and active target scope before any engine implementation.
+- Confirmed midpoint shortest-arc policy is only a candidate until verified.
+- Confirmed antiscion and contra-antiscion formulas are only candidates until verified.
+- Confirmed the recommended first scope: Midpoints use natal planets only; Antiscia / Contra-antiscia use natal planets + ASC / MC / DSC / IC.
+- Confirmed Task 16.1 is docs-only: no `src/`, tests, UI, debug, service worker, provider or package changes were made.
+
+Next active task:
+
+- Task 16.2 — Midpoints / Antiscia Source / Formula / Scope Policy.
+
+Task 16.2 is not started.
+Do not start Sprint 17 or later.
 
 # Security Backlog
 

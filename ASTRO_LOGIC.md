@@ -806,6 +806,22 @@ Policy:
 - The old deferred keys `lot-of-eros`, `lot-of-necessity`, `lot-of-basis` and `lot-of-exaltation` remain inactive/deferred.
 - No interpretations, predictions, ritual scoring, karmic/fatalistic text or psychological labels are added.
 
+## Sprint 16 — Midpoints / Antiscia Policy
+
+Sprint 16 starts a source-gated Midpoints / Antiscia Foundation. Task 16.1 is strategy/status only and does not implement calculation modules.
+
+Policy:
+
+- midpoint source / formula / scope policy is required before any midpoint engine work;
+- antiscia / contra-antiscia source / formula / scope policy is required before any antiscia engine work;
+- the shortest-arc midpoint formula is a candidate only and is not active until Task 16.2 verifies it;
+- antiscion and contra-antiscion formulas are candidates only and are not active until Task 16.2 verifies them;
+- recommended first midpoint scope is natal planets only, but Task 16.2 must explicitly decide the final active scope;
+- recommended first antiscia / contra-antiscia scope is natal planets + ASC / MC / DSC / IC, but Task 16.2 must explicitly decide the final active scope;
+- no formula may be implemented from memory or hidden policy;
+- broad midpoint trees, midpoint-to-planet contacts, transits, ritual scoring and interpretations remain out of scope unless a later active task explicitly approves them;
+- Midpoints / Antiscia UI/debug must not expose raw birth data, UTC datetime, raw timezone values, raw coordinates, full profile JSON, provider payloads or raw calculation arrays.
+
 ## Sprint 13 — Special Points Policy
 
 Sprint 13 adds a controlled Special Points foundation without changing Sprint 11 house engines or Sprint 12 Arabic Parts formulas.

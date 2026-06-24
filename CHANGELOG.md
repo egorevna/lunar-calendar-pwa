@@ -1,5 +1,24 @@
 # Changelog
 
+## 2026-06-24 — Start Sprint 16 Midpoints / Antiscia Foundation
+
+- Added / accepted `SPRINT_16_PLAN.md`, `MIDPOINTS_ANTISCIA_STRATEGY.md` and `MIDPOINTS_ANTISCIA_SOURCE_POLICY.md` as Sprint 16 strategy docs.
+- Started Sprint 16 — Midpoints / Antiscia Foundation.
+- Recorded that midpoint, antiscion and contra-antiscion formulas require explicit source / formula / scope verification in Task 16.2 before any engine implementation.
+- Recorded the recommended first scope: Midpoints use natal planets only; Antiscia / Contra-antiscia use natal planets + ASC / MC / DSC / IC.
+- No code, UI, debug, service worker or package changes.
+- Next active task is Task 16.2 — Midpoints / Antiscia Source / Formula / Scope Policy, but it was not started.
+
+## 2026-06-24 — Close Sprint 15 Vronsky Arabic Points Final Hardening / Regression
+
+- Completed the final hardening / regression pass for the Sprint 15 Vronsky Arabic Points pipeline.
+- Rechecked the Vronsky-only source corpus, source materials, 12 selected day-only rows, explicit engine, house assignment, display, UI, debug, privacy boundaries and service worker cache.
+- Confirmed default active Arabic Parts remain `pars-fortuna` and `lot-of-spirit`.
+- Confirmed `lot-of-eros`, `lot-of-necessity`, `lot-of-basis`, `lot-of-exaltation`, sensitive/deferred Vronsky rows, complex operands and night Vronsky formulas remain inactive/deferred.
+- No code fixes, formula changes, source-policy changes, normal UI/debug behavior changes, package-file changes or interpretations were added.
+- Sprint 15 is closed.
+- Sprint 16 strategy starts in the next entry.
+
 ## 2026-06-23 — Complete Task 15.7 Vronsky Arabic Points Debug Update
 
 - Added `src/vronskyArabicPartsDebug.js` as a safe Vronsky Arabic Points debug / QA guardrails helper.

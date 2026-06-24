@@ -12,7 +12,17 @@ This file describes the actual current state of the codebase, not future plans.
 
 Future architecture ideas belong in `MASTER_PLAN.md` or `TODO.md`, not here.
 
-Current Sprint 15 strategy docs:
+Current Sprint 16 strategy docs:
+
+- `SPRINT_16_PLAN.md`
+- `MIDPOINTS_ANTISCIA_STRATEGY.md`
+- `MIDPOINTS_ANTISCIA_SOURCE_POLICY.md`
+
+These documents define the Midpoints / Antiscia Foundation strategy and source-gated formula / scope policy. Task 16.1 is docs-only: it does not implement midpoint or antiscia calculation modules, does not add target resolvers, does not add UI/debug, and does not change provider calculations. Task 16.2 must decide the midpoint formula, wrap-around policy, midpoint axis policy, antiscion formula, contra-antiscion formula, tropical zodiac basis and active target scope before any engine implementation.
+
+There is currently no `src/midpoints.js`, `src/antiscia.js` or `src/midpointsAntiscia.js`.
+
+Completed Sprint 15 strategy docs:
 
 - `SPRINT_15_PLAN.md`
 - `ARABIC_PARTS_EXPANSION_STRATEGY.md`
