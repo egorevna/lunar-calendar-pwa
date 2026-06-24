@@ -23,6 +23,36 @@ Task 16.2 must decide:
 
 No decision means no engine implementation.
 
+## Task 16.2 Accepted Decision
+
+Task 16.2 records the accepted formula / scope policy in `MIDPOINTS_ANTISCIA_FORMULA_SCOPE_DECISION.md`.
+
+Source status:
+
+```txt
+source-verified-for-implementation
+```
+
+Accepted formula policies:
+
+- midpoint: shortest-arc midpoint between two normalized tropical longitudes;
+- exact opposition: axis-ambiguous, not silently reduced to one arbitrary midpoint;
+- antiscion: `normalize(180 - longitude)`;
+- contra-antiscion: `normalize(360 - longitude)`.
+
+Accepted first target scopes:
+
+- Midpoints: natal planets only, expected pair count `45`;
+- Antiscia / Contra-antiscia: natal planets + ASC / MC / DSC / IC, expected target count `14`.
+
+Deferred:
+
+- expanded target sets;
+- midpoint contacts / midpoint pictures;
+- antiscia contacts;
+- transits / progressions;
+- interpretations.
+
 ## Formula Statuses
 
 Allowed statuses:
@@ -37,7 +67,9 @@ rejected
 
 Only `verified` formulas may be implemented.
 
-## Candidate Formula Policies
+## Pre-Task 16.2 Candidate Formula Policies
+
+The candidate policies below are retained as source-gating history. The accepted Task 16.2 decision is recorded above and in `MIDPOINTS_ANTISCIA_FORMULA_SCOPE_DECISION.md`.
 
 ### Midpoint Candidate
 

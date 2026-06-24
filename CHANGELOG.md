@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-06-24 — Complete Task 16.2 Midpoints / Antiscia Formula Scope Policy
+
+- Added `MIDPOINTS_ANTISCIA_FORMULA_SCOPE_DECISION.md`.
+- Accepted source status `source-verified-for-implementation` for Sprint 16 Midpoints / Antiscia / Contra-antiscia.
+- Accepted midpoint shortest-arc formula with explicit exact-opposition / ambiguous-axis handling.
+- Accepted antiscion formula `normalize(180 - longitude)` and contra-antiscion formula `normalize(360 - longitude)`.
+- Accepted active scopes: Midpoints use natal planets only; Antiscia / Contra-antiscia use natal planets + ASC / MC / DSC / IC.
+- Deferred expanded targets, midpoint contacts, midpoint pictures, antiscia contacts, transits, progressions and interpretations.
+- No code, UI, debug, service worker or package changes.
+- Next active task is Task 16.3 — Midpoint Target Resolver / Fixtures, but it was not started.
+
 ## 2026-06-24 — Start Sprint 16 Midpoints / Antiscia Foundation
 
 - Added / accepted `SPRINT_16_PLAN.md`, `MIDPOINTS_ANTISCIA_STRATEGY.md` and `MIDPOINTS_ANTISCIA_SOURCE_POLICY.md` as Sprint 16 strategy docs.
@@ -7,7 +18,7 @@
 - Recorded that midpoint, antiscion and contra-antiscion formulas require explicit source / formula / scope verification in Task 16.2 before any engine implementation.
 - Recorded the recommended first scope: Midpoints use natal planets only; Antiscia / Contra-antiscia use natal planets + ASC / MC / DSC / IC.
 - No code, UI, debug, service worker or package changes.
-- Next active task is Task 16.2 — Midpoints / Antiscia Source / Formula / Scope Policy, but it was not started.
+- Task 16.2 is completed in the next entry.
 
 ## 2026-06-24 — Close Sprint 15 Vronsky Arabic Points Final Hardening / Regression
 

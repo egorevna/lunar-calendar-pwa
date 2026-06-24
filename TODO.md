@@ -4629,8 +4629,8 @@ Next active task:
 Task 15.7 is done.
 Task 15.8 is done below.
 Sprint 15 is closed.
-Task 16.1 is done below.
-Do not start Task 16.2 here.
+Task 16.1 and Task 16.2 are done below.
+Do not start Task 16.3 here.
 
 ## Task 15.7 — Vronsky Arabic Points Debug Update
 
@@ -4657,8 +4657,8 @@ Next active task:
 
 Task 15.8 is done.
 Sprint 15 is closed.
-Task 16.1 is done below.
-Do not start Task 16.2 here.
+Task 16.1 and Task 16.2 are done below.
+Do not start Task 16.3 here.
 
 ## Task 15.8 — Vronsky Arabic Points Final Hardening / Regression
 
@@ -4697,8 +4697,8 @@ Next active task:
 
 - Task 16.1 — Midpoints / Antiscia Strategy.
 
-Task 16.1 is done below.
-Do not start Task 16.2 here.
+Task 16.1 and Task 16.2 are done below.
+Do not start Task 16.3 here.
 
 # Sprint 16 — Midpoints / Antiscia Foundation
 
@@ -4748,9 +4748,34 @@ Result:
 
 Next active task:
 
-- Task 16.2 — Midpoints / Antiscia Source / Formula / Scope Policy.
+- Task 16.2 is completed below.
 
-Task 16.2 is not started.
+## Task 16.2 — Midpoints / Antiscia Source / Formula / Scope Policy
+
+Status: done
+
+Goal:
+
+Accept the source / formula / scope policy for Midpoints, Antiscia and Contra-antiscia before any engine implementation.
+
+Result:
+
+- Added `MIDPOINTS_ANTISCIA_FORMULA_SCOPE_DECISION.md`.
+- Set source status to `source-verified-for-implementation`.
+- Accepted midpoint formula: shortest-arc midpoint between two normalized tropical longitudes.
+- Accepted exact opposition policy: exact 180° pairs are `exactOpposition` / `midpointAxisAmbiguous` and must not be silently collapsed into an arbitrary single midpoint.
+- Accepted antiscion formula: `normalize(180 - longitude)`, mirror across the Cancer / Capricorn solstice axis.
+- Accepted contra-antiscion formula: `normalize(360 - longitude)`, mirror across the Aries / Libra equinox axis.
+- Accepted active midpoint scope: natal planets only, expected pair count `45`.
+- Accepted active antiscia / contra-antiscia scope: natal planets + ASC / MC / DSC / IC, expected target count `14`.
+- Deferred expanded target sets, midpoint contacts, midpoint pictures, antiscia contacts, transits, progressions and interpretations.
+- Confirmed Task 16.2 is docs-only: no `src/`, tests, UI, debug, service worker, provider or package changes were made.
+
+Next active task:
+
+- Task 16.3 — Midpoint Target Resolver / Fixtures.
+
+Task 16.3 is not started.
 Do not start Sprint 17 or later.
 
 # Security Backlog

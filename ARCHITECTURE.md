@@ -17,8 +17,9 @@ Current Sprint 16 strategy docs:
 - `SPRINT_16_PLAN.md`
 - `MIDPOINTS_ANTISCIA_STRATEGY.md`
 - `MIDPOINTS_ANTISCIA_SOURCE_POLICY.md`
+- `MIDPOINTS_ANTISCIA_FORMULA_SCOPE_DECISION.md`
 
-These documents define the Midpoints / Antiscia Foundation strategy and source-gated formula / scope policy. Task 16.1 is docs-only: it does not implement midpoint or antiscia calculation modules, does not add target resolvers, does not add UI/debug, and does not change provider calculations. Task 16.2 must decide the midpoint formula, wrap-around policy, midpoint axis policy, antiscion formula, contra-antiscion formula, tropical zodiac basis and active target scope before any engine implementation.
+These documents define the Midpoints / Antiscia Foundation strategy and source-gated formula / scope policy. Task 16.1 is docs-only: it does not implement midpoint or antiscia calculation modules, does not add target resolvers, does not add UI/debug, and does not change provider calculations. Task 16.2 accepts `source-verified-for-implementation` policy for shortest-arc midpoints, exact-opposition ambiguity handling, antiscion `normalize(180 - longitude)`, contra-antiscion `normalize(360 - longitude)`, tropical zodiac basis and first target scopes. Midpoints are scoped to natal planets only; Antiscia / Contra-antiscia are scoped to natal planets + ASC / MC / DSC / IC. Expanded targets, contact layers, transits and interpretations remain deferred.
 
 There is currently no `src/midpoints.js`, `src/antiscia.js` or `src/midpointsAntiscia.js`.
 

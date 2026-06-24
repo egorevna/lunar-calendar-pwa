@@ -806,21 +806,82 @@ Policy:
 - The old deferred keys `lot-of-eros`, `lot-of-necessity`, `lot-of-basis` and `lot-of-exaltation` remain inactive/deferred.
 - No interpretations, predictions, ritual scoring, karmic/fatalistic text or psychological labels are added.
 
-## Sprint 16 — Midpoints / Antiscia Policy
+## Sprint 16 — Midpoints / Antiscia Formula Policy
 
-Sprint 16 starts a source-gated Midpoints / Antiscia Foundation. Task 16.1 is strategy/status only and does not implement calculation modules.
+Sprint 16 adds source-gated Midpoints / Antiscia / Contra-antiscia positional layers. Task 16.2 accepts the source / formula / scope policy in `MIDPOINTS_ANTISCIA_FORMULA_SCOPE_DECISION.md`.
 
-Policy:
+Source status:
 
-- midpoint source / formula / scope policy is required before any midpoint engine work;
-- antiscia / contra-antiscia source / formula / scope policy is required before any antiscia engine work;
-- the shortest-arc midpoint formula is a candidate only and is not active until Task 16.2 verifies it;
-- antiscion and contra-antiscion formulas are candidates only and are not active until Task 16.2 verifies them;
-- recommended first midpoint scope is natal planets only, but Task 16.2 must explicitly decide the final active scope;
-- recommended first antiscia / contra-antiscia scope is natal planets + ASC / MC / DSC / IC, but Task 16.2 must explicitly decide the final active scope;
-- no formula may be implemented from memory or hidden policy;
-- broad midpoint trees, midpoint-to-planet contacts, transits, ritual scoring and interpretations remain out of scope unless a later active task explicitly approves them;
-- Midpoints / Antiscia UI/debug must not expose raw birth data, UTC datetime, raw timezone values, raw coordinates, full profile JSON, provider payloads or raw calculation arrays.
+- `source-verified-for-implementation`;
+- local Vronsky source support confirms Midpoints, Antiscia and Contra-antiscia as sensitive calculated points;
+- project policy defines the exact numeric formulas and first implementation scope;
+- no interpretation source is activated.
+
+Coordinate basis:
+
+- tropical ecliptic longitude;
+- numeric longitude only;
+- normalize all longitudes to `0 <= longitude < 360`.
+
+Midpoint formula:
+
+```txt
+A = normalize(longitudeA)
+B = normalize(longitudeB)
+delta = ((B - A + 540) % 360) - 180
+midpoint = normalize(A + delta / 2)
+```
+
+Exact opposition policy:
+
+- if the angular distance is exactly `180°` within epsilon, the midpoint axis is ambiguous;
+- future engine output must mark `exactOpposition: true` and `midpointAxisAmbiguous: true`;
+- future display/UI should treat the case as special `notReady` / `axis-ambiguous` unless a later active task accepts a deterministic display policy.
+
+Midpoint active scope:
+
+- natal planets only: Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto;
+- expected pair count: `45`.
+
+Antiscion formula:
+
+```txt
+antiscionLongitude = normalize(180 - longitude)
+```
+
+This mirrors a point across the Cancer / Capricorn solstice axis.
+
+Contra-antiscion formula:
+
+```txt
+contraAntiscionLongitude = normalize(360 - longitude)
+```
+
+This mirrors a point across the Aries / Libra equinox axis.
+
+Antiscia / Contra-antiscia active scope:
+
+- natal planets;
+- ASC;
+- MC;
+- DSC;
+- IC;
+- expected target count: `14`.
+
+Deferred:
+
+- midpoint targets beyond natal planets;
+- antiscia targets beyond natal planets and angles;
+- opposite midpoint axis point;
+- midpoint-to-planet / midpoint-to-angle / midpoint-to-fixed-star contacts;
+- antiscia / contra-antiscia contacts;
+- midpoint pictures and Uranian combinations;
+- transits / progressions to midpoints;
+- ritual scoring and interpretations.
+
+Privacy:
+
+- Midpoints / Antiscia UI/debug must not expose raw birth data, UTC datetime, raw timezone values, raw coordinates, full profile JSON, provider payloads, raw source arrays or raw calculation arrays.
 
 ## Sprint 13 — Special Points Policy
 
