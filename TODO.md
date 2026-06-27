@@ -4630,7 +4630,7 @@ Task 15.7 is done.
 Task 15.8 is done below.
 Sprint 15 is closed.
 Task 16.1 and Task 16.2 are done below.
-Do not start Task 16.3 here.
+Do not start Task 16.4 here.
 
 ## Task 15.7 — Vronsky Arabic Points Debug Update
 
@@ -4658,7 +4658,7 @@ Next active task:
 Task 15.8 is done.
 Sprint 15 is closed.
 Task 16.1 and Task 16.2 are done below.
-Do not start Task 16.3 here.
+Do not start Task 16.4 here.
 
 ## Task 15.8 — Vronsky Arabic Points Final Hardening / Regression
 
@@ -4698,7 +4698,7 @@ Next active task:
 - Task 16.1 — Midpoints / Antiscia Strategy.
 
 Task 16.1 and Task 16.2 are done below.
-Do not start Task 16.3 here.
+Do not start Task 16.4 here.
 
 # Sprint 16 — Midpoints / Antiscia Foundation
 
@@ -4773,9 +4773,35 @@ Result:
 
 Next active task:
 
-- Task 16.3 — Midpoint Target Resolver / Fixtures.
+- Task 16.3 is completed below.
 
-Task 16.3 is not started.
+## Task 16.3 — Midpoint Target Resolver / Fixtures
+
+Status: done
+
+Goal:
+
+Create a pure target resolver for future midpoint calculations.
+
+Result:
+
+- Added `src/midpointTargets.js`.
+- Added static/manual fixtures in `test/fixtures/midpointTargetsFixtures.js`.
+- Added tests in `test/midpointTargetsFixtures.test.js` and `test/midpointTargets.test.js`.
+- Active midpoint targets are natal planets only: Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto.
+- Target count is `10`.
+- Pair definitions count is `45`.
+- Pair definitions are deterministic, unordered unique pairs from canonical planet order.
+- Pair definitions are metadata only: no midpoint longitude, no midpoint formula execution and no calculated midpoint fields.
+- Deferred target sets remain metadata-only: angles, house cusps, Lunar Nodes, Lilith, Selena, Pars Fortuna, Lot of Spirit, Vronsky Arabic Points, Fixed Stars and custom points.
+- No antiscia / contra-antiscia calculation, display, UI, debug, app wiring, service worker or package changes were added.
+- No interpretations, contacts, midpoint pictures, transits or ritual scoring were added.
+
+Next active task:
+
+- Task 16.4 — Midpoint Engine / Fixtures.
+
+Task 16.4 is not started.
 Do not start Sprint 17 or later.
 
 # Security Backlog

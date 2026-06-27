@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-06-24 — Complete Task 16.3 Midpoint Target Resolver / Fixtures
+
+- Added `src/midpointTargets.js` as a pure target resolver for future midpoint calculations.
+- Added static/manual midpoint target fixtures and tests.
+- Active midpoint targets are natal planets only: Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto.
+- Target count is `10`; deterministic unordered pair definition count is `45`.
+- Deferred target sets remain metadata-only: angles, house cusps, Lunar Nodes, Lilith, Selena, Pars Fortuna, Lot of Spirit, Vronsky Arabic Points, Fixed Stars and custom points.
+- No midpoint longitude calculation, antiscia / contra-antiscia calculation, UI, debug, service worker or package changes.
+- No interpretations, midpoint contacts, midpoint pictures, transits or ritual scoring were added.
+- Next active task is Task 16.4 — Midpoint Engine / Fixtures, but it was not started.
+
 ## 2026-06-24 — Complete Task 16.2 Midpoints / Antiscia Formula Scope Policy
 
 - Added `MIDPOINTS_ANTISCIA_FORMULA_SCOPE_DECISION.md`.
@@ -9,7 +20,7 @@
 - Accepted active scopes: Midpoints use natal planets only; Antiscia / Contra-antiscia use natal planets + ASC / MC / DSC / IC.
 - Deferred expanded targets, midpoint contacts, midpoint pictures, antiscia contacts, transits, progressions and interpretations.
 - No code, UI, debug, service worker or package changes.
-- Next active task is Task 16.3 — Midpoint Target Resolver / Fixtures, but it was not started.
+- Task 16.3 is completed in the next entry.
 
 ## 2026-06-24 — Start Sprint 16 Midpoints / Antiscia Foundation
 

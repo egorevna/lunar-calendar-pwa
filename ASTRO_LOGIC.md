@@ -843,6 +843,15 @@ Midpoint active scope:
 - natal planets only: Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto;
 - expected pair count: `45`.
 
+Midpoint target resolver policy:
+
+- `src/midpointTargets.js` resolves only active natal planet targets for future midpoint calculations;
+- target count is `10`;
+- pair definitions are deterministic unordered unique pairs from canonical planet order;
+- pair definition count is `45`;
+- pair definitions are metadata-only and must not include midpoint longitude or run the midpoint formula;
+- deferred target sets remain metadata-only until a later source/scope task activates them.
+
 Antiscion formula:
 
 ```txt
