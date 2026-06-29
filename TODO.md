@@ -4629,8 +4629,8 @@ Next active task:
 Task 15.7 is done.
 Task 15.8 is done below.
 Sprint 15 is closed.
-Task 16.1 and Task 16.2 are done below.
-Do not start Task 16.4 here.
+Task 16.1, Task 16.2, Task 16.3 and Task 16.4 are done below.
+Do not start Task 16.5 here.
 
 ## Task 15.7 — Vronsky Arabic Points Debug Update
 
@@ -4657,8 +4657,8 @@ Next active task:
 
 Task 15.8 is done.
 Sprint 15 is closed.
-Task 16.1 and Task 16.2 are done below.
-Do not start Task 16.4 here.
+Task 16.1, Task 16.2, Task 16.3 and Task 16.4 are done below.
+Do not start Task 16.5 here.
 
 ## Task 15.8 — Vronsky Arabic Points Final Hardening / Regression
 
@@ -4697,8 +4697,8 @@ Next active task:
 
 - Task 16.1 — Midpoints / Antiscia Strategy.
 
-Task 16.1 and Task 16.2 are done below.
-Do not start Task 16.4 here.
+Task 16.1, Task 16.2, Task 16.3 and Task 16.4 are done below.
+Do not start Task 16.5 here.
 
 # Sprint 16 — Midpoints / Antiscia Foundation
 
@@ -4799,9 +4799,35 @@ Result:
 
 Next active task:
 
-- Task 16.4 — Midpoint Engine / Fixtures.
+- Task 16.4 is completed below.
 
-Task 16.4 is not started.
+## Task 16.4 — Midpoint Engine / Fixtures
+
+Status: done
+
+Goal:
+
+Create a pure midpoint engine for the active natal-planet pair scope.
+
+Result:
+
+- Added `src/midpoints.js`.
+- Added static/manual fixtures in `test/fixtures/midpointsFixtures.js`.
+- Added tests in `test/midpointsFixtures.test.js` and `test/midpoints.test.js`.
+- Implemented shortest-arc midpoint calculation for normalized tropical longitudes.
+- Active midpoint scope remains natal planets only.
+- Target count is `10`; pair count is `45`.
+- Wrap-around through `0° Aries` is supported.
+- Exact 180° opposition returns `axisAmbiguous` / `midpointAxisAmbiguous`, `longitude: null` and candidate axis points; no arbitrary primary midpoint longitude is produced.
+- Batch midpoint calculation can return `ready`, `partial` or `notReady` safely.
+- No midpoint contacts, midpoint pictures, transits, progressions, antiscia / contra-antiscia calculation, display, UI, debug, service worker or package changes were added.
+- No interpretations, predictive text, psychological claims or ritual scoring were added.
+
+Next active task:
+
+- Task 16.5 — Midpoint Validation / Cross-Checks.
+
+Task 16.5 is not started.
 Do not start Sprint 17 or later.
 
 # Security Backlog

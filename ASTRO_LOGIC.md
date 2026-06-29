@@ -852,6 +852,16 @@ Midpoint target resolver policy:
 - pair definitions are metadata-only and must not include midpoint longitude or run the midpoint formula;
 - deferred target sets remain metadata-only until a later source/scope task activates them.
 
+Midpoint engine policy:
+
+- `src/midpoints.js` calculates only the active natal-planet pair scope;
+- pair count remains `45`;
+- midpoint longitude uses the accepted shortest-arc formula above;
+- wrap-around through `0° Aries` is supported;
+- exact `180°` opposition returns `axisAmbiguous` / `midpointAxisAmbiguous`, `longitude: null` and candidate axis points, not an arbitrary primary midpoint longitude;
+- batch calculation may return `partial` when one or more pairs are axis-ambiguous;
+- midpoint contacts, midpoint pictures, transits, progressions, display/UI/debug and interpretations remain deferred.
+
 Antiscion formula:
 
 ```txt

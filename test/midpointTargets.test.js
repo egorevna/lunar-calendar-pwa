@@ -259,7 +259,7 @@ test('module strict exclusions are preserved', () => {
   assert.equal(source.includes('delta = ((B - A + 540)'), false);
   assert.equal(source.includes('candidateA'), false);
   assert.equal(source.includes('antiscionLongitude'), false);
-  assert.equal(existsSync(new URL('../src/midpoints.js', import.meta.url)), false);
+  assert.equal(existsSync(new URL('../src/midpoints.js', import.meta.url)), true);
   assert.equal(existsSync(new URL('../src/antiscia.js', import.meta.url)), false);
   assert.equal(existsSync(new URL('../src/midpointsAntiscia.js', import.meta.url)), false);
 });

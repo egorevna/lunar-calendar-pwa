@@ -23,7 +23,9 @@ These documents define the Midpoints / Antiscia Foundation strategy and source-g
 
 Task 16.3 implements `src/midpointTargets.js` as a pure midpoint target resolver. It normalizes the active natal-planet target set, preserves canonical planet order, creates deterministic unordered pair definitions for the future midpoint engine, and exposes deferred target-set metadata only. It does not calculate midpoint longitudes, does not implement antiscia / contra-antiscia, does not render display/UI/debug and does not call provider modules directly.
 
-There is currently no `src/midpoints.js`, `src/antiscia.js` or `src/midpointsAntiscia.js`.
+Task 16.4 implements `src/midpoints.js` as a pure midpoint calculation engine. It depends on `src/midpointTargets.js`, calculates shortest-arc midpoint longitudes for the active natal-planet pair scope, supports wrap-around through `0° Aries`, and marks exact 180° oppositions as `axisAmbiguous` / `midpointAxisAmbiguous` with no arbitrary primary midpoint longitude. It does not calculate midpoint contacts, midpoint pictures, antiscia / contra-antiscia, display/UI/debug or provider data.
+
+There is currently no `src/antiscia.js` or `src/midpointsAntiscia.js`.
 
 Completed Sprint 15 strategy docs:
 

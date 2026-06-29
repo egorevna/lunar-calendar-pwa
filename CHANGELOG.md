@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-06-27 — Complete Task 16.4 Midpoint Engine / Fixtures
+
+- Added `src/midpoints.js` as a pure midpoint calculation engine for the active natal-planet pair scope.
+- Added static/manual midpoint engine fixtures and tests.
+- Implemented shortest-arc midpoint calculation for normalized tropical longitudes, including wrap-around through `0° Aries`.
+- Preserved the active scope: 10 natal planet targets and 45 deterministic unordered pairs.
+- Exact 180° opposition now returns `axisAmbiguous` / `midpointAxisAmbiguous`, `longitude: null` and candidate axis points instead of an arbitrary primary midpoint longitude.
+- Added ready / partial / notReady behavior, safe lookup, validation, summary, capability and limitation helpers.
+- No antiscia / contra-antiscia engine, midpoint contacts, midpoint pictures, transits, progressions, display, UI, debug, provider, service worker or package changes were added.
+- No interpretations, predictive text, psychological claims or ritual scoring were added.
+- Next active task is Task 16.5 — Midpoint Validation / Cross-Checks, but it was not started.
+
 ## 2026-06-24 — Complete Task 16.3 Midpoint Target Resolver / Fixtures
 
 - Added `src/midpointTargets.js` as a pure target resolver for future midpoint calculations.
@@ -9,7 +21,7 @@
 - Deferred target sets remain metadata-only: angles, house cusps, Lunar Nodes, Lilith, Selena, Pars Fortuna, Lot of Spirit, Vronsky Arabic Points, Fixed Stars and custom points.
 - No midpoint longitude calculation, antiscia / contra-antiscia calculation, UI, debug, service worker or package changes.
 - No interpretations, midpoint contacts, midpoint pictures, transits or ritual scoring were added.
-- Next active task is Task 16.4 — Midpoint Engine / Fixtures, but it was not started.
+- Task 16.4 is completed in the next entry.
 
 ## 2026-06-24 — Complete Task 16.2 Midpoints / Antiscia Formula Scope Policy
 
