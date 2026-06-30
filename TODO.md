@@ -4825,9 +4825,38 @@ Result:
 
 Next active task:
 
-- Task 16.5 — Midpoint Validation / Cross-Checks.
+- Task 16.5 is completed below.
 
-Task 16.5 is not started.
+## Task 16.5 — Midpoint Validation / Cross-Checks
+
+Status: done
+
+Goal:
+
+Validate the midpoint target resolver and midpoint engine without adding new production layers.
+
+Result:
+
+- Added static/manual validation fixtures in `test/fixtures/midpointsValidationFixtures.js`.
+- Added cross-check tests in `test/midpointsValidation.test.js`.
+- Validated source policy `midpoint-shortest-arc`.
+- Validated active midpoint target scope: natal planets only, target count `10`.
+- Validated deferred midpoint targets remain deferred: angles, house cusps, Lunar Nodes, Lilith, Selena, Pars Fortuna, Lot of Spirit, Vronsky Arabic Points, Fixed Stars and custom points.
+- Validated deterministic unordered pair definitions: pair count `45`, first `sun-moon`, second `sun-mercury`, last `neptune-pluto`, no self-pairs and no reversed duplicates.
+- Validated pair definitions contain no midpoint longitude, calculated midpoint field or full target objects.
+- Validated shortest-arc formula, wrap-around through `0° Aries`, invalid input fallback and no `NaN`.
+- Validated exact opposition ambiguity: `axisAmbiguous`, `midpointAxisAmbiguous`, `longitude: null`, normalized candidate axis points and no arbitrary primary longitude.
+- Validated batch counts for no-opposition and exact-opposition synthetic sets.
+- Validated privacy/runtime guardrails and strict exclusions.
+- No production bug fixes were needed.
+- No antiscia / contra-antiscia calculation, midpoint contacts, midpoint pictures, transits, progressions, display, UI, debug, service worker or package changes were added.
+- No interpretations, predictive text, psychological claims or ritual scoring were added.
+
+Next active task:
+
+- Task 16.6 — Antiscia Target Resolver / Fixtures.
+
+Task 16.6 is not started.
 Do not start Sprint 17 or later.
 
 # Security Backlog

@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-06-29 — Complete Task 16.5 Midpoint Validation / Cross-Checks
+
+- Added static/manual midpoint validation fixtures and cross-check tests.
+- Validated midpoint source policy, active natal-planet-only target scope, target count `10`, deterministic pair count `45`, pair ordering and deferred target sets.
+- Validated shortest-arc midpoint formula, wrap-around through `0° Aries`, invalid input fallback and exact-opposition ambiguity behavior.
+- Validated no-opposition and exact-opposition batch counts, including `partial` status for ambiguous exact-opposition pairs.
+- Rechecked privacy and strict exclusions: no raw profile data, provider payloads, midpoint contacts, midpoint pictures, transits, progressions, antiscia / contra-antiscia, UI/debug or interpretations were added.
+- No production bug fixes were needed.
+- Next active task is Task 16.6 — Antiscia Target Resolver / Fixtures, but it was not started.
+
 ## 2026-06-27 — Complete Task 16.4 Midpoint Engine / Fixtures
 
 - Added `src/midpoints.js` as a pure midpoint calculation engine for the active natal-planet pair scope.
@@ -10,7 +20,7 @@
 - Added ready / partial / notReady behavior, safe lookup, validation, summary, capability and limitation helpers.
 - No antiscia / contra-antiscia engine, midpoint contacts, midpoint pictures, transits, progressions, display, UI, debug, provider, service worker or package changes were added.
 - No interpretations, predictive text, psychological claims or ritual scoring were added.
-- Next active task is Task 16.5 — Midpoint Validation / Cross-Checks, but it was not started.
+- Task 16.5 is completed in the next entry.
 
 ## 2026-06-24 — Complete Task 16.3 Midpoint Target Resolver / Fixtures
 

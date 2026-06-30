@@ -25,6 +25,8 @@ Task 16.3 implements `src/midpointTargets.js` as a pure midpoint target resolver
 
 Task 16.4 implements `src/midpoints.js` as a pure midpoint calculation engine. It depends on `src/midpointTargets.js`, calculates shortest-arc midpoint longitudes for the active natal-planet pair scope, supports wrap-around through `0° Aries`, and marks exact 180° oppositions as `axisAmbiguous` / `midpointAxisAmbiguous` with no arbitrary primary midpoint longitude. It does not calculate midpoint contacts, midpoint pictures, antiscia / contra-antiscia, display/UI/debug or provider data.
 
+Task 16.5 adds validation fixtures/tests for the midpoint target resolver and midpoint engine boundaries. These cross-check source policy, active/deferred target scope, pair definitions, shortest-arc formula cases, wrap-around, exact opposition ambiguity, batch counts, privacy and strict runtime/file exclusions. It does not add a production validation module.
+
 There is currently no `src/antiscia.js` or `src/midpointsAntiscia.js`.
 
 Completed Sprint 15 strategy docs:
