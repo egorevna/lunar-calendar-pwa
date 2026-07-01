@@ -27,6 +27,8 @@ Task 16.4 implements `src/midpoints.js` as a pure midpoint calculation engine. I
 
 Task 16.5 adds validation fixtures/tests for the midpoint target resolver and midpoint engine boundaries. These cross-check source policy, active/deferred target scope, pair definitions, shortest-arc formula cases, wrap-around, exact opposition ambiguity, batch counts, privacy and strict runtime/file exclusions. It does not add a production validation module.
 
+Task 16.6 implements `src/antisciaTargets.js` as a pure Antiscia / Contra-antiscia target resolver. It normalizes the active target scope of natal planets + ASC / MC / DSC / IC, preserves canonical target order, exposes deferred target-set metadata only, and can derive DSC / IC from existing ASC / MC values for safe injected inputs. It depends on existing safe natal planet and ASC / MC profile paths and does not calculate antiscion or contra-antiscion longitudes, contacts, display/UI/debug or provider data directly.
+
 There is currently no `src/antiscia.js` or `src/midpointsAntiscia.js`.
 
 Completed Sprint 15 strategy docs:

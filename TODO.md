@@ -4854,9 +4854,35 @@ Result:
 
 Next active task:
 
-- Task 16.6 — Antiscia Target Resolver / Fixtures.
+- Task 16.6 is completed below.
 
-Task 16.6 is not started.
+## Task 16.6 — Antiscia Target Resolver / Fixtures
+
+Status: done
+
+Goal:
+
+Create a pure target resolver for future Antiscia / Contra-antiscia calculations.
+
+Result:
+
+- Added `src/antisciaTargets.js`.
+- Added static/manual fixtures in `test/fixtures/antisciaTargetsFixtures.js`.
+- Added tests in `test/antisciaTargetsFixtures.test.js` and `test/antisciaTargets.test.js`.
+- Active antiscia / contra-antiscia targets are natal planets plus ASC / MC / DSC / IC.
+- Target count is `14`.
+- Canonical target order is Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto, ASC, MC, DSC, IC.
+- DSC / IC use existing safe ASC / MC output when available and can be derived from ASC / MC for injected/synthetic ASC+MC-only results.
+- Deferred target sets remain metadata-only: house cusps, Lunar Nodes, Lilith, Selena, Pars Fortuna, Lot of Spirit, Vronsky Arabic Points, Fixed Stars and custom points.
+- Target rows are normalized and safe for future engine input; no antiscion longitude, contra-antiscion longitude, contacts or calculated result fields are produced.
+- No antiscia / contra-antiscia calculation, midpoint changes, display, UI, debug, service worker or package changes were added.
+- No interpretations, predictive text, psychological claims or ritual scoring were added.
+
+Next active task:
+
+- Task 16.7 — Antiscia / Contra-antiscia Engine / Fixtures.
+
+Task 16.7 is not started.
 Do not start Sprint 17 or later.
 
 # Security Backlog

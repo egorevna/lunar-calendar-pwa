@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-06-30 — Complete Task 16.6 Antiscia Target Resolver / Fixtures
+
+- Added `src/antisciaTargets.js` as a pure target resolver for future Antiscia / Contra-antiscia calculations.
+- Added static/manual antiscia target fixtures and tests.
+- Active target scope is natal planets + ASC / MC / DSC / IC, target count `14`.
+- Preserved canonical target order: 10 natal planets followed by ASC, MC, DSC and IC.
+- Deferred target sets remain metadata-only: house cusps, Lunar Nodes, Lilith, Selena, Pars Fortuna, Lot of Spirit, Vronsky Arabic Points, Fixed Stars and custom points.
+- DSC / IC use existing safe ASC / MC output when available and can be derived from ASC / MC for injected/synthetic ASC+MC-only results.
+- No antiscia / contra-antiscia longitude calculation, contacts, display, UI, debug, service worker or package changes were added.
+- No interpretations, predictive text, psychological claims or ritual scoring were added.
+- Next active task is Task 16.7 — Antiscia / Contra-antiscia Engine / Fixtures, but it was not started.
+
 ## 2026-06-29 — Complete Task 16.5 Midpoint Validation / Cross-Checks
 
 - Added static/manual midpoint validation fixtures and cross-check tests.
@@ -8,7 +20,7 @@
 - Validated no-opposition and exact-opposition batch counts, including `partial` status for ambiguous exact-opposition pairs.
 - Rechecked privacy and strict exclusions: no raw profile data, provider payloads, midpoint contacts, midpoint pictures, transits, progressions, antiscia / contra-antiscia, UI/debug or interpretations were added.
 - No production bug fixes were needed.
-- Next active task is Task 16.6 — Antiscia Target Resolver / Fixtures, but it was not started.
+- Task 16.6 is completed in the next entry.
 
 ## 2026-06-27 — Complete Task 16.4 Midpoint Engine / Fixtures
 

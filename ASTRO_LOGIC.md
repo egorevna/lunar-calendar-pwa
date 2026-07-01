@@ -887,6 +887,16 @@ Antiscia / Contra-antiscia active scope:
 - IC;
 - expected target count: `14`.
 
+Antiscia target resolver policy:
+
+- `src/antisciaTargets.js` resolves only the active target scope for future Antiscia / Contra-antiscia calculations;
+- target count is `14`;
+- canonical order is natal planets first, then ASC / MC / DSC / IC;
+- DSC / IC use existing safe ASC / MC output when available and may be derived from ASC / MC for safe injected inputs;
+- target rows are metadata/input rows only and must not include antiscion longitude or contra-antiscion longitude;
+- the Antiscia / Contra-antiscia formula implementation remains deferred to Task 16.7;
+- deferred target sets remain metadata-only until a later source/scope task activates them.
+
 Deferred:
 
 - midpoint targets beyond natal planets;
