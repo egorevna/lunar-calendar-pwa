@@ -344,6 +344,5 @@ test('module strict exclusions are preserved', () => {
   assert.equal(source.includes('antiscionLongitude = normalize'), false);
   assert.equal(source.includes('contraAntiscionLongitude = normalize'), false);
   assert.equal(source.includes('midpointContacts: true'), false);
-  assert.equal(existsSync(new URL('../src/antiscia.js', import.meta.url)), false);
   assert.equal(existsSync(new URL('../src/midpointsAntiscia.js', import.meta.url)), false);
 });

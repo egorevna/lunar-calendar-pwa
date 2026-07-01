@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-07-01 — Complete Task 16.7 Antiscia / Contra-antiscia Engine / Fixtures
+
+- Added `src/antiscia.js` as a pure Antiscia / Contra-antiscia calculation engine.
+- Added static/manual antiscia engine fixtures and tests.
+- Implemented antiscion formula `normalize(180 - longitude)`.
+- Implemented contra-antiscion formula `normalize(360 - longitude)`.
+- Active target scope remains natal planets + ASC / MC / DSC / IC, target count `14`.
+- Added ready / partial / notReady behavior, safe lookup, validation, summary, capability and limitation helpers.
+- No midpoint engine changes, contacts/aspects, display, UI, debug, service worker or package changes were added.
+- No interpretations, predictive text, psychological claims or ritual scoring were added.
+- Next active task is Task 16.8 — Antiscia Validation / Cross-Checks, but it was not started.
+
 ## 2026-06-30 — Complete Task 16.6 Antiscia Target Resolver / Fixtures
 
 - Added `src/antisciaTargets.js` as a pure target resolver for future Antiscia / Contra-antiscia calculations.

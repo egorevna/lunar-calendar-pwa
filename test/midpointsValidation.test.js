@@ -256,6 +256,5 @@ test('midpoint modules keep runtime and file-boundary strict exclusions', () => 
     assert.equal(combinedSource.includes(forbidden), false, `module source should not include ${forbidden}`);
   }
 
-  assert.equal(existsSync(new URL('../src/antiscia.js', import.meta.url)), false);
   assert.equal(existsSync(new URL('../src/midpointsAntiscia.js', import.meta.url)), false);
 });

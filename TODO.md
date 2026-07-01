@@ -4880,9 +4880,35 @@ Result:
 
 Next active task:
 
-- Task 16.7 — Antiscia / Contra-antiscia Engine / Fixtures.
+- Task 16.7 is completed below.
 
-Task 16.7 is not started.
+## Task 16.7 — Antiscia / Contra-antiscia Engine / Fixtures
+
+Status: done
+
+Goal:
+
+Create a pure Antiscia / Contra-antiscia calculation engine for the active target scope.
+
+Result:
+
+- Added `src/antiscia.js`.
+- Added static/manual fixtures in `test/fixtures/antisciaFixtures.js`.
+- Added tests in `test/antisciaFixtures.test.js` and `test/antiscia.test.js`.
+- Implemented antiscion formula: `normalize(180 - longitude)`.
+- Implemented contra-antiscion formula: `normalize(360 - longitude)`.
+- Active target scope remains natal planets plus ASC / MC / DSC / IC.
+- Target count is `14`.
+- Axis points are handled by normalization: 0° Cancer and 0° Capricorn remain fixed for antiscia; 0° Aries and 0° Libra remain fixed for contra-antiscia.
+- Batch calculation supports `ready`, `partial` and `notReady` states safely.
+- No midpoint engine changes, contacts/aspects, display, UI, debug, service worker or package changes were added.
+- No interpretations, predictive text, psychological claims or ritual scoring were added.
+
+Next active task:
+
+- Task 16.8 — Antiscia Validation / Cross-Checks.
+
+Task 16.8 is not started.
 Do not start Sprint 17 or later.
 
 # Security Backlog

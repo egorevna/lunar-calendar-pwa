@@ -29,7 +29,9 @@ Task 16.5 adds validation fixtures/tests for the midpoint target resolver and mi
 
 Task 16.6 implements `src/antisciaTargets.js` as a pure Antiscia / Contra-antiscia target resolver. It normalizes the active target scope of natal planets + ASC / MC / DSC / IC, preserves canonical target order, exposes deferred target-set metadata only, and can derive DSC / IC from existing ASC / MC values for safe injected inputs. It depends on existing safe natal planet and ASC / MC profile paths and does not calculate antiscion or contra-antiscion longitudes, contacts, display/UI/debug or provider data directly.
 
-There is currently no `src/antiscia.js` or `src/midpointsAntiscia.js`.
+Task 16.7 implements `src/antiscia.js` as a pure Antiscia / Contra-antiscia calculation engine. It depends on `src/antisciaTargets.js`, calculates antiscion longitude with `normalize(180 - longitude)` and contra-antiscion longitude with `normalize(360 - longitude)` for the active target scope of natal planets + ASC / MC / DSC / IC, preserves target order and supports ready / partial / notReady states. It does not calculate contacts/aspects, midpoint layers, display/UI/debug or provider data directly.
+
+There is currently no `src/midpointsAntiscia.js`.
 
 Completed Sprint 15 strategy docs:
 

@@ -894,8 +894,17 @@ Antiscia target resolver policy:
 - canonical order is natal planets first, then ASC / MC / DSC / IC;
 - DSC / IC use existing safe ASC / MC output when available and may be derived from ASC / MC for safe injected inputs;
 - target rows are metadata/input rows only and must not include antiscion longitude or contra-antiscion longitude;
-- the Antiscia / Contra-antiscia formula implementation remains deferred to Task 16.7;
 - deferred target sets remain metadata-only until a later source/scope task activates them.
+
+Antiscia / Contra-antiscia engine policy:
+
+- `src/antiscia.js` calculates only the active target scope from `src/antisciaTargets.js`;
+- antiscion longitude uses `normalize(180 - longitude)`;
+- contra-antiscion longitude uses `normalize(360 - longitude)`;
+- 0° Cancer and 0° Capricorn remain fixed on the antiscia solstice axis;
+- 0° Aries and 0° Libra remain fixed on the contra-antiscia equinox axis;
+- batch calculation may return `ready`, `partial` or `notReady`;
+- contacts/aspects, display/UI/debug and interpretations remain deferred.
 
 Deferred:
 

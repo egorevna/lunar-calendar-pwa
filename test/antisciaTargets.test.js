@@ -297,6 +297,5 @@ test('antiscia target module strict exclusions are preserved', () => {
     assert.equal(source.includes(forbidden), false, `module source should not include ${forbidden}`);
   }
 
-  assert.equal(existsSync(new URL('../src/antiscia.js', import.meta.url)), false);
   assert.equal(existsSync(new URL('../src/midpointsAntiscia.js', import.meta.url)), false);
 });
