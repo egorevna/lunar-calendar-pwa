@@ -280,16 +280,16 @@ test('getBirthDateTimeReadiness keeps houses and ASC/MC unavailable without know
   assert.equal(missingCoordinates.readyForAscMc, false);
 });
 
-test('getBirthDateTimeReadiness keeps houses and ASC/MC uncalculated even when UTC is ready', () => {
+test('getBirthDateTimeReadiness marks houses and ASC/MC ready when UTC and coordinates are ready', () => {
   const readiness = getBirthDateTimeReadiness(completeProfile);
 
   assert.equal(readiness.readyForDateBasedCalculations, true);
   assert.equal(readiness.readyForTimeBasedCalculations, true);
-  assert.equal(readiness.readyForHouseCalculations, false);
-  assert.equal(readiness.readyForAscMc, false);
+  assert.equal(readiness.readyForHouseCalculations, true);
+  assert.equal(readiness.readyForAscMc, true);
   assert.equal(
-    readiness.limitations.includes('Дома и ASC/MC требуют отдельного надежного расчетного движка.'),
-    true,
+    readiness.limitations.some((item) => item.includes('расчетного движка')),
+    false,
   );
 });
 

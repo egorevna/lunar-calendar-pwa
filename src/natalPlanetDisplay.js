@@ -1,8 +1,7 @@
 const RETROGRADE_MARKER = 'R';
 
 const NATAL_PLANET_DISPLAY_LIMITATIONS = Object.freeze([
-  'Дома, ASC/MC и транзиты пока не рассчитываются.',
-  'Натальные аспекты и орбы будут добавлены отдельно.',
+  'Это натальные положения планет, не транзиты.',
 ]);
 
 export function formatNatalPlanetPosition(planet) {

@@ -223,7 +223,7 @@ test('summarizeFixedStarsDisplay handles hits noHits and fallback', () => {
 test('limitations mention conjunction only global orb and no interpretations', () => {
   const limitations = getFixedStarsDisplayLimitations();
 
-  assert.equal(limitations.includes('В Sprint 14 показываются только соединения с неподвижными звездами.'), true);
+  assert.equal(limitations.includes('Показываются только соединения с неподвижными звездами.'), true);
   assert.equal(limitations.includes('Используется глобальный орб 1°00′.'), true);
   assert.equal(limitations.includes('Этот блок не содержит интерпретаций.'), true);
 });

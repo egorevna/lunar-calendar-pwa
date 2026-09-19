@@ -86,7 +86,7 @@ export const VRONSKY_ARABIC_PARTS_DISPLAY_FIXTURES = Object.freeze([
     }),
     expected: Object.freeze({
       manuallyDeclared: true,
-      message: 'Точки Вронского пока недоступны для ночной карты. Ночные формулы по Вронскому пока не verified.',
+      message: 'Точки Вронского пока недоступны для ночной карты: ночные формулы ещё не проверены по источнику.',
     }),
   }),
   Object.freeze({

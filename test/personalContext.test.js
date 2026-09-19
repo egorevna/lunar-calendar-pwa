@@ -60,16 +60,11 @@ test('complete selected profile returns personal title and safe context summary'
   assert.equal(context.hasActiveProfile, true);
   assert.equal(context.profileName, 'Егор');
   assert.equal(context.title, 'Лично для Егора');
-  assert.equal(context.status, 'calculationLimited');
-  assert.equal(
-    context.summary,
-    'Профиль выбран. Сейчас доступны общие рекомендации момента; личные дома и транзиты будут добавлены после подключения натального расчетного движка.',
-  );
+  assert.equal(context.status, 'readyForContext');
+  assert.equal(context.summary, 'Профиль выбран, натальная карта рассчитана — см. «Мои карты». Личные транзиты пока не рассчитываются, поэтому рекомендации ниже основаны на общем моменте и режиме.');
   assert.equal(context.readiness.includes('Профиль готов для базового личного контекста.'), true);
-  assert.equal(
-    context.limitations.includes('Натальные дома, ASC/MC и персональные транзиты пока не рассчитываются.'),
-    true,
-  );
+  assert.equal(context.readiness.includes('Натальные планеты, дома и ASC/MC рассчитаны.'), true);
+  assert.equal(context.limitations.includes('Персональные транзиты пока не рассчитываются.'), true);
 });
 
 test('incomplete profile returns incomplete status and missing field summary', () => {
@@ -141,12 +136,30 @@ test('missing timezone adds limitation and warning about timezone', () => {
   );
 });
 
-test('complete profile still has no capability for houses ASC/MC or transits', () => {
+test('complete profile reports natal capabilities honestly and keeps transits unavailable', () => {
   const context = createPersonalContext(completeProfile);
 
-  assert.equal(context.capabilities.canCalculateHouses, false);
-  assert.equal(context.capabilities.canCalculateAscMc, false);
+  assert.equal(context.capabilities.canCalculateNatalPlanets, true);
+  assert.equal(context.capabilities.canCalculateHouses, true);
+  assert.equal(context.capabilities.canCalculateAscMc, true);
   assert.equal(context.capabilities.canCalculatePersonalTransits, false);
+});
+
+test('unknown birth time makes the context calculation-limited', () => {
+  const context = createPersonalContext({
+    ...completeProfile,
+    birthTime: '',
+    birthTimeAccuracy: 'unknown',
+  });
+
+  assert.equal(context.status, 'calculationLimited');
+  assert.equal(context.capabilities.canCalculateNatalPlanets, false);
+  assert.equal(context.capabilities.canCalculateHouses, false);
+  assert.equal(context.readiness.includes('Натальные планеты, дома и ASC/MC рассчитаны.'), false);
+  assert.equal(
+    context.summary,
+    'Профиль выбран. Часть натальной карты недоступна — см. «Мои карты». Рекомендации ниже основаны на общем моменте и режиме.',
+  );
 });
 
 test('status and summary helpers are deterministic', () => {
@@ -156,11 +169,8 @@ test('status and summary helpers are deterministic', () => {
 
   assert.equal(getPersonalContextStatus(general), 'general');
   assert.equal(getPersonalContextStatus(incomplete), 'incomplete');
-  assert.equal(getPersonalContextStatus(complete), 'calculationLimited');
-  assert.equal(
-    getPersonalContextSummary(complete),
-    'Профиль выбран. Сейчас доступны общие рекомендации момента; личные дома и транзиты будут добавлены после подключения натального расчетного движка.',
-  );
+  assert.equal(getPersonalContextStatus(complete), 'readyForContext');
+  assert.equal(getPersonalContextSummary(complete), 'Профиль выбран, натальная карта рассчитана — см. «Мои карты». Личные транзиты пока не рассчитываются, поэтому рекомендации ниже основаны на общем моменте и режиме.');
 });
 
 test('missingFields and warnings are passed through from personal profile input', () => {
@@ -196,7 +206,5 @@ test('output does not contain fake personal astrology claims', () => {
   assert.equal(serialized.includes('MC в'), false);
   assert.equal(serialized.includes('орб'), false);
   assert.equal(serialized.includes('персональные транзиты доступны'), false);
-  assert.equal(serialized.includes('canCalculateHouses":true'), false);
-  assert.equal(serialized.includes('canCalculateAscMc":true'), false);
   assert.equal(serialized.includes('canCalculatePersonalTransits":true'), false);
 });

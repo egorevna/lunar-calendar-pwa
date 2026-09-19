@@ -1,16 +1,20 @@
+import { createBirthDateTimeInput } from './birthDateTime.js';
+import { evaluateHousesInputReadiness } from './housesInputGuardrails.js';
 import { normalizeProfile } from './profileModel.js';
 
 export const GENERAL_PROFILE_NAME = 'Общий день';
-export const PERSONAL_ENGINE_UNAVAILABLE_REASON =
-  'Нужен отдельный натальный расчетный движок и эфемериды для даты рождения.';
+export const PERSONAL_TRANSITS_UNAVAILABLE_REASON = 'Персональные транзиты пока не рассчитываются.';
+// Kept for backwards compatibility with earlier imports.
+export const PERSONAL_ENGINE_UNAVAILABLE_REASON = PERSONAL_TRANSITS_UNAVAILABLE_REASON;
 
 const UNKNOWN_TIME_WARNING = 'Время рождения неизвестно — дома и ASC/MC недоступны.';
 const COORDINATES_WARNING = 'Для домов и ASC/MC нужны координаты места рождения.';
 const TIMEZONE_WARNING = 'Для точного расчета нужно знать часовой пояс места рождения.';
+
+// Features that are genuinely not implemented yet. Natal planets, houses and
+// ASC/MC are calculated for a complete profile (see natalPlanetsForProfile.js,
+// houseSystemResolver.js, ascMc.js) and are reported through readiness flags.
 const UNSUPPORTED_FEATURES = Object.freeze([
-  'natalPlanets',
-  'houses',
-  'ascMc',
   'moonInNatalHouse',
   'personalTransits',
   'transitOrbs',
@@ -51,6 +55,8 @@ export function createPersonalProfileInput(profile) {
   const missingFields = getMissingFields(normalized);
   const warnings = getWarnings(normalized, missingFields);
   const isReadyForBasicPersonalContext = Boolean(normalized.name && normalized.birthDate);
+  const isReadyForNatalPlanets = createBirthDateTimeInput(normalized).canConvertToUtc === true;
+  const isReadyForHouses = evaluateHousesInputReadiness(normalized).ready === true;
   const baseInput = {
     profileId: normalized.id,
     name: normalized.name,
@@ -63,9 +69,9 @@ export function createPersonalProfileInput(profile) {
     zodiac: normalized.zodiac,
     isProfileSelected: true,
     isReadyForBasicPersonalContext,
-    isReadyForNatalPlanets: false,
-    isReadyForHouses: false,
-    isReadyForAscMc: false,
+    isReadyForNatalPlanets,
+    isReadyForHouses,
+    isReadyForAscMc: isReadyForHouses,
     missingFields,
     warnings,
     unsupportedFeatures: [...UNSUPPORTED_FEATURES],
@@ -100,11 +106,11 @@ export function getPersonalCalculationCapabilities(input = {}) {
   return {
     canUseProfileName: isProfileSelected && hasName,
     canUseBirthDate: isProfileSelected && hasBirthDate,
-    canCalculateNatalPlanets: false,
-    canCalculateHouses: false,
-    canCalculateAscMc: false,
+    canCalculateNatalPlanets: isProfileSelected && input.isReadyForNatalPlanets === true,
+    canCalculateHouses: isProfileSelected && input.isReadyForHouses === true,
+    canCalculateAscMc: isProfileSelected && input.isReadyForAscMc === true,
     canCalculatePersonalTransits: false,
-    reason: PERSONAL_ENGINE_UNAVAILABLE_REASON,
+    reason: PERSONAL_TRANSITS_UNAVAILABLE_REASON,
   };
 }
 

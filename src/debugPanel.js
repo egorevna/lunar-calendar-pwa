@@ -1,15 +1,14 @@
-import { getNatalEngineCapabilities } from './natalEngine.js';
 import { createDetailedDignitiesDebugSummaryFromStorage } from './detailedDignitiesDebug.js';
 import { createEssentialDignitiesDebugSummaryFromStorage } from './essentialDignitiesDebug.js';
 import { createNatalAspectsDebugSummaryFromStorage } from './natalAspectsDebug.js';
 import { createNatalPlanetsDebugSummaryFromStorage } from './natalPlanetsDebug.js';
 import { getNatalProviderValidationSummary } from './natalProviderValidationSummary.js';
-import { getPlanetaryProviderCapabilities } from './planetaryPositionProvider.js';
 import { formatFixedStarsDebugSnapshot } from './fixedStarsDebug.js';
 import { formatVronskyArabicPartsDebugSnapshot } from './vronskyArabicPartsDebug.js';
 import { formatAspect, formatPlanet } from './vocDisplay.js';
 
-export const APP_CACHE_VERSION = 'lunar-calendar-v97';
+// Must match CACHE_NAME in sw.js (guarded by test/serviceWorkerAssets.test.js).
+export const APP_CACHE_VERSION = 'lunar-calendar-v98';
 
 export function isDebugMode(search = window.location.search) {
   return new URLSearchParams(search).get('debug') === '1';
@@ -28,7 +27,6 @@ export function describeDebugPanel(context = {}) {
     ephemeris,
     bestWindowsDebug,
     personalDebug,
-    natalEngineDebug,
     natalPlanetsUiDebug,
     natalAspectsUiDebug,
     essentialDignitiesUiDebug,
@@ -87,7 +85,6 @@ export function describeDebugPanel(context = {}) {
     ]),
     formatProfileDebug(context.profileDebug),
     formatPersonalDebug(personalDebug),
-    formatNatalEngineDebug(natalEngineDebug ?? createNatalEngineDebug(personalDebug)),
     formatNatalProviderValidation(getNatalProviderValidationSummary()),
     formatNatalPlanetsUiDebug(natalPlanetsUiDebug ?? createNatalPlanetsDebugSummaryFromStorage()),
     formatNatalAspectsUiDebug(natalAspectsUiDebug ?? createNatalAspectsDebugSummaryFromStorage()),
@@ -200,75 +197,13 @@ function formatPersonalDebug(debug) {
     `sync: ${debug.sync ?? 'disabled'}`,
     `serverUpload: ${debug.serverUpload ?? 'disabled'}`,
     `geocoding: ${debug.geocoding ?? 'disabled'}`,
-    `natalEngine: ${debug.natalEngine ?? 'not connected'}`,
+    `natalEngine: ${debug.natalEngine ?? 'astronomy-engine (local)'}`,
     `canCalculateNatalPlanets: ${formatDebugBoolean(capabilities.canCalculateNatalPlanets)}`,
     `canCalculateHouses: ${formatDebugBoolean(capabilities.canCalculateHouses)}`,
     `canCalculateAscMc: ${formatDebugBoolean(capabilities.canCalculateAscMc)}`,
     `canCalculatePersonalTransits: ${formatDebugBoolean(capabilities.canCalculatePersonalTransits)}`,
     `missingFields: ${formatList(debug.missingFields)}`,
     `warnings: ${formatList(debug.warnings)}`,
-  ]);
-}
-
-function createNatalEngineDebug(personalDebug = null) {
-  const engineCapabilities = getNatalEngineCapabilities();
-  const providerCapabilities = getPlanetaryProviderCapabilities();
-
-  return {
-    engineStatus: 'notSupported',
-    provider: providerCapabilities.provider ?? 'none',
-    providerStatus: providerCapabilities.status ?? 'notSupported',
-    reason: providerCapabilities.reason ?? engineCapabilities.reason,
-    capabilities: engineCapabilities,
-    activeProfileId: personalDebug?.activeProfileId ?? null,
-    activeProfileName: personalDebug?.activeProfileName ?? 'Общий день',
-    hasActiveProfile: Boolean(personalDebug?.hasActiveProfile),
-    personalStatus: personalDebug?.personalStatus ?? 'general',
-    profilesCount: personalDebug?.profilesCount ?? 0,
-    missingFields: personalDebug?.missingFields ?? [],
-    warnings: personalDebug?.warnings ?? [],
-  };
-}
-
-function formatNatalEngineDebug(debug) {
-  const capabilities = debug?.capabilities ?? getNatalEngineCapabilities();
-  const hasActiveProfile = Boolean(debug?.hasActiveProfile);
-  const baseLines = [
-    `engineStatus: ${debug?.engineStatus ?? 'notSupported'}`,
-    `provider: ${debug?.provider ?? 'none'}`,
-    `providerStatus: ${debug?.providerStatus ?? 'notSupported'}`,
-    'natalPlanets: not supported',
-    'houses: not supported',
-    'ascMc: not supported',
-    'aspects: not supported',
-    'transits: not supported',
-    `reason: ${debug?.reason ?? 'Planetary position provider is not connected.'}`,
-    'capabilities:',
-    `planets: ${formatDebugBoolean(capabilities.planets)}`,
-    `houses: ${formatDebugBoolean(capabilities.houses)}`,
-    `ascMc: ${formatDebugBoolean(capabilities.ascMc)}`,
-    `aspects: ${formatDebugBoolean(capabilities.aspects)}`,
-    `transits: ${formatDebugBoolean(capabilities.transits)}`,
-  ];
-
-  const profileLines = hasActiveProfile
-    ? [
-      `profilesCount: ${debug?.profilesCount ?? 0}`,
-      `activeProfileId: ${debug?.activeProfileId ?? 'null'}`,
-      `activeProfileName: ${debug?.activeProfileName ?? 'Общий день'}`,
-      `hasActiveProfile: ${formatDebugBoolean(hasActiveProfile)}`,
-      `personalStatus: ${debug?.personalStatus ?? 'general'}`,
-      `missingFields: ${formatList(debug?.missingFields)}`,
-      `warnings: ${formatList(debug?.warnings)}`,
-    ]
-    : [
-      'activeProfile: Общий день',
-      'natal calculation: inactive',
-    ];
-
-  return formatSection('Natal Engine Debug', [
-    ...baseLines,
-    ...profileLines,
   ]);
 }
 

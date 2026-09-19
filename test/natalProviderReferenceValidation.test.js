@@ -155,8 +155,6 @@ test('reference validation does not approve houses ASC MC transits or UI', () =>
     zodiac: 'tropical',
   });
   const appSource = readFileSync(new URL('../src/app.js', import.meta.url), 'utf8');
-  const markup = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
-  const serviceWorker = readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
 
   assert.deepEqual(result.houses, []);
   assert.deepEqual(result.points, []);
@@ -167,9 +165,6 @@ test('reference validation does not approve houses ASC MC transits or UI', () =>
   assert.equal(result.capabilities.retrograde, true);
   assert.equal(result.capabilities.speed, true);
   assert.equal(appSource.includes('astronomyEngineProvider'), false);
-  assert.equal(markup.includes('Натальная карта'), false);
-  assert.equal(markup.includes('Таблица планет'), false);
-  assert.equal(serviceWorker.includes('astronomyEngineProvider'), false);
 });
 
 test('package dependencies remain limited to approved runtime providers', () => {

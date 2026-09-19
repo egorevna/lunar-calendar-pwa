@@ -152,8 +152,8 @@ test('Vronsky display limitations are concise factual and non-interpretive', () 
   const text = limitations.join(' ');
 
   assert.equal(limitations.includes('Формулы Вронского подтверждены для дневного рождения.'), true);
-  assert.equal(limitations.includes('Ночные формулы по Вронскому пока не verified.'), true);
-  assert.match(text, /выбранный простой набор из 12 строк Вронского/);
+  assert.equal(limitations.includes('Ночные формулы Вронского пока не проверены по источнику.'), true);
+  assert.match(text, /12 простых точек Вронского/);
   assert.match(text, /не содержит интерпретаций/);
   assertSafeDisplayOutput(limitations);
 });

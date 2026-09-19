@@ -35,7 +35,20 @@
               <p data-voc></p>
               <small data-voc-aspect></small>
             </div>
-            <button class="help-button" aria-label="Что такое Луна без курса?">?</button>
+            <button
+              type="button"
+              class="help-button"
+              aria-label="Что такое Луна без курса?"
+              aria-expanded="false"
+              aria-controls="help-voc"
+              data-help-toggle="voc"
+            >?</button>
+            <p class="help-text" id="help-voc" data-help-text="voc" hidden>
+              Луна без курса — отрезок, когда Луна уже сделала последний мажорный аспект в знаке
+              и до перехода в следующий знак новых не делает. Начатое в это время обычно не
+              развивается, поэтому период подходит для завершения дел, рутины и отдыха, а не для
+              новых стартов.
+            </p>
           </article>
 
           <article class="glass-card warnings-card" data-warnings-card hidden>
@@ -390,8 +403,22 @@
                 <p class="label">Планетарный день</p>
                 <h2 data-planetary-day></h2>
               </div>
-              <button class="help-button" aria-label="Что такое планетарный день?">?</button>
+              <button
+                type="button"
+                class="help-button"
+                aria-label="Что такое планетарный день?"
+                aria-expanded="false"
+                aria-controls="help-planetary"
+                data-help-toggle="planetary"
+              >?</button>
             </div>
+            <p class="help-text" id="help-planetary" data-help-text="planetary" hidden>
+              Каждым днём недели управляет своя планета: воскресенье — Солнце, понедельник — Луна,
+              вторник — Марс, среда — Меркурий, четверг — Юпитер, пятница — Венера, суббота — Сатурн.
+              Планетарные часы делят светлое время от восхода до заката и тёмное от заката до
+              восхода на 12 частей каждое; первый час дня принадлежит планете дня, дальше они идут
+              по халдейскому ряду.
+            </p>
             <div class="divider"></div>
             <div class="planet-row">
               <div class="planet-badge" data-hour-glyph></div>

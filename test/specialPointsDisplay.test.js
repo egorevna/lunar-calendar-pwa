@@ -392,8 +392,8 @@ test('summarizeSpecialPointsDisplay counts ready items', () => {
 test('getSpecialPointsDisplayLimitations mentions active mean nodes, Mean Lilith and Selena', () => {
   const limitations = getSpecialPointsDisplayLimitations();
   assert.deepEqual(limitations, [
-    'В Sprint 13 активны mean Lunar Nodes, Mean Lilith и Selena / White Moon.',
-    'True Node, True/Osculating Lilith и альтернативные Selena source systems отложены.',
+    'Рассчитываются средние Лунные узлы, средняя Лилит и Селена (Белая Луна).',
+    'Истинный узел, истинная и оскулирующая Лилит и другие варианты Селены пока не рассчитываются.',
     'Селена отображается как фиктивная / гипотетическая расчетная точка.',
     'Этот блок не содержит интерпретаций.',
   ]);

@@ -16,14 +16,12 @@ export const PROFILE_EMPTY_TITLE = 'Пока нет сохраненных ка�
 export const PROFILE_EMPTY_HINT = 'Начните с добавления профиля.';
 export const PROFILE_ADD_BUTTON_LABEL = '+ Добавить профиль';
 export const PROFILE_ADD_BUTTON_HELP = 'Профили нужны для будущих личных расчетов.';
-const PERSONAL_READY_SUMMARY =
-  'Профиль выбран. Пока рекомендации основаны на общем моменте и выбранном режиме.';
 const PERSONAL_INCOMPLETE_SUMMARY =
   'Профиль выбран, но для глубокого личного расчета не хватает данных.';
 const NATAL_PLANETS_READINESS_TITLE = 'Натальные планеты';
 const NATAL_PLANETS_READINESS_STATUS = 'Пока недоступны для показа.';
 const NATAL_PLANETS_READINESS_EXPLANATION = 'Для точного расчета нужны полные данные рождения.';
-const NATAL_PLANETS_LIMITATION = 'Дома, ASC/MC и транзиты пока не рассчитываются.';
+const NATAL_PLANETS_LIMITATION = 'Это натальные положения планет, не транзиты.';
 const NATAL_ASPECTS_TITLE = 'Натальные аспекты';
 const NATAL_ASPECTS_STATUS = 'Пока недоступны.';
 const NATAL_ASPECTS_EXPLANATION = 'Сначала нужен расчет натальных планет.';
@@ -76,6 +74,7 @@ const ERROR_MESSAGES = {
   'birthPlace.coordinates.longitude is out of range': 'Укажите долготу от -180 до 180.',
   'currentPlace.mode is unsupported': 'Выберите текущее место расчета.',
   'currentPlace.timezone is required': 'Укажите timezone текущего места.',
+  'storage write failed': 'Не удалось сохранить профиль: хранилище браузера недоступно или переполнено.',
 };
 
 function profileName(profile) {
@@ -205,7 +204,7 @@ export function describePersonalContextBlock(context = {}) {
     title: typeof context.title === 'string' ? context.title : '',
     summary: context.status === 'incomplete'
       ? PERSONAL_INCOMPLETE_SUMMARY
-      : PERSONAL_READY_SUMMARY,
+      : (cleanText(context.summary) || ''),
     items: getPersonalContextItems(context),
     sections: getPersonalContextSections(context, recommendations),
   };

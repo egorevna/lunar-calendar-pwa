@@ -437,7 +437,7 @@ export function getVronskySimpleArabicPartsSummary(result = {}) {
   if (result.reason === 'vronskyNightFormulaNotVerified') {
     return Object.freeze({
       status: NOT_READY_STATUS,
-      text: 'Точки Вронского недоступны для ночной карты без verified night formulas',
+      text: 'Точки Вронского недоступны для ночной карты: ночные формулы не проверены',
       readyCount: 0,
     });
   }
@@ -578,8 +578,8 @@ export function getArabicPartsEngineCapabilities() {
 
 export function getArabicPartsEngineLimitations() {
   return Object.freeze([
-    'Рассчитываются только verified formulas из набора Arabic Parts.',
-    'В Sprint 12 активны Pars Fortuna и Lot of Spirit.',
+    'Рассчитываются только формулы, проверенные по источнику.',
+    'Сейчас рассчитываются Парс Фортуны и Жребий Духа.',
     'Остальные арабские части отложены до проверки источников.',
     'Этот модуль не назначает жребии в дома.',
     'Интерпретации не добавлены.',

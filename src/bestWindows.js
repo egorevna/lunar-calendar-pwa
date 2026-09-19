@@ -1,8 +1,8 @@
 import {
-  getLunarInfo,
   getMoonSignInfo,
   getPlanetaryHour,
 } from './astro.js';
+import { getMoonPhaseInfo } from './moonPhase.js';
 import {
   getPreciseMoonAspectInfo,
   getPreciseMoonSignInfo,
@@ -103,7 +103,7 @@ function calculateBestWindows(options = {}) {
     getMoonAspects = getPreciseMoonAspectInfo,
     getPlanetaryHour: getHour = getPlanetaryHour,
     getMoonSign = getPreciseMoonSignOrFallback,
-    getLunar = getLunarInfo,
+    getLunar = getMoonPhaseInfo,
     getFieldQuality: getField = getFieldQuality,
   } = options;
   const mode = isDashboardModeKey(selectedMode) ? selectedMode : DEFAULT_DASHBOARD_MODE;

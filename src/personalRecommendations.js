@@ -14,9 +14,9 @@ const GENERAL_MOMENT_RECOMMENDATIONS = [
 ];
 
 const PROFILE_REFINEMENT_STEP = 'уточнить время и место рождения, если нужно';
-const GENERAL_TRANSIT_CAUTION = 'это пока не личный транзит';
+const GENERAL_TRANSIT_CAUTION = 'личные транзиты пока не учитываются';
 const UNAVAILABLE_CALCULATIONS_CAUTION =
-  'дома и ASC/MC будут доступны после подключения натального расчета';
+  'дома и ASC/MC недоступны без точного времени и координат рождения';
 const UNKNOWN_TIME_CAUTION = 'Время рождения неизвестно — дома и ASC/MC недоступны.';
 
 export function getPersonalRecommendations(context = {}) {
@@ -53,19 +53,20 @@ function getCautions(context) {
 
   return cleanItems([
     warnings.includes(UNKNOWN_TIME_CAUTION) ? UNKNOWN_TIME_CAUTION : '',
-    hasUnavailablePersonalCalculations(context) ? GENERAL_TRANSIT_CAUTION : '',
-    hasUnavailablePersonalCalculations(context) ? UNAVAILABLE_CALCULATIONS_CAUTION : '',
+    hasUnavailablePersonalCalculations(context) && !warnings.includes(UNKNOWN_TIME_CAUTION)
+      ? UNAVAILABLE_CALCULATIONS_CAUTION
+      : '',
+    GENERAL_TRANSIT_CAUTION,
   ]).slice(0, 2);
 }
 
+// Only natal planets / houses / ASC/MC count here; transits are always pending
+// and get their own fixed caution above.
 function hasUnavailablePersonalCalculations(context) {
-  const limitations = Array.isArray(context.limitations) ? context.limitations : [];
   return (
     context.capabilities?.canCalculateNatalPlanets === false
     || context.capabilities?.canCalculateHouses === false
     || context.capabilities?.canCalculateAscMc === false
-    || context.capabilities?.canCalculatePersonalTransits === false
-    || limitations.includes('Натальные дома, ASC/MC и персональные транзиты пока не рассчитываются.')
   );
 }
 

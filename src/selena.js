@@ -167,7 +167,7 @@ export function getSelenaCapabilities() {
 
 export function getSelenaLimitations() {
   return Object.freeze([
-    'В Sprint 13 активна Selena / White Moon по выбранной Swiss Ephemeris seorbel source system.',
+    'Селена (Белая Луна) рассчитывается по элементам орбиты Swiss Ephemeris (seorbel).',
     'Selena / White Moon трактуется как фиктивная / гипотетическая расчетная точка, а не физическое астрономическое тело.',
     'Альтернативные Selena source systems не активны.',
     'Этот модуль не рассчитывает Lunar Nodes или Lilith.',

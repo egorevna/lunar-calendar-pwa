@@ -100,7 +100,7 @@ test('debug panel marks debugDate as active and includes key sections', () => {
       sync: 'disabled',
       serverUpload: 'disabled',
       geocoding: 'disabled',
-      natalEngine: 'not connected',
+      natalEngine: 'astronomy-engine (local)',
       capabilities: {
         canCalculateNatalPlanets: false,
         canCalculateHouses: false,
@@ -137,29 +137,20 @@ test('debug panel marks debugDate as active and includes key sections', () => {
   assert.equal(text.includes('personalStatus: calculationLimited'), true);
   assert.equal(text.includes('profilesStorage: localStorage'), true);
   assert.equal(text.includes('geocoding: disabled'), true);
-  assert.equal(text.includes('natalEngine: not connected'), true);
+  assert.equal(text.includes('natalEngine: astronomy-engine (local)'), true);
   assert.equal(text.includes('canCalculateNatalPlanets: no'), true);
   assert.equal(text.includes('canCalculateHouses: no'), true);
   assert.equal(text.includes('canCalculateAscMc: no'), true);
   assert.equal(text.includes('canCalculatePersonalTransits: no'), true);
   assert.equal(text.includes('missingFields: координаты места рождения'), true);
   assert.equal(text.includes('warnings: Время рождения неизвестно'), true);
-  assert.equal(text.includes('Natal Engine Debug'), true);
-  assert.equal(text.includes('engineStatus: notSupported'), true);
-  assert.equal(text.includes('provider: none'), true);
-  assert.equal(text.includes('providerStatus: notSupported'), true);
-  assert.equal(text.includes('natalPlanets: not supported'), true);
-  assert.equal(text.includes('houses: not supported'), true);
-  assert.equal(text.includes('ascMc: not supported'), true);
-  assert.equal(text.includes('aspects: not supported'), true);
-  assert.equal(text.includes('transits: not supported'), true);
-  assert.equal(text.includes('reason: Planetary position provider is not connected.'), true);
-  assert.equal(text.includes('planets: no'), true);
+  assert.equal(text.includes('Natal Engine Debug'), false);
+  assert.equal(text.includes('not connected'), false);
   assert.equal(text.includes('Natal Provider Validation'), true);
   assert.equal(text.includes('provider: astronomy-engine'), true);
   assert.equal(text.includes('version: 2.1.19'), true);
-  assert.equal(text.includes('providerStatus: provider-layer only'), true);
-  assert.equal(text.includes('userFacingNatalValues: disabled'), true);
+  assert.equal(text.includes('providerStatus: connected (local, offline)'), true);
+  assert.equal(text.includes('userFacingNatalValues: enabled'), true);
   assert.equal(text.includes('longitudeValidation: passed'), true);
   assert.equal(text.includes('speedValidation: passed'), true);
   assert.equal(text.includes('retrogradeValidation: passed'), true);
@@ -170,7 +161,7 @@ test('debug panel marks debugDate as active and includes key sections', () => {
   assert.equal(text.includes('maxLongitudeDeltaMoon: 0.000294°'), true);
   assert.equal(text.includes('maxSpeedDeltaPlanets: 0.000288°/day'), true);
   assert.equal(text.includes('maxSpeedDeltaMoon: 0.000148°/day'), true);
-  assert.equal(text.includes('stillNotSupported: houses, ASC / MC, personal transits, natal aspects, orbs, natal chart UI, personal ritual scoring'), true);
+  assert.equal(text.includes('stillNotSupported: personal transits, natal chart wheel, personal ritual scoring, interpretations'), true);
   assert.equal(text.includes('hasActiveProfile: yes'), true);
   assert.equal(text.includes('activeProfileName: Егор'), true);
   assert.equal(text.includes('birthDate'), false);
@@ -197,10 +188,8 @@ test('debug panel marks normal time when debugDate is not used', () => {
   assert.equal(text.includes('debugDate: inactive'), true);
   assert.equal(text.includes('Best Windows Debug'), false);
   assert.equal(text.includes('Personal Debug'), false);
-  assert.equal(text.includes('Natal Engine Debug'), true);
+  assert.equal(text.includes('Natal Engine Debug'), false);
   assert.equal(text.includes('Natal Provider Validation'), true);
-  assert.equal(text.includes('activeProfile: Общий день'), true);
-  assert.equal(text.includes('natal calculation: inactive'), true);
 });
 
 test('debug panel shows safe natal planets UI status for ready profile', () => {

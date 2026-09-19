@@ -257,7 +257,7 @@ export function getFixedStarConjunctionCapabilities() {
 
 export function getFixedStarConjunctionLimitations() {
   return Object.freeze([
-    'В Sprint 14 рассчитываются только соединения с неподвижными звездами.',
+    'Рассчитываются только соединения с неподвижными звездами.',
     'Используется глобальный орб 1°00′.',
     'Цели: натальные планеты и ASC / MC / DSC / IC.',
     'Параны, гелиакические явления и другие аспекты отложены.',

@@ -13,7 +13,6 @@ const UNKNOWN_TIME_WARNING = 'Время рождения неизвестно �
 const TIMEZONE_WARNING = 'Для точного расчета нужен часовой пояс места рождения.';
 const COORDINATES_LIMITATION = 'Для домов и ASC/MC нужны координаты места рождения.';
 const UTC_LIMITATION = 'Точная конвертация времени рождения в UTC требует надежной timezone-стратегии.';
-const HOUSE_ENGINE_LIMITATION = 'Дома и ASC/MC требуют отдельного надежного расчетного движка.';
 const AMBIGUOUS_TIME_WARNING =
   'Время рождения попадает в неоднозначный переход часового пояса — нужен ручной выбор смещения.';
 const NONEXISTENT_TIME_WARNING =
@@ -209,17 +208,16 @@ export function getBirthDateTimeReadiness(profile) {
   const hasCoordinates = hasBirthCoordinates(input.birthPlace);
   const hasTimeInputs = hasDate && hasKnownTime && hasTimezone;
 
+  const readyForHouses = hasTimeInputs && input.canConvertToUtc && hasCoordinates;
+
   return {
     readyForDateBasedCalculations: hasDate,
     readyForTimeBasedCalculations: hasTimeInputs && input.canConvertToUtc,
-    readyForHouseCalculations: false,
-    readyForAscMc: false,
+    readyForHouseCalculations: readyForHouses,
+    readyForAscMc: readyForHouses,
     missingFields: input.missingFields,
     warnings: input.warnings,
-    limitations: unique([
-      ...input.limitations,
-      input.canConvertToUtc && hasCoordinates ? HOUSE_ENGINE_LIMITATION : '',
-    ]),
+    limitations: unique(input.limitations),
   };
 }
 

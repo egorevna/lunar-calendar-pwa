@@ -304,7 +304,7 @@ test('display limitations mention active lots and no interpretations', () => {
   const limitations = getArabicPartsDisplayLimitations();
 
   assert.equal(limitations.some((item) => item.includes('ASC, Солнце, Луне')), true);
-  assert.equal(limitations.some((item) => item.includes('Pars Fortuna и Lot of Spirit')), true);
+  assert.equal(limitations.some((item) => item.includes('Парс Фортуны и Жребий Духа')), true);
   assert.equal(limitations.some((item) => item.includes('Остальные арабские части')), true);
   assert.equal(limitations.some((item) => item.includes('не содержит интерпретаций')), true);
 });

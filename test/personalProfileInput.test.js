@@ -48,9 +48,6 @@ test('null profile returns general day and no personal capabilities', () => {
   assert.equal(input.capabilities.canCalculateAscMc, false);
   assert.equal(input.capabilities.canCalculatePersonalTransits, false);
   assert.deepEqual(input.unsupportedFeatures, [
-    'natalPlanets',
-    'houses',
-    'ascMc',
     'moonInNatalHouse',
     'personalTransits',
     'transitOrbs',
@@ -149,17 +146,30 @@ test('missing birthTime is reported for exact or approximate time accuracy', () 
   assert.equal(approximate.missingFields.includes('birthTime'), true);
 });
 
-test('complete profile does not claim natal calculation capabilities without engine', () => {
+test('complete profile is ready for natal planets, houses and ASC/MC but not transits', () => {
   const input = createPersonalProfileInput(completeProfile);
 
-  assert.equal(input.isReadyForNatalPlanets, false);
+  assert.equal(input.isReadyForNatalPlanets, true);
+  assert.equal(input.isReadyForHouses, true);
+  assert.equal(input.isReadyForAscMc, true);
+  assert.equal(input.capabilities.canCalculateNatalPlanets, true);
+  assert.equal(input.capabilities.canCalculateHouses, true);
+  assert.equal(input.capabilities.canCalculateAscMc, true);
+  assert.equal(input.capabilities.canCalculatePersonalTransits, false);
+  assert.match(input.capabilities.reason, /транзиты пока не рассчитываются/);
+});
+
+test('missing coordinates keep natal planets ready but houses and ASC/MC not ready', () => {
+  const input = createPersonalProfileInput({
+    ...completeProfile,
+    birthPlace: { ...completeProfile.birthPlace, latitude: null, longitude: null },
+  });
+
+  assert.equal(input.isReadyForNatalPlanets, true);
   assert.equal(input.isReadyForHouses, false);
   assert.equal(input.isReadyForAscMc, false);
-  assert.equal(input.capabilities.canCalculateNatalPlanets, false);
+  assert.equal(input.capabilities.canCalculateNatalPlanets, true);
   assert.equal(input.capabilities.canCalculateHouses, false);
-  assert.equal(input.capabilities.canCalculateAscMc, false);
-  assert.equal(input.capabilities.canCalculatePersonalTransits, false);
-  assert.match(input.capabilities.reason, /натальный расчетный движок/);
 });
 
 test('readiness helper mirrors profile input readiness', () => {
@@ -170,22 +180,21 @@ test('readiness helper mirrors profile input readiness', () => {
   assert.deepEqual(readiness.missingFields, []);
 });
 
-test('capabilities helper returns explicit false values', () => {
+test('capabilities helper mirrors readiness flags and never claims transits', () => {
   const capabilities = getPersonalCalculationCapabilities(createPersonalProfileInput(completeProfile));
 
   assert.equal(capabilities.canUseProfileName, true);
   assert.equal(capabilities.canUseBirthDate, true);
-  assert.equal(capabilities.canCalculateNatalPlanets, false);
-  assert.equal(capabilities.canCalculateHouses, false);
-  assert.equal(capabilities.canCalculateAscMc, false);
+  assert.equal(capabilities.canCalculateNatalPlanets, true);
+  assert.equal(capabilities.canCalculateHouses, true);
+  assert.equal(capabilities.canCalculateAscMc, true);
   assert.equal(capabilities.canCalculatePersonalTransits, false);
+  assert.equal(getPersonalCalculationCapabilities({}).canCalculateHouses, false);
 });
 
-test('output does not claim fake houses, ASC, MC or transits are available', () => {
+test('output does not claim transits or natal placements are available', () => {
   const serialized = JSON.stringify(createPersonalProfileInput(completeProfile));
 
-  assert.equal(serialized.includes('canCalculateHouses":true'), false);
-  assert.equal(serialized.includes('canCalculateAscMc":true'), false);
   assert.equal(serialized.includes('canCalculatePersonalTransits":true'), false);
   assert.equal(serialized.includes('Луна в доме натала'), false);
   assert.equal(serialized.includes('персональные транзиты доступны'), false);

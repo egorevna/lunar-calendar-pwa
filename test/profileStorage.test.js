@@ -265,3 +265,33 @@ Object.defineProperty(globalThis, 'navigator', {
     },
   },
 });
+
+test('write keeps entries that fail current validation instead of dropping them', () => {
+  clearProfileStorageForTests();
+  localStorage.setItem('astroPwa.profiles.v1', JSON.stringify([validProfile, invalidProfile]));
+
+  const result = addProfile({ ...validProfile, id: 'profile-second', name: 'Второй' });
+  const raw = JSON.parse(localStorage.getItem('astroPwa.profiles.v1'));
+
+  assert.equal(result.ok, true);
+  assert.deepEqual(loadProfiles().map((profile) => profile.id), ['profile-anna', 'profile-second']);
+  assert.equal(raw.some((entry) => entry.id === 'profile-invalid'), true);
+});
+
+test('addProfile reports a failed storage write instead of claiming success', () => {
+  clearProfileStorageForTests();
+  const originalSetItem = localStorage.setItem;
+  localStorage.setItem = () => {
+    throw new Error('QuotaExceededError');
+  };
+
+  try {
+    const result = addProfile(validProfile);
+
+    assert.equal(result.ok, false);
+    assert.deepEqual(result.errors, ['storage write failed']);
+    assert.deepEqual(loadProfiles(), []);
+  } finally {
+    localStorage.setItem = originalSetItem;
+  }
+});

@@ -45,7 +45,7 @@ test('ready profile returns 10 formatted natal planets without requiring coordin
     'Плутон',
   ]);
   assert.deepEqual(result.missingFields, []);
-  assert.equal(result.limitations.includes('Дома, ASC/MC и транзиты пока не рассчитываются.'), true);
+  assert.equal(result.limitations.includes('Это натальные положения планет, не транзиты.'), true);
 });
 
 test('ready output contains display text but no raw birth data or UTC input', () => {

@@ -133,8 +133,8 @@ test('getSpecialPointsForProfile returns ready for exact birth time and timezone
   assert.equal(result.items.filter((item) => / · \d{1,2} дом$/.test(item.text)).length, 2);
   assert.deepEqual(result.sections.map((section) => section.limitations), [[], [], []]);
   assert.deepEqual(result.limitations, [
-    'В Sprint 13 активны mean Lunar Nodes, Mean Lilith и Selena / White Moon.',
-    'True Node, True/Osculating Lilith и альтернативные Selena source systems отложены.',
+    'Рассчитываются средние Лунные узлы, средняя Лилит и Селена (Белая Луна).',
+    'Истинный узел, истинная и оскулирующая Лилит и другие варианты Селены пока не рассчитываются.',
     'Селена отображается как фиктивная / гипотетическая расчетная точка.',
     'Этот блок не содержит интерпретаций.',
   ]);

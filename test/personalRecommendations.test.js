@@ -46,13 +46,23 @@ test('selected profile gets safe general-moment recommendations', () => {
 
   assert.equal(recommendations.goodNow.includes('использовать общий момент и режим'), true);
   assert.equal(recommendations.goodNow.includes('смотреть лучшие окна как ориентир'), true);
-  assert.equal(recommendations.nextSteps.includes('уточнить время и место рождения, если нужно'), true);
-  assert.equal(recommendations.nextSteps.includes('подключить натальный расчетный движок'), false);
-  assert.equal(recommendations.cautions.includes('это пока не личный транзит'), true);
+  assert.deepEqual(recommendations.nextSteps, []);
+  assert.deepEqual(recommendations.cautions, ['личные транзиты пока не учитываются']);
+});
+
+test('profile without coordinates gets refinement step and houses caution', () => {
+  const context = createPersonalContext({
+    ...completeProfile,
+    birthPlace: { ...completeProfile.birthPlace, latitude: null, longitude: null },
+  });
+  const recommendations = getPersonalRecommendations(context);
+
+  assert.equal(recommendations.nextSteps.includes('координаты места рождения'), true);
   assert.equal(
-    recommendations.cautions.includes('дома и ASC/MC будут доступны после подключения натального расчета'),
+    recommendations.cautions.includes('дома и ASC/MC недоступны без точного времени и координат рождения'),
     true,
   );
+  assert.equal(recommendations.cautions.includes('личные транзиты пока не учитываются'), true);
   assert.equal(recommendations.cautions.length <= 2, true);
 });
 

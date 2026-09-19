@@ -182,12 +182,12 @@ test('personal context block describes selected profile without sensitive fields
     hasActiveProfile: true,
     profileName: 'Егор',
     title: 'Лично для Егора',
-    status: 'calculationLimited',
+    status: 'readyForContext',
     summary:
-      'Профиль выбран. Сейчас доступны общие рекомендации момента; личные дома и транзиты будут добавлены после подключения натального расчетного движка.',
+      'Профиль выбран, натальная карта рассчитана — см. «Мои карты». Личные транзиты пока не рассчитываются, поэтому рекомендации ниже основаны на общем моменте и режиме.',
     missingFields: [],
     warnings: [],
-    limitations: ['Натальные дома, ASC/MC и персональные транзиты пока не рассчитываются.'],
+    limitations: ['Персональные транзиты пока не рассчитываются.'],
   });
   const text = JSON.stringify(view);
 
@@ -195,9 +195,9 @@ test('personal context block describes selected profile without sensitive fields
   assert.equal(view.title, 'Лично для Егора');
   assert.equal(
     view.summary,
-    'Профиль выбран. Пока рекомендации основаны на общем моменте и выбранном режиме.',
+    'Профиль выбран, натальная карта рассчитана — см. «Мои карты». Личные транзиты пока не рассчитываются, поэтому рекомендации ниже основаны на общем моменте и режиме.',
   );
-  assert.deepEqual(view.items, ['Натальные дома, ASC/MC и персональные транзиты пока не рассчитываются.']);
+  assert.deepEqual(view.items, ['Персональные транзиты пока не рассчитываются.']);
   assert.deepEqual(view.sections, [
     {
       title: 'Можно сейчас',
@@ -208,15 +208,8 @@ test('personal context block describes selected profile without sensitive fields
       ],
     },
     {
-      title: 'Для точного личного расчета',
-      items: ['уточнить время и место рождения, если нужно'],
-    },
-    {
       title: 'Важно',
-      items: [
-        'это пока не личный транзит',
-        'дома и ASC/MC будут доступны после подключения натального расчета',
-      ],
+      items: ['личные транзиты пока не учитываются'],
     },
   ]);
   assert.equal(text.includes('подключить натальный расчетный движок'), false);
@@ -309,7 +302,7 @@ test('natal planets block shows formatted planets for a UTC-ready active profile
   assert.equal(view.planets.some((planet) => planet.startsWith('Меркурий')), true);
   assert.match(view.planets[0], /^Солнце — .+ \d{1,2}°\d{2}′$/);
   assert.deepEqual(view.missingFields, []);
-  assert.deepEqual(view.limitations, ['Дома, ASC/MC и транзиты пока не рассчитываются.']);
+  assert.deepEqual(view.limitations, ['Это натальные положения планет, не транзиты.']);
   assert.equal(text.includes('1990-05-12'), false);
   assert.equal(text.includes('14:30'), false);
   assert.equal(text.includes('Europe/Moscow'), false);
@@ -350,7 +343,7 @@ test('natal planets readiness block keeps fallback when birth time is unknown', 
   assert.equal(view.explanation, 'Для точного расчета нужны полные данные рождения.');
   assert.deepEqual(view.planets, []);
   assert.equal(view.missingFields.includes('время рождения'), true);
-  assert.deepEqual(view.limitations, ['Дома, ASC/MC и транзиты пока не рассчитываются.']);
+  assert.deepEqual(view.limitations, ['Это натальные положения планет, не транзиты.']);
 });
 
 test('natal planets readiness block maps missing fields to human labels', () => {
@@ -946,8 +939,8 @@ test('Special Points block shows ready points, node houses, and Selena note with
   assert.equal(view.items.filter((item) => / · \d{1,2} дом$/.test(item)).length, 2);
   assert.deepEqual(view.sections.map((section) => section.limitations), [[], [], []]);
   assert.deepEqual(view.limitations, [
-    'В Sprint 13 активны mean Lunar Nodes, Mean Lilith и Selena / White Moon.',
-    'True Node, True/Osculating Lilith и альтернативные Selena source systems отложены.',
+    'Рассчитываются средние Лунные узлы, средняя Лилит и Селена (Белая Луна).',
+    'Истинный узел, истинная и оскулирующая Лилит и другие варианты Селены пока не рассчитываются.',
     'Селена отображается как фиктивная / гипотетическая расчетная точка.',
     'Этот блок не содержит интерпретаций.',
   ]);

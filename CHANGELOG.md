@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-09-19 — Audit Stage 1: offline cache, precise Moon phase, honest copy, storage safety
+
+- Fixed offline PWA: `sw.js` now precaches `src/astronomyEngineProvider.js`, `src/natalPlanetDisplay.js`, `src/personalProfileInput.js` (previously missing, which broke the installed app without network) and caches any same-origin GET at runtime as a safety net. `CACHE_NAME` bumped to `lunar-calendar-v98`.
+- Added `test/serviceWorkerAssets.test.js`: every module reachable from `src/app.js` must be listed in `ASSETS`; removed two Sprint 6/7 tests that explicitly forbade caching those modules.
+- Added `src/moonPhase.js`: Moon phase angle, waxing flag, phase name and illumination from astronomy-engine instead of the mean-age formula in `astro.js` (illumination error dropped from up to 10 pp to 0.01 pp, waxing flag now always agrees with Swiss Ephemeris). `app.js` and `bestWindows.js` use it; `describeHeroMoonPhase` no longer needs the upcoming-phase fallback hack.
+- Personal layer is honest: `personalProfileInput.js` derives `canCalculateNatalPlanets/Houses/AscMc` from real readiness; `personalContext.js`, `personalRecommendations.js`, `profileUi.js` copy no longer says houses/ASC/MC "will be available after the engine is connected". Transits remain explicitly unavailable.
+- Removed sprint numbers and English jargon ("В Sprint 12…", "не verified", "Selena source systems") from user-facing limitation texts in Arabic Parts, Vronsky points, Special Points, Fixed Stars, Nodes, Lilith, Selena, midpoints and antiscia modules.
+- `profileStorage.js`: `addProfile` / `updateProfile` / `deleteProfile` / import now return `ok: false` with `storage write failed` when `localStorage` rejects the write; entries that fail current validation are preserved in storage instead of being silently dropped on the next write.
+- Debug panel refreshes when the active profile changes (not only on the 30 s timer); removed the stub-based "Natal Engine Debug" section; provider validation section reflects the connected local provider.
+- Wired the two "?" help buttons (Moon void of course, planetary day/hour) to inline explanations.
+- Tests: 1460 passing.
+
 ## 2026-07-01 — Complete Task 16.7 Antiscia / Contra-antiscia Engine / Fixtures
 
 - Added `src/antiscia.js` as a pure Antiscia / Contra-antiscia calculation engine.

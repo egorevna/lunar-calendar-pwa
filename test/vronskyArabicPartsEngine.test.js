@@ -296,7 +296,7 @@ test('Vronsky summary capabilities and limitations keep engine scoped', () => {
   });
   assert.deepEqual(nightSummary, {
     status: 'notReady',
-    text: 'Точки Вронского недоступны для ночной карты без verified night formulas',
+    text: 'Точки Вронского недоступны для ночной карты: ночные формулы не проверены',
     readyCount: 0,
   });
   assert.equal(capabilities.vronskySimpleArabicParts, true);

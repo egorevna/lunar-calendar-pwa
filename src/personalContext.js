@@ -10,11 +10,12 @@ export const PERSONAL_CONTEXT_STATUS = Object.freeze({
 const GENERAL_SUMMARY = 'Выбран общий день. Личный блок появится после выбора профиля.';
 const INCOMPLETE_SUMMARY = 'Профиль выбран, но для личного расчета не хватает данных.';
 const LIMITED_SUMMARY =
-  'Профиль выбран. Сейчас доступны общие рекомендации момента; личные дома и транзиты будут добавлены после подключения натального расчетного движка.';
+  'Профиль выбран. Часть натальной карты недоступна — см. «Мои карты». Рекомендации ниже основаны на общем моменте и режиме.';
+const READY_SUMMARY =
+  'Профиль выбран, натальная карта рассчитана — см. «Мои карты». Личные транзиты пока не рассчитываются, поэтому рекомендации ниже основаны на общем моменте и режиме.';
 const BASIC_READY_TEXT = 'Профиль готов для базового личного контекста.';
-const CALCULATION_LIMITATION =
-  'Натальные дома, ASC/MC и персональные транзиты пока не рассчитываются.';
-const ENGINE_NEXT_STEP = 'Для точного личного расчета понадобится натальный расчетный движок.';
+const NATAL_CHART_READY_TEXT = 'Натальные планеты, дома и ASC/MC рассчитаны.';
+const TRANSITS_LIMITATION = 'Персональные транзиты пока не рассчитываются.';
 
 export function createPersonalContext(profile) {
   const input = createPersonalProfileInput(profile);
@@ -61,7 +62,11 @@ export function getPersonalContextSummary(input = {}) {
     return INCOMPLETE_SUMMARY;
   }
 
-  return LIMITED_SUMMARY;
+  if (status === PERSONAL_CONTEXT_STATUS.CALCULATION_LIMITED) {
+    return LIMITED_SUMMARY;
+  }
+
+  return READY_SUMMARY;
 }
 
 function getReadiness(input) {
@@ -69,7 +74,10 @@ function getReadiness(input) {
     return [];
   }
 
-  return [BASIC_READY_TEXT];
+  return unique([
+    BASIC_READY_TEXT,
+    hasUnavailablePersonalCalculations(input) ? '' : NATAL_CHART_READY_TEXT,
+  ]);
 }
 
 function getLimitations(input) {
@@ -77,7 +85,7 @@ function getLimitations(input) {
     return [];
   }
 
-  return unique([...input.warnings, CALCULATION_LIMITATION]);
+  return unique([...input.warnings, TRANSITS_LIMITATION]);
 }
 
 function getNextSteps(input) {
@@ -87,16 +95,16 @@ function getNextSteps(input) {
 
   return unique([
     input.missingFields?.length ? 'Заполните недостающие данные профиля.' : '',
-    ENGINE_NEXT_STEP,
   ]);
 }
 
+// Natal planets, houses and ASC/MC are real calculations; transits are a known
+// product gap and do not make the context "limited" on their own.
 function hasUnavailablePersonalCalculations(input) {
   return (
     input.capabilities?.canCalculateNatalPlanets === false
     || input.capabilities?.canCalculateHouses === false
     || input.capabilities?.canCalculateAscMc === false
-    || input.capabilities?.canCalculatePersonalTransits === false
   );
 }
 

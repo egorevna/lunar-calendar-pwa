@@ -413,8 +413,8 @@ test('summary capabilities and limitations keep Basic Arabic Parts scoped', () =
   assert.equal(capabilities.deferredParts, false);
   assert.equal(capabilities.houseAssignment, false);
   assert.equal(capabilities.interpretations, false);
-  assert.equal(limitations.some((item) => item.includes('verified formulas')), true);
-  assert.equal(limitations.some((item) => item.includes('Pars Fortuna и Lot of Spirit')), true);
+  assert.equal(limitations.some((item) => item.includes('проверенные по источнику')), true);
+  assert.equal(limitations.some((item) => item.includes('Парс Фортуны и Жребий Духа')), true);
   assert.equal(limitations.some((item) => item.includes('не назначает жребии в дома')), true);
 });
 

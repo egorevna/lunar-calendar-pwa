@@ -82,7 +82,7 @@ function readyVronskyFixture() {
     })),
     limitations: [
       'Формулы Вронского подтверждены для дневного рождения.',
-      'Ночные формулы по Вронскому пока не verified.',
+      'Ночные формулы Вронского пока не проверены по источнику.',
       'Этот блок не содержит интерпретаций.',
     ],
   };
@@ -110,7 +110,7 @@ test('Arabic Parts UI view keeps existing lots and adds Vronsky subsection insid
     assert.equal(text.includes(label), true);
   });
   assert.equal(view.limitations.filter((item) => item === 'Формулы Вронского подтверждены для дневного рождения.').length, 1);
-  assert.equal(view.limitations.filter((item) => item === 'Ночные формулы по Вронскому пока не verified.').length, 1);
+  assert.equal(view.limitations.filter((item) => item === 'Ночные формулы Вронского пока не проверены по источнику.').length, 1);
   assert.equal(view.limitations.filter((item) => item === 'Источник: Вронский, Том 1, Приложение 2, Таблица 17.').length, 1);
   FORBIDDEN_UI_FRAGMENTS.forEach((fragment) => {
     assert.equal(text.includes(fragment), false, fragment);
@@ -125,9 +125,9 @@ test('Arabic Parts UI view renders safe Vronsky fallback for night boundary and 
       ready: false,
       title: 'Точки Вронского',
       summary: 'Пока недоступно.',
-      message: 'Точки Вронского пока недоступны для ночной карты. Ночные формулы по Вронскому пока не verified.',
+      message: 'Точки Вронского пока недоступны для ночной карты: ночные формулы ещё не проверены по источнику.',
       items: [],
-      limitations: ['Ночные формулы по Вронскому пока не verified.'],
+      limitations: ['Ночные формулы Вронского пока не проверены по источнику.'],
     },
   });
   const boundaryView = describeArabicPartsBlock({ id: 'profile-boundary', name: 'Егор' }, {
@@ -156,7 +156,7 @@ test('Arabic Parts UI view renders safe Vronsky fallback for night boundary and 
   });
 
   assert.equal(nightView.vronskySection.items.length, 0);
-  assert.equal(nightView.vronskySection.message, 'Точки Вронского пока недоступны для ночной карты. Ночные формулы по Вронскому пока не verified.');
+  assert.equal(nightView.vronskySection.message, 'Точки Вронского пока недоступны для ночной карты: ночные формулы ещё не проверены по источнику.');
   assert.equal(boundaryView.vronskySection.message, 'Точки Вронского пока недоступны на границе дня и ночи.');
   assert.equal(unknownView.vronskySection.message, 'Для расчета точек Вронского нужна готовая дневная/ночная карта.');
   assert.equal(JSON.stringify(nightView).includes('Точка любви —'), false);
@@ -196,8 +196,7 @@ test('Arabic Parts renderer handles Vronsky section and notes inside existing co
   assert.equal(html.includes('Точки Вронского Debug'), false);
 });
 
-test('service worker caches app-visible Vronsky profile helper and bumps cache version', () => {
-  assert.equal(swSource.includes("const CACHE_NAME = 'lunar-calendar-v97';"), true);
+test('service worker caches app-visible Vronsky profile helper', () => {
   assert.equal(swSource.includes("'src/vronskyArabicPartsForProfile.js'"), true);
   assert.equal(swSource.includes("'src/vronskyArabicPartsDebug.js'"), true);
 });

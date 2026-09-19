@@ -997,6 +997,22 @@ button {
   align-items: center;
 }
 
+.help-text,
+.voc-card .help-text {
+  grid-column: 1 / -1;
+  margin: 6px 0 0;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--muted);
+  font-size: clamp(13px, 3.5vw, 15px);
+  line-height: 1.35;
+  white-space: normal;
+}
+
+.help-text[hidden] {
+  display: none;
+}
+
 .planet-badge {
   width: 52px;
   height: 52px;

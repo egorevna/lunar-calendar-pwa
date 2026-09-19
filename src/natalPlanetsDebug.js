@@ -17,11 +17,11 @@ const MISSING_FIELD_LABELS = Object.freeze({
 });
 
 const STILL_NOT_SUPPORTED = Object.freeze({
-  houses: 'notSupported',
-  ascMc: 'notSupported',
+  houses: 'supported',
+  ascMc: 'supported',
   transits: 'notSupported',
-  aspects: 'notSupported',
-  orbs: 'notSupported',
+  aspects: 'supported',
+  orbs: 'supported',
 });
 
 export function createNatalPlanetsDebugSummaryFromStorage() {

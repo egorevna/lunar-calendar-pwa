@@ -43,11 +43,11 @@ test('natal planets debug summary exposes only safe ready status and counts', ()
   assert.equal(summary.collapsibleDefault, 'collapsed');
   assert.equal(summary.profilePanelLocation, 'My Cards');
   assert.deepEqual(summary.stillNotSupported, {
-    houses: 'notSupported',
-    ascMc: 'notSupported',
+    houses: 'supported',
+    ascMc: 'supported',
     transits: 'notSupported',
-    aspects: 'notSupported',
-    orbs: 'notSupported',
+    aspects: 'supported',
+    orbs: 'supported',
   });
   assert.equal(text.includes('1990-05-12'), false);
   assert.equal(text.includes('14:30'), false);

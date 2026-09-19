@@ -3,7 +3,7 @@ import { createBirthDateTimeInput } from './birthDateTime.js';
 import { formatNatalPlanetList } from './natalPlanetDisplay.js';
 
 export const NATAL_PLANETS_PROFILE_LIMITATION =
-  'Дома, ASC/MC и транзиты пока не рассчитываются.';
+  'Это натальные положения планет, не транзиты.';
 
 const READY_STATUS = 'ready';
 const INCOMPLETE_STATUS = 'incomplete';

@@ -101,11 +101,10 @@ test('empty list returns empty array', () => {
   assert.deepEqual(formatNatalPlanetList(null), []);
 });
 
-test('limitations include unsupported houses ASC MC transits aspects and orbs', () => {
+test('limitations clarify that positions are natal, not transits', () => {
   const limitations = getNatalPlanetDisplayLimitations();
 
-  assert.equal(limitations.includes('Дома, ASC/MC и транзиты пока не рассчитываются.'), true);
-  assert.equal(limitations.includes('Натальные аспекты и орбы будут добавлены отдельно.'), true);
+  assert.deepEqual(limitations, ['Это натальные положения планет, не транзиты.']);
 });
 
 test('isDisplayableNatalPlanet validates required display fields', () => {
@@ -123,12 +122,4 @@ test('helper does not import provider modules or call astronomy-engine', () => {
   assert.equal(source.includes('planetaryPositionProvider'), false);
   assert.equal(source.includes('calculateAstronomyEngine'), false);
   assert.equal(source.includes('localStorage'), false);
-});
-
-test('task does not wire formatter into UI files', () => {
-  const appSource = readFileSync(new URL('../src/app.js', import.meta.url), 'utf8');
-  const serviceWorker = readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
-
-  assert.equal(appSource.includes('natalPlanetDisplay'), false);
-  assert.equal(serviceWorker.includes('natalPlanetDisplay'), false);
 });

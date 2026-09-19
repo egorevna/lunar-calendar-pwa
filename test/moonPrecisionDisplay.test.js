@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { getLunarInfo } from '../src/astro.js';
+import { getMoonPhaseInfo } from '../src/moonPhase.js';
 import {
   describeHeroMoonPhase,
   describeMoonPrecision,
@@ -43,7 +43,7 @@ test('formats time until Full Moon under one day', () => {
 
 test('does not label current phase as New Moon while countdown to New Moon is still positive', () => {
   const now = new Date('2026-05-15T10:33:00+03:00');
-  const lunar = getLunarInfo(now);
+  const lunar = getMoonPhaseInfo(now);
   const nextPhase = getNextPreciseMajorMoonPhase(now);
   const phase = describeHeroMoonPhase({
     lunar,
@@ -60,7 +60,7 @@ test('does not label current phase as New Moon while countdown to New Moon is st
 
 test('does not show same-day future New Moon as current exact phase', () => {
   const now = new Date('2026-05-16T12:00:00+03:00');
-  const lunar = { phaseName: 'Новолуние' };
+  const lunar = getMoonPhaseInfo(now);
   const majorPhase = getPreciseMajorMoonPhase(now);
   const nextPhase = getNextPreciseMajorMoonPhase(now);
 
@@ -72,7 +72,7 @@ test('does not show same-day future New Moon as current exact phase', () => {
 
 test('does not label current phase as Full Moon while countdown to Full Moon is still positive', () => {
   const now = new Date('2026-05-01T12:00:00+03:00');
-  const lunar = { phaseName: 'Полнолуние' };
+  const lunar = getMoonPhaseInfo(now);
   const majorPhase = getPreciseMajorMoonPhase(now);
   const nextPhase = getNextPreciseMajorMoonPhase(now);
 
@@ -90,7 +90,7 @@ test('keeps exact New Moon or Full Moon display after the event happened today',
   assert.equal(majorPhase.at < now, true);
   assert.equal(
     describeHeroMoonPhase({
-      lunar: { phaseName: 'Полнолуние' },
+      lunar: getMoonPhaseInfo(now),
       majorPhase,
       nextPhase: getNextPreciseMajorMoonPhase(now),
       now,

@@ -1,5 +1,5 @@
 import { createProfileId, normalizeProfile, validateProfile } from './profileModel.js';
-import { loadProfiles, saveProfiles } from './profileStorage.js';
+import { loadProfiles, saveProfilesWithResult, STORAGE_WRITE_ERROR } from './profileStorage.js';
 
 export const PROFILE_EXPORT_SCHEMA_VERSION = 1;
 export const PROFILE_EXPORT_APP = 'astro-pwa';
@@ -161,7 +161,14 @@ export function importProfilesIntoStorage(jsonText) {
     };
   }
 
-  saveProfiles([...existingProfiles, ...importedProfiles]);
+  if (!saveProfilesWithResult([...existingProfiles, ...importedProfiles]).ok) {
+    return {
+      ok: false,
+      error: STORAGE_WRITE_ERROR,
+      importedCount: 0,
+      skippedCount,
+    };
+  }
 
   return {
     ok: true,

@@ -10,22 +10,21 @@ const VALIDATION_DELTAS = Object.freeze({
   maxSpeedDeltaMoon: '0.000148°/day',
 });
 
+// Features that still do not exist in the app (natal planets, houses, ASC/MC,
+// aspects, dignities, lots, special points and fixed stars are live).
 const STILL_NOT_SUPPORTED = Object.freeze([
-  'houses',
-  'ASC / MC',
   'personal transits',
-  'natal aspects',
-  'orbs',
-  'natal chart UI',
+  'natal chart wheel',
   'personal ritual scoring',
+  'interpretations',
 ]);
 
 export function getNatalProviderValidationSummary() {
   return {
     provider: PROVIDER,
     version: VERSION,
-    providerStatus: 'provider-layer only',
-    userFacingNatalValues: 'disabled',
+    providerStatus: 'connected (local, offline)',
+    userFacingNatalValues: 'enabled',
     longitudeValidation: 'passed',
     speedValidation: 'passed',
     retrogradeValidation: 'passed',

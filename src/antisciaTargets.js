@@ -326,7 +326,7 @@ export function getAntisciaTargetCapabilities() {
 
 export function getAntisciaTargetLimitations() {
   return Object.freeze([
-    'В Sprint 16 целями для антисов являются натальные планеты и углы ASC / MC / DSC / IC.',
+    'Целями для антисов являются натальные планеты и углы ASC / MC / DSC / IC.',
     'Куспиды домов, особые точки, арабские части и неподвижные звезды отложены.',
     'Этот модуль не рассчитывает антисы или контрантисы.',
     'Интерпретации не добавлены.',

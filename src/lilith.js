@@ -186,7 +186,7 @@ export function getLilithCapabilities() {
 
 export function getLilithLimitations() {
   return Object.freeze([
-    'В Sprint 13 активна только Средняя Лилит / Mean Lunar Apogee.',
+    'Рассчитывается только Средняя Лилит (Mean Lunar Apogee).',
     'True/Osculating Lilith отложена до отдельной source policy.',
     'Interpolated Lilith отложена до отдельной source policy.',
     'Этот модуль не рассчитывает Selena.',

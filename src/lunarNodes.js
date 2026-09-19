@@ -199,7 +199,7 @@ export function getLunarNodesCapabilities() {
 
 export function getLunarNodesLimitations() {
   return Object.freeze([
-    'В Sprint 13 активен mean lunar node.',
+    'Рассчитываются средние Лунные узлы (mean node).',
     'True Node отложен до отдельной source policy.',
     'Южный узел рассчитывается как Северный узел + 180°.',
     'Этот модуль не рассчитывает Lilith или Selena.',

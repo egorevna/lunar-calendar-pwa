@@ -2,6 +2,7 @@ import { normalizeProfile, validateProfile } from './profileModel.js';
 
 export const PROFILE_STORAGE_KEY = 'astroPwa.profiles.v1';
 export const ACTIVE_PROFILE_STORAGE_KEY = 'astroPwa.activeProfileId.v1';
+export const STORAGE_WRITE_ERROR = 'storage write failed';
 
 function getStorage() {
   return globalThis.localStorage ?? null;
@@ -88,6 +89,60 @@ function notFoundResult() {
   };
 }
 
+function storageWriteFailedResult() {
+  return {
+    ok: false,
+    errors: [STORAGE_WRITE_ERROR],
+  };
+}
+
+function readRawProfiles() {
+  return parseProfiles(readStorageValue(PROFILE_STORAGE_KEY));
+}
+
+// Entries in storage that do not pass the current validation are hidden from
+// the app but must never be dropped on write: a stricter validator in a future
+// version would otherwise silently destroy the user's profiles.
+function readQuarantinedEntries(nextProfiles) {
+  const nextIds = new Set(nextProfiles.map((profile) => profile.id));
+
+  return readRawProfiles().filter((entry) => {
+    if (!entry || typeof entry !== 'object') {
+      return false;
+    }
+
+    const id = typeof entry.id === 'string' ? entry.id.trim() : '';
+
+    if (!id || nextIds.has(id)) {
+      return false;
+    }
+
+    return !validateProfile(normalizeProfile(entry)).valid;
+  });
+}
+
+function persistProfiles(profiles, options = {}) {
+  const normalizedProfiles = normalizeValidProfiles(profiles);
+  const removedIds = new Set(Array.isArray(options.removedIds) ? options.removedIds : []);
+  const quarantined = readQuarantinedEntries(normalizedProfiles)
+    .filter((entry) => !removedIds.has(entry.id));
+  const written = writeStorageValue(
+    PROFILE_STORAGE_KEY,
+    JSON.stringify([...normalizedProfiles, ...quarantined]),
+  );
+
+  if (!written) {
+    return { ok: false, profiles: normalizedProfiles };
+  }
+
+  const activeProfileId = readStorageValue(ACTIVE_PROFILE_STORAGE_KEY);
+  if (activeProfileId && !normalizedProfiles.some((profile) => profile.id === activeProfileId)) {
+    removeStorageValue(ACTIVE_PROFILE_STORAGE_KEY);
+  }
+
+  return { ok: true, profiles: normalizedProfiles };
+}
+
 function validationResult(errors) {
   return {
     ok: false,
@@ -118,20 +173,15 @@ function mergeProfilePatch(profile, patch) {
 }
 
 export function loadProfiles() {
-  return normalizeValidProfiles(parseProfiles(readStorageValue(PROFILE_STORAGE_KEY)));
+  return normalizeValidProfiles(readRawProfiles());
 }
 
 export function saveProfiles(profiles) {
-  const normalizedProfiles = normalizeValidProfiles(profiles);
+  return persistProfiles(profiles).profiles;
+}
 
-  writeStorageValue(PROFILE_STORAGE_KEY, JSON.stringify(normalizedProfiles));
-
-  const activeProfileId = readStorageValue(ACTIVE_PROFILE_STORAGE_KEY);
-  if (activeProfileId && !normalizedProfiles.some((profile) => profile.id === activeProfileId)) {
-    removeStorageValue(ACTIVE_PROFILE_STORAGE_KEY);
-  }
-
-  return normalizedProfiles;
+export function saveProfilesWithResult(profiles) {
+  return persistProfiles(profiles);
 }
 
 export function addProfile(profile) {
@@ -148,7 +198,11 @@ export function addProfile(profile) {
     updatedAt: new Date().toISOString(),
   };
 
-  saveProfiles([...profiles.filter((item) => item.id !== savedProfile.id), savedProfile]);
+  const persisted = persistProfiles([...profiles.filter((item) => item.id !== savedProfile.id), savedProfile]);
+
+  if (!persisted.ok) {
+    return storageWriteFailedResult();
+  }
 
   return {
     ok: true,
@@ -173,7 +227,10 @@ export function updateProfile(profileId, patch) {
 
   const nextProfiles = [...profiles];
   nextProfiles[profileIndex] = updatedProfile;
-  saveProfiles(nextProfiles);
+
+  if (!persistProfiles(nextProfiles).ok) {
+    return storageWriteFailedResult();
+  }
 
   return {
     ok: true,
@@ -190,7 +247,9 @@ export function deleteProfile(profileId) {
     return notFoundResult();
   }
 
-  saveProfiles(nextProfiles);
+  if (!persistProfiles(nextProfiles, { removedIds: [profileId] }).ok) {
+    return storageWriteFailedResult();
+  }
 
   if (activeProfileId === profileId) {
     removeStorageValue(ACTIVE_PROFILE_STORAGE_KEY);

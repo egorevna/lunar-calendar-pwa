@@ -1,10 +1,10 @@
 import {
-  getLunarInfo,
   getMoonSignInfo,
   getPlanetaryDay,
   getPlanetaryHour,
   getVoidOfCourse,
 } from './astro.js';
+import { getMoonPhaseInfo } from './moonPhase.js';
 import {
   formatDate,
   formatRange,
@@ -98,6 +98,10 @@ let expandedSpecialPointsProfileId = null;
 let expandedFixedStarsProfileId = null;
 
 const DELETE_PROFILE_CONFIRMATION = 'Удалить профиль? Это действие нельзя отменить.';
+
+// Dashboard state of the last full render; lets the debug panel refresh when the
+// active profile changes between timer ticks.
+let lastDashboardDebugContext = null;
 
 const elements = {
   date: document.querySelector('[data-date]'),
@@ -258,7 +262,7 @@ function render() {
   const debugDate = getDebugDate();
   const now = debugDate ?? new Date();
   const shouldShowDebug = isDebugMode();
-  const lunar = getLunarInfo(now);
+  const lunar = getMoonPhaseInfo(now);
   const planetaryDay = getPlanetaryDay(now);
   const planetaryHour = getPlanetaryHour(now);
   const voc = getPreciseVoidOfCourse(now) ?? getVoidOfCourse(now);
@@ -324,11 +328,10 @@ function render() {
   renderSimpleList(elements.fieldAvoid, modeRecommendations.careful);
   renderFieldReasons(fieldQuality.reasons);
   renderWarnings(fieldQuality.warnings);
-  renderStoredProfilesShell();
   const bestWindows = getBestWindows({ selectedMode: selectedDashboardMode, now });
   renderBestWindows(describeBestWindows(bestWindows, selectedDashboardMode));
   renderModeSelector();
-  renderDebugPanel({
+  lastDashboardDebugContext = {
     now,
     debugDate,
     lunarDay,
@@ -341,6 +344,16 @@ function render() {
     bestWindowsDebug: shouldShowDebug
       ? getBestWindowsDebug({ selectedMode: selectedDashboardMode, now })
       : null,
+  };
+  renderStoredProfilesShell();
+}
+
+function renderDebugPanelFromState() {
+  if (!lastDashboardDebugContext) return;
+
+  const shouldShowDebug = isDebugMode();
+  renderDebugPanel({
+    ...lastDashboardDebugContext,
     profileDebug: shouldShowDebug ? getProfileDebugState() : null,
     personalDebug: shouldShowDebug ? getPersonalDebugState() : null,
     housesUiDebug: shouldShowDebug ? getHousesUiDebugState() : null,
@@ -464,6 +477,7 @@ function renderStoredProfilesShell() {
   renderSpecialPointsBlock(describeSpecialPointsBlock(activeProfile));
   renderFixedStarsBlock(describeFixedStarsBlock(activeProfile));
   renderPersonalContextBlock(describePersonalContextBlock(createPersonalContext(activeProfile)));
+  renderDebugPanelFromState();
 }
 
 function renderNatalPlanetsReadinessBlock(view) {
@@ -735,7 +749,7 @@ function getPersonalDebugState() {
     sync: 'disabled',
     serverUpload: 'disabled',
     geocoding: 'disabled',
-    natalEngine: 'not connected',
+    natalEngine: 'astronomy-engine (local)',
     capabilities: personalContext.capabilities,
     missingFields: describePersonalDebugMissingFields(personalContext.missingFields),
     warnings: personalContext.warnings,
@@ -1141,6 +1155,17 @@ elements.modeSelector.addEventListener('click', (event) => {
   const button = event.target.closest('[data-mode-button]');
   if (!button) return;
   setDashboardMode(button.dataset.modeButton);
+});
+
+document.querySelectorAll('[data-help-toggle]').forEach((button) => {
+  const text = document.querySelector(`[data-help-text="${button.dataset.helpToggle}"]`);
+  if (!text) return;
+
+  button.addEventListener('click', () => {
+    const shouldOpen = text.hidden;
+    text.hidden = !shouldOpen;
+    button.setAttribute('aria-expanded', String(shouldOpen));
+  });
 });
 
 elements.profilesToggle.addEventListener('click', () => {

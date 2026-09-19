@@ -246,7 +246,7 @@ export function isValidAscMcCoordinateInput(input = {}) {
 export function getAscMcCalculationLimitations() {
   return Object.freeze([
     'ASC / MC рассчитываются только при точном времени рождения и координатах места рождения.',
-    'Дома в Sprint 11 используют Whole Sign как первую безопасную систему, если quadrant cusps не верифицированы отдельно.',
+    'Система домов берется из профиля; ASC и MC от неё не зависят.',
     'DSC и IC производятся от ASC и MC.',
     'Расчет домов не выполняется в этом модуле.',
   ]);

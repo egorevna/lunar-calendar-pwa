@@ -157,11 +157,12 @@ test('package.json contains approved astronomy-engine version', () => {
   assert.equal(packageJson.dependencies['astronomy-engine'], '2.1.19');
 });
 
-test('user-facing app entry and markup do not import provider or expose natal UI', () => {
+test('user-facing app entry does not import the provider directly', () => {
   const appSource = readFileSync(new URL('../src/app.js', import.meta.url), 'utf8');
   const markup = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 
-  assert.equal(appSource.includes('astronomy-engine'), false);
+  assert.equal(appSource.includes("from './astronomyEngineProvider.js'"), false);
+  assert.equal(appSource.includes("from './vendor/astronomy-engine.mjs'"), false);
   assert.equal(markup.includes('Натальная карта'), false);
   assert.equal(markup.includes('Таблица планет'), false);
   assert.equal(markup.includes('ASC'), false);

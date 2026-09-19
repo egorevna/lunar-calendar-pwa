@@ -21,15 +21,15 @@ const FORMULA_VARIANT_LABELS = Object.freeze({
 
 const DISPLAY_LIMITATIONS = Object.freeze([
   'Жребии рассчитываются только при готовых ASC, Солнце, Луне и дневной/ночной карте.',
-  'В Sprint 12 активны Pars Fortuna и Lot of Spirit.',
+  'Сейчас рассчитываются Парс Фортуны и Жребий Духа.',
   'Остальные арабские части отложены до проверки источников.',
   'Этот блок не содержит интерпретаций.',
 ]);
 
 const VRONSKY_DISPLAY_LIMITATIONS = Object.freeze([
   'Формулы Вронского подтверждены для дневного рождения.',
-  'Ночные формулы по Вронскому пока не verified.',
-  'В Sprint 15 используется выбранный простой набор из 12 строк Вронского.',
+  'Ночные формулы Вронского пока не проверены по источнику.',
+  'Показаны 12 простых точек Вронского для дневной карты.',
   'Этот блок не содержит интерпретаций.',
 ]);
 
@@ -507,7 +507,7 @@ function getSafeFallbackMessage(message) {
 
 function getSafeVronskyFallbackMessage(result = null) {
   if (result?.reason === 'vronskyNightFormulaNotVerified' || result?.chartSect === 'night') {
-    return 'Точки Вронского пока недоступны для ночной карты. Ночные формулы по Вронскому пока не verified.';
+    return 'Точки Вронского пока недоступны для ночной карты: ночные формулы ещё не проверены по источнику.';
   }
 
   if (result?.reason === 'chartSectBoundary' || result?.chartSect === 'boundary') {

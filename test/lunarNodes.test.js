@@ -206,7 +206,7 @@ test('source, capabilities and limitations preserve Sprint 13 boundaries', () =>
   assert.equal(capabilities.interpretations, false);
   assert.equal(capabilities.transits, false);
   assert.equal(capabilities.fixedStars, false);
-  assert.equal(limitations.some((item) => item.includes('mean lunar node')), true);
+  assert.equal(limitations.some((item) => item.includes('mean node')), true);
   assert.equal(limitations.some((item) => item.includes('True Node')), true);
   assert.equal(limitations.some((item) => item.includes('Южный узел')), true);
 });

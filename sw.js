@@ -1,10 +1,11 @@
-const CACHE_NAME = 'lunar-calendar-v97';
+const CACHE_NAME = 'lunar-calendar-v98';
 const ASSETS = [
   './',
   'index.html',
   'manifest.webmanifest',
   'src/app.js',
   'src/astro.js',
+  'src/moonPhase.js',
   'src/bestWindows.js',
   'src/format.js',
   'src/vocDisplay.js',
@@ -24,6 +25,9 @@ const ASSETS = [
   'src/vendor/luxon.mjs',
   'src/vendor/astronomy-engine.mjs',
   'src/natalPlanetsForProfile.js',
+  'src/natalPlanetDisplay.js',
+  'src/astronomyEngineProvider.js',
+  'src/personalProfileInput.js',
   'src/natalPlanetsDebug.js',
   'src/natalAspectsForProfile.js',
   'src/natalAspectsDebug.js',
@@ -113,6 +117,15 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
   event.respondWith(
-    caches.match(event.request).then((cached) => cached || fetch(event.request)),
+    caches.match(event.request).then((cached) => cached || fetch(event.request).then((response) => {
+      // Safety net: cache any same-origin file that was not in ASSETS so the
+      // installed PWA keeps working offline even if the precache list lags behind.
+      const isSameOrigin = new URL(event.request.url).origin === self.location.origin;
+      if (response.ok && isSameOrigin) {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+      }
+      return response;
+    })),
   );
 });

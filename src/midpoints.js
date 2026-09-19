@@ -314,7 +314,7 @@ export function getMidpointEngineCapabilities() {
 
 export function getMidpointEngineLimitations() {
   return Object.freeze([
-    'В Sprint 16 рассчитываются срединные точки только между натальными планетами.',
+    'Срединные точки рассчитываются только между натальными планетами.',
     'ASC / MC / DSC / IC, дома, особые точки, арабские части и неподвижные звезды отложены для midpoint scope.',
     'При точной оппозиции midpoint axis помечается как неоднозначная ось.',
     'Этот модуль не рассчитывает midpoint contacts.',

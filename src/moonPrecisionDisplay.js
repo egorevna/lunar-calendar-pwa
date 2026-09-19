@@ -1,27 +1,18 @@
 import { formatTime } from './format.js';
 
-const UPCOMING_MAJOR_PHASE_FALLBACKS = {
-  Новолуние: 'Убывающий серп',
-  Полнолуние: 'Растущая Луна',
-};
-
+// The hero line names the exact event ("Новолуние в 20:23") only once it has
+// happened today; at any other moment it shows the continuous phase name from
+// moonPhase.js, which never returns the syzygy labels by itself.
 export function describeHeroMoonPhase({
   lunar,
   majorPhase,
-  nextPhase,
   now = new Date(),
 }) {
   if (majorPhase?.name && majorPhase?.at instanceof Date && majorPhase.at <= now) {
     return `${majorPhase.name} в ${formatTime(majorPhase.at)}`;
   }
 
-  const phaseName = lunar?.phaseName ?? '';
-
-  if (nextPhase?.name === phaseName && nextPhase?.at instanceof Date && nextPhase.at > now) {
-    return UPCOMING_MAJOR_PHASE_FALLBACKS[phaseName] ?? phaseName;
-  }
-
-  return phaseName;
+  return lunar?.phaseName ?? '';
 }
 
 export function describeMoonPrecision({ lunar, nextPhase, now = new Date() }) {
