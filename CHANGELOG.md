@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-20 — Audit Stage 2a: DOM smoke tests for the real entry point
+
+- Added `test/appRender.test.js`: boots `index.html` + `src/app.js` in jsdom and checks that the dashboard renders every general block, mode chips and help buttons react to clicks, an active profile renders the personal card and the natal sections in `Мои карты` (10 planets, Placidus angles and 12 houses for a fixed test profile), and the debug panel follows profile changes.
+- Added `jsdom` as a dev dependency (tests only; nothing ships to the PWA).
+- This is the safety net for the upcoming `app.js` refactoring; no application code changed.
+
 ## 2026-09-19 — Audit Stage 1: offline cache, precise Moon phase, honest copy, storage safety
 
 - Fixed offline PWA: `sw.js` now precaches `src/astronomyEngineProvider.js`, `src/natalPlanetDisplay.js`, `src/personalProfileInput.js` (previously missing, which broke the installed app without network) and caches any same-origin GET at runtime as a safety net. `CACHE_NAME` bumped to `lunar-calendar-v98`.
